@@ -28,7 +28,7 @@ resolver = "2"
 
 [workspace.dependencies]
 bitflags = "2.9.0"                                             # To generate flags type
-clap = { version = "4.5.23", features = ["derive"] }           # For CLI
+clap = { version = "4.5.34", features = ["derive"] }           # For CLI
 color-print = "0.3.7"                                          # To color example help
 educe = "0.6.0"                                                # Custom derive by derive
 indexmap = "2.8.0"                                             # Ordering HashMap
@@ -50,6 +50,7 @@ static_assertions = "1.1.0"                                    # Compile tim ass
 syn = { version = "2.0.100", default-features = false }         # Rust parser
 tokio = { version = "1.44.1" }                                 # Async runtime
 tracing = { version = "0.1.41" }                               # logger
+winnow = { version = "0.6.26", features = ["simd"] } # Parser combinator
 
 # workspace members
 havok_classes = { path = "./crates/havok_classes" }

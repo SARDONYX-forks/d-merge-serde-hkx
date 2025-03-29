@@ -1,3 +1,36 @@
+use winnow::Parser as _;
+use winnow::{
+    ModalResult,
+    ascii::Caseless,
+    combinator::{alt, delimited},
+    error::{StrContext::*, StrContextValue::*},
+    token::take_until,
+};
+
+/// Try to parse eventID. in `$eventID[<eventID>]$`
+///
+/// # Errors
+/// If not found `$eventID[` `]$`
+fn event_id<'a>(input: &mut &'a str) -> ModalResult<&'a str> {
+    delimited(Caseless("$eventID["), take_until(0.., "]$"), "]$")
+        .context(Expected(Description(
+            "eventID(e.g. `$eventID[sampleEventName]$`)",
+        )))
+        .parse_next(input)
+}
+
+/// Try to parse variableID. in `$variableID[<variableID>]$`
+///
+/// # Errors
+/// If not found `$variableID[` `]$`
+fn variable_id<'a>(input: &mut &'a str) -> ModalResult<&'a str> {
+    delimited(Caseless("$variableID["), take_until(0.., "]$"), "]$")
+        .context(Expected(Description(
+            "variableID(e.g. `$variableID[sampleName]$`)",
+        )))
+        .parse_next(input)
+}
+
 macro_rules! create_enum {
     ($($name:ident: $type:ty),+ $(,)?) => {
         $(
@@ -8,10 +41,10 @@ macro_rules! create_enum {
                 /// Normal primitive value that does not require replacement.
                 Number($type),
                 /// Event ID pointing to the index of `eventNames` in `hkbBehaviorGraphStringData`.
-                /// e.g., `$eventName[IdName]$`
+                /// e.g., `$eventID[IdName]$`
                 EventId(std::borrow::Cow<'a, str>),
                 /// Variable ID pointing to the index of `variableNames` in `hkbBehaviorGraphStringData`.
-                /// e.g., `$variableName[IdName]$`
+                /// e.g., `$variableID[IdName]$`
                 VariableId(std::borrow::Cow<'a, str>),
             }
 
@@ -26,15 +59,15 @@ macro_rules! create_enum {
                 type Error = String;
 
                 fn try_from(s: &'a str) -> Result<Self, Self::Error> {
-                    use std::borrow::Cow;
-                    if let Ok(num) = s.parse::<$type>() {
-                        Ok(Self::Number(num))
-                    } else if let Some(captures) = s.strip_prefix("$eventName[").and_then(|s| s.strip_suffix("]$")) {
-                        Ok(Self::EventId(Cow::Borrowed(captures)))
-                    } else if let Some(captures) = s.strip_prefix("$variableName[").and_then(|s| s.strip_suffix("]$")) {
-                        Ok(Self::VariableId(Cow::Borrowed(captures)))
-                    } else {
-                        Err(format!("Expected `$eventName[IdName]$`/`$variableName[IdName]$`. but got invalid string: {s}"))
+                    match <$type as crate::parse_int::ParseNumber>::parse(s) {
+                        Ok(value) => return Ok(Self::Number(value)),
+                        Err(_) => {
+                            alt((
+                                event_id.map(|n| Self::EventId(n.into())),
+                                variable_id.map(|n| Self::VariableId(n.into())),
+                            ))
+                            .parse(s)
+                            .map_err(|_| format!("Expected number/`$eventID[IdName]$`/`$variableID[IdName]$`. but got invalid string: {s}")) }
                     }
                 }
             }
@@ -46,12 +79,12 @@ macro_rules! create_enum {
                     use std::borrow::Cow;
                     if let Ok(num) = s.parse::<$type>() {
                         Ok(Self::Number(num))
-                    } else if let Some(captures) = s.strip_prefix("$eventName[").and_then(|s| s.strip_suffix("]$")) {
+                    } else if let Some(captures) = s.strip_prefix("$eventID[").and_then(|s| s.strip_suffix("]$")) {
                         Ok(Self::EventId(Cow::Owned(captures.to_string())))
-                    } else if let Some(captures) = s.strip_prefix("$variableName[").and_then(|s| s.strip_suffix("]$")) {
+                    } else if let Some(captures) = s.strip_prefix("$variableID[").and_then(|s| s.strip_suffix("]$")) {
                         Ok(Self::VariableId(Cow::Owned(captures.to_string())))
                     } else {
-                        Err(format!("Expected `$eventName[IdName]$`/`$variableName[IdName]$`. but got invalid string: {s}"))
+                        Err(format!("Expected `$eventID[IdName]$`/`$variableID[IdName]$`. but got invalid string: {s}"))
                     }
                 }
             }
@@ -60,8 +93,8 @@ macro_rules! create_enum {
                 fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
                     match self {
                         Self::Number(n) => write!(f, "{}", n),
-                        Self::EventId(e) => write!(f, "$eventName[{}]$", e),
-                        Self::VariableId(v) => write!(f, "$variableName[{}]$", v),
+                        Self::EventId(e) => write!(f, "$eventID[{}]$", e),
+                        Self::VariableId(v) => write!(f, "$variableID[{}]$", v),
                     }
                 }
             }
@@ -118,11 +151,11 @@ mod tests {
     #[test]
     fn test_from_str_event() {
         assert_eq!(
-            U32::try_from("$eventName[Start]$"),
+            U32::try_from("$eventID[Start]$"),
             Ok(U32::EventId("Start".into()))
         );
         assert_eq!(
-            U32::try_from("$eventName[Jump]$"),
+            U32::try_from("$eventID[Jump]$"),
             Ok(U32::EventId("Jump".into()))
         );
     }
@@ -130,11 +163,11 @@ mod tests {
     #[test]
     fn test_from_str_variable() {
         assert_eq!(
-            U32::try_from("$variableName[Health]$"),
+            U32::try_from("$variableID[Health]$"),
             Ok(U32::VariableId("Health".into()))
         );
         assert_eq!(
-            U32::try_from("$variableName[Stamina]$"),
+            U32::try_from("$variableID[Stamina]$"),
             Ok(U32::VariableId("Stamina".into()))
         );
     }
@@ -142,7 +175,7 @@ mod tests {
     #[test]
     fn test_from_str_invalid() {
         assert!(U32::try_from("random_text").is_err());
-        assert!(U32::try_from("$invalidName[Oops]$").is_err());
+        assert!(U32::try_from("$invalidID[Oops]$").is_err());
     }
 
     #[cfg(feature = "serde")]
@@ -154,13 +187,13 @@ mod tests {
         let event = U32::EventId("Fire".into());
         assert_eq!(
             serde_json::to_string(&event).unwrap(),
-            "\"$eventName[Fire]$\""
+            "\"$eventID[Fire]$\""
         );
 
         let var = U32::VariableId("Health".into());
         assert_eq!(
             serde_json::to_string(&var).unwrap(),
-            "\"$variableName[Health]$\""
+            "\"$variableID[Health]$\""
         );
     }
 
@@ -171,11 +204,11 @@ mod tests {
         let val: U32 = serde_json::from_str(json).unwrap();
         assert_eq!(val, U32::Number(123));
 
-        let json = "\"$eventName[Jump]$\"";
+        let json = "\"$eventID[Jump]$\"";
         let event: U32 = serde_json::from_str(json).unwrap();
         assert_eq!(event, U32::EventId("Jump".into()));
 
-        let json = "\"$variableName[Speed]$\"";
+        let json = "\"$variableID[Speed]$\"";
         let var: U32 = serde_json::from_str(json).unwrap();
         assert_eq!(var, U32::VariableId("Speed".into()));
     }
