@@ -28,6 +28,7 @@ pub struct hkaSplineCompressedAnimationAnimationCompressionParams<'a> {
     /// - name: `maxFramesPerBlock`(ctype: `hkUint16`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxFramesPerBlock"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxFramesPerBlock"))]
     pub m_maxFramesPerBlock: U16<'a>,

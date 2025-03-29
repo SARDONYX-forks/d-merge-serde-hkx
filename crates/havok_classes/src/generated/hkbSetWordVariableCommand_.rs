@@ -40,6 +40,7 @@ pub struct hkbSetWordVariableCommand<'a> {
     /// - name: `characterId`(ctype: `hkUint64`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "characterId"))]
     #[cfg_attr(feature = "serde", serde(rename = "characterId"))]
     pub m_characterId: U64<'a>,
@@ -47,6 +48,7 @@ pub struct hkbSetWordVariableCommand<'a> {
     /// - name: `variableId`(ctype: `hkInt32`)
     /// - offset: ` 40`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "variableId"))]
     #[cfg_attr(feature = "serde", serde(rename = "variableId"))]
     pub m_variableId: I32<'a>,
@@ -54,6 +56,7 @@ pub struct hkbSetWordVariableCommand<'a> {
     /// - name: `value`(ctype: `struct hkbVariableValue`)
     /// - offset: ` 44`(x86)/` 44`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "value"))]
     #[cfg_attr(feature = "serde", serde(rename = "value"))]
     pub m_value: hkbVariableValue<'a>,
@@ -214,7 +217,7 @@ const _: () = {
                     let mut m_quadValue: _serde::__private::Option<Vector4> = _serde::__private::None;
                     let mut m_characterId: _serde::__private::Option<U64<'de>> = _serde::__private::None;
                     let mut m_variableId: _serde::__private::Option<I32<'de>> = _serde::__private::None;
-                    let mut m_value: _serde::__private::Option<hkbVariableValue> = _serde::__private::None;
+                    let mut m_value: _serde::__private::Option<hkbVariableValue<'de>> = _serde::__private::None;
                     let mut m_type: _serde::__private::Option<VariableType> = _serde::__private::None;
                     let mut m_global: _serde::__private::Option<bool> = _serde::__private::None;
                     for i in 0..6usize {
@@ -278,7 +281,7 @@ const _: () = {
                                     );
                                 }
                                 m_value = _serde::__private::Some(
-                                    match __A::next_value::<hkbVariableValue>(&mut __map) {
+                                    match __A::next_value::<hkbVariableValue<'de>>(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -396,7 +399,7 @@ const _: () = {
                     let mut m_quadValue: _serde::__private::Option<Vector4> = _serde::__private::None;
                     let mut m_characterId: _serde::__private::Option<U64<'de>> = _serde::__private::None;
                     let mut m_variableId: _serde::__private::Option<I32<'de>> = _serde::__private::None;
-                    let mut m_value: _serde::__private::Option<hkbVariableValue> = _serde::__private::None;
+                    let mut m_value: _serde::__private::Option<hkbVariableValue<'de>> = _serde::__private::None;
                     let mut m_type: _serde::__private::Option<VariableType> = _serde::__private::None;
                     let mut m_global: _serde::__private::Option<bool> = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
@@ -497,7 +500,7 @@ const _: () = {
                                     );
                                 }
                                 m_value = _serde::__private::Some(
-                                    match __A::next_value::<hkbVariableValue>(&mut __map) {
+                                    match __A::next_value::<hkbVariableValue<'de>>(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);

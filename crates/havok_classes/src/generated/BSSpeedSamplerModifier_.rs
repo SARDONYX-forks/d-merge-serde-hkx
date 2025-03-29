@@ -33,6 +33,7 @@ pub struct BSSpeedSamplerModifier<'a> {
     /// - name: `state`(ctype: `hkInt32`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "state"))]
     #[cfg_attr(feature = "serde", serde(rename = "state"))]
     pub m_state: I32<'a>,

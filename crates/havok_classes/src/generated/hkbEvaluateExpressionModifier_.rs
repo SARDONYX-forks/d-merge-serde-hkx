@@ -33,6 +33,7 @@ pub struct hkbEvaluateExpressionModifier<'a> {
     /// - name: `expressions`(ctype: `struct hkbExpressionDataArray*`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "expressions"))]
     #[cfg_attr(feature = "serde", serde(rename = "expressions"))]
     pub m_expressions: Pointer<'a>,
@@ -41,6 +42,8 @@ pub struct hkbEvaluateExpressionModifier<'a> {
     /// - offset: ` 48`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "compiledExpressionSet"))]
     #[cfg_attr(feature = "serde", serde(rename = "compiledExpressionSet"))]
     pub m_compiledExpressionSet: Pointer<'a>,
@@ -49,6 +52,7 @@ pub struct hkbEvaluateExpressionModifier<'a> {
     /// - offset: ` 52`(x86)/` 96`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "internalExpressionsData"))]
     #[cfg_attr(feature = "serde", serde(rename = "internalExpressionsData"))]
     pub m_internalExpressionsData: Vec<()>,

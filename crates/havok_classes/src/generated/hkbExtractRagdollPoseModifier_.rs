@@ -33,6 +33,7 @@ pub struct hkbExtractRagdollPoseModifier<'a> {
     /// - name: `poseMatchingBone0`(ctype: `hkInt16`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "poseMatchingBone0"))]
     #[cfg_attr(feature = "serde", serde(rename = "poseMatchingBone0"))]
     pub m_poseMatchingBone0: I16<'a>,
@@ -40,6 +41,7 @@ pub struct hkbExtractRagdollPoseModifier<'a> {
     /// - name: `poseMatchingBone1`(ctype: `hkInt16`)
     /// - offset: ` 46`(x86)/` 82`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "poseMatchingBone1"))]
     #[cfg_attr(feature = "serde", serde(rename = "poseMatchingBone1"))]
     pub m_poseMatchingBone1: I16<'a>,
@@ -47,6 +49,7 @@ pub struct hkbExtractRagdollPoseModifier<'a> {
     /// - name: `poseMatchingBone2`(ctype: `hkInt16`)
     /// - offset: ` 48`(x86)/` 84`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "poseMatchingBone2"))]
     #[cfg_attr(feature = "serde", serde(rename = "poseMatchingBone2"))]
     pub m_poseMatchingBone2: I16<'a>,

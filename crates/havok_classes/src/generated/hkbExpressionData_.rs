@@ -36,6 +36,7 @@ pub struct hkbExpressionData<'a> {
     /// - name: `assignmentVariableIndex`(ctype: `hkInt32`)
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "assignmentVariableIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "assignmentVariableIndex"))]
     pub m_assignmentVariableIndex: I32<'a>,
@@ -43,6 +44,7 @@ pub struct hkbExpressionData<'a> {
     /// - name: `assignmentEventIndex`(ctype: `hkInt32`)
     /// - offset: `  8`(x86)/` 12`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "assignmentEventIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "assignmentEventIndex"))]
     pub m_assignmentEventIndex: I32<'a>,
@@ -58,6 +60,7 @@ pub struct hkbExpressionData<'a> {
     /// - offset: ` 13`(x86)/` 17`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "raisedEvent"))]
     #[cfg_attr(feature = "serde", serde(rename = "raisedEvent"))]
     pub m_raisedEvent: bool,
@@ -66,6 +69,7 @@ pub struct hkbExpressionData<'a> {
     /// - offset: ` 14`(x86)/` 18`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wasTrueInPreviousFrame"))]
     #[cfg_attr(feature = "serde", serde(rename = "wasTrueInPreviousFrame"))]
     pub m_wasTrueInPreviousFrame: bool,

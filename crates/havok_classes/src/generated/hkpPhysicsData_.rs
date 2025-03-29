@@ -33,6 +33,7 @@ pub struct hkpPhysicsData<'a> {
     /// - name: `worldCinfo`(ctype: `struct hkpWorldCinfo*`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "worldCinfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "worldCinfo"))]
     pub m_worldCinfo: Pointer<'a>,
@@ -40,6 +41,7 @@ pub struct hkpPhysicsData<'a> {
     /// - name: `systems`(ctype: `hkArray<hkpPhysicsSystem*>`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "systems"))]
     #[cfg_attr(feature = "serde", serde(rename = "systems"))]
     pub m_systems: Vec<Pointer<'a>>,

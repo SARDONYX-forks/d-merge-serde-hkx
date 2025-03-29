@@ -40,6 +40,7 @@ pub struct hkMemoryMeshBody<'a> {
     /// - name: `transformSet`(ctype: `struct hkIndexedTransformSet*`)
     /// - offset: ` 80`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transformSet"))]
     #[cfg_attr(feature = "serde", serde(rename = "transformSet"))]
     pub m_transformSet: Pointer<'a>,
@@ -47,6 +48,7 @@ pub struct hkMemoryMeshBody<'a> {
     /// - name: `shape`(ctype: `struct hkMeshShape*`)
     /// - offset: ` 84`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "shape"))]
     #[cfg_attr(feature = "serde", serde(rename = "shape"))]
     pub m_shape: Pointer<'a>,
@@ -54,6 +56,7 @@ pub struct hkMemoryMeshBody<'a> {
     /// - name: `vertexBuffers`(ctype: `hkArray<hkMeshVertexBuffer*>`)
     /// - offset: ` 88`(x86)/` 96`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vertexBuffers"))]
     #[cfg_attr(feature = "serde", serde(rename = "vertexBuffers"))]
     pub m_vertexBuffers: Vec<Pointer<'a>>,

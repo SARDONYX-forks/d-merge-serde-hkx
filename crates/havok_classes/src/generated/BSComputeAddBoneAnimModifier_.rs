@@ -33,6 +33,7 @@ pub struct BSComputeAddBoneAnimModifier<'a> {
     /// - name: `boneIndex`(ctype: `hkInt16`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "boneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "boneIndex"))]
     pub m_boneIndex: I16<'a>,
@@ -62,6 +63,8 @@ pub struct BSComputeAddBoneAnimModifier<'a> {
     /// - offset: ` 96`(x86)/`144`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pSkeletonMemory"))]
     #[cfg_attr(feature = "serde", serde(rename = "pSkeletonMemory"))]
     pub m_pSkeletonMemory: Pointer<'a>,

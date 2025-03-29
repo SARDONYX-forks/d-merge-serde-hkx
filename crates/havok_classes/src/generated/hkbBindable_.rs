@@ -33,6 +33,7 @@ pub struct hkbBindable<'a> {
     /// - name: `variableBindingSet`(ctype: `struct hkbVariableBindingSet*`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "variableBindingSet"))]
     #[cfg_attr(feature = "serde", serde(rename = "variableBindingSet"))]
     pub m_variableBindingSet: Pointer<'a>,
@@ -41,6 +42,7 @@ pub struct hkbBindable<'a> {
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "cachedBindables"))]
     #[cfg_attr(feature = "serde", serde(rename = "cachedBindables"))]
     pub m_cachedBindables: Vec<()>,
@@ -49,6 +51,7 @@ pub struct hkbBindable<'a> {
     /// - offset: ` 24`(x86)/` 40`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "areBindablesCached"))]
     #[cfg_attr(feature = "serde", serde(rename = "areBindablesCached"))]
     pub m_areBindablesCached: bool,

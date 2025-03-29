@@ -34,6 +34,7 @@ pub struct hkpConstraintChainInstanceAction<'a> {
     /// - offset: ` 24`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `NOT_OWNED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "constraintInstance"))]
     #[cfg_attr(feature = "serde", serde(rename = "constraintInstance"))]
     pub m_constraintInstance: Pointer<'a>,

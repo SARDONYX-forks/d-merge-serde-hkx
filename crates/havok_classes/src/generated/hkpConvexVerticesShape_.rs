@@ -54,6 +54,7 @@ pub struct hkpConvexVerticesShape<'a> {
     /// - name: `numVertices`(ctype: `hkInt32`)
     /// - offset: ` 76`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numVertices"))]
     #[cfg_attr(feature = "serde", serde(rename = "numVertices"))]
     pub m_numVertices: I32<'a>,
@@ -62,6 +63,8 @@ pub struct hkpConvexVerticesShape<'a> {
     /// - offset: ` 80`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "externalObject"))]
     #[cfg_attr(feature = "serde", serde(rename = "externalObject"))]
     pub m_externalObject: Pointer<'a>,
@@ -70,6 +73,8 @@ pub struct hkpConvexVerticesShape<'a> {
     /// - offset: ` 84`(x86)/`112`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "getFaceNormals"))]
     #[cfg_attr(feature = "serde", serde(rename = "getFaceNormals"))]
     pub m_getFaceNormals: Pointer<'a>,
@@ -84,6 +89,7 @@ pub struct hkpConvexVerticesShape<'a> {
     /// - name: `connectivity`(ctype: `struct hkpConvexVerticesConnectivity*`)
     /// - offset: `100`(x86)/`136`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "connectivity"))]
     #[cfg_attr(feature = "serde", serde(rename = "connectivity"))]
     pub m_connectivity: Pointer<'a>,

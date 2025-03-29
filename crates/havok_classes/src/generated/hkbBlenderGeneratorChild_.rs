@@ -34,6 +34,7 @@ pub struct hkbBlenderGeneratorChild<'a> {
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "generator"))]
     #[cfg_attr(feature = "serde", serde(rename = "generator"))]
     pub m_generator: Pointer<'a>,
@@ -41,6 +42,7 @@ pub struct hkbBlenderGeneratorChild<'a> {
     /// - name: `boneWeights`(ctype: `struct hkbBoneWeightArray*`)
     /// - offset: ` 36`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "boneWeights"))]
     #[cfg_attr(feature = "serde", serde(rename = "boneWeights"))]
     pub m_boneWeights: Pointer<'a>,

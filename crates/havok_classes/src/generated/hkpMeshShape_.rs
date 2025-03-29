@@ -40,6 +40,7 @@ pub struct hkpMeshShape<'a> {
     /// - name: `numBitsForSubpartIndex`(ctype: `hkInt32`)
     /// - offset: ` 48`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numBitsForSubpartIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "numBitsForSubpartIndex"))]
     pub m_numBitsForSubpartIndex: I32<'a>,
@@ -47,6 +48,7 @@ pub struct hkpMeshShape<'a> {
     /// - name: `subparts`(ctype: `hkArray<struct hkpMeshShapeSubpart>`)
     /// - offset: ` 52`(x86)/` 72`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "subparts"))]
     #[cfg_attr(feature = "serde", serde(rename = "subparts"))]
     pub m_subparts: Vec<hkpMeshShapeSubpart<'a>>,
@@ -54,6 +56,7 @@ pub struct hkpMeshShape<'a> {
     /// - name: `weldingInfo`(ctype: `hkArray<hkUint16>`)
     /// - offset: ` 64`(x86)/` 88`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "weldingInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "weldingInfo"))]
     pub m_weldingInfo: Vec<U16<'a>>,
@@ -75,6 +78,7 @@ pub struct hkpMeshShape<'a> {
     /// - name: `pad`(ctype: `hkInt32[3]`)
     /// - offset: ` 84`(x86)/`112`(x86_64)
     /// - type_size: ` 12`(x86)/` 12`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pad"))]
     #[cfg_attr(feature = "serde", serde(rename = "pad"))]
     pub m_pad: [I32<'a>; 3usize],
@@ -269,7 +273,7 @@ const _: () = {
                         I32<'de>,
                     > = _serde::__private::None;
                     let mut m_subparts: _serde::__private::Option<
-                        Vec<hkpMeshShapeSubpart>,
+                        Vec<hkpMeshShapeSubpart<'de>>,
                     > = _serde::__private::None;
                     let mut m_weldingInfo: _serde::__private::Option<Vec<U16<'de>>> = _serde::__private::None;
                     let mut m_weldingType: _serde::__private::Option<WeldingType> = _serde::__private::None;
@@ -325,7 +329,7 @@ const _: () = {
                                 __A::pad(&mut __map, 0usize, 4usize)?;
                                 m_subparts = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkpMeshShapeSubpart>,
+                                        Vec<hkpMeshShapeSubpart<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -495,7 +499,7 @@ const _: () = {
                         I32<'de>,
                     > = _serde::__private::None;
                     let mut m_subparts: _serde::__private::Option<
-                        Vec<hkpMeshShapeSubpart>,
+                        Vec<hkpMeshShapeSubpart<'de>>,
                     > = _serde::__private::None;
                     let mut m_weldingInfo: _serde::__private::Option<Vec<U16<'de>>> = _serde::__private::None;
                     let mut m_weldingType: _serde::__private::Option<WeldingType> = _serde::__private::None;
@@ -656,7 +660,7 @@ const _: () = {
                                 }
                                 m_subparts = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkpMeshShapeSubpart>,
+                                        Vec<hkpMeshShapeSubpart<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

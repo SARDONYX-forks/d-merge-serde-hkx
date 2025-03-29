@@ -76,6 +76,7 @@ pub struct BSTweenerModifier<'a> {
     /// - offset: ` 96`(x86)/`128`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "duration"))]
     #[cfg_attr(feature = "serde", serde(rename = "duration"))]
     pub m_duration: f32,
@@ -84,6 +85,7 @@ pub struct BSTweenerModifier<'a> {
     /// - offset: `112`(x86)/`144`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "startTransform"))]
     #[cfg_attr(feature = "serde", serde(rename = "startTransform"))]
     pub m_startTransform: QsTransform,
@@ -92,6 +94,7 @@ pub struct BSTweenerModifier<'a> {
     /// - offset: `160`(x86)/`192`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "time"))]
     #[cfg_attr(feature = "serde", serde(rename = "time"))]
     pub m_time: f32,

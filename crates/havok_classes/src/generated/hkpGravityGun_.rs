@@ -34,6 +34,8 @@ pub struct hkpGravityGun<'a> {
     /// - offset: ` 32`(x86)/` 56`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "grabbedBodies"))]
     #[cfg_attr(feature = "serde", serde(rename = "grabbedBodies"))]
     pub m_grabbedBodies: Vec<Pointer<'a>>,
@@ -41,6 +43,7 @@ pub struct hkpGravityGun<'a> {
     /// - name: `maxNumObjectsPicked`(ctype: `hkInt32`)
     /// - offset: ` 44`(x86)/` 72`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxNumObjectsPicked"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxNumObjectsPicked"))]
     pub m_maxNumObjectsPicked: I32<'a>,

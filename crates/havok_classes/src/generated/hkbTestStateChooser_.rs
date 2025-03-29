@@ -33,6 +33,7 @@ pub struct hkbTestStateChooser<'a> {
     /// - name: `int`(ctype: `hkInt32`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "int"))]
     #[cfg_attr(feature = "serde", serde(rename = "int"))]
     pub m_int: I32<'a>,

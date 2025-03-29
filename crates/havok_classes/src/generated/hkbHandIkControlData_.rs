@@ -49,6 +49,7 @@ pub struct hkbHandIkControlData<'a> {
     /// - name: `targetHandle`(ctype: `struct hkbHandle*`)
     /// - offset: ` 48`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "targetHandle"))]
     #[cfg_attr(feature = "serde", serde(rename = "targetHandle"))]
     pub m_targetHandle: Pointer<'a>,

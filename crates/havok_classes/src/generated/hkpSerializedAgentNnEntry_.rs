@@ -33,6 +33,7 @@ pub struct hkpSerializedAgentNnEntry<'a> {
     /// - name: `bodyA`(ctype: `struct hkpEntity*`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bodyA"))]
     #[cfg_attr(feature = "serde", serde(rename = "bodyA"))]
     pub m_bodyA: Pointer<'a>,
@@ -40,6 +41,7 @@ pub struct hkpSerializedAgentNnEntry<'a> {
     /// - name: `bodyB`(ctype: `struct hkpEntity*`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bodyB"))]
     #[cfg_attr(feature = "serde", serde(rename = "bodyB"))]
     pub m_bodyB: Pointer<'a>,
@@ -75,6 +77,7 @@ pub struct hkpSerializedAgentNnEntry<'a> {
     /// - name: `atom`(ctype: `struct hkpSimpleContactConstraintAtom`)
     /// - offset: ` 32`(x86)/` 64`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "atom"))]
     #[cfg_attr(feature = "serde", serde(rename = "atom"))]
     pub m_atom: hkpSimpleContactConstraintAtom<'a>,
@@ -82,6 +85,7 @@ pub struct hkpSerializedAgentNnEntry<'a> {
     /// - name: `propertiesStream`(ctype: `hkArray<hkUint8>`)
     /// - offset: ` 80`(x86)/`112`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "propertiesStream"))]
     #[cfg_attr(feature = "serde", serde(rename = "propertiesStream"))]
     pub m_propertiesStream: Vec<U8<'a>>,
@@ -96,6 +100,7 @@ pub struct hkpSerializedAgentNnEntry<'a> {
     /// - name: `cpIdMgr`(ctype: `hkArray<hkUint8>`)
     /// - offset: `104`(x86)/`144`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "cpIdMgr"))]
     #[cfg_attr(feature = "serde", serde(rename = "cpIdMgr"))]
     pub m_cpIdMgr: Vec<U8<'a>>,
@@ -112,6 +117,7 @@ pub struct hkpSerializedAgentNnEntry<'a> {
         serde(with = "::serde_with::As::<[::serde_with::Same; 160]>")
     )]
     #[educe(Default(expression = core::array::from_fn(|_idx|Default::default())))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nnEntryData"))]
     #[cfg_attr(feature = "serde", serde(rename = "nnEntryData"))]
     pub m_nnEntryData: [U8<'a>; 160usize],
@@ -119,6 +125,7 @@ pub struct hkpSerializedAgentNnEntry<'a> {
     /// - name: `trackInfo`(ctype: `struct hkpSerializedTrack1nInfo`)
     /// - offset: `276`(x86)/`320`(x86_64)
     /// - type_size: ` 24`(x86)/` 32`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "trackInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "trackInfo"))]
     pub m_trackInfo: hkpSerializedTrack1nInfo<'a>,
@@ -126,6 +133,7 @@ pub struct hkpSerializedAgentNnEntry<'a> {
     /// - name: `endianCheckBuffer`(ctype: `hkUint8[4]`)
     /// - offset: `300`(x86)/`352`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "endianCheckBuffer"))]
     #[cfg_attr(feature = "serde", serde(rename = "endianCheckBuffer"))]
     pub m_endianCheckBuffer: [U8<'a>; 4usize],
@@ -133,6 +141,7 @@ pub struct hkpSerializedAgentNnEntry<'a> {
     /// - name: `version`(ctype: `hkUint32`)
     /// - offset: `304`(x86)/`356`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "version"))]
     #[cfg_attr(feature = "serde", serde(rename = "version"))]
     pub m_version: U32<'a>,
@@ -343,7 +352,7 @@ const _: () = {
                         SerializedAgentType,
                     > = _serde::__private::None;
                     let mut m_atom: _serde::__private::Option<
-                        hkpSimpleContactConstraintAtom,
+                        hkpSimpleContactConstraintAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_propertiesStream: _serde::__private::Option<
                         Vec<U8<'de>>,
@@ -356,7 +365,7 @@ const _: () = {
                         [U8<'de>; 160usize],
                     > = _serde::__private::None;
                     let mut m_trackInfo: _serde::__private::Option<
-                        hkpSerializedTrack1nInfo,
+                        hkpSerializedTrack1nInfo<'de>,
                     > = _serde::__private::None;
                     let mut m_endianCheckBuffer: _serde::__private::Option<
                         [U8<'de>; 4usize],
@@ -471,7 +480,7 @@ const _: () = {
                                 __A::pad(&mut __map, 6usize, 14usize)?;
                                 m_atom = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSimpleContactConstraintAtom,
+                                        hkpSimpleContactConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -558,7 +567,7 @@ const _: () = {
                                 }
                                 m_trackInfo = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSerializedTrack1nInfo,
+                                        hkpSerializedTrack1nInfo<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -769,7 +778,7 @@ const _: () = {
                         SerializedAgentType,
                     > = _serde::__private::None;
                     let mut m_atom: _serde::__private::Option<
-                        hkpSimpleContactConstraintAtom,
+                        hkpSimpleContactConstraintAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_propertiesStream: _serde::__private::Option<
                         Vec<U8<'de>>,
@@ -782,7 +791,7 @@ const _: () = {
                         [U8<'de>; 160usize],
                     > = _serde::__private::None;
                     let mut m_trackInfo: _serde::__private::Option<
-                        hkpSerializedTrack1nInfo,
+                        hkpSerializedTrack1nInfo<'de>,
                     > = _serde::__private::None;
                     let mut m_endianCheckBuffer: _serde::__private::Option<
                         [U8<'de>; 4usize],
@@ -961,7 +970,7 @@ const _: () = {
                                 }
                                 m_atom = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSimpleContactConstraintAtom,
+                                        hkpSimpleContactConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -1093,7 +1102,7 @@ const _: () = {
                                 }
                                 m_trackInfo = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSerializedTrack1nInfo,
+                                        hkpSerializedTrack1nInfo<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

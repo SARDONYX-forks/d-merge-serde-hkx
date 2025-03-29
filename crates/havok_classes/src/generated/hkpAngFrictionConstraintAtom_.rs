@@ -33,6 +33,7 @@ pub struct hkpAngFrictionConstraintAtom<'a> {
     /// - name: `isEnabled`(ctype: `hkUint8`)
     /// - offset: `  2`(x86)/`  2`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isEnabled"))]
     #[cfg_attr(feature = "serde", serde(rename = "isEnabled"))]
     pub m_isEnabled: U8<'a>,
@@ -40,6 +41,7 @@ pub struct hkpAngFrictionConstraintAtom<'a> {
     /// - name: `firstFrictionAxis`(ctype: `hkUint8`)
     /// - offset: `  3`(x86)/`  3`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "firstFrictionAxis"))]
     #[cfg_attr(feature = "serde", serde(rename = "firstFrictionAxis"))]
     pub m_firstFrictionAxis: U8<'a>,
@@ -47,6 +49,7 @@ pub struct hkpAngFrictionConstraintAtom<'a> {
     /// - name: `numFrictionAxes`(ctype: `hkUint8`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numFrictionAxes"))]
     #[cfg_attr(feature = "serde", serde(rename = "numFrictionAxes"))]
     pub m_numFrictionAxes: U8<'a>,

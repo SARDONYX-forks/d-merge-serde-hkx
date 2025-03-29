@@ -33,6 +33,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `deformableSkinIds`(ctype: `hkArray<hkUint64>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "deformableSkinIds"))]
     #[cfg_attr(feature = "serde", serde(rename = "deformableSkinIds"))]
     pub m_deformableSkinIds: Vec<U64<'a>>,
@@ -40,6 +41,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `rigidSkinIds`(ctype: `hkArray<hkUint64>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rigidSkinIds"))]
     #[cfg_attr(feature = "serde", serde(rename = "rigidSkinIds"))]
     pub m_rigidSkinIds: Vec<U64<'a>>,
@@ -47,6 +49,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `externalEventIds`(ctype: `hkArray<hkInt16>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "externalEventIds"))]
     #[cfg_attr(feature = "serde", serde(rename = "externalEventIds"))]
     pub m_externalEventIds: Vec<I16<'a>>,
@@ -54,6 +57,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `auxiliaryInfo`(ctype: `hkArray<hkbAuxiliaryNodeInfo*>`)
     /// - offset: ` 44`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "auxiliaryInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "auxiliaryInfo"))]
     pub m_auxiliaryInfo: Vec<Pointer<'a>>,
@@ -61,6 +65,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `activeEventIds`(ctype: `hkArray<hkInt16>`)
     /// - offset: ` 56`(x86)/` 80`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "activeEventIds"))]
     #[cfg_attr(feature = "serde", serde(rename = "activeEventIds"))]
     pub m_activeEventIds: Vec<I16<'a>>,
@@ -68,6 +73,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `activeVariableIds`(ctype: `hkArray<hkInt16>`)
     /// - offset: ` 68`(x86)/` 96`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "activeVariableIds"))]
     #[cfg_attr(feature = "serde", serde(rename = "activeVariableIds"))]
     pub m_activeVariableIds: Vec<I16<'a>>,
@@ -75,6 +81,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `characterId`(ctype: `hkUint64`)
     /// - offset: ` 80`(x86)/`112`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "characterId"))]
     #[cfg_attr(feature = "serde", serde(rename = "characterId"))]
     pub m_characterId: U64<'a>,
@@ -106,6 +113,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `behaviorData`(ctype: `struct hkbBehaviorGraphData*`)
     /// - offset: `100`(x86)/`144`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "behaviorData"))]
     #[cfg_attr(feature = "serde", serde(rename = "behaviorData"))]
     pub m_behaviorData: Pointer<'a>,
@@ -113,6 +121,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `behaviorInternalState`(ctype: `struct hkbBehaviorGraphInternalState*`)
     /// - offset: `104`(x86)/`152`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "behaviorInternalState"))]
     #[cfg_attr(feature = "serde", serde(rename = "behaviorInternalState"))]
     pub m_behaviorInternalState: Pointer<'a>,
@@ -121,6 +130,8 @@ pub struct hkbClientCharacterState<'a> {
     /// - offset: `108`(x86)/`160`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nodeIdToInternalStateMap"))]
     #[cfg_attr(feature = "serde", serde(rename = "nodeIdToInternalStateMap"))]
     pub m_nodeIdToInternalStateMap: Pointer<'a>,
@@ -142,6 +153,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `skeleton`(ctype: `struct hkaSkeleton*`)
     /// - offset: `120`(x86)/`176`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "skeleton"))]
     #[cfg_attr(feature = "serde", serde(rename = "skeleton"))]
     pub m_skeleton: Pointer<'a>,

@@ -34,6 +34,7 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pClipGenerator"))]
     #[cfg_attr(feature = "serde", serde(rename = "pClipGenerator"))]
     pub m_pClipGenerator: Pointer<'a>,
@@ -95,6 +96,8 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - offset: ` 72`(x86)/`112`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pSyncScene"))]
     #[cfg_attr(feature = "serde", serde(rename = "pSyncScene"))]
     pub m_pSyncScene: Pointer<'a>,
@@ -103,6 +106,7 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - offset: ` 80`(x86)/`128`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "StartMarkWS"))]
     #[cfg_attr(feature = "serde", serde(rename = "StartMarkWS"))]
     pub m_StartMarkWS: QsTransform,
@@ -111,6 +115,7 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - offset: `128`(x86)/`176`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "EndMarkWS"))]
     #[cfg_attr(feature = "serde", serde(rename = "EndMarkWS"))]
     pub m_EndMarkWS: QsTransform,
@@ -119,6 +124,7 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - offset: `176`(x86)/`224`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "StartMarkMS"))]
     #[cfg_attr(feature = "serde", serde(rename = "StartMarkMS"))]
     pub m_StartMarkMS: QsTransform,
@@ -127,6 +133,7 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - offset: `224`(x86)/`272`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fCurrentLerp"))]
     #[cfg_attr(feature = "serde", serde(rename = "fCurrentLerp"))]
     pub m_fCurrentLerp: f32,
@@ -135,6 +142,8 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - offset: `228`(x86)/`280`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pLocalSyncBinding"))]
     #[cfg_attr(feature = "serde", serde(rename = "pLocalSyncBinding"))]
     pub m_pLocalSyncBinding: Pointer<'a>,
@@ -143,6 +152,8 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - offset: `232`(x86)/`288`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pEventMap"))]
     #[cfg_attr(feature = "serde", serde(rename = "pEventMap"))]
     pub m_pEventMap: Pointer<'a>,
@@ -150,6 +161,7 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - name: `sAnimationBindingIndex`(ctype: `hkInt16`)
     /// - offset: `236`(x86)/`296`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sAnimationBindingIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "sAnimationBindingIndex"))]
     pub m_sAnimationBindingIndex: I16<'a>,
@@ -158,6 +170,7 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - offset: `238`(x86)/`298`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bAtMark"))]
     #[cfg_attr(feature = "serde", serde(rename = "bAtMark"))]
     pub m_bAtMark: bool,
@@ -166,6 +179,7 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - offset: `239`(x86)/`299`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bAllCharactersInScene"))]
     #[cfg_attr(feature = "serde", serde(rename = "bAllCharactersInScene"))]
     pub m_bAllCharactersInScene: bool,
@@ -174,6 +188,7 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - offset: `240`(x86)/`300`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bAllCharactersAtMarks"))]
     #[cfg_attr(feature = "serde", serde(rename = "bAllCharactersAtMarks"))]
     pub m_bAllCharactersAtMarks: bool,

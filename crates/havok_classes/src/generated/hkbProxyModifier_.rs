@@ -33,6 +33,7 @@ pub struct hkbProxyModifier<'a> {
     /// - name: `proxyInfo`(ctype: `struct hkbProxyModifierProxyInfo`)
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: ` 80`(x86)/` 80`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "proxyInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "proxyInfo"))]
     pub m_proxyInfo: hkbProxyModifierProxyInfo<'a>,
@@ -127,6 +128,7 @@ pub struct hkbProxyModifier<'a> {
     /// - name: `collisionFilterInfo`(ctype: `hkUint32`)
     /// - offset: `188`(x86)/`220`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "collisionFilterInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "collisionFilterInfo"))]
     pub m_collisionFilterInfo: U32<'a>,
@@ -194,6 +196,8 @@ pub struct hkbProxyModifier<'a> {
     /// - offset: `200`(x86)/`232`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "characterProxy"))]
     #[cfg_attr(feature = "serde", serde(rename = "characterProxy"))]
     pub m_characterProxy: Pointer<'a>,
@@ -202,6 +206,8 @@ pub struct hkbProxyModifier<'a> {
     /// - offset: `204`(x86)/`240`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "phantom"))]
     #[cfg_attr(feature = "serde", serde(rename = "phantom"))]
     pub m_phantom: Pointer<'a>,
@@ -210,6 +216,8 @@ pub struct hkbProxyModifier<'a> {
     /// - offset: `208`(x86)/`248`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "phantomShape"))]
     #[cfg_attr(feature = "serde", serde(rename = "phantomShape"))]
     pub m_phantomShape: Pointer<'a>,
@@ -218,6 +226,7 @@ pub struct hkbProxyModifier<'a> {
     /// - offset: `224`(x86)/`256`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "horizontalDisplacement"))]
     #[cfg_attr(feature = "serde", serde(rename = "horizontalDisplacement"))]
     pub m_horizontalDisplacement: Vector4,
@@ -226,6 +235,7 @@ pub struct hkbProxyModifier<'a> {
     /// - offset: `240`(x86)/`272`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "verticalDisplacement"))]
     #[cfg_attr(feature = "serde", serde(rename = "verticalDisplacement"))]
     pub m_verticalDisplacement: f32,
@@ -234,6 +244,7 @@ pub struct hkbProxyModifier<'a> {
     /// - offset: `244`(x86)/`276`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "timestep"))]
     #[cfg_attr(feature = "serde", serde(rename = "timestep"))]
     pub m_timestep: f32,
@@ -242,6 +253,7 @@ pub struct hkbProxyModifier<'a> {
     /// - offset: `248`(x86)/`280`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "previousFrameFollowWorldFromModel")
@@ -561,7 +573,7 @@ const _: () = {
                     let __ptr = __A::class_ptr(&mut __map);
                     let parent = __A::parent_value(&mut __map)?;
                     let mut m_proxyInfo: _serde::__private::Option<
-                        hkbProxyModifierProxyInfo,
+                        hkbProxyModifierProxyInfo<'de>,
                     > = _serde::__private::None;
                     let mut m_linearVelocity: _serde::__private::Option<Vector4> = _serde::__private::None;
                     let mut m_horizontalGain: _serde::__private::Option<f32> = _serde::__private::None;
@@ -618,7 +630,7 @@ const _: () = {
                                 __A::pad(&mut __map, 4usize, 0usize)?;
                                 m_proxyInfo = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkbProxyModifierProxyInfo,
+                                        hkbProxyModifierProxyInfo<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -1477,7 +1489,7 @@ const _: () = {
                     let mut m_name: _serde::__private::Option<StringPtr<'de>> = _serde::__private::None;
                     let mut m_enable: _serde::__private::Option<bool> = _serde::__private::None;
                     let mut m_proxyInfo: _serde::__private::Option<
-                        hkbProxyModifierProxyInfo,
+                        hkbProxyModifierProxyInfo<'de>,
                     > = _serde::__private::None;
                     let mut m_linearVelocity: _serde::__private::Option<Vector4> = _serde::__private::None;
                     let mut m_horizontalGain: _serde::__private::Option<f32> = _serde::__private::None;
@@ -1635,7 +1647,7 @@ const _: () = {
                                 }
                                 m_proxyInfo = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkbProxyModifierProxyInfo,
+                                        hkbProxyModifierProxyInfo<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

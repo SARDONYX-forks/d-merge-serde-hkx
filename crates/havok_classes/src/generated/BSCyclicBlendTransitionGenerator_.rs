@@ -34,6 +34,7 @@ pub struct BSCyclicBlendTransitionGenerator<'a> {
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pBlenderGenerator"))]
     #[cfg_attr(feature = "serde", serde(rename = "pBlenderGenerator"))]
     pub m_pBlenderGenerator: Pointer<'a>,
@@ -79,6 +80,8 @@ pub struct BSCyclicBlendTransitionGenerator<'a> {
     /// - offset: ` 80`(x86)/`144`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `ALIGN_16|SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "pTransitionBlenderGenerator")
@@ -90,6 +93,8 @@ pub struct BSCyclicBlendTransitionGenerator<'a> {
     /// - offset: ` 96`(x86)/`160`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `ALIGN_16|SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pTransitionEffect"))]
     #[cfg_attr(feature = "serde", serde(rename = "pTransitionEffect"))]
     pub m_pTransitionEffect: Pointer<'a>,
@@ -98,6 +103,7 @@ pub struct BSCyclicBlendTransitionGenerator<'a> {
     /// - offset: `100`(x86)/`168`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "currentMode"))]
     #[cfg_attr(feature = "serde", serde(rename = "currentMode"))]
     pub m_currentMode: I8<'a>,

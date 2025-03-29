@@ -40,6 +40,7 @@ pub struct hkbMirroredSkeletonInfo<'a> {
     /// - name: `bonePairMap`(ctype: `hkArray<hkInt16>`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bonePairMap"))]
     #[cfg_attr(feature = "serde", serde(rename = "bonePairMap"))]
     pub m_bonePairMap: Vec<I16<'a>>,

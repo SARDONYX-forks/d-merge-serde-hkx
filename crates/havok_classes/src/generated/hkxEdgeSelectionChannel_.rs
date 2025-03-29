@@ -33,6 +33,7 @@ pub struct hkxEdgeSelectionChannel<'a> {
     /// - name: `selectedEdges`(ctype: `hkArray<hkInt32>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "selectedEdges"))]
     #[cfg_attr(feature = "serde", serde(rename = "selectedEdges"))]
     pub m_selectedEdges: Vec<I32<'a>>,

@@ -40,6 +40,7 @@ pub struct hkxIndexBuffer<'a> {
     /// - name: `indices16`(ctype: `hkArray<hkUint16>`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "indices16"))]
     #[cfg_attr(feature = "serde", serde(rename = "indices16"))]
     pub m_indices16: Vec<U16<'a>>,
@@ -47,6 +48,7 @@ pub struct hkxIndexBuffer<'a> {
     /// - name: `indices32`(ctype: `hkArray<hkUint32>`)
     /// - offset: ` 24`(x86)/` 40`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "indices32"))]
     #[cfg_attr(feature = "serde", serde(rename = "indices32"))]
     pub m_indices32: Vec<U32<'a>>,
@@ -54,6 +56,7 @@ pub struct hkxIndexBuffer<'a> {
     /// - name: `vertexBaseOffset`(ctype: `hkUint32`)
     /// - offset: ` 36`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vertexBaseOffset"))]
     #[cfg_attr(feature = "serde", serde(rename = "vertexBaseOffset"))]
     pub m_vertexBaseOffset: U32<'a>,
@@ -61,6 +64,7 @@ pub struct hkxIndexBuffer<'a> {
     /// - name: `length`(ctype: `hkUint32`)
     /// - offset: ` 40`(x86)/` 60`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "length"))]
     #[cfg_attr(feature = "serde", serde(rename = "length"))]
     pub m_length: U32<'a>,

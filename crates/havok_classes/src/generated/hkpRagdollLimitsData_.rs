@@ -34,6 +34,7 @@ pub struct hkpRagdollLimitsData<'a> {
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `176`(x86)/`176`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "atoms"))]
     #[cfg_attr(feature = "serde", serde(rename = "atoms"))]
     pub m_atoms: hkpRagdollLimitsDataAtoms<'a>,
@@ -162,7 +163,7 @@ const _: () = {
                     let __ptr = __A::class_ptr(&mut __map);
                     let parent = __A::parent_value(&mut __map)?;
                     let mut m_atoms: _serde::__private::Option<
-                        hkpRagdollLimitsDataAtoms,
+                        hkpRagdollLimitsDataAtoms<'de>,
                     > = _serde::__private::None;
                     for i in 0..1usize {
                         match i {
@@ -175,7 +176,7 @@ const _: () = {
                                 __A::pad(&mut __map, 4usize, 8usize)?;
                                 m_atoms = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpRagdollLimitsDataAtoms,
+                                        hkpRagdollLimitsDataAtoms<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -211,7 +212,7 @@ const _: () = {
                 {
                     let mut m_userData: _serde::__private::Option<Ulong> = _serde::__private::None;
                     let mut m_atoms: _serde::__private::Option<
-                        hkpRagdollLimitsDataAtoms,
+                        hkpRagdollLimitsDataAtoms<'de>,
                     > = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
                         __A::next_key::<__Field>(&mut __map)?
@@ -260,7 +261,7 @@ const _: () = {
                                 }
                                 m_atoms = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpRagdollLimitsDataAtoms,
+                                        hkpRagdollLimitsDataAtoms<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

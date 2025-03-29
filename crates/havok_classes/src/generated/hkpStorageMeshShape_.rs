@@ -33,6 +33,7 @@ pub struct hkpStorageMeshShape<'a> {
     /// - name: `storage`(ctype: `hkArray<hkpStorageMeshShapeSubpartStorage*>`)
     /// - offset: ` 96`(x86)/`128`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "storage"))]
     #[cfg_attr(feature = "serde", serde(rename = "storage"))]
     pub m_storage: Vec<Pointer<'a>>,
@@ -297,7 +298,7 @@ const _: () = {
                         I32<'de>,
                     > = _serde::__private::None;
                     let mut m_subparts: _serde::__private::Option<
-                        Vec<hkpMeshShapeSubpart>,
+                        Vec<hkpMeshShapeSubpart<'de>>,
                     > = _serde::__private::None;
                     let mut m_weldingInfo: _serde::__private::Option<Vec<U16<'de>>> = _serde::__private::None;
                     let mut m_weldingType: _serde::__private::Option<WeldingType> = _serde::__private::None;
@@ -459,7 +460,7 @@ const _: () = {
                                 }
                                 m_subparts = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkpMeshShapeSubpart>,
+                                        Vec<hkpMeshShapeSubpart<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

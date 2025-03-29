@@ -35,6 +35,7 @@ pub struct hkpCompressedMeshShapeChunk<'a> {
     /// - name: `vertices`(ctype: `hkArray<hkUint16>`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vertices"))]
     #[cfg_attr(feature = "serde", serde(rename = "vertices"))]
     pub m_vertices: Vec<U16<'a>>,
@@ -42,6 +43,7 @@ pub struct hkpCompressedMeshShapeChunk<'a> {
     /// - name: `indices`(ctype: `hkArray<hkUint16>`)
     /// - offset: ` 28`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "indices"))]
     #[cfg_attr(feature = "serde", serde(rename = "indices"))]
     pub m_indices: Vec<U16<'a>>,
@@ -49,6 +51,7 @@ pub struct hkpCompressedMeshShapeChunk<'a> {
     /// - name: `stripLengths`(ctype: `hkArray<hkUint16>`)
     /// - offset: ` 40`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "stripLengths"))]
     #[cfg_attr(feature = "serde", serde(rename = "stripLengths"))]
     pub m_stripLengths: Vec<U16<'a>>,
@@ -56,6 +59,7 @@ pub struct hkpCompressedMeshShapeChunk<'a> {
     /// - name: `weldingInfo`(ctype: `hkArray<hkUint16>`)
     /// - offset: ` 52`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "weldingInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "weldingInfo"))]
     pub m_weldingInfo: Vec<U16<'a>>,
@@ -63,6 +67,7 @@ pub struct hkpCompressedMeshShapeChunk<'a> {
     /// - name: `materialInfo`(ctype: `hkUint32`)
     /// - offset: ` 64`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materialInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "materialInfo"))]
     pub m_materialInfo: U32<'a>,
@@ -70,6 +75,7 @@ pub struct hkpCompressedMeshShapeChunk<'a> {
     /// - name: `reference`(ctype: `hkUint16`)
     /// - offset: ` 68`(x86)/` 84`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "reference"))]
     #[cfg_attr(feature = "serde", serde(rename = "reference"))]
     pub m_reference: U16<'a>,
@@ -77,6 +83,7 @@ pub struct hkpCompressedMeshShapeChunk<'a> {
     /// - name: `transformIndex`(ctype: `hkUint16`)
     /// - offset: ` 70`(x86)/` 86`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transformIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "transformIndex"))]
     pub m_transformIndex: U16<'a>,

@@ -28,6 +28,7 @@ pub struct BSIStateManagerModifierBSiStateData<'a> {
     /// - name: `pStateMachine`(ctype: `struct hkbGenerator*`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pStateMachine"))]
     #[cfg_attr(feature = "serde", serde(rename = "pStateMachine"))]
     pub m_pStateMachine: Pointer<'a>,
@@ -35,6 +36,7 @@ pub struct BSIStateManagerModifierBSiStateData<'a> {
     /// - name: `StateID`(ctype: `hkInt32`)
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "StateID"))]
     #[cfg_attr(feature = "serde", serde(rename = "StateID"))]
     pub m_StateID: I32<'a>,
@@ -42,6 +44,7 @@ pub struct BSIStateManagerModifierBSiStateData<'a> {
     /// - name: `iStateToSetAs`(ctype: `hkInt32`)
     /// - offset: `  8`(x86)/` 12`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "iStateToSetAs"))]
     #[cfg_attr(feature = "serde", serde(rename = "iStateToSetAs"))]
     pub m_iStateToSetAs: I32<'a>,

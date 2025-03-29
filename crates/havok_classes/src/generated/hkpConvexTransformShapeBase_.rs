@@ -33,6 +33,7 @@ pub struct hkpConvexTransformShapeBase<'a> {
     /// - name: `childShape`(ctype: `struct hkpSingleShapeContainer`)
     /// - offset: ` 20`(x86)/` 40`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "childShape"))]
     #[cfg_attr(feature = "serde", serde(rename = "childShape"))]
     pub m_childShape: hkpSingleShapeContainer<'a>,
@@ -41,6 +42,8 @@ pub struct hkpConvexTransformShapeBase<'a> {
     /// - offset: ` 28`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "childShapeSize"))]
     #[cfg_attr(feature = "serde", serde(rename = "childShapeSize"))]
     pub m_childShapeSize: I32<'a>,
@@ -188,7 +191,7 @@ const _: () = {
                     let __ptr = __A::class_ptr(&mut __map);
                     let parent = __A::parent_value(&mut __map)?;
                     let mut m_childShape: _serde::__private::Option<
-                        hkpSingleShapeContainer,
+                        hkpSingleShapeContainer<'de>,
                     > = _serde::__private::None;
                     let mut m_childShapeSize: _serde::__private::Option<I32<'de>> = _serde::__private::None;
                     for i in 0..2usize {
@@ -203,7 +206,7 @@ const _: () = {
                                 }
                                 m_childShape = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSingleShapeContainer,
+                                        hkpSingleShapeContainer<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -271,7 +274,7 @@ const _: () = {
                     let mut m_userData: _serde::__private::Option<Ulong> = _serde::__private::None;
                     let mut m_radius: _serde::__private::Option<f32> = _serde::__private::None;
                     let mut m_childShape: _serde::__private::Option<
-                        hkpSingleShapeContainer,
+                        hkpSingleShapeContainer<'de>,
                     > = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
                         __A::next_key::<__Field>(&mut __map)?
@@ -346,7 +349,7 @@ const _: () = {
                                 }
                                 m_childShape = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSingleShapeContainer,
+                                        hkpSingleShapeContainer<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

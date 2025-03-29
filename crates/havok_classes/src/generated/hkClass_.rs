@@ -36,6 +36,7 @@ pub struct hkClass<'a> {
     /// - name: `parent`(ctype: `struct hkClass*`)
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "parent"))]
     #[cfg_attr(feature = "serde", serde(rename = "parent"))]
     pub m_parent: Pointer<'a>,
@@ -43,6 +44,7 @@ pub struct hkClass<'a> {
     /// - name: `objectSize`(ctype: `hkInt32`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "objectSize"))]
     #[cfg_attr(feature = "serde", serde(rename = "objectSize"))]
     pub m_objectSize: I32<'a>,
@@ -50,6 +52,7 @@ pub struct hkClass<'a> {
     /// - name: `numImplementedInterfaces`(ctype: `hkInt32`)
     /// - offset: ` 12`(x86)/` 20`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numImplementedInterfaces"))]
     #[cfg_attr(feature = "serde", serde(rename = "numImplementedInterfaces"))]
     pub m_numImplementedInterfaces: I32<'a>,
@@ -74,6 +77,8 @@ pub struct hkClass<'a> {
     /// - offset: ` 32`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "defaults"))]
     #[cfg_attr(feature = "serde", serde(rename = "defaults"))]
     pub m_defaults: Pointer<'a>,
@@ -82,6 +87,8 @@ pub struct hkClass<'a> {
     /// - offset: ` 36`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "attributes"))]
     #[cfg_attr(feature = "serde", serde(rename = "attributes"))]
     pub m_attributes: Pointer<'a>,
@@ -96,6 +103,7 @@ pub struct hkClass<'a> {
     /// - name: `describedVersion`(ctype: `hkInt32`)
     /// - offset: ` 44`(x86)/` 76`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "describedVersion"))]
     #[cfg_attr(feature = "serde", serde(rename = "describedVersion"))]
     pub m_describedVersion: I32<'a>,

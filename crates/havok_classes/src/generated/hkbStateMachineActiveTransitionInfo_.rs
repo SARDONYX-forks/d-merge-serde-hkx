@@ -29,6 +29,8 @@ pub struct hkbStateMachineActiveTransitionInfo<'a> {
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transitionEffect"))]
     #[cfg_attr(feature = "serde", serde(rename = "transitionEffect"))]
     pub m_transitionEffect: Pointer<'a>,
@@ -36,6 +38,7 @@ pub struct hkbStateMachineActiveTransitionInfo<'a> {
     /// - name: `transitionEffectInternalStateInfo`(ctype: `struct hkbNodeInternalStateInfo*`)
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "transitionEffectInternalStateInfo")
@@ -46,6 +49,7 @@ pub struct hkbStateMachineActiveTransitionInfo<'a> {
     /// - name: `transitionInfoReference`(ctype: `struct hkbStateMachineTransitionInfoReference`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  6`(x86)/`  6`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transitionInfoReference"))]
     #[cfg_attr(feature = "serde", serde(rename = "transitionInfoReference"))]
     pub m_transitionInfoReference: hkbStateMachineTransitionInfoReference<'a>,
@@ -53,6 +57,7 @@ pub struct hkbStateMachineActiveTransitionInfo<'a> {
     /// - name: `transitionInfoReferenceForTE`(ctype: `struct hkbStateMachineTransitionInfoReference`)
     /// - offset: ` 14`(x86)/` 22`(x86_64)
     /// - type_size: `  6`(x86)/`  6`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "transitionInfoReferenceForTE")
@@ -63,6 +68,7 @@ pub struct hkbStateMachineActiveTransitionInfo<'a> {
     /// - name: `fromStateId`(ctype: `hkInt32`)
     /// - offset: ` 20`(x86)/` 28`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fromStateId"))]
     #[cfg_attr(feature = "serde", serde(rename = "fromStateId"))]
     pub m_fromStateId: I32<'a>,
@@ -70,6 +76,7 @@ pub struct hkbStateMachineActiveTransitionInfo<'a> {
     /// - name: `toStateId`(ctype: `hkInt32`)
     /// - offset: ` 24`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "toStateId"))]
     #[cfg_attr(feature = "serde", serde(rename = "toStateId"))]
     pub m_toStateId: I32<'a>,
@@ -251,10 +258,10 @@ const _: () = {
                         Pointer<'de>,
                     > = _serde::__private::None;
                     let mut m_transitionInfoReference: _serde::__private::Option<
-                        hkbStateMachineTransitionInfoReference,
+                        hkbStateMachineTransitionInfoReference<'de>,
                     > = _serde::__private::None;
                     let mut m_transitionInfoReferenceForTE: _serde::__private::Option<
-                        hkbStateMachineTransitionInfoReference,
+                        hkbStateMachineTransitionInfoReference<'de>,
                     > = _serde::__private::None;
                     let mut m_fromStateId: _serde::__private::Option<I32<'de>> = _serde::__private::None;
                     let mut m_toStateId: _serde::__private::Option<I32<'de>> = _serde::__private::None;
@@ -309,7 +316,7 @@ const _: () = {
                                 }
                                 m_transitionInfoReference = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkbStateMachineTransitionInfoReference,
+                                        hkbStateMachineTransitionInfoReference<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -330,7 +337,7 @@ const _: () = {
                                 }
                                 m_transitionInfoReferenceForTE = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkbStateMachineTransitionInfoReference,
+                                        hkbStateMachineTransitionInfoReference<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -489,10 +496,10 @@ const _: () = {
                         Pointer<'de>,
                     > = _serde::__private::None;
                     let mut m_transitionInfoReference: _serde::__private::Option<
-                        hkbStateMachineTransitionInfoReference,
+                        hkbStateMachineTransitionInfoReference<'de>,
                     > = _serde::__private::None;
                     let mut m_transitionInfoReferenceForTE: _serde::__private::Option<
-                        hkbStateMachineTransitionInfoReference,
+                        hkbStateMachineTransitionInfoReference<'de>,
                     > = _serde::__private::None;
                     let mut m_fromStateId: _serde::__private::Option<I32<'de>> = _serde::__private::None;
                     let mut m_toStateId: _serde::__private::Option<I32<'de>> = _serde::__private::None;
@@ -550,7 +557,7 @@ const _: () = {
                                 }
                                 m_transitionInfoReference = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkbStateMachineTransitionInfoReference,
+                                        hkbStateMachineTransitionInfoReference<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -580,7 +587,7 @@ const _: () = {
                                 }
                                 m_transitionInfoReferenceForTE = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkbStateMachineTransitionInfoReference,
+                                        hkbStateMachineTransitionInfoReference<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

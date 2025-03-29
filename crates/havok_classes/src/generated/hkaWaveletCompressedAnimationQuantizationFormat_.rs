@@ -28,6 +28,7 @@ pub struct hkaWaveletCompressedAnimationQuantizationFormat<'a> {
     /// - name: `maxBitWidth`(ctype: `hkUint8`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxBitWidth"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxBitWidth"))]
     pub m_maxBitWidth: U8<'a>,
@@ -35,6 +36,7 @@ pub struct hkaWaveletCompressedAnimationQuantizationFormat<'a> {
     /// - name: `preserved`(ctype: `hkUint8`)
     /// - offset: `  1`(x86)/`  1`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "preserved"))]
     #[cfg_attr(feature = "serde", serde(rename = "preserved"))]
     pub m_preserved: U8<'a>,
@@ -42,6 +44,7 @@ pub struct hkaWaveletCompressedAnimationQuantizationFormat<'a> {
     /// - name: `numD`(ctype: `hkUint32`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numD"))]
     #[cfg_attr(feature = "serde", serde(rename = "numD"))]
     pub m_numD: U32<'a>,
@@ -49,6 +52,7 @@ pub struct hkaWaveletCompressedAnimationQuantizationFormat<'a> {
     /// - name: `offsetIdx`(ctype: `hkUint32`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "offsetIdx"))]
     #[cfg_attr(feature = "serde", serde(rename = "offsetIdx"))]
     pub m_offsetIdx: U32<'a>,
@@ -56,6 +60,7 @@ pub struct hkaWaveletCompressedAnimationQuantizationFormat<'a> {
     /// - name: `scaleIdx`(ctype: `hkUint32`)
     /// - offset: ` 12`(x86)/` 12`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "scaleIdx"))]
     #[cfg_attr(feature = "serde", serde(rename = "scaleIdx"))]
     pub m_scaleIdx: U32<'a>,
@@ -63,6 +68,7 @@ pub struct hkaWaveletCompressedAnimationQuantizationFormat<'a> {
     /// - name: `bitWidthIdx`(ctype: `hkUint32`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bitWidthIdx"))]
     #[cfg_attr(feature = "serde", serde(rename = "bitWidthIdx"))]
     pub m_bitWidthIdx: U32<'a>,

@@ -29,6 +29,8 @@ pub struct hkPostFinishAttribute<'a> {
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "postFinishFunction"))]
     #[cfg_attr(feature = "serde", serde(rename = "postFinishFunction"))]
     pub m_postFinishFunction: Pointer<'a>,

@@ -56,6 +56,7 @@ pub struct BGSGamebryoSequenceGenerator<'a> {
     /// - offset: ` 52`(x86)/` 88`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "events"))]
     #[cfg_attr(feature = "serde", serde(rename = "events"))]
     pub m_events: Vec<()>,
@@ -64,6 +65,7 @@ pub struct BGSGamebryoSequenceGenerator<'a> {
     /// - offset: ` 64`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fTime"))]
     #[cfg_attr(feature = "serde", serde(rename = "fTime"))]
     pub m_fTime: f32,
@@ -72,6 +74,7 @@ pub struct BGSGamebryoSequenceGenerator<'a> {
     /// - offset: ` 68`(x86)/`108`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bDelayedActivate"))]
     #[cfg_attr(feature = "serde", serde(rename = "bDelayedActivate"))]
     pub m_bDelayedActivate: bool,
@@ -80,6 +83,7 @@ pub struct BGSGamebryoSequenceGenerator<'a> {
     /// - offset: ` 69`(x86)/`109`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bLooping"))]
     #[cfg_attr(feature = "serde", serde(rename = "bLooping"))]
     pub m_bLooping: bool,

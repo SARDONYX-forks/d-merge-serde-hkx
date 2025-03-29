@@ -33,6 +33,7 @@ pub struct hkbCharacterAddedInfo<'a> {
     /// - name: `characterId`(ctype: `hkUint64`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "characterId"))]
     #[cfg_attr(feature = "serde", serde(rename = "characterId"))]
     pub m_characterId: U64<'a>,
@@ -64,6 +65,7 @@ pub struct hkbCharacterAddedInfo<'a> {
     /// - name: `skeleton`(ctype: `struct hkaSkeleton*`)
     /// - offset: ` 28`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "skeleton"))]
     #[cfg_attr(feature = "serde", serde(rename = "skeleton"))]
     pub m_skeleton: Pointer<'a>,

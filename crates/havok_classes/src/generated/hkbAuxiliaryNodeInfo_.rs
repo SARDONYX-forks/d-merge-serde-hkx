@@ -40,6 +40,7 @@ pub struct hkbAuxiliaryNodeInfo<'a> {
     /// - name: `depth`(ctype: `hkUint8`)
     /// - offset: `  9`(x86)/` 17`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "depth"))]
     #[cfg_attr(feature = "serde", serde(rename = "depth"))]
     pub m_depth: U8<'a>,

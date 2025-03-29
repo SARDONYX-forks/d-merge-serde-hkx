@@ -71,6 +71,7 @@ pub struct hkbClipGeneratorInternalState<'a> {
     /// - name: `bufferSize`(ctype: `hkInt32`)
     /// - offset: ` 88`(x86)/` 92`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bufferSize"))]
     #[cfg_attr(feature = "serde", serde(rename = "bufferSize"))]
     pub m_bufferSize: I32<'a>,
@@ -78,6 +79,7 @@ pub struct hkbClipGeneratorInternalState<'a> {
     /// - name: `echoBufferSize`(ctype: `hkInt32`)
     /// - offset: ` 92`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "echoBufferSize"))]
     #[cfg_attr(feature = "serde", serde(rename = "echoBufferSize"))]
     pub m_echoBufferSize: I32<'a>,

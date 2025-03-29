@@ -33,6 +33,7 @@ pub struct hkpTypedBroadPhaseHandle<'a> {
     /// - name: `type`(ctype: `hkInt8`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "type"))]
     #[cfg_attr(feature = "serde", serde(rename = "type"))]
     pub m_type: I8<'a>,
@@ -41,6 +42,8 @@ pub struct hkpTypedBroadPhaseHandle<'a> {
     /// - offset: `  5`(x86)/`  5`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "ownerOffset"))]
     #[cfg_attr(feature = "serde", serde(rename = "ownerOffset"))]
     pub m_ownerOffset: I8<'a>,
@@ -48,6 +51,7 @@ pub struct hkpTypedBroadPhaseHandle<'a> {
     /// - name: `objectQualityType`(ctype: `hkInt8`)
     /// - offset: `  6`(x86)/`  6`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "objectQualityType"))]
     #[cfg_attr(feature = "serde", serde(rename = "objectQualityType"))]
     pub m_objectQualityType: I8<'a>,
@@ -55,6 +59,7 @@ pub struct hkpTypedBroadPhaseHandle<'a> {
     /// - name: `collisionFilterInfo`(ctype: `hkUint32`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "collisionFilterInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "collisionFilterInfo"))]
     pub m_collisionFilterInfo: U32<'a>,

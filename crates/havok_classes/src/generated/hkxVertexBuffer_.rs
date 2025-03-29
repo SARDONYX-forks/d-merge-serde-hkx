@@ -33,6 +33,7 @@ pub struct hkxVertexBuffer<'a> {
     /// - name: `data`(ctype: `struct hkxVertexBufferVertexData`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 84`(x86)/`104`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "data"))]
     #[cfg_attr(feature = "serde", serde(rename = "data"))]
     pub m_data: hkxVertexBufferVertexData<'a>,
@@ -40,6 +41,7 @@ pub struct hkxVertexBuffer<'a> {
     /// - name: `desc`(ctype: `struct hkxVertexDescription`)
     /// - offset: ` 92`(x86)/`120`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "desc"))]
     #[cfg_attr(feature = "serde", serde(rename = "desc"))]
     pub m_desc: hkxVertexDescription<'a>,
@@ -166,9 +168,11 @@ const _: () = {
                     let __ptr = __A::class_ptr(&mut __map);
                     let parent = __A::parent_value(&mut __map)?;
                     let mut m_data: _serde::__private::Option<
-                        hkxVertexBufferVertexData,
+                        hkxVertexBufferVertexData<'de>,
                     > = _serde::__private::None;
-                    let mut m_desc: _serde::__private::Option<hkxVertexDescription> = _serde::__private::None;
+                    let mut m_desc: _serde::__private::Option<
+                        hkxVertexDescription<'de>,
+                    > = _serde::__private::None;
                     for i in 0..2usize {
                         match i {
                             0usize => {
@@ -179,7 +183,7 @@ const _: () = {
                                 }
                                 m_data = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkxVertexBufferVertexData,
+                                        hkxVertexBufferVertexData<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -195,7 +199,9 @@ const _: () = {
                                     );
                                 }
                                 m_desc = _serde::__private::Some(
-                                    match __A::next_value::<hkxVertexDescription>(&mut __map) {
+                                    match __A::next_value::<
+                                        hkxVertexDescription<'de>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -238,9 +244,11 @@ const _: () = {
                     __A: _serde::de::MapAccess<'de>,
                 {
                     let mut m_data: _serde::__private::Option<
-                        hkxVertexBufferVertexData,
+                        hkxVertexBufferVertexData<'de>,
                     > = _serde::__private::None;
-                    let mut m_desc: _serde::__private::Option<hkxVertexDescription> = _serde::__private::None;
+                    let mut m_desc: _serde::__private::Option<
+                        hkxVertexDescription<'de>,
+                    > = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
                         __A::next_key::<__Field>(&mut __map)?
                     } {
@@ -262,7 +270,7 @@ const _: () = {
                                 }
                                 m_data = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkxVertexBufferVertexData,
+                                        hkxVertexBufferVertexData<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -287,7 +295,9 @@ const _: () = {
                                     );
                                 }
                                 m_desc = _serde::__private::Some(
-                                    match __A::next_value::<hkxVertexDescription>(&mut __map) {
+                                    match __A::next_value::<
+                                        hkxVertexDescription<'de>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);

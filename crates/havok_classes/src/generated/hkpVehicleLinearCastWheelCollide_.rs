@@ -33,6 +33,7 @@ pub struct hkpVehicleLinearCastWheelCollide<'a> {
     /// - name: `wheelCollisionFilterInfo`(ctype: `hkUint32`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wheelCollisionFilterInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "wheelCollisionFilterInfo"))]
     pub m_wheelCollisionFilterInfo: U32<'a>,
@@ -40,6 +41,7 @@ pub struct hkpVehicleLinearCastWheelCollide<'a> {
     /// - name: `wheelStates`(ctype: `hkArray<struct hkpVehicleLinearCastWheelCollideWheelState>`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wheelStates"))]
     #[cfg_attr(feature = "serde", serde(rename = "wheelStates"))]
     pub m_wheelStates: Vec<hkpVehicleLinearCastWheelCollideWheelState<'a>>,
@@ -241,7 +243,7 @@ const _: () = {
                         U32<'de>,
                     > = _serde::__private::None;
                     let mut m_wheelStates: _serde::__private::Option<
-                        Vec<hkpVehicleLinearCastWheelCollideWheelState>,
+                        Vec<hkpVehicleLinearCastWheelCollideWheelState<'de>>,
                     > = _serde::__private::None;
                     let mut m_rejectChassisListener: _serde::__private::Option<
                         hkpRejectChassisListener<'de>,
@@ -280,7 +282,7 @@ const _: () = {
                                 __A::pad(&mut __map, 0usize, 4usize)?;
                                 m_wheelStates = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkpVehicleLinearCastWheelCollideWheelState>,
+                                        Vec<hkpVehicleLinearCastWheelCollideWheelState<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -424,7 +426,7 @@ const _: () = {
                         U32<'de>,
                     > = _serde::__private::None;
                     let mut m_wheelStates: _serde::__private::Option<
-                        Vec<hkpVehicleLinearCastWheelCollideWheelState>,
+                        Vec<hkpVehicleLinearCastWheelCollideWheelState<'de>>,
                     > = _serde::__private::None;
                     let mut m_rejectChassisListener: _serde::__private::Option<
                         hkpRejectChassisListener<'de>,
@@ -508,7 +510,7 @@ const _: () = {
                                 }
                                 m_wheelStates = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkpVehicleLinearCastWheelCollideWheelState>,
+                                        Vec<hkpVehicleLinearCastWheelCollideWheelState<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

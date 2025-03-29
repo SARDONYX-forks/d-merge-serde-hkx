@@ -35,6 +35,7 @@ pub struct hkpCompressedMeshShapeConvexPiece<'a> {
     /// - name: `vertices`(ctype: `hkArray<hkUint16>`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vertices"))]
     #[cfg_attr(feature = "serde", serde(rename = "vertices"))]
     pub m_vertices: Vec<U16<'a>>,
@@ -42,6 +43,7 @@ pub struct hkpCompressedMeshShapeConvexPiece<'a> {
     /// - name: `faceVertices`(ctype: `hkArray<hkUint8>`)
     /// - offset: ` 28`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "faceVertices"))]
     #[cfg_attr(feature = "serde", serde(rename = "faceVertices"))]
     pub m_faceVertices: Vec<U8<'a>>,
@@ -49,6 +51,7 @@ pub struct hkpCompressedMeshShapeConvexPiece<'a> {
     /// - name: `faceOffsets`(ctype: `hkArray<hkUint16>`)
     /// - offset: ` 40`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "faceOffsets"))]
     #[cfg_attr(feature = "serde", serde(rename = "faceOffsets"))]
     pub m_faceOffsets: Vec<U16<'a>>,
@@ -56,6 +59,7 @@ pub struct hkpCompressedMeshShapeConvexPiece<'a> {
     /// - name: `reference`(ctype: `hkUint16`)
     /// - offset: ` 52`(x86)/` 64`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "reference"))]
     #[cfg_attr(feature = "serde", serde(rename = "reference"))]
     pub m_reference: U16<'a>,
@@ -63,6 +67,7 @@ pub struct hkpCompressedMeshShapeConvexPiece<'a> {
     /// - name: `transformIndex`(ctype: `hkUint16`)
     /// - offset: ` 54`(x86)/` 66`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transformIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "transformIndex"))]
     pub m_transformIndex: U16<'a>,

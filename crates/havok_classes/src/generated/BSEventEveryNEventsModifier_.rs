@@ -49,6 +49,7 @@ pub struct BSEventEveryNEventsModifier<'a> {
     /// - name: `numberOfEventsBeforeSend`(ctype: `hkInt8`)
     /// - offset: ` 60`(x86)/`112`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numberOfEventsBeforeSend"))]
     #[cfg_attr(feature = "serde", serde(rename = "numberOfEventsBeforeSend"))]
     pub m_numberOfEventsBeforeSend: I8<'a>,
@@ -56,6 +57,7 @@ pub struct BSEventEveryNEventsModifier<'a> {
     /// - name: `minimumNumberOfEventsBeforeSend`(ctype: `hkInt8`)
     /// - offset: ` 61`(x86)/`113`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "minimumNumberOfEventsBeforeSend")
@@ -74,6 +76,8 @@ pub struct BSEventEveryNEventsModifier<'a> {
     /// - offset: ` 64`(x86)/`116`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numberOfEventsSeen"))]
     #[cfg_attr(feature = "serde", serde(rename = "numberOfEventsSeen"))]
     pub m_numberOfEventsSeen: I32<'a>,
@@ -82,6 +86,8 @@ pub struct BSEventEveryNEventsModifier<'a> {
     /// - offset: ` 68`(x86)/`120`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "calculatedNumberOfEventsBeforeSend")

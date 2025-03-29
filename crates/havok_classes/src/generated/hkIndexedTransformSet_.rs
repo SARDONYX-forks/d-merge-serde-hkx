@@ -47,6 +47,7 @@ pub struct hkIndexedTransformSet<'a> {
     /// - name: `matricesOrder`(ctype: `hkArray<hkInt16>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "matricesOrder"))]
     #[cfg_attr(feature = "serde", serde(rename = "matricesOrder"))]
     pub m_matricesOrder: Vec<I16<'a>>,
@@ -62,6 +63,7 @@ pub struct hkIndexedTransformSet<'a> {
     /// - name: `indexMappings`(ctype: `hkArray<struct hkMeshBoneIndexMapping>`)
     /// - offset: ` 56`(x86)/` 80`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "indexMappings"))]
     #[cfg_attr(feature = "serde", serde(rename = "indexMappings"))]
     pub m_indexMappings: Vec<hkMeshBoneIndexMapping<'a>>,
@@ -244,7 +246,7 @@ const _: () = {
                         Vec<StringPtr<'de>>,
                     > = _serde::__private::None;
                     let mut m_indexMappings: _serde::__private::Option<
-                        Vec<hkMeshBoneIndexMapping>,
+                        Vec<hkMeshBoneIndexMapping<'de>>,
                     > = _serde::__private::None;
                     let mut m_allMatricesAreAffine: _serde::__private::Option<bool> = _serde::__private::None;
                     for i in 0..6usize {
@@ -327,7 +329,7 @@ const _: () = {
                                 }
                                 m_indexMappings = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkMeshBoneIndexMapping>,
+                                        Vec<hkMeshBoneIndexMapping<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -443,7 +445,7 @@ const _: () = {
                         Vec<StringPtr<'de>>,
                     > = _serde::__private::None;
                     let mut m_indexMappings: _serde::__private::Option<
-                        Vec<hkMeshBoneIndexMapping>,
+                        Vec<hkMeshBoneIndexMapping<'de>>,
                     > = _serde::__private::None;
                     let mut m_allMatricesAreAffine: _serde::__private::Option<bool> = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
@@ -573,7 +575,7 @@ const _: () = {
                                 }
                                 m_indexMappings = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkMeshBoneIndexMapping>,
+                                        Vec<hkMeshBoneIndexMapping<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

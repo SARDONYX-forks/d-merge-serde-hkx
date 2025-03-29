@@ -33,6 +33,7 @@ pub struct hkbNodeInternalStateInfo<'a> {
     /// - name: `syncInfo`(ctype: `struct hkbGeneratorSyncInfo`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 80`(x86)/` 80`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "syncInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "syncInfo"))]
     pub m_syncInfo: hkbGeneratorSyncInfo<'a>,
@@ -48,6 +49,7 @@ pub struct hkbNodeInternalStateInfo<'a> {
     /// - name: `internalState`(ctype: `struct hkReferencedObject*`)
     /// - offset: ` 92`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "internalState"))]
     #[cfg_attr(feature = "serde", serde(rename = "internalState"))]
     pub m_internalState: Pointer<'a>,
@@ -55,6 +57,7 @@ pub struct hkbNodeInternalStateInfo<'a> {
     /// - name: `nodeId`(ctype: `hkInt16`)
     /// - offset: ` 96`(x86)/`112`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nodeId"))]
     #[cfg_attr(feature = "serde", serde(rename = "nodeId"))]
     pub m_nodeId: I16<'a>,
@@ -207,7 +210,7 @@ const _: () = {
                     let __ptr = __A::class_ptr(&mut __map);
                     let parent = __A::parent_value(&mut __map)?;
                     let mut m_syncInfo: _serde::__private::Option<
-                        hkbGeneratorSyncInfo,
+                        hkbGeneratorSyncInfo<'de>,
                     > = _serde::__private::None;
                     let mut m_name: _serde::__private::Option<StringPtr<'de>> = _serde::__private::None;
                     let mut m_internalState: _serde::__private::Option<Pointer<'de>> = _serde::__private::None;
@@ -224,7 +227,9 @@ const _: () = {
                                     );
                                 }
                                 m_syncInfo = _serde::__private::Some(
-                                    match __A::next_value::<hkbGeneratorSyncInfo>(&mut __map) {
+                                    match __A::next_value::<
+                                        hkbGeneratorSyncInfo<'de>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -365,7 +370,7 @@ const _: () = {
                     __A: _serde::de::MapAccess<'de>,
                 {
                     let mut m_syncInfo: _serde::__private::Option<
-                        hkbGeneratorSyncInfo,
+                        hkbGeneratorSyncInfo<'de>,
                     > = _serde::__private::None;
                     let mut m_name: _serde::__private::Option<StringPtr<'de>> = _serde::__private::None;
                     let mut m_internalState: _serde::__private::Option<Pointer<'de>> = _serde::__private::None;
@@ -393,7 +398,9 @@ const _: () = {
                                     );
                                 }
                                 m_syncInfo = _serde::__private::Some(
-                                    match __A::next_value::<hkbGeneratorSyncInfo>(&mut __map) {
+                                    match __A::next_value::<
+                                        hkbGeneratorSyncInfo<'de>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);

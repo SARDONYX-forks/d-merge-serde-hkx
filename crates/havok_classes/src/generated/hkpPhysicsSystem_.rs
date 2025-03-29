@@ -33,6 +33,7 @@ pub struct hkpPhysicsSystem<'a> {
     /// - name: `rigidBodies`(ctype: `hkArray<hkpRigidBody*>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rigidBodies"))]
     #[cfg_attr(feature = "serde", serde(rename = "rigidBodies"))]
     pub m_rigidBodies: Vec<Pointer<'a>>,
@@ -40,6 +41,7 @@ pub struct hkpPhysicsSystem<'a> {
     /// - name: `constraints`(ctype: `hkArray<hkpConstraintInstance*>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "constraints"))]
     #[cfg_attr(feature = "serde", serde(rename = "constraints"))]
     pub m_constraints: Vec<Pointer<'a>>,
@@ -47,6 +49,7 @@ pub struct hkpPhysicsSystem<'a> {
     /// - name: `actions`(ctype: `hkArray<hkpAction*>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "actions"))]
     #[cfg_attr(feature = "serde", serde(rename = "actions"))]
     pub m_actions: Vec<Pointer<'a>>,
@@ -54,6 +57,7 @@ pub struct hkpPhysicsSystem<'a> {
     /// - name: `phantoms`(ctype: `hkArray<hkpPhantom*>`)
     /// - offset: ` 44`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "phantoms"))]
     #[cfg_attr(feature = "serde", serde(rename = "phantoms"))]
     pub m_phantoms: Vec<Pointer<'a>>,

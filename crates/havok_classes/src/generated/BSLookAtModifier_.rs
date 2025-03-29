@@ -40,6 +40,7 @@ pub struct BSLookAtModifier<'a> {
     /// - name: `bones`(ctype: `hkArray<struct BSLookAtModifierBoneData>`)
     /// - offset: ` 48`(x86)/` 88`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bones"))]
     #[cfg_attr(feature = "serde", serde(rename = "bones"))]
     pub m_bones: Vec<BSLookAtModifierBoneData<'a>>,
@@ -47,6 +48,7 @@ pub struct BSLookAtModifier<'a> {
     /// - name: `eyeBones`(ctype: `hkArray<struct BSLookAtModifierBoneData>`)
     /// - offset: ` 60`(x86)/`104`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "eyeBones"))]
     #[cfg_attr(feature = "serde", serde(rename = "eyeBones"))]
     pub m_eyeBones: Vec<BSLookAtModifierBoneData<'a>>,
@@ -147,6 +149,7 @@ pub struct BSLookAtModifier<'a> {
     /// - offset: `140`(x86)/`200`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "timeStep"))]
     #[cfg_attr(feature = "serde", serde(rename = "timeStep"))]
     pub m_timeStep: f32,
@@ -155,6 +158,7 @@ pub struct BSLookAtModifier<'a> {
     /// - offset: `144`(x86)/`204`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "ballBonesValid"))]
     #[cfg_attr(feature = "serde", serde(rename = "ballBonesValid"))]
     pub m_ballBonesValid: bool,
@@ -163,6 +167,8 @@ pub struct BSLookAtModifier<'a> {
     /// - offset: `148`(x86)/`208`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pSkeletonMemory"))]
     #[cfg_attr(feature = "serde", serde(rename = "pSkeletonMemory"))]
     pub m_pSkeletonMemory: Pointer<'a>,
@@ -442,10 +448,10 @@ const _: () = {
                     let parent = __A::parent_value(&mut __map)?;
                     let mut m_lookAtTarget: _serde::__private::Option<bool> = _serde::__private::None;
                     let mut m_bones: _serde::__private::Option<
-                        Vec<BSLookAtModifierBoneData>,
+                        Vec<BSLookAtModifierBoneData<'de>>,
                     > = _serde::__private::None;
                     let mut m_eyeBones: _serde::__private::Option<
-                        Vec<BSLookAtModifierBoneData>,
+                        Vec<BSLookAtModifierBoneData<'de>>,
                     > = _serde::__private::None;
                     let mut m_limitAngleDegrees: _serde::__private::Option<f32> = _serde::__private::None;
                     let mut m_limitAngleThresholdDegrees: _serde::__private::Option<
@@ -497,7 +503,7 @@ const _: () = {
                                 __A::pad(&mut __map, 3usize, 7usize)?;
                                 m_bones = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<BSLookAtModifierBoneData>,
+                                        Vec<BSLookAtModifierBoneData<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -516,7 +522,7 @@ const _: () = {
                                 }
                                 m_eyeBones = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<BSLookAtModifierBoneData>,
+                                        Vec<BSLookAtModifierBoneData<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -1034,10 +1040,10 @@ const _: () = {
                     let mut m_enable: _serde::__private::Option<bool> = _serde::__private::None;
                     let mut m_lookAtTarget: _serde::__private::Option<bool> = _serde::__private::None;
                     let mut m_bones: _serde::__private::Option<
-                        Vec<BSLookAtModifierBoneData>,
+                        Vec<BSLookAtModifierBoneData<'de>>,
                     > = _serde::__private::None;
                     let mut m_eyeBones: _serde::__private::Option<
-                        Vec<BSLookAtModifierBoneData>,
+                        Vec<BSLookAtModifierBoneData<'de>>,
                     > = _serde::__private::None;
                     let mut m_limitAngleDegrees: _serde::__private::Option<f32> = _serde::__private::None;
                     let mut m_limitAngleThresholdDegrees: _serde::__private::Option<
@@ -1207,7 +1213,7 @@ const _: () = {
                                 }
                                 m_bones = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<BSLookAtModifierBoneData>,
+                                        Vec<BSLookAtModifierBoneData<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -1235,7 +1241,7 @@ const _: () = {
                                 }
                                 m_eyeBones = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<BSLookAtModifierBoneData>,
+                                        Vec<BSLookAtModifierBoneData<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

@@ -33,6 +33,7 @@ pub struct hkpLinSoftConstraintAtom<'a> {
     /// - name: `axisIndex`(ctype: `hkUint8`)
     /// - offset: `  2`(x86)/`  2`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "axisIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "axisIndex"))]
     pub m_axisIndex: U8<'a>,

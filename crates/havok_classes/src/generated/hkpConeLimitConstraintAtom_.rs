@@ -33,6 +33,7 @@ pub struct hkpConeLimitConstraintAtom<'a> {
     /// - name: `isEnabled`(ctype: `hkUint8`)
     /// - offset: `  2`(x86)/`  2`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isEnabled"))]
     #[cfg_attr(feature = "serde", serde(rename = "isEnabled"))]
     pub m_isEnabled: U8<'a>,
@@ -40,6 +41,7 @@ pub struct hkpConeLimitConstraintAtom<'a> {
     /// - name: `twistAxisInA`(ctype: `hkUint8`)
     /// - offset: `  3`(x86)/`  3`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "twistAxisInA"))]
     #[cfg_attr(feature = "serde", serde(rename = "twistAxisInA"))]
     pub m_twistAxisInA: U8<'a>,
@@ -47,6 +49,7 @@ pub struct hkpConeLimitConstraintAtom<'a> {
     /// - name: `refAxisInB`(ctype: `hkUint8`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "refAxisInB"))]
     #[cfg_attr(feature = "serde", serde(rename = "refAxisInB"))]
     pub m_refAxisInB: U8<'a>,
@@ -61,6 +64,7 @@ pub struct hkpConeLimitConstraintAtom<'a> {
     /// - name: `memOffsetToAngleOffset`(ctype: `hkUint8`)
     /// - offset: `  6`(x86)/`  6`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "memOffsetToAngleOffset"))]
     #[cfg_attr(feature = "serde", serde(rename = "memOffsetToAngleOffset"))]
     pub m_memOffsetToAngleOffset: U8<'a>,

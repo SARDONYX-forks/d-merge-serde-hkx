@@ -54,6 +54,7 @@ pub struct hkbGetUpModifier<'a> {
     /// - name: `rootBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 72`(x86)/`104`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rootBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "rootBoneIndex"))]
     pub m_rootBoneIndex: I16<'a>,
@@ -61,6 +62,7 @@ pub struct hkbGetUpModifier<'a> {
     /// - name: `otherBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 74`(x86)/`106`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "otherBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "otherBoneIndex"))]
     pub m_otherBoneIndex: I16<'a>,
@@ -68,6 +70,7 @@ pub struct hkbGetUpModifier<'a> {
     /// - name: `anotherBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 76`(x86)/`108`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "anotherBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "anotherBoneIndex"))]
     pub m_anotherBoneIndex: I16<'a>,
@@ -76,6 +79,7 @@ pub struct hkbGetUpModifier<'a> {
     /// - offset: ` 80`(x86)/`112`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "timeSinceBegin"))]
     #[cfg_attr(feature = "serde", serde(rename = "timeSinceBegin"))]
     pub m_timeSinceBegin: f32,
@@ -84,6 +88,7 @@ pub struct hkbGetUpModifier<'a> {
     /// - offset: ` 84`(x86)/`116`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "timeStep"))]
     #[cfg_attr(feature = "serde", serde(rename = "timeStep"))]
     pub m_timeStep: f32,
@@ -92,6 +97,7 @@ pub struct hkbGetUpModifier<'a> {
     /// - offset: ` 88`(x86)/`120`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "initNextModify"))]
     #[cfg_attr(feature = "serde", serde(rename = "initNextModify"))]
     pub m_initNextModify: bool,

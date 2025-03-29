@@ -41,6 +41,7 @@ pub struct hkxNode<'a> {
     /// - name: `object`(ctype: `struct hkReferencedObject*`)
     /// - offset: ` 24`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "object"))]
     #[cfg_attr(feature = "serde", serde(rename = "object"))]
     pub m_object: Pointer<'a>,
@@ -55,6 +56,7 @@ pub struct hkxNode<'a> {
     /// - name: `children`(ctype: `hkArray<hkxNode*>`)
     /// - offset: ` 40`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "children"))]
     #[cfg_attr(feature = "serde", serde(rename = "children"))]
     pub m_children: Vec<Pointer<'a>>,

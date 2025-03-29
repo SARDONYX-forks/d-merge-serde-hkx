@@ -36,6 +36,7 @@ pub struct hkCustomAttributesAttribute<'a> {
     /// - name: `value`(ctype: `hkVariant`)
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "value"))]
     #[cfg_attr(feature = "serde", serde(rename = "value"))]
     pub m_value: Variant<'a>,

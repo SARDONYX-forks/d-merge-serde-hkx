@@ -41,6 +41,7 @@ pub struct hkbModifier<'a> {
     /// - offset: ` 41`(x86)/` 73`(x86_64)
     /// - type_size: `  3`(x86)/`  3`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "padModifier"))]
     #[cfg_attr(feature = "serde", serde(rename = "padModifier"))]
     pub m_padModifier: [bool; 3usize],

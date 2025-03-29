@@ -33,6 +33,7 @@ pub struct hkbFootIkDriverInfo<'a> {
     /// - name: `legs`(ctype: `hkArray<struct hkbFootIkDriverInfoLeg>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "legs"))]
     #[cfg_attr(feature = "serde", serde(rename = "legs"))]
     pub m_legs: Vec<hkbFootIkDriverInfoLeg<'a>>,
@@ -68,6 +69,7 @@ pub struct hkbFootIkDriverInfo<'a> {
     /// - name: `collisionFilterInfo`(ctype: `hkUint32`)
     /// - offset: ` 36`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "collisionFilterInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "collisionFilterInfo"))]
     pub m_collisionFilterInfo: U32<'a>,
@@ -294,7 +296,7 @@ const _: () = {
                     let __ptr = __A::class_ptr(&mut __map);
                     let parent = __A::parent_value(&mut __map)?;
                     let mut m_legs: _serde::__private::Option<
-                        Vec<hkbFootIkDriverInfoLeg>,
+                        Vec<hkbFootIkDriverInfoLeg<'de>>,
                     > = _serde::__private::None;
                     let mut m_raycastDistanceUp: _serde::__private::Option<f32> = _serde::__private::None;
                     let mut m_raycastDistanceDown: _serde::__private::Option<f32> = _serde::__private::None;
@@ -317,7 +319,7 @@ const _: () = {
                                 }
                                 m_legs = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkbFootIkDriverInfoLeg>,
+                                        Vec<hkbFootIkDriverInfoLeg<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -681,7 +683,7 @@ const _: () = {
                     __A: _serde::de::MapAccess<'de>,
                 {
                     let mut m_legs: _serde::__private::Option<
-                        Vec<hkbFootIkDriverInfoLeg>,
+                        Vec<hkbFootIkDriverInfoLeg<'de>>,
                     > = _serde::__private::None;
                     let mut m_raycastDistanceUp: _serde::__private::Option<f32> = _serde::__private::None;
                     let mut m_raycastDistanceDown: _serde::__private::Option<f32> = _serde::__private::None;
@@ -715,7 +717,7 @@ const _: () = {
                                 }
                                 m_legs = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkbFootIkDriverInfoLeg>,
+                                        Vec<hkbFootIkDriverInfoLeg<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

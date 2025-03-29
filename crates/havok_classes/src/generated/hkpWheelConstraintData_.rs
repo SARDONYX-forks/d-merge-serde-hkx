@@ -34,6 +34,7 @@ pub struct hkpWheelConstraintData<'a> {
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `304`(x86)/`304`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "atoms"))]
     #[cfg_attr(feature = "serde", serde(rename = "atoms"))]
     pub m_atoms: hkpWheelConstraintDataAtoms<'a>,
@@ -190,7 +191,7 @@ const _: () = {
                     let __ptr = __A::class_ptr(&mut __map);
                     let parent = __A::parent_value(&mut __map)?;
                     let mut m_atoms: _serde::__private::Option<
-                        hkpWheelConstraintDataAtoms,
+                        hkpWheelConstraintDataAtoms<'de>,
                     > = _serde::__private::None;
                     let mut m_initialAxleInB: _serde::__private::Option<Vector4> = _serde::__private::None;
                     let mut m_initialSteeringAxisInB: _serde::__private::Option<
@@ -207,7 +208,7 @@ const _: () = {
                                 __A::pad(&mut __map, 4usize, 8usize)?;
                                 m_atoms = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpWheelConstraintDataAtoms,
+                                        hkpWheelConstraintDataAtoms<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -301,7 +302,7 @@ const _: () = {
                 {
                     let mut m_userData: _serde::__private::Option<Ulong> = _serde::__private::None;
                     let mut m_atoms: _serde::__private::Option<
-                        hkpWheelConstraintDataAtoms,
+                        hkpWheelConstraintDataAtoms<'de>,
                     > = _serde::__private::None;
                     let mut m_initialAxleInB: _serde::__private::Option<Vector4> = _serde::__private::None;
                     let mut m_initialSteeringAxisInB: _serde::__private::Option<
@@ -354,7 +355,7 @@ const _: () = {
                                 }
                                 m_atoms = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpWheelConstraintDataAtoms,
+                                        hkpWheelConstraintDataAtoms<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

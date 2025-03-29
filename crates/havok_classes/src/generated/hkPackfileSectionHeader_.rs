@@ -42,6 +42,7 @@ pub struct hkPackfileSectionHeader<'a> {
     /// - name: `absoluteDataStart`(ctype: `hkInt32`)
     /// - offset: ` 20`(x86)/` 20`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "absoluteDataStart"))]
     #[cfg_attr(feature = "serde", serde(rename = "absoluteDataStart"))]
     pub m_absoluteDataStart: I32<'a>,
@@ -49,6 +50,7 @@ pub struct hkPackfileSectionHeader<'a> {
     /// - name: `localFixupsOffset`(ctype: `hkInt32`)
     /// - offset: ` 24`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "localFixupsOffset"))]
     #[cfg_attr(feature = "serde", serde(rename = "localFixupsOffset"))]
     pub m_localFixupsOffset: I32<'a>,
@@ -56,6 +58,7 @@ pub struct hkPackfileSectionHeader<'a> {
     /// - name: `globalFixupsOffset`(ctype: `hkInt32`)
     /// - offset: ` 28`(x86)/` 28`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "globalFixupsOffset"))]
     #[cfg_attr(feature = "serde", serde(rename = "globalFixupsOffset"))]
     pub m_globalFixupsOffset: I32<'a>,
@@ -63,6 +66,7 @@ pub struct hkPackfileSectionHeader<'a> {
     /// - name: `virtualFixupsOffset`(ctype: `hkInt32`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "virtualFixupsOffset"))]
     #[cfg_attr(feature = "serde", serde(rename = "virtualFixupsOffset"))]
     pub m_virtualFixupsOffset: I32<'a>,
@@ -70,6 +74,7 @@ pub struct hkPackfileSectionHeader<'a> {
     /// - name: `exportsOffset`(ctype: `hkInt32`)
     /// - offset: ` 36`(x86)/` 36`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "exportsOffset"))]
     #[cfg_attr(feature = "serde", serde(rename = "exportsOffset"))]
     pub m_exportsOffset: I32<'a>,
@@ -77,6 +82,7 @@ pub struct hkPackfileSectionHeader<'a> {
     /// - name: `importsOffset`(ctype: `hkInt32`)
     /// - offset: ` 40`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "importsOffset"))]
     #[cfg_attr(feature = "serde", serde(rename = "importsOffset"))]
     pub m_importsOffset: I32<'a>,
@@ -84,6 +90,7 @@ pub struct hkPackfileSectionHeader<'a> {
     /// - name: `endOffset`(ctype: `hkInt32`)
     /// - offset: ` 44`(x86)/` 44`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "endOffset"))]
     #[cfg_attr(feature = "serde", serde(rename = "endOffset"))]
     pub m_endOffset: I32<'a>,

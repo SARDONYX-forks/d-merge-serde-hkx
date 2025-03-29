@@ -33,6 +33,7 @@ pub struct hkxMesh<'a> {
     /// - name: `sections`(ctype: `hkArray<hkxMeshSection*>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sections"))]
     #[cfg_attr(feature = "serde", serde(rename = "sections"))]
     pub m_sections: Vec<Pointer<'a>>,
@@ -40,6 +41,7 @@ pub struct hkxMesh<'a> {
     /// - name: `userChannelInfos`(ctype: `hkArray<hkxMeshUserChannelInfo*>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "userChannelInfos"))]
     #[cfg_attr(feature = "serde", serde(rename = "userChannelInfos"))]
     pub m_userChannelInfos: Vec<Pointer<'a>>,

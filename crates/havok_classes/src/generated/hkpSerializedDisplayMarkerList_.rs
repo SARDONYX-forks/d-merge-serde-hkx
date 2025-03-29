@@ -33,6 +33,7 @@ pub struct hkpSerializedDisplayMarkerList<'a> {
     /// - name: `markers`(ctype: `hkArray<hkpSerializedDisplayMarker*>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "markers"))]
     #[cfg_attr(feature = "serde", serde(rename = "markers"))]
     pub m_markers: Vec<Pointer<'a>>,

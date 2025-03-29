@@ -34,6 +34,8 @@ pub struct hkpWorldObject<'a> {
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "world"))]
     #[cfg_attr(feature = "serde", serde(rename = "world"))]
     pub m_world: Pointer<'a>,
@@ -56,6 +58,7 @@ pub struct hkpWorldObject<'a> {
     /// - name: `multiThreadCheck`(ctype: `struct hkMultiThreadCheck`)
     /// - offset: `108`(x86)/`160`(x86_64)
     /// - type_size: ` 12`(x86)/` 12`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "multiThreadCheck"))]
     #[cfg_attr(feature = "serde", serde(rename = "multiThreadCheck"))]
     pub m_multiThreadCheck: hkMultiThreadCheck<'a>,
@@ -71,6 +74,7 @@ pub struct hkpWorldObject<'a> {
     /// - name: `properties`(ctype: `hkArray<struct hkpProperty>`)
     /// - offset: `124`(x86)/`184`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "properties"))]
     #[cfg_attr(feature = "serde", serde(rename = "properties"))]
     pub m_properties: Vec<hkpProperty<'a>>,
@@ -79,6 +83,8 @@ pub struct hkpWorldObject<'a> {
     /// - offset: `136`(x86)/`200`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "treeData"))]
     #[cfg_attr(feature = "serde", serde(rename = "treeData"))]
     pub m_treeData: Pointer<'a>,
@@ -236,10 +242,12 @@ const _: () = {
                         hkpLinkedCollidable<'de>,
                     > = _serde::__private::None;
                     let mut m_multiThreadCheck: _serde::__private::Option<
-                        hkMultiThreadCheck,
+                        hkMultiThreadCheck<'de>,
                     > = _serde::__private::None;
                     let mut m_name: _serde::__private::Option<StringPtr<'de>> = _serde::__private::None;
-                    let mut m_properties: _serde::__private::Option<Vec<hkpProperty>> = _serde::__private::None;
+                    let mut m_properties: _serde::__private::Option<
+                        Vec<hkpProperty<'de>>,
+                    > = _serde::__private::None;
                     let mut m_treeData: _serde::__private::Option<Pointer<'de>> = _serde::__private::None;
                     for i in 0..7usize {
                         match i {
@@ -303,7 +311,9 @@ const _: () = {
                                     );
                                 }
                                 m_multiThreadCheck = _serde::__private::Some(
-                                    match __A::next_value::<hkMultiThreadCheck>(&mut __map) {
+                                    match __A::next_value::<
+                                        hkMultiThreadCheck<'de>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -336,7 +346,7 @@ const _: () = {
                                     );
                                 }
                                 m_properties = _serde::__private::Some(
-                                    match __A::next_value::<Vec<hkpProperty>>(&mut __map) {
+                                    match __A::next_value::<Vec<hkpProperty<'de>>>(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -451,10 +461,12 @@ const _: () = {
                         hkpLinkedCollidable<'de>,
                     > = _serde::__private::None;
                     let mut m_multiThreadCheck: _serde::__private::Option<
-                        hkMultiThreadCheck,
+                        hkMultiThreadCheck<'de>,
                     > = _serde::__private::None;
                     let mut m_name: _serde::__private::Option<StringPtr<'de>> = _serde::__private::None;
-                    let mut m_properties: _serde::__private::Option<Vec<hkpProperty>> = _serde::__private::None;
+                    let mut m_properties: _serde::__private::Option<
+                        Vec<hkpProperty<'de>>,
+                    > = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
                         __A::next_key::<__Field>(&mut __map)?
                     } {
@@ -531,7 +543,9 @@ const _: () = {
                                     );
                                 }
                                 m_multiThreadCheck = _serde::__private::Some(
-                                    match __A::next_value::<hkMultiThreadCheck>(&mut __map) {
+                                    match __A::next_value::<
+                                        hkMultiThreadCheck<'de>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -581,7 +595,7 @@ const _: () = {
                                     );
                                 }
                                 m_properties = _serde::__private::Some(
-                                    match __A::next_value::<Vec<hkpProperty>>(&mut __map) {
+                                    match __A::next_value::<Vec<hkpProperty<'de>>>(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);

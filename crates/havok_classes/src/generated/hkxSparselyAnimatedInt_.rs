@@ -33,6 +33,7 @@ pub struct hkxSparselyAnimatedInt<'a> {
     /// - name: `ints`(ctype: `hkArray<hkInt32>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "ints"))]
     #[cfg_attr(feature = "serde", serde(rename = "ints"))]
     pub m_ints: Vec<I32<'a>>,

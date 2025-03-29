@@ -41,6 +41,7 @@ pub struct hkbVariableBindingSet<'a> {
     /// - name: `indexOfBindingToEnable`(ctype: `hkInt32`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "indexOfBindingToEnable"))]
     #[cfg_attr(feature = "serde", serde(rename = "indexOfBindingToEnable"))]
     pub m_indexOfBindingToEnable: I32<'a>,
@@ -49,6 +50,7 @@ pub struct hkbVariableBindingSet<'a> {
     /// - offset: ` 24`(x86)/` 36`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "hasOutputBinding"))]
     #[cfg_attr(feature = "serde", serde(rename = "hasOutputBinding"))]
     pub m_hasOutputBinding: bool,

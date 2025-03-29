@@ -35,6 +35,7 @@ pub struct hkGeometry<'a> {
     /// - name: `triangles`(ctype: `hkArray<struct hkGeometryTriangle>`)
     /// - offset: ` 12`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "triangles"))]
     #[cfg_attr(feature = "serde", serde(rename = "triangles"))]
     pub m_triangles: Vec<hkGeometryTriangle<'a>>,
@@ -168,7 +169,7 @@ const _: () = {
                     let __ptr = __A::class_ptr(&mut __map);
                     let mut m_vertices: _serde::__private::Option<Vec<Vector4>> = _serde::__private::None;
                     let mut m_triangles: _serde::__private::Option<
-                        Vec<hkGeometryTriangle>,
+                        Vec<hkGeometryTriangle<'de>>,
                     > = _serde::__private::None;
                     for i in 0..2usize {
                         match i {
@@ -199,7 +200,7 @@ const _: () = {
                                 }
                                 m_triangles = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkGeometryTriangle>,
+                                        Vec<hkGeometryTriangle<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -245,7 +246,7 @@ const _: () = {
                 {
                     let mut m_vertices: _serde::__private::Option<Vec<Vector4>> = _serde::__private::None;
                     let mut m_triangles: _serde::__private::Option<
-                        Vec<hkGeometryTriangle>,
+                        Vec<hkGeometryTriangle<'de>>,
                     > = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
                         __A::next_key::<__Field>(&mut __map)?
@@ -296,7 +297,7 @@ const _: () = {
                                 }
                                 m_triangles = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkGeometryTriangle>,
+                                        Vec<hkGeometryTriangle<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

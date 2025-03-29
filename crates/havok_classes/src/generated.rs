@@ -2839,7 +2839,9 @@ pub enum Classes<'a> {
 }
 impl Default for Classes<'_> {
     fn default() -> Self {
-        Self::BGSGamebryoSequenceGenerator(Box::new(BGSGamebryoSequenceGenerator::default()))
+        Self::BGSGamebryoSequenceGenerator(
+            Box::new(BGSGamebryoSequenceGenerator::default()),
+        )
     }
 }
 impl _serde::HavokClass for Classes<'_> {

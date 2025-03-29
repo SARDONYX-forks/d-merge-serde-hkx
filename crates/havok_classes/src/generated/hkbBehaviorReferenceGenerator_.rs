@@ -42,6 +42,8 @@ pub struct hkbBehaviorReferenceGenerator<'a> {
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "behavior"))]
     #[cfg_attr(feature = "serde", serde(rename = "behavior"))]
     pub m_behavior: Pointer<'a>,

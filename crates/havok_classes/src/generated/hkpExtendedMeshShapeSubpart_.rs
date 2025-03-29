@@ -43,6 +43,8 @@ pub struct hkpExtendedMeshShapeSubpart<'a> {
     /// - offset: `  2`(x86)/`  2`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materialStriding"))]
     #[cfg_attr(feature = "serde", serde(rename = "materialStriding"))]
     pub m_materialStriding: I16<'a>,
@@ -51,6 +53,8 @@ pub struct hkpExtendedMeshShapeSubpart<'a> {
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materialIndexBase"))]
     #[cfg_attr(feature = "serde", serde(rename = "materialIndexBase"))]
     pub m_materialIndexBase: Pointer<'a>,
@@ -58,6 +62,7 @@ pub struct hkpExtendedMeshShapeSubpart<'a> {
     /// - name: `materialIndexStriding`(ctype: `hkUint16`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materialIndexStriding"))]
     #[cfg_attr(feature = "serde", serde(rename = "materialIndexStriding"))]
     pub m_materialIndexStriding: U16<'a>,
@@ -65,6 +70,7 @@ pub struct hkpExtendedMeshShapeSubpart<'a> {
     /// - name: `numMaterials`(ctype: `hkUint16`)
     /// - offset: ` 10`(x86)/` 18`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numMaterials"))]
     #[cfg_attr(feature = "serde", serde(rename = "numMaterials"))]
     pub m_numMaterials: U16<'a>,
@@ -73,6 +79,8 @@ pub struct hkpExtendedMeshShapeSubpart<'a> {
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materialBase"))]
     #[cfg_attr(feature = "serde", serde(rename = "materialBase"))]
     pub m_materialBase: Pointer<'a>,

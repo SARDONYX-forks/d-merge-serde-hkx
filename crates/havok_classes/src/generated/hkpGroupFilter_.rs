@@ -33,6 +33,7 @@ pub struct hkpGroupFilter<'a> {
     /// - name: `nextFreeSystemGroup`(ctype: `hkInt32`)
     /// - offset: ` 48`(x86)/` 72`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nextFreeSystemGroup"))]
     #[cfg_attr(feature = "serde", serde(rename = "nextFreeSystemGroup"))]
     pub m_nextFreeSystemGroup: I32<'a>,
@@ -40,6 +41,7 @@ pub struct hkpGroupFilter<'a> {
     /// - name: `collisionLookupTable`(ctype: `hkUint32[32]`)
     /// - offset: ` 52`(x86)/` 76`(x86_64)
     /// - type_size: `128`(x86)/`128`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "collisionLookupTable"))]
     #[cfg_attr(feature = "serde", serde(rename = "collisionLookupTable"))]
     pub m_collisionLookupTable: [U32<'a>; 32usize],

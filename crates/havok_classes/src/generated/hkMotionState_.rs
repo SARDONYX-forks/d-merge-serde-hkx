@@ -77,6 +77,7 @@ pub struct hkMotionState<'a> {
     /// - name: `maxLinearVelocity`(ctype: `hkUint8`)
     /// - offset: `170`(x86)/`170`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxLinearVelocity"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxLinearVelocity"))]
     pub m_maxLinearVelocity: U8<'a>,
@@ -84,6 +85,7 @@ pub struct hkMotionState<'a> {
     /// - name: `maxAngularVelocity`(ctype: `hkUint8`)
     /// - offset: `171`(x86)/`171`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxAngularVelocity"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxAngularVelocity"))]
     pub m_maxAngularVelocity: U8<'a>,
@@ -91,6 +93,7 @@ pub struct hkMotionState<'a> {
     /// - name: `deactivationClass`(ctype: `hkUint8`)
     /// - offset: `172`(x86)/`172`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "deactivationClass"))]
     #[cfg_attr(feature = "serde", serde(rename = "deactivationClass"))]
     pub m_deactivationClass: U8<'a>,

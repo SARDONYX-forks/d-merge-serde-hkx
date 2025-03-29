@@ -33,6 +33,7 @@ pub struct hkMemoryMeshShape<'a> {
     /// - name: `sections`(ctype: `hkArray<struct hkMeshSectionCinfo>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sections"))]
     #[cfg_attr(feature = "serde", serde(rename = "sections"))]
     pub m_sections: Vec<hkMeshSectionCinfo<'a>>,
@@ -40,6 +41,7 @@ pub struct hkMemoryMeshShape<'a> {
     /// - name: `indices16`(ctype: `hkArray<hkUint16>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "indices16"))]
     #[cfg_attr(feature = "serde", serde(rename = "indices16"))]
     pub m_indices16: Vec<U16<'a>>,
@@ -47,6 +49,7 @@ pub struct hkMemoryMeshShape<'a> {
     /// - name: `indices32`(ctype: `hkArray<hkUint32>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "indices32"))]
     #[cfg_attr(feature = "serde", serde(rename = "indices32"))]
     pub m_indices32: Vec<U32<'a>>,
@@ -212,7 +215,7 @@ const _: () = {
                     let __ptr = __A::class_ptr(&mut __map);
                     let parent = __A::parent_value(&mut __map)?;
                     let mut m_sections: _serde::__private::Option<
-                        Vec<hkMeshSectionCinfo>,
+                        Vec<hkMeshSectionCinfo<'de>>,
                     > = _serde::__private::None;
                     let mut m_indices16: _serde::__private::Option<Vec<U16<'de>>> = _serde::__private::None;
                     let mut m_indices32: _serde::__private::Option<Vec<U32<'de>>> = _serde::__private::None;
@@ -229,7 +232,7 @@ const _: () = {
                                 }
                                 m_sections = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkMeshSectionCinfo>,
+                                        Vec<hkMeshSectionCinfo<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -344,7 +347,7 @@ const _: () = {
                     __A: _serde::de::MapAccess<'de>,
                 {
                     let mut m_sections: _serde::__private::Option<
-                        Vec<hkMeshSectionCinfo>,
+                        Vec<hkMeshSectionCinfo<'de>>,
                     > = _serde::__private::None;
                     let mut m_indices16: _serde::__private::Option<Vec<U16<'de>>> = _serde::__private::None;
                     let mut m_indices32: _serde::__private::Option<Vec<U32<'de>>> = _serde::__private::None;
@@ -372,7 +375,7 @@ const _: () = {
                                 }
                                 m_sections = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkMeshSectionCinfo>,
+                                        Vec<hkMeshSectionCinfo<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

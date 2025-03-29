@@ -33,6 +33,7 @@ pub struct hkbCharacterSkinInfo<'a> {
     /// - name: `characterId`(ctype: `hkUint64`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "characterId"))]
     #[cfg_attr(feature = "serde", serde(rename = "characterId"))]
     pub m_characterId: U64<'a>,
@@ -40,6 +41,7 @@ pub struct hkbCharacterSkinInfo<'a> {
     /// - name: `deformableSkins`(ctype: `hkArray<hkUint64>`)
     /// - offset: ` 16`(x86)/` 24`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "deformableSkins"))]
     #[cfg_attr(feature = "serde", serde(rename = "deformableSkins"))]
     pub m_deformableSkins: Vec<U64<'a>>,
@@ -47,6 +49,7 @@ pub struct hkbCharacterSkinInfo<'a> {
     /// - name: `rigidSkins`(ctype: `hkArray<hkUint64>`)
     /// - offset: ` 28`(x86)/` 40`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rigidSkins"))]
     #[cfg_attr(feature = "serde", serde(rename = "rigidSkins"))]
     pub m_rigidSkins: Vec<U64<'a>>,

@@ -33,6 +33,7 @@ pub struct hkbCompiledExpressionSet<'a> {
     /// - name: `rpn`(ctype: `hkArray<struct hkbCompiledExpressionSetToken>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rpn"))]
     #[cfg_attr(feature = "serde", serde(rename = "rpn"))]
     pub m_rpn: Vec<hkbCompiledExpressionSetToken<'a>>,
@@ -40,6 +41,7 @@ pub struct hkbCompiledExpressionSet<'a> {
     /// - name: `expressionToRpnIndex`(ctype: `hkArray<hkInt32>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "expressionToRpnIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "expressionToRpnIndex"))]
     pub m_expressionToRpnIndex: Vec<I32<'a>>,
@@ -47,6 +49,7 @@ pub struct hkbCompiledExpressionSet<'a> {
     /// - name: `numExpressions`(ctype: `hkInt8`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numExpressions"))]
     #[cfg_attr(feature = "serde", serde(rename = "numExpressions"))]
     pub m_numExpressions: I8<'a>,
@@ -200,7 +203,7 @@ const _: () = {
                     let __ptr = __A::class_ptr(&mut __map);
                     let parent = __A::parent_value(&mut __map)?;
                     let mut m_rpn: _serde::__private::Option<
-                        Vec<hkbCompiledExpressionSetToken>,
+                        Vec<hkbCompiledExpressionSetToken<'de>>,
                     > = _serde::__private::None;
                     let mut m_expressionToRpnIndex: _serde::__private::Option<
                         Vec<I32<'de>>,
@@ -216,7 +219,7 @@ const _: () = {
                                 }
                                 m_rpn = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkbCompiledExpressionSetToken>,
+                                        Vec<hkbCompiledExpressionSetToken<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -310,7 +313,7 @@ const _: () = {
                     __A: _serde::de::MapAccess<'de>,
                 {
                     let mut m_rpn: _serde::__private::Option<
-                        Vec<hkbCompiledExpressionSetToken>,
+                        Vec<hkbCompiledExpressionSetToken<'de>>,
                     > = _serde::__private::None;
                     let mut m_expressionToRpnIndex: _serde::__private::Option<
                         Vec<I32<'de>>,
@@ -337,7 +340,7 @@ const _: () = {
                                 }
                                 m_rpn = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkbCompiledExpressionSetToken>,
+                                        Vec<hkbCompiledExpressionSetToken<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

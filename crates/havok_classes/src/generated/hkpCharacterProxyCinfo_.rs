@@ -89,6 +89,7 @@ pub struct hkpCharacterProxyCinfo<'a> {
     /// - name: `shapePhantom`(ctype: `struct hkpShapePhantom*`)
     /// - offset: ` 88`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "shapePhantom"))]
     #[cfg_attr(feature = "serde", serde(rename = "shapePhantom"))]
     pub m_shapePhantom: Pointer<'a>,
@@ -110,6 +111,7 @@ pub struct hkpCharacterProxyCinfo<'a> {
     /// - name: `userPlanes`(ctype: `hkUint32`)
     /// - offset: `100`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "userPlanes"))]
     #[cfg_attr(feature = "serde", serde(rename = "userPlanes"))]
     pub m_userPlanes: U32<'a>,
@@ -152,6 +154,7 @@ pub struct hkpCharacterProxyCinfo<'a> {
     /// - name: `maxCastIterations`(ctype: `hkInt32`)
     /// - offset: `124`(x86)/`128`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxCastIterations"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxCastIterations"))]
     pub m_maxCastIterations: I32<'a>,

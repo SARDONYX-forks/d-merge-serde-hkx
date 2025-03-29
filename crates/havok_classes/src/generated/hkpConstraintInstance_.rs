@@ -34,6 +34,8 @@ pub struct hkpConstraintInstance<'a> {
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "owner"))]
     #[cfg_attr(feature = "serde", serde(rename = "owner"))]
     pub m_owner: Pointer<'a>,
@@ -41,6 +43,7 @@ pub struct hkpConstraintInstance<'a> {
     /// - name: `data`(ctype: `struct hkpConstraintData*`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "data"))]
     #[cfg_attr(feature = "serde", serde(rename = "data"))]
     pub m_data: Pointer<'a>,
@@ -48,6 +51,7 @@ pub struct hkpConstraintInstance<'a> {
     /// - name: `constraintModifiers`(ctype: `struct hkpModifierConstraintAtom*`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "constraintModifiers"))]
     #[cfg_attr(feature = "serde", serde(rename = "constraintModifiers"))]
     pub m_constraintModifiers: Pointer<'a>,
@@ -55,6 +59,7 @@ pub struct hkpConstraintInstance<'a> {
     /// - name: `entities`(ctype: `struct hkpEntity*`)
     /// - offset: ` 20`(x86)/` 40`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "entities"))]
     #[cfg_attr(feature = "serde", serde(rename = "entities"))]
     pub m_entities: [Pointer<'a>; 2usize],
@@ -84,6 +89,8 @@ pub struct hkpConstraintInstance<'a> {
     /// - offset: ` 32`(x86)/` 64`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "listeners"))]
     #[cfg_attr(feature = "serde", serde(rename = "listeners"))]
     pub m_listeners: hkpConstraintInstanceSmallArraySerializeOverrideType<'a>,
@@ -107,6 +114,8 @@ pub struct hkpConstraintInstance<'a> {
     /// - offset: ` 48`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "internal"))]
     #[cfg_attr(feature = "serde", serde(rename = "internal"))]
     pub m_internal: Pointer<'a>,
@@ -115,6 +124,8 @@ pub struct hkpConstraintInstance<'a> {
     /// - offset: ` 52`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "uid"))]
     #[cfg_attr(feature = "serde", serde(rename = "uid"))]
     pub m_uid: U32<'a>,
@@ -289,7 +300,7 @@ const _: () = {
                         OnDestructionRemapInfo,
                     > = _serde::__private::None;
                     let mut m_listeners: _serde::__private::Option<
-                        hkpConstraintInstanceSmallArraySerializeOverrideType,
+                        hkpConstraintInstanceSmallArraySerializeOverrideType<'de>,
                     > = _serde::__private::None;
                     let mut m_name: _serde::__private::Option<StringPtr<'de>> = _serde::__private::None;
                     let mut m_userData: _serde::__private::Option<Ulong> = _serde::__private::None;
@@ -431,7 +442,7 @@ const _: () = {
                                 __A::pad(&mut __map, 1usize, 5usize)?;
                                 m_listeners = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpConstraintInstanceSmallArraySerializeOverrideType,
+                                        hkpConstraintInstanceSmallArraySerializeOverrideType<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

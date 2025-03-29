@@ -33,6 +33,7 @@ pub struct hkbStateMachineStateInfo<'a> {
     /// - name: `listeners`(ctype: `hkArray<hkbStateListener*>`)
     /// - offset: ` 28`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "listeners"))]
     #[cfg_attr(feature = "serde", serde(rename = "listeners"))]
     pub m_listeners: Vec<Pointer<'a>>,
@@ -40,6 +41,7 @@ pub struct hkbStateMachineStateInfo<'a> {
     /// - name: `enterNotifyEvents`(ctype: `struct hkbStateMachineEventPropertyArray*`)
     /// - offset: ` 40`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "enterNotifyEvents"))]
     #[cfg_attr(feature = "serde", serde(rename = "enterNotifyEvents"))]
     pub m_enterNotifyEvents: Pointer<'a>,
@@ -47,6 +49,7 @@ pub struct hkbStateMachineStateInfo<'a> {
     /// - name: `exitNotifyEvents`(ctype: `struct hkbStateMachineEventPropertyArray*`)
     /// - offset: ` 44`(x86)/` 72`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "exitNotifyEvents"))]
     #[cfg_attr(feature = "serde", serde(rename = "exitNotifyEvents"))]
     pub m_exitNotifyEvents: Pointer<'a>,
@@ -54,6 +57,7 @@ pub struct hkbStateMachineStateInfo<'a> {
     /// - name: `transitions`(ctype: `struct hkbStateMachineTransitionInfoArray*`)
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transitions"))]
     #[cfg_attr(feature = "serde", serde(rename = "transitions"))]
     pub m_transitions: Pointer<'a>,
@@ -61,6 +65,7 @@ pub struct hkbStateMachineStateInfo<'a> {
     /// - name: `generator`(ctype: `struct hkbGenerator*`)
     /// - offset: ` 52`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "generator"))]
     #[cfg_attr(feature = "serde", serde(rename = "generator"))]
     pub m_generator: Pointer<'a>,
@@ -76,6 +81,7 @@ pub struct hkbStateMachineStateInfo<'a> {
     /// - name: `stateId`(ctype: `hkInt32`)
     /// - offset: ` 60`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "stateId"))]
     #[cfg_attr(feature = "serde", serde(rename = "stateId"))]
     pub m_stateId: I32<'a>,

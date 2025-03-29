@@ -40,6 +40,7 @@ pub struct hkpGroupCollisionFilter<'a> {
     /// - name: `collisionGroups`(ctype: `hkUint32[32]`)
     /// - offset: ` 52`(x86)/` 76`(x86_64)
     /// - type_size: `128`(x86)/`128`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "collisionGroups"))]
     #[cfg_attr(feature = "serde", serde(rename = "collisionGroups"))]
     pub m_collisionGroups: [U32<'a>; 32usize],

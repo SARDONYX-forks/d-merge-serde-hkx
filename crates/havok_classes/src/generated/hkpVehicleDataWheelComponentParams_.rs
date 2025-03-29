@@ -91,6 +91,7 @@ pub struct hkpVehicleDataWheelComponentParams<'a> {
     /// - name: `axle`(ctype: `hkInt8`)
     /// - offset: ` 36`(x86)/` 36`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "axle"))]
     #[cfg_attr(feature = "serde", serde(rename = "axle"))]
     pub m_axle: I8<'a>,

@@ -41,6 +41,7 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "uniqueIdPool"))]
     #[cfg_attr(feature = "serde", serde(rename = "uniqueIdPool"))]
     pub m_uniqueIdPool: Vec<()>,
@@ -49,6 +50,8 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: ` 56`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "idToStateMachineTemplateMap")
@@ -60,6 +63,7 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: ` 60`(x86)/`104`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "mirroredExternalIdMap"))]
     #[cfg_attr(feature = "serde", serde(rename = "mirroredExternalIdMap"))]
     pub m_mirroredExternalIdMap: Vec<()>,
@@ -68,6 +72,8 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: ` 72`(x86)/`120`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pseudoRandomGenerator"))]
     #[cfg_attr(feature = "serde", serde(rename = "pseudoRandomGenerator"))]
     pub m_pseudoRandomGenerator: Pointer<'a>,
@@ -75,6 +81,7 @@ pub struct hkbBehaviorGraph<'a> {
     /// - name: `rootGenerator`(ctype: `struct hkbGenerator*`)
     /// - offset: ` 76`(x86)/`128`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rootGenerator"))]
     #[cfg_attr(feature = "serde", serde(rename = "rootGenerator"))]
     pub m_rootGenerator: Pointer<'a>,
@@ -82,6 +89,7 @@ pub struct hkbBehaviorGraph<'a> {
     /// - name: `data`(ctype: `struct hkbBehaviorGraphData*`)
     /// - offset: ` 80`(x86)/`136`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "data"))]
     #[cfg_attr(feature = "serde", serde(rename = "data"))]
     pub m_data: Pointer<'a>,
@@ -90,6 +98,8 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: ` 84`(x86)/`144`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rootGeneratorClone"))]
     #[cfg_attr(feature = "serde", serde(rename = "rootGeneratorClone"))]
     pub m_rootGeneratorClone: Pointer<'a>,
@@ -98,6 +108,8 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: ` 88`(x86)/`152`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "activeNodes"))]
     #[cfg_attr(feature = "serde", serde(rename = "activeNodes"))]
     pub m_activeNodes: Pointer<'a>,
@@ -106,6 +118,8 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: ` 92`(x86)/`160`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "activeNodeTemplateToIndexMap")
@@ -117,6 +131,8 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: ` 96`(x86)/`168`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "activeNodesChildrenIndices"))]
     #[cfg_attr(feature = "serde", serde(rename = "activeNodesChildrenIndices"))]
     pub m_activeNodesChildrenIndices: Pointer<'a>,
@@ -125,6 +141,8 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: `100`(x86)/`176`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "globalTransitionData"))]
     #[cfg_attr(feature = "serde", serde(rename = "globalTransitionData"))]
     pub m_globalTransitionData: Pointer<'a>,
@@ -133,6 +151,8 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: `104`(x86)/`184`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "eventIdMap"))]
     #[cfg_attr(feature = "serde", serde(rename = "eventIdMap"))]
     pub m_eventIdMap: Pointer<'a>,
@@ -141,6 +161,8 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: `108`(x86)/`192`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "attributeIdMap"))]
     #[cfg_attr(feature = "serde", serde(rename = "attributeIdMap"))]
     pub m_attributeIdMap: Pointer<'a>,
@@ -149,6 +171,8 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: `112`(x86)/`200`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "variableIdMap"))]
     #[cfg_attr(feature = "serde", serde(rename = "variableIdMap"))]
     pub m_variableIdMap: Pointer<'a>,
@@ -157,6 +181,8 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: `116`(x86)/`208`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "characterPropertyIdMap"))]
     #[cfg_attr(feature = "serde", serde(rename = "characterPropertyIdMap"))]
     pub m_characterPropertyIdMap: Pointer<'a>,
@@ -165,6 +191,8 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: `120`(x86)/`216`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "variableValueSet"))]
     #[cfg_attr(feature = "serde", serde(rename = "variableValueSet"))]
     pub m_variableValueSet: Pointer<'a>,
@@ -173,6 +201,8 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: `124`(x86)/`224`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nodeTemplateToCloneMap"))]
     #[cfg_attr(feature = "serde", serde(rename = "nodeTemplateToCloneMap"))]
     pub m_nodeTemplateToCloneMap: Pointer<'a>,
@@ -181,6 +211,8 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: `128`(x86)/`232`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nodeCloneToTemplateMap"))]
     #[cfg_attr(feature = "serde", serde(rename = "nodeCloneToTemplateMap"))]
     pub m_nodeCloneToTemplateMap: Pointer<'a>,
@@ -189,6 +221,8 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: `132`(x86)/`240`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "stateListenerTemplateToCloneMap")
@@ -200,6 +234,8 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: `136`(x86)/`248`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nodePartitionInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "nodePartitionInfo"))]
     pub m_nodePartitionInfo: Pointer<'a>,
@@ -208,6 +244,8 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: `140`(x86)/`256`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numIntermediateOutputs"))]
     #[cfg_attr(feature = "serde", serde(rename = "numIntermediateOutputs"))]
     pub m_numIntermediateOutputs: I32<'a>,
@@ -216,6 +254,8 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: `144`(x86)/`264`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "jobs"))]
     #[cfg_attr(feature = "serde", serde(rename = "jobs"))]
     pub m_jobs: Vec<Pointer<'a>>,
@@ -224,6 +264,8 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: `156`(x86)/`280`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "allPartitionMemory"))]
     #[cfg_attr(feature = "serde", serde(rename = "allPartitionMemory"))]
     pub m_allPartitionMemory: Vec<Pointer<'a>>,
@@ -232,6 +274,8 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: `168`(x86)/`296`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numStaticNodes"))]
     #[cfg_attr(feature = "serde", serde(rename = "numStaticNodes"))]
     pub m_numStaticNodes: I16<'a>,
@@ -240,6 +284,8 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: `170`(x86)/`298`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nextUniqueId"))]
     #[cfg_attr(feature = "serde", serde(rename = "nextUniqueId"))]
     pub m_nextUniqueId: I16<'a>,
@@ -248,6 +294,7 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: `172`(x86)/`300`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isActive"))]
     #[cfg_attr(feature = "serde", serde(rename = "isActive"))]
     pub m_isActive: bool,
@@ -256,6 +303,7 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: `173`(x86)/`301`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isLinked"))]
     #[cfg_attr(feature = "serde", serde(rename = "isLinked"))]
     pub m_isLinked: bool,
@@ -264,6 +312,7 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: `174`(x86)/`302`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "updateActiveNodes"))]
     #[cfg_attr(feature = "serde", serde(rename = "updateActiveNodes"))]
     pub m_updateActiveNodes: bool,
@@ -272,6 +321,7 @@ pub struct hkbBehaviorGraph<'a> {
     /// - offset: `175`(x86)/`303`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "stateOrTransitionChanged"))]
     #[cfg_attr(feature = "serde", serde(rename = "stateOrTransitionChanged"))]
     pub m_stateOrTransitionChanged: bool,

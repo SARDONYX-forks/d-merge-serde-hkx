@@ -36,6 +36,7 @@ pub struct hkbFootIkModifierLeg<'a> {
     /// - offset: ` 48`(x86)/` 48`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "prevAnkleRotLS"))]
     #[cfg_attr(feature = "serde", serde(rename = "prevAnkleRotLS"))]
     pub m_prevAnkleRotLS: Quaternion,
@@ -121,6 +122,7 @@ pub struct hkbFootIkModifierLeg<'a> {
     /// - name: `hipIndex`(ctype: `hkInt16`)
     /// - offset: `136`(x86)/`144`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "hipIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "hipIndex"))]
     pub m_hipIndex: I16<'a>,
@@ -128,6 +130,7 @@ pub struct hkbFootIkModifierLeg<'a> {
     /// - name: `kneeIndex`(ctype: `hkInt16`)
     /// - offset: `138`(x86)/`146`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "kneeIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "kneeIndex"))]
     pub m_kneeIndex: I16<'a>,
@@ -135,6 +138,7 @@ pub struct hkbFootIkModifierLeg<'a> {
     /// - name: `ankleIndex`(ctype: `hkInt16`)
     /// - offset: `140`(x86)/`148`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "ankleIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "ankleIndex"))]
     pub m_ankleIndex: I16<'a>,

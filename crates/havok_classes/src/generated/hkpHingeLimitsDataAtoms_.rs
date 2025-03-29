@@ -28,6 +28,7 @@ pub struct hkpHingeLimitsDataAtoms<'a> {
     /// - name: `rotations`(ctype: `struct hkpSetLocalRotationsConstraintAtom`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `112`(x86)/`112`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rotations"))]
     #[cfg_attr(feature = "serde", serde(rename = "rotations"))]
     pub m_rotations: hkpSetLocalRotationsConstraintAtom<'a>,
@@ -35,6 +36,7 @@ pub struct hkpHingeLimitsDataAtoms<'a> {
     /// - name: `angLimit`(ctype: `struct hkpAngLimitConstraintAtom`)
     /// - offset: `112`(x86)/`112`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "angLimit"))]
     #[cfg_attr(feature = "serde", serde(rename = "angLimit"))]
     pub m_angLimit: hkpAngLimitConstraintAtom<'a>,
@@ -42,6 +44,7 @@ pub struct hkpHingeLimitsDataAtoms<'a> {
     /// - name: `2dAng`(ctype: `struct hkp2dAngConstraintAtom`)
     /// - offset: `128`(x86)/`128`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "2dAng"))]
     #[cfg_attr(feature = "serde", serde(rename = "2dAng"))]
     pub m_2dAng: hkp2dAngConstraintAtom<'a>,
@@ -173,12 +176,14 @@ const _: () = {
                 {
                     let __ptr = __A::class_ptr(&mut __map);
                     let mut m_rotations: _serde::__private::Option<
-                        hkpSetLocalRotationsConstraintAtom,
+                        hkpSetLocalRotationsConstraintAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_angLimit: _serde::__private::Option<
-                        hkpAngLimitConstraintAtom,
+                        hkpAngLimitConstraintAtom<'de>,
                     > = _serde::__private::None;
-                    let mut m_2dAng: _serde::__private::Option<hkp2dAngConstraintAtom> = _serde::__private::None;
+                    let mut m_2dAng: _serde::__private::Option<
+                        hkp2dAngConstraintAtom<'de>,
+                    > = _serde::__private::None;
                     for i in 0..3usize {
                         match i {
                             0usize => {
@@ -191,7 +196,7 @@ const _: () = {
                                 }
                                 m_rotations = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSetLocalRotationsConstraintAtom,
+                                        hkpSetLocalRotationsConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -210,7 +215,7 @@ const _: () = {
                                 }
                                 m_angLimit = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpAngLimitConstraintAtom,
+                                        hkpAngLimitConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -227,7 +232,7 @@ const _: () = {
                                 }
                                 m_2dAng = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkp2dAngConstraintAtom,
+                                        hkp2dAngConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -282,12 +287,14 @@ const _: () = {
                     __A: _serde::de::MapAccess<'de>,
                 {
                     let mut m_rotations: _serde::__private::Option<
-                        hkpSetLocalRotationsConstraintAtom,
+                        hkpSetLocalRotationsConstraintAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_angLimit: _serde::__private::Option<
-                        hkpAngLimitConstraintAtom,
+                        hkpAngLimitConstraintAtom<'de>,
                     > = _serde::__private::None;
-                    let mut m_2dAng: _serde::__private::Option<hkp2dAngConstraintAtom> = _serde::__private::None;
+                    let mut m_2dAng: _serde::__private::Option<
+                        hkp2dAngConstraintAtom<'de>,
+                    > = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
                         __A::next_key::<__Field>(&mut __map)?
                     } {
@@ -311,7 +318,7 @@ const _: () = {
                                 }
                                 m_rotations = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSetLocalRotationsConstraintAtom,
+                                        hkpSetLocalRotationsConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -339,7 +346,7 @@ const _: () = {
                                 }
                                 m_angLimit = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpAngLimitConstraintAtom,
+                                        hkpAngLimitConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -365,7 +372,7 @@ const _: () = {
                                 }
                                 m_2dAng = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkp2dAngConstraintAtom,
+                                        hkp2dAngConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

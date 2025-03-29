@@ -56,6 +56,7 @@ pub struct hkpPoweredChainDataConstraintInfo<'a> {
     /// - name: `motors`(ctype: `struct hkpConstraintMotor*`)
     /// - offset: ` 64`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 24`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "motors"))]
     #[cfg_attr(feature = "serde", serde(rename = "motors"))]
     pub m_motors: [Pointer<'a>; 3usize],

@@ -33,6 +33,7 @@ pub struct hkpConvexPieceStreamData<'a> {
     /// - name: `convexPieceStream`(ctype: `hkArray<hkUint32>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "convexPieceStream"))]
     #[cfg_attr(feature = "serde", serde(rename = "convexPieceStream"))]
     pub m_convexPieceStream: Vec<U32<'a>>,
@@ -40,6 +41,7 @@ pub struct hkpConvexPieceStreamData<'a> {
     /// - name: `convexPieceOffsets`(ctype: `hkArray<hkUint32>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "convexPieceOffsets"))]
     #[cfg_attr(feature = "serde", serde(rename = "convexPieceOffsets"))]
     pub m_convexPieceOffsets: Vec<U32<'a>>,
@@ -47,6 +49,7 @@ pub struct hkpConvexPieceStreamData<'a> {
     /// - name: `convexPieceSingleTriangles`(ctype: `hkArray<hkUint32>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "convexPieceSingleTriangles"))]
     #[cfg_attr(feature = "serde", serde(rename = "convexPieceSingleTriangles"))]
     pub m_convexPieceSingleTriangles: Vec<U32<'a>>,

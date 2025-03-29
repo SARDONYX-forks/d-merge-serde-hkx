@@ -33,6 +33,7 @@ pub struct hkbRaiseEventCommand<'a> {
     /// - name: `characterId`(ctype: `hkUint64`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "characterId"))]
     #[cfg_attr(feature = "serde", serde(rename = "characterId"))]
     pub m_characterId: U64<'a>,
@@ -47,6 +48,7 @@ pub struct hkbRaiseEventCommand<'a> {
     /// - name: `externalId`(ctype: `hkInt32`)
     /// - offset: ` 20`(x86)/` 28`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "externalId"))]
     #[cfg_attr(feature = "serde", serde(rename = "externalId"))]
     pub m_externalId: I32<'a>,

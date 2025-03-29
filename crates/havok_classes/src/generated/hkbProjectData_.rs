@@ -40,6 +40,7 @@ pub struct hkbProjectData<'a> {
     /// - name: `stringData`(ctype: `struct hkbProjectStringData*`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "stringData"))]
     #[cfg_attr(feature = "serde", serde(rename = "stringData"))]
     pub m_stringData: Pointer<'a>,

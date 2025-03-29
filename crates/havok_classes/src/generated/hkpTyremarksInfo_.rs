@@ -47,6 +47,7 @@ pub struct hkpTyremarksInfo<'a> {
     /// - name: `tyremarksWheel`(ctype: `hkArray<hkpTyremarksWheel*>`)
     /// - offset: ` 16`(x86)/` 24`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "tyremarksWheel"))]
     #[cfg_attr(feature = "serde", serde(rename = "tyremarksWheel"))]
     pub m_tyremarksWheel: Vec<Pointer<'a>>,

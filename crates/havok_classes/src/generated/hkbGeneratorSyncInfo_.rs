@@ -28,6 +28,7 @@ pub struct hkbGeneratorSyncInfo<'a> {
     /// - name: `syncPoints`(ctype: `struct hkbGeneratorSyncInfoSyncPoint[8]`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 64`(x86)/` 64`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "syncPoints"))]
     #[cfg_attr(feature = "serde", serde(rename = "syncPoints"))]
     pub m_syncPoints: [hkbGeneratorSyncInfoSyncPoint<'a>; 8usize],
@@ -56,6 +57,7 @@ pub struct hkbGeneratorSyncInfo<'a> {
     /// - name: `numSyncPoints`(ctype: `hkInt8`)
     /// - offset: ` 76`(x86)/` 76`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numSyncPoints"))]
     #[cfg_attr(feature = "serde", serde(rename = "numSyncPoints"))]
     pub m_numSyncPoints: I8<'a>,
@@ -229,7 +231,7 @@ const _: () = {
                 {
                     let __ptr = __A::class_ptr(&mut __map);
                     let mut m_syncPoints: _serde::__private::Option<
-                        [hkbGeneratorSyncInfoSyncPoint; 8usize],
+                        [hkbGeneratorSyncInfoSyncPoint<'de>; 8usize],
                     > = _serde::__private::None;
                     let mut m_baseFrequency: _serde::__private::Option<f32> = _serde::__private::None;
                     let mut m_localTime: _serde::__private::Option<f32> = _serde::__private::None;
@@ -250,7 +252,7 @@ const _: () = {
                                 }
                                 m_syncPoints = _serde::__private::Some(
                                     match __A::next_value::<
-                                        [hkbGeneratorSyncInfoSyncPoint; 8usize],
+                                        [hkbGeneratorSyncInfoSyncPoint<'de>; 8usize],
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -480,7 +482,7 @@ const _: () = {
                     __A: _serde::de::MapAccess<'de>,
                 {
                     let mut m_syncPoints: _serde::__private::Option<
-                        [hkbGeneratorSyncInfoSyncPoint; 8usize],
+                        [hkbGeneratorSyncInfoSyncPoint<'de>; 8usize],
                     > = _serde::__private::None;
                     let mut m_baseFrequency: _serde::__private::Option<f32> = _serde::__private::None;
                     let mut m_localTime: _serde::__private::Option<f32> = _serde::__private::None;
@@ -512,7 +514,7 @@ const _: () = {
                                 }
                                 m_syncPoints = _serde::__private::Some(
                                     match __A::next_value::<
-                                        [hkbGeneratorSyncInfoSyncPoint; 8usize],
+                                        [hkbGeneratorSyncInfoSyncPoint<'de>; 8usize],
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

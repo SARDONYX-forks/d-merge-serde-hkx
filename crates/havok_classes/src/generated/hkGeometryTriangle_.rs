@@ -28,6 +28,7 @@ pub struct hkGeometryTriangle<'a> {
     /// - name: `a`(ctype: `hkInt32`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "a"))]
     #[cfg_attr(feature = "serde", serde(rename = "a"))]
     pub m_a: I32<'a>,
@@ -35,6 +36,7 @@ pub struct hkGeometryTriangle<'a> {
     /// - name: `b`(ctype: `hkInt32`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "b"))]
     #[cfg_attr(feature = "serde", serde(rename = "b"))]
     pub m_b: I32<'a>,
@@ -42,6 +44,7 @@ pub struct hkGeometryTriangle<'a> {
     /// - name: `c`(ctype: `hkInt32`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "c"))]
     #[cfg_attr(feature = "serde", serde(rename = "c"))]
     pub m_c: I32<'a>,
@@ -49,6 +52,7 @@ pub struct hkGeometryTriangle<'a> {
     /// - name: `material`(ctype: `hkInt32`)
     /// - offset: ` 12`(x86)/` 12`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "material"))]
     #[cfg_attr(feature = "serde", serde(rename = "material"))]
     pub m_material: I32<'a>,

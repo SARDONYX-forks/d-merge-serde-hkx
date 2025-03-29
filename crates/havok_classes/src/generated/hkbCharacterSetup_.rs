@@ -33,6 +33,7 @@ pub struct hkbCharacterSetup<'a> {
     /// - name: `retargetingSkeletonMappers`(ctype: `hkArray<hkaSkeletonMapper*>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "retargetingSkeletonMappers"))]
     #[cfg_attr(feature = "serde", serde(rename = "retargetingSkeletonMappers"))]
     pub m_retargetingSkeletonMappers: Vec<Pointer<'a>>,
@@ -40,6 +41,7 @@ pub struct hkbCharacterSetup<'a> {
     /// - name: `animationSkeleton`(ctype: `struct hkaSkeleton*`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "animationSkeleton"))]
     #[cfg_attr(feature = "serde", serde(rename = "animationSkeleton"))]
     pub m_animationSkeleton: Pointer<'a>,
@@ -47,6 +49,7 @@ pub struct hkbCharacterSetup<'a> {
     /// - name: `ragdollToAnimationSkeletonMapper`(ctype: `struct hkaSkeletonMapper*`)
     /// - offset: ` 24`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "ragdollToAnimationSkeletonMapper")
@@ -57,6 +60,7 @@ pub struct hkbCharacterSetup<'a> {
     /// - name: `animationToRagdollSkeletonMapper`(ctype: `struct hkaSkeletonMapper*`)
     /// - offset: ` 28`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "animationToRagdollSkeletonMapper")
@@ -68,6 +72,8 @@ pub struct hkbCharacterSetup<'a> {
     /// - offset: ` 32`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "animationBindingSet"))]
     #[cfg_attr(feature = "serde", serde(rename = "animationBindingSet"))]
     pub m_animationBindingSet: Pointer<'a>,
@@ -75,6 +81,7 @@ pub struct hkbCharacterSetup<'a> {
     /// - name: `data`(ctype: `struct hkbCharacterData*`)
     /// - offset: ` 36`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "data"))]
     #[cfg_attr(feature = "serde", serde(rename = "data"))]
     pub m_data: Pointer<'a>,
@@ -83,6 +90,8 @@ pub struct hkbCharacterSetup<'a> {
     /// - offset: ` 40`(x86)/` 72`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "mirroredSkeleton"))]
     #[cfg_attr(feature = "serde", serde(rename = "mirroredSkeleton"))]
     pub m_mirroredSkeleton: Pointer<'a>,
@@ -91,6 +100,8 @@ pub struct hkbCharacterSetup<'a> {
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "characterPropertyIdMap"))]
     #[cfg_attr(feature = "serde", serde(rename = "characterPropertyIdMap"))]
     pub m_characterPropertyIdMap: Pointer<'a>,

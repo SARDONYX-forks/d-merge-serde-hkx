@@ -41,6 +41,7 @@ pub struct hkbClipGenerator<'a> {
     /// - name: `triggers`(ctype: `struct hkbClipTriggerArray*`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "triggers"))]
     #[cfg_attr(feature = "serde", serde(rename = "triggers"))]
     pub m_triggers: Pointer<'a>,
@@ -90,6 +91,7 @@ pub struct hkbClipGenerator<'a> {
     /// - name: `animationBindingIndex`(ctype: `hkInt16`)
     /// - offset: ` 72`(x86)/`112`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "animationBindingIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "animationBindingIndex"))]
     pub m_animationBindingIndex: I16<'a>,
@@ -104,6 +106,7 @@ pub struct hkbClipGenerator<'a> {
     /// - name: `flags`(ctype: `hkInt8`)
     /// - offset: ` 75`(x86)/`115`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "flags"))]
     #[cfg_attr(feature = "serde", serde(rename = "flags"))]
     pub m_flags: I8<'a>,
@@ -112,6 +115,7 @@ pub struct hkbClipGenerator<'a> {
     /// - offset: ` 76`(x86)/`120`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "animDatas"))]
     #[cfg_attr(feature = "serde", serde(rename = "animDatas"))]
     pub m_animDatas: Vec<()>,
@@ -120,6 +124,8 @@ pub struct hkbClipGenerator<'a> {
     /// - offset: ` 88`(x86)/`136`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "animationControl"))]
     #[cfg_attr(feature = "serde", serde(rename = "animationControl"))]
     pub m_animationControl: Pointer<'a>,
@@ -128,6 +134,8 @@ pub struct hkbClipGenerator<'a> {
     /// - offset: ` 92`(x86)/`144`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "originalTriggers"))]
     #[cfg_attr(feature = "serde", serde(rename = "originalTriggers"))]
     pub m_originalTriggers: Pointer<'a>,
@@ -136,6 +144,8 @@ pub struct hkbClipGenerator<'a> {
     /// - offset: ` 96`(x86)/`152`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "mapperData"))]
     #[cfg_attr(feature = "serde", serde(rename = "mapperData"))]
     pub m_mapperData: Pointer<'a>,
@@ -144,6 +154,8 @@ pub struct hkbClipGenerator<'a> {
     /// - offset: `100`(x86)/`160`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "binding"))]
     #[cfg_attr(feature = "serde", serde(rename = "binding"))]
     pub m_binding: Pointer<'a>,
@@ -152,6 +164,8 @@ pub struct hkbClipGenerator<'a> {
     /// - offset: `104`(x86)/`168`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "mirroredAnimation"))]
     #[cfg_attr(feature = "serde", serde(rename = "mirroredAnimation"))]
     pub m_mirroredAnimation: Pointer<'a>,
@@ -160,6 +174,7 @@ pub struct hkbClipGenerator<'a> {
     /// - offset: `112`(x86)/`176`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "extractedMotion"))]
     #[cfg_attr(feature = "serde", serde(rename = "extractedMotion"))]
     pub m_extractedMotion: QsTransform,
@@ -168,6 +183,7 @@ pub struct hkbClipGenerator<'a> {
     /// - offset: `160`(x86)/`224`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "echos"))]
     #[cfg_attr(feature = "serde", serde(rename = "echos"))]
     pub m_echos: Vec<()>,
@@ -176,6 +192,7 @@ pub struct hkbClipGenerator<'a> {
     /// - offset: `172`(x86)/`240`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "localTime"))]
     #[cfg_attr(feature = "serde", serde(rename = "localTime"))]
     pub m_localTime: f32,
@@ -184,6 +201,7 @@ pub struct hkbClipGenerator<'a> {
     /// - offset: `176`(x86)/`244`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "time"))]
     #[cfg_attr(feature = "serde", serde(rename = "time"))]
     pub m_time: f32,
@@ -192,6 +210,7 @@ pub struct hkbClipGenerator<'a> {
     /// - offset: `180`(x86)/`248`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "previousUserControlledTimeFraction")
@@ -203,6 +222,8 @@ pub struct hkbClipGenerator<'a> {
     /// - offset: `184`(x86)/`252`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bufferSize"))]
     #[cfg_attr(feature = "serde", serde(rename = "bufferSize"))]
     pub m_bufferSize: I32<'a>,
@@ -211,6 +232,8 @@ pub struct hkbClipGenerator<'a> {
     /// - offset: `188`(x86)/`256`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "echoBufferSize"))]
     #[cfg_attr(feature = "serde", serde(rename = "echoBufferSize"))]
     pub m_echoBufferSize: I32<'a>,
@@ -219,6 +242,7 @@ pub struct hkbClipGenerator<'a> {
     /// - offset: `192`(x86)/`260`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "atEnd"))]
     #[cfg_attr(feature = "serde", serde(rename = "atEnd"))]
     pub m_atEnd: bool,
@@ -227,6 +251,7 @@ pub struct hkbClipGenerator<'a> {
     /// - offset: `193`(x86)/`261`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "ignoreStartTime"))]
     #[cfg_attr(feature = "serde", serde(rename = "ignoreStartTime"))]
     pub m_ignoreStartTime: bool,
@@ -235,6 +260,7 @@ pub struct hkbClipGenerator<'a> {
     /// - offset: `194`(x86)/`262`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pingPongBackward"))]
     #[cfg_attr(feature = "serde", serde(rename = "pingPongBackward"))]
     pub m_pingPongBackward: bool,

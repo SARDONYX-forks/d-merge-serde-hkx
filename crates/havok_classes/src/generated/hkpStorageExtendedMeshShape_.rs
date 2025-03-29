@@ -33,6 +33,7 @@ pub struct hkpStorageExtendedMeshShape<'a> {
     /// - name: `meshstorage`(ctype: `hkArray<hkpStorageExtendedMeshShapeMeshSubpartStorage*>`)
     /// - offset: `240`(x86)/`336`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "meshstorage"))]
     #[cfg_attr(feature = "serde", serde(rename = "meshstorage"))]
     pub m_meshstorage: Vec<Pointer<'a>>,
@@ -40,6 +41,7 @@ pub struct hkpStorageExtendedMeshShape<'a> {
     /// - name: `shapestorage`(ctype: `hkArray<hkpStorageExtendedMeshShapeShapeSubpartStorage*>`)
     /// - offset: `252`(x86)/`352`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "shapestorage"))]
     #[cfg_attr(feature = "serde", serde(rename = "shapestorage"))]
     pub m_shapestorage: Vec<Pointer<'a>>,

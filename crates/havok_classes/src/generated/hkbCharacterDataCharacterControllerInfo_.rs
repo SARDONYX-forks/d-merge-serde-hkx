@@ -42,6 +42,7 @@ pub struct hkbCharacterDataCharacterControllerInfo<'a> {
     /// - name: `collisionFilterInfo`(ctype: `hkUint32`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "collisionFilterInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "collisionFilterInfo"))]
     pub m_collisionFilterInfo: U32<'a>,
@@ -49,6 +50,7 @@ pub struct hkbCharacterDataCharacterControllerInfo<'a> {
     /// - name: `characterControllerCinfo`(ctype: `struct hkpCharacterControllerCinfo*`)
     /// - offset: ` 12`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "characterControllerCinfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "characterControllerCinfo"))]
     pub m_characterControllerCinfo: Pointer<'a>,

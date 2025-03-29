@@ -28,6 +28,7 @@ pub struct hkpSerializedDisplayRbTransformsDisplayTransformPair<'a> {
     /// - name: `rb`(ctype: `struct hkpRigidBody*`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rb"))]
     #[cfg_attr(feature = "serde", serde(rename = "rb"))]
     pub m_rb: Pointer<'a>,

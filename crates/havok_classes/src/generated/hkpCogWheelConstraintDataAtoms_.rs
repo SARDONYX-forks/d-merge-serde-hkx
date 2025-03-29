@@ -28,6 +28,7 @@ pub struct hkpCogWheelConstraintDataAtoms<'a> {
     /// - name: `transforms`(ctype: `struct hkpSetLocalTransformsConstraintAtom`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `144`(x86)/`144`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transforms"))]
     #[cfg_attr(feature = "serde", serde(rename = "transforms"))]
     pub m_transforms: hkpSetLocalTransformsConstraintAtom<'a>,
@@ -35,6 +36,7 @@ pub struct hkpCogWheelConstraintDataAtoms<'a> {
     /// - name: `cogWheels`(ctype: `struct hkpCogWheelConstraintAtom`)
     /// - offset: `144`(x86)/`144`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "cogWheels"))]
     #[cfg_attr(feature = "serde", serde(rename = "cogWheels"))]
     pub m_cogWheels: hkpCogWheelConstraintAtom<'a>,
@@ -163,10 +165,10 @@ const _: () = {
                 {
                     let __ptr = __A::class_ptr(&mut __map);
                     let mut m_transforms: _serde::__private::Option<
-                        hkpSetLocalTransformsConstraintAtom,
+                        hkpSetLocalTransformsConstraintAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_cogWheels: _serde::__private::Option<
-                        hkpCogWheelConstraintAtom,
+                        hkpCogWheelConstraintAtom<'de>,
                     > = _serde::__private::None;
                     for i in 0..2usize {
                         match i {
@@ -180,7 +182,7 @@ const _: () = {
                                 }
                                 m_transforms = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSetLocalTransformsConstraintAtom,
+                                        hkpSetLocalTransformsConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -199,7 +201,7 @@ const _: () = {
                                 }
                                 m_cogWheels = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpCogWheelConstraintAtom,
+                                        hkpCogWheelConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -246,10 +248,10 @@ const _: () = {
                     __A: _serde::de::MapAccess<'de>,
                 {
                     let mut m_transforms: _serde::__private::Option<
-                        hkpSetLocalTransformsConstraintAtom,
+                        hkpSetLocalTransformsConstraintAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_cogWheels: _serde::__private::Option<
-                        hkpCogWheelConstraintAtom,
+                        hkpCogWheelConstraintAtom<'de>,
                     > = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
                         __A::next_key::<__Field>(&mut __map)?
@@ -274,7 +276,7 @@ const _: () = {
                                 }
                                 m_transforms = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSetLocalTransformsConstraintAtom,
+                                        hkpSetLocalTransformsConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -302,7 +304,7 @@ const _: () = {
                                 }
                                 m_cogWheels = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpCogWheelConstraintAtom,
+                                        hkpCogWheelConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

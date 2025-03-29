@@ -28,6 +28,7 @@ pub struct hkbStateMachineDelayedTransitionInfo<'a> {
     /// - name: `delayedTransition`(ctype: `struct hkbStateMachineProspectiveTransitionInfo`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "delayedTransition"))]
     #[cfg_attr(feature = "serde", serde(rename = "delayedTransition"))]
     pub m_delayedTransition: hkbStateMachineProspectiveTransitionInfo<'a>,
@@ -201,7 +202,7 @@ const _: () = {
                 {
                     let __ptr = __A::class_ptr(&mut __map);
                     let mut m_delayedTransition: _serde::__private::Option<
-                        hkbStateMachineProspectiveTransitionInfo,
+                        hkbStateMachineProspectiveTransitionInfo<'de>,
                     > = _serde::__private::None;
                     let mut m_timeDelayed: _serde::__private::Option<f32> = _serde::__private::None;
                     let mut m_isDelayedTransitionReturnToPreviousState: _serde::__private::Option<
@@ -222,7 +223,7 @@ const _: () = {
                                 }
                                 m_delayedTransition = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkbStateMachineProspectiveTransitionInfo,
+                                        hkbStateMachineProspectiveTransitionInfo<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -347,7 +348,7 @@ const _: () = {
                     __A: _serde::de::MapAccess<'de>,
                 {
                     let mut m_delayedTransition: _serde::__private::Option<
-                        hkbStateMachineProspectiveTransitionInfo,
+                        hkbStateMachineProspectiveTransitionInfo<'de>,
                     > = _serde::__private::None;
                     let mut m_timeDelayed: _serde::__private::Option<f32> = _serde::__private::None;
                     let mut m_isDelayedTransitionReturnToPreviousState: _serde::__private::Option<
@@ -379,7 +380,7 @@ const _: () = {
                                 }
                                 m_delayedTransition = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkbStateMachineProspectiveTransitionInfo,
+                                        hkbStateMachineProspectiveTransitionInfo<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

@@ -40,6 +40,7 @@ pub struct hkbBoolVariableSequencedData<'a> {
     /// - name: `variableIndex`(ctype: `hkInt32`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "variableIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "variableIndex"))]
     pub m_variableIndex: I32<'a>,

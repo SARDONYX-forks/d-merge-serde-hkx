@@ -28,6 +28,7 @@ pub struct hkpTriggerVolumeEventInfo<'a> {
     /// - name: `sortValue`(ctype: `hkUint64`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sortValue"))]
     #[cfg_attr(feature = "serde", serde(rename = "sortValue"))]
     pub m_sortValue: U64<'a>,
@@ -35,6 +36,7 @@ pub struct hkpTriggerVolumeEventInfo<'a> {
     /// - name: `body`(ctype: `struct hkpRigidBody*`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "body"))]
     #[cfg_attr(feature = "serde", serde(rename = "body"))]
     pub m_body: Pointer<'a>,

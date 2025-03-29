@@ -28,6 +28,7 @@ pub struct hkaSkeletonMapperDataChainMapping<'a> {
     /// - name: `startBoneA`(ctype: `hkInt16`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "startBoneA"))]
     #[cfg_attr(feature = "serde", serde(rename = "startBoneA"))]
     pub m_startBoneA: I16<'a>,
@@ -35,6 +36,7 @@ pub struct hkaSkeletonMapperDataChainMapping<'a> {
     /// - name: `endBoneA`(ctype: `hkInt16`)
     /// - offset: `  2`(x86)/`  2`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "endBoneA"))]
     #[cfg_attr(feature = "serde", serde(rename = "endBoneA"))]
     pub m_endBoneA: I16<'a>,
@@ -42,6 +44,7 @@ pub struct hkaSkeletonMapperDataChainMapping<'a> {
     /// - name: `startBoneB`(ctype: `hkInt16`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "startBoneB"))]
     #[cfg_attr(feature = "serde", serde(rename = "startBoneB"))]
     pub m_startBoneB: I16<'a>,
@@ -49,6 +52,7 @@ pub struct hkaSkeletonMapperDataChainMapping<'a> {
     /// - name: `endBoneB`(ctype: `hkInt16`)
     /// - offset: `  6`(x86)/`  6`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "endBoneB"))]
     #[cfg_attr(feature = "serde", serde(rename = "endBoneB"))]
     pub m_endBoneB: I16<'a>,

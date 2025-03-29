@@ -28,6 +28,7 @@ pub struct hkpRagdollLimitsDataAtoms<'a> {
     /// - name: `rotations`(ctype: `struct hkpSetLocalRotationsConstraintAtom`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `112`(x86)/`112`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rotations"))]
     #[cfg_attr(feature = "serde", serde(rename = "rotations"))]
     pub m_rotations: hkpSetLocalRotationsConstraintAtom<'a>,
@@ -35,6 +36,7 @@ pub struct hkpRagdollLimitsDataAtoms<'a> {
     /// - name: `twistLimit`(ctype: `struct hkpTwistLimitConstraintAtom`)
     /// - offset: `112`(x86)/`112`(x86_64)
     /// - type_size: ` 20`(x86)/` 20`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "twistLimit"))]
     #[cfg_attr(feature = "serde", serde(rename = "twistLimit"))]
     pub m_twistLimit: hkpTwistLimitConstraintAtom<'a>,
@@ -42,6 +44,7 @@ pub struct hkpRagdollLimitsDataAtoms<'a> {
     /// - name: `coneLimit`(ctype: `struct hkpConeLimitConstraintAtom`)
     /// - offset: `132`(x86)/`132`(x86_64)
     /// - type_size: ` 20`(x86)/` 20`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "coneLimit"))]
     #[cfg_attr(feature = "serde", serde(rename = "coneLimit"))]
     pub m_coneLimit: hkpConeLimitConstraintAtom<'a>,
@@ -49,6 +52,7 @@ pub struct hkpRagdollLimitsDataAtoms<'a> {
     /// - name: `planesLimit`(ctype: `struct hkpConeLimitConstraintAtom`)
     /// - offset: `152`(x86)/`152`(x86_64)
     /// - type_size: ` 20`(x86)/` 20`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "planesLimit"))]
     #[cfg_attr(feature = "serde", serde(rename = "planesLimit"))]
     pub m_planesLimit: hkpConeLimitConstraintAtom<'a>,
@@ -184,16 +188,16 @@ const _: () = {
                 {
                     let __ptr = __A::class_ptr(&mut __map);
                     let mut m_rotations: _serde::__private::Option<
-                        hkpSetLocalRotationsConstraintAtom,
+                        hkpSetLocalRotationsConstraintAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_twistLimit: _serde::__private::Option<
-                        hkpTwistLimitConstraintAtom,
+                        hkpTwistLimitConstraintAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_coneLimit: _serde::__private::Option<
-                        hkpConeLimitConstraintAtom,
+                        hkpConeLimitConstraintAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_planesLimit: _serde::__private::Option<
-                        hkpConeLimitConstraintAtom,
+                        hkpConeLimitConstraintAtom<'de>,
                     > = _serde::__private::None;
                     for i in 0..4usize {
                         match i {
@@ -207,7 +211,7 @@ const _: () = {
                                 }
                                 m_rotations = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSetLocalRotationsConstraintAtom,
+                                        hkpSetLocalRotationsConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -226,7 +230,7 @@ const _: () = {
                                 }
                                 m_twistLimit = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpTwistLimitConstraintAtom,
+                                        hkpTwistLimitConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -245,7 +249,7 @@ const _: () = {
                                 }
                                 m_coneLimit = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpConeLimitConstraintAtom,
+                                        hkpConeLimitConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -264,7 +268,7 @@ const _: () = {
                                 }
                                 m_planesLimit = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpConeLimitConstraintAtom,
+                                        hkpConeLimitConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -334,16 +338,16 @@ const _: () = {
                     __A: _serde::de::MapAccess<'de>,
                 {
                     let mut m_rotations: _serde::__private::Option<
-                        hkpSetLocalRotationsConstraintAtom,
+                        hkpSetLocalRotationsConstraintAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_twistLimit: _serde::__private::Option<
-                        hkpTwistLimitConstraintAtom,
+                        hkpTwistLimitConstraintAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_coneLimit: _serde::__private::Option<
-                        hkpConeLimitConstraintAtom,
+                        hkpConeLimitConstraintAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_planesLimit: _serde::__private::Option<
-                        hkpConeLimitConstraintAtom,
+                        hkpConeLimitConstraintAtom<'de>,
                     > = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
                         __A::next_key::<__Field>(&mut __map)?
@@ -368,7 +372,7 @@ const _: () = {
                                 }
                                 m_rotations = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSetLocalRotationsConstraintAtom,
+                                        hkpSetLocalRotationsConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -396,7 +400,7 @@ const _: () = {
                                 }
                                 m_twistLimit = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpTwistLimitConstraintAtom,
+                                        hkpTwistLimitConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -424,7 +428,7 @@ const _: () = {
                                 }
                                 m_coneLimit = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpConeLimitConstraintAtom,
+                                        hkpConeLimitConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -452,7 +456,7 @@ const _: () = {
                                 }
                                 m_planesLimit = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpConeLimitConstraintAtom,
+                                        hkpConeLimitConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

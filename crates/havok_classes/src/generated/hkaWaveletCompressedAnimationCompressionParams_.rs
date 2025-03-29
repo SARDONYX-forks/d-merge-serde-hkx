@@ -28,6 +28,7 @@ pub struct hkaWaveletCompressedAnimationCompressionParams<'a> {
     /// - name: `quantizationBits`(ctype: `hkUint16`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "quantizationBits"))]
     #[cfg_attr(feature = "serde", serde(rename = "quantizationBits"))]
     pub m_quantizationBits: U16<'a>,
@@ -35,6 +36,7 @@ pub struct hkaWaveletCompressedAnimationCompressionParams<'a> {
     /// - name: `blockSize`(ctype: `hkUint16`)
     /// - offset: `  2`(x86)/`  2`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "blockSize"))]
     #[cfg_attr(feature = "serde", serde(rename = "blockSize"))]
     pub m_blockSize: U16<'a>,
@@ -42,6 +44,7 @@ pub struct hkaWaveletCompressedAnimationCompressionParams<'a> {
     /// - name: `preserve`(ctype: `hkUint16`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "preserve"))]
     #[cfg_attr(feature = "serde", serde(rename = "preserve"))]
     pub m_preserve: U16<'a>,

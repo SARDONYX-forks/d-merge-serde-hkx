@@ -47,6 +47,7 @@ pub struct hkbEventsFromRangeModifier<'a> {
     /// - name: `eventRanges`(ctype: `struct hkbEventRangeDataArray*`)
     /// - offset: ` 52`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "eventRanges"))]
     #[cfg_attr(feature = "serde", serde(rename = "eventRanges"))]
     pub m_eventRanges: Pointer<'a>,
@@ -55,6 +56,7 @@ pub struct hkbEventsFromRangeModifier<'a> {
     /// - offset: ` 56`(x86)/` 96`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wasActiveInPreviousFrame"))]
     #[cfg_attr(feature = "serde", serde(rename = "wasActiveInPreviousFrame"))]
     pub m_wasActiveInPreviousFrame: Vec<()>,

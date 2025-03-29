@@ -33,6 +33,7 @@ pub struct hkaRagdollInstance<'a> {
     /// - name: `rigidBodies`(ctype: `hkArray<hkpRigidBody*>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rigidBodies"))]
     #[cfg_attr(feature = "serde", serde(rename = "rigidBodies"))]
     pub m_rigidBodies: Vec<Pointer<'a>>,
@@ -40,6 +41,7 @@ pub struct hkaRagdollInstance<'a> {
     /// - name: `constraints`(ctype: `hkArray<hkpConstraintInstance*>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "constraints"))]
     #[cfg_attr(feature = "serde", serde(rename = "constraints"))]
     pub m_constraints: Vec<Pointer<'a>>,
@@ -47,6 +49,7 @@ pub struct hkaRagdollInstance<'a> {
     /// - name: `boneToRigidBodyMap`(ctype: `hkArray<hkInt32>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "boneToRigidBodyMap"))]
     #[cfg_attr(feature = "serde", serde(rename = "boneToRigidBodyMap"))]
     pub m_boneToRigidBodyMap: Vec<I32<'a>>,
@@ -54,6 +57,7 @@ pub struct hkaRagdollInstance<'a> {
     /// - name: `skeleton`(ctype: `struct hkaSkeleton*`)
     /// - offset: ` 44`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "skeleton"))]
     #[cfg_attr(feature = "serde", serde(rename = "skeleton"))]
     pub m_skeleton: Pointer<'a>,

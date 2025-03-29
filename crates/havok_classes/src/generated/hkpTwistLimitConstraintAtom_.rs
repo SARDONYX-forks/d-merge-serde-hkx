@@ -33,6 +33,7 @@ pub struct hkpTwistLimitConstraintAtom<'a> {
     /// - name: `isEnabled`(ctype: `hkUint8`)
     /// - offset: `  2`(x86)/`  2`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isEnabled"))]
     #[cfg_attr(feature = "serde", serde(rename = "isEnabled"))]
     pub m_isEnabled: U8<'a>,
@@ -40,6 +41,7 @@ pub struct hkpTwistLimitConstraintAtom<'a> {
     /// - name: `twistAxis`(ctype: `hkUint8`)
     /// - offset: `  3`(x86)/`  3`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "twistAxis"))]
     #[cfg_attr(feature = "serde", serde(rename = "twistAxis"))]
     pub m_twistAxis: U8<'a>,
@@ -47,6 +49,7 @@ pub struct hkpTwistLimitConstraintAtom<'a> {
     /// - name: `refAxis`(ctype: `hkUint8`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "refAxis"))]
     #[cfg_attr(feature = "serde", serde(rename = "refAxis"))]
     pub m_refAxis: U8<'a>,

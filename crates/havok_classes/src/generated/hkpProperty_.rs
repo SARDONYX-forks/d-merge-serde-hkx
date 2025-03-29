@@ -28,6 +28,7 @@ pub struct hkpProperty<'a> {
     /// - name: `key`(ctype: `hkUint32`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "key"))]
     #[cfg_attr(feature = "serde", serde(rename = "key"))]
     pub m_key: U32<'a>,
@@ -35,6 +36,7 @@ pub struct hkpProperty<'a> {
     /// - name: `alignmentPadding`(ctype: `hkUint32`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "alignmentPadding"))]
     #[cfg_attr(feature = "serde", serde(rename = "alignmentPadding"))]
     pub m_alignmentPadding: U32<'a>,
@@ -42,6 +44,7 @@ pub struct hkpProperty<'a> {
     /// - name: `value`(ctype: `struct hkpPropertyValue`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "value"))]
     #[cfg_attr(feature = "serde", serde(rename = "value"))]
     pub m_value: hkpPropertyValue<'a>,
@@ -163,7 +166,7 @@ const _: () = {
                     let __ptr = __A::class_ptr(&mut __map);
                     let mut m_key: _serde::__private::Option<U32<'de>> = _serde::__private::None;
                     let mut m_alignmentPadding: _serde::__private::Option<U32<'de>> = _serde::__private::None;
-                    let mut m_value: _serde::__private::Option<hkpPropertyValue> = _serde::__private::None;
+                    let mut m_value: _serde::__private::Option<hkpPropertyValue<'de>> = _serde::__private::None;
                     for i in 0..3usize {
                         match i {
                             0usize => {
@@ -205,7 +208,7 @@ const _: () = {
                                     );
                                 }
                                 m_value = _serde::__private::Some(
-                                    match __A::next_value::<hkpPropertyValue>(&mut __map) {
+                                    match __A::next_value::<hkpPropertyValue<'de>>(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -259,7 +262,7 @@ const _: () = {
                 {
                     let mut m_key: _serde::__private::Option<U32<'de>> = _serde::__private::None;
                     let mut m_alignmentPadding: _serde::__private::Option<U32<'de>> = _serde::__private::None;
-                    let mut m_value: _serde::__private::Option<hkpPropertyValue> = _serde::__private::None;
+                    let mut m_value: _serde::__private::Option<hkpPropertyValue<'de>> = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
                         __A::next_key::<__Field>(&mut __map)?
                     } {
@@ -330,7 +333,7 @@ const _: () = {
                                     );
                                 }
                                 m_value = _serde::__private::Some(
-                                    match __A::next_value::<hkpPropertyValue>(&mut __map) {
+                                    match __A::next_value::<hkpPropertyValue<'de>>(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);

@@ -54,6 +54,7 @@ pub struct hkpCogWheelConstraintAtom<'a> {
     /// - name: `memOffsetToInitialAngleOffset`(ctype: `hkInt8`)
     /// - offset: ` 13`(x86)/` 13`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "memOffsetToInitialAngleOffset")
@@ -64,6 +65,7 @@ pub struct hkpCogWheelConstraintAtom<'a> {
     /// - name: `memOffsetToPrevAngle`(ctype: `hkInt8`)
     /// - offset: ` 14`(x86)/` 14`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "memOffsetToPrevAngle"))]
     #[cfg_attr(feature = "serde", serde(rename = "memOffsetToPrevAngle"))]
     pub m_memOffsetToPrevAngle: I8<'a>,
@@ -71,6 +73,7 @@ pub struct hkpCogWheelConstraintAtom<'a> {
     /// - name: `memOffsetToRevolutionCounter`(ctype: `hkInt8`)
     /// - offset: ` 15`(x86)/` 15`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "memOffsetToRevolutionCounter")

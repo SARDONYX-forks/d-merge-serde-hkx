@@ -40,6 +40,7 @@ pub struct hkpBallSocketConstraintAtom<'a> {
     /// - name: `bodiesToNotify`(ctype: `hkUint8`)
     /// - offset: `  3`(x86)/`  3`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bodiesToNotify"))]
     #[cfg_attr(feature = "serde", serde(rename = "bodiesToNotify"))]
     pub m_bodiesToNotify: U8<'a>,
@@ -47,6 +48,7 @@ pub struct hkpBallSocketConstraintAtom<'a> {
     /// - name: `velocityStabilizationFactor`(ctype: `hkUint8`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "velocityStabilizationFactor")

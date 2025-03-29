@@ -33,6 +33,7 @@ pub struct hkaMeshBinding<'a> {
     /// - name: `mesh`(ctype: `struct hkxMesh*`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "mesh"))]
     #[cfg_attr(feature = "serde", serde(rename = "mesh"))]
     pub m_mesh: Pointer<'a>,
@@ -48,6 +49,7 @@ pub struct hkaMeshBinding<'a> {
     /// - name: `skeleton`(ctype: `struct hkaSkeleton*`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "skeleton"))]
     #[cfg_attr(feature = "serde", serde(rename = "skeleton"))]
     pub m_skeleton: Pointer<'a>,
@@ -55,6 +57,7 @@ pub struct hkaMeshBinding<'a> {
     /// - name: `mappings`(ctype: `hkArray<struct hkaMeshBindingMapping>`)
     /// - offset: ` 20`(x86)/` 40`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "mappings"))]
     #[cfg_attr(feature = "serde", serde(rename = "mappings"))]
     pub m_mappings: Vec<hkaMeshBindingMapping<'a>>,
@@ -222,7 +225,7 @@ const _: () = {
                     > = _serde::__private::None;
                     let mut m_skeleton: _serde::__private::Option<Pointer<'de>> = _serde::__private::None;
                     let mut m_mappings: _serde::__private::Option<
-                        Vec<hkaMeshBindingMapping>,
+                        Vec<hkaMeshBindingMapping<'de>>,
                     > = _serde::__private::None;
                     let mut m_boneFromSkinMeshTransforms: _serde::__private::Option<
                         Vec<Transform>,
@@ -290,7 +293,7 @@ const _: () = {
                                 }
                                 m_mappings = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkaMeshBindingMapping>,
+                                        Vec<hkaMeshBindingMapping<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -389,7 +392,7 @@ const _: () = {
                     > = _serde::__private::None;
                     let mut m_skeleton: _serde::__private::Option<Pointer<'de>> = _serde::__private::None;
                     let mut m_mappings: _serde::__private::Option<
-                        Vec<hkaMeshBindingMapping>,
+                        Vec<hkaMeshBindingMapping<'de>>,
                     > = _serde::__private::None;
                     let mut m_boneFromSkinMeshTransforms: _serde::__private::Option<
                         Vec<Transform>,
@@ -495,7 +498,7 @@ const _: () = {
                                 }
                                 m_mappings = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkaMeshBindingMapping>,
+                                        Vec<hkaMeshBindingMapping<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

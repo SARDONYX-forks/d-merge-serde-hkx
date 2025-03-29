@@ -253,7 +253,7 @@ const _: () = {
                         I32<'de>,
                     > = _serde::__private::None;
                     let mut m_subparts: _serde::__private::Option<
-                        Vec<hkpMeshShapeSubpart>,
+                        Vec<hkpMeshShapeSubpart<'de>>,
                     > = _serde::__private::None;
                     let mut m_weldingInfo: _serde::__private::Option<Vec<U16<'de>>> = _serde::__private::None;
                     let mut m_weldingType: _serde::__private::Option<WeldingType> = _serde::__private::None;
@@ -414,7 +414,7 @@ const _: () = {
                                 }
                                 m_subparts = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkpMeshShapeSubpart>,
+                                        Vec<hkpMeshShapeSubpart<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

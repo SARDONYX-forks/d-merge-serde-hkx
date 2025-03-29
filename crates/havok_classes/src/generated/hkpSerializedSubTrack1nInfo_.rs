@@ -33,6 +33,7 @@ pub struct hkpSerializedSubTrack1nInfo<'a> {
     /// - name: `sectorIndex`(ctype: `hkInt32`)
     /// - offset: ` 24`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sectorIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "sectorIndex"))]
     pub m_sectorIndex: I32<'a>,
@@ -40,6 +41,7 @@ pub struct hkpSerializedSubTrack1nInfo<'a> {
     /// - name: `offsetInSector`(ctype: `hkInt32`)
     /// - offset: ` 28`(x86)/` 36`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "offsetInSector"))]
     #[cfg_attr(feature = "serde", serde(rename = "offsetInSector"))]
     pub m_offsetInSector: I32<'a>,

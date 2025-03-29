@@ -33,6 +33,7 @@ pub struct BSIStateManagerModifier<'a> {
     /// - name: `iStateVar`(ctype: `hkInt32`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "iStateVar"))]
     #[cfg_attr(feature = "serde", serde(rename = "iStateVar"))]
     pub m_iStateVar: I32<'a>,
@@ -40,6 +41,7 @@ pub struct BSIStateManagerModifier<'a> {
     /// - name: `stateData`(ctype: `hkArray<struct BSIStateManagerModifierBSiStateData>`)
     /// - offset: ` 48`(x86)/` 88`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "stateData"))]
     #[cfg_attr(feature = "serde", serde(rename = "stateData"))]
     pub m_stateData: Vec<BSIStateManagerModifierBSiStateData<'a>>,
@@ -49,6 +51,7 @@ pub struct BSIStateManagerModifier<'a> {
     /// - type_size: ` 12`(x86)/` 24`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
     #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "myStateListener"))]
     #[cfg_attr(feature = "serde", serde(rename = "myStateListener"))]
     pub m_myStateListener: BSIStateManagerModifierBSIStateManagerStateListener<'a>,
@@ -250,7 +253,7 @@ const _: () = {
                     let parent = __A::parent_value(&mut __map)?;
                     let mut m_iStateVar: _serde::__private::Option<I32<'de>> = _serde::__private::None;
                     let mut m_stateData: _serde::__private::Option<
-                        Vec<BSIStateManagerModifierBSiStateData>,
+                        Vec<BSIStateManagerModifierBSiStateData<'de>>,
                     > = _serde::__private::None;
                     let mut m_myStateListener: _serde::__private::Option<
                         BSIStateManagerModifierBSIStateManagerStateListener<'de>,
@@ -285,7 +288,7 @@ const _: () = {
                                 __A::pad(&mut __map, 0usize, 4usize)?;
                                 m_stateData = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<BSIStateManagerModifierBSiStateData>,
+                                        Vec<BSIStateManagerModifierBSiStateData<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -370,7 +373,7 @@ const _: () = {
                     let mut m_enable: _serde::__private::Option<bool> = _serde::__private::None;
                     let mut m_iStateVar: _serde::__private::Option<I32<'de>> = _serde::__private::None;
                     let mut m_stateData: _serde::__private::Option<
-                        Vec<BSIStateManagerModifierBSiStateData>,
+                        Vec<BSIStateManagerModifierBSiStateData<'de>>,
                     > = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
                         __A::next_key::<__Field>(&mut __map)?
@@ -523,7 +526,7 @@ const _: () = {
                                 }
                                 m_stateData = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<BSIStateManagerModifierBSiStateData>,
+                                        Vec<BSIStateManagerModifierBSiStateData<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

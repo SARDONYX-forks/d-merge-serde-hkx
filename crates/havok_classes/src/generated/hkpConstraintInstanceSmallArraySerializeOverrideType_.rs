@@ -29,6 +29,8 @@ pub struct hkpConstraintInstanceSmallArraySerializeOverrideType<'a> {
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "data"))]
     #[cfg_attr(feature = "serde", serde(rename = "data"))]
     pub m_data: Pointer<'a>,
@@ -36,6 +38,7 @@ pub struct hkpConstraintInstanceSmallArraySerializeOverrideType<'a> {
     /// - name: `size`(ctype: `hkUint16`)
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "size"))]
     #[cfg_attr(feature = "serde", serde(rename = "size"))]
     pub m_size: U16<'a>,
@@ -43,6 +46,7 @@ pub struct hkpConstraintInstanceSmallArraySerializeOverrideType<'a> {
     /// - name: `capacityAndFlags`(ctype: `hkUint16`)
     /// - offset: `  6`(x86)/` 10`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "capacityAndFlags"))]
     #[cfg_attr(feature = "serde", serde(rename = "capacityAndFlags"))]
     pub m_capacityAndFlags: U16<'a>,

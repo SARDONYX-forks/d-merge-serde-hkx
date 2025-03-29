@@ -40,6 +40,7 @@ pub struct hkbParticleSystemEventPayload<'a> {
     /// - name: `emitBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 10`(x86)/` 18`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "emitBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "emitBoneIndex"))]
     pub m_emitBoneIndex: I16<'a>,
@@ -61,6 +62,7 @@ pub struct hkbParticleSystemEventPayload<'a> {
     /// - name: `numParticles`(ctype: `hkInt32`)
     /// - offset: ` 48`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numParticles"))]
     #[cfg_attr(feature = "serde", serde(rename = "numParticles"))]
     pub m_numParticles: I32<'a>,

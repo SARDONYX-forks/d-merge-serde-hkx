@@ -40,6 +40,7 @@ pub struct hkpWorldCinfo<'a> {
     /// - name: `broadPhaseQuerySize`(ctype: `hkInt32`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "broadPhaseQuerySize"))]
     #[cfg_attr(feature = "serde", serde(rename = "broadPhaseQuerySize"))]
     pub m_broadPhaseQuerySize: I32<'a>,
@@ -116,6 +117,7 @@ pub struct hkpWorldCinfo<'a> {
     /// - name: `collisionFilter`(ctype: `struct hkpCollisionFilter*`)
     /// - offset: ` 88`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "collisionFilter"))]
     #[cfg_attr(feature = "serde", serde(rename = "collisionFilter"))]
     pub m_collisionFilter: Pointer<'a>,
@@ -123,6 +125,7 @@ pub struct hkpWorldCinfo<'a> {
     /// - name: `convexListFilter`(ctype: `struct hkpConvexListFilter*`)
     /// - offset: ` 92`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "convexListFilter"))]
     #[cfg_attr(feature = "serde", serde(rename = "convexListFilter"))]
     pub m_convexListFilter: Pointer<'a>,
@@ -137,6 +140,7 @@ pub struct hkpWorldCinfo<'a> {
     /// - name: `sizeOfToiEventQueue`(ctype: `hkInt32`)
     /// - offset: `100`(x86)/`108`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sizeOfToiEventQueue"))]
     #[cfg_attr(feature = "serde", serde(rename = "sizeOfToiEventQueue"))]
     pub m_sizeOfToiEventQueue: I32<'a>,
@@ -151,6 +155,7 @@ pub struct hkpWorldCinfo<'a> {
     /// - name: `memoryWatchDog`(ctype: `struct hkWorldMemoryAvailableWatchDog*`)
     /// - offset: `108`(x86)/`120`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "memoryWatchDog"))]
     #[cfg_attr(feature = "serde", serde(rename = "memoryWatchDog"))]
     pub m_memoryWatchDog: Pointer<'a>,
@@ -158,6 +163,7 @@ pub struct hkpWorldCinfo<'a> {
     /// - name: `broadPhaseNumMarkers`(ctype: `hkInt32`)
     /// - offset: `112`(x86)/`128`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "broadPhaseNumMarkers"))]
     #[cfg_attr(feature = "serde", serde(rename = "broadPhaseNumMarkers"))]
     pub m_broadPhaseNumMarkers: I32<'a>,
@@ -203,6 +209,7 @@ pub struct hkpWorldCinfo<'a> {
     /// - name: `solverIterations`(ctype: `hkInt32`)
     /// - offset: `128`(x86)/`144`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "solverIterations"))]
     #[cfg_attr(feature = "serde", serde(rename = "solverIterations"))]
     pub m_solverIterations: I32<'a>,
@@ -210,6 +217,7 @@ pub struct hkpWorldCinfo<'a> {
     /// - name: `solverMicrosteps`(ctype: `hkInt32`)
     /// - offset: `132`(x86)/`148`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "solverMicrosteps"))]
     #[cfg_attr(feature = "serde", serde(rename = "solverMicrosteps"))]
     pub m_solverMicrosteps: I32<'a>,
@@ -281,6 +289,7 @@ pub struct hkpWorldCinfo<'a> {
     /// - name: `iterativeLinearCastMaxIterations`(ctype: `hkInt32`)
     /// - offset: `160`(x86)/`176`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "iterativeLinearCastMaxIterations")
@@ -291,6 +300,7 @@ pub struct hkpWorldCinfo<'a> {
     /// - name: `deactivationNumInactiveFramesSelectFlag0`(ctype: `hkUint8`)
     /// - offset: `164`(x86)/`180`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "deactivationNumInactiveFramesSelectFlag0")
@@ -304,6 +314,7 @@ pub struct hkpWorldCinfo<'a> {
     /// - name: `deactivationNumInactiveFramesSelectFlag1`(ctype: `hkUint8`)
     /// - offset: `165`(x86)/`181`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "deactivationNumInactiveFramesSelectFlag1")
@@ -317,6 +328,7 @@ pub struct hkpWorldCinfo<'a> {
     /// - name: `deactivationIntegrateCounter`(ctype: `hkUint8`)
     /// - offset: `166`(x86)/`182`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "deactivationIntegrateCounter")
@@ -360,6 +372,7 @@ pub struct hkpWorldCinfo<'a> {
     /// - name: `maxSectorsPerMidphaseCollideTask`(ctype: `hkInt32`)
     /// - offset: `176`(x86)/`192`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "maxSectorsPerMidphaseCollideTask")
@@ -370,6 +383,7 @@ pub struct hkpWorldCinfo<'a> {
     /// - name: `maxSectorsPerNarrowphaseCollideTask`(ctype: `hkInt32`)
     /// - offset: `180`(x86)/`196`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "maxSectorsPerNarrowphaseCollideTask")
@@ -387,6 +401,7 @@ pub struct hkpWorldCinfo<'a> {
     /// - name: `maxEntriesPerToiMidphaseCollideTask`(ctype: `hkInt32`)
     /// - offset: `188`(x86)/`204`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "maxEntriesPerToiMidphaseCollideTask")
@@ -397,6 +412,7 @@ pub struct hkpWorldCinfo<'a> {
     /// - name: `maxEntriesPerToiNarrowphaseCollideTask`(ctype: `hkInt32`)
     /// - offset: `192`(x86)/`208`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "maxEntriesPerToiNarrowphaseCollideTask")
@@ -410,6 +426,7 @@ pub struct hkpWorldCinfo<'a> {
     /// - name: `maxNumToiCollisionPairsSinglethreaded`(ctype: `hkInt32`)
     /// - offset: `196`(x86)/`212`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "maxNumToiCollisionPairsSinglethreaded")
@@ -493,6 +510,7 @@ pub struct hkpWorldCinfo<'a> {
     /// - name: `minDesiredIslandSize`(ctype: `hkUint32`)
     /// - offset: `220`(x86)/`236`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "minDesiredIslandSize"))]
     #[cfg_attr(feature = "serde", serde(rename = "minDesiredIslandSize"))]
     pub m_minDesiredIslandSize: U32<'a>,

@@ -97,6 +97,7 @@ pub struct hkbFootIkModifier<'a> {
     /// - name: `collisionFilterInfo`(ctype: `hkUint32`)
     /// - offset: `164`(x86)/`196`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "collisionFilterInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "collisionFilterInfo"))]
     pub m_collisionFilterInfo: U32<'a>,
@@ -154,6 +155,8 @@ pub struct hkbFootIkModifier<'a> {
     /// - offset: `184`(x86)/`216`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "internalLegData"))]
     #[cfg_attr(feature = "serde", serde(rename = "internalLegData"))]
     pub m_internalLegData: Vec<hkbFootIkModifierInternalLegData<'a>>,
@@ -162,6 +165,7 @@ pub struct hkbFootIkModifier<'a> {
     /// - offset: `196`(x86)/`232`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "prevIsFootIkEnabled"))]
     #[cfg_attr(feature = "serde", serde(rename = "prevIsFootIkEnabled"))]
     pub m_prevIsFootIkEnabled: f32,
@@ -170,6 +174,7 @@ pub struct hkbFootIkModifier<'a> {
     /// - offset: `200`(x86)/`236`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isSetUp"))]
     #[cfg_attr(feature = "serde", serde(rename = "isSetUp"))]
     pub m_isSetUp: bool,
@@ -178,6 +183,7 @@ pub struct hkbFootIkModifier<'a> {
     /// - offset: `201`(x86)/`237`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isGroundPositionValid"))]
     #[cfg_attr(feature = "serde", serde(rename = "isGroundPositionValid"))]
     pub m_isGroundPositionValid: bool,
@@ -186,6 +192,7 @@ pub struct hkbFootIkModifier<'a> {
     /// - offset: `204`(x86)/`240`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "timeStep"))]
     #[cfg_attr(feature = "serde", serde(rename = "timeStep"))]
     pub m_timeStep: f32,
@@ -490,7 +497,7 @@ const _: () = {
                     let mut m_useCharacterUpVector: _serde::__private::Option<bool> = _serde::__private::None;
                     let mut m_alignMode: _serde::__private::Option<AlignMode> = _serde::__private::None;
                     let mut m_internalLegData: _serde::__private::Option<
-                        Vec<hkbFootIkModifierInternalLegData>,
+                        Vec<hkbFootIkModifierInternalLegData<'de>>,
                     > = _serde::__private::None;
                     let mut m_prevIsFootIkEnabled: _serde::__private::Option<f32> = _serde::__private::None;
                     let mut m_isSetUp: _serde::__private::Option<bool> = _serde::__private::None;
@@ -818,7 +825,7 @@ const _: () = {
                                 }
                                 m_internalLegData = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkbFootIkModifierInternalLegData>,
+                                        Vec<hkbFootIkModifierInternalLegData<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

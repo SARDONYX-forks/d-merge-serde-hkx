@@ -56,6 +56,7 @@ pub struct hkaSplineCompressedAnimationTrackCompressionParams<'a> {
     /// - name: `rotationDegree`(ctype: `hkUint16`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rotationDegree"))]
     #[cfg_attr(feature = "serde", serde(rename = "rotationDegree"))]
     pub m_rotationDegree: U16<'a>,
@@ -63,6 +64,7 @@ pub struct hkaSplineCompressedAnimationTrackCompressionParams<'a> {
     /// - name: `translationDegree`(ctype: `hkUint16`)
     /// - offset: ` 18`(x86)/` 18`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "translationDegree"))]
     #[cfg_attr(feature = "serde", serde(rename = "translationDegree"))]
     pub m_translationDegree: U16<'a>,
@@ -70,6 +72,7 @@ pub struct hkaSplineCompressedAnimationTrackCompressionParams<'a> {
     /// - name: `scaleDegree`(ctype: `hkUint16`)
     /// - offset: ` 20`(x86)/` 20`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "scaleDegree"))]
     #[cfg_attr(feature = "serde", serde(rename = "scaleDegree"))]
     pub m_scaleDegree: U16<'a>,
@@ -77,6 +80,7 @@ pub struct hkaSplineCompressedAnimationTrackCompressionParams<'a> {
     /// - name: `floatingDegree`(ctype: `hkUint16`)
     /// - offset: ` 22`(x86)/` 22`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "floatingDegree"))]
     #[cfg_attr(feature = "serde", serde(rename = "floatingDegree"))]
     pub m_floatingDegree: U16<'a>,

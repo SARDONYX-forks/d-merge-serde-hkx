@@ -33,6 +33,7 @@ pub struct hkpPhysicsSystemWithContacts<'a> {
     /// - name: `contacts`(ctype: `hkArray<hkpSerializedAgentNnEntry*>`)
     /// - offset: ` 68`(x86)/`104`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "contacts"))]
     #[cfg_attr(feature = "serde", serde(rename = "contacts"))]
     pub m_contacts: Vec<Pointer<'a>>,

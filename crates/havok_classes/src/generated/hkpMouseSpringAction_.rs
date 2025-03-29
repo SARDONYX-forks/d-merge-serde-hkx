@@ -75,6 +75,7 @@ pub struct hkpMouseSpringAction<'a> {
     /// - name: `shapeKey`(ctype: `hkUint32`)
     /// - offset: ` 80`(x86)/`112`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "shapeKey"))]
     #[cfg_attr(feature = "serde", serde(rename = "shapeKey"))]
     pub m_shapeKey: U32<'a>,
@@ -83,6 +84,8 @@ pub struct hkpMouseSpringAction<'a> {
     /// - offset: ` 84`(x86)/`120`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "applyCallbacks"))]
     #[cfg_attr(feature = "serde", serde(rename = "applyCallbacks"))]
     pub m_applyCallbacks: Vec<Pointer<'a>>,

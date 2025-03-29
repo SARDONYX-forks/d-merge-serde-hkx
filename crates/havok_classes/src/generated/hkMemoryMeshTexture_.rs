@@ -41,6 +41,7 @@ pub struct hkMemoryMeshTexture<'a> {
     /// - name: `data`(ctype: `hkArray<hkUint8>`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "data"))]
     #[cfg_attr(feature = "serde", serde(rename = "data"))]
     pub m_data: Vec<U8<'a>>,
@@ -76,6 +77,7 @@ pub struct hkMemoryMeshTexture<'a> {
     /// - name: `textureCoordChannel`(ctype: `hkInt32`)
     /// - offset: ` 28`(x86)/` 44`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "textureCoordChannel"))]
     #[cfg_attr(feature = "serde", serde(rename = "textureCoordChannel"))]
     pub m_textureCoordChannel: I32<'a>,

@@ -33,6 +33,7 @@ pub struct hkbIntVariableSequencedData<'a> {
     /// - name: `samples`(ctype: `hkArray<struct hkbIntVariableSequencedDataSample>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "samples"))]
     #[cfg_attr(feature = "serde", serde(rename = "samples"))]
     pub m_samples: Vec<hkbIntVariableSequencedDataSample<'a>>,
@@ -40,6 +41,7 @@ pub struct hkbIntVariableSequencedData<'a> {
     /// - name: `variableIndex`(ctype: `hkInt32`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "variableIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "variableIndex"))]
     pub m_variableIndex: I32<'a>,
@@ -187,7 +189,7 @@ const _: () = {
                     let __ptr = __A::class_ptr(&mut __map);
                     let parent = __A::parent_value(&mut __map)?;
                     let mut m_samples: _serde::__private::Option<
-                        Vec<hkbIntVariableSequencedDataSample>,
+                        Vec<hkbIntVariableSequencedDataSample<'de>>,
                     > = _serde::__private::None;
                     let mut m_variableIndex: _serde::__private::Option<I32<'de>> = _serde::__private::None;
                     for i in 0..2usize {
@@ -202,7 +204,7 @@ const _: () = {
                                 }
                                 m_samples = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkbIntVariableSequencedDataSample>,
+                                        Vec<hkbIntVariableSequencedDataSample<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -266,7 +268,7 @@ const _: () = {
                     __A: _serde::de::MapAccess<'de>,
                 {
                     let mut m_samples: _serde::__private::Option<
-                        Vec<hkbIntVariableSequencedDataSample>,
+                        Vec<hkbIntVariableSequencedDataSample<'de>>,
                     > = _serde::__private::None;
                     let mut m_variableIndex: _serde::__private::Option<I32<'de>> = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
@@ -292,7 +294,7 @@ const _: () = {
                                 }
                                 m_samples = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkbIntVariableSequencedDataSample>,
+                                        Vec<hkbIntVariableSequencedDataSample<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

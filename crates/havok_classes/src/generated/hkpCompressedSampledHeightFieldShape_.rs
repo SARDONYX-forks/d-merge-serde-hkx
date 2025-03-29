@@ -33,6 +33,7 @@ pub struct hkpCompressedSampledHeightFieldShape<'a> {
     /// - name: `storage`(ctype: `hkArray<hkUint16>`)
     /// - offset: ` 96`(x86)/`112`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "storage"))]
     #[cfg_attr(feature = "serde", serde(rename = "storage"))]
     pub m_storage: Vec<U16<'a>>,

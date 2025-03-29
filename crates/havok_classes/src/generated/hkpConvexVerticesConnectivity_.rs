@@ -33,6 +33,7 @@ pub struct hkpConvexVerticesConnectivity<'a> {
     /// - name: `vertexIndices`(ctype: `hkArray<hkUint16>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vertexIndices"))]
     #[cfg_attr(feature = "serde", serde(rename = "vertexIndices"))]
     pub m_vertexIndices: Vec<U16<'a>>,
@@ -40,6 +41,7 @@ pub struct hkpConvexVerticesConnectivity<'a> {
     /// - name: `numVerticesPerFace`(ctype: `hkArray<hkUint8>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numVerticesPerFace"))]
     #[cfg_attr(feature = "serde", serde(rename = "numVerticesPerFace"))]
     pub m_numVerticesPerFace: Vec<U8<'a>>,

@@ -33,6 +33,7 @@ pub struct hkpExtendedMeshShapeTrianglesSubpart<'a> {
     /// - name: `numTriangleShapes`(ctype: `hkInt32`)
     /// - offset: ` 20`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numTriangleShapes"))]
     #[cfg_attr(feature = "serde", serde(rename = "numTriangleShapes"))]
     pub m_numTriangleShapes: I32<'a>,
@@ -41,6 +42,8 @@ pub struct hkpExtendedMeshShapeTrianglesSubpart<'a> {
     /// - offset: ` 24`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vertexBase"))]
     #[cfg_attr(feature = "serde", serde(rename = "vertexBase"))]
     pub m_vertexBase: Pointer<'a>,
@@ -48,6 +51,7 @@ pub struct hkpExtendedMeshShapeTrianglesSubpart<'a> {
     /// - name: `numVertices`(ctype: `hkInt32`)
     /// - offset: ` 28`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numVertices"))]
     #[cfg_attr(feature = "serde", serde(rename = "numVertices"))]
     pub m_numVertices: I32<'a>,
@@ -56,6 +60,8 @@ pub struct hkpExtendedMeshShapeTrianglesSubpart<'a> {
     /// - offset: ` 32`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "indexBase"))]
     #[cfg_attr(feature = "serde", serde(rename = "indexBase"))]
     pub m_indexBase: Pointer<'a>,
@@ -63,6 +69,7 @@ pub struct hkpExtendedMeshShapeTrianglesSubpart<'a> {
     /// - name: `vertexStriding`(ctype: `hkUint16`)
     /// - offset: ` 36`(x86)/` 72`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vertexStriding"))]
     #[cfg_attr(feature = "serde", serde(rename = "vertexStriding"))]
     pub m_vertexStriding: U16<'a>,
@@ -70,6 +77,7 @@ pub struct hkpExtendedMeshShapeTrianglesSubpart<'a> {
     /// - name: `triangleOffset`(ctype: `hkInt32`)
     /// - offset: ` 40`(x86)/` 76`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "triangleOffset"))]
     #[cfg_attr(feature = "serde", serde(rename = "triangleOffset"))]
     pub m_triangleOffset: I32<'a>,
@@ -77,6 +85,7 @@ pub struct hkpExtendedMeshShapeTrianglesSubpart<'a> {
     /// - name: `indexStriding`(ctype: `hkUint16`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "indexStriding"))]
     #[cfg_attr(feature = "serde", serde(rename = "indexStriding"))]
     pub m_indexStriding: U16<'a>,
@@ -91,6 +100,7 @@ pub struct hkpExtendedMeshShapeTrianglesSubpart<'a> {
     /// - name: `flipAlternateTriangles`(ctype: `hkInt8`)
     /// - offset: ` 47`(x86)/` 83`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "flipAlternateTriangles"))]
     #[cfg_attr(feature = "serde", serde(rename = "flipAlternateTriangles"))]
     pub m_flipAlternateTriangles: I8<'a>,

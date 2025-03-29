@@ -62,6 +62,7 @@ pub struct BSInterpValueModifier<'a> {
     /// - offset: ` 60`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "timeStep"))]
     #[cfg_attr(feature = "serde", serde(rename = "timeStep"))]
     pub m_timeStep: f32,

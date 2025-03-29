@@ -35,6 +35,7 @@ pub struct hkVertexFormatElement<'a> {
     /// - name: `numValues`(ctype: `hkUint8`)
     /// - offset: `  1`(x86)/`  1`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numValues"))]
     #[cfg_attr(feature = "serde", serde(rename = "numValues"))]
     pub m_numValues: U8<'a>,
@@ -49,6 +50,7 @@ pub struct hkVertexFormatElement<'a> {
     /// - name: `subUsage`(ctype: `hkUint8`)
     /// - offset: `  3`(x86)/`  3`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "subUsage"))]
     #[cfg_attr(feature = "serde", serde(rename = "subUsage"))]
     pub m_subUsage: U8<'a>,
@@ -63,6 +65,7 @@ pub struct hkVertexFormatElement<'a> {
     /// - name: `pad`(ctype: `hkUint8[3]`)
     /// - offset: `  5`(x86)/`  5`(x86_64)
     /// - type_size: `  3`(x86)/`  3`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pad"))]
     #[cfg_attr(feature = "serde", serde(rename = "pad"))]
     pub m_pad: [U8<'a>; 3usize],

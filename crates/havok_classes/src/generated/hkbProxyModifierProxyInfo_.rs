@@ -70,6 +70,7 @@ pub struct hkbProxyModifierProxyInfo<'a> {
     /// - name: `userPlanes`(ctype: `hkUint32`)
     /// - offset: ` 40`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "userPlanes"))]
     #[cfg_attr(feature = "serde", serde(rename = "userPlanes"))]
     pub m_userPlanes: U32<'a>,
@@ -112,6 +113,7 @@ pub struct hkbProxyModifierProxyInfo<'a> {
     /// - name: `maxCastIterations`(ctype: `hkInt32`)
     /// - offset: ` 64`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxCastIterations"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxCastIterations"))]
     pub m_maxCastIterations: I32<'a>,

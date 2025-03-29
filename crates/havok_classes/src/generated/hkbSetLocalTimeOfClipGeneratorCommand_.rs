@@ -33,6 +33,7 @@ pub struct hkbSetLocalTimeOfClipGeneratorCommand<'a> {
     /// - name: `characterId`(ctype: `hkUint64`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "characterId"))]
     #[cfg_attr(feature = "serde", serde(rename = "characterId"))]
     pub m_characterId: U64<'a>,
@@ -47,6 +48,7 @@ pub struct hkbSetLocalTimeOfClipGeneratorCommand<'a> {
     /// - name: `nodeId`(ctype: `hkInt16`)
     /// - offset: ` 20`(x86)/` 28`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nodeId"))]
     #[cfg_attr(feature = "serde", serde(rename = "nodeId"))]
     pub m_nodeId: I16<'a>,

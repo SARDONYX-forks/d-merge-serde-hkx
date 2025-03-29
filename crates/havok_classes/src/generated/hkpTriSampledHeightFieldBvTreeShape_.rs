@@ -33,6 +33,7 @@ pub struct hkpTriSampledHeightFieldBvTreeShape<'a> {
     /// - name: `childContainer`(ctype: `struct hkpSingleShapeContainer`)
     /// - offset: ` 20`(x86)/` 40`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "childContainer"))]
     #[cfg_attr(feature = "serde", serde(rename = "childContainer"))]
     pub m_childContainer: hkpSingleShapeContainer<'a>,
@@ -41,6 +42,8 @@ pub struct hkpTriSampledHeightFieldBvTreeShape<'a> {
     /// - offset: ` 28`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "childSize"))]
     #[cfg_attr(feature = "serde", serde(rename = "childSize"))]
     pub m_childSize: I32<'a>,
@@ -55,6 +58,7 @@ pub struct hkpTriSampledHeightFieldBvTreeShape<'a> {
     /// - name: `padding`(ctype: `hkUint8[12]`)
     /// - offset: ` 33`(x86)/` 61`(x86_64)
     /// - type_size: ` 12`(x86)/` 12`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "padding"))]
     #[cfg_attr(feature = "serde", serde(rename = "padding"))]
     pub m_padding: [U8<'a>; 12usize],
@@ -218,7 +222,7 @@ const _: () = {
                     let __ptr = __A::class_ptr(&mut __map);
                     let parent = __A::parent_value(&mut __map)?;
                     let mut m_childContainer: _serde::__private::Option<
-                        hkpSingleShapeContainer,
+                        hkpSingleShapeContainer<'de>,
                     > = _serde::__private::None;
                     let mut m_childSize: _serde::__private::Option<I32<'de>> = _serde::__private::None;
                     let mut m_wantAabbRejectionTest: _serde::__private::Option<bool> = _serde::__private::None;
@@ -235,7 +239,7 @@ const _: () = {
                                 }
                                 m_childContainer = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSingleShapeContainer,
+                                        hkpSingleShapeContainer<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -359,7 +363,7 @@ const _: () = {
                     let mut m_userData: _serde::__private::Option<Ulong> = _serde::__private::None;
                     let mut m_bvTreeType: _serde::__private::Option<BvTreeType> = _serde::__private::None;
                     let mut m_childContainer: _serde::__private::Option<
-                        hkpSingleShapeContainer,
+                        hkpSingleShapeContainer<'de>,
                     > = _serde::__private::None;
                     let mut m_wantAabbRejectionTest: _serde::__private::Option<bool> = _serde::__private::None;
                     let mut m_padding: _serde::__private::Option<[U8<'de>; 12usize]> = _serde::__private::None;
@@ -438,7 +442,7 @@ const _: () = {
                                 }
                                 m_childContainer = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSingleShapeContainer,
+                                        hkpSingleShapeContainer<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

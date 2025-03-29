@@ -49,6 +49,8 @@ pub struct hkbNode<'a> {
     /// - offset: ` 36`(x86)/` 64`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "id"))]
     #[cfg_attr(feature = "serde", serde(rename = "id"))]
     pub m_id: I16<'a>,
@@ -57,6 +59,7 @@ pub struct hkbNode<'a> {
     /// - offset: ` 38`(x86)/` 66`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "cloneState"))]
     #[cfg_attr(feature = "serde", serde(rename = "cloneState"))]
     pub m_cloneState: I8<'a>,
@@ -65,6 +68,7 @@ pub struct hkbNode<'a> {
     /// - offset: ` 39`(x86)/` 67`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "padNode"))]
     #[cfg_attr(feature = "serde", serde(rename = "padNode"))]
     pub m_padNode: [bool; 1usize],

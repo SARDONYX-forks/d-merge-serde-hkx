@@ -41,6 +41,7 @@ pub struct hkMonitorStreamColorTable<'a> {
     /// - name: `defaultColor`(ctype: `hkUint32`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "defaultColor"))]
     #[cfg_attr(feature = "serde", serde(rename = "defaultColor"))]
     pub m_defaultColor: U32<'a>,

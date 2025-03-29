@@ -90,6 +90,7 @@ pub struct hkbCharacterControllerModifier<'a> {
     /// - offset: `112`(x86)/`144`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "gravity"))]
     #[cfg_attr(feature = "serde", serde(rename = "gravity"))]
     pub m_gravity: Vector4,
@@ -98,6 +99,7 @@ pub struct hkbCharacterControllerModifier<'a> {
     /// - offset: `128`(x86)/`160`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "timestep"))]
     #[cfg_attr(feature = "serde", serde(rename = "timestep"))]
     pub m_timestep: f32,
@@ -106,6 +108,7 @@ pub struct hkbCharacterControllerModifier<'a> {
     /// - offset: `132`(x86)/`164`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isInitialVelocityAdded"))]
     #[cfg_attr(feature = "serde", serde(rename = "isInitialVelocityAdded"))]
     pub m_isInitialVelocityAdded: bool,

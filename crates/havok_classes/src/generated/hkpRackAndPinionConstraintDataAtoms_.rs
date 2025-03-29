@@ -28,6 +28,7 @@ pub struct hkpRackAndPinionConstraintDataAtoms<'a> {
     /// - name: `transforms`(ctype: `struct hkpSetLocalTransformsConstraintAtom`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `144`(x86)/`144`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transforms"))]
     #[cfg_attr(feature = "serde", serde(rename = "transforms"))]
     pub m_transforms: hkpSetLocalTransformsConstraintAtom<'a>,
@@ -35,6 +36,7 @@ pub struct hkpRackAndPinionConstraintDataAtoms<'a> {
     /// - name: `rackAndPinion`(ctype: `struct hkpRackAndPinionConstraintAtom`)
     /// - offset: `144`(x86)/`144`(x86_64)
     /// - type_size: ` 12`(x86)/` 12`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rackAndPinion"))]
     #[cfg_attr(feature = "serde", serde(rename = "rackAndPinion"))]
     pub m_rackAndPinion: hkpRackAndPinionConstraintAtom<'a>,
@@ -164,10 +166,10 @@ const _: () = {
                 {
                     let __ptr = __A::class_ptr(&mut __map);
                     let mut m_transforms: _serde::__private::Option<
-                        hkpSetLocalTransformsConstraintAtom,
+                        hkpSetLocalTransformsConstraintAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_rackAndPinion: _serde::__private::Option<
-                        hkpRackAndPinionConstraintAtom,
+                        hkpRackAndPinionConstraintAtom<'de>,
                     > = _serde::__private::None;
                     for i in 0..2usize {
                         match i {
@@ -181,7 +183,7 @@ const _: () = {
                                 }
                                 m_transforms = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSetLocalTransformsConstraintAtom,
+                                        hkpSetLocalTransformsConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -200,7 +202,7 @@ const _: () = {
                                 }
                                 m_rackAndPinion = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpRackAndPinionConstraintAtom,
+                                        hkpRackAndPinionConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -248,10 +250,10 @@ const _: () = {
                     __A: _serde::de::MapAccess<'de>,
                 {
                     let mut m_transforms: _serde::__private::Option<
-                        hkpSetLocalTransformsConstraintAtom,
+                        hkpSetLocalTransformsConstraintAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_rackAndPinion: _serde::__private::Option<
-                        hkpRackAndPinionConstraintAtom,
+                        hkpRackAndPinionConstraintAtom<'de>,
                     > = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
                         __A::next_key::<__Field>(&mut __map)?
@@ -276,7 +278,7 @@ const _: () = {
                                 }
                                 m_transforms = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSetLocalTransformsConstraintAtom,
+                                        hkpSetLocalTransformsConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -304,7 +306,7 @@ const _: () = {
                                 }
                                 m_rackAndPinion = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpRackAndPinionConstraintAtom,
+                                        hkpRackAndPinionConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

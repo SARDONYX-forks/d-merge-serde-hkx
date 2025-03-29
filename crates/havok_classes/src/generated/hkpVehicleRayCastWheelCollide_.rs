@@ -33,6 +33,7 @@ pub struct hkpVehicleRayCastWheelCollide<'a> {
     /// - name: `wheelCollisionFilterInfo`(ctype: `hkUint32`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wheelCollisionFilterInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "wheelCollisionFilterInfo"))]
     pub m_wheelCollisionFilterInfo: U32<'a>,
@@ -40,6 +41,7 @@ pub struct hkpVehicleRayCastWheelCollide<'a> {
     /// - name: `phantom`(ctype: `struct hkpAabbPhantom*`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "phantom"))]
     #[cfg_attr(feature = "serde", serde(rename = "phantom"))]
     pub m_phantom: Pointer<'a>,

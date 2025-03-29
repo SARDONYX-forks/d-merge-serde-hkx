@@ -40,6 +40,7 @@ pub struct hkpRagdollMotorConstraintAtom<'a> {
     /// - name: `initializedOffset`(ctype: `hkInt16`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "initializedOffset"))]
     #[cfg_attr(feature = "serde", serde(rename = "initializedOffset"))]
     pub m_initializedOffset: I16<'a>,
@@ -47,6 +48,7 @@ pub struct hkpRagdollMotorConstraintAtom<'a> {
     /// - name: `previousTargetAnglesOffset`(ctype: `hkInt16`)
     /// - offset: `  6`(x86)/`  6`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "previousTargetAnglesOffset"))]
     #[cfg_attr(feature = "serde", serde(rename = "previousTargetAnglesOffset"))]
     pub m_previousTargetAnglesOffset: I16<'a>,
@@ -61,6 +63,7 @@ pub struct hkpRagdollMotorConstraintAtom<'a> {
     /// - name: `motors`(ctype: `struct hkpConstraintMotor*`)
     /// - offset: ` 64`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 24`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "motors"))]
     #[cfg_attr(feature = "serde", serde(rename = "motors"))]
     pub m_motors: [Pointer<'a>; 3usize],

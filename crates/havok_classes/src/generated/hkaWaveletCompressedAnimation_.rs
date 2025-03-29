@@ -33,6 +33,7 @@ pub struct hkaWaveletCompressedAnimation<'a> {
     /// - name: `numberOfPoses`(ctype: `hkInt32`)
     /// - offset: ` 40`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numberOfPoses"))]
     #[cfg_attr(feature = "serde", serde(rename = "numberOfPoses"))]
     pub m_numberOfPoses: I32<'a>,
@@ -40,6 +41,7 @@ pub struct hkaWaveletCompressedAnimation<'a> {
     /// - name: `blockSize`(ctype: `hkInt32`)
     /// - offset: ` 44`(x86)/` 60`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "blockSize"))]
     #[cfg_attr(feature = "serde", serde(rename = "blockSize"))]
     pub m_blockSize: I32<'a>,
@@ -47,6 +49,7 @@ pub struct hkaWaveletCompressedAnimation<'a> {
     /// - name: `qFormat`(ctype: `struct hkaWaveletCompressedAnimationQuantizationFormat`)
     /// - offset: ` 48`(x86)/` 64`(x86_64)
     /// - type_size: ` 20`(x86)/` 20`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "qFormat"))]
     #[cfg_attr(feature = "serde", serde(rename = "qFormat"))]
     pub m_qFormat: hkaWaveletCompressedAnimationQuantizationFormat<'a>,
@@ -54,6 +57,7 @@ pub struct hkaWaveletCompressedAnimation<'a> {
     /// - name: `staticMaskIdx`(ctype: `hkUint32`)
     /// - offset: ` 68`(x86)/` 84`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "staticMaskIdx"))]
     #[cfg_attr(feature = "serde", serde(rename = "staticMaskIdx"))]
     pub m_staticMaskIdx: U32<'a>,
@@ -61,6 +65,7 @@ pub struct hkaWaveletCompressedAnimation<'a> {
     /// - name: `staticDOFsIdx`(ctype: `hkUint32`)
     /// - offset: ` 72`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "staticDOFsIdx"))]
     #[cfg_attr(feature = "serde", serde(rename = "staticDOFsIdx"))]
     pub m_staticDOFsIdx: U32<'a>,
@@ -68,6 +73,7 @@ pub struct hkaWaveletCompressedAnimation<'a> {
     /// - name: `numStaticTransformDOFs`(ctype: `hkUint32`)
     /// - offset: ` 76`(x86)/` 92`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numStaticTransformDOFs"))]
     #[cfg_attr(feature = "serde", serde(rename = "numStaticTransformDOFs"))]
     pub m_numStaticTransformDOFs: U32<'a>,
@@ -75,6 +81,7 @@ pub struct hkaWaveletCompressedAnimation<'a> {
     /// - name: `numDynamicTransformDOFs`(ctype: `hkUint32`)
     /// - offset: ` 80`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numDynamicTransformDOFs"))]
     #[cfg_attr(feature = "serde", serde(rename = "numDynamicTransformDOFs"))]
     pub m_numDynamicTransformDOFs: U32<'a>,
@@ -82,6 +89,7 @@ pub struct hkaWaveletCompressedAnimation<'a> {
     /// - name: `blockIndexIdx`(ctype: `hkUint32`)
     /// - offset: ` 84`(x86)/`100`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "blockIndexIdx"))]
     #[cfg_attr(feature = "serde", serde(rename = "blockIndexIdx"))]
     pub m_blockIndexIdx: U32<'a>,
@@ -89,6 +97,7 @@ pub struct hkaWaveletCompressedAnimation<'a> {
     /// - name: `blockIndexSize`(ctype: `hkUint32`)
     /// - offset: ` 88`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "blockIndexSize"))]
     #[cfg_attr(feature = "serde", serde(rename = "blockIndexSize"))]
     pub m_blockIndexSize: U32<'a>,
@@ -96,6 +105,7 @@ pub struct hkaWaveletCompressedAnimation<'a> {
     /// - name: `quantizedDataIdx`(ctype: `hkUint32`)
     /// - offset: ` 92`(x86)/`108`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "quantizedDataIdx"))]
     #[cfg_attr(feature = "serde", serde(rename = "quantizedDataIdx"))]
     pub m_quantizedDataIdx: U32<'a>,
@@ -103,6 +113,7 @@ pub struct hkaWaveletCompressedAnimation<'a> {
     /// - name: `quantizedDataSize`(ctype: `hkUint32`)
     /// - offset: ` 96`(x86)/`112`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "quantizedDataSize"))]
     #[cfg_attr(feature = "serde", serde(rename = "quantizedDataSize"))]
     pub m_quantizedDataSize: U32<'a>,
@@ -110,6 +121,7 @@ pub struct hkaWaveletCompressedAnimation<'a> {
     /// - name: `dataBuffer`(ctype: `hkArray<hkUint8>`)
     /// - offset: `100`(x86)/`120`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "dataBuffer"))]
     #[cfg_attr(feature = "serde", serde(rename = "dataBuffer"))]
     pub m_dataBuffer: Vec<U8<'a>>,
@@ -338,7 +350,7 @@ const _: () = {
                     let mut m_numberOfPoses: _serde::__private::Option<I32<'de>> = _serde::__private::None;
                     let mut m_blockSize: _serde::__private::Option<I32<'de>> = _serde::__private::None;
                     let mut m_qFormat: _serde::__private::Option<
-                        hkaWaveletCompressedAnimationQuantizationFormat,
+                        hkaWaveletCompressedAnimationQuantizationFormat<'de>,
                     > = _serde::__private::None;
                     let mut m_staticMaskIdx: _serde::__private::Option<U32<'de>> = _serde::__private::None;
                     let mut m_staticDOFsIdx: _serde::__private::Option<U32<'de>> = _serde::__private::None;
@@ -399,7 +411,7 @@ const _: () = {
                                 }
                                 m_qFormat = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkaWaveletCompressedAnimationQuantizationFormat,
+                                        hkaWaveletCompressedAnimationQuantizationFormat<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -727,7 +739,7 @@ const _: () = {
                     let mut m_numberOfPoses: _serde::__private::Option<I32<'de>> = _serde::__private::None;
                     let mut m_blockSize: _serde::__private::Option<I32<'de>> = _serde::__private::None;
                     let mut m_qFormat: _serde::__private::Option<
-                        hkaWaveletCompressedAnimationQuantizationFormat,
+                        hkaWaveletCompressedAnimationQuantizationFormat<'de>,
                     > = _serde::__private::None;
                     let mut m_staticMaskIdx: _serde::__private::Option<U32<'de>> = _serde::__private::None;
                     let mut m_staticDOFsIdx: _serde::__private::Option<U32<'de>> = _serde::__private::None;
@@ -977,7 +989,7 @@ const _: () = {
                                 }
                                 m_qFormat = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkaWaveletCompressedAnimationQuantizationFormat,
+                                        hkaWaveletCompressedAnimationQuantizationFormat<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

@@ -33,6 +33,7 @@ pub struct hkbEventDrivenModifier<'a> {
     /// - name: `activateEventId`(ctype: `hkInt32`)
     /// - offset: ` 48`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "activateEventId"))]
     #[cfg_attr(feature = "serde", serde(rename = "activateEventId"))]
     pub m_activateEventId: I32<'a>,
@@ -40,6 +41,7 @@ pub struct hkbEventDrivenModifier<'a> {
     /// - name: `deactivateEventId`(ctype: `hkInt32`)
     /// - offset: ` 52`(x86)/` 92`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "deactivateEventId"))]
     #[cfg_attr(feature = "serde", serde(rename = "deactivateEventId"))]
     pub m_deactivateEventId: I32<'a>,
@@ -55,6 +57,7 @@ pub struct hkbEventDrivenModifier<'a> {
     /// - offset: ` 57`(x86)/` 97`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isActive"))]
     #[cfg_attr(feature = "serde", serde(rename = "isActive"))]
     pub m_isActive: bool,

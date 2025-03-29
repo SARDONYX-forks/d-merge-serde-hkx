@@ -40,6 +40,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - name: `sourceBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 46`(x86)/` 82`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sourceBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "sourceBoneIndex"))]
     pub m_sourceBoneIndex: I16<'a>,
@@ -47,6 +48,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - name: `startBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 48`(x86)/` 84`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "startBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "startBoneIndex"))]
     pub m_startBoneIndex: I16<'a>,
@@ -54,6 +56,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - name: `endBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 50`(x86)/` 86`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "endBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "endBoneIndex"))]
     pub m_endBoneIndex: I16<'a>,
@@ -110,6 +113,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - name: `userInfo`(ctype: `hkUint32`)
     /// - offset: ` 96`(x86)/`128`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "userInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "userInfo"))]
     pub m_userInfo: U32<'a>,
@@ -167,6 +171,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - offset: `128`(x86)/`160`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "timeStep"))]
     #[cfg_attr(feature = "serde", serde(rename = "timeStep"))]
     pub m_timeStep: f32,
@@ -175,6 +180,8 @@ pub struct BSDirectAtModifier<'a> {
     /// - offset: `132`(x86)/`168`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pSkeletonMemory"))]
     #[cfg_attr(feature = "serde", serde(rename = "pSkeletonMemory"))]
     pub m_pSkeletonMemory: Pointer<'a>,
@@ -183,6 +190,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - offset: `136`(x86)/`176`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "hasTarget"))]
     #[cfg_attr(feature = "serde", serde(rename = "hasTarget"))]
     pub m_hasTarget: bool,
@@ -191,6 +199,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - offset: `144`(x86)/`192`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "directAtTargetLocation"))]
     #[cfg_attr(feature = "serde", serde(rename = "directAtTargetLocation"))]
     pub m_directAtTargetLocation: Vector4,
@@ -199,6 +208,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - offset: `160`(x86)/`208`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "boneChainIndices"))]
     #[cfg_attr(feature = "serde", serde(rename = "boneChainIndices"))]
     pub m_boneChainIndices: Vec<()>,

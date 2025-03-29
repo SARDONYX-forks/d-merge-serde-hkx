@@ -40,6 +40,7 @@ pub struct hkbBehaviorGraphData<'a> {
     /// - name: `variableInfos`(ctype: `hkArray<struct hkbVariableInfo>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "variableInfos"))]
     #[cfg_attr(feature = "serde", serde(rename = "variableInfos"))]
     pub m_variableInfos: Vec<hkbVariableInfo<'a>>,
@@ -47,6 +48,7 @@ pub struct hkbBehaviorGraphData<'a> {
     /// - name: `characterPropertyInfos`(ctype: `hkArray<struct hkbVariableInfo>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "characterPropertyInfos"))]
     #[cfg_attr(feature = "serde", serde(rename = "characterPropertyInfos"))]
     pub m_characterPropertyInfos: Vec<hkbVariableInfo<'a>>,
@@ -54,6 +56,7 @@ pub struct hkbBehaviorGraphData<'a> {
     /// - name: `eventInfos`(ctype: `hkArray<struct hkbEventInfo>`)
     /// - offset: ` 44`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "eventInfos"))]
     #[cfg_attr(feature = "serde", serde(rename = "eventInfos"))]
     pub m_eventInfos: Vec<hkbEventInfo<'a>>,
@@ -61,6 +64,7 @@ pub struct hkbBehaviorGraphData<'a> {
     /// - name: `wordMinVariableValues`(ctype: `hkArray<struct hkbVariableValue>`)
     /// - offset: ` 56`(x86)/` 80`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wordMinVariableValues"))]
     #[cfg_attr(feature = "serde", serde(rename = "wordMinVariableValues"))]
     pub m_wordMinVariableValues: Vec<hkbVariableValue<'a>>,
@@ -68,6 +72,7 @@ pub struct hkbBehaviorGraphData<'a> {
     /// - name: `wordMaxVariableValues`(ctype: `hkArray<struct hkbVariableValue>`)
     /// - offset: ` 68`(x86)/` 96`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wordMaxVariableValues"))]
     #[cfg_attr(feature = "serde", serde(rename = "wordMaxVariableValues"))]
     pub m_wordMaxVariableValues: Vec<hkbVariableValue<'a>>,
@@ -75,6 +80,7 @@ pub struct hkbBehaviorGraphData<'a> {
     /// - name: `variableInitialValues`(ctype: `struct hkbVariableValueSet*`)
     /// - offset: ` 80`(x86)/`112`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "variableInitialValues"))]
     #[cfg_attr(feature = "serde", serde(rename = "variableInitialValues"))]
     pub m_variableInitialValues: Pointer<'a>,
@@ -82,6 +88,7 @@ pub struct hkbBehaviorGraphData<'a> {
     /// - name: `stringData`(ctype: `struct hkbBehaviorGraphStringData*`)
     /// - offset: ` 84`(x86)/`120`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "stringData"))]
     #[cfg_attr(feature = "serde", serde(rename = "stringData"))]
     pub m_stringData: Pointer<'a>,
@@ -311,17 +318,19 @@ const _: () = {
                     let parent = __A::parent_value(&mut __map)?;
                     let mut m_attributeDefaults: _serde::__private::Option<Vec<f32>> = _serde::__private::None;
                     let mut m_variableInfos: _serde::__private::Option<
-                        Vec<hkbVariableInfo>,
+                        Vec<hkbVariableInfo<'de>>,
                     > = _serde::__private::None;
                     let mut m_characterPropertyInfos: _serde::__private::Option<
-                        Vec<hkbVariableInfo>,
+                        Vec<hkbVariableInfo<'de>>,
                     > = _serde::__private::None;
-                    let mut m_eventInfos: _serde::__private::Option<Vec<hkbEventInfo>> = _serde::__private::None;
+                    let mut m_eventInfos: _serde::__private::Option<
+                        Vec<hkbEventInfo<'de>>,
+                    > = _serde::__private::None;
                     let mut m_wordMinVariableValues: _serde::__private::Option<
-                        Vec<hkbVariableValue>,
+                        Vec<hkbVariableValue<'de>>,
                     > = _serde::__private::None;
                     let mut m_wordMaxVariableValues: _serde::__private::Option<
-                        Vec<hkbVariableValue>,
+                        Vec<hkbVariableValue<'de>>,
                     > = _serde::__private::None;
                     let mut m_variableInitialValues: _serde::__private::Option<
                         Pointer<'de>,
@@ -357,7 +366,9 @@ const _: () = {
                                     );
                                 }
                                 m_variableInfos = _serde::__private::Some(
-                                    match __A::next_value::<Vec<hkbVariableInfo>>(&mut __map) {
+                                    match __A::next_value::<
+                                        Vec<hkbVariableInfo<'de>>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -376,7 +387,9 @@ const _: () = {
                                     );
                                 }
                                 m_characterPropertyInfos = _serde::__private::Some(
-                                    match __A::next_value::<Vec<hkbVariableInfo>>(&mut __map) {
+                                    match __A::next_value::<
+                                        Vec<hkbVariableInfo<'de>>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -393,7 +406,9 @@ const _: () = {
                                     );
                                 }
                                 m_eventInfos = _serde::__private::Some(
-                                    match __A::next_value::<Vec<hkbEventInfo>>(&mut __map) {
+                                    match __A::next_value::<
+                                        Vec<hkbEventInfo<'de>>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -412,7 +427,9 @@ const _: () = {
                                     );
                                 }
                                 m_wordMinVariableValues = _serde::__private::Some(
-                                    match __A::next_value::<Vec<hkbVariableValue>>(&mut __map) {
+                                    match __A::next_value::<
+                                        Vec<hkbVariableValue<'de>>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -431,7 +448,9 @@ const _: () = {
                                     );
                                 }
                                 m_wordMaxVariableValues = _serde::__private::Some(
-                                    match __A::next_value::<Vec<hkbVariableValue>>(&mut __map) {
+                                    match __A::next_value::<
+                                        Vec<hkbVariableValue<'de>>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -581,17 +600,19 @@ const _: () = {
                 {
                     let mut m_attributeDefaults: _serde::__private::Option<Vec<f32>> = _serde::__private::None;
                     let mut m_variableInfos: _serde::__private::Option<
-                        Vec<hkbVariableInfo>,
+                        Vec<hkbVariableInfo<'de>>,
                     > = _serde::__private::None;
                     let mut m_characterPropertyInfos: _serde::__private::Option<
-                        Vec<hkbVariableInfo>,
+                        Vec<hkbVariableInfo<'de>>,
                     > = _serde::__private::None;
-                    let mut m_eventInfos: _serde::__private::Option<Vec<hkbEventInfo>> = _serde::__private::None;
+                    let mut m_eventInfos: _serde::__private::Option<
+                        Vec<hkbEventInfo<'de>>,
+                    > = _serde::__private::None;
                     let mut m_wordMinVariableValues: _serde::__private::Option<
-                        Vec<hkbVariableValue>,
+                        Vec<hkbVariableValue<'de>>,
                     > = _serde::__private::None;
                     let mut m_wordMaxVariableValues: _serde::__private::Option<
-                        Vec<hkbVariableValue>,
+                        Vec<hkbVariableValue<'de>>,
                     > = _serde::__private::None;
                     let mut m_variableInitialValues: _serde::__private::Option<
                         Pointer<'de>,
@@ -647,7 +668,9 @@ const _: () = {
                                     );
                                 }
                                 m_variableInfos = _serde::__private::Some(
-                                    match __A::next_value::<Vec<hkbVariableInfo>>(&mut __map) {
+                                    match __A::next_value::<
+                                        Vec<hkbVariableInfo<'de>>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -675,7 +698,9 @@ const _: () = {
                                     );
                                 }
                                 m_characterPropertyInfos = _serde::__private::Some(
-                                    match __A::next_value::<Vec<hkbVariableInfo>>(&mut __map) {
+                                    match __A::next_value::<
+                                        Vec<hkbVariableInfo<'de>>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -701,7 +726,9 @@ const _: () = {
                                     );
                                 }
                                 m_eventInfos = _serde::__private::Some(
-                                    match __A::next_value::<Vec<hkbEventInfo>>(&mut __map) {
+                                    match __A::next_value::<
+                                        Vec<hkbEventInfo<'de>>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -729,7 +756,9 @@ const _: () = {
                                     );
                                 }
                                 m_wordMinVariableValues = _serde::__private::Some(
-                                    match __A::next_value::<Vec<hkbVariableValue>>(&mut __map) {
+                                    match __A::next_value::<
+                                        Vec<hkbVariableValue<'de>>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -757,7 +786,9 @@ const _: () = {
                                     );
                                 }
                                 m_wordMaxVariableValues = _serde::__private::Some(
-                                    match __A::next_value::<Vec<hkbVariableValue>>(&mut __map) {
+                                    match __A::next_value::<
+                                        Vec<hkbVariableValue<'de>>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);

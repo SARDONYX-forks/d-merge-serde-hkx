@@ -33,6 +33,7 @@ pub struct hkpVehicleCastBatchingManager<'a> {
     /// - name: `totalNumWheels`(ctype: `hkUint16`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "totalNumWheels"))]
     #[cfg_attr(feature = "serde", serde(rename = "totalNumWheels"))]
     pub m_totalNumWheels: U16<'a>,

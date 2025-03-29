@@ -33,6 +33,7 @@ pub struct hkpSimulation<'a> {
     /// - name: `determinismCheckFrameCounter`(ctype: `hkUint32`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "determinismCheckFrameCounter")
@@ -43,6 +44,7 @@ pub struct hkpSimulation<'a> {
     /// - name: `world`(ctype: `struct hkpWorld*`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "world"))]
     #[cfg_attr(feature = "serde", serde(rename = "world"))]
     pub m_world: Pointer<'a>,
@@ -92,6 +94,7 @@ pub struct hkpSimulation<'a> {
     /// - name: `previousStepResult`(ctype: `hkUint32`)
     /// - offset: ` 40`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "previousStepResult"))]
     #[cfg_attr(feature = "serde", serde(rename = "previousStepResult"))]
     pub m_previousStepResult: U32<'a>,

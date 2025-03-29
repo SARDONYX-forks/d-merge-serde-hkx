@@ -34,6 +34,8 @@ pub struct hkpPhantom<'a> {
     /// - offset: `140`(x86)/`208`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "overlapListeners"))]
     #[cfg_attr(feature = "serde", serde(rename = "overlapListeners"))]
     pub m_overlapListeners: Vec<Pointer<'a>>,
@@ -42,6 +44,8 @@ pub struct hkpPhantom<'a> {
     /// - offset: `152`(x86)/`224`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "phantomListeners"))]
     #[cfg_attr(feature = "serde", serde(rename = "phantomListeners"))]
     pub m_phantomListeners: Vec<Pointer<'a>>,
@@ -296,10 +300,12 @@ const _: () = {
                         hkpLinkedCollidable<'de>,
                     > = _serde::__private::None;
                     let mut m_multiThreadCheck: _serde::__private::Option<
-                        hkMultiThreadCheck,
+                        hkMultiThreadCheck<'de>,
                     > = _serde::__private::None;
                     let mut m_name: _serde::__private::Option<StringPtr<'de>> = _serde::__private::None;
-                    let mut m_properties: _serde::__private::Option<Vec<hkpProperty>> = _serde::__private::None;
+                    let mut m_properties: _serde::__private::Option<
+                        Vec<hkpProperty<'de>>,
+                    > = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
                         __A::next_key::<__Field>(&mut __map)?
                     } {
@@ -376,7 +382,9 @@ const _: () = {
                                     );
                                 }
                                 m_multiThreadCheck = _serde::__private::Some(
-                                    match __A::next_value::<hkMultiThreadCheck>(&mut __map) {
+                                    match __A::next_value::<
+                                        hkMultiThreadCheck<'de>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -426,7 +434,7 @@ const _: () = {
                                     );
                                 }
                                 m_properties = _serde::__private::Some(
-                                    match __A::next_value::<Vec<hkpProperty>>(&mut __map) {
+                                    match __A::next_value::<Vec<hkpProperty<'de>>>(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);

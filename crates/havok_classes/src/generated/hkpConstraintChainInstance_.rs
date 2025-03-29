@@ -33,6 +33,7 @@ pub struct hkpConstraintChainInstance<'a> {
     /// - name: `chainedEntities`(ctype: `hkArray<hkpEntity*>`)
     /// - offset: ` 56`(x86)/`112`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "chainedEntities"))]
     #[cfg_attr(feature = "serde", serde(rename = "chainedEntities"))]
     pub m_chainedEntities: Vec<Pointer<'a>>,
@@ -40,6 +41,7 @@ pub struct hkpConstraintChainInstance<'a> {
     /// - name: `action`(ctype: `struct hkpConstraintChainInstanceAction*`)
     /// - offset: ` 68`(x86)/`128`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "action"))]
     #[cfg_attr(feature = "serde", serde(rename = "action"))]
     pub m_action: Pointer<'a>,

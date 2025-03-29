@@ -28,6 +28,7 @@ pub struct hkpPrismaticConstraintDataAtoms<'a> {
     /// - name: `transforms`(ctype: `struct hkpSetLocalTransformsConstraintAtom`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `144`(x86)/`144`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transforms"))]
     #[cfg_attr(feature = "serde", serde(rename = "transforms"))]
     pub m_transforms: hkpSetLocalTransformsConstraintAtom<'a>,
@@ -35,6 +36,7 @@ pub struct hkpPrismaticConstraintDataAtoms<'a> {
     /// - name: `motor`(ctype: `struct hkpLinMotorConstraintAtom`)
     /// - offset: `144`(x86)/`144`(x86_64)
     /// - type_size: ` 16`(x86)/` 24`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "motor"))]
     #[cfg_attr(feature = "serde", serde(rename = "motor"))]
     pub m_motor: hkpLinMotorConstraintAtom<'a>,
@@ -42,6 +44,7 @@ pub struct hkpPrismaticConstraintDataAtoms<'a> {
     /// - name: `friction`(ctype: `struct hkpLinFrictionConstraintAtom`)
     /// - offset: `160`(x86)/`168`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "friction"))]
     #[cfg_attr(feature = "serde", serde(rename = "friction"))]
     pub m_friction: hkpLinFrictionConstraintAtom<'a>,
@@ -49,6 +52,7 @@ pub struct hkpPrismaticConstraintDataAtoms<'a> {
     /// - name: `ang`(ctype: `struct hkpAngConstraintAtom`)
     /// - offset: `168`(x86)/`176`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "ang"))]
     #[cfg_attr(feature = "serde", serde(rename = "ang"))]
     pub m_ang: hkpAngConstraintAtom<'a>,
@@ -56,6 +60,7 @@ pub struct hkpPrismaticConstraintDataAtoms<'a> {
     /// - name: `lin0`(ctype: `struct hkpLinConstraintAtom`)
     /// - offset: `172`(x86)/`180`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "lin0"))]
     #[cfg_attr(feature = "serde", serde(rename = "lin0"))]
     pub m_lin0: hkpLinConstraintAtom<'a>,
@@ -63,6 +68,7 @@ pub struct hkpPrismaticConstraintDataAtoms<'a> {
     /// - name: `lin1`(ctype: `struct hkpLinConstraintAtom`)
     /// - offset: `176`(x86)/`184`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "lin1"))]
     #[cfg_attr(feature = "serde", serde(rename = "lin1"))]
     pub m_lin1: hkpLinConstraintAtom<'a>,
@@ -70,6 +76,7 @@ pub struct hkpPrismaticConstraintDataAtoms<'a> {
     /// - name: `linLimit`(ctype: `struct hkpLinLimitConstraintAtom`)
     /// - offset: `180`(x86)/`188`(x86_64)
     /// - type_size: ` 12`(x86)/` 12`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "linLimit"))]
     #[cfg_attr(feature = "serde", serde(rename = "linLimit"))]
     pub m_linLimit: hkpLinLimitConstraintAtom<'a>,
@@ -219,19 +226,25 @@ const _: () = {
                 {
                     let __ptr = __A::class_ptr(&mut __map);
                     let mut m_transforms: _serde::__private::Option<
-                        hkpSetLocalTransformsConstraintAtom,
+                        hkpSetLocalTransformsConstraintAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_motor: _serde::__private::Option<
-                        hkpLinMotorConstraintAtom,
+                        hkpLinMotorConstraintAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_friction: _serde::__private::Option<
-                        hkpLinFrictionConstraintAtom,
+                        hkpLinFrictionConstraintAtom<'de>,
                     > = _serde::__private::None;
-                    let mut m_ang: _serde::__private::Option<hkpAngConstraintAtom> = _serde::__private::None;
-                    let mut m_lin0: _serde::__private::Option<hkpLinConstraintAtom> = _serde::__private::None;
-                    let mut m_lin1: _serde::__private::Option<hkpLinConstraintAtom> = _serde::__private::None;
+                    let mut m_ang: _serde::__private::Option<
+                        hkpAngConstraintAtom<'de>,
+                    > = _serde::__private::None;
+                    let mut m_lin0: _serde::__private::Option<
+                        hkpLinConstraintAtom<'de>,
+                    > = _serde::__private::None;
+                    let mut m_lin1: _serde::__private::Option<
+                        hkpLinConstraintAtom<'de>,
+                    > = _serde::__private::None;
                     let mut m_linLimit: _serde::__private::Option<
-                        hkpLinLimitConstraintAtom,
+                        hkpLinLimitConstraintAtom<'de>,
                     > = _serde::__private::None;
                     for i in 0..7usize {
                         match i {
@@ -245,7 +258,7 @@ const _: () = {
                                 }
                                 m_transforms = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSetLocalTransformsConstraintAtom,
+                                        hkpSetLocalTransformsConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -262,7 +275,7 @@ const _: () = {
                                 }
                                 m_motor = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpLinMotorConstraintAtom,
+                                        hkpLinMotorConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -281,7 +294,7 @@ const _: () = {
                                 }
                                 m_friction = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpLinFrictionConstraintAtom,
+                                        hkpLinFrictionConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -297,7 +310,9 @@ const _: () = {
                                     );
                                 }
                                 m_ang = _serde::__private::Some(
-                                    match __A::next_value::<hkpAngConstraintAtom>(&mut __map) {
+                                    match __A::next_value::<
+                                        hkpAngConstraintAtom<'de>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -312,7 +327,9 @@ const _: () = {
                                     );
                                 }
                                 m_lin0 = _serde::__private::Some(
-                                    match __A::next_value::<hkpLinConstraintAtom>(&mut __map) {
+                                    match __A::next_value::<
+                                        hkpLinConstraintAtom<'de>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -327,7 +344,9 @@ const _: () = {
                                     );
                                 }
                                 m_lin1 = _serde::__private::Some(
-                                    match __A::next_value::<hkpLinConstraintAtom>(&mut __map) {
+                                    match __A::next_value::<
+                                        hkpLinConstraintAtom<'de>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -345,7 +364,7 @@ const _: () = {
                                 }
                                 m_linLimit = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpLinLimitConstraintAtom,
+                                        hkpLinLimitConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -436,19 +455,25 @@ const _: () = {
                     __A: _serde::de::MapAccess<'de>,
                 {
                     let mut m_transforms: _serde::__private::Option<
-                        hkpSetLocalTransformsConstraintAtom,
+                        hkpSetLocalTransformsConstraintAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_motor: _serde::__private::Option<
-                        hkpLinMotorConstraintAtom,
+                        hkpLinMotorConstraintAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_friction: _serde::__private::Option<
-                        hkpLinFrictionConstraintAtom,
+                        hkpLinFrictionConstraintAtom<'de>,
                     > = _serde::__private::None;
-                    let mut m_ang: _serde::__private::Option<hkpAngConstraintAtom> = _serde::__private::None;
-                    let mut m_lin0: _serde::__private::Option<hkpLinConstraintAtom> = _serde::__private::None;
-                    let mut m_lin1: _serde::__private::Option<hkpLinConstraintAtom> = _serde::__private::None;
+                    let mut m_ang: _serde::__private::Option<
+                        hkpAngConstraintAtom<'de>,
+                    > = _serde::__private::None;
+                    let mut m_lin0: _serde::__private::Option<
+                        hkpLinConstraintAtom<'de>,
+                    > = _serde::__private::None;
+                    let mut m_lin1: _serde::__private::Option<
+                        hkpLinConstraintAtom<'de>,
+                    > = _serde::__private::None;
                     let mut m_linLimit: _serde::__private::Option<
-                        hkpLinLimitConstraintAtom,
+                        hkpLinLimitConstraintAtom<'de>,
                     > = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
                         __A::next_key::<__Field>(&mut __map)?
@@ -473,7 +498,7 @@ const _: () = {
                                 }
                                 m_transforms = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSetLocalTransformsConstraintAtom,
+                                        hkpSetLocalTransformsConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -499,7 +524,7 @@ const _: () = {
                                 }
                                 m_motor = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpLinMotorConstraintAtom,
+                                        hkpLinMotorConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -527,7 +552,7 @@ const _: () = {
                                 }
                                 m_friction = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpLinFrictionConstraintAtom,
+                                        hkpLinFrictionConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -552,7 +577,9 @@ const _: () = {
                                     );
                                 }
                                 m_ang = _serde::__private::Some(
-                                    match __A::next_value::<hkpAngConstraintAtom>(&mut __map) {
+                                    match __A::next_value::<
+                                        hkpAngConstraintAtom<'de>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -576,7 +603,9 @@ const _: () = {
                                     );
                                 }
                                 m_lin0 = _serde::__private::Some(
-                                    match __A::next_value::<hkpLinConstraintAtom>(&mut __map) {
+                                    match __A::next_value::<
+                                        hkpLinConstraintAtom<'de>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -600,7 +629,9 @@ const _: () = {
                                     );
                                 }
                                 m_lin1 = _serde::__private::Some(
-                                    match __A::next_value::<hkpLinConstraintAtom>(&mut __map) {
+                                    match __A::next_value::<
+                                        hkpLinConstraintAtom<'de>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -627,7 +658,7 @@ const _: () = {
                                 }
                                 m_linLimit = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpLinLimitConstraintAtom,
+                                        hkpLinLimitConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

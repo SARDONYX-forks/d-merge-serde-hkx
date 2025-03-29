@@ -28,6 +28,7 @@ pub struct BSLookAtModifierBoneData<'a> {
     /// - name: `index`(ctype: `hkInt16`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "index"))]
     #[cfg_attr(feature = "serde", serde(rename = "index"))]
     pub m_index: I16<'a>,
@@ -71,6 +72,7 @@ pub struct BSLookAtModifierBoneData<'a> {
     /// - offset: ` 48`(x86)/` 48`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "currentFwdAxisLS"))]
     #[cfg_attr(feature = "serde", serde(rename = "currentFwdAxisLS"))]
     pub m_currentFwdAxisLS: Vector4,

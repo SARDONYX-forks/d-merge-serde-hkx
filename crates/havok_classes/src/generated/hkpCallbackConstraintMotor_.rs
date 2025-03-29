@@ -34,6 +34,8 @@ pub struct hkpCallbackConstraintMotor<'a> {
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "callbackFunc"))]
     #[cfg_attr(feature = "serde", serde(rename = "callbackFunc"))]
     pub m_callbackFunc: Pointer<'a>,

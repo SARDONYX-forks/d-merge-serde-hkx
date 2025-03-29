@@ -70,6 +70,7 @@ pub struct hkbHandIkModifierHand<'a> {
     /// - name: `shoulderIndex`(ctype: `hkInt16`)
     /// - offset: ` 72`(x86)/` 72`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "shoulderIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "shoulderIndex"))]
     pub m_shoulderIndex: I16<'a>,
@@ -77,6 +78,7 @@ pub struct hkbHandIkModifierHand<'a> {
     /// - name: `shoulderSiblingIndex`(ctype: `hkInt16`)
     /// - offset: ` 74`(x86)/` 74`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "shoulderSiblingIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "shoulderSiblingIndex"))]
     pub m_shoulderSiblingIndex: I16<'a>,
@@ -84,6 +86,7 @@ pub struct hkbHandIkModifierHand<'a> {
     /// - name: `elbowIndex`(ctype: `hkInt16`)
     /// - offset: ` 76`(x86)/` 76`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "elbowIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "elbowIndex"))]
     pub m_elbowIndex: I16<'a>,
@@ -91,6 +94,7 @@ pub struct hkbHandIkModifierHand<'a> {
     /// - name: `elbowSiblingIndex`(ctype: `hkInt16`)
     /// - offset: ` 78`(x86)/` 78`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "elbowSiblingIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "elbowSiblingIndex"))]
     pub m_elbowSiblingIndex: I16<'a>,
@@ -98,6 +102,7 @@ pub struct hkbHandIkModifierHand<'a> {
     /// - name: `wristIndex`(ctype: `hkInt16`)
     /// - offset: ` 80`(x86)/` 80`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wristIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "wristIndex"))]
     pub m_wristIndex: I16<'a>,

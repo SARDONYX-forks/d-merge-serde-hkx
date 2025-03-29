@@ -56,6 +56,8 @@ pub struct hkpExtendedMeshShape<'a> {
     /// - offset: `176`(x86)/`240`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materialClass"))]
     #[cfg_attr(feature = "serde", serde(rename = "materialClass"))]
     pub m_materialClass: Pointer<'a>,
@@ -63,6 +65,7 @@ pub struct hkpExtendedMeshShape<'a> {
     /// - name: `numBitsForSubpartIndex`(ctype: `hkInt32`)
     /// - offset: `180`(x86)/`248`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numBitsForSubpartIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "numBitsForSubpartIndex"))]
     pub m_numBitsForSubpartIndex: I32<'a>,
@@ -86,6 +89,7 @@ pub struct hkpExtendedMeshShape<'a> {
     /// - name: `weldingInfo`(ctype: `hkArray<hkUint16>`)
     /// - offset: `208`(x86)/`288`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "weldingInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "weldingInfo"))]
     pub m_weldingInfo: Vec<U16<'a>>,
@@ -100,6 +104,7 @@ pub struct hkpExtendedMeshShape<'a> {
     /// - name: `defaultCollisionFilterInfo`(ctype: `hkUint32`)
     /// - offset: `224`(x86)/`308`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "defaultCollisionFilterInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "defaultCollisionFilterInfo"))]
     pub m_defaultCollisionFilterInfo: U32<'a>,
@@ -107,6 +112,7 @@ pub struct hkpExtendedMeshShape<'a> {
     /// - name: `cachedNumChildShapes`(ctype: `hkInt32`)
     /// - offset: `228`(x86)/`312`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "cachedNumChildShapes"))]
     #[cfg_attr(feature = "serde", serde(rename = "cachedNumChildShapes"))]
     pub m_cachedNumChildShapes: I32<'a>,
@@ -122,6 +128,8 @@ pub struct hkpExtendedMeshShape<'a> {
     /// - offset: `236`(x86)/`320`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "padding"))]
     #[cfg_attr(feature = "serde", serde(rename = "padding"))]
     pub m_padding: I32<'a>,

@@ -40,6 +40,7 @@ pub struct hkpLinMotorConstraintAtom<'a> {
     /// - name: `motorAxis`(ctype: `hkUint8`)
     /// - offset: `  3`(x86)/`  3`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "motorAxis"))]
     #[cfg_attr(feature = "serde", serde(rename = "motorAxis"))]
     pub m_motorAxis: U8<'a>,
@@ -47,6 +48,7 @@ pub struct hkpLinMotorConstraintAtom<'a> {
     /// - name: `initializedOffset`(ctype: `hkInt16`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "initializedOffset"))]
     #[cfg_attr(feature = "serde", serde(rename = "initializedOffset"))]
     pub m_initializedOffset: I16<'a>,
@@ -54,6 +56,7 @@ pub struct hkpLinMotorConstraintAtom<'a> {
     /// - name: `previousTargetPositionOffset`(ctype: `hkInt16`)
     /// - offset: `  6`(x86)/`  6`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "previousTargetPositionOffset")
@@ -71,6 +74,7 @@ pub struct hkpLinMotorConstraintAtom<'a> {
     /// - name: `motor`(ctype: `struct hkpConstraintMotor*`)
     /// - offset: ` 12`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "motor"))]
     #[cfg_attr(feature = "serde", serde(rename = "motor"))]
     pub m_motor: Pointer<'a>,

@@ -33,6 +33,7 @@ pub struct hkbCharacter<'a> {
     /// - name: `nearbyCharacters`(ctype: `hkArray<hkbCharacter*>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nearbyCharacters"))]
     #[cfg_attr(feature = "serde", serde(rename = "nearbyCharacters"))]
     pub m_nearbyCharacters: Vec<Pointer<'a>>,
@@ -40,6 +41,7 @@ pub struct hkbCharacter<'a> {
     /// - name: `currentLod`(ctype: `hkInt16`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "currentLod"))]
     #[cfg_attr(feature = "serde", serde(rename = "currentLod"))]
     pub m_currentLod: I16<'a>,
@@ -48,6 +50,8 @@ pub struct hkbCharacter<'a> {
     /// - offset: ` 22`(x86)/` 34`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numTracksInLod"))]
     #[cfg_attr(feature = "serde", serde(rename = "numTracksInLod"))]
     pub m_numTracksInLod: I16<'a>,
@@ -64,6 +68,8 @@ pub struct hkbCharacter<'a> {
     /// - offset: ` 28`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "ragdollDriver"))]
     #[cfg_attr(feature = "serde", serde(rename = "ragdollDriver"))]
     pub m_ragdollDriver: Pointer<'a>,
@@ -72,6 +78,8 @@ pub struct hkbCharacter<'a> {
     /// - offset: ` 32`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "characterControllerDriver"))]
     #[cfg_attr(feature = "serde", serde(rename = "characterControllerDriver"))]
     pub m_characterControllerDriver: Pointer<'a>,
@@ -80,6 +88,8 @@ pub struct hkbCharacter<'a> {
     /// - offset: ` 36`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "footIkDriver"))]
     #[cfg_attr(feature = "serde", serde(rename = "footIkDriver"))]
     pub m_footIkDriver: Pointer<'a>,
@@ -88,6 +98,8 @@ pub struct hkbCharacter<'a> {
     /// - offset: ` 40`(x86)/` 72`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "handIkDriver"))]
     #[cfg_attr(feature = "serde", serde(rename = "handIkDriver"))]
     pub m_handIkDriver: Pointer<'a>,
@@ -95,6 +107,7 @@ pub struct hkbCharacter<'a> {
     /// - name: `setup`(ctype: `struct hkbCharacterSetup*`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "setup"))]
     #[cfg_attr(feature = "serde", serde(rename = "setup"))]
     pub m_setup: Pointer<'a>,
@@ -102,6 +115,7 @@ pub struct hkbCharacter<'a> {
     /// - name: `behaviorGraph`(ctype: `struct hkbBehaviorGraph*`)
     /// - offset: ` 48`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "behaviorGraph"))]
     #[cfg_attr(feature = "serde", serde(rename = "behaviorGraph"))]
     pub m_behaviorGraph: Pointer<'a>,
@@ -109,6 +123,7 @@ pub struct hkbCharacter<'a> {
     /// - name: `projectData`(ctype: `struct hkbProjectData*`)
     /// - offset: ` 52`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "projectData"))]
     #[cfg_attr(feature = "serde", serde(rename = "projectData"))]
     pub m_projectData: Pointer<'a>,
@@ -117,6 +132,8 @@ pub struct hkbCharacter<'a> {
     /// - offset: ` 56`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "animationBindingSet"))]
     #[cfg_attr(feature = "serde", serde(rename = "animationBindingSet"))]
     pub m_animationBindingSet: Pointer<'a>,
@@ -125,6 +142,8 @@ pub struct hkbCharacter<'a> {
     /// - offset: ` 60`(x86)/`112`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "raycastInterface"))]
     #[cfg_attr(feature = "serde", serde(rename = "raycastInterface"))]
     pub m_raycastInterface: Pointer<'a>,
@@ -133,6 +152,8 @@ pub struct hkbCharacter<'a> {
     /// - offset: ` 64`(x86)/`120`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `NOT_OWNED|SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "world"))]
     #[cfg_attr(feature = "serde", serde(rename = "world"))]
     pub m_world: Pointer<'a>,
@@ -141,6 +162,8 @@ pub struct hkbCharacter<'a> {
     /// - offset: ` 68`(x86)/`128`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "eventQueue"))]
     #[cfg_attr(feature = "serde", serde(rename = "eventQueue"))]
     pub m_eventQueue: Pointer<'a>,
@@ -149,6 +172,8 @@ pub struct hkbCharacter<'a> {
     /// - offset: ` 72`(x86)/`136`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "worldFromModel"))]
     #[cfg_attr(feature = "serde", serde(rename = "worldFromModel"))]
     pub m_worldFromModel: Pointer<'a>,
@@ -157,6 +182,7 @@ pub struct hkbCharacter<'a> {
     /// - offset: ` 76`(x86)/`144`(x86_64)
     /// - type_size: `  8`(x86)/` 12`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "poseLocal"))]
     #[cfg_attr(feature = "serde", serde(rename = "poseLocal"))]
     pub m_poseLocal: Vec<()>,
@@ -165,6 +191,7 @@ pub struct hkbCharacter<'a> {
     /// - offset: ` 84`(x86)/`156`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "deleteWorldFromModel"))]
     #[cfg_attr(feature = "serde", serde(rename = "deleteWorldFromModel"))]
     pub m_deleteWorldFromModel: bool,
@@ -173,6 +200,7 @@ pub struct hkbCharacter<'a> {
     /// - offset: ` 85`(x86)/`157`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "deletePoseLocal"))]
     #[cfg_attr(feature = "serde", serde(rename = "deletePoseLocal"))]
     pub m_deletePoseLocal: bool,

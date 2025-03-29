@@ -28,6 +28,7 @@ pub struct hkbStateMachineTimeInterval<'a> {
     /// - name: `enterEventId`(ctype: `hkInt32`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "enterEventId"))]
     #[cfg_attr(feature = "serde", serde(rename = "enterEventId"))]
     pub m_enterEventId: I32<'a>,
@@ -35,6 +36,7 @@ pub struct hkbStateMachineTimeInterval<'a> {
     /// - name: `exitEventId`(ctype: `hkInt32`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "exitEventId"))]
     #[cfg_attr(feature = "serde", serde(rename = "exitEventId"))]
     pub m_exitEventId: I32<'a>,

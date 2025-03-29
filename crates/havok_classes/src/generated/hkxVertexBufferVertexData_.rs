@@ -42,6 +42,7 @@ pub struct hkxVertexBufferVertexData<'a> {
     /// - name: `uint32Data`(ctype: `hkArray<hkUint32>`)
     /// - offset: ` 24`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "uint32Data"))]
     #[cfg_attr(feature = "serde", serde(rename = "uint32Data"))]
     pub m_uint32Data: Vec<U32<'a>>,
@@ -49,6 +50,7 @@ pub struct hkxVertexBufferVertexData<'a> {
     /// - name: `uint16Data`(ctype: `hkArray<hkUint16>`)
     /// - offset: ` 36`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "uint16Data"))]
     #[cfg_attr(feature = "serde", serde(rename = "uint16Data"))]
     pub m_uint16Data: Vec<U16<'a>>,
@@ -56,6 +58,7 @@ pub struct hkxVertexBufferVertexData<'a> {
     /// - name: `uint8Data`(ctype: `hkArray<hkUint8>`)
     /// - offset: ` 48`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "uint8Data"))]
     #[cfg_attr(feature = "serde", serde(rename = "uint8Data"))]
     pub m_uint8Data: Vec<U8<'a>>,
@@ -63,6 +66,7 @@ pub struct hkxVertexBufferVertexData<'a> {
     /// - name: `numVerts`(ctype: `hkUint32`)
     /// - offset: ` 60`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numVerts"))]
     #[cfg_attr(feature = "serde", serde(rename = "numVerts"))]
     pub m_numVerts: U32<'a>,
@@ -70,6 +74,7 @@ pub struct hkxVertexBufferVertexData<'a> {
     /// - name: `vectorStride`(ctype: `hkUint32`)
     /// - offset: ` 64`(x86)/` 84`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vectorStride"))]
     #[cfg_attr(feature = "serde", serde(rename = "vectorStride"))]
     pub m_vectorStride: U32<'a>,
@@ -77,6 +82,7 @@ pub struct hkxVertexBufferVertexData<'a> {
     /// - name: `floatStride`(ctype: `hkUint32`)
     /// - offset: ` 68`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "floatStride"))]
     #[cfg_attr(feature = "serde", serde(rename = "floatStride"))]
     pub m_floatStride: U32<'a>,
@@ -84,6 +90,7 @@ pub struct hkxVertexBufferVertexData<'a> {
     /// - name: `uint32Stride`(ctype: `hkUint32`)
     /// - offset: ` 72`(x86)/` 92`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "uint32Stride"))]
     #[cfg_attr(feature = "serde", serde(rename = "uint32Stride"))]
     pub m_uint32Stride: U32<'a>,
@@ -91,6 +98,7 @@ pub struct hkxVertexBufferVertexData<'a> {
     /// - name: `uint16Stride`(ctype: `hkUint32`)
     /// - offset: ` 76`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "uint16Stride"))]
     #[cfg_attr(feature = "serde", serde(rename = "uint16Stride"))]
     pub m_uint16Stride: U32<'a>,
@@ -98,6 +106,7 @@ pub struct hkxVertexBufferVertexData<'a> {
     /// - name: `uint8Stride`(ctype: `hkUint32`)
     /// - offset: ` 80`(x86)/`100`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "uint8Stride"))]
     #[cfg_attr(feature = "serde", serde(rename = "uint8Stride"))]
     pub m_uint8Stride: U32<'a>,

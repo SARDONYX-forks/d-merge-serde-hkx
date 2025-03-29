@@ -33,6 +33,7 @@ pub struct hkpCharacterRigidBodyCinfo<'a> {
     /// - name: `collisionFilterInfo`(ctype: `hkUint32`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "collisionFilterInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "collisionFilterInfo"))]
     pub m_collisionFilterInfo: U32<'a>,
@@ -40,6 +41,7 @@ pub struct hkpCharacterRigidBodyCinfo<'a> {
     /// - name: `shape`(ctype: `struct hkpShape*`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "shape"))]
     #[cfg_attr(feature = "serde", serde(rename = "shape"))]
     pub m_shape: Pointer<'a>,
@@ -141,6 +143,7 @@ pub struct hkpCharacterRigidBodyCinfo<'a> {
     /// - name: `vdbColor`(ctype: `hkInt32`)
     /// - offset: `104`(x86)/`120`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vdbColor"))]
     #[cfg_attr(feature = "serde", serde(rename = "vdbColor"))]
     pub m_vdbColor: I32<'a>,

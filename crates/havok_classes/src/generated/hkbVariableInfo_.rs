@@ -28,6 +28,7 @@ pub struct hkbVariableInfo<'a> {
     /// - name: `role`(ctype: `struct hkbRoleAttribute`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "role"))]
     #[cfg_attr(feature = "serde", serde(rename = "role"))]
     pub m_role: hkbRoleAttribute<'a>,
@@ -155,7 +156,7 @@ const _: () = {
                     __A: _serde::de::MapAccess<'de>,
                 {
                     let __ptr = __A::class_ptr(&mut __map);
-                    let mut m_role: _serde::__private::Option<hkbRoleAttribute> = _serde::__private::None;
+                    let mut m_role: _serde::__private::Option<hkbRoleAttribute<'de>> = _serde::__private::None;
                     let mut m_type: _serde::__private::Option<VariableType> = _serde::__private::None;
                     for i in 0..2usize {
                         match i {
@@ -166,7 +167,7 @@ const _: () = {
                                     );
                                 }
                                 m_role = _serde::__private::Some(
-                                    match __A::next_value::<hkbRoleAttribute>(&mut __map) {
+                                    match __A::next_value::<hkbRoleAttribute<'de>>(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -223,7 +224,7 @@ const _: () = {
                 where
                     __A: _serde::de::MapAccess<'de>,
                 {
-                    let mut m_role: _serde::__private::Option<hkbRoleAttribute> = _serde::__private::None;
+                    let mut m_role: _serde::__private::Option<hkbRoleAttribute<'de>> = _serde::__private::None;
                     let mut m_type: _serde::__private::Option<VariableType> = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
                         __A::next_key::<__Field>(&mut __map)?
@@ -245,7 +246,7 @@ const _: () = {
                                     );
                                 }
                                 m_role = _serde::__private::Some(
-                                    match __A::next_value::<hkbRoleAttribute>(&mut __map) {
+                                    match __A::next_value::<hkbRoleAttribute<'de>>(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);

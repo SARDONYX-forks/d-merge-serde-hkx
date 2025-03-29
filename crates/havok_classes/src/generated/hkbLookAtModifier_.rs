@@ -124,6 +124,7 @@ pub struct hkbLookAtModifier<'a> {
     /// - name: `headIndex`(ctype: `hkInt16`)
     /// - offset: `160`(x86)/`192`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "headIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "headIndex"))]
     pub m_headIndex: I16<'a>,
@@ -131,6 +132,7 @@ pub struct hkbLookAtModifier<'a> {
     /// - name: `neckIndex`(ctype: `hkInt16`)
     /// - offset: `162`(x86)/`194`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "neckIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "neckIndex"))]
     pub m_neckIndex: I16<'a>,
@@ -160,6 +162,7 @@ pub struct hkbLookAtModifier<'a> {
     /// - offset: `176`(x86)/`208`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "lookAtLastTargetWS"))]
     #[cfg_attr(feature = "serde", serde(rename = "lookAtLastTargetWS"))]
     pub m_lookAtLastTargetWS: Vector4,
@@ -168,6 +171,7 @@ pub struct hkbLookAtModifier<'a> {
     /// - offset: `192`(x86)/`224`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "lookAtWeight"))]
     #[cfg_attr(feature = "serde", serde(rename = "lookAtWeight"))]
     pub m_lookAtWeight: f32,

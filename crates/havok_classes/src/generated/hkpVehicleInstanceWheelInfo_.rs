@@ -43,6 +43,8 @@ pub struct hkpVehicleInstanceWheelInfo<'a> {
     /// - offset: ` 36`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "contactBody"))]
     #[cfg_attr(feature = "serde", serde(rename = "contactBody"))]
     pub m_contactBody: Pointer<'a>,
@@ -50,6 +52,7 @@ pub struct hkpVehicleInstanceWheelInfo<'a> {
     /// - name: `contactShapeKey`(ctype: `hkUint32[8]`)
     /// - offset: ` 40`(x86)/` 48`(x86_64)
     /// - type_size: ` 32`(x86)/` 32`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "contactShapeKey"))]
     #[cfg_attr(feature = "serde", serde(rename = "contactShapeKey"))]
     pub m_contactShapeKey: [U32<'a>; 8usize],

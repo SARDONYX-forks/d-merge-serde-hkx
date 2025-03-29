@@ -100,6 +100,7 @@ pub struct BSEventOnFalseToTrueModifier<'a> {
     /// - offset: ` 80`(x86)/`152`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bSlot1ActivatedLastFrame"))]
     #[cfg_attr(feature = "serde", serde(rename = "bSlot1ActivatedLastFrame"))]
     pub m_bSlot1ActivatedLastFrame: bool,
@@ -108,6 +109,7 @@ pub struct BSEventOnFalseToTrueModifier<'a> {
     /// - offset: ` 81`(x86)/`153`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bSlot2ActivatedLastFrame"))]
     #[cfg_attr(feature = "serde", serde(rename = "bSlot2ActivatedLastFrame"))]
     pub m_bSlot2ActivatedLastFrame: bool,
@@ -116,6 +118,7 @@ pub struct BSEventOnFalseToTrueModifier<'a> {
     /// - offset: ` 82`(x86)/`154`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bSlot3ActivatedLastFrame"))]
     #[cfg_attr(feature = "serde", serde(rename = "bSlot3ActivatedLastFrame"))]
     pub m_bSlot3ActivatedLastFrame: bool,

@@ -28,6 +28,7 @@ pub struct hkpBallAndSocketConstraintDataAtoms<'a> {
     /// - name: `pivots`(ctype: `struct hkpSetLocalTranslationsConstraintAtom`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pivots"))]
     #[cfg_attr(feature = "serde", serde(rename = "pivots"))]
     pub m_pivots: hkpSetLocalTranslationsConstraintAtom<'a>,
@@ -35,6 +36,7 @@ pub struct hkpBallAndSocketConstraintDataAtoms<'a> {
     /// - name: `setupStabilization`(ctype: `struct hkpSetupStabilizationAtom`)
     /// - offset: ` 48`(x86)/` 48`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "setupStabilization"))]
     #[cfg_attr(feature = "serde", serde(rename = "setupStabilization"))]
     pub m_setupStabilization: hkpSetupStabilizationAtom<'a>,
@@ -42,6 +44,7 @@ pub struct hkpBallAndSocketConstraintDataAtoms<'a> {
     /// - name: `ballSocket`(ctype: `struct hkpBallSocketConstraintAtom`)
     /// - offset: ` 64`(x86)/` 64`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "ballSocket"))]
     #[cfg_attr(feature = "serde", serde(rename = "ballSocket"))]
     pub m_ballSocket: hkpBallSocketConstraintAtom<'a>,
@@ -175,13 +178,13 @@ const _: () = {
                 {
                     let __ptr = __A::class_ptr(&mut __map);
                     let mut m_pivots: _serde::__private::Option<
-                        hkpSetLocalTranslationsConstraintAtom,
+                        hkpSetLocalTranslationsConstraintAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_setupStabilization: _serde::__private::Option<
-                        hkpSetupStabilizationAtom,
+                        hkpSetupStabilizationAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_ballSocket: _serde::__private::Option<
-                        hkpBallSocketConstraintAtom,
+                        hkpBallSocketConstraintAtom<'de>,
                     > = _serde::__private::None;
                     for i in 0..3usize {
                         match i {
@@ -193,7 +196,7 @@ const _: () = {
                                 }
                                 m_pivots = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSetLocalTranslationsConstraintAtom,
+                                        hkpSetLocalTranslationsConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -214,7 +217,7 @@ const _: () = {
                                 }
                                 m_setupStabilization = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSetupStabilizationAtom,
+                                        hkpSetupStabilizationAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -233,7 +236,7 @@ const _: () = {
                                 }
                                 m_ballSocket = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpBallSocketConstraintAtom,
+                                        hkpBallSocketConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -289,13 +292,13 @@ const _: () = {
                     __A: _serde::de::MapAccess<'de>,
                 {
                     let mut m_pivots: _serde::__private::Option<
-                        hkpSetLocalTranslationsConstraintAtom,
+                        hkpSetLocalTranslationsConstraintAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_setupStabilization: _serde::__private::Option<
-                        hkpSetupStabilizationAtom,
+                        hkpSetupStabilizationAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_ballSocket: _serde::__private::Option<
-                        hkpBallSocketConstraintAtom,
+                        hkpBallSocketConstraintAtom<'de>,
                     > = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
                         __A::next_key::<__Field>(&mut __map)?
@@ -318,7 +321,7 @@ const _: () = {
                                 }
                                 m_pivots = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSetLocalTranslationsConstraintAtom,
+                                        hkpSetLocalTranslationsConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -348,7 +351,7 @@ const _: () = {
                                 }
                                 m_setupStabilization = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSetupStabilizationAtom,
+                                        hkpSetupStabilizationAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -376,7 +379,7 @@ const _: () = {
                                 }
                                 m_ballSocket = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpBallSocketConstraintAtom,
+                                        hkpBallSocketConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

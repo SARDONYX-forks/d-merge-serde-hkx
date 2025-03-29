@@ -41,6 +41,7 @@ pub struct hkaSkeleton<'a> {
     /// - name: `parentIndices`(ctype: `hkArray<hkInt16>`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "parentIndices"))]
     #[cfg_attr(feature = "serde", serde(rename = "parentIndices"))]
     pub m_parentIndices: Vec<I16<'a>>,
@@ -78,6 +79,7 @@ pub struct hkaSkeleton<'a> {
     /// - name: `localFrames`(ctype: `hkArray<struct hkaSkeletonLocalFrameOnBone>`)
     /// - offset: ` 72`(x86)/`104`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "localFrames"))]
     #[cfg_attr(feature = "serde", serde(rename = "localFrames"))]
     pub m_localFrames: Vec<hkaSkeletonLocalFrameOnBone<'a>>,
@@ -274,7 +276,7 @@ const _: () = {
                         Vec<StringPtr<'de>>,
                     > = _serde::__private::None;
                     let mut m_localFrames: _serde::__private::Option<
-                        Vec<hkaSkeletonLocalFrameOnBone>,
+                        Vec<hkaSkeletonLocalFrameOnBone<'de>>,
                     > = _serde::__private::None;
                     for i in 0..7usize {
                         match i {
@@ -386,7 +388,7 @@ const _: () = {
                                 }
                                 m_localFrames = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkaSkeletonLocalFrameOnBone>,
+                                        Vec<hkaSkeletonLocalFrameOnBone<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -495,7 +497,7 @@ const _: () = {
                         Vec<StringPtr<'de>>,
                     > = _serde::__private::None;
                     let mut m_localFrames: _serde::__private::Option<
-                        Vec<hkaSkeletonLocalFrameOnBone>,
+                        Vec<hkaSkeletonLocalFrameOnBone<'de>>,
                     > = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
                         __A::next_key::<__Field>(&mut __map)?
@@ -672,7 +674,7 @@ const _: () = {
                                 }
                                 m_localFrames = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkaSkeletonLocalFrameOnBone>,
+                                        Vec<hkaSkeletonLocalFrameOnBone<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

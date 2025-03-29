@@ -55,6 +55,7 @@ pub struct hkbDetectCloseToGroundModifier<'a> {
     /// - name: `collisionFilterInfo`(ctype: `hkUint32`)
     /// - offset: ` 60`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "collisionFilterInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "collisionFilterInfo"))]
     pub m_collisionFilterInfo: U32<'a>,
@@ -62,6 +63,7 @@ pub struct hkbDetectCloseToGroundModifier<'a> {
     /// - name: `boneIndex`(ctype: `hkInt16`)
     /// - offset: ` 64`(x86)/`108`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "boneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "boneIndex"))]
     pub m_boneIndex: I16<'a>,
@@ -69,6 +71,7 @@ pub struct hkbDetectCloseToGroundModifier<'a> {
     /// - name: `animBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 66`(x86)/`110`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "animBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "animBoneIndex"))]
     pub m_animBoneIndex: I16<'a>,
@@ -77,6 +80,7 @@ pub struct hkbDetectCloseToGroundModifier<'a> {
     /// - offset: ` 68`(x86)/`112`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isCloseToGround"))]
     #[cfg_attr(feature = "serde", serde(rename = "isCloseToGround"))]
     pub m_isCloseToGround: bool,

@@ -33,6 +33,7 @@ pub struct hkpTriangleShape<'a> {
     /// - name: `weldingInfo`(ctype: `hkUint16`)
     /// - offset: ` 20`(x86)/` 40`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "weldingInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "weldingInfo"))]
     pub m_weldingInfo: U16<'a>,
@@ -47,6 +48,7 @@ pub struct hkpTriangleShape<'a> {
     /// - name: `isExtruded`(ctype: `hkUint8`)
     /// - offset: ` 23`(x86)/` 43`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isExtruded"))]
     #[cfg_attr(feature = "serde", serde(rename = "isExtruded"))]
     pub m_isExtruded: U8<'a>,

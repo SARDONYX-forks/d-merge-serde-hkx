@@ -35,6 +35,7 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - type_size: ` 24`(x86)/` 48`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
     #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "handle"))]
     #[cfg_attr(feature = "serde", serde(rename = "handle"))]
     pub m_handle: hkbHandle<'a>,
@@ -57,6 +58,7 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - name: `handleOut`(ctype: `struct hkbHandle*`)
     /// - offset: `108`(x86)/`160`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "handleOut"))]
     #[cfg_attr(feature = "serde", serde(rename = "handleOut"))]
     pub m_handleOut: Pointer<'a>,
@@ -64,6 +66,7 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - name: `handleIn`(ctype: `struct hkbHandle*`)
     /// - offset: `112`(x86)/`168`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "handleIn"))]
     #[cfg_attr(feature = "serde", serde(rename = "handleIn"))]
     pub m_handleIn: Pointer<'a>,
@@ -108,6 +111,7 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - name: `collisionFilterInfo`(ctype: `hkUint32`)
     /// - offset: `136`(x86)/`204`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "collisionFilterInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "collisionFilterInfo"))]
     pub m_collisionFilterInfo: U32<'a>,
@@ -115,6 +119,7 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - name: `sensorRagdollBoneIndex`(ctype: `hkInt16`)
     /// - offset: `140`(x86)/`208`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sensorRagdollBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "sensorRagdollBoneIndex"))]
     pub m_sensorRagdollBoneIndex: I16<'a>,
@@ -122,6 +127,7 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - name: `sensorAnimationBoneIndex`(ctype: `hkInt16`)
     /// - offset: `142`(x86)/`210`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sensorAnimationBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "sensorAnimationBoneIndex"))]
     pub m_sensorAnimationBoneIndex: I16<'a>,
@@ -158,6 +164,7 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - offset: `148`(x86)/`216`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "timeSinceLastModify"))]
     #[cfg_attr(feature = "serde", serde(rename = "timeSinceLastModify"))]
     pub m_timeSinceLastModify: f32,
@@ -166,6 +173,8 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - offset: `152`(x86)/`220`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "rangeIndexForEventToSendNextUpdate")

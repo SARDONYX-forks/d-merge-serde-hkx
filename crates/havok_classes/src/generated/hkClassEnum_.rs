@@ -45,6 +45,8 @@ pub struct hkClassEnum<'a> {
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "attributes"))]
     #[cfg_attr(feature = "serde", serde(rename = "attributes"))]
     pub m_attributes: Pointer<'a>,

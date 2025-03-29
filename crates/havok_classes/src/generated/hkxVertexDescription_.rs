@@ -28,6 +28,7 @@ pub struct hkxVertexDescription<'a> {
     /// - name: `decls`(ctype: `hkArray<struct hkxVertexDescriptionElementDecl>`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "decls"))]
     #[cfg_attr(feature = "serde", serde(rename = "decls"))]
     pub m_decls: Vec<hkxVertexDescriptionElementDecl<'a>>,
@@ -159,7 +160,7 @@ const _: () = {
                 {
                     let __ptr = __A::class_ptr(&mut __map);
                     let mut m_decls: _serde::__private::Option<
-                        Vec<hkxVertexDescriptionElementDecl>,
+                        Vec<hkxVertexDescriptionElementDecl<'de>>,
                     > = _serde::__private::None;
                     for i in 0..1usize {
                         match i {
@@ -171,7 +172,7 @@ const _: () = {
                                 }
                                 m_decls = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkxVertexDescriptionElementDecl>,
+                                        Vec<hkxVertexDescriptionElementDecl<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -205,7 +206,7 @@ const _: () = {
                     __A: _serde::de::MapAccess<'de>,
                 {
                     let mut m_decls: _serde::__private::Option<
-                        Vec<hkxVertexDescriptionElementDecl>,
+                        Vec<hkxVertexDescriptionElementDecl<'de>>,
                     > = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
                         __A::next_key::<__Field>(&mut __map)?
@@ -228,7 +229,7 @@ const _: () = {
                                 }
                                 m_decls = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkxVertexDescriptionElementDecl>,
+                                        Vec<hkxVertexDescriptionElementDecl<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

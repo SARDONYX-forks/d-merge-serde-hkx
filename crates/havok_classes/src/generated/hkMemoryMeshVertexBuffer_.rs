@@ -33,6 +33,7 @@ pub struct hkMemoryMeshVertexBuffer<'a> {
     /// - name: `format`(ctype: `struct hkVertexFormat`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `260`(x86)/`260`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "format"))]
     #[cfg_attr(feature = "serde", serde(rename = "format"))]
     pub m_format: hkVertexFormat<'a>,
@@ -40,6 +41,7 @@ pub struct hkMemoryMeshVertexBuffer<'a> {
     /// - name: `elementOffsets`(ctype: `hkInt32[32]`)
     /// - offset: `268`(x86)/`276`(x86_64)
     /// - type_size: `128`(x86)/`128`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "elementOffsets"))]
     #[cfg_attr(feature = "serde", serde(rename = "elementOffsets"))]
     pub m_elementOffsets: [I32<'a>; 32usize],
@@ -47,6 +49,7 @@ pub struct hkMemoryMeshVertexBuffer<'a> {
     /// - name: `memory`(ctype: `hkArray<hkUint8>`)
     /// - offset: `396`(x86)/`408`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "memory"))]
     #[cfg_attr(feature = "serde", serde(rename = "memory"))]
     pub m_memory: Vec<U8<'a>>,
@@ -54,6 +57,7 @@ pub struct hkMemoryMeshVertexBuffer<'a> {
     /// - name: `vertexStride`(ctype: `hkInt32`)
     /// - offset: `408`(x86)/`424`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vertexStride"))]
     #[cfg_attr(feature = "serde", serde(rename = "vertexStride"))]
     pub m_vertexStride: I32<'a>,
@@ -68,6 +72,7 @@ pub struct hkMemoryMeshVertexBuffer<'a> {
     /// - name: `numVertices`(ctype: `hkInt32`)
     /// - offset: `416`(x86)/`432`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numVertices"))]
     #[cfg_attr(feature = "serde", serde(rename = "numVertices"))]
     pub m_numVertices: I32<'a>,
@@ -240,7 +245,7 @@ const _: () = {
                 {
                     let __ptr = __A::class_ptr(&mut __map);
                     let parent = __A::parent_value(&mut __map)?;
-                    let mut m_format: _serde::__private::Option<hkVertexFormat> = _serde::__private::None;
+                    let mut m_format: _serde::__private::Option<hkVertexFormat<'de>> = _serde::__private::None;
                     let mut m_elementOffsets: _serde::__private::Option<
                         [I32<'de>; 32usize],
                     > = _serde::__private::None;
@@ -259,7 +264,7 @@ const _: () = {
                                     );
                                 }
                                 m_format = _serde::__private::Some(
-                                    match __A::next_value::<hkVertexFormat>(&mut __map) {
+                                    match __A::next_value::<hkVertexFormat<'de>>(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -483,7 +488,7 @@ const _: () = {
                 where
                     __A: _serde::de::MapAccess<'de>,
                 {
-                    let mut m_format: _serde::__private::Option<hkVertexFormat> = _serde::__private::None;
+                    let mut m_format: _serde::__private::Option<hkVertexFormat<'de>> = _serde::__private::None;
                     let mut m_elementOffsets: _serde::__private::Option<
                         [I32<'de>; 32usize],
                     > = _serde::__private::None;
@@ -513,7 +518,7 @@ const _: () = {
                                     );
                                 }
                                 m_format = _serde::__private::Some(
-                                    match __A::next_value::<hkVertexFormat>(&mut __map) {
+                                    match __A::next_value::<hkVertexFormat<'de>>(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);

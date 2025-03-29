@@ -33,6 +33,7 @@ pub struct hkpPoweredChainMapper<'a> {
     /// - name: `links`(ctype: `hkArray<struct hkpPoweredChainMapperLinkInfo>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "links"))]
     #[cfg_attr(feature = "serde", serde(rename = "links"))]
     pub m_links: Vec<hkpPoweredChainMapperLinkInfo<'a>>,
@@ -40,6 +41,7 @@ pub struct hkpPoweredChainMapper<'a> {
     /// - name: `targets`(ctype: `hkArray<struct hkpPoweredChainMapperTarget>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "targets"))]
     #[cfg_attr(feature = "serde", serde(rename = "targets"))]
     pub m_targets: Vec<hkpPoweredChainMapperTarget<'a>>,
@@ -47,6 +49,7 @@ pub struct hkpPoweredChainMapper<'a> {
     /// - name: `chains`(ctype: `hkArray<hkpConstraintChainInstance*>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "chains"))]
     #[cfg_attr(feature = "serde", serde(rename = "chains"))]
     pub m_chains: Vec<Pointer<'a>>,
@@ -206,10 +209,10 @@ const _: () = {
                     let __ptr = __A::class_ptr(&mut __map);
                     let parent = __A::parent_value(&mut __map)?;
                     let mut m_links: _serde::__private::Option<
-                        Vec<hkpPoweredChainMapperLinkInfo>,
+                        Vec<hkpPoweredChainMapperLinkInfo<'de>>,
                     > = _serde::__private::None;
                     let mut m_targets: _serde::__private::Option<
-                        Vec<hkpPoweredChainMapperTarget>,
+                        Vec<hkpPoweredChainMapperTarget<'de>>,
                     > = _serde::__private::None;
                     let mut m_chains: _serde::__private::Option<Vec<Pointer<'de>>> = _serde::__private::None;
                     for i in 0..3usize {
@@ -222,7 +225,7 @@ const _: () = {
                                 }
                                 m_links = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkpPoweredChainMapperLinkInfo>,
+                                        Vec<hkpPoweredChainMapperLinkInfo<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -241,7 +244,7 @@ const _: () = {
                                 }
                                 m_targets = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkpPoweredChainMapperTarget>,
+                                        Vec<hkpPoweredChainMapperTarget<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -309,10 +312,10 @@ const _: () = {
                     __A: _serde::de::MapAccess<'de>,
                 {
                     let mut m_links: _serde::__private::Option<
-                        Vec<hkpPoweredChainMapperLinkInfo>,
+                        Vec<hkpPoweredChainMapperLinkInfo<'de>>,
                     > = _serde::__private::None;
                     let mut m_targets: _serde::__private::Option<
-                        Vec<hkpPoweredChainMapperTarget>,
+                        Vec<hkpPoweredChainMapperTarget<'de>>,
                     > = _serde::__private::None;
                     let mut m_chains: _serde::__private::Option<Vec<Pointer<'de>>> = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
@@ -336,7 +339,7 @@ const _: () = {
                                 }
                                 m_links = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkpPoweredChainMapperLinkInfo>,
+                                        Vec<hkpPoweredChainMapperLinkInfo<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -364,7 +367,7 @@ const _: () = {
                                 }
                                 m_targets = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkpPoweredChainMapperTarget>,
+                                        Vec<hkpPoweredChainMapperTarget<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

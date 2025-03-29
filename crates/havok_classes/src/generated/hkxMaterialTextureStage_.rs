@@ -28,6 +28,7 @@ pub struct hkxMaterialTextureStage<'a> {
     /// - name: `texture`(ctype: `struct hkReferencedObject*`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "texture"))]
     #[cfg_attr(feature = "serde", serde(rename = "texture"))]
     pub m_texture: Pointer<'a>,
@@ -42,6 +43,7 @@ pub struct hkxMaterialTextureStage<'a> {
     /// - name: `tcoordChannel`(ctype: `hkInt32`)
     /// - offset: `  8`(x86)/` 12`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "tcoordChannel"))]
     #[cfg_attr(feature = "serde", serde(rename = "tcoordChannel"))]
     pub m_tcoordChannel: I32<'a>,

@@ -34,6 +34,8 @@ pub struct hkpSimpleShapePhantom<'a> {
     /// - offset: `352`(x86)/`416`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "collisionDetails"))]
     #[cfg_attr(feature = "serde", serde(rename = "collisionDetails"))]
     pub m_collisionDetails: Vec<hkpSimpleShapePhantomCollisionDetail<'a>>,
@@ -42,6 +44,7 @@ pub struct hkpSimpleShapePhantom<'a> {
     /// - offset: `364`(x86)/`432`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "orderDirty"))]
     #[cfg_attr(feature = "serde", serde(rename = "orderDirty"))]
     pub m_orderDirty: bool,
@@ -255,7 +258,7 @@ const _: () = {
                     let __ptr = __A::class_ptr(&mut __map);
                     let parent = __A::parent_value(&mut __map)?;
                     let mut m_collisionDetails: _serde::__private::Option<
-                        Vec<hkpSimpleShapePhantomCollisionDetail>,
+                        Vec<hkpSimpleShapePhantomCollisionDetail<'de>>,
                     > = _serde::__private::None;
                     let mut m_orderDirty: _serde::__private::Option<bool> = _serde::__private::None;
                     for i in 0..2usize {
@@ -270,7 +273,7 @@ const _: () = {
                                 }
                                 m_collisionDetails = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkpSimpleShapePhantomCollisionDetail>,
+                                        Vec<hkpSimpleShapePhantomCollisionDetail<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -340,11 +343,15 @@ const _: () = {
                         hkpLinkedCollidable<'de>,
                     > = _serde::__private::None;
                     let mut m_multiThreadCheck: _serde::__private::Option<
-                        hkMultiThreadCheck,
+                        hkMultiThreadCheck<'de>,
                     > = _serde::__private::None;
                     let mut m_name: _serde::__private::Option<StringPtr<'de>> = _serde::__private::None;
-                    let mut m_properties: _serde::__private::Option<Vec<hkpProperty>> = _serde::__private::None;
-                    let mut m_motionState: _serde::__private::Option<hkMotionState> = _serde::__private::None;
+                    let mut m_properties: _serde::__private::Option<
+                        Vec<hkpProperty<'de>>,
+                    > = _serde::__private::None;
+                    let mut m_motionState: _serde::__private::Option<
+                        hkMotionState<'de>,
+                    > = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
                         __A::next_key::<__Field>(&mut __map)?
                     } {
@@ -421,7 +428,9 @@ const _: () = {
                                     );
                                 }
                                 m_multiThreadCheck = _serde::__private::Some(
-                                    match __A::next_value::<hkMultiThreadCheck>(&mut __map) {
+                                    match __A::next_value::<
+                                        hkMultiThreadCheck<'de>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -471,7 +480,7 @@ const _: () = {
                                     );
                                 }
                                 m_properties = _serde::__private::Some(
-                                    match __A::next_value::<Vec<hkpProperty>>(&mut __map) {
+                                    match __A::next_value::<Vec<hkpProperty<'de>>>(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -497,7 +506,7 @@ const _: () = {
                                     );
                                 }
                                 m_motionState = _serde::__private::Some(
-                                    match __A::next_value::<hkMotionState>(&mut __map) {
+                                    match __A::next_value::<hkMotionState<'de>>(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);

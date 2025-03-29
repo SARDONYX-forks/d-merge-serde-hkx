@@ -40,6 +40,7 @@ pub struct hkpMotion<'a> {
     /// - name: `deactivationIntegrateCounter`(ctype: `hkUint8`)
     /// - offset: `  9`(x86)/` 17`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "deactivationIntegrateCounter")
@@ -50,6 +51,7 @@ pub struct hkpMotion<'a> {
     /// - name: `deactivationNumInactiveFrames`(ctype: `hkUint16[2]`)
     /// - offset: ` 10`(x86)/` 18`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "deactivationNumInactiveFrames")
@@ -60,6 +62,7 @@ pub struct hkpMotion<'a> {
     /// - name: `motionState`(ctype: `struct hkMotionState`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `176`(x86)/`176`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "motionState"))]
     #[cfg_attr(feature = "serde", serde(rename = "motionState"))]
     pub m_motionState: hkMotionState<'a>,
@@ -95,6 +98,7 @@ pub struct hkpMotion<'a> {
     /// - name: `deactivationRefOrientation`(ctype: `hkUint32[2]`)
     /// - offset: `272`(x86)/`288`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "deactivationRefOrientation"))]
     #[cfg_attr(feature = "serde", serde(rename = "deactivationRefOrientation"))]
     pub m_deactivationRefOrientation: [U32<'a>; 2usize],
@@ -102,6 +106,7 @@ pub struct hkpMotion<'a> {
     /// - name: `savedMotion`(ctype: `struct hkpMaxSizeMotion*`)
     /// - offset: `280`(x86)/`296`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "savedMotion"))]
     #[cfg_attr(feature = "serde", serde(rename = "savedMotion"))]
     pub m_savedMotion: Pointer<'a>,
@@ -109,6 +114,7 @@ pub struct hkpMotion<'a> {
     /// - name: `savedQualityTypeIndex`(ctype: `hkUint16`)
     /// - offset: `284`(x86)/`304`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "savedQualityTypeIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "savedQualityTypeIndex"))]
     pub m_savedQualityTypeIndex: U16<'a>,
@@ -308,7 +314,9 @@ const _: () = {
                     let mut m_deactivationNumInactiveFrames: _serde::__private::Option<
                         [U16<'de>; 2usize],
                     > = _serde::__private::None;
-                    let mut m_motionState: _serde::__private::Option<hkMotionState> = _serde::__private::None;
+                    let mut m_motionState: _serde::__private::Option<
+                        hkMotionState<'de>,
+                    > = _serde::__private::None;
                     let mut m_inertiaAndMassInv: _serde::__private::Option<Vector4> = _serde::__private::None;
                     let mut m_linearVelocity: _serde::__private::Option<Vector4> = _serde::__private::None;
                     let mut m_angularVelocity: _serde::__private::Option<Vector4> = _serde::__private::None;
@@ -388,7 +396,7 @@ const _: () = {
                                 }
                                 __A::pad(&mut __map, 2usize, 10usize)?;
                                 m_motionState = _serde::__private::Some(
-                                    match __A::next_value::<hkMotionState>(&mut __map) {
+                                    match __A::next_value::<hkMotionState<'de>>(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -694,7 +702,9 @@ const _: () = {
                     let mut m_deactivationNumInactiveFrames: _serde::__private::Option<
                         [U16<'de>; 2usize],
                     > = _serde::__private::None;
-                    let mut m_motionState: _serde::__private::Option<hkMotionState> = _serde::__private::None;
+                    let mut m_motionState: _serde::__private::Option<
+                        hkMotionState<'de>,
+                    > = _serde::__private::None;
                     let mut m_inertiaAndMassInv: _serde::__private::Option<Vector4> = _serde::__private::None;
                     let mut m_linearVelocity: _serde::__private::Option<Vector4> = _serde::__private::None;
                     let mut m_angularVelocity: _serde::__private::Option<Vector4> = _serde::__private::None;
@@ -811,7 +821,7 @@ const _: () = {
                                     );
                                 }
                                 m_motionState = _serde::__private::Some(
-                                    match __A::next_value::<hkMotionState>(&mut __map) {
+                                    match __A::next_value::<hkMotionState<'de>>(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);

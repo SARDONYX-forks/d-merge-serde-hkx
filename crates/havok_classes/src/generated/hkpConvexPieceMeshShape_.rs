@@ -33,6 +33,7 @@ pub struct hkpConvexPieceMeshShape<'a> {
     /// - name: `convexPieceStream`(ctype: `struct hkpConvexPieceStreamData*`)
     /// - offset: ` 24`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "convexPieceStream"))]
     #[cfg_attr(feature = "serde", serde(rename = "convexPieceStream"))]
     pub m_convexPieceStream: Pointer<'a>,
@@ -40,6 +41,7 @@ pub struct hkpConvexPieceMeshShape<'a> {
     /// - name: `displayMesh`(ctype: `struct hkpShapeCollection*`)
     /// - offset: ` 28`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "displayMesh"))]
     #[cfg_attr(feature = "serde", serde(rename = "displayMesh"))]
     pub m_displayMesh: Pointer<'a>,

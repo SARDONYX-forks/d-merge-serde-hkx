@@ -72,6 +72,8 @@ pub struct hkbBlendingTransitionEffect<'a> {
     /// - offset: ` 56`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fromGenerator"))]
     #[cfg_attr(feature = "serde", serde(rename = "fromGenerator"))]
     pub m_fromGenerator: Pointer<'a>,
@@ -80,6 +82,8 @@ pub struct hkbBlendingTransitionEffect<'a> {
     /// - offset: ` 60`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "toGenerator"))]
     #[cfg_attr(feature = "serde", serde(rename = "toGenerator"))]
     pub m_toGenerator: Pointer<'a>,
@@ -88,6 +92,7 @@ pub struct hkbBlendingTransitionEffect<'a> {
     /// - offset: ` 64`(x86)/`112`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "characterPoseAtBeginningOfTransition")
@@ -102,6 +107,7 @@ pub struct hkbBlendingTransitionEffect<'a> {
     /// - offset: ` 76`(x86)/`128`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "timeRemaining"))]
     #[cfg_attr(feature = "serde", serde(rename = "timeRemaining"))]
     pub m_timeRemaining: f32,
@@ -110,6 +116,7 @@ pub struct hkbBlendingTransitionEffect<'a> {
     /// - offset: ` 80`(x86)/`132`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "timeInTransition"))]
     #[cfg_attr(feature = "serde", serde(rename = "timeInTransition"))]
     pub m_timeInTransition: f32,
@@ -118,6 +125,7 @@ pub struct hkbBlendingTransitionEffect<'a> {
     /// - offset: ` 84`(x86)/`136`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "applySelfTransition"))]
     #[cfg_attr(feature = "serde", serde(rename = "applySelfTransition"))]
     pub m_applySelfTransition: bool,
@@ -126,6 +134,7 @@ pub struct hkbBlendingTransitionEffect<'a> {
     /// - offset: ` 85`(x86)/`137`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "initializeCharacterPose"))]
     #[cfg_attr(feature = "serde", serde(rename = "initializeCharacterPose"))]
     pub m_initializeCharacterPose: bool,

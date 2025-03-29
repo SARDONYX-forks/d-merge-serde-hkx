@@ -42,6 +42,7 @@ pub struct hkbKeyframeBonesModifierKeyframeInfo<'a> {
     /// - name: `boneIndex`(ctype: `hkInt16`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "boneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "boneIndex"))]
     pub m_boneIndex: I16<'a>,

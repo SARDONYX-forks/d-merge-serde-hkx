@@ -28,6 +28,7 @@ pub struct hkbHandIkControlsModifierHand<'a> {
     /// - name: `controlData`(ctype: `struct hkbHandIkControlData`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 80`(x86)/` 96`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "controlData"))]
     #[cfg_attr(feature = "serde", serde(rename = "controlData"))]
     pub m_controlData: hkbHandIkControlData<'a>,
@@ -35,6 +36,7 @@ pub struct hkbHandIkControlsModifierHand<'a> {
     /// - name: `handIndex`(ctype: `hkInt32`)
     /// - offset: ` 80`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "handIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "handIndex"))]
     pub m_handIndex: I32<'a>,
@@ -173,7 +175,7 @@ const _: () = {
                 {
                     let __ptr = __A::class_ptr(&mut __map);
                     let mut m_controlData: _serde::__private::Option<
-                        hkbHandIkControlData,
+                        hkbHandIkControlData<'de>,
                     > = _serde::__private::None;
                     let mut m_handIndex: _serde::__private::Option<I32<'de>> = _serde::__private::None;
                     let mut m_enable: _serde::__private::Option<bool> = _serde::__private::None;
@@ -188,7 +190,9 @@ const _: () = {
                                     );
                                 }
                                 m_controlData = _serde::__private::Some(
-                                    match __A::next_value::<hkbHandIkControlData>(&mut __map) {
+                                    match __A::next_value::<
+                                        hkbHandIkControlData<'de>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -276,7 +280,7 @@ const _: () = {
                     __A: _serde::de::MapAccess<'de>,
                 {
                     let mut m_controlData: _serde::__private::Option<
-                        hkbHandIkControlData,
+                        hkbHandIkControlData<'de>,
                     > = _serde::__private::None;
                     let mut m_handIndex: _serde::__private::Option<I32<'de>> = _serde::__private::None;
                     let mut m_enable: _serde::__private::Option<bool> = _serde::__private::None;
@@ -302,7 +306,9 @@ const _: () = {
                                     );
                                 }
                                 m_controlData = _serde::__private::Some(
-                                    match __A::next_value::<hkbHandIkControlData>(&mut __map) {
+                                    match __A::next_value::<
+                                        hkbHandIkControlData<'de>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);

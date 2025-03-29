@@ -55,6 +55,7 @@ pub struct hkbRotateCharacterModifier<'a> {
     /// - offset: ` 80`(x86)/`112`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "angle"))]
     #[cfg_attr(feature = "serde", serde(rename = "angle"))]
     pub m_angle: f32,

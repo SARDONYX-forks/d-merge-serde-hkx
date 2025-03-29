@@ -33,6 +33,7 @@ pub struct hkpDisplayBindingDataRigidBody<'a> {
     /// - name: `rigidBody`(ctype: `struct hkpRigidBody*`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rigidBody"))]
     #[cfg_attr(feature = "serde", serde(rename = "rigidBody"))]
     pub m_rigidBody: Pointer<'a>,
@@ -40,6 +41,7 @@ pub struct hkpDisplayBindingDataRigidBody<'a> {
     /// - name: `displayObjectPtr`(ctype: `struct hkReferencedObject*`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "displayObjectPtr"))]
     #[cfg_attr(feature = "serde", serde(rename = "displayObjectPtr"))]
     pub m_displayObjectPtr: Pointer<'a>,

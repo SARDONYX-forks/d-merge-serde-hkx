@@ -33,6 +33,7 @@ pub struct hkpMoppBvTreeShape<'a> {
     /// - name: `child`(ctype: `struct hkpSingleShapeContainer`)
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "child"))]
     #[cfg_attr(feature = "serde", serde(rename = "child"))]
     pub m_child: hkpSingleShapeContainer<'a>,
@@ -41,6 +42,8 @@ pub struct hkpMoppBvTreeShape<'a> {
     /// - offset: ` 56`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "childSize"))]
     #[cfg_attr(feature = "serde", serde(rename = "childSize"))]
     pub m_childSize: I32<'a>,
@@ -192,7 +195,7 @@ const _: () = {
                     let __ptr = __A::class_ptr(&mut __map);
                     let parent = __A::parent_value(&mut __map)?;
                     let mut m_child: _serde::__private::Option<
-                        hkpSingleShapeContainer,
+                        hkpSingleShapeContainer<'de>,
                     > = _serde::__private::None;
                     let mut m_childSize: _serde::__private::Option<I32<'de>> = _serde::__private::None;
                     for i in 0..2usize {
@@ -205,7 +208,7 @@ const _: () = {
                                 }
                                 m_child = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSingleShapeContainer,
+                                        hkpSingleShapeContainer<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -272,7 +275,7 @@ const _: () = {
                     let mut m_bvTreeType: _serde::__private::Option<BvTreeType> = _serde::__private::None;
                     let mut m_code: _serde::__private::Option<Pointer<'de>> = _serde::__private::None;
                     let mut m_child: _serde::__private::Option<
-                        hkpSingleShapeContainer,
+                        hkpSingleShapeContainer<'de>,
                     > = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
                         __A::next_key::<__Field>(&mut __map)?
@@ -371,7 +374,7 @@ const _: () = {
                                 }
                                 m_child = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSingleShapeContainer,
+                                        hkpSingleShapeContainer<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

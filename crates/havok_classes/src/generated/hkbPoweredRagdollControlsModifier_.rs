@@ -40,6 +40,7 @@ pub struct hkbPoweredRagdollControlsModifier<'a> {
     /// - name: `bones`(ctype: `struct hkbBoneIndexArray*`)
     /// - offset: ` 80`(x86)/`112`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bones"))]
     #[cfg_attr(feature = "serde", serde(rename = "bones"))]
     pub m_bones: Pointer<'a>,
@@ -47,6 +48,7 @@ pub struct hkbPoweredRagdollControlsModifier<'a> {
     /// - name: `worldFromModelModeData`(ctype: `struct hkbWorldFromModelModeData`)
     /// - offset: ` 84`(x86)/`120`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "worldFromModelModeData"))]
     #[cfg_attr(feature = "serde", serde(rename = "worldFromModelModeData"))]
     pub m_worldFromModelModeData: hkbWorldFromModelModeData<'a>,
@@ -54,6 +56,7 @@ pub struct hkbPoweredRagdollControlsModifier<'a> {
     /// - name: `boneWeights`(ctype: `struct hkbBoneWeightArray*`)
     /// - offset: ` 92`(x86)/`128`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "boneWeights"))]
     #[cfg_attr(feature = "serde", serde(rename = "boneWeights"))]
     pub m_boneWeights: Pointer<'a>,
@@ -258,7 +261,7 @@ const _: () = {
                     > = _serde::__private::None;
                     let mut m_bones: _serde::__private::Option<Pointer<'de>> = _serde::__private::None;
                     let mut m_worldFromModelModeData: _serde::__private::Option<
-                        hkbWorldFromModelModeData,
+                        hkbWorldFromModelModeData<'de>,
                     > = _serde::__private::None;
                     let mut m_boneWeights: _serde::__private::Option<Pointer<'de>> = _serde::__private::None;
                     for i in 0..4usize {
@@ -310,7 +313,7 @@ const _: () = {
                                 }
                                 m_worldFromModelModeData = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkbWorldFromModelModeData,
+                                        hkbWorldFromModelModeData<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -406,7 +409,7 @@ const _: () = {
                     > = _serde::__private::None;
                     let mut m_bones: _serde::__private::Option<Pointer<'de>> = _serde::__private::None;
                     let mut m_worldFromModelModeData: _serde::__private::Option<
-                        hkbWorldFromModelModeData,
+                        hkbWorldFromModelModeData<'de>,
                     > = _serde::__private::None;
                     let mut m_boneWeights: _serde::__private::Option<Pointer<'de>> = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
@@ -588,7 +591,7 @@ const _: () = {
                                 }
                                 m_worldFromModelModeData = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkbWorldFromModelModeData,
+                                        hkbWorldFromModelModeData<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

@@ -28,6 +28,7 @@ pub struct hkVertexFormat<'a> {
     /// - name: `elements`(ctype: `struct hkVertexFormatElement[32]`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `256`(x86)/`256`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "elements"))]
     #[cfg_attr(feature = "serde", serde(rename = "elements"))]
     pub m_elements: [hkVertexFormatElement<'a>; 32usize],
@@ -35,6 +36,7 @@ pub struct hkVertexFormat<'a> {
     /// - name: `numElements`(ctype: `hkInt32`)
     /// - offset: `256`(x86)/`256`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numElements"))]
     #[cfg_attr(feature = "serde", serde(rename = "numElements"))]
     pub m_numElements: I32<'a>,
@@ -166,7 +168,7 @@ const _: () = {
                 {
                     let __ptr = __A::class_ptr(&mut __map);
                     let mut m_elements: _serde::__private::Option<
-                        [hkVertexFormatElement; 32usize],
+                        [hkVertexFormatElement<'de>; 32usize],
                     > = _serde::__private::None;
                     let mut m_numElements: _serde::__private::Option<I32<'de>> = _serde::__private::None;
                     for i in 0..2usize {
@@ -181,7 +183,7 @@ const _: () = {
                                 }
                                 m_elements = _serde::__private::Some(
                                     match __A::next_value::<
-                                        [hkVertexFormatElement; 32usize],
+                                        [hkVertexFormatElement<'de>; 32usize],
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -243,7 +245,7 @@ const _: () = {
                     __A: _serde::de::MapAccess<'de>,
                 {
                     let mut m_elements: _serde::__private::Option<
-                        [hkVertexFormatElement; 32usize],
+                        [hkVertexFormatElement<'de>; 32usize],
                     > = _serde::__private::None;
                     let mut m_numElements: _serde::__private::Option<I32<'de>> = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
@@ -269,7 +271,7 @@ const _: () = {
                                 }
                                 m_elements = _serde::__private::Some(
                                     match __A::next_value::<
-                                        [hkVertexFormatElement; 32usize],
+                                        [hkVertexFormatElement<'de>; 32usize],
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

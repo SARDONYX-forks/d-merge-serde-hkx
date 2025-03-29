@@ -56,6 +56,7 @@ pub struct hkxScene<'a> {
     /// - name: `rootNode`(ctype: `struct hkxNode*`)
     /// - offset: ` 20`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rootNode"))]
     #[cfg_attr(feature = "serde", serde(rename = "rootNode"))]
     pub m_rootNode: Pointer<'a>,
@@ -63,6 +64,7 @@ pub struct hkxScene<'a> {
     /// - name: `selectionSets`(ctype: `hkArray<hkxNodeSelectionSet*>`)
     /// - offset: ` 24`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "selectionSets"))]
     #[cfg_attr(feature = "serde", serde(rename = "selectionSets"))]
     pub m_selectionSets: Vec<Pointer<'a>>,
@@ -70,6 +72,7 @@ pub struct hkxScene<'a> {
     /// - name: `cameras`(ctype: `hkArray<hkxCamera*>`)
     /// - offset: ` 36`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "cameras"))]
     #[cfg_attr(feature = "serde", serde(rename = "cameras"))]
     pub m_cameras: Vec<Pointer<'a>>,
@@ -77,6 +80,7 @@ pub struct hkxScene<'a> {
     /// - name: `lights`(ctype: `hkArray<hkxLight*>`)
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "lights"))]
     #[cfg_attr(feature = "serde", serde(rename = "lights"))]
     pub m_lights: Vec<Pointer<'a>>,
@@ -84,6 +88,7 @@ pub struct hkxScene<'a> {
     /// - name: `meshes`(ctype: `hkArray<hkxMesh*>`)
     /// - offset: ` 60`(x86)/` 96`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "meshes"))]
     #[cfg_attr(feature = "serde", serde(rename = "meshes"))]
     pub m_meshes: Vec<Pointer<'a>>,
@@ -91,6 +96,7 @@ pub struct hkxScene<'a> {
     /// - name: `materials`(ctype: `hkArray<hkxMaterial*>`)
     /// - offset: ` 72`(x86)/`112`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materials"))]
     #[cfg_attr(feature = "serde", serde(rename = "materials"))]
     pub m_materials: Vec<Pointer<'a>>,
@@ -98,6 +104,7 @@ pub struct hkxScene<'a> {
     /// - name: `inplaceTextures`(ctype: `hkArray<hkxTextureInplace*>`)
     /// - offset: ` 84`(x86)/`128`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "inplaceTextures"))]
     #[cfg_attr(feature = "serde", serde(rename = "inplaceTextures"))]
     pub m_inplaceTextures: Vec<Pointer<'a>>,
@@ -105,6 +112,7 @@ pub struct hkxScene<'a> {
     /// - name: `externalTextures`(ctype: `hkArray<hkxTextureFile*>`)
     /// - offset: ` 96`(x86)/`144`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "externalTextures"))]
     #[cfg_attr(feature = "serde", serde(rename = "externalTextures"))]
     pub m_externalTextures: Vec<Pointer<'a>>,
@@ -112,6 +120,7 @@ pub struct hkxScene<'a> {
     /// - name: `skinBindings`(ctype: `hkArray<hkxSkinBinding*>`)
     /// - offset: `108`(x86)/`160`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "skinBindings"))]
     #[cfg_attr(feature = "serde", serde(rename = "skinBindings"))]
     pub m_skinBindings: Vec<Pointer<'a>>,

@@ -33,6 +33,7 @@ pub struct hkbKeyframeBonesModifier<'a> {
     /// - name: `keyframeInfo`(ctype: `hkArray<struct hkbKeyframeBonesModifierKeyframeInfo>`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "keyframeInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "keyframeInfo"))]
     pub m_keyframeInfo: Vec<hkbKeyframeBonesModifierKeyframeInfo<'a>>,
@@ -40,6 +41,7 @@ pub struct hkbKeyframeBonesModifier<'a> {
     /// - name: `keyframedBonesList`(ctype: `struct hkbBoneIndexArray*`)
     /// - offset: ` 56`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "keyframedBonesList"))]
     #[cfg_attr(feature = "serde", serde(rename = "keyframedBonesList"))]
     pub m_keyframedBonesList: Pointer<'a>,
@@ -239,7 +241,7 @@ const _: () = {
                     let __ptr = __A::class_ptr(&mut __map);
                     let parent = __A::parent_value(&mut __map)?;
                     let mut m_keyframeInfo: _serde::__private::Option<
-                        Vec<hkbKeyframeBonesModifierKeyframeInfo>,
+                        Vec<hkbKeyframeBonesModifierKeyframeInfo<'de>>,
                     > = _serde::__private::None;
                     let mut m_keyframedBonesList: _serde::__private::Option<
                         Pointer<'de>,
@@ -256,7 +258,7 @@ const _: () = {
                                 }
                                 m_keyframeInfo = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkbKeyframeBonesModifierKeyframeInfo>,
+                                        Vec<hkbKeyframeBonesModifierKeyframeInfo<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -329,7 +331,7 @@ const _: () = {
                     let mut m_name: _serde::__private::Option<StringPtr<'de>> = _serde::__private::None;
                     let mut m_enable: _serde::__private::Option<bool> = _serde::__private::None;
                     let mut m_keyframeInfo: _serde::__private::Option<
-                        Vec<hkbKeyframeBonesModifierKeyframeInfo>,
+                        Vec<hkbKeyframeBonesModifierKeyframeInfo<'de>>,
                     > = _serde::__private::None;
                     let mut m_keyframedBonesList: _serde::__private::Option<
                         Pointer<'de>,
@@ -459,7 +461,7 @@ const _: () = {
                                 }
                                 m_keyframeInfo = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkbKeyframeBonesModifierKeyframeInfo>,
+                                        Vec<hkbKeyframeBonesModifierKeyframeInfo<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

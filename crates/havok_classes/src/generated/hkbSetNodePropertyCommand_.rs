@@ -33,6 +33,7 @@ pub struct hkbSetNodePropertyCommand<'a> {
     /// - name: `characterId`(ctype: `hkUint64`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "characterId"))]
     #[cfg_attr(feature = "serde", serde(rename = "characterId"))]
     pub m_characterId: U64<'a>,
@@ -56,6 +57,7 @@ pub struct hkbSetNodePropertyCommand<'a> {
     /// - name: `propertyValue`(ctype: `struct hkbVariableValue`)
     /// - offset: ` 24`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "propertyValue"))]
     #[cfg_attr(feature = "serde", serde(rename = "propertyValue"))]
     pub m_propertyValue: hkbVariableValue<'a>,
@@ -63,6 +65,7 @@ pub struct hkbSetNodePropertyCommand<'a> {
     /// - name: `padding`(ctype: `hkInt32`)
     /// - offset: ` 28`(x86)/` 44`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "padding"))]
     #[cfg_attr(feature = "serde", serde(rename = "padding"))]
     pub m_padding: I32<'a>,
@@ -205,7 +208,7 @@ const _: () = {
                     let mut m_nodeName: _serde::__private::Option<StringPtr<'de>> = _serde::__private::None;
                     let mut m_propertyName: _serde::__private::Option<StringPtr<'de>> = _serde::__private::None;
                     let mut m_propertyValue: _serde::__private::Option<
-                        hkbVariableValue,
+                        hkbVariableValue<'de>,
                     > = _serde::__private::None;
                     let mut m_padding: _serde::__private::Option<I32<'de>> = _serde::__private::None;
                     for i in 0..5usize {
@@ -270,7 +273,7 @@ const _: () = {
                                     );
                                 }
                                 m_propertyValue = _serde::__private::Some(
-                                    match __A::next_value::<hkbVariableValue>(&mut __map) {
+                                    match __A::next_value::<hkbVariableValue<'de>>(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -366,7 +369,7 @@ const _: () = {
                     let mut m_nodeName: _serde::__private::Option<StringPtr<'de>> = _serde::__private::None;
                     let mut m_propertyName: _serde::__private::Option<StringPtr<'de>> = _serde::__private::None;
                     let mut m_propertyValue: _serde::__private::Option<
-                        hkbVariableValue,
+                        hkbVariableValue<'de>,
                     > = _serde::__private::None;
                     let mut m_padding: _serde::__private::Option<I32<'de>> = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
@@ -469,7 +472,7 @@ const _: () = {
                                     );
                                 }
                                 m_propertyValue = _serde::__private::Some(
-                                    match __A::next_value::<hkbVariableValue>(&mut __map) {
+                                    match __A::next_value::<hkbVariableValue<'de>>(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);

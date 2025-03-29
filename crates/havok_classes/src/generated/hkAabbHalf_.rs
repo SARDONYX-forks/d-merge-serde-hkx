@@ -28,6 +28,7 @@ pub struct hkAabbHalf<'a> {
     /// - name: `data`(ctype: `hkUint16[6]`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 12`(x86)/` 12`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "data"))]
     #[cfg_attr(feature = "serde", serde(rename = "data"))]
     pub m_data: [U16<'a>; 6usize],
@@ -35,6 +36,7 @@ pub struct hkAabbHalf<'a> {
     /// - name: `extras`(ctype: `hkUint16[2]`)
     /// - offset: ` 12`(x86)/` 12`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "extras"))]
     #[cfg_attr(feature = "serde", serde(rename = "extras"))]
     pub m_extras: [U16<'a>; 2usize],

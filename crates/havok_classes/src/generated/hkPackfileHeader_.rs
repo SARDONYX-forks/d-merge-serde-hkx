@@ -28,6 +28,7 @@ pub struct hkPackfileHeader<'a> {
     /// - name: `magic`(ctype: `hkInt32[2]`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "magic"))]
     #[cfg_attr(feature = "serde", serde(rename = "magic"))]
     pub m_magic: [I32<'a>; 2usize],
@@ -35,6 +36,7 @@ pub struct hkPackfileHeader<'a> {
     /// - name: `userTag`(ctype: `hkInt32`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "userTag"))]
     #[cfg_attr(feature = "serde", serde(rename = "userTag"))]
     pub m_userTag: I32<'a>,
@@ -42,6 +44,7 @@ pub struct hkPackfileHeader<'a> {
     /// - name: `fileVersion`(ctype: `hkInt32`)
     /// - offset: ` 12`(x86)/` 12`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fileVersion"))]
     #[cfg_attr(feature = "serde", serde(rename = "fileVersion"))]
     pub m_fileVersion: I32<'a>,
@@ -49,6 +52,7 @@ pub struct hkPackfileHeader<'a> {
     /// - name: `layoutRules`(ctype: `hkUint8[4]`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "layoutRules"))]
     #[cfg_attr(feature = "serde", serde(rename = "layoutRules"))]
     pub m_layoutRules: [U8<'a>; 4usize],
@@ -56,6 +60,7 @@ pub struct hkPackfileHeader<'a> {
     /// - name: `numSections`(ctype: `hkInt32`)
     /// - offset: ` 20`(x86)/` 20`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numSections"))]
     #[cfg_attr(feature = "serde", serde(rename = "numSections"))]
     pub m_numSections: I32<'a>,
@@ -63,6 +68,7 @@ pub struct hkPackfileHeader<'a> {
     /// - name: `contentsSectionIndex`(ctype: `hkInt32`)
     /// - offset: ` 24`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "contentsSectionIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "contentsSectionIndex"))]
     pub m_contentsSectionIndex: I32<'a>,
@@ -70,6 +76,7 @@ pub struct hkPackfileHeader<'a> {
     /// - name: `contentsSectionOffset`(ctype: `hkInt32`)
     /// - offset: ` 28`(x86)/` 28`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "contentsSectionOffset"))]
     #[cfg_attr(feature = "serde", serde(rename = "contentsSectionOffset"))]
     pub m_contentsSectionOffset: I32<'a>,
@@ -77,6 +84,7 @@ pub struct hkPackfileHeader<'a> {
     /// - name: `contentsClassNameSectionIndex`(ctype: `hkInt32`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "contentsClassNameSectionIndex")
@@ -87,6 +95,7 @@ pub struct hkPackfileHeader<'a> {
     /// - name: `contentsClassNameSectionOffset`(ctype: `hkInt32`)
     /// - offset: ` 36`(x86)/` 36`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "contentsClassNameSectionOffset")
@@ -104,6 +113,7 @@ pub struct hkPackfileHeader<'a> {
     /// - name: `flags`(ctype: `hkInt32`)
     /// - offset: ` 56`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "flags"))]
     #[cfg_attr(feature = "serde", serde(rename = "flags"))]
     pub m_flags: I32<'a>,
@@ -111,6 +121,7 @@ pub struct hkPackfileHeader<'a> {
     /// - name: `pad`(ctype: `hkInt32[1]`)
     /// - offset: ` 60`(x86)/` 60`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pad"))]
     #[cfg_attr(feature = "serde", serde(rename = "pad"))]
     pub m_pad: [I32<'a>; 1usize],

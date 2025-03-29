@@ -36,6 +36,7 @@ pub struct hkClassMember<'a> {
     /// - name: `class`(ctype: `struct hkClass*`)
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "class"))]
     #[cfg_attr(feature = "serde", serde(rename = "class"))]
     pub m_class: Pointer<'a>,
@@ -43,6 +44,7 @@ pub struct hkClassMember<'a> {
     /// - name: `enum`(ctype: `struct hkClassEnum*`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "enum"))]
     #[cfg_attr(feature = "serde", serde(rename = "enum"))]
     pub m_enum: Pointer<'a>,
@@ -64,6 +66,7 @@ pub struct hkClassMember<'a> {
     /// - name: `cArraySize`(ctype: `hkInt16`)
     /// - offset: ` 14`(x86)/` 26`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "cArraySize"))]
     #[cfg_attr(feature = "serde", serde(rename = "cArraySize"))]
     pub m_cArraySize: I16<'a>,
@@ -78,6 +81,7 @@ pub struct hkClassMember<'a> {
     /// - name: `offset`(ctype: `hkUint16`)
     /// - offset: ` 18`(x86)/` 30`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "offset"))]
     #[cfg_attr(feature = "serde", serde(rename = "offset"))]
     pub m_offset: U16<'a>,
@@ -86,6 +90,8 @@ pub struct hkClassMember<'a> {
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "attributes"))]
     #[cfg_attr(feature = "serde", serde(rename = "attributes"))]
     pub m_attributes: Pointer<'a>,

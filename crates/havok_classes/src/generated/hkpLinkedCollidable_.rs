@@ -34,6 +34,7 @@ pub struct hkpLinkedCollidable<'a> {
     /// - offset: ` 80`(x86)/`112`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "collisionEntries"))]
     #[cfg_attr(feature = "serde", serde(rename = "collisionEntries"))]
     pub m_collisionEntries: Vec<()>,

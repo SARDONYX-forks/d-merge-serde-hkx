@@ -42,6 +42,8 @@ pub struct hkMemoryResourceContainer<'a> {
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "parent"))]
     #[cfg_attr(feature = "serde", serde(rename = "parent"))]
     pub m_parent: Pointer<'a>,
@@ -49,6 +51,7 @@ pub struct hkMemoryResourceContainer<'a> {
     /// - name: `resourceHandles`(ctype: `hkArray<hkMemoryResourceHandle*>`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "resourceHandles"))]
     #[cfg_attr(feature = "serde", serde(rename = "resourceHandles"))]
     pub m_resourceHandles: Vec<Pointer<'a>>,
@@ -56,6 +59,7 @@ pub struct hkMemoryResourceContainer<'a> {
     /// - name: `children`(ctype: `hkArray<hkMemoryResourceContainer*>`)
     /// - offset: ` 28`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "children"))]
     #[cfg_attr(feature = "serde", serde(rename = "children"))]
     pub m_children: Vec<Pointer<'a>>,

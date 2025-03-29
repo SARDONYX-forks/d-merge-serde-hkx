@@ -28,6 +28,7 @@ pub struct hkpAgent1nSector<'a> {
     /// - name: `bytesAllocated`(ctype: `hkUint32`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bytesAllocated"))]
     #[cfg_attr(feature = "serde", serde(rename = "bytesAllocated"))]
     pub m_bytesAllocated: U32<'a>,
@@ -35,6 +36,7 @@ pub struct hkpAgent1nSector<'a> {
     /// - name: `pad0`(ctype: `hkUint32`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pad0"))]
     #[cfg_attr(feature = "serde", serde(rename = "pad0"))]
     pub m_pad0: U32<'a>,
@@ -42,6 +44,7 @@ pub struct hkpAgent1nSector<'a> {
     /// - name: `pad1`(ctype: `hkUint32`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pad1"))]
     #[cfg_attr(feature = "serde", serde(rename = "pad1"))]
     pub m_pad1: U32<'a>,
@@ -49,6 +52,7 @@ pub struct hkpAgent1nSector<'a> {
     /// - name: `pad2`(ctype: `hkUint32`)
     /// - offset: ` 12`(x86)/` 12`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pad2"))]
     #[cfg_attr(feature = "serde", serde(rename = "pad2"))]
     pub m_pad2: U32<'a>,
@@ -65,6 +69,7 @@ pub struct hkpAgent1nSector<'a> {
         serde(with = "::serde_with::As::<[::serde_with::Same; 496]>")
     )]
     #[educe(Default(expression = core::array::from_fn(|_idx|Default::default())))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "data"))]
     #[cfg_attr(feature = "serde", serde(rename = "data"))]
     pub m_data: [U8<'a>; 496usize],

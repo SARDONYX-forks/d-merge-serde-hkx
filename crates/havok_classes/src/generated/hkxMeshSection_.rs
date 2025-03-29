@@ -33,6 +33,7 @@ pub struct hkxMeshSection<'a> {
     /// - name: `vertexBuffer`(ctype: `struct hkxVertexBuffer*`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vertexBuffer"))]
     #[cfg_attr(feature = "serde", serde(rename = "vertexBuffer"))]
     pub m_vertexBuffer: Pointer<'a>,
@@ -40,6 +41,7 @@ pub struct hkxMeshSection<'a> {
     /// - name: `indexBuffers`(ctype: `hkArray<hkxIndexBuffer*>`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "indexBuffers"))]
     #[cfg_attr(feature = "serde", serde(rename = "indexBuffers"))]
     pub m_indexBuffers: Vec<Pointer<'a>>,
@@ -47,6 +49,7 @@ pub struct hkxMeshSection<'a> {
     /// - name: `material`(ctype: `struct hkxMaterial*`)
     /// - offset: ` 24`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "material"))]
     #[cfg_attr(feature = "serde", serde(rename = "material"))]
     pub m_material: Pointer<'a>,
@@ -54,6 +57,7 @@ pub struct hkxMeshSection<'a> {
     /// - name: `userChannels`(ctype: `hkArray<hkReferencedObject*>`)
     /// - offset: ` 28`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "userChannels"))]
     #[cfg_attr(feature = "serde", serde(rename = "userChannels"))]
     pub m_userChannels: Vec<Pointer<'a>>,

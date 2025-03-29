@@ -33,6 +33,7 @@ pub struct hkbEvaluateHandleModifier<'a> {
     /// - name: `handle`(ctype: `struct hkbHandle*`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "handle"))]
     #[cfg_attr(feature = "serde", serde(rename = "handle"))]
     pub m_handle: Pointer<'a>,
@@ -84,6 +85,7 @@ pub struct hkbEvaluateHandleModifier<'a> {
     /// - type_size: ` 24`(x86)/` 48`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
     #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "oldHandle"))]
     #[cfg_attr(feature = "serde", serde(rename = "oldHandle"))]
     pub m_oldHandle: hkbHandle<'a>,
@@ -92,6 +94,7 @@ pub struct hkbEvaluateHandleModifier<'a> {
     /// - offset: `128`(x86)/`192`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "oldHandlePosition"))]
     #[cfg_attr(feature = "serde", serde(rename = "oldHandlePosition"))]
     pub m_oldHandlePosition: Vector4,
@@ -100,6 +103,7 @@ pub struct hkbEvaluateHandleModifier<'a> {
     /// - offset: `144`(x86)/`208`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "oldHandleRotation"))]
     #[cfg_attr(feature = "serde", serde(rename = "oldHandleRotation"))]
     pub m_oldHandleRotation: Quaternion,
@@ -108,6 +112,7 @@ pub struct hkbEvaluateHandleModifier<'a> {
     /// - offset: `160`(x86)/`224`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "timeSinceLastModify"))]
     #[cfg_attr(feature = "serde", serde(rename = "timeSinceLastModify"))]
     pub m_timeSinceLastModify: f32,
@@ -116,6 +121,7 @@ pub struct hkbEvaluateHandleModifier<'a> {
     /// - offset: `164`(x86)/`228`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "smoothlyChangingHandles"))]
     #[cfg_attr(feature = "serde", serde(rename = "smoothlyChangingHandles"))]
     pub m_smoothlyChangingHandles: bool,

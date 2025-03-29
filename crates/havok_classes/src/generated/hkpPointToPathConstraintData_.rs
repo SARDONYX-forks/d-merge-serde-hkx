@@ -33,6 +33,7 @@ pub struct hkpPointToPathConstraintData<'a> {
     /// - name: `atoms`(ctype: `struct hkpBridgeAtoms`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: ` 12`(x86)/` 24`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "atoms"))]
     #[cfg_attr(feature = "serde", serde(rename = "atoms"))]
     pub m_atoms: hkpBridgeAtoms<'a>,
@@ -40,6 +41,7 @@ pub struct hkpPointToPathConstraintData<'a> {
     /// - name: `path`(ctype: `struct hkpParametricCurve*`)
     /// - offset: ` 24`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "path"))]
     #[cfg_attr(feature = "serde", serde(rename = "path"))]
     pub m_path: Pointer<'a>,
@@ -217,7 +219,7 @@ const _: () = {
                 {
                     let __ptr = __A::class_ptr(&mut __map);
                     let parent = __A::parent_value(&mut __map)?;
-                    let mut m_atoms: _serde::__private::Option<hkpBridgeAtoms> = _serde::__private::None;
+                    let mut m_atoms: _serde::__private::Option<hkpBridgeAtoms<'de>> = _serde::__private::None;
                     let mut m_path: _serde::__private::Option<Pointer<'de>> = _serde::__private::None;
                     let mut m_maxFrictionForce: _serde::__private::Option<f32> = _serde::__private::None;
                     let mut m_angularConstrainedDOF: _serde::__private::Option<
@@ -235,7 +237,7 @@ const _: () = {
                                     );
                                 }
                                 m_atoms = _serde::__private::Some(
-                                    match __A::next_value::<hkpBridgeAtoms>(&mut __map) {
+                                    match __A::next_value::<hkpBridgeAtoms<'de>>(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -382,7 +384,7 @@ const _: () = {
                     __A: _serde::de::MapAccess<'de>,
                 {
                     let mut m_userData: _serde::__private::Option<Ulong> = _serde::__private::None;
-                    let mut m_atoms: _serde::__private::Option<hkpBridgeAtoms> = _serde::__private::None;
+                    let mut m_atoms: _serde::__private::Option<hkpBridgeAtoms<'de>> = _serde::__private::None;
                     let mut m_path: _serde::__private::Option<Pointer<'de>> = _serde::__private::None;
                     let mut m_maxFrictionForce: _serde::__private::Option<f32> = _serde::__private::None;
                     let mut m_angularConstrainedDOF: _serde::__private::Option<
@@ -437,7 +439,7 @@ const _: () = {
                                     );
                                 }
                                 m_atoms = _serde::__private::Some(
-                                    match __A::next_value::<hkpBridgeAtoms>(&mut __map) {
+                                    match __A::next_value::<hkpBridgeAtoms<'de>>(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);

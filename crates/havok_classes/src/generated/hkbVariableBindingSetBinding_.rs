@@ -37,6 +37,8 @@ pub struct hkbVariableBindingSetBinding<'a> {
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "memberClass"))]
     #[cfg_attr(feature = "serde", serde(rename = "memberClass"))]
     pub m_memberClass: Pointer<'a>,
@@ -45,6 +47,8 @@ pub struct hkbVariableBindingSetBinding<'a> {
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "offsetInObjectPlusOne"))]
     #[cfg_attr(feature = "serde", serde(rename = "offsetInObjectPlusOne"))]
     pub m_offsetInObjectPlusOne: I32<'a>,
@@ -53,6 +57,8 @@ pub struct hkbVariableBindingSetBinding<'a> {
     /// - offset: ` 12`(x86)/` 20`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "offsetInArrayPlusOne"))]
     #[cfg_attr(feature = "serde", serde(rename = "offsetInArrayPlusOne"))]
     pub m_offsetInArrayPlusOne: I32<'a>,
@@ -61,6 +67,8 @@ pub struct hkbVariableBindingSetBinding<'a> {
     /// - offset: ` 16`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rootVariableIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "rootVariableIndex"))]
     pub m_rootVariableIndex: I32<'a>,
@@ -68,6 +76,7 @@ pub struct hkbVariableBindingSetBinding<'a> {
     /// - name: `variableIndex`(ctype: `hkInt32`)
     /// - offset: ` 20`(x86)/` 28`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "variableIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "variableIndex"))]
     pub m_variableIndex: I32<'a>,
@@ -75,6 +84,7 @@ pub struct hkbVariableBindingSetBinding<'a> {
     /// - name: `bitIndex`(ctype: `hkInt8`)
     /// - offset: ` 24`(x86)/` 32`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bitIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "bitIndex"))]
     pub m_bitIndex: I8<'a>,
@@ -90,6 +100,7 @@ pub struct hkbVariableBindingSetBinding<'a> {
     /// - offset: ` 26`(x86)/` 34`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "memberType"))]
     #[cfg_attr(feature = "serde", serde(rename = "memberType"))]
     pub m_memberType: U8<'a>,
@@ -98,6 +109,8 @@ pub struct hkbVariableBindingSetBinding<'a> {
     /// - offset: ` 27`(x86)/` 35`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "variableType"))]
     #[cfg_attr(feature = "serde", serde(rename = "variableType"))]
     pub m_variableType: I8<'a>,
@@ -106,6 +119,7 @@ pub struct hkbVariableBindingSetBinding<'a> {
     /// - offset: ` 28`(x86)/` 36`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "flags"))]
     #[cfg_attr(feature = "serde", serde(rename = "flags"))]
     pub m_flags: I8<'a>,

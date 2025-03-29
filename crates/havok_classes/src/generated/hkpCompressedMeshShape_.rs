@@ -33,6 +33,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `bitsPerIndex`(ctype: `hkInt32`)
     /// - offset: ` 24`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bitsPerIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "bitsPerIndex"))]
     pub m_bitsPerIndex: I32<'a>,
@@ -40,6 +41,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `bitsPerWIndex`(ctype: `hkInt32`)
     /// - offset: ` 28`(x86)/` 52`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bitsPerWIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "bitsPerWIndex"))]
     pub m_bitsPerWIndex: I32<'a>,
@@ -47,6 +49,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `wIndexMask`(ctype: `hkInt32`)
     /// - offset: ` 32`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wIndexMask"))]
     #[cfg_attr(feature = "serde", serde(rename = "wIndexMask"))]
     pub m_wIndexMask: I32<'a>,
@@ -54,6 +57,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `indexMask`(ctype: `hkInt32`)
     /// - offset: ` 36`(x86)/` 60`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "indexMask"))]
     #[cfg_attr(feature = "serde", serde(rename = "indexMask"))]
     pub m_indexMask: I32<'a>,
@@ -82,6 +86,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `materials`(ctype: `hkArray<hkUint32>`)
     /// - offset: ` 48`(x86)/` 72`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materials"))]
     #[cfg_attr(feature = "serde", serde(rename = "materials"))]
     pub m_materials: Vec<U32<'a>>,
@@ -89,6 +94,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `materials16`(ctype: `hkArray<hkUint16>`)
     /// - offset: ` 60`(x86)/` 88`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materials16"))]
     #[cfg_attr(feature = "serde", serde(rename = "materials16"))]
     pub m_materials16: Vec<U16<'a>>,
@@ -96,6 +102,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `materials8`(ctype: `hkArray<hkUint8>`)
     /// - offset: ` 72`(x86)/`104`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materials8"))]
     #[cfg_attr(feature = "serde", serde(rename = "materials8"))]
     pub m_materials8: Vec<U8<'a>>,
@@ -117,6 +124,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `bigTriangles`(ctype: `hkArray<struct hkpCompressedMeshShapeBigTriangle>`)
     /// - offset: `108`(x86)/`152`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bigTriangles"))]
     #[cfg_attr(feature = "serde", serde(rename = "bigTriangles"))]
     pub m_bigTriangles: Vec<hkpCompressedMeshShapeBigTriangle<'a>>,
@@ -124,6 +132,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `chunks`(ctype: `hkArray<struct hkpCompressedMeshShapeChunk>`)
     /// - offset: `120`(x86)/`168`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "chunks"))]
     #[cfg_attr(feature = "serde", serde(rename = "chunks"))]
     pub m_chunks: Vec<hkpCompressedMeshShapeChunk<'a>>,
@@ -131,6 +140,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `convexPieces`(ctype: `hkArray<struct hkpCompressedMeshShapeConvexPiece>`)
     /// - offset: `132`(x86)/`184`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "convexPieces"))]
     #[cfg_attr(feature = "serde", serde(rename = "convexPieces"))]
     pub m_convexPieces: Vec<hkpCompressedMeshShapeConvexPiece<'a>>,
@@ -152,6 +162,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `defaultCollisionFilterInfo`(ctype: `hkUint32`)
     /// - offset: `192`(x86)/`240`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "defaultCollisionFilterInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "defaultCollisionFilterInfo"))]
     pub m_defaultCollisionFilterInfo: U32<'a>,
@@ -160,6 +171,8 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - offset: `196`(x86)/`248`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "meshMaterials"))]
     #[cfg_attr(feature = "serde", serde(rename = "meshMaterials"))]
     pub m_meshMaterials: Pointer<'a>,
@@ -167,6 +180,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `materialStriding`(ctype: `hkUint16`)
     /// - offset: `200`(x86)/`256`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materialStriding"))]
     #[cfg_attr(feature = "serde", serde(rename = "materialStriding"))]
     pub m_materialStriding: U16<'a>,
@@ -174,6 +188,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `numMaterials`(ctype: `hkUint16`)
     /// - offset: `202`(x86)/`258`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numMaterials"))]
     #[cfg_attr(feature = "serde", serde(rename = "numMaterials"))]
     pub m_numMaterials: U16<'a>,
@@ -499,13 +514,13 @@ const _: () = {
                     let mut m_transforms: _serde::__private::Option<Vec<QsTransform>> = _serde::__private::None;
                     let mut m_bigVertices: _serde::__private::Option<Vec<Vector4>> = _serde::__private::None;
                     let mut m_bigTriangles: _serde::__private::Option<
-                        Vec<hkpCompressedMeshShapeBigTriangle>,
+                        Vec<hkpCompressedMeshShapeBigTriangle<'de>>,
                     > = _serde::__private::None;
                     let mut m_chunks: _serde::__private::Option<
-                        Vec<hkpCompressedMeshShapeChunk>,
+                        Vec<hkpCompressedMeshShapeChunk<'de>>,
                     > = _serde::__private::None;
                     let mut m_convexPieces: _serde::__private::Option<
-                        Vec<hkpCompressedMeshShapeConvexPiece>,
+                        Vec<hkpCompressedMeshShapeConvexPiece<'de>>,
                     > = _serde::__private::None;
                     let mut m_error: _serde::__private::Option<f32> = _serde::__private::None;
                     let mut m_bounds: _serde::__private::Option<hkAabb> = _serde::__private::None;
@@ -733,7 +748,7 @@ const _: () = {
                                 }
                                 m_bigTriangles = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkpCompressedMeshShapeBigTriangle>,
+                                        Vec<hkpCompressedMeshShapeBigTriangle<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -750,7 +765,7 @@ const _: () = {
                                 }
                                 m_chunks = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkpCompressedMeshShapeChunk>,
+                                        Vec<hkpCompressedMeshShapeChunk<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -769,7 +784,7 @@ const _: () = {
                                 }
                                 m_convexPieces = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkpCompressedMeshShapeConvexPiece>,
+                                        Vec<hkpCompressedMeshShapeConvexPiece<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -1169,13 +1184,13 @@ const _: () = {
                     let mut m_transforms: _serde::__private::Option<Vec<QsTransform>> = _serde::__private::None;
                     let mut m_bigVertices: _serde::__private::Option<Vec<Vector4>> = _serde::__private::None;
                     let mut m_bigTriangles: _serde::__private::Option<
-                        Vec<hkpCompressedMeshShapeBigTriangle>,
+                        Vec<hkpCompressedMeshShapeBigTriangle<'de>>,
                     > = _serde::__private::None;
                     let mut m_chunks: _serde::__private::Option<
-                        Vec<hkpCompressedMeshShapeChunk>,
+                        Vec<hkpCompressedMeshShapeChunk<'de>>,
                     > = _serde::__private::None;
                     let mut m_convexPieces: _serde::__private::Option<
-                        Vec<hkpCompressedMeshShapeConvexPiece>,
+                        Vec<hkpCompressedMeshShapeConvexPiece<'de>>,
                     > = _serde::__private::None;
                     let mut m_error: _serde::__private::Option<f32> = _serde::__private::None;
                     let mut m_bounds: _serde::__private::Option<hkAabb> = _serde::__private::None;
@@ -1598,7 +1613,7 @@ const _: () = {
                                 }
                                 m_bigTriangles = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkpCompressedMeshShapeBigTriangle>,
+                                        Vec<hkpCompressedMeshShapeBigTriangle<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -1624,7 +1639,7 @@ const _: () = {
                                 }
                                 m_chunks = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkpCompressedMeshShapeChunk>,
+                                        Vec<hkpCompressedMeshShapeChunk<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -1652,7 +1667,7 @@ const _: () = {
                                 }
                                 m_convexPieces = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkpCompressedMeshShapeConvexPiece>,
+                                        Vec<hkpCompressedMeshShapeConvexPiece<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

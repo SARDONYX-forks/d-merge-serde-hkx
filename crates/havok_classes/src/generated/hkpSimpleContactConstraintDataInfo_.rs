@@ -29,6 +29,7 @@ pub struct hkpSimpleContactConstraintDataInfo<'a> {
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "flags"))]
     #[cfg_attr(feature = "serde", serde(rename = "flags"))]
     pub m_flags: U16<'a>,
@@ -36,6 +37,7 @@ pub struct hkpSimpleContactConstraintDataInfo<'a> {
     /// - name: `index`(ctype: `hkUint16`)
     /// - offset: `  2`(x86)/`  2`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "index"))]
     #[cfg_attr(feature = "serde", serde(rename = "index"))]
     pub m_index: U16<'a>,
@@ -64,6 +66,7 @@ pub struct hkpSimpleContactConstraintDataInfo<'a> {
     /// - name: `data`(ctype: `hkUint32[5]`)
     /// - offset: ` 12`(x86)/` 12`(x86_64)
     /// - type_size: ` 20`(x86)/` 20`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "data"))]
     #[cfg_attr(feature = "serde", serde(rename = "data"))]
     pub m_data: [U32<'a>; 5usize],

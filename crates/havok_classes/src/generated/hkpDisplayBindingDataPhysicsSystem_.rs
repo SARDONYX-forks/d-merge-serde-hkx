@@ -33,6 +33,7 @@ pub struct hkpDisplayBindingDataPhysicsSystem<'a> {
     /// - name: `bindings`(ctype: `hkArray<hkpDisplayBindingDataRigidBody*>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bindings"))]
     #[cfg_attr(feature = "serde", serde(rename = "bindings"))]
     pub m_bindings: Vec<Pointer<'a>>,
@@ -40,6 +41,7 @@ pub struct hkpDisplayBindingDataPhysicsSystem<'a> {
     /// - name: `system`(ctype: `struct hkpPhysicsSystem*`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "system"))]
     #[cfg_attr(feature = "serde", serde(rename = "system"))]
     pub m_system: Pointer<'a>,

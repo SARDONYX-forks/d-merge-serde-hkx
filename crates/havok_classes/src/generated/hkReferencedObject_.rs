@@ -34,6 +34,8 @@ pub struct hkReferencedObject<'a> {
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "memSizeAndFlags"))]
     #[cfg_attr(feature = "serde", serde(rename = "memSizeAndFlags"))]
     pub m_memSizeAndFlags: U16<'a>,
@@ -42,6 +44,8 @@ pub struct hkReferencedObject<'a> {
     /// - offset: `  6`(x86)/` 10`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "referenceCount"))]
     #[cfg_attr(feature = "serde", serde(rename = "referenceCount"))]
     pub m_referenceCount: I16<'a>,

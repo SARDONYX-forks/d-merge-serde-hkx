@@ -33,6 +33,7 @@ pub struct hkpVehicleInstance<'a> {
     /// - name: `data`(ctype: `struct hkpVehicleData*`)
     /// - offset: ` 28`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "data"))]
     #[cfg_attr(feature = "serde", serde(rename = "data"))]
     pub m_data: Pointer<'a>,
@@ -40,6 +41,7 @@ pub struct hkpVehicleInstance<'a> {
     /// - name: `driverInput`(ctype: `struct hkpVehicleDriverInput*`)
     /// - offset: ` 32`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "driverInput"))]
     #[cfg_attr(feature = "serde", serde(rename = "driverInput"))]
     pub m_driverInput: Pointer<'a>,
@@ -47,6 +49,7 @@ pub struct hkpVehicleInstance<'a> {
     /// - name: `steering`(ctype: `struct hkpVehicleSteering*`)
     /// - offset: ` 36`(x86)/` 72`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "steering"))]
     #[cfg_attr(feature = "serde", serde(rename = "steering"))]
     pub m_steering: Pointer<'a>,
@@ -54,6 +57,7 @@ pub struct hkpVehicleInstance<'a> {
     /// - name: `engine`(ctype: `struct hkpVehicleEngine*`)
     /// - offset: ` 40`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "engine"))]
     #[cfg_attr(feature = "serde", serde(rename = "engine"))]
     pub m_engine: Pointer<'a>,
@@ -61,6 +65,7 @@ pub struct hkpVehicleInstance<'a> {
     /// - name: `transmission`(ctype: `struct hkpVehicleTransmission*`)
     /// - offset: ` 44`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transmission"))]
     #[cfg_attr(feature = "serde", serde(rename = "transmission"))]
     pub m_transmission: Pointer<'a>,
@@ -68,6 +73,7 @@ pub struct hkpVehicleInstance<'a> {
     /// - name: `brake`(ctype: `struct hkpVehicleBrake*`)
     /// - offset: ` 48`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "brake"))]
     #[cfg_attr(feature = "serde", serde(rename = "brake"))]
     pub m_brake: Pointer<'a>,
@@ -75,6 +81,7 @@ pub struct hkpVehicleInstance<'a> {
     /// - name: `suspension`(ctype: `struct hkpVehicleSuspension*`)
     /// - offset: ` 52`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "suspension"))]
     #[cfg_attr(feature = "serde", serde(rename = "suspension"))]
     pub m_suspension: Pointer<'a>,
@@ -82,6 +89,7 @@ pub struct hkpVehicleInstance<'a> {
     /// - name: `aerodynamics`(ctype: `struct hkpVehicleAerodynamics*`)
     /// - offset: ` 56`(x86)/`112`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "aerodynamics"))]
     #[cfg_attr(feature = "serde", serde(rename = "aerodynamics"))]
     pub m_aerodynamics: Pointer<'a>,
@@ -89,6 +97,7 @@ pub struct hkpVehicleInstance<'a> {
     /// - name: `wheelCollide`(ctype: `struct hkpVehicleWheelCollide*`)
     /// - offset: ` 60`(x86)/`120`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wheelCollide"))]
     #[cfg_attr(feature = "serde", serde(rename = "wheelCollide"))]
     pub m_wheelCollide: Pointer<'a>,
@@ -96,6 +105,7 @@ pub struct hkpVehicleInstance<'a> {
     /// - name: `tyreMarks`(ctype: `struct hkpTyremarksInfo*`)
     /// - offset: ` 64`(x86)/`128`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "tyreMarks"))]
     #[cfg_attr(feature = "serde", serde(rename = "tyreMarks"))]
     pub m_tyreMarks: Pointer<'a>,
@@ -103,6 +113,7 @@ pub struct hkpVehicleInstance<'a> {
     /// - name: `velocityDamper`(ctype: `struct hkpVehicleVelocityDamper*`)
     /// - offset: ` 68`(x86)/`136`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "velocityDamper"))]
     #[cfg_attr(feature = "serde", serde(rename = "velocityDamper"))]
     pub m_velocityDamper: Pointer<'a>,
@@ -110,6 +121,7 @@ pub struct hkpVehicleInstance<'a> {
     /// - name: `wheelsInfo`(ctype: `hkArray<struct hkpVehicleInstanceWheelInfo>`)
     /// - offset: ` 72`(x86)/`144`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wheelsInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "wheelsInfo"))]
     pub m_wheelsInfo: Vec<hkpVehicleInstanceWheelInfo<'a>>,
@@ -124,6 +136,7 @@ pub struct hkpVehicleInstance<'a> {
     /// - name: `deviceStatus`(ctype: `struct hkpVehicleDriverInputStatus*`)
     /// - offset: `156`(x86)/`232`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "deviceStatus"))]
     #[cfg_attr(feature = "serde", serde(rename = "deviceStatus"))]
     pub m_deviceStatus: Pointer<'a>,
@@ -190,6 +203,7 @@ pub struct hkpVehicleInstance<'a> {
     /// - name: `currentGear`(ctype: `hkInt8`)
     /// - offset: `205`(x86)/`297`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "currentGear"))]
     #[cfg_attr(feature = "serde", serde(rename = "currentGear"))]
     pub m_currentGear: I8<'a>,
@@ -474,7 +488,7 @@ const _: () = {
                     let mut m_tyreMarks: _serde::__private::Option<Pointer<'de>> = _serde::__private::None;
                     let mut m_velocityDamper: _serde::__private::Option<Pointer<'de>> = _serde::__private::None;
                     let mut m_wheelsInfo: _serde::__private::Option<
-                        Vec<hkpVehicleInstanceWheelInfo>,
+                        Vec<hkpVehicleInstanceWheelInfo<'de>>,
                     > = _serde::__private::None;
                     let mut m_frictionStatus: _serde::__private::Option<
                         hkpVehicleFrictionStatus,
@@ -686,7 +700,7 @@ const _: () = {
                                 }
                                 m_wheelsInfo = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkpVehicleInstanceWheelInfo>,
+                                        Vec<hkpVehicleInstanceWheelInfo<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -1215,7 +1229,7 @@ const _: () = {
                     let mut m_tyreMarks: _serde::__private::Option<Pointer<'de>> = _serde::__private::None;
                     let mut m_velocityDamper: _serde::__private::Option<Pointer<'de>> = _serde::__private::None;
                     let mut m_wheelsInfo: _serde::__private::Option<
-                        Vec<hkpVehicleInstanceWheelInfo>,
+                        Vec<hkpVehicleInstanceWheelInfo<'de>>,
                     > = _serde::__private::None;
                     let mut m_frictionStatus: _serde::__private::Option<
                         hkpVehicleFrictionStatus,
@@ -1611,7 +1625,7 @@ const _: () = {
                                 }
                                 m_wheelsInfo = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkpVehicleInstanceWheelInfo>,
+                                        Vec<hkpVehicleInstanceWheelInfo<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

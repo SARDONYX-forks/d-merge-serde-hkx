@@ -34,6 +34,8 @@ pub struct hkpCollidable<'a> {
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "ownerOffset"))]
     #[cfg_attr(feature = "serde", serde(rename = "ownerOffset"))]
     pub m_ownerOffset: I8<'a>,
@@ -41,6 +43,7 @@ pub struct hkpCollidable<'a> {
     /// - name: `forceCollideOntoPpu`(ctype: `hkUint8`)
     /// - offset: ` 17`(x86)/` 33`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "forceCollideOntoPpu"))]
     #[cfg_attr(feature = "serde", serde(rename = "forceCollideOntoPpu"))]
     pub m_forceCollideOntoPpu: U8<'a>,
@@ -49,6 +52,8 @@ pub struct hkpCollidable<'a> {
     /// - offset: ` 18`(x86)/` 34`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "shapeSizeOnSpu"))]
     #[cfg_attr(feature = "serde", serde(rename = "shapeSizeOnSpu"))]
     pub m_shapeSizeOnSpu: U16<'a>,
@@ -65,6 +70,8 @@ pub struct hkpCollidable<'a> {
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 44`(x86)/` 56`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "boundingVolumeData"))]
     #[cfg_attr(feature = "serde", serde(rename = "boundingVolumeData"))]
     pub m_boundingVolumeData: hkpCollidableBoundingVolumeData<'a>,
@@ -223,7 +230,7 @@ const _: () = {
                         hkpTypedBroadPhaseHandle<'de>,
                     > = _serde::__private::None;
                     let mut m_boundingVolumeData: _serde::__private::Option<
-                        hkpCollidableBoundingVolumeData,
+                        hkpCollidableBoundingVolumeData<'de>,
                     > = _serde::__private::None;
                     let mut m_allowedPenetrationDepth: _serde::__private::Option<f32> = _serde::__private::None;
                     for i in 0..6usize {
@@ -312,7 +319,7 @@ const _: () = {
                                 }
                                 m_boundingVolumeData = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpCollidableBoundingVolumeData,
+                                        hkpCollidableBoundingVolumeData<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

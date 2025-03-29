@@ -33,6 +33,7 @@ pub struct hkbGetHandleOnBoneModifier<'a> {
     /// - name: `handleOut`(ctype: `struct hkbHandle*`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "handleOut"))]
     #[cfg_attr(feature = "serde", serde(rename = "handleOut"))]
     pub m_handleOut: Pointer<'a>,
@@ -48,6 +49,7 @@ pub struct hkbGetHandleOnBoneModifier<'a> {
     /// - name: `ragdollBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 52`(x86)/` 96`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "ragdollBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "ragdollBoneIndex"))]
     pub m_ragdollBoneIndex: I16<'a>,
@@ -55,6 +57,7 @@ pub struct hkbGetHandleOnBoneModifier<'a> {
     /// - name: `animationBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 54`(x86)/` 98`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "animationBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "animationBoneIndex"))]
     pub m_animationBoneIndex: I16<'a>,

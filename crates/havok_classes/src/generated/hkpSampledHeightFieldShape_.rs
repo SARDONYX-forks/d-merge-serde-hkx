@@ -33,6 +33,7 @@ pub struct hkpSampledHeightFieldShape<'a> {
     /// - name: `xRes`(ctype: `hkInt32`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "xRes"))]
     #[cfg_attr(feature = "serde", serde(rename = "xRes"))]
     pub m_xRes: I32<'a>,
@@ -40,6 +41,7 @@ pub struct hkpSampledHeightFieldShape<'a> {
     /// - name: `zRes`(ctype: `hkInt32`)
     /// - offset: ` 20`(x86)/` 36`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "zRes"))]
     #[cfg_attr(feature = "serde", serde(rename = "zRes"))]
     pub m_zRes: I32<'a>,

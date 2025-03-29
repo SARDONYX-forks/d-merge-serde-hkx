@@ -40,6 +40,7 @@ pub struct hkpStorageExtendedMeshShapeMeshSubpartStorage<'a> {
     /// - name: `indices8`(ctype: `hkArray<hkUint8>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "indices8"))]
     #[cfg_attr(feature = "serde", serde(rename = "indices8"))]
     pub m_indices8: Vec<U8<'a>>,
@@ -47,6 +48,7 @@ pub struct hkpStorageExtendedMeshShapeMeshSubpartStorage<'a> {
     /// - name: `indices16`(ctype: `hkArray<hkUint16>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "indices16"))]
     #[cfg_attr(feature = "serde", serde(rename = "indices16"))]
     pub m_indices16: Vec<U16<'a>>,
@@ -54,6 +56,7 @@ pub struct hkpStorageExtendedMeshShapeMeshSubpartStorage<'a> {
     /// - name: `indices32`(ctype: `hkArray<hkUint32>`)
     /// - offset: ` 44`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "indices32"))]
     #[cfg_attr(feature = "serde", serde(rename = "indices32"))]
     pub m_indices32: Vec<U32<'a>>,
@@ -61,6 +64,7 @@ pub struct hkpStorageExtendedMeshShapeMeshSubpartStorage<'a> {
     /// - name: `materialIndices`(ctype: `hkArray<hkUint8>`)
     /// - offset: ` 56`(x86)/` 80`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materialIndices"))]
     #[cfg_attr(feature = "serde", serde(rename = "materialIndices"))]
     pub m_materialIndices: Vec<U8<'a>>,
@@ -84,6 +88,7 @@ pub struct hkpStorageExtendedMeshShapeMeshSubpartStorage<'a> {
     /// - name: `materialIndices16`(ctype: `hkArray<hkUint16>`)
     /// - offset: ` 92`(x86)/`128`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materialIndices16"))]
     #[cfg_attr(feature = "serde", serde(rename = "materialIndices16"))]
     pub m_materialIndices16: Vec<U16<'a>>,

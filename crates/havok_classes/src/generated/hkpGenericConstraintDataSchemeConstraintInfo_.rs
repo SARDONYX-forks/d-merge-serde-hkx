@@ -28,6 +28,7 @@ pub struct hkpGenericConstraintDataSchemeConstraintInfo<'a> {
     /// - name: `maxSizeOfSchema`(ctype: `hkInt32`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxSizeOfSchema"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxSizeOfSchema"))]
     pub m_maxSizeOfSchema: I32<'a>,
@@ -35,6 +36,7 @@ pub struct hkpGenericConstraintDataSchemeConstraintInfo<'a> {
     /// - name: `sizeOfSchemas`(ctype: `hkInt32`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sizeOfSchemas"))]
     #[cfg_attr(feature = "serde", serde(rename = "sizeOfSchemas"))]
     pub m_sizeOfSchemas: I32<'a>,
@@ -42,6 +44,7 @@ pub struct hkpGenericConstraintDataSchemeConstraintInfo<'a> {
     /// - name: `numSolverResults`(ctype: `hkInt32`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numSolverResults"))]
     #[cfg_attr(feature = "serde", serde(rename = "numSolverResults"))]
     pub m_numSolverResults: I32<'a>,
@@ -49,6 +52,7 @@ pub struct hkpGenericConstraintDataSchemeConstraintInfo<'a> {
     /// - name: `numSolverElemTemps`(ctype: `hkInt32`)
     /// - offset: ` 12`(x86)/` 12`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numSolverElemTemps"))]
     #[cfg_attr(feature = "serde", serde(rename = "numSolverElemTemps"))]
     pub m_numSolverElemTemps: I32<'a>,

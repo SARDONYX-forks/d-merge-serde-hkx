@@ -33,6 +33,7 @@ pub struct hkaFootstepAnalysisInfoContainer<'a> {
     /// - name: `previewInfo`(ctype: `hkArray<hkaFootstepAnalysisInfo*>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "previewInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "previewInfo"))]
     pub m_previewInfo: Vec<Pointer<'a>>,

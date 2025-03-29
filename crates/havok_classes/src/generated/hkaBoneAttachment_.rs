@@ -48,6 +48,7 @@ pub struct hkaBoneAttachment<'a> {
     /// - name: `attachment`(ctype: `struct hkReferencedObject*`)
     /// - offset: ` 80`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "attachment"))]
     #[cfg_attr(feature = "serde", serde(rename = "attachment"))]
     pub m_attachment: Pointer<'a>,
@@ -63,6 +64,7 @@ pub struct hkaBoneAttachment<'a> {
     /// - name: `boneIndex`(ctype: `hkInt16`)
     /// - offset: ` 88`(x86)/`112`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "boneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "boneIndex"))]
     pub m_boneIndex: I16<'a>,

@@ -40,6 +40,7 @@ pub struct hkpVehicleData<'a> {
     /// - name: `numWheels`(ctype: `hkInt8`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numWheels"))]
     #[cfg_attr(feature = "serde", serde(rename = "numWheels"))]
     pub m_numWheels: I8<'a>,
@@ -134,6 +135,7 @@ pub struct hkpVehicleData<'a> {
     /// - name: `wheelParams`(ctype: `hkArray<struct hkpVehicleDataWheelComponentParams>`)
     /// - offset: `140`(x86)/`144`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wheelParams"))]
     #[cfg_attr(feature = "serde", serde(rename = "wheelParams"))]
     pub m_wheelParams: Vec<hkpVehicleDataWheelComponentParams<'a>>,
@@ -141,6 +143,7 @@ pub struct hkpVehicleData<'a> {
     /// - name: `numWheelsPerAxle`(ctype: `hkArray<hkInt8>`)
     /// - offset: `152`(x86)/`160`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numWheelsPerAxle"))]
     #[cfg_attr(feature = "serde", serde(rename = "numWheelsPerAxle"))]
     pub m_numWheelsPerAxle: Vec<I8<'a>>,
@@ -420,7 +423,7 @@ const _: () = {
                         f32,
                     > = _serde::__private::None;
                     let mut m_wheelParams: _serde::__private::Option<
-                        Vec<hkpVehicleDataWheelComponentParams>,
+                        Vec<hkpVehicleDataWheelComponentParams<'de>>,
                     > = _serde::__private::None;
                     let mut m_numWheelsPerAxle: _serde::__private::Option<
                         Vec<I8<'de>>,
@@ -705,7 +708,7 @@ const _: () = {
                                 __A::pad(&mut __map, 0usize, 4usize)?;
                                 m_wheelParams = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkpVehicleDataWheelComponentParams>,
+                                        Vec<hkpVehicleDataWheelComponentParams<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -1034,7 +1037,7 @@ const _: () = {
                         f32,
                     > = _serde::__private::None;
                     let mut m_wheelParams: _serde::__private::Option<
-                        Vec<hkpVehicleDataWheelComponentParams>,
+                        Vec<hkpVehicleDataWheelComponentParams<'de>>,
                     > = _serde::__private::None;
                     let mut m_numWheelsPerAxle: _serde::__private::Option<
                         Vec<I8<'de>>,
@@ -1453,7 +1456,7 @@ const _: () = {
                                 }
                                 m_wheelParams = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkpVehicleDataWheelComponentParams>,
+                                        Vec<hkpVehicleDataWheelComponentParams<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

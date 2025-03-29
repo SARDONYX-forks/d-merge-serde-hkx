@@ -33,6 +33,7 @@ pub struct hkpTyremarksWheel<'a> {
     /// - name: `currentPosition`(ctype: `hkInt32`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "currentPosition"))]
     #[cfg_attr(feature = "serde", serde(rename = "currentPosition"))]
     pub m_currentPosition: I32<'a>,
@@ -40,6 +41,7 @@ pub struct hkpTyremarksWheel<'a> {
     /// - name: `numPoints`(ctype: `hkInt32`)
     /// - offset: ` 12`(x86)/` 20`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numPoints"))]
     #[cfg_attr(feature = "serde", serde(rename = "numPoints"))]
     pub m_numPoints: I32<'a>,

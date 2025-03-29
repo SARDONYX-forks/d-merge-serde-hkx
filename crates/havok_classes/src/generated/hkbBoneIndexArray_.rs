@@ -33,6 +33,7 @@ pub struct hkbBoneIndexArray<'a> {
     /// - name: `boneIndices`(ctype: `hkArray<hkInt16>`)
     /// - offset: ` 28`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "boneIndices"))]
     #[cfg_attr(feature = "serde", serde(rename = "boneIndices"))]
     pub m_boneIndices: Vec<I16<'a>>,

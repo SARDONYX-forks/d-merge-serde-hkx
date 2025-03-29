@@ -311,11 +311,13 @@ const _: () = {
                         hkpLinkedCollidable<'de>,
                     > = _serde::__private::None;
                     let mut m_multiThreadCheck: _serde::__private::Option<
-                        hkMultiThreadCheck,
+                        hkMultiThreadCheck<'de>,
                     > = _serde::__private::None;
                     let mut m_name: _serde::__private::Option<StringPtr<'de>> = _serde::__private::None;
-                    let mut m_properties: _serde::__private::Option<Vec<hkpProperty>> = _serde::__private::None;
-                    let mut m_material: _serde::__private::Option<hkpMaterial> = _serde::__private::None;
+                    let mut m_properties: _serde::__private::Option<
+                        Vec<hkpProperty<'de>>,
+                    > = _serde::__private::None;
+                    let mut m_material: _serde::__private::Option<hkpMaterial<'de>> = _serde::__private::None;
                     let mut m_damageMultiplier: _serde::__private::Option<f32> = _serde::__private::None;
                     let mut m_storageIndex: _serde::__private::Option<U16<'de>> = _serde::__private::None;
                     let mut m_contactPointCallbackDelay: _serde::__private::Option<
@@ -330,7 +332,7 @@ const _: () = {
                     > = _serde::__private::None;
                     let mut m_uid: _serde::__private::Option<U32<'de>> = _serde::__private::None;
                     let mut m_spuCollisionCallback: _serde::__private::Option<
-                        hkpEntitySpuCollisionCallback,
+                        hkpEntitySpuCollisionCallback<'de>,
                     > = _serde::__private::None;
                     let mut m_motion: _serde::__private::Option<hkpMaxSizeMotion<'de>> = _serde::__private::None;
                     let mut m_localFrame: _serde::__private::Option<Pointer<'de>> = _serde::__private::None;
@@ -411,7 +413,9 @@ const _: () = {
                                     );
                                 }
                                 m_multiThreadCheck = _serde::__private::Some(
-                                    match __A::next_value::<hkMultiThreadCheck>(&mut __map) {
+                                    match __A::next_value::<
+                                        hkMultiThreadCheck<'de>,
+                                    >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -461,7 +465,7 @@ const _: () = {
                                     );
                                 }
                                 m_properties = _serde::__private::Some(
-                                    match __A::next_value::<Vec<hkpProperty>>(&mut __map) {
+                                    match __A::next_value::<Vec<hkpProperty<'de>>>(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -487,7 +491,7 @@ const _: () = {
                                     );
                                 }
                                 m_material = _serde::__private::Some(
-                                    match __A::next_value::<hkpMaterial>(&mut __map) {
+                                    match __A::next_value::<hkpMaterial<'de>>(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);
@@ -702,7 +706,7 @@ const _: () = {
                                 }
                                 m_spuCollisionCallback = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpEntitySpuCollisionCallback,
+                                        hkpEntitySpuCollisionCallback<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

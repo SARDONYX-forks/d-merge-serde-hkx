@@ -33,6 +33,7 @@ pub struct hkpStorageExtendedMeshShapeShapeSubpartStorage<'a> {
     /// - name: `materialIndices`(ctype: `hkArray<hkUint8>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materialIndices"))]
     #[cfg_attr(feature = "serde", serde(rename = "materialIndices"))]
     pub m_materialIndices: Vec<U8<'a>>,
@@ -48,6 +49,7 @@ pub struct hkpStorageExtendedMeshShapeShapeSubpartStorage<'a> {
     /// - name: `materialIndices16`(ctype: `hkArray<hkUint16>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materialIndices16"))]
     #[cfg_attr(feature = "serde", serde(rename = "materialIndices16"))]
     pub m_materialIndices16: Vec<U16<'a>>,

@@ -29,6 +29,8 @@ pub struct hkpEntityExtendedListeners<'a> {
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "activationListeners"))]
     #[cfg_attr(feature = "serde", serde(rename = "activationListeners"))]
     pub m_activationListeners: hkpEntitySmallArraySerializeOverrideType<'a>,
@@ -37,6 +39,8 @@ pub struct hkpEntityExtendedListeners<'a> {
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "entityListeners"))]
     #[cfg_attr(feature = "serde", serde(rename = "entityListeners"))]
     pub m_entityListeners: hkpEntitySmallArraySerializeOverrideType<'a>,
@@ -159,10 +163,10 @@ const _: () = {
                 {
                     let __ptr = __A::class_ptr(&mut __map);
                     let mut m_activationListeners: _serde::__private::Option<
-                        hkpEntitySmallArraySerializeOverrideType,
+                        hkpEntitySmallArraySerializeOverrideType<'de>,
                     > = _serde::__private::None;
                     let mut m_entityListeners: _serde::__private::Option<
-                        hkpEntitySmallArraySerializeOverrideType,
+                        hkpEntitySmallArraySerializeOverrideType<'de>,
                     > = _serde::__private::None;
                     for i in 0..2usize {
                         match i {
@@ -178,7 +182,7 @@ const _: () = {
                                 }
                                 m_activationListeners = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpEntitySmallArraySerializeOverrideType,
+                                        hkpEntitySmallArraySerializeOverrideType<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -197,7 +201,7 @@ const _: () = {
                                 }
                                 m_entityListeners = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpEntitySmallArraySerializeOverrideType,
+                                        hkpEntitySmallArraySerializeOverrideType<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

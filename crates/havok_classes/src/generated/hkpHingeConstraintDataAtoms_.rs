@@ -28,6 +28,7 @@ pub struct hkpHingeConstraintDataAtoms<'a> {
     /// - name: `transforms`(ctype: `struct hkpSetLocalTransformsConstraintAtom`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `144`(x86)/`144`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transforms"))]
     #[cfg_attr(feature = "serde", serde(rename = "transforms"))]
     pub m_transforms: hkpSetLocalTransformsConstraintAtom<'a>,
@@ -35,6 +36,7 @@ pub struct hkpHingeConstraintDataAtoms<'a> {
     /// - name: `setupStabilization`(ctype: `struct hkpSetupStabilizationAtom`)
     /// - offset: `144`(x86)/`144`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "setupStabilization"))]
     #[cfg_attr(feature = "serde", serde(rename = "setupStabilization"))]
     pub m_setupStabilization: hkpSetupStabilizationAtom<'a>,
@@ -42,6 +44,7 @@ pub struct hkpHingeConstraintDataAtoms<'a> {
     /// - name: `2dAng`(ctype: `struct hkp2dAngConstraintAtom`)
     /// - offset: `160`(x86)/`160`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "2dAng"))]
     #[cfg_attr(feature = "serde", serde(rename = "2dAng"))]
     pub m_2dAng: hkp2dAngConstraintAtom<'a>,
@@ -49,6 +52,7 @@ pub struct hkpHingeConstraintDataAtoms<'a> {
     /// - name: `ballSocket`(ctype: `struct hkpBallSocketConstraintAtom`)
     /// - offset: `164`(x86)/`164`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "ballSocket"))]
     #[cfg_attr(feature = "serde", serde(rename = "ballSocket"))]
     pub m_ballSocket: hkpBallSocketConstraintAtom<'a>,
@@ -185,14 +189,16 @@ const _: () = {
                 {
                     let __ptr = __A::class_ptr(&mut __map);
                     let mut m_transforms: _serde::__private::Option<
-                        hkpSetLocalTransformsConstraintAtom,
+                        hkpSetLocalTransformsConstraintAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_setupStabilization: _serde::__private::Option<
-                        hkpSetupStabilizationAtom,
+                        hkpSetupStabilizationAtom<'de>,
                     > = _serde::__private::None;
-                    let mut m_2dAng: _serde::__private::Option<hkp2dAngConstraintAtom> = _serde::__private::None;
+                    let mut m_2dAng: _serde::__private::Option<
+                        hkp2dAngConstraintAtom<'de>,
+                    > = _serde::__private::None;
                     let mut m_ballSocket: _serde::__private::Option<
-                        hkpBallSocketConstraintAtom,
+                        hkpBallSocketConstraintAtom<'de>,
                     > = _serde::__private::None;
                     for i in 0..4usize {
                         match i {
@@ -206,7 +212,7 @@ const _: () = {
                                 }
                                 m_transforms = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSetLocalTransformsConstraintAtom,
+                                        hkpSetLocalTransformsConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -227,7 +233,7 @@ const _: () = {
                                 }
                                 m_setupStabilization = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSetupStabilizationAtom,
+                                        hkpSetupStabilizationAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -244,7 +250,7 @@ const _: () = {
                                 }
                                 m_2dAng = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkp2dAngConstraintAtom,
+                                        hkp2dAngConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -263,7 +269,7 @@ const _: () = {
                                 }
                                 m_ballSocket = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpBallSocketConstraintAtom,
+                                        hkpBallSocketConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -331,14 +337,16 @@ const _: () = {
                     __A: _serde::de::MapAccess<'de>,
                 {
                     let mut m_transforms: _serde::__private::Option<
-                        hkpSetLocalTransformsConstraintAtom,
+                        hkpSetLocalTransformsConstraintAtom<'de>,
                     > = _serde::__private::None;
                     let mut m_setupStabilization: _serde::__private::Option<
-                        hkpSetupStabilizationAtom,
+                        hkpSetupStabilizationAtom<'de>,
                     > = _serde::__private::None;
-                    let mut m_2dAng: _serde::__private::Option<hkp2dAngConstraintAtom> = _serde::__private::None;
+                    let mut m_2dAng: _serde::__private::Option<
+                        hkp2dAngConstraintAtom<'de>,
+                    > = _serde::__private::None;
                     let mut m_ballSocket: _serde::__private::Option<
-                        hkpBallSocketConstraintAtom,
+                        hkpBallSocketConstraintAtom<'de>,
                     > = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
                         __A::next_key::<__Field>(&mut __map)?
@@ -363,7 +371,7 @@ const _: () = {
                                 }
                                 m_transforms = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSetLocalTransformsConstraintAtom,
+                                        hkpSetLocalTransformsConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -393,7 +401,7 @@ const _: () = {
                                 }
                                 m_setupStabilization = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSetupStabilizationAtom,
+                                        hkpSetupStabilizationAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -419,7 +427,7 @@ const _: () = {
                                 }
                                 m_2dAng = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkp2dAngConstraintAtom,
+                                        hkp2dAngConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -447,7 +455,7 @@ const _: () = {
                                 }
                                 m_ballSocket = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpBallSocketConstraintAtom,
+                                        hkpBallSocketConstraintAtom<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

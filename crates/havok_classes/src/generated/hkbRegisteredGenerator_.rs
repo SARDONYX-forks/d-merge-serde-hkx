@@ -33,6 +33,7 @@ pub struct hkbRegisteredGenerator<'a> {
     /// - name: `generator`(ctype: `struct hkbGenerator*`)
     /// - offset: ` 28`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "generator"))]
     #[cfg_attr(feature = "serde", serde(rename = "generator"))]
     pub m_generator: Pointer<'a>,

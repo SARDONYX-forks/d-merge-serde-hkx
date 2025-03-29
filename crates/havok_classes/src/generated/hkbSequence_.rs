@@ -33,6 +33,7 @@ pub struct hkbSequence<'a> {
     /// - name: `eventSequencedData`(ctype: `hkArray<hkbEventSequencedData*>`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "eventSequencedData"))]
     #[cfg_attr(feature = "serde", serde(rename = "eventSequencedData"))]
     pub m_eventSequencedData: Vec<Pointer<'a>>,
@@ -40,6 +41,7 @@ pub struct hkbSequence<'a> {
     /// - name: `realVariableSequencedData`(ctype: `hkArray<hkbRealVariableSequencedData*>`)
     /// - offset: ` 56`(x86)/` 96`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "realVariableSequencedData"))]
     #[cfg_attr(feature = "serde", serde(rename = "realVariableSequencedData"))]
     pub m_realVariableSequencedData: Vec<Pointer<'a>>,
@@ -47,6 +49,7 @@ pub struct hkbSequence<'a> {
     /// - name: `boolVariableSequencedData`(ctype: `hkArray<hkbBoolVariableSequencedData*>`)
     /// - offset: ` 68`(x86)/`112`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "boolVariableSequencedData"))]
     #[cfg_attr(feature = "serde", serde(rename = "boolVariableSequencedData"))]
     pub m_boolVariableSequencedData: Vec<Pointer<'a>>,
@@ -54,6 +57,7 @@ pub struct hkbSequence<'a> {
     /// - name: `intVariableSequencedData`(ctype: `hkArray<hkbIntVariableSequencedData*>`)
     /// - offset: ` 80`(x86)/`128`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "intVariableSequencedData"))]
     #[cfg_attr(feature = "serde", serde(rename = "intVariableSequencedData"))]
     pub m_intVariableSequencedData: Vec<Pointer<'a>>,
@@ -61,6 +65,7 @@ pub struct hkbSequence<'a> {
     /// - name: `enableEventId`(ctype: `hkInt32`)
     /// - offset: ` 92`(x86)/`144`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "enableEventId"))]
     #[cfg_attr(feature = "serde", serde(rename = "enableEventId"))]
     pub m_enableEventId: I32<'a>,
@@ -68,6 +73,7 @@ pub struct hkbSequence<'a> {
     /// - name: `disableEventId`(ctype: `hkInt32`)
     /// - offset: ` 96`(x86)/`148`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "disableEventId"))]
     #[cfg_attr(feature = "serde", serde(rename = "disableEventId"))]
     pub m_disableEventId: I32<'a>,
@@ -75,6 +81,7 @@ pub struct hkbSequence<'a> {
     /// - name: `stringData`(ctype: `struct hkbSequenceStringData*`)
     /// - offset: `100`(x86)/`152`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "stringData"))]
     #[cfg_attr(feature = "serde", serde(rename = "stringData"))]
     pub m_stringData: Pointer<'a>,
@@ -83,6 +90,8 @@ pub struct hkbSequence<'a> {
     /// - offset: `104`(x86)/`160`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "variableIdMap"))]
     #[cfg_attr(feature = "serde", serde(rename = "variableIdMap"))]
     pub m_variableIdMap: Pointer<'a>,
@@ -91,6 +100,8 @@ pub struct hkbSequence<'a> {
     /// - offset: `108`(x86)/`168`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "eventIdMap"))]
     #[cfg_attr(feature = "serde", serde(rename = "eventIdMap"))]
     pub m_eventIdMap: Pointer<'a>,
@@ -99,6 +110,7 @@ pub struct hkbSequence<'a> {
     /// - offset: `112`(x86)/`176`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nextSampleEvents"))]
     #[cfg_attr(feature = "serde", serde(rename = "nextSampleEvents"))]
     pub m_nextSampleEvents: Vec<()>,
@@ -107,6 +119,7 @@ pub struct hkbSequence<'a> {
     /// - offset: `124`(x86)/`192`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nextSampleReals"))]
     #[cfg_attr(feature = "serde", serde(rename = "nextSampleReals"))]
     pub m_nextSampleReals: Vec<()>,
@@ -115,6 +128,7 @@ pub struct hkbSequence<'a> {
     /// - offset: `136`(x86)/`208`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nextSampleBools"))]
     #[cfg_attr(feature = "serde", serde(rename = "nextSampleBools"))]
     pub m_nextSampleBools: Vec<()>,
@@ -123,6 +137,7 @@ pub struct hkbSequence<'a> {
     /// - offset: `148`(x86)/`224`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nextSampleInts"))]
     #[cfg_attr(feature = "serde", serde(rename = "nextSampleInts"))]
     pub m_nextSampleInts: Vec<()>,
@@ -131,6 +146,7 @@ pub struct hkbSequence<'a> {
     /// - offset: `160`(x86)/`240`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "time"))]
     #[cfg_attr(feature = "serde", serde(rename = "time"))]
     pub m_time: f32,
@@ -139,6 +155,7 @@ pub struct hkbSequence<'a> {
     /// - offset: `164`(x86)/`244`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isEnabled"))]
     #[cfg_attr(feature = "serde", serde(rename = "isEnabled"))]
     pub m_isEnabled: bool,

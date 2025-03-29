@@ -54,6 +54,7 @@ pub struct hkxLight<'a> {
     /// - name: `color`(ctype: `hkUint32`)
     /// - offset: ` 48`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "color"))]
     #[cfg_attr(feature = "serde", serde(rename = "color"))]
     pub m_color: U32<'a>,

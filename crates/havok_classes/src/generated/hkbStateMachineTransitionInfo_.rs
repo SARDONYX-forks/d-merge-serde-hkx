@@ -28,6 +28,7 @@ pub struct hkbStateMachineTransitionInfo<'a> {
     /// - name: `triggerInterval`(ctype: `struct hkbStateMachineTimeInterval`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "triggerInterval"))]
     #[cfg_attr(feature = "serde", serde(rename = "triggerInterval"))]
     pub m_triggerInterval: hkbStateMachineTimeInterval<'a>,
@@ -35,6 +36,7 @@ pub struct hkbStateMachineTransitionInfo<'a> {
     /// - name: `initiateInterval`(ctype: `struct hkbStateMachineTimeInterval`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "initiateInterval"))]
     #[cfg_attr(feature = "serde", serde(rename = "initiateInterval"))]
     pub m_initiateInterval: hkbStateMachineTimeInterval<'a>,
@@ -42,6 +44,7 @@ pub struct hkbStateMachineTransitionInfo<'a> {
     /// - name: `transition`(ctype: `struct hkbTransitionEffect*`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transition"))]
     #[cfg_attr(feature = "serde", serde(rename = "transition"))]
     pub m_transition: Pointer<'a>,
@@ -49,6 +52,7 @@ pub struct hkbStateMachineTransitionInfo<'a> {
     /// - name: `condition`(ctype: `struct hkbCondition*`)
     /// - offset: ` 36`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "condition"))]
     #[cfg_attr(feature = "serde", serde(rename = "condition"))]
     pub m_condition: Pointer<'a>,
@@ -56,6 +60,7 @@ pub struct hkbStateMachineTransitionInfo<'a> {
     /// - name: `eventId`(ctype: `hkInt32`)
     /// - offset: ` 40`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "eventId"))]
     #[cfg_attr(feature = "serde", serde(rename = "eventId"))]
     pub m_eventId: I32<'a>,
@@ -63,6 +68,7 @@ pub struct hkbStateMachineTransitionInfo<'a> {
     /// - name: `toStateId`(ctype: `hkInt32`)
     /// - offset: ` 44`(x86)/` 52`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "toStateId"))]
     #[cfg_attr(feature = "serde", serde(rename = "toStateId"))]
     pub m_toStateId: I32<'a>,
@@ -70,6 +76,7 @@ pub struct hkbStateMachineTransitionInfo<'a> {
     /// - name: `fromNestedStateId`(ctype: `hkInt32`)
     /// - offset: ` 48`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fromNestedStateId"))]
     #[cfg_attr(feature = "serde", serde(rename = "fromNestedStateId"))]
     pub m_fromNestedStateId: I32<'a>,
@@ -77,6 +84,7 @@ pub struct hkbStateMachineTransitionInfo<'a> {
     /// - name: `toNestedStateId`(ctype: `hkInt32`)
     /// - offset: ` 52`(x86)/` 60`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "toNestedStateId"))]
     #[cfg_attr(feature = "serde", serde(rename = "toNestedStateId"))]
     pub m_toNestedStateId: I32<'a>,
@@ -84,6 +92,7 @@ pub struct hkbStateMachineTransitionInfo<'a> {
     /// - name: `priority`(ctype: `hkInt16`)
     /// - offset: ` 56`(x86)/` 64`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "priority"))]
     #[cfg_attr(feature = "serde", serde(rename = "priority"))]
     pub m_priority: I16<'a>,
@@ -246,10 +255,10 @@ const _: () = {
                 {
                     let __ptr = __A::class_ptr(&mut __map);
                     let mut m_triggerInterval: _serde::__private::Option<
-                        hkbStateMachineTimeInterval,
+                        hkbStateMachineTimeInterval<'de>,
                     > = _serde::__private::None;
                     let mut m_initiateInterval: _serde::__private::Option<
-                        hkbStateMachineTimeInterval,
+                        hkbStateMachineTimeInterval<'de>,
                     > = _serde::__private::None;
                     let mut m_transition: _serde::__private::Option<Pointer<'de>> = _serde::__private::None;
                     let mut m_condition: _serde::__private::Option<Pointer<'de>> = _serde::__private::None;
@@ -271,7 +280,7 @@ const _: () = {
                                 }
                                 m_triggerInterval = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkbStateMachineTimeInterval,
+                                        hkbStateMachineTimeInterval<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -290,7 +299,7 @@ const _: () = {
                                 }
                                 m_initiateInterval = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkbStateMachineTimeInterval,
+                                        hkbStateMachineTimeInterval<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -556,10 +565,10 @@ const _: () = {
                     __A: _serde::de::MapAccess<'de>,
                 {
                     let mut m_triggerInterval: _serde::__private::Option<
-                        hkbStateMachineTimeInterval,
+                        hkbStateMachineTimeInterval<'de>,
                     > = _serde::__private::None;
                     let mut m_initiateInterval: _serde::__private::Option<
-                        hkbStateMachineTimeInterval,
+                        hkbStateMachineTimeInterval<'de>,
                     > = _serde::__private::None;
                     let mut m_transition: _serde::__private::Option<Pointer<'de>> = _serde::__private::None;
                     let mut m_condition: _serde::__private::Option<Pointer<'de>> = _serde::__private::None;
@@ -592,7 +601,7 @@ const _: () = {
                                 }
                                 m_triggerInterval = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkbStateMachineTimeInterval,
+                                        hkbStateMachineTimeInterval<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -620,7 +629,7 @@ const _: () = {
                                 }
                                 m_initiateInterval = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkbStateMachineTimeInterval,
+                                        hkbStateMachineTimeInterval<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

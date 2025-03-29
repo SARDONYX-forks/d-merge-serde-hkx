@@ -33,6 +33,7 @@ pub struct hkbStateMachineInternalState<'a> {
     /// - name: `activeTransitions`(ctype: `hkArray<struct hkbStateMachineActiveTransitionInfo>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "activeTransitions"))]
     #[cfg_attr(feature = "serde", serde(rename = "activeTransitions"))]
     pub m_activeTransitions: Vec<hkbStateMachineActiveTransitionInfo<'a>>,
@@ -40,6 +41,7 @@ pub struct hkbStateMachineInternalState<'a> {
     /// - name: `transitionFlags`(ctype: `hkArray<hkUint8>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transitionFlags"))]
     #[cfg_attr(feature = "serde", serde(rename = "transitionFlags"))]
     pub m_transitionFlags: Vec<U8<'a>>,
@@ -47,6 +49,7 @@ pub struct hkbStateMachineInternalState<'a> {
     /// - name: `wildcardTransitionFlags`(ctype: `hkArray<hkUint8>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wildcardTransitionFlags"))]
     #[cfg_attr(feature = "serde", serde(rename = "wildcardTransitionFlags"))]
     pub m_wildcardTransitionFlags: Vec<U8<'a>>,
@@ -54,6 +57,7 @@ pub struct hkbStateMachineInternalState<'a> {
     /// - name: `delayedTransitions`(ctype: `hkArray<struct hkbStateMachineDelayedTransitionInfo>`)
     /// - offset: ` 44`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "delayedTransitions"))]
     #[cfg_attr(feature = "serde", serde(rename = "delayedTransitions"))]
     pub m_delayedTransitions: Vec<hkbStateMachineDelayedTransitionInfo<'a>>,
@@ -75,6 +79,7 @@ pub struct hkbStateMachineInternalState<'a> {
     /// - name: `currentStateId`(ctype: `hkInt32`)
     /// - offset: ` 64`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "currentStateId"))]
     #[cfg_attr(feature = "serde", serde(rename = "currentStateId"))]
     pub m_currentStateId: I32<'a>,
@@ -82,6 +87,7 @@ pub struct hkbStateMachineInternalState<'a> {
     /// - name: `previousStateId`(ctype: `hkInt32`)
     /// - offset: ` 68`(x86)/` 92`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "previousStateId"))]
     #[cfg_attr(feature = "serde", serde(rename = "previousStateId"))]
     pub m_previousStateId: I32<'a>,
@@ -89,6 +95,7 @@ pub struct hkbStateMachineInternalState<'a> {
     /// - name: `nextStartStateIndexOverride`(ctype: `hkInt32`)
     /// - offset: ` 72`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "nextStartStateIndexOverride")
@@ -319,14 +326,14 @@ const _: () = {
                     let __ptr = __A::class_ptr(&mut __map);
                     let parent = __A::parent_value(&mut __map)?;
                     let mut m_activeTransitions: _serde::__private::Option<
-                        Vec<hkbStateMachineActiveTransitionInfo>,
+                        Vec<hkbStateMachineActiveTransitionInfo<'de>>,
                     > = _serde::__private::None;
                     let mut m_transitionFlags: _serde::__private::Option<Vec<U8<'de>>> = _serde::__private::None;
                     let mut m_wildcardTransitionFlags: _serde::__private::Option<
                         Vec<U8<'de>>,
                     > = _serde::__private::None;
                     let mut m_delayedTransitions: _serde::__private::Option<
-                        Vec<hkbStateMachineDelayedTransitionInfo>,
+                        Vec<hkbStateMachineDelayedTransitionInfo<'de>>,
                     > = _serde::__private::None;
                     let mut m_timeInState: _serde::__private::Option<f32> = _serde::__private::None;
                     let mut m_lastLocalTime: _serde::__private::Option<f32> = _serde::__private::None;
@@ -353,7 +360,7 @@ const _: () = {
                                 }
                                 m_activeTransitions = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkbStateMachineActiveTransitionInfo>,
+                                        Vec<hkbStateMachineActiveTransitionInfo<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -410,7 +417,7 @@ const _: () = {
                                 }
                                 m_delayedTransitions = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkbStateMachineDelayedTransitionInfo>,
+                                        Vec<hkbStateMachineDelayedTransitionInfo<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -681,14 +688,14 @@ const _: () = {
                     __A: _serde::de::MapAccess<'de>,
                 {
                     let mut m_activeTransitions: _serde::__private::Option<
-                        Vec<hkbStateMachineActiveTransitionInfo>,
+                        Vec<hkbStateMachineActiveTransitionInfo<'de>>,
                     > = _serde::__private::None;
                     let mut m_transitionFlags: _serde::__private::Option<Vec<U8<'de>>> = _serde::__private::None;
                     let mut m_wildcardTransitionFlags: _serde::__private::Option<
                         Vec<U8<'de>>,
                     > = _serde::__private::None;
                     let mut m_delayedTransitions: _serde::__private::Option<
-                        Vec<hkbStateMachineDelayedTransitionInfo>,
+                        Vec<hkbStateMachineDelayedTransitionInfo<'de>>,
                     > = _serde::__private::None;
                     let mut m_timeInState: _serde::__private::Option<f32> = _serde::__private::None;
                     let mut m_lastLocalTime: _serde::__private::Option<f32> = _serde::__private::None;
@@ -726,7 +733,7 @@ const _: () = {
                                 }
                                 m_activeTransitions = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkbStateMachineActiveTransitionInfo>,
+                                        Vec<hkbStateMachineActiveTransitionInfo<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -810,7 +817,7 @@ const _: () = {
                                 }
                                 m_delayedTransitions = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkbStateMachineDelayedTransitionInfo>,
+                                        Vec<hkbStateMachineDelayedTransitionInfo<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

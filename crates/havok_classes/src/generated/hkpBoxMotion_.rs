@@ -237,7 +237,9 @@ const _: () = {
                     let mut m_deactivationNumInactiveFrames: _serde::__private::Option<
                         [U16<'de>; 2usize],
                     > = _serde::__private::None;
-                    let mut m_motionState: _serde::__private::Option<hkMotionState> = _serde::__private::None;
+                    let mut m_motionState: _serde::__private::Option<
+                        hkMotionState<'de>,
+                    > = _serde::__private::None;
                     let mut m_inertiaAndMassInv: _serde::__private::Option<Vector4> = _serde::__private::None;
                     let mut m_linearVelocity: _serde::__private::Option<Vector4> = _serde::__private::None;
                     let mut m_angularVelocity: _serde::__private::Option<Vector4> = _serde::__private::None;
@@ -354,7 +356,7 @@ const _: () = {
                                     );
                                 }
                                 m_motionState = _serde::__private::Some(
-                                    match __A::next_value::<hkMotionState>(&mut __map) {
+                                    match __A::next_value::<hkMotionState<'de>>(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
                                             return _serde::__private::Err(__err);

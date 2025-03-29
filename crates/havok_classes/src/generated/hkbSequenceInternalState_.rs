@@ -33,6 +33,7 @@ pub struct hkbSequenceInternalState<'a> {
     /// - name: `nextSampleEvents`(ctype: `hkArray<hkInt32>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nextSampleEvents"))]
     #[cfg_attr(feature = "serde", serde(rename = "nextSampleEvents"))]
     pub m_nextSampleEvents: Vec<I32<'a>>,
@@ -40,6 +41,7 @@ pub struct hkbSequenceInternalState<'a> {
     /// - name: `nextSampleReals`(ctype: `hkArray<hkInt32>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nextSampleReals"))]
     #[cfg_attr(feature = "serde", serde(rename = "nextSampleReals"))]
     pub m_nextSampleReals: Vec<I32<'a>>,
@@ -47,6 +49,7 @@ pub struct hkbSequenceInternalState<'a> {
     /// - name: `nextSampleBools`(ctype: `hkArray<hkInt32>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nextSampleBools"))]
     #[cfg_attr(feature = "serde", serde(rename = "nextSampleBools"))]
     pub m_nextSampleBools: Vec<I32<'a>>,
@@ -54,6 +57,7 @@ pub struct hkbSequenceInternalState<'a> {
     /// - name: `nextSampleInts`(ctype: `hkArray<hkInt32>`)
     /// - offset: ` 44`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nextSampleInts"))]
     #[cfg_attr(feature = "serde", serde(rename = "nextSampleInts"))]
     pub m_nextSampleInts: Vec<I32<'a>>,

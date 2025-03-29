@@ -28,6 +28,7 @@ pub struct hkpVehicleLinearCastWheelCollideWheelState<'a> {
     /// - name: `phantom`(ctype: `struct hkpAabbPhantom*`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "phantom"))]
     #[cfg_attr(feature = "serde", serde(rename = "phantom"))]
     pub m_phantom: Pointer<'a>,
@@ -35,6 +36,7 @@ pub struct hkpVehicleLinearCastWheelCollideWheelState<'a> {
     /// - name: `shape`(ctype: `struct hkpShape*`)
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "shape"))]
     #[cfg_attr(feature = "serde", serde(rename = "shape"))]
     pub m_shape: Pointer<'a>,

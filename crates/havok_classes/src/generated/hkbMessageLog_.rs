@@ -29,6 +29,8 @@ pub struct hkbMessageLog<'a> {
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "messages"))]
     #[cfg_attr(feature = "serde", serde(rename = "messages"))]
     pub m_messages: Pointer<'a>,
@@ -37,6 +39,8 @@ pub struct hkbMessageLog<'a> {
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxMessages"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxMessages"))]
     pub m_maxMessages: I32<'a>,

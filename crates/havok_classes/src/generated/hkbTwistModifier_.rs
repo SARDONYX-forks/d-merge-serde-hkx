@@ -47,6 +47,7 @@ pub struct hkbTwistModifier<'a> {
     /// - name: `startBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 68`(x86)/`100`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "startBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "startBoneIndex"))]
     pub m_startBoneIndex: I16<'a>,
@@ -54,6 +55,7 @@ pub struct hkbTwistModifier<'a> {
     /// - name: `endBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 70`(x86)/`102`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "endBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "endBoneIndex"))]
     pub m_endBoneIndex: I16<'a>,
@@ -83,6 +85,7 @@ pub struct hkbTwistModifier<'a> {
     /// - offset: ` 76`(x86)/`112`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "boneChainIndices"))]
     #[cfg_attr(feature = "serde", serde(rename = "boneChainIndices"))]
     pub m_boneChainIndices: Vec<()>,
@@ -91,6 +94,7 @@ pub struct hkbTwistModifier<'a> {
     /// - offset: ` 88`(x86)/`128`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "parentBoneIndices"))]
     #[cfg_attr(feature = "serde", serde(rename = "parentBoneIndices"))]
     pub m_parentBoneIndices: Vec<()>,

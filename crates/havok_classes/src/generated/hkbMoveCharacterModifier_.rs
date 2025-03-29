@@ -41,6 +41,7 @@ pub struct hkbMoveCharacterModifier<'a> {
     /// - offset: ` 64`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "timeSinceLastModify"))]
     #[cfg_attr(feature = "serde", serde(rename = "timeSinceLastModify"))]
     pub m_timeSinceLastModify: f32,

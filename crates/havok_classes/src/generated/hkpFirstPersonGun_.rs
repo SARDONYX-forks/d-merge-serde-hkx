@@ -34,6 +34,7 @@ pub struct hkpFirstPersonGun<'a> {
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "type"))]
     #[cfg_attr(feature = "serde", serde(rename = "type"))]
     pub m_type: U8<'a>,
@@ -57,6 +58,8 @@ pub struct hkpFirstPersonGun<'a> {
     /// - offset: ` 20`(x86)/` 40`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "listeners"))]
     #[cfg_attr(feature = "serde", serde(rename = "listeners"))]
     pub m_listeners: Vec<Pointer<'a>>,

@@ -41,6 +41,7 @@ pub struct hkxMaterial<'a> {
     /// - name: `stages`(ctype: `hkArray<struct hkxMaterialTextureStage>`)
     /// - offset: ` 24`(x86)/` 40`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "stages"))]
     #[cfg_attr(feature = "serde", serde(rename = "stages"))]
     pub m_stages: Vec<hkxMaterialTextureStage<'a>>,
@@ -76,6 +77,7 @@ pub struct hkxMaterial<'a> {
     /// - name: `subMaterials`(ctype: `hkArray<hkxMaterial*>`)
     /// - offset: `112`(x86)/`128`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "subMaterials"))]
     #[cfg_attr(feature = "serde", serde(rename = "subMaterials"))]
     pub m_subMaterials: Vec<Pointer<'a>>,
@@ -83,6 +85,7 @@ pub struct hkxMaterial<'a> {
     /// - name: `extraData`(ctype: `struct hkReferencedObject*`)
     /// - offset: `124`(x86)/`144`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "extraData"))]
     #[cfg_attr(feature = "serde", serde(rename = "extraData"))]
     pub m_extraData: Pointer<'a>,
@@ -90,6 +93,7 @@ pub struct hkxMaterial<'a> {
     /// - name: `properties`(ctype: `hkArray<struct hkxMaterialProperty>`)
     /// - offset: `128`(x86)/`152`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "properties"))]
     #[cfg_attr(feature = "serde", serde(rename = "properties"))]
     pub m_properties: Vec<hkxMaterialProperty<'a>>,
@@ -293,7 +297,7 @@ const _: () = {
                     let parent = __A::parent_value(&mut __map)?;
                     let mut m_name: _serde::__private::Option<StringPtr<'de>> = _serde::__private::None;
                     let mut m_stages: _serde::__private::Option<
-                        Vec<hkxMaterialTextureStage>,
+                        Vec<hkxMaterialTextureStage<'de>>,
                     > = _serde::__private::None;
                     let mut m_diffuseColor: _serde::__private::Option<Vector4> = _serde::__private::None;
                     let mut m_ambientColor: _serde::__private::Option<Vector4> = _serde::__private::None;
@@ -304,7 +308,7 @@ const _: () = {
                     > = _serde::__private::None;
                     let mut m_extraData: _serde::__private::Option<Pointer<'de>> = _serde::__private::None;
                     let mut m_properties: _serde::__private::Option<
-                        Vec<hkxMaterialProperty>,
+                        Vec<hkxMaterialProperty<'de>>,
                     > = _serde::__private::None;
                     for i in 0..9usize {
                         match i {
@@ -331,7 +335,7 @@ const _: () = {
                                 }
                                 m_stages = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkxMaterialTextureStage>,
+                                        Vec<hkxMaterialTextureStage<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -453,7 +457,7 @@ const _: () = {
                                 }
                                 m_properties = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkxMaterialProperty>,
+                                        Vec<hkxMaterialProperty<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -579,7 +583,7 @@ const _: () = {
                     > = _serde::__private::None;
                     let mut m_name: _serde::__private::Option<StringPtr<'de>> = _serde::__private::None;
                     let mut m_stages: _serde::__private::Option<
-                        Vec<hkxMaterialTextureStage>,
+                        Vec<hkxMaterialTextureStage<'de>>,
                     > = _serde::__private::None;
                     let mut m_diffuseColor: _serde::__private::Option<Vector4> = _serde::__private::None;
                     let mut m_ambientColor: _serde::__private::Option<Vector4> = _serde::__private::None;
@@ -590,7 +594,7 @@ const _: () = {
                     > = _serde::__private::None;
                     let mut m_extraData: _serde::__private::Option<Pointer<'de>> = _serde::__private::None;
                     let mut m_properties: _serde::__private::Option<
-                        Vec<hkxMaterialProperty>,
+                        Vec<hkxMaterialProperty<'de>>,
                     > = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
                         __A::next_key::<__Field>(&mut __map)?
@@ -665,7 +669,7 @@ const _: () = {
                                 }
                                 m_stages = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkxMaterialTextureStage>,
+                                        Vec<hkxMaterialTextureStage<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -849,7 +853,7 @@ const _: () = {
                                 }
                                 m_properties = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkxMaterialProperty>,
+                                        Vec<hkxMaterialProperty<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

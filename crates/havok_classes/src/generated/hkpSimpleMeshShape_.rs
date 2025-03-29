@@ -40,6 +40,7 @@ pub struct hkpSimpleMeshShape<'a> {
     /// - name: `triangles`(ctype: `hkArray<struct hkpSimpleMeshShapeTriangle>`)
     /// - offset: ` 36`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "triangles"))]
     #[cfg_attr(feature = "serde", serde(rename = "triangles"))]
     pub m_triangles: Vec<hkpSimpleMeshShapeTriangle<'a>>,
@@ -47,6 +48,7 @@ pub struct hkpSimpleMeshShape<'a> {
     /// - name: `materialIndices`(ctype: `hkArray<hkUint8>`)
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materialIndices"))]
     #[cfg_attr(feature = "serde", serde(rename = "materialIndices"))]
     pub m_materialIndices: Vec<U8<'a>>,
@@ -238,7 +240,7 @@ const _: () = {
                     let parent = __A::parent_value(&mut __map)?;
                     let mut m_vertices: _serde::__private::Option<Vec<Vector4>> = _serde::__private::None;
                     let mut m_triangles: _serde::__private::Option<
-                        Vec<hkpSimpleMeshShapeTriangle>,
+                        Vec<hkpSimpleMeshShapeTriangle<'de>>,
                     > = _serde::__private::None;
                     let mut m_materialIndices: _serde::__private::Option<Vec<U8<'de>>> = _serde::__private::None;
                     let mut m_radius: _serde::__private::Option<f32> = _serde::__private::None;
@@ -272,7 +274,7 @@ const _: () = {
                                 }
                                 m_triangles = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkpSimpleMeshShapeTriangle>,
+                                        Vec<hkpSimpleMeshShapeTriangle<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -405,7 +407,7 @@ const _: () = {
                     > = _serde::__private::None;
                     let mut m_vertices: _serde::__private::Option<Vec<Vector4>> = _serde::__private::None;
                     let mut m_triangles: _serde::__private::Option<
-                        Vec<hkpSimpleMeshShapeTriangle>,
+                        Vec<hkpSimpleMeshShapeTriangle<'de>>,
                     > = _serde::__private::None;
                     let mut m_materialIndices: _serde::__private::Option<Vec<U8<'de>>> = _serde::__private::None;
                     let mut m_radius: _serde::__private::Option<f32> = _serde::__private::None;
@@ -537,7 +539,7 @@ const _: () = {
                                 }
                                 m_triangles = _serde::__private::Some(
                                     match __A::next_value::<
-                                        Vec<hkpSimpleMeshShapeTriangle>,
+                                        Vec<hkpSimpleMeshShapeTriangle<'de>>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

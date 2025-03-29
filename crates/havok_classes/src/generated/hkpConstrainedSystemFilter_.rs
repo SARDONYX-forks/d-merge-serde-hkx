@@ -33,6 +33,7 @@ pub struct hkpConstrainedSystemFilter<'a> {
     /// - name: `otherFilter`(ctype: `struct hkpCollisionFilter*`)
     /// - offset: ` 52`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "otherFilter"))]
     #[cfg_attr(feature = "serde", serde(rename = "otherFilter"))]
     pub m_otherFilter: Pointer<'a>,

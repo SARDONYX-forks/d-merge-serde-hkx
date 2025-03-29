@@ -34,6 +34,7 @@ pub struct BSModifyOnceModifier<'a> {
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pOnActivateModifier"))]
     #[cfg_attr(feature = "serde", serde(rename = "pOnActivateModifier"))]
     pub m_pOnActivateModifier: Pointer<'a>,
@@ -42,6 +43,7 @@ pub struct BSModifyOnceModifier<'a> {
     /// - offset: ` 64`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pOnDeactivateModifier"))]
     #[cfg_attr(feature = "serde", serde(rename = "pOnDeactivateModifier"))]
     pub m_pOnDeactivateModifier: Pointer<'a>,

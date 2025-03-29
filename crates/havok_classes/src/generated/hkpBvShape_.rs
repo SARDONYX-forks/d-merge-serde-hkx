@@ -33,6 +33,7 @@ pub struct hkpBvShape<'a> {
     /// - name: `boundingVolumeShape`(ctype: `struct hkpShape*`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "boundingVolumeShape"))]
     #[cfg_attr(feature = "serde", serde(rename = "boundingVolumeShape"))]
     pub m_boundingVolumeShape: Pointer<'a>,
@@ -40,6 +41,7 @@ pub struct hkpBvShape<'a> {
     /// - name: `childShape`(ctype: `struct hkpSingleShapeContainer`)
     /// - offset: ` 20`(x86)/` 40`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "childShape"))]
     #[cfg_attr(feature = "serde", serde(rename = "childShape"))]
     pub m_childShape: hkpSingleShapeContainer<'a>,
@@ -174,7 +176,7 @@ const _: () = {
                         Pointer<'de>,
                     > = _serde::__private::None;
                     let mut m_childShape: _serde::__private::Option<
-                        hkpSingleShapeContainer,
+                        hkpSingleShapeContainer<'de>,
                     > = _serde::__private::None;
                     for i in 0..2usize {
                         match i {
@@ -207,7 +209,7 @@ const _: () = {
                                 }
                                 m_childShape = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSingleShapeContainer,
+                                        hkpSingleShapeContainer<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -259,7 +261,7 @@ const _: () = {
                         Pointer<'de>,
                     > = _serde::__private::None;
                     let mut m_childShape: _serde::__private::Option<
-                        hkpSingleShapeContainer,
+                        hkpSingleShapeContainer<'de>,
                     > = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
                         __A::next_key::<__Field>(&mut __map)?
@@ -338,7 +340,7 @@ const _: () = {
                                 }
                                 m_childShape = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSingleShapeContainer,
+                                        hkpSingleShapeContainer<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

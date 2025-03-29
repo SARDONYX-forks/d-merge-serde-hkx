@@ -28,6 +28,7 @@ pub struct hkbGeneratorSyncInfoSyncPoint<'a> {
     /// - name: `id`(ctype: `hkInt32`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "id"))]
     #[cfg_attr(feature = "serde", serde(rename = "id"))]
     pub m_id: I32<'a>,

@@ -235,7 +235,7 @@ const _: () = {
                     let mut m_userData: _serde::__private::Option<Ulong> = _serde::__private::None;
                     let mut m_radius: _serde::__private::Option<f32> = _serde::__private::None;
                     let mut m_childShape: _serde::__private::Option<
-                        hkpSingleShapeContainer,
+                        hkpSingleShapeContainer<'de>,
                     > = _serde::__private::None;
                     let mut m_transform: _serde::__private::Option<Transform> = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
@@ -311,7 +311,7 @@ const _: () = {
                                 }
                                 m_childShape = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSingleShapeContainer,
+                                        hkpSingleShapeContainer<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

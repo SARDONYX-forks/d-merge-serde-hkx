@@ -33,6 +33,7 @@ pub struct hkbManualSelectorGenerator<'a> {
     /// - name: `generators`(ctype: `hkArray<hkbGenerator*>`)
     /// - offset: ` 40`(x86)/` 72`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "generators"))]
     #[cfg_attr(feature = "serde", serde(rename = "generators"))]
     pub m_generators: Vec<Pointer<'a>>,
@@ -40,6 +41,7 @@ pub struct hkbManualSelectorGenerator<'a> {
     /// - name: `selectedGeneratorIndex`(ctype: `hkInt8`)
     /// - offset: ` 52`(x86)/` 88`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "selectedGeneratorIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "selectedGeneratorIndex"))]
     pub m_selectedGeneratorIndex: I8<'a>,
@@ -47,6 +49,7 @@ pub struct hkbManualSelectorGenerator<'a> {
     /// - name: `currentGeneratorIndex`(ctype: `hkInt8`)
     /// - offset: ` 53`(x86)/` 89`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "currentGeneratorIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "currentGeneratorIndex"))]
     pub m_currentGeneratorIndex: I8<'a>,

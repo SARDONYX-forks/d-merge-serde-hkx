@@ -40,6 +40,7 @@ pub struct hkbRigidBodyRagdollControlsModifier<'a> {
     /// - name: `bones`(ctype: `struct hkbBoneIndexArray*`)
     /// - offset: `112`(x86)/`144`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bones"))]
     #[cfg_attr(feature = "serde", serde(rename = "bones"))]
     pub m_bones: Pointer<'a>,

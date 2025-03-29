@@ -33,6 +33,7 @@ pub struct hkbPoseMatchingGeneratorInternalState<'a> {
     /// - name: `currentMatch`(ctype: `hkInt32`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "currentMatch"))]
     #[cfg_attr(feature = "serde", serde(rename = "currentMatch"))]
     pub m_currentMatch: I32<'a>,
@@ -40,6 +41,7 @@ pub struct hkbPoseMatchingGeneratorInternalState<'a> {
     /// - name: `bestMatch`(ctype: `hkInt32`)
     /// - offset: ` 12`(x86)/` 20`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bestMatch"))]
     #[cfg_attr(feature = "serde", serde(rename = "bestMatch"))]
     pub m_bestMatch: I32<'a>,

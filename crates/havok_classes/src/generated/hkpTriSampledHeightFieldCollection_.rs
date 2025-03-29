@@ -33,6 +33,7 @@ pub struct hkpTriSampledHeightFieldCollection<'a> {
     /// - name: `heightfield`(ctype: `struct hkpSampledHeightFieldShape*`)
     /// - offset: ` 24`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "heightfield"))]
     #[cfg_attr(feature = "serde", serde(rename = "heightfield"))]
     pub m_heightfield: Pointer<'a>,
@@ -41,6 +42,8 @@ pub struct hkpTriSampledHeightFieldCollection<'a> {
     /// - offset: ` 28`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
+    #[cfg_attr(feature = "serde", serde(borrow))]
+    #[cfg_attr(feature = "serde", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "childSize"))]
     #[cfg_attr(feature = "serde", serde(rename = "childSize"))]
     pub m_childSize: I32<'a>,
@@ -55,6 +58,7 @@ pub struct hkpTriSampledHeightFieldCollection<'a> {
     /// - name: `weldingInfo`(ctype: `hkArray<hkUint16>`)
     /// - offset: ` 36`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "weldingInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "weldingInfo"))]
     pub m_weldingInfo: Vec<U16<'a>>,

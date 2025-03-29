@@ -28,6 +28,7 @@ pub struct hkpSimpleMeshShapeTriangle<'a> {
     /// - name: `a`(ctype: `hkInt32`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "a"))]
     #[cfg_attr(feature = "serde", serde(rename = "a"))]
     pub m_a: I32<'a>,
@@ -35,6 +36,7 @@ pub struct hkpSimpleMeshShapeTriangle<'a> {
     /// - name: `b`(ctype: `hkInt32`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "b"))]
     #[cfg_attr(feature = "serde", serde(rename = "b"))]
     pub m_b: I32<'a>,
@@ -42,6 +44,7 @@ pub struct hkpSimpleMeshShapeTriangle<'a> {
     /// - name: `c`(ctype: `hkInt32`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "c"))]
     #[cfg_attr(feature = "serde", serde(rename = "c"))]
     pub m_c: I32<'a>,
@@ -49,6 +52,7 @@ pub struct hkpSimpleMeshShapeTriangle<'a> {
     /// - name: `weldingInfo`(ctype: `hkUint16`)
     /// - offset: ` 12`(x86)/` 12`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "weldingInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "weldingInfo"))]
     pub m_weldingInfo: U16<'a>,

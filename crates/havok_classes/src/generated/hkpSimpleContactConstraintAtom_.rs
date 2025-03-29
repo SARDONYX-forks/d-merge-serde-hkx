@@ -33,6 +33,7 @@ pub struct hkpSimpleContactConstraintAtom<'a> {
     /// - name: `sizeOfAllAtoms`(ctype: `hkUint16`)
     /// - offset: `  2`(x86)/`  2`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sizeOfAllAtoms"))]
     #[cfg_attr(feature = "serde", serde(rename = "sizeOfAllAtoms"))]
     pub m_sizeOfAllAtoms: U16<'a>,
@@ -40,6 +41,7 @@ pub struct hkpSimpleContactConstraintAtom<'a> {
     /// - name: `numContactPoints`(ctype: `hkUint16`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numContactPoints"))]
     #[cfg_attr(feature = "serde", serde(rename = "numContactPoints"))]
     pub m_numContactPoints: U16<'a>,
@@ -47,6 +49,7 @@ pub struct hkpSimpleContactConstraintAtom<'a> {
     /// - name: `numReservedContactPoints`(ctype: `hkUint16`)
     /// - offset: `  6`(x86)/`  6`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numReservedContactPoints"))]
     #[cfg_attr(feature = "serde", serde(rename = "numReservedContactPoints"))]
     pub m_numReservedContactPoints: U16<'a>,
@@ -54,6 +57,7 @@ pub struct hkpSimpleContactConstraintAtom<'a> {
     /// - name: `numUserDatasForBodyA`(ctype: `hkUint8`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numUserDatasForBodyA"))]
     #[cfg_attr(feature = "serde", serde(rename = "numUserDatasForBodyA"))]
     pub m_numUserDatasForBodyA: U8<'a>,
@@ -61,6 +65,7 @@ pub struct hkpSimpleContactConstraintAtom<'a> {
     /// - name: `numUserDatasForBodyB`(ctype: `hkUint8`)
     /// - offset: `  9`(x86)/`  9`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numUserDatasForBodyB"))]
     #[cfg_attr(feature = "serde", serde(rename = "numUserDatasForBodyB"))]
     pub m_numUserDatasForBodyB: U8<'a>,
@@ -68,6 +73,7 @@ pub struct hkpSimpleContactConstraintAtom<'a> {
     /// - name: `contactPointPropertiesStriding`(ctype: `hkUint8`)
     /// - offset: ` 10`(x86)/` 10`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "contactPointPropertiesStriding")
@@ -78,6 +84,7 @@ pub struct hkpSimpleContactConstraintAtom<'a> {
     /// - name: `maxNumContactPoints`(ctype: `hkUint16`)
     /// - offset: ` 12`(x86)/` 12`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxNumContactPoints"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxNumContactPoints"))]
     pub m_maxNumContactPoints: U16<'a>,
@@ -86,6 +93,7 @@ pub struct hkpSimpleContactConstraintAtom<'a> {
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 32`(x86)/` 32`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "info"))]
     #[cfg_attr(feature = "serde", serde(rename = "info"))]
     pub m_info: hkpSimpleContactConstraintDataInfo<'a>,
@@ -263,7 +271,7 @@ const _: () = {
                     > = _serde::__private::None;
                     let mut m_maxNumContactPoints: _serde::__private::Option<U16<'de>> = _serde::__private::None;
                     let mut m_info: _serde::__private::Option<
-                        hkpSimpleContactConstraintDataInfo,
+                        hkpSimpleContactConstraintDataInfo<'de>,
                     > = _serde::__private::None;
                     for i in 0..8usize {
                         match i {
@@ -406,7 +414,7 @@ const _: () = {
                                 __A::pad(&mut __map, 2usize, 2usize)?;
                                 m_info = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSimpleContactConstraintDataInfo,
+                                        hkpSimpleContactConstraintDataInfo<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {
@@ -530,7 +538,7 @@ const _: () = {
                     > = _serde::__private::None;
                     let mut m_maxNumContactPoints: _serde::__private::Option<U16<'de>> = _serde::__private::None;
                     let mut m_info: _serde::__private::Option<
-                        hkpSimpleContactConstraintDataInfo,
+                        hkpSimpleContactConstraintDataInfo<'de>,
                     > = _serde::__private::None;
                     while let _serde::__private::Some(__key) = {
                         __A::next_key::<__Field>(&mut __map)?
@@ -769,7 +777,7 @@ const _: () = {
                                 }
                                 m_info = _serde::__private::Some(
                                     match __A::next_value::<
-                                        hkpSimpleContactConstraintDataInfo,
+                                        hkpSimpleContactConstraintDataInfo<'de>,
                                     >(&mut __map) {
                                         _serde::__private::Ok(__val) => __val,
                                         _serde::__private::Err(__err) => {

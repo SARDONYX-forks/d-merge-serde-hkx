@@ -47,6 +47,7 @@ pub struct hkpSetupStabilizationAtom<'a> {
     /// - name: `padding`(ctype: `hkUint8[8]`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "padding"))]
     #[cfg_attr(feature = "serde", serde(rename = "padding"))]
     pub m_padding: [U8<'a>; 8usize],
