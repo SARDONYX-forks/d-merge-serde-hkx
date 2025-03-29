@@ -1,4 +1,5 @@
 use super::to_rust_token::{member_to_rust_type, to_rust_field_ident};
+use crate::cpp_info::FlagValues;
 use crate::get_class_map::serde_borrow_attr;
 use crate::{
     bail_syn_err,
@@ -15,12 +16,20 @@ pub(super) fn gen_field(member: &Member, class_name: &str) -> Result<TokenStream
         vtype,
         arrsize,
         has_ref,
+        flags,
         ..
     } = member;
 
     let field_type = member_to_rust_type(member, class_name)?;
 
     let serde_borrow_attr = serde_borrow_attr(*has_ref);
+
+    let serde_default = if flags.contains(FlagValues::SERIALIZE_IGNORED) {
+        // XML skips fields with the SERIALIZE_IGNORED flag, so the only way is to put the default value
+        quote! { #[cfg_attr(feature = "serde", serde(default))] }
+    } else {
+        quote! {}
+    };
 
     // `Default` implementations with huge sizes such as [0u8; 256] are not automatically supported, so use `educe` crate to define them.
     let arr_custom_attr = if *arrsize > 32 {
@@ -65,6 +74,7 @@ pub(super) fn gen_field(member: &Member, class_name: &str) -> Result<TokenStream
         #doc
         #arr_custom_attr
         #serde_borrow_attr
+        #serde_default
         #[cfg_attr(feature = "json_schema", schemars(rename = #name))]
         #[cfg_attr(feature = "serde", serde(rename = #name))]
         pub #field_name: #field_type
