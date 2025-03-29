@@ -97,7 +97,7 @@
     {
       "name": "triggerInterval",
       "class_ref": "hkbStateMachineTimeInterval",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkbStateMachineTimeInterval",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -106,13 +106,13 @@
       "type_size_x86": 16,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "initiateInterval",
       "class_ref": "hkbStateMachineTimeInterval",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkbStateMachineTimeInterval",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -121,13 +121,13 @@
       "type_size_x86": 16,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "transition",
       "class_ref": "hkbTransitionEffect",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkbTransitionEffect*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -136,13 +136,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "condition",
       "class_ref": "hkbCondition",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkbCondition*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -151,12 +151,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "eventId",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt32",
       "vtype": "TYPE_INT32",
       "vsubtype": "TYPE_VOID",
@@ -165,12 +165,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "toStateId",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt32",
       "vtype": "TYPE_INT32",
       "vsubtype": "TYPE_VOID",
@@ -179,12 +179,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "fromNestedStateId",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt32",
       "vtype": "TYPE_INT32",
       "vsubtype": "TYPE_VOID",
@@ -193,12 +193,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "toNestedStateId",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt32",
       "vtype": "TYPE_INT32",
       "vsubtype": "TYPE_VOID",
@@ -207,12 +207,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "priority",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt16",
       "vtype": "TYPE_INT16",
       "vsubtype": "TYPE_VOID",
@@ -221,7 +221,7 @@
       "type_size_x86": 2,
       "type_size_x86_64": 2,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -236,7 +236,7 @@
       "type_size_x86": 2,
       "type_size_x86_64": 2,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

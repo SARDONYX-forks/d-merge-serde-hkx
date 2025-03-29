@@ -11,7 +11,7 @@
   "members": [
     {
       "name": "characterId",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint64",
       "vtype": "TYPE_UINT64",
       "vsubtype": "TYPE_VOID",
@@ -20,13 +20,13 @@
       "type_size_x86": 8,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "behavior",
       "class_ref": "hkbBehaviorGraph",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkbBehaviorGraph*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -35,13 +35,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "rootGenerator",
       "class_ref": "hkbGenerator",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkbGenerator*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -50,13 +50,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "referencedBehaviors",
       "class_ref": "hkbBehaviorGraph",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkbBehaviorGraph*>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_POINTER",
@@ -65,12 +65,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "startStateIndex",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt32",
       "vtype": "TYPE_INT32",
       "vsubtype": "TYPE_VOID",
@@ -79,7 +79,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -93,12 +93,12 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "padding",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt32",
       "vtype": "TYPE_INT32",
       "vsubtype": "TYPE_VOID",
@@ -107,7 +107,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

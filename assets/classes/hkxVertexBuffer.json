@@ -12,7 +12,7 @@
     {
       "name": "data",
       "class_ref": "hkxVertexBufferVertexData",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkxVertexBufferVertexData",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -21,13 +21,13 @@
       "type_size_x86": 84,
       "type_size_x86_64": 104,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "desc",
       "class_ref": "hkxVertexDescription",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkxVertexDescription",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -36,7 +36,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

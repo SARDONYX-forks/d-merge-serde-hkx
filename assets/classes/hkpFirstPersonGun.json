@@ -130,7 +130,7 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
@@ -144,7 +144,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -159,12 +159,12 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 71
     },
     {
       "name": "listeners",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<void*>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_POINTER",
@@ -173,7 +173,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     }
   ]

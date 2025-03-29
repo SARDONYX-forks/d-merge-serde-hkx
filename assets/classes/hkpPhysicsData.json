@@ -12,7 +12,7 @@
     {
       "name": "worldCinfo",
       "class_ref": "hkpWorldCinfo",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpWorldCinfo*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -21,13 +21,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "systems",
       "class_ref": "hkpPhysicsSystem",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkpPhysicsSystem*>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_POINTER",
@@ -36,7 +36,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

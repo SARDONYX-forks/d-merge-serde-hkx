@@ -12,7 +12,7 @@
     {
       "name": "activeTransitions",
       "class_ref": "hkbStateMachineActiveTransitionInfo",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<struct hkbStateMachineActiveTransitionInfo>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_STRUCT",
@@ -21,12 +21,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "transitionFlags",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkUint8>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_UINT8",
@@ -35,12 +35,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "wildcardTransitionFlags",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkUint8>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_UINT8",
@@ -49,13 +49,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "delayedTransitions",
       "class_ref": "hkbStateMachineDelayedTransitionInfo",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<struct hkbStateMachineDelayedTransitionInfo>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_STRUCT",
@@ -64,7 +64,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -78,7 +78,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -92,12 +92,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "currentStateId",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt32",
       "vtype": "TYPE_INT32",
       "vsubtype": "TYPE_VOID",
@@ -106,12 +106,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "previousStateId",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt32",
       "vtype": "TYPE_INT32",
       "vsubtype": "TYPE_VOID",
@@ -120,12 +120,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "nextStartStateIndexOverride",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt32",
       "vtype": "TYPE_INT32",
       "vsubtype": "TYPE_VOID",
@@ -134,7 +134,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -148,7 +148,7 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -162,7 +162,7 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

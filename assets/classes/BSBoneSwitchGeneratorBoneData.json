@@ -12,7 +12,7 @@
     {
       "name": "pGenerator",
       "class_ref": "hkbGenerator",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkbGenerator*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -21,13 +21,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|ALIGN_16",
+      "flags": "ALIGN_16",
       "default": 0
     },
     {
       "name": "spBoneWeight",
       "class_ref": "hkbBoneWeightArray",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkbBoneWeightArray*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -36,7 +36,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

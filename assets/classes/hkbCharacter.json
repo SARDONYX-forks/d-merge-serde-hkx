@@ -12,7 +12,7 @@
     {
       "name": "nearbyCharacters",
       "class_ref": "hkbCharacter",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkbCharacter*>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_POINTER",
@@ -21,12 +21,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "currentLod",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt16",
       "vtype": "TYPE_INT16",
       "vsubtype": "TYPE_VOID",
@@ -35,12 +35,12 @@
       "type_size_x86": 2,
       "type_size_x86_64": 2,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "numTracksInLod",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt16",
       "vtype": "TYPE_INT16",
       "vsubtype": "TYPE_VOID",
@@ -49,7 +49,7 @@
       "type_size_x86": 2,
       "type_size_x86_64": 2,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
@@ -63,12 +63,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "ragdollDriver",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "void*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_VOID",
@@ -77,12 +77,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "characterControllerDriver",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "void*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_VOID",
@@ -91,12 +91,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "footIkDriver",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "void*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_VOID",
@@ -105,12 +105,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "handIkDriver",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "void*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_VOID",
@@ -119,13 +119,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "setup",
       "class_ref": "hkbCharacterSetup",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkbCharacterSetup*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -134,13 +134,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "behaviorGraph",
       "class_ref": "hkbBehaviorGraph",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkbBehaviorGraph*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -149,13 +149,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "projectData",
       "class_ref": "hkbProjectData",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkbProjectData*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -164,12 +164,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "animationBindingSet",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "void*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_VOID",
@@ -178,12 +178,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "raycastInterface",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "void*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_VOID",
@@ -192,12 +192,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "world",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "void*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_VOID",
@@ -206,12 +206,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|NOT_OWNED|SERIALIZE_IGNORED",
+      "flags": "NOT_OWNED|SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "eventQueue",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "void*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_VOID",
@@ -220,12 +220,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "worldFromModel",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "void*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_VOID",
@@ -234,7 +234,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
@@ -248,7 +248,7 @@
       "type_size_x86": 8,
       "type_size_x86_64": 12,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
@@ -262,7 +262,7 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
@@ -276,7 +276,7 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     }
   ]

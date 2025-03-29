@@ -20,12 +20,12 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "motorAxis",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint8",
       "vtype": "TYPE_UINT8",
       "vsubtype": "TYPE_VOID",
@@ -34,12 +34,12 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "initializedOffset",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt16",
       "vtype": "TYPE_INT16",
       "vsubtype": "TYPE_VOID",
@@ -48,12 +48,12 @@
       "type_size_x86": 2,
       "type_size_x86_64": 2,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "previousTargetPositionOffset",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt16",
       "vtype": "TYPE_INT16",
       "vsubtype": "TYPE_VOID",
@@ -62,7 +62,7 @@
       "type_size_x86": 2,
       "type_size_x86_64": 2,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -76,13 +76,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "motor",
       "class_ref": "hkpConstraintMotor",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpConstraintMotor*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -91,7 +91,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

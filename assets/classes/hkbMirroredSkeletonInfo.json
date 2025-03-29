@@ -20,12 +20,12 @@
       "type_size_x86": 16,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "bonePairMap",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkInt16>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_INT16",
@@ -34,7 +34,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

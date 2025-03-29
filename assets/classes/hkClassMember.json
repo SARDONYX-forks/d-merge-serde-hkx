@@ -233,13 +233,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "class",
       "class_ref": "hkClass",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkClass*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -248,13 +248,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "enum",
       "class_ref": "hkClassEnum",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkClassEnum*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -263,7 +263,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -278,7 +278,7 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -293,12 +293,12 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "cArraySize",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt16",
       "vtype": "TYPE_INT16",
       "vsubtype": "TYPE_VOID",
@@ -307,7 +307,7 @@
       "type_size_x86": 2,
       "type_size_x86_64": 2,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -322,12 +322,12 @@
       "type_size_x86": 2,
       "type_size_x86_64": 2,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "offset",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint16",
       "vtype": "TYPE_UINT16",
       "vsubtype": "TYPE_VOID",
@@ -336,13 +336,13 @@
       "type_size_x86": 2,
       "type_size_x86_64": 2,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "attributes",
       "class_ref": "hkCustomAttributes",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkCustomAttributes*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -351,7 +351,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     }
   ]

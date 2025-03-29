@@ -19,13 +19,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "triangles",
       "class_ref": "hkGeometryTriangle",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<struct hkGeometryTriangle>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_STRUCT",
@@ -34,7 +34,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

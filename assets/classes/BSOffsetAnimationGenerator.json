@@ -12,7 +12,7 @@
     {
       "name": "pDefaultGenerator",
       "class_ref": "hkbGenerator",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkbGenerator*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -21,13 +21,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|ALIGN_16",
+      "flags": "ALIGN_16",
       "default": 0
     },
     {
       "name": "pOffsetClipGenerator",
       "class_ref": "hkbGenerator",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkbGenerator*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -36,7 +36,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|ALIGN_16",
+      "flags": "ALIGN_16",
       "default": 0
     },
     {
@@ -50,7 +50,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -64,7 +64,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -78,7 +78,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -92,7 +92,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
@@ -106,7 +106,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
@@ -120,12 +120,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "iCurrentFrame",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint32",
       "vtype": "TYPE_UINT32",
       "vsubtype": "TYPE_VOID",
@@ -134,7 +134,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
@@ -148,7 +148,7 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
@@ -162,7 +162,7 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     }
   ]

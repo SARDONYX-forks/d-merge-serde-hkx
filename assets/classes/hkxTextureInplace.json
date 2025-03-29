@@ -20,12 +20,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 4,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "data",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkUint8>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_UINT8",
@@ -34,7 +34,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -48,7 +48,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -62,7 +62,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

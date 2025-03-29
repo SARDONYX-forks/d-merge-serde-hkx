@@ -12,7 +12,7 @@
     {
       "name": "atoms",
       "class_ref": "hkpLimitedHingeConstraintDataAtoms",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpLimitedHingeConstraintDataAtoms",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -21,7 +21,7 @@
       "type_size_x86": 240,
       "type_size_x86_64": 240,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|ALIGN_16",
+      "flags": "ALIGN_16",
       "default": 0
     }
   ]

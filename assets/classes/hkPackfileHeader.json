@@ -10,7 +10,7 @@
   "members": [
     {
       "name": "magic",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt32[2]",
       "vtype": "TYPE_INT32",
       "vsubtype": "TYPE_VOID",
@@ -19,12 +19,12 @@
       "type_size_x86": 8,
       "type_size_x86_64": 8,
       "arrsize": 2,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "userTag",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt32",
       "vtype": "TYPE_INT32",
       "vsubtype": "TYPE_VOID",
@@ -33,12 +33,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "fileVersion",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt32",
       "vtype": "TYPE_INT32",
       "vsubtype": "TYPE_VOID",
@@ -47,12 +47,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "layoutRules",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint8[4]",
       "vtype": "TYPE_UINT8",
       "vsubtype": "TYPE_VOID",
@@ -61,12 +61,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 4,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "numSections",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt32",
       "vtype": "TYPE_INT32",
       "vsubtype": "TYPE_VOID",
@@ -75,12 +75,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "contentsSectionIndex",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt32",
       "vtype": "TYPE_INT32",
       "vsubtype": "TYPE_VOID",
@@ -89,12 +89,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "contentsSectionOffset",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt32",
       "vtype": "TYPE_INT32",
       "vsubtype": "TYPE_VOID",
@@ -103,12 +103,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "contentsClassNameSectionIndex",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt32",
       "vtype": "TYPE_INT32",
       "vsubtype": "TYPE_VOID",
@@ -117,12 +117,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "contentsClassNameSectionOffset",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt32",
       "vtype": "TYPE_INT32",
       "vsubtype": "TYPE_VOID",
@@ -131,7 +131,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -145,12 +145,12 @@
       "type_size_x86": 16,
       "type_size_x86_64": 16,
       "arrsize": 16,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "flags",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt32",
       "vtype": "TYPE_INT32",
       "vsubtype": "TYPE_VOID",
@@ -159,12 +159,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "pad",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt32[1]",
       "vtype": "TYPE_INT32",
       "vsubtype": "TYPE_VOID",
@@ -173,7 +173,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 1,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

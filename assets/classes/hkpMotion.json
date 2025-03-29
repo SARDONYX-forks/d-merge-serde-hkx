@@ -67,12 +67,12 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "deactivationIntegrateCounter",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint8",
       "vtype": "TYPE_UINT8",
       "vsubtype": "TYPE_VOID",
@@ -81,12 +81,12 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "deactivationNumInactiveFrames",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint16[2]",
       "vtype": "TYPE_UINT16",
       "vsubtype": "TYPE_VOID",
@@ -95,13 +95,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 2,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "motionState",
       "class_ref": "hkMotionState",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkMotionState",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -110,7 +110,7 @@
       "type_size_x86": 176,
       "type_size_x86_64": 176,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -124,7 +124,7 @@
       "type_size_x86": 16,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -138,7 +138,7 @@
       "type_size_x86": 16,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -152,7 +152,7 @@
       "type_size_x86": 16,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -166,12 +166,12 @@
       "type_size_x86": 32,
       "type_size_x86_64": 32,
       "arrsize": 2,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "deactivationRefOrientation",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint32[2]",
       "vtype": "TYPE_UINT32",
       "vsubtype": "TYPE_VOID",
@@ -180,13 +180,13 @@
       "type_size_x86": 8,
       "type_size_x86_64": 8,
       "arrsize": 2,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "savedMotion",
       "class_ref": "hkpMaxSizeMotion",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpMaxSizeMotion*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -195,12 +195,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "savedQualityTypeIndex",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint16",
       "vtype": "TYPE_UINT16",
       "vsubtype": "TYPE_VOID",
@@ -209,7 +209,7 @@
       "type_size_x86": 2,
       "type_size_x86_64": 2,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -223,7 +223,7 @@
       "type_size_x86": 2,
       "type_size_x86_64": 2,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

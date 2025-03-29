@@ -21,7 +21,7 @@
       "type_size_x86": 8,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -36,12 +36,12 @@
       "type_size_x86": 8,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "numberOfEventsBeforeSend",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt8",
       "vtype": "TYPE_INT8",
       "vsubtype": "TYPE_VOID",
@@ -50,12 +50,12 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "minimumNumberOfEventsBeforeSend",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt8",
       "vtype": "TYPE_INT8",
       "vsubtype": "TYPE_VOID",
@@ -64,7 +64,7 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -78,12 +78,12 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "numberOfEventsSeen",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt32",
       "vtype": "TYPE_INT32",
       "vsubtype": "TYPE_VOID",
@@ -92,12 +92,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "calculatedNumberOfEventsBeforeSend",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt8",
       "vtype": "TYPE_INT8",
       "vsubtype": "TYPE_VOID",
@@ -106,7 +106,7 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     }
   ]

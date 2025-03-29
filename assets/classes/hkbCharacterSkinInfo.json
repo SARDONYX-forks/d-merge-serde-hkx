@@ -11,7 +11,7 @@
   "members": [
     {
       "name": "characterId",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint64",
       "vtype": "TYPE_UINT64",
       "vsubtype": "TYPE_VOID",
@@ -20,12 +20,12 @@
       "type_size_x86": 8,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "deformableSkins",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkUint64>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_UINT64",
@@ -34,12 +34,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "rigidSkins",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkUint64>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_UINT64",
@@ -48,7 +48,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

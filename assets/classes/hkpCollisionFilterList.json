@@ -12,7 +12,7 @@
     {
       "name": "collisionFilters",
       "class_ref": "hkpCollisionFilter",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkpCollisionFilter*>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_POINTER",
@@ -21,7 +21,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

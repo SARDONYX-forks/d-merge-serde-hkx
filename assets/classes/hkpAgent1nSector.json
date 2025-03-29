@@ -10,7 +10,7 @@
   "members": [
     {
       "name": "bytesAllocated",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint32",
       "vtype": "TYPE_UINT32",
       "vsubtype": "TYPE_VOID",
@@ -19,12 +19,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "pad0",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint32",
       "vtype": "TYPE_UINT32",
       "vsubtype": "TYPE_VOID",
@@ -33,12 +33,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "pad1",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint32",
       "vtype": "TYPE_UINT32",
       "vsubtype": "TYPE_VOID",
@@ -47,12 +47,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "pad2",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint32",
       "vtype": "TYPE_UINT32",
       "vsubtype": "TYPE_VOID",
@@ -61,12 +61,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "data",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint8[496]",
       "vtype": "TYPE_UINT8",
       "vsubtype": "TYPE_VOID",
@@ -75,7 +75,7 @@
       "type_size_x86": 496,
       "type_size_x86_64": 496,
       "arrsize": 496,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

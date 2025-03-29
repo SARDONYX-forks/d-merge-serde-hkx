@@ -30,7 +30,7 @@
     {
       "name": "atoms",
       "class_ref": "hkpRackAndPinionConstraintDataAtoms",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpRackAndPinionConstraintDataAtoms",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -39,7 +39,7 @@
       "type_size_x86": 160,
       "type_size_x86_64": 160,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|ALIGN_16",
+      "flags": "ALIGN_16",
       "default": 0
     }
   ]

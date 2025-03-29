@@ -20,7 +20,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -34,12 +34,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "matricesOrder",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkInt16>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_INT16",
@@ -48,7 +48,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -62,13 +62,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "indexMappings",
       "class_ref": "hkMeshBoneIndexMapping",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<struct hkMeshBoneIndexMapping>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_STRUCT",
@@ -77,7 +77,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -91,7 +91,7 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

@@ -20,12 +20,12 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "collisionGroups",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint32[32]",
       "vtype": "TYPE_UINT32",
       "vsubtype": "TYPE_VOID",
@@ -34,7 +34,7 @@
       "type_size_x86": 128,
       "type_size_x86_64": 128,
       "arrsize": 32,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

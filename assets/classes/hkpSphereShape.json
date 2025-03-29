@@ -11,7 +11,7 @@
   "members": [
     {
       "name": "pad16",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint32[3]",
       "vtype": "TYPE_UINT32",
       "vsubtype": "TYPE_VOID",
@@ -20,7 +20,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 12,
       "arrsize": 3,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     }
   ]

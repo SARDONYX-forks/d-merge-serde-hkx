@@ -10,7 +10,7 @@
   "members": [
     {
       "name": "min",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint32[3]",
       "vtype": "TYPE_UINT32",
       "vsubtype": "TYPE_VOID",
@@ -19,12 +19,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 12,
       "arrsize": 3,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "expansionMin",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint8[3]",
       "vtype": "TYPE_UINT8",
       "vsubtype": "TYPE_VOID",
@@ -33,12 +33,12 @@
       "type_size_x86": 3,
       "type_size_x86_64": 3,
       "arrsize": 3,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "expansionShift",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint8",
       "vtype": "TYPE_UINT8",
       "vsubtype": "TYPE_VOID",
@@ -47,12 +47,12 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "max",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint32[3]",
       "vtype": "TYPE_UINT32",
       "vsubtype": "TYPE_VOID",
@@ -61,12 +61,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 12,
       "arrsize": 3,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "expansionMax",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint8[3]",
       "vtype": "TYPE_UINT8",
       "vsubtype": "TYPE_VOID",
@@ -75,12 +75,12 @@
       "type_size_x86": 3,
       "type_size_x86_64": 3,
       "arrsize": 3,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "padding",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint8",
       "vtype": "TYPE_UINT8",
       "vsubtype": "TYPE_VOID",
@@ -89,12 +89,12 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "numChildShapeAabbs",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint16",
       "vtype": "TYPE_UINT16",
       "vsubtype": "TYPE_VOID",
@@ -103,12 +103,12 @@
       "type_size_x86": 2,
       "type_size_x86_64": 2,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "capacityChildShapeAabbs",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint16",
       "vtype": "TYPE_UINT16",
       "vsubtype": "TYPE_VOID",
@@ -117,12 +117,12 @@
       "type_size_x86": 2,
       "type_size_x86_64": 2,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "childShapeAabbs",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "void*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_VOID",
@@ -131,12 +131,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "childShapeKeys",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "void*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_VOID",
@@ -145,7 +145,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     }
   ]

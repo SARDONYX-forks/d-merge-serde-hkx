@@ -33,7 +33,7 @@
     {
       "name": "rotations",
       "class_ref": "hkpSetLocalRotationsConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpSetLocalRotationsConstraintAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -42,13 +42,13 @@
       "type_size_x86": 112,
       "type_size_x86_64": 112,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "angLimit",
       "class_ref": "hkpAngLimitConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpAngLimitConstraintAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -57,13 +57,13 @@
       "type_size_x86": 16,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "2dAng",
       "class_ref": "hkp2dAngConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkp2dAngConstraintAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -72,7 +72,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

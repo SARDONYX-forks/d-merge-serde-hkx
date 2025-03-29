@@ -20,7 +20,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -34,7 +34,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -48,13 +48,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "rootNode",
       "class_ref": "hkxNode",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkxNode*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -63,13 +63,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "selectionSets",
       "class_ref": "hkxNodeSelectionSet",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkxNodeSelectionSet*>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_POINTER",
@@ -78,13 +78,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "cameras",
       "class_ref": "hkxCamera",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkxCamera*>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_POINTER",
@@ -93,13 +93,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "lights",
       "class_ref": "hkxLight",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkxLight*>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_POINTER",
@@ -108,13 +108,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "meshes",
       "class_ref": "hkxMesh",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkxMesh*>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_POINTER",
@@ -123,13 +123,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "materials",
       "class_ref": "hkxMaterial",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkxMaterial*>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_POINTER",
@@ -138,13 +138,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "inplaceTextures",
       "class_ref": "hkxTextureInplace",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkxTextureInplace*>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_POINTER",
@@ -153,13 +153,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "externalTextures",
       "class_ref": "hkxTextureFile",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkxTextureFile*>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_POINTER",
@@ -168,13 +168,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "skinBindings",
       "class_ref": "hkxSkinBinding",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkxSkinBinding*>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_POINTER",
@@ -183,7 +183,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -197,7 +197,7 @@
       "type_size_x86": 48,
       "type_size_x86_64": 48,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

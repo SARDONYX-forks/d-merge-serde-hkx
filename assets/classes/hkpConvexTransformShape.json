@@ -20,7 +20,7 @@
       "type_size_x86": 64,
       "type_size_x86_64": 64,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

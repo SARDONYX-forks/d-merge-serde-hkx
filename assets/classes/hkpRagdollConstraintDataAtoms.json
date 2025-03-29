@@ -33,7 +33,7 @@
     {
       "name": "transforms",
       "class_ref": "hkpSetLocalTransformsConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpSetLocalTransformsConstraintAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -42,13 +42,13 @@
       "type_size_x86": 144,
       "type_size_x86_64": 144,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "setupStabilization",
       "class_ref": "hkpSetupStabilizationAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpSetupStabilizationAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -57,13 +57,13 @@
       "type_size_x86": 16,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "ragdollMotors",
       "class_ref": "hkpRagdollMotorConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpRagdollMotorConstraintAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -72,13 +72,13 @@
       "type_size_x86": 80,
       "type_size_x86_64": 96,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "angFriction",
       "class_ref": "hkpAngFrictionConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpAngFrictionConstraintAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -87,13 +87,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 12,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "twistLimit",
       "class_ref": "hkpTwistLimitConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpTwistLimitConstraintAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -102,13 +102,13 @@
       "type_size_x86": 20,
       "type_size_x86_64": 20,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "coneLimit",
       "class_ref": "hkpConeLimitConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpConeLimitConstraintAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -117,13 +117,13 @@
       "type_size_x86": 20,
       "type_size_x86_64": 20,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "planesLimit",
       "class_ref": "hkpConeLimitConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpConeLimitConstraintAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -132,13 +132,13 @@
       "type_size_x86": 20,
       "type_size_x86_64": 20,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "ballSocket",
       "class_ref": "hkpBallSocketConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpBallSocketConstraintAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -147,7 +147,7 @@
       "type_size_x86": 16,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

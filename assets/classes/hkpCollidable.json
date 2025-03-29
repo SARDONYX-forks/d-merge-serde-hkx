@@ -37,7 +37,7 @@
   "members": [
     {
       "name": "ownerOffset",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt8",
       "vtype": "TYPE_INT8",
       "vsubtype": "TYPE_VOID",
@@ -46,12 +46,12 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "forceCollideOntoPpu",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint8",
       "vtype": "TYPE_UINT8",
       "vsubtype": "TYPE_VOID",
@@ -60,12 +60,12 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "shapeSizeOnSpu",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint16",
       "vtype": "TYPE_UINT16",
       "vsubtype": "TYPE_VOID",
@@ -74,7 +74,7 @@
       "type_size_x86": 2,
       "type_size_x86_64": 2,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
@@ -89,13 +89,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 12,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "boundingVolumeData",
       "class_ref": "hkpCollidableBoundingVolumeData",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpCollidableBoundingVolumeData",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -104,7 +104,7 @@
       "type_size_x86": 44,
       "type_size_x86_64": 56,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
@@ -118,7 +118,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

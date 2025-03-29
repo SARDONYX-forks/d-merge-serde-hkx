@@ -11,7 +11,7 @@
     {
       "name": "pivots",
       "class_ref": "hkpSetLocalTranslationsConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpSetLocalTranslationsConstraintAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -20,13 +20,13 @@
       "type_size_x86": 48,
       "type_size_x86_64": 48,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "setupStabilization",
       "class_ref": "hkpSetupStabilizationAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpSetupStabilizationAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -35,13 +35,13 @@
       "type_size_x86": 16,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "ballSocket",
       "class_ref": "hkpBallSocketConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpBallSocketConstraintAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -50,7 +50,7 @@
       "type_size_x86": 16,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

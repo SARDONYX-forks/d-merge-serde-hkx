@@ -20,13 +20,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "variableInfos",
       "class_ref": "hkbVariableInfo",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<struct hkbVariableInfo>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_STRUCT",
@@ -35,13 +35,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "characterPropertyInfos",
       "class_ref": "hkbVariableInfo",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<struct hkbVariableInfo>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_STRUCT",
@@ -50,13 +50,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "eventInfos",
       "class_ref": "hkbEventInfo",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<struct hkbEventInfo>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_STRUCT",
@@ -65,13 +65,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "wordMinVariableValues",
       "class_ref": "hkbVariableValue",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<struct hkbVariableValue>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_STRUCT",
@@ -80,13 +80,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "wordMaxVariableValues",
       "class_ref": "hkbVariableValue",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<struct hkbVariableValue>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_STRUCT",
@@ -95,13 +95,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "variableInitialValues",
       "class_ref": "hkbVariableValueSet",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkbVariableValueSet*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -110,13 +110,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "stringData",
       "class_ref": "hkbBehaviorGraphStringData",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkbBehaviorGraphStringData*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -125,7 +125,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

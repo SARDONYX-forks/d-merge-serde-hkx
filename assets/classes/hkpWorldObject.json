@@ -57,7 +57,7 @@
   "members": [
     {
       "name": "world",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "void*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_VOID",
@@ -66,7 +66,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
@@ -80,7 +80,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -95,13 +95,13 @@
       "type_size_x86": 92,
       "type_size_x86_64": 128,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "multiThreadCheck",
       "class_ref": "hkMultiThreadCheck",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkMultiThreadCheck",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -110,7 +110,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 12,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -124,13 +124,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "properties",
       "class_ref": "hkpProperty",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<struct hkpProperty>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_STRUCT",
@@ -139,12 +139,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "treeData",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "void*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_VOID",
@@ -153,7 +153,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     }
   ]

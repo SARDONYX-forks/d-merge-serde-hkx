@@ -10,7 +10,7 @@
   "members": [
     {
       "name": "data",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint16[6]",
       "vtype": "TYPE_UINT16",
       "vsubtype": "TYPE_VOID",
@@ -19,12 +19,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 12,
       "arrsize": 6,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "extras",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint16[2]",
       "vtype": "TYPE_UINT16",
       "vsubtype": "TYPE_VOID",
@@ -33,7 +33,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 2,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

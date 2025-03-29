@@ -42,7 +42,7 @@
     {
       "name": "material",
       "class_ref": "hkpMaterial",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpMaterial",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -51,12 +51,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 12,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "limitContactImpulseUtilAndFlag",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "void*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_VOID",
@@ -65,7 +65,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
@@ -79,12 +79,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "breakableBody",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "void*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_VOID",
@@ -93,12 +93,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "solverData",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint32",
       "vtype": "TYPE_UINT32",
       "vsubtype": "TYPE_VOID",
@@ -107,12 +107,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "storageIndex",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint16",
       "vtype": "TYPE_UINT16",
       "vsubtype": "TYPE_VOID",
@@ -121,12 +121,12 @@
       "type_size_x86": 2,
       "type_size_x86_64": 2,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "contactPointCallbackDelay",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint16",
       "vtype": "TYPE_UINT16",
       "vsubtype": "TYPE_VOID",
@@ -135,13 +135,13 @@
       "type_size_x86": 2,
       "type_size_x86_64": 2,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "constraintsMaster",
       "class_ref": "hkpEntitySmallArraySerializeOverrideType",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpEntitySmallArraySerializeOverrideType",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -150,13 +150,13 @@
       "type_size_x86": 8,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "constraintsSlave",
       "class_ref": "hkpConstraintInstance",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkpConstraintInstance*>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_POINTER",
@@ -165,12 +165,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|NOT_OWNED|SERIALIZE_IGNORED",
+      "flags": "NOT_OWNED|SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "constraintRuntime",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkUint8>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_UINT8",
@@ -179,12 +179,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "simulationIsland",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "void*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_VOID",
@@ -193,12 +193,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "autoRemoveLevel",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt8",
       "vtype": "TYPE_INT8",
       "vsubtype": "TYPE_VOID",
@@ -207,12 +207,12 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "numShapeKeysInContactPointProperties",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint8",
       "vtype": "TYPE_UINT8",
       "vsubtype": "TYPE_VOID",
@@ -221,12 +221,12 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "responseModifierFlags",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint8",
       "vtype": "TYPE_UINT8",
       "vsubtype": "TYPE_VOID",
@@ -235,12 +235,12 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "uid",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint32",
       "vtype": "TYPE_UINT32",
       "vsubtype": "TYPE_VOID",
@@ -249,13 +249,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "spuCollisionCallback",
       "class_ref": "hkpEntitySpuCollisionCallback",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpEntitySpuCollisionCallback",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -264,7 +264,7 @@
       "type_size_x86": 8,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -279,13 +279,13 @@
       "type_size_x86": 288,
       "type_size_x86_64": 320,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "contactListeners",
       "class_ref": "hkpEntitySmallArraySerializeOverrideType",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpEntitySmallArraySerializeOverrideType",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -294,13 +294,13 @@
       "type_size_x86": 8,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "actions",
       "class_ref": "hkpEntitySmallArraySerializeOverrideType",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpEntitySmallArraySerializeOverrideType",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -309,13 +309,13 @@
       "type_size_x86": 8,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "localFrame",
       "class_ref": "hkLocalFrame",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkLocalFrame*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -324,13 +324,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "extendedListeners",
       "class_ref": "hkpEntityExtendedListeners",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpEntityExtendedListeners*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -339,12 +339,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "npData",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint32",
       "vtype": "TYPE_UINT32",
       "vsubtype": "TYPE_VOID",
@@ -353,7 +353,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

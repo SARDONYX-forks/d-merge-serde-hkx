@@ -11,7 +11,7 @@
   "members": [
     {
       "name": "characterId",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint64",
       "vtype": "TYPE_UINT64",
       "vsubtype": "TYPE_VOID",
@@ -20,13 +20,13 @@
       "type_size_x86": 8,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "data",
       "class_ref": "hkbBehaviorGraphData",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkbBehaviorGraphData*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -35,7 +35,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -50,7 +50,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

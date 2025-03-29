@@ -11,7 +11,7 @@
   "members": [
     {
       "name": "type",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt8",
       "vtype": "TYPE_INT8",
       "vsubtype": "TYPE_VOID",
@@ -20,12 +20,12 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "ownerOffset",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt8",
       "vtype": "TYPE_INT8",
       "vsubtype": "TYPE_VOID",
@@ -34,12 +34,12 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "objectQualityType",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt8",
       "vtype": "TYPE_INT8",
       "vsubtype": "TYPE_VOID",
@@ -48,12 +48,12 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "collisionFilterInfo",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint32",
       "vtype": "TYPE_UINT32",
       "vsubtype": "TYPE_VOID",
@@ -62,7 +62,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

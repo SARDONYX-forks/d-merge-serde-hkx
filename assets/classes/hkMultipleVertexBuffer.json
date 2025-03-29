@@ -12,7 +12,7 @@
     {
       "name": "vertexFormat",
       "class_ref": "hkVertexFormat",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkVertexFormat",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -21,13 +21,13 @@
       "type_size_x86": 260,
       "type_size_x86_64": 260,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "lockedElements",
       "class_ref": "hkMultipleVertexBufferLockedElement",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<struct hkMultipleVertexBufferLockedElement>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_STRUCT",
@@ -36,13 +36,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "lockedBuffer",
       "class_ref": "hkMemoryMeshVertexBuffer",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkMemoryMeshVertexBuffer*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -51,13 +51,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "elementInfos",
       "class_ref": "hkMultipleVertexBufferElementInfo",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<struct hkMultipleVertexBufferElementInfo>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_STRUCT",
@@ -66,13 +66,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "vertexBufferInfos",
       "class_ref": "hkMultipleVertexBufferVertexBufferInfo",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<struct hkMultipleVertexBufferVertexBufferInfo>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_STRUCT",
@@ -81,12 +81,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "numVertices",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkInt32",
       "vtype": "TYPE_INT32",
       "vsubtype": "TYPE_VOID",
@@ -95,7 +95,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -109,12 +109,12 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "updateCount",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint32",
       "vtype": "TYPE_UINT32",
       "vsubtype": "TYPE_VOID",
@@ -123,7 +123,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -137,7 +137,7 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -151,7 +151,7 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -165,7 +165,7 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

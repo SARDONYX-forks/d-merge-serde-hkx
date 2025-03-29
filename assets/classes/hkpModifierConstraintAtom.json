@@ -11,7 +11,7 @@
   "members": [
     {
       "name": "modifierAtomSize",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint16",
       "vtype": "TYPE_UINT16",
       "vsubtype": "TYPE_VOID",
@@ -20,12 +20,12 @@
       "type_size_x86": 2,
       "type_size_x86_64": 2,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|ALIGN_16",
+      "flags": "ALIGN_16",
       "default": 0
     },
     {
       "name": "childSize",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint16",
       "vtype": "TYPE_UINT16",
       "vsubtype": "TYPE_VOID",
@@ -34,13 +34,13 @@
       "type_size_x86": 2,
       "type_size_x86_64": 2,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "child",
       "class_ref": "hkpConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpConstraintAtom*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -49,12 +49,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "pad",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint32[2]",
       "vtype": "TYPE_UINT32",
       "vsubtype": "TYPE_VOID",
@@ -63,7 +63,7 @@
       "type_size_x86": 8,
       "type_size_x86_64": 8,
       "arrsize": 2,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

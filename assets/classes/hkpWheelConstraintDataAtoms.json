@@ -37,7 +37,7 @@
     {
       "name": "suspensionBase",
       "class_ref": "hkpSetLocalTransformsConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpSetLocalTransformsConstraintAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -46,13 +46,13 @@
       "type_size_x86": 144,
       "type_size_x86_64": 144,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "lin0Limit",
       "class_ref": "hkpLinLimitConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpLinLimitConstraintAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -61,13 +61,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 12,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "lin0Soft",
       "class_ref": "hkpLinSoftConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpLinSoftConstraintAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -76,13 +76,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 12,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "lin1",
       "class_ref": "hkpLinConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpLinConstraintAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -91,13 +91,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "lin2",
       "class_ref": "hkpLinConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpLinConstraintAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -106,13 +106,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "steeringBase",
       "class_ref": "hkpSetLocalRotationsConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpSetLocalRotationsConstraintAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -121,13 +121,13 @@
       "type_size_x86": 112,
       "type_size_x86_64": 112,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "2dAng",
       "class_ref": "hkp2dAngConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkp2dAngConstraintAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -136,7 +136,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

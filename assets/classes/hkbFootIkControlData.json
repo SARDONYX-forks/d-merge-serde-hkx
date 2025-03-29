@@ -20,7 +20,7 @@
       "type_size_x86": 48,
       "type_size_x86_64": 48,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|ALIGN_16",
+      "flags": "ALIGN_16",
       "default": 0
     }
   ]

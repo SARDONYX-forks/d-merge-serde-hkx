@@ -20,13 +20,13 @@
       "type_size_x86": 64,
       "type_size_x86_64": 64,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "transformSet",
       "class_ref": "hkIndexedTransformSet",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkIndexedTransformSet*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -35,13 +35,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "shape",
       "class_ref": "hkMeshShape",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkMeshShape*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -50,13 +50,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "vertexBuffers",
       "class_ref": "hkMeshVertexBuffer",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkMeshVertexBuffer*>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_POINTER",
@@ -65,7 +65,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -79,7 +79,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

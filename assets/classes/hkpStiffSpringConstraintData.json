@@ -12,7 +12,7 @@
     {
       "name": "atoms",
       "class_ref": "hkpStiffSpringConstraintDataAtoms",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpStiffSpringConstraintDataAtoms",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -21,7 +21,7 @@
       "type_size_x86": 64,
       "type_size_x86_64": 64,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|ALIGN_16",
+      "flags": "ALIGN_16",
       "default": 0
     }
   ]

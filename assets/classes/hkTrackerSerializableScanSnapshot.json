@@ -12,7 +12,7 @@
     {
       "name": "allocations",
       "class_ref": "hkTrackerSerializableScanSnapshotAllocation",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<struct hkTrackerSerializableScanSnapshotAllocation>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_STRUCT",
@@ -21,13 +21,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "blocks",
       "class_ref": "hkTrackerSerializableScanSnapshotBlock",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<struct hkTrackerSerializableScanSnapshotBlock>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_STRUCT",
@@ -36,12 +36,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "refs",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkInt32>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_INT32",
@@ -50,12 +50,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "typeNames",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkUint8>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_UINT8",
@@ -64,12 +64,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "traceText",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkUint8>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_UINT8",
@@ -78,12 +78,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "traceAddrs",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkUint64>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_UINT64",
@@ -92,12 +92,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "traceParents",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkInt32>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_INT32",
@@ -106,7 +106,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

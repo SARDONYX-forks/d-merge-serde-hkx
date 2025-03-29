@@ -61,7 +61,7 @@
     {
       "name": "role",
       "class_ref": "hkbRoleAttribute",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkbRoleAttribute",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -70,7 +70,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -85,7 +85,7 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

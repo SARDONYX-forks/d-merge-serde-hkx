@@ -38,13 +38,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "animation",
       "class_ref": "hkaAnimation",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkaAnimation*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -53,12 +53,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "transformTrackToBoneIndices",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkInt16>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_INT16",
@@ -67,12 +67,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "floatTrackToFloatSlotIndices",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkInt16>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_INT16",
@@ -81,7 +81,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -96,7 +96,7 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

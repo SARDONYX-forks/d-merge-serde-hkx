@@ -12,7 +12,7 @@
     {
       "name": "sections",
       "class_ref": "hkMeshSectionCinfo",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<struct hkMeshSectionCinfo>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_STRUCT",
@@ -21,12 +21,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "indices16",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkUint16>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_UINT16",
@@ -35,12 +35,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "indices32",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkUint32>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_UINT32",
@@ -49,7 +49,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -63,7 +63,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

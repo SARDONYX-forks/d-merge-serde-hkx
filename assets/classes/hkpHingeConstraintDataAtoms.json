@@ -25,7 +25,7 @@
     {
       "name": "transforms",
       "class_ref": "hkpSetLocalTransformsConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpSetLocalTransformsConstraintAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -34,13 +34,13 @@
       "type_size_x86": 144,
       "type_size_x86_64": 144,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "setupStabilization",
       "class_ref": "hkpSetupStabilizationAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpSetupStabilizationAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -49,13 +49,13 @@
       "type_size_x86": 16,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "2dAng",
       "class_ref": "hkp2dAngConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkp2dAngConstraintAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -64,13 +64,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "ballSocket",
       "class_ref": "hkpBallSocketConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpBallSocketConstraintAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -79,7 +79,7 @@
       "type_size_x86": 16,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

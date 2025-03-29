@@ -11,7 +11,7 @@
     {
       "name": "activationListeners",
       "class_ref": "hkpEntitySmallArraySerializeOverrideType",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpEntitySmallArraySerializeOverrideType",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -20,13 +20,13 @@
       "type_size_x86": 8,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     },
     {
       "name": "entityListeners",
       "class_ref": "hkpEntitySmallArraySerializeOverrideType",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpEntitySmallArraySerializeOverrideType",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -35,7 +35,7 @@
       "type_size_x86": 8,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE|SERIALIZE_IGNORED",
+      "flags": "SERIALIZE_IGNORED",
       "default": 0
     }
   ]

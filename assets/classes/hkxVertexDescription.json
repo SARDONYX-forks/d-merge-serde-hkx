@@ -89,7 +89,7 @@
     {
       "name": "decls",
       "class_ref": "hkxVertexDescriptionElementDecl",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<struct hkxVertexDescriptionElementDecl>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_STRUCT",
@@ -98,7 +98,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

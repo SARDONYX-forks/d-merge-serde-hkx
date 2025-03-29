@@ -62,7 +62,7 @@
     {
       "name": "bodyA",
       "class_ref": "hkpEntity",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpEntity*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -71,13 +71,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "bodyB",
       "class_ref": "hkpEntity",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpEntity*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -86,7 +86,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -100,7 +100,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -114,7 +114,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -128,7 +128,7 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -143,13 +143,13 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "atom",
       "class_ref": "hkpSimpleContactConstraintAtom",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpSimpleContactConstraintAtom",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -158,12 +158,12 @@
       "type_size_x86": 48,
       "type_size_x86_64": 48,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "propertiesStream",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkUint8>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_UINT8",
@@ -172,7 +172,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -187,12 +187,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "cpIdMgr",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkUint8>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_UINT8",
@@ -201,12 +201,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "nnEntryData",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint8[160]",
       "vtype": "TYPE_UINT8",
       "vsubtype": "TYPE_VOID",
@@ -215,13 +215,13 @@
       "type_size_x86": 160,
       "type_size_x86_64": 160,
       "arrsize": 160,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "trackInfo",
       "class_ref": "hkpSerializedTrack1nInfo",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkpSerializedTrack1nInfo",
       "vtype": "TYPE_STRUCT",
       "vsubtype": "TYPE_VOID",
@@ -230,12 +230,12 @@
       "type_size_x86": 24,
       "type_size_x86_64": 32,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "endianCheckBuffer",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint8[4]",
       "vtype": "TYPE_UINT8",
       "vsubtype": "TYPE_VOID",
@@ -244,12 +244,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 4,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "version",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint32",
       "vtype": "TYPE_UINT32",
       "vsubtype": "TYPE_VOID",
@@ -258,7 +258,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

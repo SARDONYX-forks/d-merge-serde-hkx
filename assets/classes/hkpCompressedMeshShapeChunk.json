@@ -19,12 +19,12 @@
       "type_size_x86": 16,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "vertices",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkUint16>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_UINT16",
@@ -33,12 +33,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "indices",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkUint16>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_UINT16",
@@ -47,12 +47,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "stripLengths",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkUint16>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_UINT16",
@@ -61,12 +61,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "weldingInfo",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkUint16>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_UINT16",
@@ -75,12 +75,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "materialInfo",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint32",
       "vtype": "TYPE_UINT32",
       "vsubtype": "TYPE_VOID",
@@ -89,12 +89,12 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "reference",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint16",
       "vtype": "TYPE_UINT16",
       "vsubtype": "TYPE_VOID",
@@ -103,12 +103,12 @@
       "type_size_x86": 2,
       "type_size_x86_64": 2,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "transformIndex",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkUint16",
       "vtype": "TYPE_UINT16",
       "vsubtype": "TYPE_VOID",
@@ -117,7 +117,7 @@
       "type_size_x86": 2,
       "type_size_x86_64": 2,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]

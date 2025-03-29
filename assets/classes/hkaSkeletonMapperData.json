@@ -29,7 +29,7 @@
     {
       "name": "skeletonA",
       "class_ref": "hkaSkeleton",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkaSkeleton*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -38,13 +38,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "skeletonB",
       "class_ref": "hkaSkeleton",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "struct hkaSkeleton*",
       "vtype": "TYPE_POINTER",
       "vsubtype": "TYPE_STRUCT",
@@ -53,13 +53,13 @@
       "type_size_x86": 4,
       "type_size_x86_64": 8,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "simpleMappings",
       "class_ref": "hkaSkeletonMapperDataSimpleMapping",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<struct hkaSkeletonMapperDataSimpleMapping>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_STRUCT",
@@ -68,13 +68,13 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "chainMappings",
       "class_ref": "hkaSkeletonMapperDataChainMapping",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<struct hkaSkeletonMapperDataChainMapping>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_STRUCT",
@@ -83,12 +83,12 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
       "name": "unmappedBones",
-      "has_ref": false,
+      "has_ref": true,
       "ctype": "hkArray<hkInt16>",
       "vtype": "TYPE_ARRAY",
       "vsubtype": "TYPE_INT16",
@@ -97,7 +97,7 @@
       "type_size_x86": 12,
       "type_size_x86_64": 16,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -111,7 +111,7 @@
       "type_size_x86": 48,
       "type_size_x86_64": 48,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -125,7 +125,7 @@
       "type_size_x86": 1,
       "type_size_x86_64": 1,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     },
     {
@@ -140,7 +140,7 @@
       "type_size_x86": 4,
       "type_size_x86_64": 4,
       "arrsize": 0,
-      "flags": "FLAGS_NONE",
+      "flags": "0",
       "default": 0
     }
   ]
