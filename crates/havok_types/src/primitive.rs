@@ -105,7 +105,11 @@ macro_rules! create_enum {
                 where
                     S: serde::Serializer,
                 {
-                    serializer.serialize_str(&self.to_string())
+                    match self {
+                        Self::Number(n) => n.serialize(serializer),
+                        Self::EventId(e) => serializer.serialize_str(&format!("$eventID[{}]$", e)),
+                        Self::VariableId(v) => serializer.serialize_str(&format!("$variableID[{}]$", v)),
+                    }
                 }
             }
 
@@ -115,12 +119,38 @@ macro_rules! create_enum {
                 where
                     D: serde::Deserializer<'de>,
                 {
-                    use std::borrow::Cow;
-                    let s: Cow<'de, str> = Cow::deserialize(deserializer)?;
-                    match s {
-                        Cow::Borrowed(s) => Self::try_from(s).map_err(serde::de::Error::custom),
-                        Cow::Owned(s) => Self::try_from(s).map_err(serde::de::Error::custom),
+                    struct ValueVisitor<'a>(core::marker::PhantomData<&'a ()>);
+
+                    impl<'de: 'a, 'a> serde::de::Visitor<'de> for ValueVisitor<'a> {
+                        type Value = $name<'a>;
+
+                        fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                            formatter.write_str("a number or an event/variable ID string")
+                        }
+
+                        fn visit_borrowed_str<E>(self, value: &'de str) -> Result<Self::Value, E>
+                        where
+                            E: serde::de::Error,
+                        {
+                            $name::try_from(value).map_err(E::custom)
+                        }
+
+                        fn visit_u64<E>(self, value: u64) -> Result<Self::Value, E>
+                        where
+                            E: serde::de::Error,
+                        {
+                            Ok($name::Number(value as $type))
+                        }
+
+                        fn visit_i64<E>(self, value: i64) -> Result<Self::Value, E>
+                        where
+                            E: serde::de::Error,
+                        {
+                            Ok($name::Number(value as $type))
+                        }
                     }
+
+                    deserializer.deserialize_any(ValueVisitor(core::marker::PhantomData))
                 }
             }
         )*
@@ -182,7 +212,7 @@ mod tests {
     #[test]
     fn test_serialize() {
         let num = U32::Number(123);
-        assert_eq!(serde_json::to_string(&num).unwrap(), "\"123\"");
+        assert_eq!(serde_json::to_string(&num).unwrap(), "123");
 
         let event = U32::EventId("Fire".into());
         assert_eq!(
@@ -200,7 +230,7 @@ mod tests {
     #[cfg(feature = "serde")]
     #[test]
     fn test_deserialize() {
-        let json = "\"123\"";
+        let json = "123";
         let val: U32 = serde_json::from_str(json).unwrap();
         assert_eq!(val, U32::Number(123));
 
