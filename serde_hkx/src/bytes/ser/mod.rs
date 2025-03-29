@@ -9,12 +9,14 @@ use self::trait_impls::{Align as _, ClassNamesWriter, ClassStartsMap};
 use super::serde::{hkx_header::HkxHeader, section_header::SectionHeader};
 use crate::errors::ser::{
     Error, InvalidEndianSnafu, MissingClassInClassnamesSectionSnafu, MissingGlobalFixupClassSnafu,
-    NotFoundEventIdSnafu, NotFoundVariableIdSnafu, Result, UnsupportedPtrSizeSnafu,
+    NotFoundEventIdSnafu, NotFoundPointedPositionSnafu, NotFoundVariableIdSnafu, Result,
+    UnsupportedPtrSizeSnafu,
 };
 use byteorder::{BigEndian, ByteOrder, LittleEndian, WriteBytesExt as _};
 use havok_serde::ser::{Serialize, Serializer};
 use havok_types::*;
 use indexmap::IndexMap;
+use snafu::OptionExt as _;
 use std::borrow::Cow;
 use std::collections::HashMap;
 use std::ffi::CString as StdCString;
@@ -418,7 +420,7 @@ impl ByteSerializer {
         let &dest_abs_pos = tri!(
             self.pointed_pos
                 .last()
-                .ok_or(Error::NotFoundPointedPosition)
+                .context(NotFoundPointedPositionSnafu)
         );
         self.output.set_position(dest_abs_pos);
         self.relative_position()

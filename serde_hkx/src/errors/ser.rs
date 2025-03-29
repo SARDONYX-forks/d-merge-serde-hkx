@@ -32,7 +32,7 @@ pub enum Error {
     /// This indicates that the value of `absolute_data_offset` in the header is wrong.
     OverflowSubtractAbs { position: u32, abs_data_offset: u32 },
 
-    /// Missing global fixup class: Index(`{ptr}`)
+    /// {location}: Missing global fixup class: Index(`{ptr}`)
     MissingGlobalFixupClass {
         /// missing global fixup class ptr(e.g. #0050)
         ptr: Pointer<'static>,
@@ -44,6 +44,7 @@ pub enum Error {
     /// The constructor class for virtual_fixup did not exist in the class
     /// The constructor class for virtual_fixup did not exist in the class
     /// in the `__classnames__` section written.: {class_name}
+    #[snafu(display(""))]
     MissingClassInClassnamesSection {
         class_name: &'static str,
         /// error location
@@ -51,10 +52,14 @@ pub enum Error {
         location: snafu::Location,
     },
 
-    /// Not found where to write ptr. This could be an incorrect value inside hkx or a mistake by the library implementor.
-    NotFoundPointedPosition,
+    /// {location}: Could not find a place to write the ptr destination. This may be an incorrect value inside hkx.
+    NotFoundPointedPosition {
+        /// error location
+        #[snafu(implicit)]
+        location: snafu::Location,
+    },
 
-    /// Variable `{event_id}` for Nemesis is used, but its name could not be found in `hkbBehaviorGraphStringData`.`eventNames` in hkx, so the variable could not be replaced
+    /// {location}: Variable `{event_id}` for Nemesis is used, but its name could not be found in `hkbBehaviorGraphStringData`.`eventNames` in hkx, so the variable could not be replaced
     NotFoundEventId {
         event_id: String,
         /// error location
@@ -62,7 +67,7 @@ pub enum Error {
         location: snafu::Location,
     },
 
-    /// Variable `{variable_id}` for Nemesis is used, but its name could not be found in `hkbBehaviorGraphStringData`.`variableNames` in hkx, so the variable could not be replaced
+    /// {location}: Variable `{variable_id}` for Nemesis is used, but its name could not be found in `hkbBehaviorGraphStringData`.`variableNames` in hkx, so the variable could not be replaced
     NotFoundVariableId {
         variable_id: String,
         /// error location
@@ -70,7 +75,7 @@ pub enum Error {
         location: snafu::Location,
     },
 
-    /// Invalid utf8 error
+    /// {location}: Invalid utf8 error
     #[snafu(transparent)]
     Utf8Error {
         /// Invalid utf8 error
@@ -102,7 +107,7 @@ pub enum Error {
 
     /// The state machine in behavior is topologically sorted circularly referenced.
     #[snafu(display(
-        "The state machine in behavior is topologically sorted circularly referenced."
+        "{location}: \nThe state machine in behavior is topologically sorted circularly referenced."
     ))]
     UnexpectedCyclicSort {
         #[snafu(implicit)]

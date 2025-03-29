@@ -1,9 +1,10 @@
-use crate::{align, lib::*, tri};
+use crate::{align, errors::ser::NotFoundPointedPositionSnafu, lib::*, tri};
 
 use super::super::ByteSerializer;
 use crate::errors::ser::{Error, Result};
 use havok_serde::ser::{Serialize, SerializeStruct, Serializer, TypeSize};
 use havok_types::{U32, Ulong};
+use snafu::OptionExt as _;
 use std::io::Write as _;
 
 /// For bytes struct serializer.
@@ -101,7 +102,7 @@ impl<'a> StructSerializer<'a> {
                 self.ser
                     .pointed_pos
                     .pop()
-                    .ok_or(Error::NotFoundPointedPosition)
+                    .context(NotFoundPointedPositionSnafu)
             );
             let pos = align!(pos, 16_u64);
             if let Some(last) = self.ser.pointed_pos.last_mut() {
@@ -170,7 +171,7 @@ impl<'a> StructSerializer<'a> {
                 self.ser
                     .pointed_pos
                     .pop()
-                    .ok_or(Error::NotFoundPointedPosition)
+                    .context(NotFoundPointedPositionSnafu)
             );
             if let Some(last) = self.ser.pointed_pos.last_mut() {
                 *last = pos;
