@@ -346,6 +346,7 @@ pub fn transform(input: &mut &str) -> ModalResult<Transform> {
 /// assert_eq!(pointer.parse_next(&mut "null<"), Ok(Pointer::null())); // null pointer
 /// assert_eq!(pointer.parse_next(&mut "#0000<"), Ok(Pointer::from_usize(0))); // read null pointer until end tag
 /// assert_eq!(pointer.parse_next(&mut "#0100<"), Ok(Pointer::from_usize(100)));
+/// assert_eq!(pointer.parse_next(&mut "#0000\r\n"), Ok(Pointer::from_usize(0)));
 /// ```
 ///
 /// # Errors
@@ -361,7 +362,7 @@ pub fn pointer<'a>(input: &mut &'a str) -> ModalResult<Pointer<'a>> {
     alt((null_ptr, move |input: &mut &'a str| {
         let ptr = delimited(
             multispace0,
-            take_while(1.., |c| !matches!(c, ' ' | '\n' | '\t' | '<'))
+            take_while(1.., |c| !matches!(c, ' ' | '\r' | '\n' | '\t' | '<'))
                 .verify(|s: &str| !s.is_empty()),
             multispace0,
         )
