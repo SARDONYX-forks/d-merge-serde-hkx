@@ -7,12 +7,15 @@ use super::{
 use havok_types::{Pointer, Signature};
 use winnow::ascii::{digit1, hex_digit1, oct_digit1};
 use winnow::combinator::{delimited, dispatch, fail, seq};
-use winnow::error::{ContextError, StrContext, StrContextValue, StrContextValue::*};
+use winnow::error::{
+    ContextError, ErrMode, StrContext,
+    StrContextValue::{self, *},
+};
 use winnow::token::{take, take_until};
 use winnow::{ModalResult, Parser};
 
 /// Parses the start tag `<tag>`
-pub fn start_tag<'a>(tag: &'static str) -> impl Parser<&'a str, (), ContextError> {
+pub fn start_tag<'a>(tag: &'static str) -> impl Parser<&'a str, (), ErrMode<ContextError>> {
     seq!(
         _: delimited_comment_multispace0("<"),
         _: delimited_with_multispace0(tag),
@@ -23,7 +26,7 @@ pub fn start_tag<'a>(tag: &'static str) -> impl Parser<&'a str, (), ContextError
 }
 
 /// Parses the end tag `</tag>`
-pub fn end_tag<'a>(tag: &'static str) -> impl Parser<&'a str, (), ContextError> {
+pub fn end_tag<'a>(tag: &'static str) -> impl Parser<&'a str, (), ErrMode<ContextError>> {
     seq!(
         _: delimited_comment_multispace0("<"),
         _: delimited_with_multispace0("/"),
@@ -73,7 +76,7 @@ pub fn class_start_tag<'a>(input: &mut &'a str) -> ModalResult<(Pointer<'a>, &'a
 /// All arguments are used only for clarity of error reporting.
 pub fn field_start_open_tag<'a>(
     class_name: &'static str,
-) -> impl Parser<&'a str, (), ContextError> {
+) -> impl Parser<&'a str, (), ErrMode<ContextError>> {
     seq!(
         _: delimited_comment_multispace0("<"),
         _: delimited_with_multispace0("hkparam"),
