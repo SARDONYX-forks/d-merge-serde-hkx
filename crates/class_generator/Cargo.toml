@@ -26,7 +26,7 @@ serde_with = { workspace = true }                     # Serde utility
 snafu = { workspace = true }                          # Define all error patterns(with backtrace)
 tracing = { workspace = true }                        # Logger
 
-prettyplease = "0.2.25"
+prettyplease = "0.2.32"
 proc-macro2 = { workspace = true }
 quote = { workspace = true }
 syn = { workspace = true, features = [

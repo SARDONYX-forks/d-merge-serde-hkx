@@ -28,6 +28,7 @@ use parser::tag::{class_start_tag, start_tag};
 use winnow::Parser;
 use winnow::ascii::{dec_int, dec_uint};
 use winnow::combinator::opt;
+use winnow::error::{ContextError, ErrMode};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -181,7 +182,7 @@ impl<'de> XmlDeserializer<'de> {
     /// If an error occurs, it is converted to [`ReadableError`] and returned.
     fn parse_next<O>(
         &mut self,
-        mut parser: impl Parser<&'de str, O, winnow::error::ContextError>,
+        mut parser: impl Parser<&'de str, O, ErrMode<ContextError>>,
     ) -> Result<O> {
         let res = parser
             .parse_next(&mut self.input)
@@ -194,7 +195,7 @@ impl<'de> XmlDeserializer<'de> {
     /// If an error occurs, it is converted to [`ReadableError`] and returned.
     fn parse_peek<O>(
         &self,
-        mut parser: impl Parser<&'de str, O, winnow::error::ContextError>,
+        mut parser: impl Parser<&'de str, O, ErrMode<ContextError>>,
     ) -> Result<O> {
         let (_, res) = parser
             .parse_peek(self.input)

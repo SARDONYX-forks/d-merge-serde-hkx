@@ -28,7 +28,7 @@ use crate::errors::{
 use havok_serde::de::{self, Deserialize, ReadEnumSize, Visitor};
 use havok_types::*;
 use winnow::binary::Endianness;
-use winnow::error::{StrContext, StrContextValue};
+use winnow::error::{ContextError, ErrMode, StrContext, StrContextValue};
 use winnow::{Parser, binary};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -195,7 +195,7 @@ impl<'de> BytesDeserializer<'de> {
     /// If an error occurs, it is converted to [`ReadableError`] and returned.
     fn parse_peek<O, P>(&self, mut parser: P) -> Result<O>
     where
-        P: Parser<BytesStream<'de>, O, winnow::error::ContextError>,
+        P: Parser<BytesStream<'de>, O, winnow::error::ErrMode<ContextError>>,
     {
         let (_, res) = parser
             .parse_peek(&self.input[self.current_position..])
@@ -208,7 +208,7 @@ impl<'de> BytesDeserializer<'de> {
     /// If an error occurs, it is converted to [`Error::ContextError`] and returned.
     fn parse_range<O, P>(&self, mut parser: P, range: Range<usize>) -> Result<O>
     where
-        P: Parser<BytesStream<'de>, O, winnow::error::ContextError>,
+        P: Parser<BytesStream<'de>, O, ErrMode<ContextError>>,
     {
         let (_, res) = parser
             .parse_peek(&self.input[range])
@@ -351,7 +351,7 @@ impl<'de> BytesDeserializer<'de> {
     /// Jump current position(`local_fixup.src`) to dst, then parse, and back to current position.
     fn parse_local_fixup<O, P>(&mut self, parser: P) -> Result<Option<O>>
     where
-        P: Parser<BytesStream<'de>, O, winnow::error::ContextError>,
+        P: Parser<BytesStream<'de>, O, winnow::error::ErrMode<ContextError>>,
     {
         let backup_position = self.current_position();
         self.current_position = match self.get_local_fixup_dst().ok() {

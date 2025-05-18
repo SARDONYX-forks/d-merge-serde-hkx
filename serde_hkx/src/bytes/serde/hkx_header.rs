@@ -45,7 +45,7 @@ use winnow::{
     Parser,
     binary::{self, Endianness},
     combinator::{dispatch, empty, fail},
-    error::{ContextError, StrContext, StrContextValue::*},
+    error::{ContextError, ErrMode, StrContext, StrContextValue::*},
     seq,
     token::{take, take_until},
 };
@@ -137,7 +137,7 @@ impl HkxHeader {
     }
 
     /// Check valid endian & Parse as hkx root header.
-    pub fn parser<'a>() -> impl Parser<&'a [u8], Self, ContextError> {
+    pub fn parser<'a>() -> impl Parser<&'a [u8], Self, ErrMode<ContextError>> {
         move |bytes: &mut &[u8]| {
             let endianness = {
                 let (mut bytes, _) = take(17_usize).parse_peek(*bytes)?;

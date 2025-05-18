@@ -8,7 +8,7 @@ use std::io;
 use winnow::{
     Parser,
     binary::{self, Endianness},
-    error::{ContextError, StrContext, StrContextValue::*},
+    error::{ContextError, ErrMode, StrContext, StrContextValue::*},
     seq,
     token::take,
 };
@@ -86,7 +86,9 @@ impl SectionHeader {
     /// `*b"__data__\0\0\0\0\0\0\0\0\0\0\0"`
     pub const DATA_SECTION_HEADER_TAG: [u8; 19] = *b"__data__\0\0\0\0\0\0\0\0\0\0\0";
 
-    pub fn from_bytes<'a>(endian: Endianness) -> impl Parser<&'a [u8], Self, ContextError> {
+    pub fn from_bytes<'a>(
+        endian: Endianness,
+    ) -> impl Parser<&'a [u8], Self, ErrMode<ContextError>> {
         move |bytes: &mut &[u8]| {
             {
                 seq! {
