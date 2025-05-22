@@ -22,10 +22,6 @@ pub(crate) struct Args {
     /// New path
     pub new: PathBuf,
 
-    /// Output with ANSI color (For standard output)
-    #[clap(long)]
-    pub color: bool,
-
     /// If specified, write to a file (If not specified, stdout)
     #[clap(short, long)]
     pub output: Option<PathBuf>,

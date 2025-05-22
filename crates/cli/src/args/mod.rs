@@ -10,7 +10,7 @@ mod verify;
 use self::color::get_styles;
 use self::convert::{convert, tokio_convert};
 use crate::logger::LogLevel;
-use clap::CommandFactory as _;
+use clap::{ColorChoice, CommandFactory as _};
 use serde_hkx_features::{
     convert::OutFormat,
     diff::write_diff,
@@ -40,10 +40,14 @@ pub(crate) async fn run(args: Args) -> Result<()> {
                 true => hexdump::to_bytes(args.input, args.output).await,
                 false => hexdump::to_string(args.input, args.output).await,
             },
-            SubCommands::Diff(args) => {
-                write_diff(args.old, args.new, args.output, args.color).await
+            SubCommands::Diff(inner_args) => {
+                let use_color = is_color_enabled(args.color);
+                write_diff(inner_args.old, inner_args.new, inner_args.output, use_color).await
             }
-            SubCommands::Verify(args) => self::verify::verify(&args.path, args.color),
+            SubCommands::Verify(inner_args) => {
+                self::verify::verify(&inner_args.path, is_color_enabled(args.color))
+            }
+
             SubCommands::Completions { shell } => {
                 shell.generate(&mut Args::command(), &mut io::stdout());
                 Ok(())
@@ -60,6 +64,16 @@ For more information, try '<cyan!>--help</cyan!>'.
         Err(Error::IoError {
             source: io::Error::new(io::ErrorKind::InvalidInput, ERR_MSG),
         })
+    }
+}
+
+fn is_color_enabled(color_choice: ColorChoice) -> bool {
+    use std::io::IsTerminal as _;
+
+    match color_choice {
+        ColorChoice::Always => true,
+        ColorChoice::Never => false,
+        ColorChoice::Auto => std::io::stdout().is_terminal(),
     }
 }
 
@@ -86,6 +100,10 @@ pub(crate) struct Args {
     #[clap(global = true, long, display_order = 102)]
     /// Output path of log file
     pub log_file: Option<PathBuf>,
+
+    #[arg(long, default_value = "auto", display_order = 103)]
+    /// When to use colored output
+    color: ColorChoice,
 }
 
 #[derive(Debug, clap::Parser)]

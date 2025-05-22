@@ -204,7 +204,7 @@ mod tests {
         let input = "</ hkparam >\n";
         if let Err(err) = end_tag("hkparam")
             .parse(input)
-            .map_err(|e| ReadableError::from_parse(e, input).to_string())
+            .map_err(|e| ReadableError::from_parse(e).to_string())
         {
             panic!("{err}");
         };
@@ -215,7 +215,7 @@ mod tests {
         fn test_parse(input: &str, expected: Option<u64>) {
             match field_start_close_tag
                 .parse(input)
-                .map_err(|e| ReadableError::from_parse(e, input).to_string())
+                .map_err(|e| ReadableError::from_parse(e).to_string())
             {
                 Ok(res) => assert_eq!(res, expected),
                 Err(err) => panic!("{err}"),
