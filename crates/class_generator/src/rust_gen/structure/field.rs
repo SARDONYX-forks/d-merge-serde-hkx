@@ -24,20 +24,14 @@ pub(super) fn gen_field(member: &Member, class_name: &str) -> Result<TokenStream
 
     let serde_borrow_attr = serde_borrow_attr(*has_ref);
 
-    let serde_default = if flags.contains(FlagValues::SERIALIZE_IGNORED) {
-        // XML skips fields with the SERIALIZE_IGNORED flag, so the only way is to put the default value
-        quote! { #[cfg_attr(feature = "serde", serde(default))] }
-    } else {
-        quote! {}
-    };
-
     // `Default` implementations with huge sizes such as [0u8; 256] are not automatically supported, so use `educe` crate to define them.
-    let arr_custom_attr = if *arrsize > 32 {
+    let array_custom_attr = if *arrsize > 32 {
         // NOTE: This can only be solved with `#[serde(with=“”)` because we cannot put a feature inside a feature
         // see https://github.com/jonasbb/serde_with/issues/355
         let as_value = format!("::serde_with::As::<[::serde_with::Same; {arrsize}]>"); // NOTE: need `serde_with`
         let serde_with_attr = quote! {
             #[cfg_attr(feature = "json_schema", schemars(schema_with = "make_large_int_array_schema"))]
+            #[cfg_attr(feature = "serde_default", serde(default = "crate::default_array"))]
             #[cfg_attr(feature = "serde", serde(with = #as_value))]
         };
 
@@ -65,16 +59,20 @@ pub(super) fn gen_field(member: &Member, class_name: &str) -> Result<TokenStream
             #default_attr
         }
     } else {
-        quote! {}
+        // XML skips fields with the SERIALIZE_IGNORED flag, so the only way is to put the default value
+        if flags.contains(FlagValues::SERIALIZE_IGNORED) {
+            quote! { #[cfg_attr(feature = "serde", serde(default))] }
+        } else {
+            quote! {#[cfg_attr(feature = "serde_default", serde(default))] }
+        }
     };
 
     let doc = field_doc_tokens(member);
     let field_name = to_rust_field_ident(name);
     Ok(quote! {
         #doc
-        #arr_custom_attr
+        #array_custom_attr
         #serde_borrow_attr
-        #serde_default
         #[cfg_attr(feature = "json_schema", schemars(rename = #name))]
         #[cfg_attr(feature = "serde", serde(rename = #name))]
         pub #field_name: #field_type

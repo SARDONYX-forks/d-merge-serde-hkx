@@ -35,6 +35,9 @@ havok_types_derive = { workspace = true }
 # Derive `serde`
 serde = ["havok_types/serde", "bitflags/serde", "dep:serde", "dep:serde_with"]
 
+# Enable serde values to fall-back to default ones even if class fields don't have the `SERIALIZED_IGNORED` flag.
+serde_default = ["serde"]
+
 # Strictly check for the presence of values.
 # For example, forbidden missing fields, duplicate fields, an error is made. (but not the original behavior).
 strict = []

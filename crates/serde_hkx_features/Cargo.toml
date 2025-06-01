@@ -45,6 +45,7 @@ serde_hkx = { workspace = true, features = ["tracing"] }
 tracing = { workspace = true }
 
 [features]
+# default = ["serde_default"] # For debug
 # default = ["extra_fmt"] # For debug
 # default = ["json_schema"] # For debug
 
@@ -71,6 +72,9 @@ json_schema = [
   "havok_classes/json_schema",
   "indexmap/serde",
 ]
+
+# Enable serde values to fall-back to default ones even if class fields don't have the `SERIALIZED_IGNORED` flag.
+serde_default = ["havok_classes/serde_default"]
 
 [lints]
 workspace = true

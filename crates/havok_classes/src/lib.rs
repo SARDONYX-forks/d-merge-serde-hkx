@@ -38,6 +38,10 @@
 mod generated;
 pub use generated::*;
 
+pub(crate) fn default_array<T: Default, const N: usize>() -> [T; N] {
+    core::array::from_fn::<T, N, _>(|_idx| Default::default())
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
