@@ -33,6 +33,7 @@ pub struct hkpMeshShape<'a> {
     /// - name: `scaling`(ctype: `hkVector4`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "scaling"))]
     #[cfg_attr(feature = "serde", serde(rename = "scaling"))]
     pub m_scaling: Vector4,
@@ -40,6 +41,7 @@ pub struct hkpMeshShape<'a> {
     /// - name: `numBitsForSubpartIndex`(ctype: `hkInt32`)
     /// - offset: ` 48`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numBitsForSubpartIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "numBitsForSubpartIndex"))]
@@ -48,6 +50,7 @@ pub struct hkpMeshShape<'a> {
     /// - name: `subparts`(ctype: `hkArray<struct hkpMeshShapeSubpart>`)
     /// - offset: ` 52`(x86)/` 72`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "subparts"))]
     #[cfg_attr(feature = "serde", serde(rename = "subparts"))]
@@ -56,6 +59,7 @@ pub struct hkpMeshShape<'a> {
     /// - name: `weldingInfo`(ctype: `hkArray<hkUint16>`)
     /// - offset: ` 64`(x86)/` 88`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "weldingInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "weldingInfo"))]
@@ -64,6 +68,7 @@ pub struct hkpMeshShape<'a> {
     /// - name: `weldingType`(ctype: `enum WeldingType`)
     /// - offset: ` 76`(x86)/`104`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "weldingType"))]
     #[cfg_attr(feature = "serde", serde(rename = "weldingType"))]
     pub m_weldingType: WeldingType,
@@ -71,6 +76,7 @@ pub struct hkpMeshShape<'a> {
     /// - name: `radius`(ctype: `hkReal`)
     /// - offset: ` 80`(x86)/`108`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "radius"))]
     #[cfg_attr(feature = "serde", serde(rename = "radius"))]
     pub m_radius: f32,
@@ -78,6 +84,7 @@ pub struct hkpMeshShape<'a> {
     /// - name: `pad`(ctype: `hkInt32[3]`)
     /// - offset: ` 84`(x86)/`112`(x86_64)
     /// - type_size: ` 12`(x86)/` 12`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pad"))]
     #[cfg_attr(feature = "serde", serde(rename = "pad"))]

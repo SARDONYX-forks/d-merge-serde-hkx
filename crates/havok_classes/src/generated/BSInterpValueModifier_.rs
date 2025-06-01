@@ -33,6 +33,7 @@ pub struct BSInterpValueModifier<'a> {
     /// - name: `source`(ctype: `hkReal`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "source"))]
     #[cfg_attr(feature = "serde", serde(rename = "source"))]
     pub m_source: f32,
@@ -40,6 +41,7 @@ pub struct BSInterpValueModifier<'a> {
     /// - name: `target`(ctype: `hkReal`)
     /// - offset: ` 48`(x86)/` 84`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "target"))]
     #[cfg_attr(feature = "serde", serde(rename = "target"))]
     pub m_target: f32,
@@ -47,6 +49,7 @@ pub struct BSInterpValueModifier<'a> {
     /// - name: `result`(ctype: `hkReal`)
     /// - offset: ` 52`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "result"))]
     #[cfg_attr(feature = "serde", serde(rename = "result"))]
     pub m_result: f32,
@@ -54,6 +57,7 @@ pub struct BSInterpValueModifier<'a> {
     /// - name: `gain`(ctype: `hkReal`)
     /// - offset: ` 56`(x86)/` 92`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "gain"))]
     #[cfg_attr(feature = "serde", serde(rename = "gain"))]
     pub m_gain: f32,

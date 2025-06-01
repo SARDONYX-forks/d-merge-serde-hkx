@@ -28,6 +28,7 @@ pub struct hkpPrismaticConstraintDataAtoms<'a> {
     /// - name: `transforms`(ctype: `struct hkpSetLocalTransformsConstraintAtom`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `144`(x86)/`144`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transforms"))]
     #[cfg_attr(feature = "serde", serde(rename = "transforms"))]
@@ -36,6 +37,7 @@ pub struct hkpPrismaticConstraintDataAtoms<'a> {
     /// - name: `motor`(ctype: `struct hkpLinMotorConstraintAtom`)
     /// - offset: `144`(x86)/`144`(x86_64)
     /// - type_size: ` 16`(x86)/` 24`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "motor"))]
     #[cfg_attr(feature = "serde", serde(rename = "motor"))]
@@ -44,6 +46,7 @@ pub struct hkpPrismaticConstraintDataAtoms<'a> {
     /// - name: `friction`(ctype: `struct hkpLinFrictionConstraintAtom`)
     /// - offset: `160`(x86)/`168`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "friction"))]
     #[cfg_attr(feature = "serde", serde(rename = "friction"))]
@@ -52,6 +55,7 @@ pub struct hkpPrismaticConstraintDataAtoms<'a> {
     /// - name: `ang`(ctype: `struct hkpAngConstraintAtom`)
     /// - offset: `168`(x86)/`176`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "ang"))]
     #[cfg_attr(feature = "serde", serde(rename = "ang"))]
@@ -60,6 +64,7 @@ pub struct hkpPrismaticConstraintDataAtoms<'a> {
     /// - name: `lin0`(ctype: `struct hkpLinConstraintAtom`)
     /// - offset: `172`(x86)/`180`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "lin0"))]
     #[cfg_attr(feature = "serde", serde(rename = "lin0"))]
@@ -68,6 +73,7 @@ pub struct hkpPrismaticConstraintDataAtoms<'a> {
     /// - name: `lin1`(ctype: `struct hkpLinConstraintAtom`)
     /// - offset: `176`(x86)/`184`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "lin1"))]
     #[cfg_attr(feature = "serde", serde(rename = "lin1"))]
@@ -76,6 +82,7 @@ pub struct hkpPrismaticConstraintDataAtoms<'a> {
     /// - name: `linLimit`(ctype: `struct hkpLinLimitConstraintAtom`)
     /// - offset: `180`(x86)/`188`(x86_64)
     /// - type_size: ` 12`(x86)/` 12`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "linLimit"))]
     #[cfg_attr(feature = "serde", serde(rename = "linLimit"))]

@@ -34,6 +34,7 @@ pub struct hkbBlenderGeneratorChild<'a> {
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "generator"))]
     #[cfg_attr(feature = "serde", serde(rename = "generator"))]
@@ -42,6 +43,7 @@ pub struct hkbBlenderGeneratorChild<'a> {
     /// - name: `boneWeights`(ctype: `struct hkbBoneWeightArray*`)
     /// - offset: ` 36`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "boneWeights"))]
     #[cfg_attr(feature = "serde", serde(rename = "boneWeights"))]
@@ -50,6 +52,7 @@ pub struct hkbBlenderGeneratorChild<'a> {
     /// - name: `weight`(ctype: `hkReal`)
     /// - offset: ` 40`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "weight"))]
     #[cfg_attr(feature = "serde", serde(rename = "weight"))]
     pub m_weight: f32,
@@ -57,6 +60,7 @@ pub struct hkbBlenderGeneratorChild<'a> {
     /// - name: `worldFromModelWeight`(ctype: `hkReal`)
     /// - offset: ` 44`(x86)/` 68`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "worldFromModelWeight"))]
     #[cfg_attr(feature = "serde", serde(rename = "worldFromModelWeight"))]
     pub m_worldFromModelWeight: f32,

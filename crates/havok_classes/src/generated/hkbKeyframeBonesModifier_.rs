@@ -33,6 +33,7 @@ pub struct hkbKeyframeBonesModifier<'a> {
     /// - name: `keyframeInfo`(ctype: `hkArray<struct hkbKeyframeBonesModifierKeyframeInfo>`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "keyframeInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "keyframeInfo"))]
@@ -41,6 +42,7 @@ pub struct hkbKeyframeBonesModifier<'a> {
     /// - name: `keyframedBonesList`(ctype: `struct hkbBoneIndexArray*`)
     /// - offset: ` 56`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "keyframedBonesList"))]
     #[cfg_attr(feature = "serde", serde(rename = "keyframedBonesList"))]

@@ -28,6 +28,7 @@ pub struct hkpConvexVerticesShapeFourVectors<'a> {
     /// - name: `x`(ctype: `hkVector4`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "x"))]
     #[cfg_attr(feature = "serde", serde(rename = "x"))]
     pub m_x: Vector4,
@@ -35,6 +36,7 @@ pub struct hkpConvexVerticesShapeFourVectors<'a> {
     /// - name: `y`(ctype: `hkVector4`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "y"))]
     #[cfg_attr(feature = "serde", serde(rename = "y"))]
     pub m_y: Vector4,
@@ -42,6 +44,7 @@ pub struct hkpConvexVerticesShapeFourVectors<'a> {
     /// - name: `z`(ctype: `hkVector4`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "z"))]
     #[cfg_attr(feature = "serde", serde(rename = "z"))]
     pub m_z: Vector4,

@@ -28,6 +28,7 @@ pub struct hkbRoleAttribute<'a> {
     /// - name: `role`(ctype: `enum Role`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "role"))]
     #[cfg_attr(feature = "serde", serde(rename = "role"))]
     pub m_role: Role,
@@ -35,6 +36,7 @@ pub struct hkbRoleAttribute<'a> {
     /// - name: `flags`(ctype: `flags RoleFlags`)
     /// - offset: `  2`(x86)/`  2`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "flags"))]
     #[cfg_attr(feature = "serde", serde(rename = "flags"))]
     pub m_flags: RoleFlags,

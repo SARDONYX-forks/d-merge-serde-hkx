@@ -28,6 +28,7 @@ pub struct hkbStateMachineTransitionInfo<'a> {
     /// - name: `triggerInterval`(ctype: `struct hkbStateMachineTimeInterval`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "triggerInterval"))]
     #[cfg_attr(feature = "serde", serde(rename = "triggerInterval"))]
@@ -36,6 +37,7 @@ pub struct hkbStateMachineTransitionInfo<'a> {
     /// - name: `initiateInterval`(ctype: `struct hkbStateMachineTimeInterval`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "initiateInterval"))]
     #[cfg_attr(feature = "serde", serde(rename = "initiateInterval"))]
@@ -44,6 +46,7 @@ pub struct hkbStateMachineTransitionInfo<'a> {
     /// - name: `transition`(ctype: `struct hkbTransitionEffect*`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transition"))]
     #[cfg_attr(feature = "serde", serde(rename = "transition"))]
@@ -52,6 +55,7 @@ pub struct hkbStateMachineTransitionInfo<'a> {
     /// - name: `condition`(ctype: `struct hkbCondition*`)
     /// - offset: ` 36`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "condition"))]
     #[cfg_attr(feature = "serde", serde(rename = "condition"))]
@@ -60,6 +64,7 @@ pub struct hkbStateMachineTransitionInfo<'a> {
     /// - name: `eventId`(ctype: `hkInt32`)
     /// - offset: ` 40`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "eventId"))]
     #[cfg_attr(feature = "serde", serde(rename = "eventId"))]
@@ -68,6 +73,7 @@ pub struct hkbStateMachineTransitionInfo<'a> {
     /// - name: `toStateId`(ctype: `hkInt32`)
     /// - offset: ` 44`(x86)/` 52`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "toStateId"))]
     #[cfg_attr(feature = "serde", serde(rename = "toStateId"))]
@@ -76,6 +82,7 @@ pub struct hkbStateMachineTransitionInfo<'a> {
     /// - name: `fromNestedStateId`(ctype: `hkInt32`)
     /// - offset: ` 48`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fromNestedStateId"))]
     #[cfg_attr(feature = "serde", serde(rename = "fromNestedStateId"))]
@@ -84,6 +91,7 @@ pub struct hkbStateMachineTransitionInfo<'a> {
     /// - name: `toNestedStateId`(ctype: `hkInt32`)
     /// - offset: ` 52`(x86)/` 60`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "toNestedStateId"))]
     #[cfg_attr(feature = "serde", serde(rename = "toNestedStateId"))]
@@ -92,6 +100,7 @@ pub struct hkbStateMachineTransitionInfo<'a> {
     /// - name: `priority`(ctype: `hkInt16`)
     /// - offset: ` 56`(x86)/` 64`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "priority"))]
     #[cfg_attr(feature = "serde", serde(rename = "priority"))]
@@ -100,6 +109,7 @@ pub struct hkbStateMachineTransitionInfo<'a> {
     /// - name: `flags`(ctype: `flags TransitionFlags`)
     /// - offset: ` 58`(x86)/` 66`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "flags"))]
     #[cfg_attr(feature = "serde", serde(rename = "flags"))]
     pub m_flags: TransitionFlags,

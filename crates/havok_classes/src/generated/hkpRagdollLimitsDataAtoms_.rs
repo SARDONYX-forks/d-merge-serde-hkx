@@ -28,6 +28,7 @@ pub struct hkpRagdollLimitsDataAtoms<'a> {
     /// - name: `rotations`(ctype: `struct hkpSetLocalRotationsConstraintAtom`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `112`(x86)/`112`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rotations"))]
     #[cfg_attr(feature = "serde", serde(rename = "rotations"))]
@@ -36,6 +37,7 @@ pub struct hkpRagdollLimitsDataAtoms<'a> {
     /// - name: `twistLimit`(ctype: `struct hkpTwistLimitConstraintAtom`)
     /// - offset: `112`(x86)/`112`(x86_64)
     /// - type_size: ` 20`(x86)/` 20`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "twistLimit"))]
     #[cfg_attr(feature = "serde", serde(rename = "twistLimit"))]
@@ -44,6 +46,7 @@ pub struct hkpRagdollLimitsDataAtoms<'a> {
     /// - name: `coneLimit`(ctype: `struct hkpConeLimitConstraintAtom`)
     /// - offset: `132`(x86)/`132`(x86_64)
     /// - type_size: ` 20`(x86)/` 20`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "coneLimit"))]
     #[cfg_attr(feature = "serde", serde(rename = "coneLimit"))]
@@ -52,6 +55,7 @@ pub struct hkpRagdollLimitsDataAtoms<'a> {
     /// - name: `planesLimit`(ctype: `struct hkpConeLimitConstraintAtom`)
     /// - offset: `152`(x86)/`152`(x86_64)
     /// - type_size: ` 20`(x86)/` 20`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "planesLimit"))]
     #[cfg_attr(feature = "serde", serde(rename = "planesLimit"))]

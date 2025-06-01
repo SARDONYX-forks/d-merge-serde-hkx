@@ -33,6 +33,7 @@ pub struct hkaAnimationContainer<'a> {
     /// - name: `skeletons`(ctype: `hkArray<hkaSkeleton*>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "skeletons"))]
     #[cfg_attr(feature = "serde", serde(rename = "skeletons"))]
@@ -41,6 +42,7 @@ pub struct hkaAnimationContainer<'a> {
     /// - name: `animations`(ctype: `hkArray<hkaAnimation*>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "animations"))]
     #[cfg_attr(feature = "serde", serde(rename = "animations"))]
@@ -49,6 +51,7 @@ pub struct hkaAnimationContainer<'a> {
     /// - name: `bindings`(ctype: `hkArray<hkaAnimationBinding*>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bindings"))]
     #[cfg_attr(feature = "serde", serde(rename = "bindings"))]
@@ -57,6 +60,7 @@ pub struct hkaAnimationContainer<'a> {
     /// - name: `attachments`(ctype: `hkArray<hkaBoneAttachment*>`)
     /// - offset: ` 44`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "attachments"))]
     #[cfg_attr(feature = "serde", serde(rename = "attachments"))]
@@ -65,6 +69,7 @@ pub struct hkaAnimationContainer<'a> {
     /// - name: `skins`(ctype: `hkArray<hkaMeshBinding*>`)
     /// - offset: ` 56`(x86)/` 80`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "skins"))]
     #[cfg_attr(feature = "serde", serde(rename = "skins"))]

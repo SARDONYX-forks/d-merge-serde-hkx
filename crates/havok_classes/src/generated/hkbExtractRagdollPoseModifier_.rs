@@ -33,6 +33,7 @@ pub struct hkbExtractRagdollPoseModifier<'a> {
     /// - name: `poseMatchingBone0`(ctype: `hkInt16`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "poseMatchingBone0"))]
     #[cfg_attr(feature = "serde", serde(rename = "poseMatchingBone0"))]
@@ -41,6 +42,7 @@ pub struct hkbExtractRagdollPoseModifier<'a> {
     /// - name: `poseMatchingBone1`(ctype: `hkInt16`)
     /// - offset: ` 46`(x86)/` 82`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "poseMatchingBone1"))]
     #[cfg_attr(feature = "serde", serde(rename = "poseMatchingBone1"))]
@@ -49,6 +51,7 @@ pub struct hkbExtractRagdollPoseModifier<'a> {
     /// - name: `poseMatchingBone2`(ctype: `hkInt16`)
     /// - offset: ` 48`(x86)/` 84`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "poseMatchingBone2"))]
     #[cfg_attr(feature = "serde", serde(rename = "poseMatchingBone2"))]
@@ -57,6 +60,7 @@ pub struct hkbExtractRagdollPoseModifier<'a> {
     /// - name: `enableComputeWorldFromModel`(ctype: `hkBool`)
     /// - offset: ` 50`(x86)/` 86`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "enableComputeWorldFromModel")

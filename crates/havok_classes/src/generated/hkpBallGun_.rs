@@ -33,6 +33,7 @@ pub struct hkpBallGun<'a> {
     /// - name: `bulletRadius`(ctype: `hkReal`)
     /// - offset: ` 32`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bulletRadius"))]
     #[cfg_attr(feature = "serde", serde(rename = "bulletRadius"))]
     pub m_bulletRadius: f32,
@@ -40,6 +41,7 @@ pub struct hkpBallGun<'a> {
     /// - name: `bulletVelocity`(ctype: `hkReal`)
     /// - offset: ` 36`(x86)/` 60`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bulletVelocity"))]
     #[cfg_attr(feature = "serde", serde(rename = "bulletVelocity"))]
     pub m_bulletVelocity: f32,
@@ -47,6 +49,7 @@ pub struct hkpBallGun<'a> {
     /// - name: `bulletMass`(ctype: `hkReal`)
     /// - offset: ` 40`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bulletMass"))]
     #[cfg_attr(feature = "serde", serde(rename = "bulletMass"))]
     pub m_bulletMass: f32,
@@ -54,6 +57,7 @@ pub struct hkpBallGun<'a> {
     /// - name: `damageMultiplier`(ctype: `hkReal`)
     /// - offset: ` 44`(x86)/` 68`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "damageMultiplier"))]
     #[cfg_attr(feature = "serde", serde(rename = "damageMultiplier"))]
     pub m_damageMultiplier: f32,
@@ -61,6 +65,7 @@ pub struct hkpBallGun<'a> {
     /// - name: `maxBulletsInWorld`(ctype: `hkInt32`)
     /// - offset: ` 48`(x86)/` 72`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxBulletsInWorld"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxBulletsInWorld"))]
@@ -69,6 +74,7 @@ pub struct hkpBallGun<'a> {
     /// - name: `bulletOffsetFromCenter`(ctype: `hkVector4`)
     /// - offset: ` 64`(x86)/` 80`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bulletOffsetFromCenter"))]
     #[cfg_attr(feature = "serde", serde(rename = "bulletOffsetFromCenter"))]
     pub m_bulletOffsetFromCenter: Vector4,
@@ -77,8 +83,8 @@ pub struct hkpBallGun<'a> {
     /// - offset: ` 80`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "addedBodies"))]
     #[cfg_attr(feature = "serde", serde(rename = "addedBodies"))]
     pub m_addedBodies: Pointer<'a>,

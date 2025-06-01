@@ -29,6 +29,7 @@ pub struct hkbPoweredRagdollControlData<'a> {
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxForce"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxForce"))]
     pub m_maxForce: f32,
@@ -36,6 +37,7 @@ pub struct hkbPoweredRagdollControlData<'a> {
     /// - name: `tau`(ctype: `hkReal`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "tau"))]
     #[cfg_attr(feature = "serde", serde(rename = "tau"))]
     pub m_tau: f32,
@@ -43,6 +45,7 @@ pub struct hkbPoweredRagdollControlData<'a> {
     /// - name: `damping`(ctype: `hkReal`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "damping"))]
     #[cfg_attr(feature = "serde", serde(rename = "damping"))]
     pub m_damping: f32,
@@ -50,6 +53,7 @@ pub struct hkbPoweredRagdollControlData<'a> {
     /// - name: `proportionalRecoveryVelocity`(ctype: `hkReal`)
     /// - offset: ` 12`(x86)/` 12`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "proportionalRecoveryVelocity")
@@ -60,6 +64,7 @@ pub struct hkbPoweredRagdollControlData<'a> {
     /// - name: `constantRecoveryVelocity`(ctype: `hkReal`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "constantRecoveryVelocity"))]
     #[cfg_attr(feature = "serde", serde(rename = "constantRecoveryVelocity"))]
     pub m_constantRecoveryVelocity: f32,

@@ -33,6 +33,7 @@ pub struct hkxTextureInplace<'a> {
     /// - name: `fileType`(ctype: `hkChar[4]`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fileType"))]
     #[cfg_attr(feature = "serde", serde(rename = "fileType"))]
     pub m_fileType: [char; 4usize],
@@ -40,6 +41,7 @@ pub struct hkxTextureInplace<'a> {
     /// - name: `data`(ctype: `hkArray<hkUint8>`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "data"))]
     #[cfg_attr(feature = "serde", serde(rename = "data"))]
@@ -48,6 +50,7 @@ pub struct hkxTextureInplace<'a> {
     /// - name: `name`(ctype: `hkStringPtr`)
     /// - offset: ` 24`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "name"))]
     #[cfg_attr(feature = "serde", serde(rename = "name"))]
@@ -56,6 +59,7 @@ pub struct hkxTextureInplace<'a> {
     /// - name: `originalFilename`(ctype: `hkStringPtr`)
     /// - offset: ` 28`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "originalFilename"))]
     #[cfg_attr(feature = "serde", serde(rename = "originalFilename"))]

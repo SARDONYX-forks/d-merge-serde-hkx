@@ -34,6 +34,7 @@ pub struct BSBoneSwitchGeneratorBoneData<'a> {
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pGenerator"))]
     #[cfg_attr(feature = "serde", serde(rename = "pGenerator"))]
@@ -42,6 +43,7 @@ pub struct BSBoneSwitchGeneratorBoneData<'a> {
     /// - name: `spBoneWeight`(ctype: `struct hkbBoneWeightArray*`)
     /// - offset: ` 36`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "spBoneWeight"))]
     #[cfg_attr(feature = "serde", serde(rename = "spBoneWeight"))]

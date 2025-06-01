@@ -33,6 +33,7 @@ pub struct hkbProjectData<'a> {
     /// - name: `worldUpWS`(ctype: `hkVector4`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "worldUpWS"))]
     #[cfg_attr(feature = "serde", serde(rename = "worldUpWS"))]
     pub m_worldUpWS: Vector4,
@@ -40,6 +41,7 @@ pub struct hkbProjectData<'a> {
     /// - name: `stringData`(ctype: `struct hkbProjectStringData*`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "stringData"))]
     #[cfg_attr(feature = "serde", serde(rename = "stringData"))]
@@ -48,6 +50,7 @@ pub struct hkbProjectData<'a> {
     /// - name: `defaultEventMode`(ctype: `enum EventMode`)
     /// - offset: ` 36`(x86)/` 40`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "defaultEventMode"))]
     #[cfg_attr(feature = "serde", serde(rename = "defaultEventMode"))]
     pub m_defaultEventMode: EventMode,

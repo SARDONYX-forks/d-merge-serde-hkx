@@ -28,6 +28,7 @@ pub struct hkpPoweredChainMapperTarget<'a> {
     /// - name: `chain`(ctype: `struct hkpPoweredChainData*`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "chain"))]
     #[cfg_attr(feature = "serde", serde(rename = "chain"))]
@@ -36,6 +37,7 @@ pub struct hkpPoweredChainMapperTarget<'a> {
     /// - name: `infoIndex`(ctype: `hkInt32`)
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "infoIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "infoIndex"))]

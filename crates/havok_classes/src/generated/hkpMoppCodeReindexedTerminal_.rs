@@ -28,6 +28,7 @@ pub struct hkpMoppCodeReindexedTerminal<'a> {
     /// - name: `origShapeKey`(ctype: `hkUint32`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "origShapeKey"))]
     #[cfg_attr(feature = "serde", serde(rename = "origShapeKey"))]
@@ -36,6 +37,7 @@ pub struct hkpMoppCodeReindexedTerminal<'a> {
     /// - name: `reindexedShapeKey`(ctype: `hkUint32`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "reindexedShapeKey"))]
     #[cfg_attr(feature = "serde", serde(rename = "reindexedShapeKey"))]

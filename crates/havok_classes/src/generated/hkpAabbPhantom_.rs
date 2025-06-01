@@ -33,6 +33,7 @@ pub struct hkpAabbPhantom<'a> {
     /// - name: `aabb`(ctype: `struct hkAabb`)
     /// - offset: `176`(x86)/`240`(x86_64)
     /// - type_size: ` 32`(x86)/` 32`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "aabb"))]
     #[cfg_attr(feature = "serde", serde(rename = "aabb"))]
     pub m_aabb: hkAabb<'a>,
@@ -41,8 +42,8 @@ pub struct hkpAabbPhantom<'a> {
     /// - offset: `208`(x86)/`272`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "overlappingCollidables"))]
     #[cfg_attr(feature = "serde", serde(rename = "overlappingCollidables"))]
     pub m_overlappingCollidables: Vec<Pointer<'a>>,

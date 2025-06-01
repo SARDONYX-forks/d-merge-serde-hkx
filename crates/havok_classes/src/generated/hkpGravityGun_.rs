@@ -34,8 +34,8 @@ pub struct hkpGravityGun<'a> {
     /// - offset: ` 32`(x86)/` 56`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "grabbedBodies"))]
     #[cfg_attr(feature = "serde", serde(rename = "grabbedBodies"))]
     pub m_grabbedBodies: Vec<Pointer<'a>>,
@@ -43,6 +43,7 @@ pub struct hkpGravityGun<'a> {
     /// - name: `maxNumObjectsPicked`(ctype: `hkInt32`)
     /// - offset: ` 44`(x86)/` 72`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxNumObjectsPicked"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxNumObjectsPicked"))]
@@ -51,6 +52,7 @@ pub struct hkpGravityGun<'a> {
     /// - name: `maxMassOfObjectPicked`(ctype: `hkReal`)
     /// - offset: ` 48`(x86)/` 76`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxMassOfObjectPicked"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxMassOfObjectPicked"))]
     pub m_maxMassOfObjectPicked: f32,
@@ -58,6 +60,7 @@ pub struct hkpGravityGun<'a> {
     /// - name: `maxDistOfObjectPicked`(ctype: `hkReal`)
     /// - offset: ` 52`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxDistOfObjectPicked"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxDistOfObjectPicked"))]
     pub m_maxDistOfObjectPicked: f32,
@@ -65,6 +68,7 @@ pub struct hkpGravityGun<'a> {
     /// - name: `impulseAppliedWhenObjectNotPicked`(ctype: `hkReal`)
     /// - offset: ` 56`(x86)/` 84`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "impulseAppliedWhenObjectNotPicked")
@@ -75,6 +79,7 @@ pub struct hkpGravityGun<'a> {
     /// - name: `throwVelocity`(ctype: `hkReal`)
     /// - offset: ` 60`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "throwVelocity"))]
     #[cfg_attr(feature = "serde", serde(rename = "throwVelocity"))]
     pub m_throwVelocity: f32,
@@ -82,6 +87,7 @@ pub struct hkpGravityGun<'a> {
     /// - name: `capturedObjectPosition`(ctype: `hkVector4`)
     /// - offset: ` 64`(x86)/` 96`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "capturedObjectPosition"))]
     #[cfg_attr(feature = "serde", serde(rename = "capturedObjectPosition"))]
     pub m_capturedObjectPosition: Vector4,
@@ -89,6 +95,7 @@ pub struct hkpGravityGun<'a> {
     /// - name: `capturedObjectsOffset`(ctype: `hkVector4`)
     /// - offset: ` 80`(x86)/`112`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "capturedObjectsOffset"))]
     #[cfg_attr(feature = "serde", serde(rename = "capturedObjectsOffset"))]
     pub m_capturedObjectsOffset: Vector4,

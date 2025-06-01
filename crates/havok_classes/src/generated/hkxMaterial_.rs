@@ -33,6 +33,7 @@ pub struct hkxMaterial<'a> {
     /// - name: `name`(ctype: `hkStringPtr`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "name"))]
     #[cfg_attr(feature = "serde", serde(rename = "name"))]
@@ -41,6 +42,7 @@ pub struct hkxMaterial<'a> {
     /// - name: `stages`(ctype: `hkArray<struct hkxMaterialTextureStage>`)
     /// - offset: ` 24`(x86)/` 40`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "stages"))]
     #[cfg_attr(feature = "serde", serde(rename = "stages"))]
@@ -49,6 +51,7 @@ pub struct hkxMaterial<'a> {
     /// - name: `diffuseColor`(ctype: `hkVector4`)
     /// - offset: ` 48`(x86)/` 64`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "diffuseColor"))]
     #[cfg_attr(feature = "serde", serde(rename = "diffuseColor"))]
     pub m_diffuseColor: Vector4,
@@ -56,6 +59,7 @@ pub struct hkxMaterial<'a> {
     /// - name: `ambientColor`(ctype: `hkVector4`)
     /// - offset: ` 64`(x86)/` 80`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "ambientColor"))]
     #[cfg_attr(feature = "serde", serde(rename = "ambientColor"))]
     pub m_ambientColor: Vector4,
@@ -63,6 +67,7 @@ pub struct hkxMaterial<'a> {
     /// - name: `specularColor`(ctype: `hkVector4`)
     /// - offset: ` 80`(x86)/` 96`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "specularColor"))]
     #[cfg_attr(feature = "serde", serde(rename = "specularColor"))]
     pub m_specularColor: Vector4,
@@ -70,6 +75,7 @@ pub struct hkxMaterial<'a> {
     /// - name: `emissiveColor`(ctype: `hkVector4`)
     /// - offset: ` 96`(x86)/`112`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "emissiveColor"))]
     #[cfg_attr(feature = "serde", serde(rename = "emissiveColor"))]
     pub m_emissiveColor: Vector4,
@@ -77,6 +83,7 @@ pub struct hkxMaterial<'a> {
     /// - name: `subMaterials`(ctype: `hkArray<hkxMaterial*>`)
     /// - offset: `112`(x86)/`128`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "subMaterials"))]
     #[cfg_attr(feature = "serde", serde(rename = "subMaterials"))]
@@ -85,6 +92,7 @@ pub struct hkxMaterial<'a> {
     /// - name: `extraData`(ctype: `struct hkReferencedObject*`)
     /// - offset: `124`(x86)/`144`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "extraData"))]
     #[cfg_attr(feature = "serde", serde(rename = "extraData"))]
@@ -93,6 +101,7 @@ pub struct hkxMaterial<'a> {
     /// - name: `properties`(ctype: `hkArray<struct hkxMaterialProperty>`)
     /// - offset: `128`(x86)/`152`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "properties"))]
     #[cfg_attr(feature = "serde", serde(rename = "properties"))]

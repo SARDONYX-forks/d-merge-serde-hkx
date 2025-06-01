@@ -33,6 +33,7 @@ pub struct hkbModifierGenerator<'a> {
     /// - name: `modifier`(ctype: `struct hkbModifier*`)
     /// - offset: ` 40`(x86)/` 72`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "modifier"))]
     #[cfg_attr(feature = "serde", serde(rename = "modifier"))]
@@ -41,6 +42,7 @@ pub struct hkbModifierGenerator<'a> {
     /// - name: `generator`(ctype: `struct hkbGenerator*`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "generator"))]
     #[cfg_attr(feature = "serde", serde(rename = "generator"))]

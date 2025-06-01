@@ -33,6 +33,7 @@ pub struct hkpExtendedMeshShapeShapesSubpart<'a> {
     /// - name: `childShapes`(ctype: `hkArray<hkpConvexShape*>`)
     /// - offset: ` 20`(x86)/` 40`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "childShapes"))]
     #[cfg_attr(feature = "serde", serde(rename = "childShapes"))]
@@ -41,6 +42,7 @@ pub struct hkpExtendedMeshShapeShapesSubpart<'a> {
     /// - name: `rotation`(ctype: `hkQuaternion`)
     /// - offset: ` 32`(x86)/` 64`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rotation"))]
     #[cfg_attr(feature = "serde", serde(rename = "rotation"))]
     pub m_rotation: Quaternion,
@@ -48,6 +50,7 @@ pub struct hkpExtendedMeshShapeShapesSubpart<'a> {
     /// - name: `translation`(ctype: `hkVector4`)
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "translation"))]
     #[cfg_attr(feature = "serde", serde(rename = "translation"))]
     pub m_translation: Vector4,

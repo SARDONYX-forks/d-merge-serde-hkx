@@ -33,6 +33,7 @@ pub struct hkMemoryMeshTexture<'a> {
     /// - name: `filename`(ctype: `hkStringPtr`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "filename"))]
     #[cfg_attr(feature = "serde", serde(rename = "filename"))]
@@ -41,6 +42,7 @@ pub struct hkMemoryMeshTexture<'a> {
     /// - name: `data`(ctype: `hkArray<hkUint8>`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "data"))]
     #[cfg_attr(feature = "serde", serde(rename = "data"))]
@@ -49,6 +51,7 @@ pub struct hkMemoryMeshTexture<'a> {
     /// - name: `format`(ctype: `enum Format`)
     /// - offset: ` 24`(x86)/` 40`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "format"))]
     #[cfg_attr(feature = "serde", serde(rename = "format"))]
     pub m_format: Format,
@@ -56,6 +59,7 @@ pub struct hkMemoryMeshTexture<'a> {
     /// - name: `hasMipMaps`(ctype: `hkBool`)
     /// - offset: ` 25`(x86)/` 41`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "hasMipMaps"))]
     #[cfg_attr(feature = "serde", serde(rename = "hasMipMaps"))]
     pub m_hasMipMaps: bool,
@@ -63,6 +67,7 @@ pub struct hkMemoryMeshTexture<'a> {
     /// - name: `filterMode`(ctype: `enum FilterMode`)
     /// - offset: ` 26`(x86)/` 42`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "filterMode"))]
     #[cfg_attr(feature = "serde", serde(rename = "filterMode"))]
     pub m_filterMode: FilterMode,
@@ -70,6 +75,7 @@ pub struct hkMemoryMeshTexture<'a> {
     /// - name: `usageHint`(ctype: `enum TextureUsageType`)
     /// - offset: ` 27`(x86)/` 43`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "usageHint"))]
     #[cfg_attr(feature = "serde", serde(rename = "usageHint"))]
     pub m_usageHint: TextureUsageType,
@@ -77,6 +83,7 @@ pub struct hkMemoryMeshTexture<'a> {
     /// - name: `textureCoordChannel`(ctype: `hkInt32`)
     /// - offset: ` 28`(x86)/` 44`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "textureCoordChannel"))]
     #[cfg_attr(feature = "serde", serde(rename = "textureCoordChannel"))]

@@ -28,6 +28,7 @@ pub struct hkpVehicleSuspensionSuspensionWheelParameters<'a> {
     /// - name: `hardpointChassisSpace`(ctype: `hkVector4`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "hardpointChassisSpace"))]
     #[cfg_attr(feature = "serde", serde(rename = "hardpointChassisSpace"))]
     pub m_hardpointChassisSpace: Vector4,
@@ -35,6 +36,7 @@ pub struct hkpVehicleSuspensionSuspensionWheelParameters<'a> {
     /// - name: `directionChassisSpace`(ctype: `hkVector4`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "directionChassisSpace"))]
     #[cfg_attr(feature = "serde", serde(rename = "directionChassisSpace"))]
     pub m_directionChassisSpace: Vector4,
@@ -42,6 +44,7 @@ pub struct hkpVehicleSuspensionSuspensionWheelParameters<'a> {
     /// - name: `length`(ctype: `hkReal`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "length"))]
     #[cfg_attr(feature = "serde", serde(rename = "length"))]
     pub m_length: f32,

@@ -33,6 +33,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `deformableSkinIds`(ctype: `hkArray<hkUint64>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "deformableSkinIds"))]
     #[cfg_attr(feature = "serde", serde(rename = "deformableSkinIds"))]
@@ -41,6 +42,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `rigidSkinIds`(ctype: `hkArray<hkUint64>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rigidSkinIds"))]
     #[cfg_attr(feature = "serde", serde(rename = "rigidSkinIds"))]
@@ -49,6 +51,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `externalEventIds`(ctype: `hkArray<hkInt16>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "externalEventIds"))]
     #[cfg_attr(feature = "serde", serde(rename = "externalEventIds"))]
@@ -57,6 +60,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `auxiliaryInfo`(ctype: `hkArray<hkbAuxiliaryNodeInfo*>`)
     /// - offset: ` 44`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "auxiliaryInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "auxiliaryInfo"))]
@@ -65,6 +69,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `activeEventIds`(ctype: `hkArray<hkInt16>`)
     /// - offset: ` 56`(x86)/` 80`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "activeEventIds"))]
     #[cfg_attr(feature = "serde", serde(rename = "activeEventIds"))]
@@ -73,6 +78,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `activeVariableIds`(ctype: `hkArray<hkInt16>`)
     /// - offset: ` 68`(x86)/` 96`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "activeVariableIds"))]
     #[cfg_attr(feature = "serde", serde(rename = "activeVariableIds"))]
@@ -81,6 +87,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `characterId`(ctype: `hkUint64`)
     /// - offset: ` 80`(x86)/`112`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "characterId"))]
     #[cfg_attr(feature = "serde", serde(rename = "characterId"))]
@@ -89,6 +96,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `instanceName`(ctype: `hkStringPtr`)
     /// - offset: ` 88`(x86)/`120`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "instanceName"))]
     #[cfg_attr(feature = "serde", serde(rename = "instanceName"))]
@@ -97,6 +105,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `templateName`(ctype: `hkStringPtr`)
     /// - offset: ` 92`(x86)/`128`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "templateName"))]
     #[cfg_attr(feature = "serde", serde(rename = "templateName"))]
@@ -105,6 +114,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `fullPathToProject`(ctype: `hkStringPtr`)
     /// - offset: ` 96`(x86)/`136`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fullPathToProject"))]
     #[cfg_attr(feature = "serde", serde(rename = "fullPathToProject"))]
@@ -113,6 +123,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `behaviorData`(ctype: `struct hkbBehaviorGraphData*`)
     /// - offset: `100`(x86)/`144`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "behaviorData"))]
     #[cfg_attr(feature = "serde", serde(rename = "behaviorData"))]
@@ -121,6 +132,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `behaviorInternalState`(ctype: `struct hkbBehaviorGraphInternalState*`)
     /// - offset: `104`(x86)/`152`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "behaviorInternalState"))]
     #[cfg_attr(feature = "serde", serde(rename = "behaviorInternalState"))]
@@ -130,8 +142,8 @@ pub struct hkbClientCharacterState<'a> {
     /// - offset: `108`(x86)/`160`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nodeIdToInternalStateMap"))]
     #[cfg_attr(feature = "serde", serde(rename = "nodeIdToInternalStateMap"))]
     pub m_nodeIdToInternalStateMap: Pointer<'a>,
@@ -139,6 +151,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `visible`(ctype: `hkBool`)
     /// - offset: `112`(x86)/`168`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "visible"))]
     #[cfg_attr(feature = "serde", serde(rename = "visible"))]
     pub m_visible: bool,
@@ -146,6 +159,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `elapsedSimulationTime`(ctype: `hkReal`)
     /// - offset: `116`(x86)/`172`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "elapsedSimulationTime"))]
     #[cfg_attr(feature = "serde", serde(rename = "elapsedSimulationTime"))]
     pub m_elapsedSimulationTime: f32,
@@ -153,6 +167,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `skeleton`(ctype: `struct hkaSkeleton*`)
     /// - offset: `120`(x86)/`176`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "skeleton"))]
     #[cfg_attr(feature = "serde", serde(rename = "skeleton"))]
@@ -161,6 +176,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `worldFromModel`(ctype: `hkQsTransform`)
     /// - offset: `128`(x86)/`192`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "worldFromModel"))]
     #[cfg_attr(feature = "serde", serde(rename = "worldFromModel"))]
     pub m_worldFromModel: QsTransform,
@@ -168,6 +184,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `poseModelSpace`(ctype: `hkArray<hkQsTransform>`)
     /// - offset: `176`(x86)/`240`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "poseModelSpace"))]
     #[cfg_attr(feature = "serde", serde(rename = "poseModelSpace"))]
     pub m_poseModelSpace: Vec<QsTransform>,
@@ -175,6 +192,7 @@ pub struct hkbClientCharacterState<'a> {
     /// - name: `rigidAttachmentTransforms`(ctype: `hkArray<hkQsTransform>`)
     /// - offset: `188`(x86)/`256`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rigidAttachmentTransforms"))]
     #[cfg_attr(feature = "serde", serde(rename = "rigidAttachmentTransforms"))]
     pub m_rigidAttachmentTransforms: Vec<QsTransform>,

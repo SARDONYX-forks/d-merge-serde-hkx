@@ -33,6 +33,7 @@ pub struct hkp2dAngConstraintAtom<'a> {
     /// - name: `freeRotationAxis`(ctype: `hkUint8`)
     /// - offset: `  2`(x86)/`  2`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "freeRotationAxis"))]
     #[cfg_attr(feature = "serde", serde(rename = "freeRotationAxis"))]

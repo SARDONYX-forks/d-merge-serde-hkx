@@ -33,6 +33,7 @@ pub struct hkbEventsFromRangeModifier<'a> {
     /// - name: `inputValue`(ctype: `hkReal`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "inputValue"))]
     #[cfg_attr(feature = "serde", serde(rename = "inputValue"))]
     pub m_inputValue: f32,
@@ -40,6 +41,7 @@ pub struct hkbEventsFromRangeModifier<'a> {
     /// - name: `lowerBound`(ctype: `hkReal`)
     /// - offset: ` 48`(x86)/` 84`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "lowerBound"))]
     #[cfg_attr(feature = "serde", serde(rename = "lowerBound"))]
     pub m_lowerBound: f32,
@@ -47,6 +49,7 @@ pub struct hkbEventsFromRangeModifier<'a> {
     /// - name: `eventRanges`(ctype: `struct hkbEventRangeDataArray*`)
     /// - offset: ` 52`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "eventRanges"))]
     #[cfg_attr(feature = "serde", serde(rename = "eventRanges"))]

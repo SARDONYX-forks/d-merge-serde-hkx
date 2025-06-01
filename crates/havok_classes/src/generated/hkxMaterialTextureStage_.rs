@@ -28,6 +28,7 @@ pub struct hkxMaterialTextureStage<'a> {
     /// - name: `texture`(ctype: `struct hkReferencedObject*`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "texture"))]
     #[cfg_attr(feature = "serde", serde(rename = "texture"))]
@@ -36,6 +37,7 @@ pub struct hkxMaterialTextureStage<'a> {
     /// - name: `usageHint`(ctype: `enum TextureType`)
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "usageHint"))]
     #[cfg_attr(feature = "serde", serde(rename = "usageHint"))]
     pub m_usageHint: TextureType,
@@ -43,6 +45,7 @@ pub struct hkxMaterialTextureStage<'a> {
     /// - name: `tcoordChannel`(ctype: `hkInt32`)
     /// - offset: `  8`(x86)/` 12`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "tcoordChannel"))]
     #[cfg_attr(feature = "serde", serde(rename = "tcoordChannel"))]

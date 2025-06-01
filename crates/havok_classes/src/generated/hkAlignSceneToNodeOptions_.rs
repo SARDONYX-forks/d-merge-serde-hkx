@@ -33,6 +33,7 @@ pub struct hkAlignSceneToNodeOptions<'a> {
     /// - name: `invert`(ctype: `hkBool`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "invert"))]
     #[cfg_attr(feature = "serde", serde(rename = "invert"))]
     pub m_invert: bool,
@@ -40,6 +41,7 @@ pub struct hkAlignSceneToNodeOptions<'a> {
     /// - name: `transformPositionX`(ctype: `hkBool`)
     /// - offset: `  9`(x86)/` 17`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transformPositionX"))]
     #[cfg_attr(feature = "serde", serde(rename = "transformPositionX"))]
     pub m_transformPositionX: bool,
@@ -47,6 +49,7 @@ pub struct hkAlignSceneToNodeOptions<'a> {
     /// - name: `transformPositionY`(ctype: `hkBool`)
     /// - offset: ` 10`(x86)/` 18`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transformPositionY"))]
     #[cfg_attr(feature = "serde", serde(rename = "transformPositionY"))]
     pub m_transformPositionY: bool,
@@ -54,6 +57,7 @@ pub struct hkAlignSceneToNodeOptions<'a> {
     /// - name: `transformPositionZ`(ctype: `hkBool`)
     /// - offset: ` 11`(x86)/` 19`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transformPositionZ"))]
     #[cfg_attr(feature = "serde", serde(rename = "transformPositionZ"))]
     pub m_transformPositionZ: bool,
@@ -61,6 +65,7 @@ pub struct hkAlignSceneToNodeOptions<'a> {
     /// - name: `transformRotation`(ctype: `hkBool`)
     /// - offset: ` 12`(x86)/` 20`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transformRotation"))]
     #[cfg_attr(feature = "serde", serde(rename = "transformRotation"))]
     pub m_transformRotation: bool,
@@ -68,6 +73,7 @@ pub struct hkAlignSceneToNodeOptions<'a> {
     /// - name: `transformScale`(ctype: `hkBool`)
     /// - offset: ` 13`(x86)/` 21`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transformScale"))]
     #[cfg_attr(feature = "serde", serde(rename = "transformScale"))]
     pub m_transformScale: bool,
@@ -75,6 +81,7 @@ pub struct hkAlignSceneToNodeOptions<'a> {
     /// - name: `transformSkew`(ctype: `hkBool`)
     /// - offset: ` 14`(x86)/` 22`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transformSkew"))]
     #[cfg_attr(feature = "serde", serde(rename = "transformSkew"))]
     pub m_transformSkew: bool,
@@ -82,6 +89,7 @@ pub struct hkAlignSceneToNodeOptions<'a> {
     /// - name: `keyframe`(ctype: `hkInt32`)
     /// - offset: ` 16`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "keyframe"))]
     #[cfg_attr(feature = "serde", serde(rename = "keyframe"))]
@@ -90,6 +98,7 @@ pub struct hkAlignSceneToNodeOptions<'a> {
     /// - name: `nodeName`(ctype: `hkStringPtr`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nodeName"))]
     #[cfg_attr(feature = "serde", serde(rename = "nodeName"))]

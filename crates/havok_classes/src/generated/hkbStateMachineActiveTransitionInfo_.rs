@@ -29,8 +29,8 @@ pub struct hkbStateMachineActiveTransitionInfo<'a> {
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transitionEffect"))]
     #[cfg_attr(feature = "serde", serde(rename = "transitionEffect"))]
     pub m_transitionEffect: Pointer<'a>,
@@ -38,6 +38,7 @@ pub struct hkbStateMachineActiveTransitionInfo<'a> {
     /// - name: `transitionEffectInternalStateInfo`(ctype: `struct hkbNodeInternalStateInfo*`)
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
@@ -49,6 +50,7 @@ pub struct hkbStateMachineActiveTransitionInfo<'a> {
     /// - name: `transitionInfoReference`(ctype: `struct hkbStateMachineTransitionInfoReference`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  6`(x86)/`  6`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transitionInfoReference"))]
     #[cfg_attr(feature = "serde", serde(rename = "transitionInfoReference"))]
@@ -57,6 +59,7 @@ pub struct hkbStateMachineActiveTransitionInfo<'a> {
     /// - name: `transitionInfoReferenceForTE`(ctype: `struct hkbStateMachineTransitionInfoReference`)
     /// - offset: ` 14`(x86)/` 22`(x86_64)
     /// - type_size: `  6`(x86)/`  6`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
@@ -68,6 +71,7 @@ pub struct hkbStateMachineActiveTransitionInfo<'a> {
     /// - name: `fromStateId`(ctype: `hkInt32`)
     /// - offset: ` 20`(x86)/` 28`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fromStateId"))]
     #[cfg_attr(feature = "serde", serde(rename = "fromStateId"))]
@@ -76,6 +80,7 @@ pub struct hkbStateMachineActiveTransitionInfo<'a> {
     /// - name: `toStateId`(ctype: `hkInt32`)
     /// - offset: ` 24`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "toStateId"))]
     #[cfg_attr(feature = "serde", serde(rename = "toStateId"))]
@@ -84,6 +89,7 @@ pub struct hkbStateMachineActiveTransitionInfo<'a> {
     /// - name: `isReturnToPreviousState`(ctype: `hkBool`)
     /// - offset: ` 28`(x86)/` 36`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isReturnToPreviousState"))]
     #[cfg_attr(feature = "serde", serde(rename = "isReturnToPreviousState"))]
     pub m_isReturnToPreviousState: bool,

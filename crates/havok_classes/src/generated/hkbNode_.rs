@@ -33,6 +33,7 @@ pub struct hkbNode<'a> {
     /// - name: `userData`(ctype: `hkUlong`)
     /// - offset: ` 28`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "userData"))]
     #[cfg_attr(feature = "serde", serde(rename = "userData"))]
     pub m_userData: Ulong,
@@ -40,6 +41,7 @@ pub struct hkbNode<'a> {
     /// - name: `name`(ctype: `hkStringPtr`)
     /// - offset: ` 32`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "name"))]
     #[cfg_attr(feature = "serde", serde(rename = "name"))]
@@ -49,8 +51,8 @@ pub struct hkbNode<'a> {
     /// - offset: ` 36`(x86)/` 64`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "id"))]
     #[cfg_attr(feature = "serde", serde(rename = "id"))]
     pub m_id: I16<'a>,

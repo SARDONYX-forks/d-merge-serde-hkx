@@ -33,6 +33,7 @@ pub struct hkpMotion<'a> {
     /// - name: `type`(ctype: `enum MotionType`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "type"))]
     #[cfg_attr(feature = "serde", serde(rename = "type"))]
     pub m_type: MotionType,
@@ -40,6 +41,7 @@ pub struct hkpMotion<'a> {
     /// - name: `deactivationIntegrateCounter`(ctype: `hkUint8`)
     /// - offset: `  9`(x86)/` 17`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
@@ -51,6 +53,7 @@ pub struct hkpMotion<'a> {
     /// - name: `deactivationNumInactiveFrames`(ctype: `hkUint16[2]`)
     /// - offset: ` 10`(x86)/` 18`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
@@ -62,6 +65,7 @@ pub struct hkpMotion<'a> {
     /// - name: `motionState`(ctype: `struct hkMotionState`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `176`(x86)/`176`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "motionState"))]
     #[cfg_attr(feature = "serde", serde(rename = "motionState"))]
@@ -70,6 +74,7 @@ pub struct hkpMotion<'a> {
     /// - name: `inertiaAndMassInv`(ctype: `hkVector4`)
     /// - offset: `192`(x86)/`208`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "inertiaAndMassInv"))]
     #[cfg_attr(feature = "serde", serde(rename = "inertiaAndMassInv"))]
     pub m_inertiaAndMassInv: Vector4,
@@ -77,6 +82,7 @@ pub struct hkpMotion<'a> {
     /// - name: `linearVelocity`(ctype: `hkVector4`)
     /// - offset: `208`(x86)/`224`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "linearVelocity"))]
     #[cfg_attr(feature = "serde", serde(rename = "linearVelocity"))]
     pub m_linearVelocity: Vector4,
@@ -84,6 +90,7 @@ pub struct hkpMotion<'a> {
     /// - name: `angularVelocity`(ctype: `hkVector4`)
     /// - offset: `224`(x86)/`240`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "angularVelocity"))]
     #[cfg_attr(feature = "serde", serde(rename = "angularVelocity"))]
     pub m_angularVelocity: Vector4,
@@ -91,6 +98,7 @@ pub struct hkpMotion<'a> {
     /// - name: `deactivationRefPosition`(ctype: `hkVector4[2]`)
     /// - offset: `240`(x86)/`256`(x86_64)
     /// - type_size: ` 32`(x86)/` 32`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "deactivationRefPosition"))]
     #[cfg_attr(feature = "serde", serde(rename = "deactivationRefPosition"))]
     pub m_deactivationRefPosition: [Vector4; 2usize],
@@ -98,6 +106,7 @@ pub struct hkpMotion<'a> {
     /// - name: `deactivationRefOrientation`(ctype: `hkUint32[2]`)
     /// - offset: `272`(x86)/`288`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "deactivationRefOrientation"))]
     #[cfg_attr(feature = "serde", serde(rename = "deactivationRefOrientation"))]
@@ -106,6 +115,7 @@ pub struct hkpMotion<'a> {
     /// - name: `savedMotion`(ctype: `struct hkpMaxSizeMotion*`)
     /// - offset: `280`(x86)/`296`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "savedMotion"))]
     #[cfg_attr(feature = "serde", serde(rename = "savedMotion"))]
@@ -114,6 +124,7 @@ pub struct hkpMotion<'a> {
     /// - name: `savedQualityTypeIndex`(ctype: `hkUint16`)
     /// - offset: `284`(x86)/`304`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "savedQualityTypeIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "savedQualityTypeIndex"))]
@@ -122,6 +133,7 @@ pub struct hkpMotion<'a> {
     /// - name: `gravityFactor`(ctype: `hkHalf`)
     /// - offset: `286`(x86)/`306`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "gravityFactor"))]
     #[cfg_attr(feature = "serde", serde(rename = "gravityFactor"))]
     pub m_gravityFactor: f16,

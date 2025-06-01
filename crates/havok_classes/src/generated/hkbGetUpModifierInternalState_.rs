@@ -33,6 +33,7 @@ pub struct hkbGetUpModifierInternalState<'a> {
     /// - name: `timeSinceBegin`(ctype: `hkReal`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "timeSinceBegin"))]
     #[cfg_attr(feature = "serde", serde(rename = "timeSinceBegin"))]
     pub m_timeSinceBegin: f32,
@@ -40,6 +41,7 @@ pub struct hkbGetUpModifierInternalState<'a> {
     /// - name: `timeStep`(ctype: `hkReal`)
     /// - offset: ` 12`(x86)/` 20`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "timeStep"))]
     #[cfg_attr(feature = "serde", serde(rename = "timeStep"))]
     pub m_timeStep: f32,
@@ -47,6 +49,7 @@ pub struct hkbGetUpModifierInternalState<'a> {
     /// - name: `initNextModify`(ctype: `hkBool`)
     /// - offset: ` 16`(x86)/` 24`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "initNextModify"))]
     #[cfg_attr(feature = "serde", serde(rename = "initNextModify"))]
     pub m_initNextModify: bool,

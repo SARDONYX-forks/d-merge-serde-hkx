@@ -28,6 +28,7 @@ pub struct hkbFootIkGains<'a> {
     /// - name: `onOffGain`(ctype: `hkReal`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "onOffGain"))]
     #[cfg_attr(feature = "serde", serde(rename = "onOffGain"))]
     pub m_onOffGain: f32,
@@ -35,6 +36,7 @@ pub struct hkbFootIkGains<'a> {
     /// - name: `groundAscendingGain`(ctype: `hkReal`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "groundAscendingGain"))]
     #[cfg_attr(feature = "serde", serde(rename = "groundAscendingGain"))]
     pub m_groundAscendingGain: f32,
@@ -42,6 +44,7 @@ pub struct hkbFootIkGains<'a> {
     /// - name: `groundDescendingGain`(ctype: `hkReal`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "groundDescendingGain"))]
     #[cfg_attr(feature = "serde", serde(rename = "groundDescendingGain"))]
     pub m_groundDescendingGain: f32,
@@ -49,6 +52,7 @@ pub struct hkbFootIkGains<'a> {
     /// - name: `footPlantedGain`(ctype: `hkReal`)
     /// - offset: ` 12`(x86)/` 12`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "footPlantedGain"))]
     #[cfg_attr(feature = "serde", serde(rename = "footPlantedGain"))]
     pub m_footPlantedGain: f32,
@@ -56,6 +60,7 @@ pub struct hkbFootIkGains<'a> {
     /// - name: `footRaisedGain`(ctype: `hkReal`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "footRaisedGain"))]
     #[cfg_attr(feature = "serde", serde(rename = "footRaisedGain"))]
     pub m_footRaisedGain: f32,
@@ -63,6 +68,7 @@ pub struct hkbFootIkGains<'a> {
     /// - name: `footUnlockGain`(ctype: `hkReal`)
     /// - offset: ` 20`(x86)/` 20`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "footUnlockGain"))]
     #[cfg_attr(feature = "serde", serde(rename = "footUnlockGain"))]
     pub m_footUnlockGain: f32,
@@ -70,6 +76,7 @@ pub struct hkbFootIkGains<'a> {
     /// - name: `worldFromModelFeedbackGain`(ctype: `hkReal`)
     /// - offset: ` 24`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "worldFromModelFeedbackGain"))]
     #[cfg_attr(feature = "serde", serde(rename = "worldFromModelFeedbackGain"))]
     pub m_worldFromModelFeedbackGain: f32,
@@ -77,6 +84,7 @@ pub struct hkbFootIkGains<'a> {
     /// - name: `errorUpDownBias`(ctype: `hkReal`)
     /// - offset: ` 28`(x86)/` 28`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "errorUpDownBias"))]
     #[cfg_attr(feature = "serde", serde(rename = "errorUpDownBias"))]
     pub m_errorUpDownBias: f32,
@@ -84,6 +92,7 @@ pub struct hkbFootIkGains<'a> {
     /// - name: `alignWorldFromModelGain`(ctype: `hkReal`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "alignWorldFromModelGain"))]
     #[cfg_attr(feature = "serde", serde(rename = "alignWorldFromModelGain"))]
     pub m_alignWorldFromModelGain: f32,
@@ -91,6 +100,7 @@ pub struct hkbFootIkGains<'a> {
     /// - name: `hipOrientationGain`(ctype: `hkReal`)
     /// - offset: ` 36`(x86)/` 36`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "hipOrientationGain"))]
     #[cfg_attr(feature = "serde", serde(rename = "hipOrientationGain"))]
     pub m_hipOrientationGain: f32,
@@ -98,6 +108,7 @@ pub struct hkbFootIkGains<'a> {
     /// - name: `maxKneeAngleDifference`(ctype: `hkReal`)
     /// - offset: ` 40`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxKneeAngleDifference"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxKneeAngleDifference"))]
     pub m_maxKneeAngleDifference: f32,
@@ -105,6 +116,7 @@ pub struct hkbFootIkGains<'a> {
     /// - name: `ankleOrientationGain`(ctype: `hkReal`)
     /// - offset: ` 44`(x86)/` 44`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "ankleOrientationGain"))]
     #[cfg_attr(feature = "serde", serde(rename = "ankleOrientationGain"))]
     pub m_ankleOrientationGain: f32,

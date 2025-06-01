@@ -33,6 +33,7 @@ pub struct hkpVehicleDefaultVelocityDamper<'a> {
     /// - name: `normalSpinDamping`(ctype: `hkReal`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "normalSpinDamping"))]
     #[cfg_attr(feature = "serde", serde(rename = "normalSpinDamping"))]
     pub m_normalSpinDamping: f32,
@@ -40,6 +41,7 @@ pub struct hkpVehicleDefaultVelocityDamper<'a> {
     /// - name: `collisionSpinDamping`(ctype: `hkReal`)
     /// - offset: ` 12`(x86)/` 20`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "collisionSpinDamping"))]
     #[cfg_attr(feature = "serde", serde(rename = "collisionSpinDamping"))]
     pub m_collisionSpinDamping: f32,
@@ -47,6 +49,7 @@ pub struct hkpVehicleDefaultVelocityDamper<'a> {
     /// - name: `collisionThreshold`(ctype: `hkReal`)
     /// - offset: ` 16`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "collisionThreshold"))]
     #[cfg_attr(feature = "serde", serde(rename = "collisionThreshold"))]
     pub m_collisionThreshold: f32,

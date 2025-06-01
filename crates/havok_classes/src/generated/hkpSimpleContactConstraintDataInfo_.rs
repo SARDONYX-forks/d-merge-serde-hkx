@@ -29,6 +29,7 @@ pub struct hkpSimpleContactConstraintDataInfo<'a> {
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "flags"))]
     #[cfg_attr(feature = "serde", serde(rename = "flags"))]
@@ -37,6 +38,7 @@ pub struct hkpSimpleContactConstraintDataInfo<'a> {
     /// - name: `index`(ctype: `hkUint16`)
     /// - offset: `  2`(x86)/`  2`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "index"))]
     #[cfg_attr(feature = "serde", serde(rename = "index"))]
@@ -45,6 +47,7 @@ pub struct hkpSimpleContactConstraintDataInfo<'a> {
     /// - name: `internalData0`(ctype: `hkReal`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "internalData0"))]
     #[cfg_attr(feature = "serde", serde(rename = "internalData0"))]
     pub m_internalData0: f32,
@@ -52,6 +55,7 @@ pub struct hkpSimpleContactConstraintDataInfo<'a> {
     /// - name: `rollingFrictionMultiplier`(ctype: `hkHalf`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rollingFrictionMultiplier"))]
     #[cfg_attr(feature = "serde", serde(rename = "rollingFrictionMultiplier"))]
     pub m_rollingFrictionMultiplier: f16,
@@ -59,6 +63,7 @@ pub struct hkpSimpleContactConstraintDataInfo<'a> {
     /// - name: `internalData1`(ctype: `hkHalf`)
     /// - offset: ` 10`(x86)/` 10`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "internalData1"))]
     #[cfg_attr(feature = "serde", serde(rename = "internalData1"))]
     pub m_internalData1: f16,
@@ -66,6 +71,7 @@ pub struct hkpSimpleContactConstraintDataInfo<'a> {
     /// - name: `data`(ctype: `hkUint32[5]`)
     /// - offset: ` 12`(x86)/` 12`(x86_64)
     /// - type_size: ` 20`(x86)/` 20`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "data"))]
     #[cfg_attr(feature = "serde", serde(rename = "data"))]

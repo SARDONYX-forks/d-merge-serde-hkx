@@ -28,6 +28,7 @@ pub struct hkpPointToPlaneConstraintDataAtoms<'a> {
     /// - name: `transforms`(ctype: `struct hkpSetLocalTransformsConstraintAtom`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `144`(x86)/`144`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transforms"))]
     #[cfg_attr(feature = "serde", serde(rename = "transforms"))]
@@ -36,6 +37,7 @@ pub struct hkpPointToPlaneConstraintDataAtoms<'a> {
     /// - name: `lin`(ctype: `struct hkpLinConstraintAtom`)
     /// - offset: `144`(x86)/`144`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "lin"))]
     #[cfg_attr(feature = "serde", serde(rename = "lin"))]

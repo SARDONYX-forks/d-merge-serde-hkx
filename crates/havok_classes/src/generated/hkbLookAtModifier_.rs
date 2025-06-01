@@ -33,6 +33,7 @@ pub struct hkbLookAtModifier<'a> {
     /// - name: `targetWS`(ctype: `hkVector4`)
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "targetWS"))]
     #[cfg_attr(feature = "serde", serde(rename = "targetWS"))]
     pub m_targetWS: Vector4,
@@ -40,6 +41,7 @@ pub struct hkbLookAtModifier<'a> {
     /// - name: `headForwardLS`(ctype: `hkVector4`)
     /// - offset: ` 64`(x86)/` 96`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "headForwardLS"))]
     #[cfg_attr(feature = "serde", serde(rename = "headForwardLS"))]
     pub m_headForwardLS: Vector4,
@@ -47,6 +49,7 @@ pub struct hkbLookAtModifier<'a> {
     /// - name: `neckForwardLS`(ctype: `hkVector4`)
     /// - offset: ` 80`(x86)/`112`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "neckForwardLS"))]
     #[cfg_attr(feature = "serde", serde(rename = "neckForwardLS"))]
     pub m_neckForwardLS: Vector4,
@@ -54,6 +57,7 @@ pub struct hkbLookAtModifier<'a> {
     /// - name: `neckRightLS`(ctype: `hkVector4`)
     /// - offset: ` 96`(x86)/`128`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "neckRightLS"))]
     #[cfg_attr(feature = "serde", serde(rename = "neckRightLS"))]
     pub m_neckRightLS: Vector4,
@@ -61,6 +65,7 @@ pub struct hkbLookAtModifier<'a> {
     /// - name: `eyePositionHS`(ctype: `hkVector4`)
     /// - offset: `112`(x86)/`144`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "eyePositionHS"))]
     #[cfg_attr(feature = "serde", serde(rename = "eyePositionHS"))]
     pub m_eyePositionHS: Vector4,
@@ -68,6 +73,7 @@ pub struct hkbLookAtModifier<'a> {
     /// - name: `newTargetGain`(ctype: `hkReal`)
     /// - offset: `128`(x86)/`160`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "newTargetGain"))]
     #[cfg_attr(feature = "serde", serde(rename = "newTargetGain"))]
     pub m_newTargetGain: f32,
@@ -75,6 +81,7 @@ pub struct hkbLookAtModifier<'a> {
     /// - name: `onGain`(ctype: `hkReal`)
     /// - offset: `132`(x86)/`164`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "onGain"))]
     #[cfg_attr(feature = "serde", serde(rename = "onGain"))]
     pub m_onGain: f32,
@@ -82,6 +89,7 @@ pub struct hkbLookAtModifier<'a> {
     /// - name: `offGain`(ctype: `hkReal`)
     /// - offset: `136`(x86)/`168`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "offGain"))]
     #[cfg_attr(feature = "serde", serde(rename = "offGain"))]
     pub m_offGain: f32,
@@ -89,6 +97,7 @@ pub struct hkbLookAtModifier<'a> {
     /// - name: `limitAngleDegrees`(ctype: `hkReal`)
     /// - offset: `140`(x86)/`172`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "limitAngleDegrees"))]
     #[cfg_attr(feature = "serde", serde(rename = "limitAngleDegrees"))]
     pub m_limitAngleDegrees: f32,
@@ -96,6 +105,7 @@ pub struct hkbLookAtModifier<'a> {
     /// - name: `limitAngleLeft`(ctype: `hkReal`)
     /// - offset: `144`(x86)/`176`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "limitAngleLeft"))]
     #[cfg_attr(feature = "serde", serde(rename = "limitAngleLeft"))]
     pub m_limitAngleLeft: f32,
@@ -103,6 +113,7 @@ pub struct hkbLookAtModifier<'a> {
     /// - name: `limitAngleRight`(ctype: `hkReal`)
     /// - offset: `148`(x86)/`180`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "limitAngleRight"))]
     #[cfg_attr(feature = "serde", serde(rename = "limitAngleRight"))]
     pub m_limitAngleRight: f32,
@@ -110,6 +121,7 @@ pub struct hkbLookAtModifier<'a> {
     /// - name: `limitAngleUp`(ctype: `hkReal`)
     /// - offset: `152`(x86)/`184`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "limitAngleUp"))]
     #[cfg_attr(feature = "serde", serde(rename = "limitAngleUp"))]
     pub m_limitAngleUp: f32,
@@ -117,6 +129,7 @@ pub struct hkbLookAtModifier<'a> {
     /// - name: `limitAngleDown`(ctype: `hkReal`)
     /// - offset: `156`(x86)/`188`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "limitAngleDown"))]
     #[cfg_attr(feature = "serde", serde(rename = "limitAngleDown"))]
     pub m_limitAngleDown: f32,
@@ -124,6 +137,7 @@ pub struct hkbLookAtModifier<'a> {
     /// - name: `headIndex`(ctype: `hkInt16`)
     /// - offset: `160`(x86)/`192`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "headIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "headIndex"))]
@@ -132,6 +146,7 @@ pub struct hkbLookAtModifier<'a> {
     /// - name: `neckIndex`(ctype: `hkInt16`)
     /// - offset: `162`(x86)/`194`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "neckIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "neckIndex"))]
@@ -140,6 +155,7 @@ pub struct hkbLookAtModifier<'a> {
     /// - name: `isOn`(ctype: `hkBool`)
     /// - offset: `164`(x86)/`196`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isOn"))]
     #[cfg_attr(feature = "serde", serde(rename = "isOn"))]
     pub m_isOn: bool,
@@ -147,6 +163,7 @@ pub struct hkbLookAtModifier<'a> {
     /// - name: `individualLimitsOn`(ctype: `hkBool`)
     /// - offset: `165`(x86)/`197`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "individualLimitsOn"))]
     #[cfg_attr(feature = "serde", serde(rename = "individualLimitsOn"))]
     pub m_individualLimitsOn: bool,
@@ -154,6 +171,7 @@ pub struct hkbLookAtModifier<'a> {
     /// - name: `isTargetInsideLimitCone`(ctype: `hkBool`)
     /// - offset: `166`(x86)/`198`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isTargetInsideLimitCone"))]
     #[cfg_attr(feature = "serde", serde(rename = "isTargetInsideLimitCone"))]
     pub m_isTargetInsideLimitCone: bool,

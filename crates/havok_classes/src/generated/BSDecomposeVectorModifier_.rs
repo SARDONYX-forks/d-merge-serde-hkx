@@ -33,6 +33,7 @@ pub struct BSDecomposeVectorModifier<'a> {
     /// - name: `vector`(ctype: `hkVector4`)
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vector"))]
     #[cfg_attr(feature = "serde", serde(rename = "vector"))]
     pub m_vector: Vector4,
@@ -40,6 +41,7 @@ pub struct BSDecomposeVectorModifier<'a> {
     /// - name: `x`(ctype: `hkReal`)
     /// - offset: ` 64`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "x"))]
     #[cfg_attr(feature = "serde", serde(rename = "x"))]
     pub m_x: f32,
@@ -47,6 +49,7 @@ pub struct BSDecomposeVectorModifier<'a> {
     /// - name: `y`(ctype: `hkReal`)
     /// - offset: ` 68`(x86)/`100`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "y"))]
     #[cfg_attr(feature = "serde", serde(rename = "y"))]
     pub m_y: f32,
@@ -54,6 +57,7 @@ pub struct BSDecomposeVectorModifier<'a> {
     /// - name: `z`(ctype: `hkReal`)
     /// - offset: ` 72`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "z"))]
     #[cfg_attr(feature = "serde", serde(rename = "z"))]
     pub m_z: f32,
@@ -61,6 +65,7 @@ pub struct BSDecomposeVectorModifier<'a> {
     /// - name: `w`(ctype: `hkReal`)
     /// - offset: ` 76`(x86)/`108`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "w"))]
     #[cfg_attr(feature = "serde", serde(rename = "w"))]
     pub m_w: f32,

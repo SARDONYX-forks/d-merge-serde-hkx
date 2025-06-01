@@ -28,6 +28,7 @@ pub struct hkaDeltaCompressedAnimationQuantizationFormat<'a> {
     /// - name: `maxBitWidth`(ctype: `hkUint8`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxBitWidth"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxBitWidth"))]
@@ -36,6 +37,7 @@ pub struct hkaDeltaCompressedAnimationQuantizationFormat<'a> {
     /// - name: `preserved`(ctype: `hkUint8`)
     /// - offset: `  1`(x86)/`  1`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "preserved"))]
     #[cfg_attr(feature = "serde", serde(rename = "preserved"))]
@@ -44,6 +46,7 @@ pub struct hkaDeltaCompressedAnimationQuantizationFormat<'a> {
     /// - name: `numD`(ctype: `hkUint32`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numD"))]
     #[cfg_attr(feature = "serde", serde(rename = "numD"))]
@@ -52,6 +55,7 @@ pub struct hkaDeltaCompressedAnimationQuantizationFormat<'a> {
     /// - name: `offsetIdx`(ctype: `hkUint32`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "offsetIdx"))]
     #[cfg_attr(feature = "serde", serde(rename = "offsetIdx"))]
@@ -60,6 +64,7 @@ pub struct hkaDeltaCompressedAnimationQuantizationFormat<'a> {
     /// - name: `scaleIdx`(ctype: `hkUint32`)
     /// - offset: ` 12`(x86)/` 12`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "scaleIdx"))]
     #[cfg_attr(feature = "serde", serde(rename = "scaleIdx"))]
@@ -68,6 +73,7 @@ pub struct hkaDeltaCompressedAnimationQuantizationFormat<'a> {
     /// - name: `bitWidthIdx`(ctype: `hkUint32`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bitWidthIdx"))]
     #[cfg_attr(feature = "serde", serde(rename = "bitWidthIdx"))]

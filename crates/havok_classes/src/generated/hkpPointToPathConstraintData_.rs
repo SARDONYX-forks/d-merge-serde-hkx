@@ -33,6 +33,7 @@ pub struct hkpPointToPathConstraintData<'a> {
     /// - name: `atoms`(ctype: `struct hkpBridgeAtoms`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: ` 12`(x86)/` 24`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "atoms"))]
     #[cfg_attr(feature = "serde", serde(rename = "atoms"))]
@@ -41,6 +42,7 @@ pub struct hkpPointToPathConstraintData<'a> {
     /// - name: `path`(ctype: `struct hkpParametricCurve*`)
     /// - offset: ` 24`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "path"))]
     #[cfg_attr(feature = "serde", serde(rename = "path"))]
@@ -49,6 +51,7 @@ pub struct hkpPointToPathConstraintData<'a> {
     /// - name: `maxFrictionForce`(ctype: `hkReal`)
     /// - offset: ` 28`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxFrictionForce"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxFrictionForce"))]
     pub m_maxFrictionForce: f32,
@@ -56,6 +59,7 @@ pub struct hkpPointToPathConstraintData<'a> {
     /// - name: `angularConstrainedDOF`(ctype: `enum OrientationConstraintType`)
     /// - offset: ` 32`(x86)/` 60`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "angularConstrainedDOF"))]
     #[cfg_attr(feature = "serde", serde(rename = "angularConstrainedDOF"))]
     pub m_angularConstrainedDOF: OrientationConstraintType,
@@ -63,6 +67,7 @@ pub struct hkpPointToPathConstraintData<'a> {
     /// - name: `transform_OS_KS`(ctype: `hkTransform[2]`)
     /// - offset: ` 48`(x86)/` 64`(x86_64)
     /// - type_size: `128`(x86)/`128`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transform_OS_KS"))]
     #[cfg_attr(feature = "serde", serde(rename = "transform_OS_KS"))]
     pub m_transform_OS_KS: [Transform; 2usize],

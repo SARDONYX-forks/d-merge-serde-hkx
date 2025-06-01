@@ -33,6 +33,7 @@ pub struct hkaAnimation<'a> {
     /// - name: `type`(ctype: `enum AnimationType`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "type"))]
     #[cfg_attr(feature = "serde", serde(rename = "type"))]
     pub m_type: AnimationType,
@@ -40,6 +41,7 @@ pub struct hkaAnimation<'a> {
     /// - name: `duration`(ctype: `hkReal`)
     /// - offset: ` 12`(x86)/` 20`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "duration"))]
     #[cfg_attr(feature = "serde", serde(rename = "duration"))]
     pub m_duration: f32,
@@ -47,6 +49,7 @@ pub struct hkaAnimation<'a> {
     /// - name: `numberOfTransformTracks`(ctype: `hkInt32`)
     /// - offset: ` 16`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numberOfTransformTracks"))]
     #[cfg_attr(feature = "serde", serde(rename = "numberOfTransformTracks"))]
@@ -55,6 +58,7 @@ pub struct hkaAnimation<'a> {
     /// - name: `numberOfFloatTracks`(ctype: `hkInt32`)
     /// - offset: ` 20`(x86)/` 28`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numberOfFloatTracks"))]
     #[cfg_attr(feature = "serde", serde(rename = "numberOfFloatTracks"))]
@@ -63,6 +67,7 @@ pub struct hkaAnimation<'a> {
     /// - name: `extractedMotion`(ctype: `struct hkaAnimatedReferenceFrame*`)
     /// - offset: ` 24`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "extractedMotion"))]
     #[cfg_attr(feature = "serde", serde(rename = "extractedMotion"))]
@@ -71,6 +76,7 @@ pub struct hkaAnimation<'a> {
     /// - name: `annotationTracks`(ctype: `hkArray<struct hkaAnnotationTrack>`)
     /// - offset: ` 28`(x86)/` 40`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "annotationTracks"))]
     #[cfg_attr(feature = "serde", serde(rename = "annotationTracks"))]

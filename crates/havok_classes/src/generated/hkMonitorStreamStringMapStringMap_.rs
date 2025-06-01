@@ -29,6 +29,7 @@ pub struct hkMonitorStreamStringMapStringMap<'a> {
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
     /// - flags: `ALIGN_8`
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "id"))]
     #[cfg_attr(feature = "serde", serde(rename = "id"))]
@@ -37,6 +38,7 @@ pub struct hkMonitorStreamStringMapStringMap<'a> {
     /// - name: `string`(ctype: `hkStringPtr`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "string"))]
     #[cfg_attr(feature = "serde", serde(rename = "string"))]

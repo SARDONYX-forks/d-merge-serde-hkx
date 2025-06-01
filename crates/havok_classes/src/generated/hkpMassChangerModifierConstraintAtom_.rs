@@ -33,6 +33,7 @@ pub struct hkpMassChangerModifierConstraintAtom<'a> {
     /// - name: `factorA`(ctype: `hkVector4`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "factorA"))]
     #[cfg_attr(feature = "serde", serde(rename = "factorA"))]
     pub m_factorA: Vector4,
@@ -40,6 +41,7 @@ pub struct hkpMassChangerModifierConstraintAtom<'a> {
     /// - name: `factorB`(ctype: `hkVector4`)
     /// - offset: ` 48`(x86)/` 64`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "factorB"))]
     #[cfg_attr(feature = "serde", serde(rename = "factorB"))]
     pub m_factorB: Vector4,

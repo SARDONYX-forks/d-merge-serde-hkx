@@ -33,6 +33,7 @@ pub struct hkbEventsFromRangeModifierInternalState<'a> {
     /// - name: `wasActiveInPreviousFrame`(ctype: `hkArray<hkBool>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wasActiveInPreviousFrame"))]
     #[cfg_attr(feature = "serde", serde(rename = "wasActiveInPreviousFrame"))]
     pub m_wasActiveInPreviousFrame: Vec<bool>,

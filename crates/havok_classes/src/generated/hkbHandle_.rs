@@ -33,6 +33,7 @@ pub struct hkbHandle<'a> {
     /// - name: `frame`(ctype: `struct hkLocalFrame*`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "frame"))]
     #[cfg_attr(feature = "serde", serde(rename = "frame"))]
@@ -41,6 +42,7 @@ pub struct hkbHandle<'a> {
     /// - name: `rigidBody`(ctype: `struct hkpRigidBody*`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rigidBody"))]
     #[cfg_attr(feature = "serde", serde(rename = "rigidBody"))]
@@ -49,6 +51,7 @@ pub struct hkbHandle<'a> {
     /// - name: `character`(ctype: `struct hkbCharacter*`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "character"))]
     #[cfg_attr(feature = "serde", serde(rename = "character"))]
@@ -57,6 +60,7 @@ pub struct hkbHandle<'a> {
     /// - name: `animationBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 20`(x86)/` 40`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "animationBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "animationBoneIndex"))]

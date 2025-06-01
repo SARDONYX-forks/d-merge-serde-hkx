@@ -33,6 +33,7 @@ pub struct hkpCenterOfMassChangerModifierConstraintAtom<'a> {
     /// - name: `displacementA`(ctype: `hkVector4`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "displacementA"))]
     #[cfg_attr(feature = "serde", serde(rename = "displacementA"))]
     pub m_displacementA: Vector4,
@@ -40,6 +41,7 @@ pub struct hkpCenterOfMassChangerModifierConstraintAtom<'a> {
     /// - name: `displacementB`(ctype: `hkVector4`)
     /// - offset: ` 48`(x86)/` 64`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "displacementB"))]
     #[cfg_attr(feature = "serde", serde(rename = "displacementB"))]
     pub m_displacementB: Vector4,

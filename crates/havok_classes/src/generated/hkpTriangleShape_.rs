@@ -33,6 +33,7 @@ pub struct hkpTriangleShape<'a> {
     /// - name: `weldingInfo`(ctype: `hkUint16`)
     /// - offset: ` 20`(x86)/` 40`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "weldingInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "weldingInfo"))]
@@ -41,6 +42,7 @@ pub struct hkpTriangleShape<'a> {
     /// - name: `weldingType`(ctype: `enum WeldingType`)
     /// - offset: ` 22`(x86)/` 42`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "weldingType"))]
     #[cfg_attr(feature = "serde", serde(rename = "weldingType"))]
     pub m_weldingType: WeldingType,
@@ -48,6 +50,7 @@ pub struct hkpTriangleShape<'a> {
     /// - name: `isExtruded`(ctype: `hkUint8`)
     /// - offset: ` 23`(x86)/` 43`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isExtruded"))]
     #[cfg_attr(feature = "serde", serde(rename = "isExtruded"))]
@@ -56,6 +59,7 @@ pub struct hkpTriangleShape<'a> {
     /// - name: `vertexA`(ctype: `hkVector4`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vertexA"))]
     #[cfg_attr(feature = "serde", serde(rename = "vertexA"))]
     pub m_vertexA: Vector4,
@@ -63,6 +67,7 @@ pub struct hkpTriangleShape<'a> {
     /// - name: `vertexB`(ctype: `hkVector4`)
     /// - offset: ` 48`(x86)/` 64`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vertexB"))]
     #[cfg_attr(feature = "serde", serde(rename = "vertexB"))]
     pub m_vertexB: Vector4,
@@ -70,6 +75,7 @@ pub struct hkpTriangleShape<'a> {
     /// - name: `vertexC`(ctype: `hkVector4`)
     /// - offset: ` 64`(x86)/` 80`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vertexC"))]
     #[cfg_attr(feature = "serde", serde(rename = "vertexC"))]
     pub m_vertexC: Vector4,
@@ -77,6 +83,7 @@ pub struct hkpTriangleShape<'a> {
     /// - name: `extrusion`(ctype: `hkVector4`)
     /// - offset: ` 80`(x86)/` 96`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "extrusion"))]
     #[cfg_attr(feature = "serde", serde(rename = "extrusion"))]
     pub m_extrusion: Vector4,

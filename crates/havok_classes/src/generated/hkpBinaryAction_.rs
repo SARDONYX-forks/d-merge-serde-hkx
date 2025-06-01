@@ -33,6 +33,7 @@ pub struct hkpBinaryAction<'a> {
     /// - name: `entityA`(ctype: `struct hkpEntity*`)
     /// - offset: ` 24`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "entityA"))]
     #[cfg_attr(feature = "serde", serde(rename = "entityA"))]
@@ -41,6 +42,7 @@ pub struct hkpBinaryAction<'a> {
     /// - name: `entityB`(ctype: `struct hkpEntity*`)
     /// - offset: ` 28`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "entityB"))]
     #[cfg_attr(feature = "serde", serde(rename = "entityB"))]

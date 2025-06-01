@@ -33,6 +33,7 @@ pub struct hkbRotateCharacterModifier<'a> {
     /// - name: `degreesPerSecond`(ctype: `hkReal`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "degreesPerSecond"))]
     #[cfg_attr(feature = "serde", serde(rename = "degreesPerSecond"))]
     pub m_degreesPerSecond: f32,
@@ -40,6 +41,7 @@ pub struct hkbRotateCharacterModifier<'a> {
     /// - name: `speedMultiplier`(ctype: `hkReal`)
     /// - offset: ` 48`(x86)/` 84`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "speedMultiplier"))]
     #[cfg_attr(feature = "serde", serde(rename = "speedMultiplier"))]
     pub m_speedMultiplier: f32,
@@ -47,6 +49,7 @@ pub struct hkbRotateCharacterModifier<'a> {
     /// - name: `axisOfRotation`(ctype: `hkVector4`)
     /// - offset: ` 64`(x86)/` 96`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "axisOfRotation"))]
     #[cfg_attr(feature = "serde", serde(rename = "axisOfRotation"))]
     pub m_axisOfRotation: Vector4,

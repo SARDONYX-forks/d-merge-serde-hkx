@@ -28,6 +28,7 @@ pub struct hkbKeyframeBonesModifierKeyframeInfo<'a> {
     /// - name: `keyframedPosition`(ctype: `hkVector4`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "keyframedPosition"))]
     #[cfg_attr(feature = "serde", serde(rename = "keyframedPosition"))]
     pub m_keyframedPosition: Vector4,
@@ -35,6 +36,7 @@ pub struct hkbKeyframeBonesModifierKeyframeInfo<'a> {
     /// - name: `keyframedRotation`(ctype: `hkQuaternion`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "keyframedRotation"))]
     #[cfg_attr(feature = "serde", serde(rename = "keyframedRotation"))]
     pub m_keyframedRotation: Quaternion,
@@ -42,6 +44,7 @@ pub struct hkbKeyframeBonesModifierKeyframeInfo<'a> {
     /// - name: `boneIndex`(ctype: `hkInt16`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "boneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "boneIndex"))]
@@ -50,6 +53,7 @@ pub struct hkbKeyframeBonesModifierKeyframeInfo<'a> {
     /// - name: `isValid`(ctype: `hkBool`)
     /// - offset: ` 34`(x86)/` 34`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isValid"))]
     #[cfg_attr(feature = "serde", serde(rename = "isValid"))]
     pub m_isValid: bool,

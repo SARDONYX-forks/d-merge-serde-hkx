@@ -28,6 +28,7 @@ pub struct hkMonitorStreamColorTableColorPair<'a> {
     /// - name: `colorName`(ctype: `hkStringPtr`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "colorName"))]
     #[cfg_attr(feature = "serde", serde(rename = "colorName"))]
@@ -36,6 +37,7 @@ pub struct hkMonitorStreamColorTableColorPair<'a> {
     /// - name: `color`(ctype: `enum ExtendedColors`)
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "color"))]
     #[cfg_attr(feature = "serde", serde(rename = "color"))]
     pub m_color: ExtendedColors,

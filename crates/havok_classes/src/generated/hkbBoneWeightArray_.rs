@@ -33,6 +33,7 @@ pub struct hkbBoneWeightArray<'a> {
     /// - name: `boneWeights`(ctype: `hkArray<hkReal>`)
     /// - offset: ` 28`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "boneWeights"))]
     #[cfg_attr(feature = "serde", serde(rename = "boneWeights"))]
     pub m_boneWeights: Vec<f32>,

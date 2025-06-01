@@ -28,6 +28,7 @@ pub struct hkaSplineCompressedAnimationTrackCompressionParams<'a> {
     /// - name: `rotationTolerance`(ctype: `hkReal`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rotationTolerance"))]
     #[cfg_attr(feature = "serde", serde(rename = "rotationTolerance"))]
     pub m_rotationTolerance: f32,
@@ -35,6 +36,7 @@ pub struct hkaSplineCompressedAnimationTrackCompressionParams<'a> {
     /// - name: `translationTolerance`(ctype: `hkReal`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "translationTolerance"))]
     #[cfg_attr(feature = "serde", serde(rename = "translationTolerance"))]
     pub m_translationTolerance: f32,
@@ -42,6 +44,7 @@ pub struct hkaSplineCompressedAnimationTrackCompressionParams<'a> {
     /// - name: `scaleTolerance`(ctype: `hkReal`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "scaleTolerance"))]
     #[cfg_attr(feature = "serde", serde(rename = "scaleTolerance"))]
     pub m_scaleTolerance: f32,
@@ -49,6 +52,7 @@ pub struct hkaSplineCompressedAnimationTrackCompressionParams<'a> {
     /// - name: `floatingTolerance`(ctype: `hkReal`)
     /// - offset: ` 12`(x86)/` 12`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "floatingTolerance"))]
     #[cfg_attr(feature = "serde", serde(rename = "floatingTolerance"))]
     pub m_floatingTolerance: f32,
@@ -56,6 +60,7 @@ pub struct hkaSplineCompressedAnimationTrackCompressionParams<'a> {
     /// - name: `rotationDegree`(ctype: `hkUint16`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rotationDegree"))]
     #[cfg_attr(feature = "serde", serde(rename = "rotationDegree"))]
@@ -64,6 +69,7 @@ pub struct hkaSplineCompressedAnimationTrackCompressionParams<'a> {
     /// - name: `translationDegree`(ctype: `hkUint16`)
     /// - offset: ` 18`(x86)/` 18`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "translationDegree"))]
     #[cfg_attr(feature = "serde", serde(rename = "translationDegree"))]
@@ -72,6 +78,7 @@ pub struct hkaSplineCompressedAnimationTrackCompressionParams<'a> {
     /// - name: `scaleDegree`(ctype: `hkUint16`)
     /// - offset: ` 20`(x86)/` 20`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "scaleDegree"))]
     #[cfg_attr(feature = "serde", serde(rename = "scaleDegree"))]
@@ -80,6 +87,7 @@ pub struct hkaSplineCompressedAnimationTrackCompressionParams<'a> {
     /// - name: `floatingDegree`(ctype: `hkUint16`)
     /// - offset: ` 22`(x86)/` 22`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "floatingDegree"))]
     #[cfg_attr(feature = "serde", serde(rename = "floatingDegree"))]
@@ -88,6 +96,7 @@ pub struct hkaSplineCompressedAnimationTrackCompressionParams<'a> {
     /// - name: `rotationQuantizationType`(ctype: `enum RotationQuantization`)
     /// - offset: ` 24`(x86)/` 24`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rotationQuantizationType"))]
     #[cfg_attr(feature = "serde", serde(rename = "rotationQuantizationType"))]
     pub m_rotationQuantizationType: RotationQuantization,
@@ -95,6 +104,7 @@ pub struct hkaSplineCompressedAnimationTrackCompressionParams<'a> {
     /// - name: `translationQuantizationType`(ctype: `enum ScalarQuantization`)
     /// - offset: ` 25`(x86)/` 25`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "translationQuantizationType")
@@ -105,6 +115,7 @@ pub struct hkaSplineCompressedAnimationTrackCompressionParams<'a> {
     /// - name: `scaleQuantizationType`(ctype: `enum ScalarQuantization`)
     /// - offset: ` 26`(x86)/` 26`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "scaleQuantizationType"))]
     #[cfg_attr(feature = "serde", serde(rename = "scaleQuantizationType"))]
     pub m_scaleQuantizationType: ScalarQuantization,
@@ -112,6 +123,7 @@ pub struct hkaSplineCompressedAnimationTrackCompressionParams<'a> {
     /// - name: `floatQuantizationType`(ctype: `enum ScalarQuantization`)
     /// - offset: ` 27`(x86)/` 27`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "floatQuantizationType"))]
     #[cfg_attr(feature = "serde", serde(rename = "floatQuantizationType"))]
     pub m_floatQuantizationType: ScalarQuantization,

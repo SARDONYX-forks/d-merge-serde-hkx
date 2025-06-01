@@ -33,6 +33,7 @@ pub struct hkpGroupFilter<'a> {
     /// - name: `nextFreeSystemGroup`(ctype: `hkInt32`)
     /// - offset: ` 48`(x86)/` 72`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nextFreeSystemGroup"))]
     #[cfg_attr(feature = "serde", serde(rename = "nextFreeSystemGroup"))]
@@ -41,6 +42,7 @@ pub struct hkpGroupFilter<'a> {
     /// - name: `collisionLookupTable`(ctype: `hkUint32[32]`)
     /// - offset: ` 52`(x86)/` 76`(x86_64)
     /// - type_size: `128`(x86)/`128`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "collisionLookupTable"))]
     #[cfg_attr(feature = "serde", serde(rename = "collisionLookupTable"))]
@@ -49,6 +51,7 @@ pub struct hkpGroupFilter<'a> {
     /// - name: `pad256`(ctype: `hkVector4[4]`)
     /// - offset: `192`(x86)/`208`(x86_64)
     /// - type_size: ` 64`(x86)/` 64`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pad256"))]
     #[cfg_attr(feature = "serde", serde(rename = "pad256"))]
     pub m_pad256: [Vector4; 4usize],

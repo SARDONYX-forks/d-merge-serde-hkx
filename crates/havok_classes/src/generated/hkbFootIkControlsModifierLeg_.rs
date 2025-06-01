@@ -28,6 +28,7 @@ pub struct hkbFootIkControlsModifierLeg<'a> {
     /// - name: `groundPosition`(ctype: `hkVector4`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "groundPosition"))]
     #[cfg_attr(feature = "serde", serde(rename = "groundPosition"))]
     pub m_groundPosition: Vector4,
@@ -35,6 +36,7 @@ pub struct hkbFootIkControlsModifierLeg<'a> {
     /// - name: `ungroundedEvent`(ctype: `struct hkbEventProperty`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "ungroundedEvent"))]
     #[cfg_attr(feature = "serde", serde(rename = "ungroundedEvent"))]
@@ -43,6 +45,7 @@ pub struct hkbFootIkControlsModifierLeg<'a> {
     /// - name: `verticalError`(ctype: `hkReal`)
     /// - offset: ` 24`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "verticalError"))]
     #[cfg_attr(feature = "serde", serde(rename = "verticalError"))]
     pub m_verticalError: f32,
@@ -50,6 +53,7 @@ pub struct hkbFootIkControlsModifierLeg<'a> {
     /// - name: `hitSomething`(ctype: `hkBool`)
     /// - offset: ` 28`(x86)/` 36`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "hitSomething"))]
     #[cfg_attr(feature = "serde", serde(rename = "hitSomething"))]
     pub m_hitSomething: bool,
@@ -57,6 +61,7 @@ pub struct hkbFootIkControlsModifierLeg<'a> {
     /// - name: `isPlantedMS`(ctype: `hkBool`)
     /// - offset: ` 29`(x86)/` 37`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isPlantedMS"))]
     #[cfg_attr(feature = "serde", serde(rename = "isPlantedMS"))]
     pub m_isPlantedMS: bool,

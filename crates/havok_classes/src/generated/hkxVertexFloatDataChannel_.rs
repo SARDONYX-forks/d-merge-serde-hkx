@@ -33,6 +33,7 @@ pub struct hkxVertexFloatDataChannel<'a> {
     /// - name: `perVertexFloats`(ctype: `hkArray<hkReal>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "perVertexFloats"))]
     #[cfg_attr(feature = "serde", serde(rename = "perVertexFloats"))]
     pub m_perVertexFloats: Vec<f32>,
@@ -40,6 +41,7 @@ pub struct hkxVertexFloatDataChannel<'a> {
     /// - name: `dimensions`(ctype: `enum VertexFloatDimensions`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "dimensions"))]
     #[cfg_attr(feature = "serde", serde(rename = "dimensions"))]
     pub m_dimensions: VertexFloatDimensions,

@@ -28,6 +28,7 @@ pub struct hkaSplineCompressedAnimationAnimationCompressionParams<'a> {
     /// - name: `maxFramesPerBlock`(ctype: `hkUint16`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxFramesPerBlock"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxFramesPerBlock"))]
@@ -36,6 +37,7 @@ pub struct hkaSplineCompressedAnimationAnimationCompressionParams<'a> {
     /// - name: `enableSampleSingleTracks`(ctype: `hkBool`)
     /// - offset: `  2`(x86)/`  2`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "enableSampleSingleTracks"))]
     #[cfg_attr(feature = "serde", serde(rename = "enableSampleSingleTracks"))]
     pub m_enableSampleSingleTracks: bool,

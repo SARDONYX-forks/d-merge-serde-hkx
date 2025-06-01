@@ -33,6 +33,7 @@ pub struct hkpVehicleDefaultBrake<'a> {
     /// - name: `wheelBrakingProperties`(ctype: `hkArray<struct hkpVehicleDefaultBrakeWheelBrakingProperties>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wheelBrakingProperties"))]
     #[cfg_attr(feature = "serde", serde(rename = "wheelBrakingProperties"))]
     pub m_wheelBrakingProperties: Vec<hkpVehicleDefaultBrakeWheelBrakingProperties<'a>>,
@@ -40,6 +41,7 @@ pub struct hkpVehicleDefaultBrake<'a> {
     /// - name: `wheelsMinTimeToBlock`(ctype: `hkReal`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wheelsMinTimeToBlock"))]
     #[cfg_attr(feature = "serde", serde(rename = "wheelsMinTimeToBlock"))]
     pub m_wheelsMinTimeToBlock: f32,

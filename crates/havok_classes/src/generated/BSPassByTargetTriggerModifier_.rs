@@ -33,6 +33,7 @@ pub struct BSPassByTargetTriggerModifier<'a> {
     /// - name: `targetPosition`(ctype: `hkVector4`)
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "targetPosition"))]
     #[cfg_attr(feature = "serde", serde(rename = "targetPosition"))]
     pub m_targetPosition: Vector4,
@@ -40,6 +41,7 @@ pub struct BSPassByTargetTriggerModifier<'a> {
     /// - name: `radius`(ctype: `hkReal`)
     /// - offset: ` 64`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "radius"))]
     #[cfg_attr(feature = "serde", serde(rename = "radius"))]
     pub m_radius: f32,
@@ -47,6 +49,7 @@ pub struct BSPassByTargetTriggerModifier<'a> {
     /// - name: `movementDirection`(ctype: `hkVector4`)
     /// - offset: ` 80`(x86)/`112`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "movementDirection"))]
     #[cfg_attr(feature = "serde", serde(rename = "movementDirection"))]
     pub m_movementDirection: Vector4,
@@ -54,6 +57,7 @@ pub struct BSPassByTargetTriggerModifier<'a> {
     /// - name: `triggerEvent`(ctype: `struct hkbEventProperty`)
     /// - offset: ` 96`(x86)/`128`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "triggerEvent"))]
     #[cfg_attr(feature = "serde", serde(rename = "triggerEvent"))]

@@ -33,6 +33,7 @@ pub struct hkpCapsuleShape<'a> {
     /// - name: `vertexA`(ctype: `hkVector4`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vertexA"))]
     #[cfg_attr(feature = "serde", serde(rename = "vertexA"))]
     pub m_vertexA: Vector4,
@@ -40,6 +41,7 @@ pub struct hkpCapsuleShape<'a> {
     /// - name: `vertexB`(ctype: `hkVector4`)
     /// - offset: ` 48`(x86)/` 64`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vertexB"))]
     #[cfg_attr(feature = "serde", serde(rename = "vertexB"))]
     pub m_vertexB: Vector4,

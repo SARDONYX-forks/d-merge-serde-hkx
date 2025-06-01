@@ -28,6 +28,7 @@ pub struct hkMultipleVertexBufferLockedElement<'a> {
     /// - name: `vertexBufferIndex`(ctype: `hkUint8`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vertexBufferIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "vertexBufferIndex"))]
@@ -36,6 +37,7 @@ pub struct hkMultipleVertexBufferLockedElement<'a> {
     /// - name: `elementIndex`(ctype: `hkUint8`)
     /// - offset: `  1`(x86)/`  1`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "elementIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "elementIndex"))]
@@ -44,6 +46,7 @@ pub struct hkMultipleVertexBufferLockedElement<'a> {
     /// - name: `lockedBufferIndex`(ctype: `hkUint8`)
     /// - offset: `  2`(x86)/`  2`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "lockedBufferIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "lockedBufferIndex"))]
@@ -52,6 +55,7 @@ pub struct hkMultipleVertexBufferLockedElement<'a> {
     /// - name: `vertexFormatIndex`(ctype: `hkUint8`)
     /// - offset: `  3`(x86)/`  3`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vertexFormatIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "vertexFormatIndex"))]
@@ -60,6 +64,7 @@ pub struct hkMultipleVertexBufferLockedElement<'a> {
     /// - name: `lockFlags`(ctype: `hkUint8`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "lockFlags"))]
     #[cfg_attr(feature = "serde", serde(rename = "lockFlags"))]
@@ -68,6 +73,7 @@ pub struct hkMultipleVertexBufferLockedElement<'a> {
     /// - name: `outputBufferIndex`(ctype: `hkUint8`)
     /// - offset: `  5`(x86)/`  5`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "outputBufferIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "outputBufferIndex"))]
@@ -76,6 +82,7 @@ pub struct hkMultipleVertexBufferLockedElement<'a> {
     /// - name: `emulatedIndex`(ctype: `hkInt8`)
     /// - offset: `  6`(x86)/`  6`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "emulatedIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "emulatedIndex"))]

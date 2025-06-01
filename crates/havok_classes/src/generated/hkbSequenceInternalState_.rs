@@ -33,6 +33,7 @@ pub struct hkbSequenceInternalState<'a> {
     /// - name: `nextSampleEvents`(ctype: `hkArray<hkInt32>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nextSampleEvents"))]
     #[cfg_attr(feature = "serde", serde(rename = "nextSampleEvents"))]
@@ -41,6 +42,7 @@ pub struct hkbSequenceInternalState<'a> {
     /// - name: `nextSampleReals`(ctype: `hkArray<hkInt32>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nextSampleReals"))]
     #[cfg_attr(feature = "serde", serde(rename = "nextSampleReals"))]
@@ -49,6 +51,7 @@ pub struct hkbSequenceInternalState<'a> {
     /// - name: `nextSampleBools`(ctype: `hkArray<hkInt32>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nextSampleBools"))]
     #[cfg_attr(feature = "serde", serde(rename = "nextSampleBools"))]
@@ -57,6 +60,7 @@ pub struct hkbSequenceInternalState<'a> {
     /// - name: `nextSampleInts`(ctype: `hkArray<hkInt32>`)
     /// - offset: ` 44`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nextSampleInts"))]
     #[cfg_attr(feature = "serde", serde(rename = "nextSampleInts"))]
@@ -65,6 +69,7 @@ pub struct hkbSequenceInternalState<'a> {
     /// - name: `time`(ctype: `hkReal`)
     /// - offset: ` 56`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "time"))]
     #[cfg_attr(feature = "serde", serde(rename = "time"))]
     pub m_time: f32,
@@ -72,6 +77,7 @@ pub struct hkbSequenceInternalState<'a> {
     /// - name: `isEnabled`(ctype: `hkBool`)
     /// - offset: ` 60`(x86)/` 84`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isEnabled"))]
     #[cfg_attr(feature = "serde", serde(rename = "isEnabled"))]
     pub m_isEnabled: bool,

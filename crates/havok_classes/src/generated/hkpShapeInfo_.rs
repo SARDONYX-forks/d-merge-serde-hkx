@@ -33,6 +33,7 @@ pub struct hkpShapeInfo<'a> {
     /// - name: `shape`(ctype: `struct hkpShape*`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "shape"))]
     #[cfg_attr(feature = "serde", serde(rename = "shape"))]
@@ -41,6 +42,7 @@ pub struct hkpShapeInfo<'a> {
     /// - name: `isHierarchicalCompound`(ctype: `hkBool`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isHierarchicalCompound"))]
     #[cfg_attr(feature = "serde", serde(rename = "isHierarchicalCompound"))]
     pub m_isHierarchicalCompound: bool,
@@ -48,6 +50,7 @@ pub struct hkpShapeInfo<'a> {
     /// - name: `hkdShapesCollected`(ctype: `hkBool`)
     /// - offset: ` 13`(x86)/` 25`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "hkdShapesCollected"))]
     #[cfg_attr(feature = "serde", serde(rename = "hkdShapesCollected"))]
     pub m_hkdShapesCollected: bool,
@@ -55,6 +58,7 @@ pub struct hkpShapeInfo<'a> {
     /// - name: `childShapeNames`(ctype: `hkArray<hkStringPtr>`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "childShapeNames"))]
     #[cfg_attr(feature = "serde", serde(rename = "childShapeNames"))]
@@ -63,6 +67,7 @@ pub struct hkpShapeInfo<'a> {
     /// - name: `childTransforms`(ctype: `hkArray<hkTransform>`)
     /// - offset: ` 28`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "childTransforms"))]
     #[cfg_attr(feature = "serde", serde(rename = "childTransforms"))]
     pub m_childTransforms: Vec<Transform>,
@@ -70,6 +75,7 @@ pub struct hkpShapeInfo<'a> {
     /// - name: `transform`(ctype: `hkTransform`)
     /// - offset: ` 48`(x86)/` 64`(x86_64)
     /// - type_size: ` 64`(x86)/` 64`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transform"))]
     #[cfg_attr(feature = "serde", serde(rename = "transform"))]
     pub m_transform: Transform,

@@ -33,6 +33,7 @@ pub struct hkbAttachmentSetup<'a> {
     /// - name: `blendInTime`(ctype: `hkReal`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "blendInTime"))]
     #[cfg_attr(feature = "serde", serde(rename = "blendInTime"))]
     pub m_blendInTime: f32,
@@ -40,6 +41,7 @@ pub struct hkbAttachmentSetup<'a> {
     /// - name: `moveAttacherFraction`(ctype: `hkReal`)
     /// - offset: ` 12`(x86)/` 20`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "moveAttacherFraction"))]
     #[cfg_attr(feature = "serde", serde(rename = "moveAttacherFraction"))]
     pub m_moveAttacherFraction: f32,
@@ -47,6 +49,7 @@ pub struct hkbAttachmentSetup<'a> {
     /// - name: `gain`(ctype: `hkReal`)
     /// - offset: ` 16`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "gain"))]
     #[cfg_attr(feature = "serde", serde(rename = "gain"))]
     pub m_gain: f32,
@@ -54,6 +57,7 @@ pub struct hkbAttachmentSetup<'a> {
     /// - name: `extrapolationTimeStep`(ctype: `hkReal`)
     /// - offset: ` 20`(x86)/` 28`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "extrapolationTimeStep"))]
     #[cfg_attr(feature = "serde", serde(rename = "extrapolationTimeStep"))]
     pub m_extrapolationTimeStep: f32,
@@ -61,6 +65,7 @@ pub struct hkbAttachmentSetup<'a> {
     /// - name: `fixUpGain`(ctype: `hkReal`)
     /// - offset: ` 24`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fixUpGain"))]
     #[cfg_attr(feature = "serde", serde(rename = "fixUpGain"))]
     pub m_fixUpGain: f32,
@@ -68,6 +73,7 @@ pub struct hkbAttachmentSetup<'a> {
     /// - name: `maxLinearDistance`(ctype: `hkReal`)
     /// - offset: ` 28`(x86)/` 36`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxLinearDistance"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxLinearDistance"))]
     pub m_maxLinearDistance: f32,
@@ -75,6 +81,7 @@ pub struct hkbAttachmentSetup<'a> {
     /// - name: `maxAngularDistance`(ctype: `hkReal`)
     /// - offset: ` 32`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxAngularDistance"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxAngularDistance"))]
     pub m_maxAngularDistance: f32,
@@ -82,6 +89,7 @@ pub struct hkbAttachmentSetup<'a> {
     /// - name: `attachmentType`(ctype: `enum AttachmentType`)
     /// - offset: ` 36`(x86)/` 44`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "attachmentType"))]
     #[cfg_attr(feature = "serde", serde(rename = "attachmentType"))]
     pub m_attachmentType: AttachmentType,

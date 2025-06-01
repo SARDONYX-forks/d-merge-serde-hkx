@@ -33,6 +33,7 @@ pub struct hkbCharacterAddedInfo<'a> {
     /// - name: `characterId`(ctype: `hkUint64`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "characterId"))]
     #[cfg_attr(feature = "serde", serde(rename = "characterId"))]
@@ -41,6 +42,7 @@ pub struct hkbCharacterAddedInfo<'a> {
     /// - name: `instanceName`(ctype: `hkStringPtr`)
     /// - offset: ` 16`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "instanceName"))]
     #[cfg_attr(feature = "serde", serde(rename = "instanceName"))]
@@ -49,6 +51,7 @@ pub struct hkbCharacterAddedInfo<'a> {
     /// - name: `templateName`(ctype: `hkStringPtr`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "templateName"))]
     #[cfg_attr(feature = "serde", serde(rename = "templateName"))]
@@ -57,6 +60,7 @@ pub struct hkbCharacterAddedInfo<'a> {
     /// - name: `fullPathToProject`(ctype: `hkStringPtr`)
     /// - offset: ` 24`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fullPathToProject"))]
     #[cfg_attr(feature = "serde", serde(rename = "fullPathToProject"))]
@@ -65,6 +69,7 @@ pub struct hkbCharacterAddedInfo<'a> {
     /// - name: `skeleton`(ctype: `struct hkaSkeleton*`)
     /// - offset: ` 28`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "skeleton"))]
     #[cfg_attr(feature = "serde", serde(rename = "skeleton"))]
@@ -73,6 +78,7 @@ pub struct hkbCharacterAddedInfo<'a> {
     /// - name: `worldFromModel`(ctype: `hkQsTransform`)
     /// - offset: ` 32`(x86)/` 64`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "worldFromModel"))]
     #[cfg_attr(feature = "serde", serde(rename = "worldFromModel"))]
     pub m_worldFromModel: QsTransform,
@@ -80,6 +86,7 @@ pub struct hkbCharacterAddedInfo<'a> {
     /// - name: `poseModelSpace`(ctype: `hkArray<hkQsTransform>`)
     /// - offset: ` 80`(x86)/`112`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "poseModelSpace"))]
     #[cfg_attr(feature = "serde", serde(rename = "poseModelSpace"))]
     pub m_poseModelSpace: Vec<QsTransform>,

@@ -33,6 +33,7 @@ pub struct hkpSingleShapeContainer<'a> {
     /// - name: `childShape`(ctype: `struct hkpShape*`)
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "childShape"))]
     #[cfg_attr(feature = "serde", serde(rename = "childShape"))]

@@ -34,6 +34,7 @@ pub struct BSBoneSwitchGenerator<'a> {
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pDefaultGenerator"))]
     #[cfg_attr(feature = "serde", serde(rename = "pDefaultGenerator"))]
@@ -42,6 +43,7 @@ pub struct BSBoneSwitchGenerator<'a> {
     /// - name: `ChildrenA`(ctype: `hkArray<BSBoneSwitchGeneratorBoneData*>`)
     /// - offset: ` 52`(x86)/` 88`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "ChildrenA"))]
     #[cfg_attr(feature = "serde", serde(rename = "ChildrenA"))]

@@ -33,6 +33,7 @@ pub struct hkxCamera<'a> {
     /// - name: `from`(ctype: `hkVector4`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "from"))]
     #[cfg_attr(feature = "serde", serde(rename = "from"))]
     pub m_from: Vector4,
@@ -40,6 +41,7 @@ pub struct hkxCamera<'a> {
     /// - name: `focus`(ctype: `hkVector4`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "focus"))]
     #[cfg_attr(feature = "serde", serde(rename = "focus"))]
     pub m_focus: Vector4,
@@ -47,6 +49,7 @@ pub struct hkxCamera<'a> {
     /// - name: `up`(ctype: `hkVector4`)
     /// - offset: ` 48`(x86)/` 48`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "up"))]
     #[cfg_attr(feature = "serde", serde(rename = "up"))]
     pub m_up: Vector4,
@@ -54,6 +57,7 @@ pub struct hkxCamera<'a> {
     /// - name: `fov`(ctype: `hkReal`)
     /// - offset: ` 64`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fov"))]
     #[cfg_attr(feature = "serde", serde(rename = "fov"))]
     pub m_fov: f32,
@@ -61,6 +65,7 @@ pub struct hkxCamera<'a> {
     /// - name: `far`(ctype: `hkReal`)
     /// - offset: ` 68`(x86)/` 68`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "far"))]
     #[cfg_attr(feature = "serde", serde(rename = "far"))]
     pub m_far: f32,
@@ -68,6 +73,7 @@ pub struct hkxCamera<'a> {
     /// - name: `near`(ctype: `hkReal`)
     /// - offset: ` 72`(x86)/` 72`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "near"))]
     #[cfg_attr(feature = "serde", serde(rename = "near"))]
     pub m_near: f32,
@@ -75,6 +81,7 @@ pub struct hkxCamera<'a> {
     /// - name: `leftHanded`(ctype: `hkBool`)
     /// - offset: ` 76`(x86)/` 76`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "leftHanded"))]
     #[cfg_attr(feature = "serde", serde(rename = "leftHanded"))]
     pub m_leftHanded: bool,

@@ -34,6 +34,7 @@ pub struct BSCyclicBlendTransitionGenerator<'a> {
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pBlenderGenerator"))]
     #[cfg_attr(feature = "serde", serde(rename = "pBlenderGenerator"))]
@@ -42,6 +43,7 @@ pub struct BSCyclicBlendTransitionGenerator<'a> {
     /// - name: `EventToFreezeBlendValue`(ctype: `struct hkbEventProperty`)
     /// - offset: ` 52`(x86)/` 88`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "EventToFreezeBlendValue"))]
     #[cfg_attr(feature = "serde", serde(rename = "EventToFreezeBlendValue"))]
@@ -50,6 +52,7 @@ pub struct BSCyclicBlendTransitionGenerator<'a> {
     /// - name: `EventToCrossBlend`(ctype: `struct hkbEventProperty`)
     /// - offset: ` 60`(x86)/`104`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "EventToCrossBlend"))]
     #[cfg_attr(feature = "serde", serde(rename = "EventToCrossBlend"))]
@@ -58,6 +61,7 @@ pub struct BSCyclicBlendTransitionGenerator<'a> {
     /// - name: `fBlendParameter`(ctype: `hkReal`)
     /// - offset: ` 68`(x86)/`120`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fBlendParameter"))]
     #[cfg_attr(feature = "serde", serde(rename = "fBlendParameter"))]
     pub m_fBlendParameter: f32,
@@ -65,6 +69,7 @@ pub struct BSCyclicBlendTransitionGenerator<'a> {
     /// - name: `fTransitionDuration`(ctype: `hkReal`)
     /// - offset: ` 72`(x86)/`124`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fTransitionDuration"))]
     #[cfg_attr(feature = "serde", serde(rename = "fTransitionDuration"))]
     pub m_fTransitionDuration: f32,
@@ -72,6 +77,7 @@ pub struct BSCyclicBlendTransitionGenerator<'a> {
     /// - name: `eBlendCurve`(ctype: `enum BlendCurve`)
     /// - offset: ` 76`(x86)/`128`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "eBlendCurve"))]
     #[cfg_attr(feature = "serde", serde(rename = "eBlendCurve"))]
     pub m_eBlendCurve: BlendCurve,
@@ -80,8 +86,8 @@ pub struct BSCyclicBlendTransitionGenerator<'a> {
     /// - offset: ` 80`(x86)/`144`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `ALIGN_16|SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "pTransitionBlenderGenerator")
@@ -93,8 +99,8 @@ pub struct BSCyclicBlendTransitionGenerator<'a> {
     /// - offset: ` 96`(x86)/`160`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `ALIGN_16|SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pTransitionEffect"))]
     #[cfg_attr(feature = "serde", serde(rename = "pTransitionEffect"))]
     pub m_pTransitionEffect: Pointer<'a>,

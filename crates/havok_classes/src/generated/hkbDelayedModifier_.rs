@@ -33,6 +33,7 @@ pub struct hkbDelayedModifier<'a> {
     /// - name: `delaySeconds`(ctype: `hkReal`)
     /// - offset: ` 48`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "delaySeconds"))]
     #[cfg_attr(feature = "serde", serde(rename = "delaySeconds"))]
     pub m_delaySeconds: f32,
@@ -40,6 +41,7 @@ pub struct hkbDelayedModifier<'a> {
     /// - name: `durationSeconds`(ctype: `hkReal`)
     /// - offset: ` 52`(x86)/` 92`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "durationSeconds"))]
     #[cfg_attr(feature = "serde", serde(rename = "durationSeconds"))]
     pub m_durationSeconds: f32,

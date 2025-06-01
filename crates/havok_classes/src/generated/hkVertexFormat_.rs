@@ -28,6 +28,7 @@ pub struct hkVertexFormat<'a> {
     /// - name: `elements`(ctype: `struct hkVertexFormatElement[32]`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `256`(x86)/`256`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "elements"))]
     #[cfg_attr(feature = "serde", serde(rename = "elements"))]
@@ -36,6 +37,7 @@ pub struct hkVertexFormat<'a> {
     /// - name: `numElements`(ctype: `hkInt32`)
     /// - offset: `256`(x86)/`256`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numElements"))]
     #[cfg_attr(feature = "serde", serde(rename = "numElements"))]

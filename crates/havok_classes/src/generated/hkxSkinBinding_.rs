@@ -33,6 +33,7 @@ pub struct hkxSkinBinding<'a> {
     /// - name: `mesh`(ctype: `struct hkxMesh*`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "mesh"))]
     #[cfg_attr(feature = "serde", serde(rename = "mesh"))]
@@ -41,6 +42,7 @@ pub struct hkxSkinBinding<'a> {
     /// - name: `nodeNames`(ctype: `hkArray<hkStringPtr>`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nodeNames"))]
     #[cfg_attr(feature = "serde", serde(rename = "nodeNames"))]
@@ -49,6 +51,7 @@ pub struct hkxSkinBinding<'a> {
     /// - name: `bindPose`(ctype: `hkArray<hkMatrix4>`)
     /// - offset: ` 24`(x86)/` 40`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bindPose"))]
     #[cfg_attr(feature = "serde", serde(rename = "bindPose"))]
     pub m_bindPose: Vec<Matrix4>,
@@ -56,6 +59,7 @@ pub struct hkxSkinBinding<'a> {
     /// - name: `initSkinTransform`(ctype: `hkMatrix4`)
     /// - offset: ` 48`(x86)/` 64`(x86_64)
     /// - type_size: ` 64`(x86)/` 64`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "initSkinTransform"))]
     #[cfg_attr(feature = "serde", serde(rename = "initSkinTransform"))]
     pub m_initSkinTransform: Matrix4,

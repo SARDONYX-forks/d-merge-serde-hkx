@@ -33,6 +33,7 @@ pub struct hkbVariableValueSet<'a> {
     /// - name: `wordVariableValues`(ctype: `hkArray<struct hkbVariableValue>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wordVariableValues"))]
     #[cfg_attr(feature = "serde", serde(rename = "wordVariableValues"))]
@@ -41,6 +42,7 @@ pub struct hkbVariableValueSet<'a> {
     /// - name: `quadVariableValues`(ctype: `hkArray<hkVector4>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "quadVariableValues"))]
     #[cfg_attr(feature = "serde", serde(rename = "quadVariableValues"))]
     pub m_quadVariableValues: Vec<Vector4>,
@@ -48,6 +50,7 @@ pub struct hkbVariableValueSet<'a> {
     /// - name: `variantVariableValues`(ctype: `hkArray<hkReferencedObject*>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "variantVariableValues"))]
     #[cfg_attr(feature = "serde", serde(rename = "variantVariableValues"))]

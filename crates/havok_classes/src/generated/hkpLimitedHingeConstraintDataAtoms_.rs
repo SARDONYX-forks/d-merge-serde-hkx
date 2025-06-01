@@ -28,6 +28,7 @@ pub struct hkpLimitedHingeConstraintDataAtoms<'a> {
     /// - name: `transforms`(ctype: `struct hkpSetLocalTransformsConstraintAtom`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `144`(x86)/`144`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transforms"))]
     #[cfg_attr(feature = "serde", serde(rename = "transforms"))]
@@ -36,6 +37,7 @@ pub struct hkpLimitedHingeConstraintDataAtoms<'a> {
     /// - name: `setupStabilization`(ctype: `struct hkpSetupStabilizationAtom`)
     /// - offset: `144`(x86)/`144`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "setupStabilization"))]
     #[cfg_attr(feature = "serde", serde(rename = "setupStabilization"))]
@@ -44,6 +46,7 @@ pub struct hkpLimitedHingeConstraintDataAtoms<'a> {
     /// - name: `angMotor`(ctype: `struct hkpAngMotorConstraintAtom`)
     /// - offset: `160`(x86)/`160`(x86_64)
     /// - type_size: ` 20`(x86)/` 24`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "angMotor"))]
     #[cfg_attr(feature = "serde", serde(rename = "angMotor"))]
@@ -52,6 +55,7 @@ pub struct hkpLimitedHingeConstraintDataAtoms<'a> {
     /// - name: `angFriction`(ctype: `struct hkpAngFrictionConstraintAtom`)
     /// - offset: `180`(x86)/`184`(x86_64)
     /// - type_size: ` 12`(x86)/` 12`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "angFriction"))]
     #[cfg_attr(feature = "serde", serde(rename = "angFriction"))]
@@ -60,6 +64,7 @@ pub struct hkpLimitedHingeConstraintDataAtoms<'a> {
     /// - name: `angLimit`(ctype: `struct hkpAngLimitConstraintAtom`)
     /// - offset: `192`(x86)/`196`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "angLimit"))]
     #[cfg_attr(feature = "serde", serde(rename = "angLimit"))]
@@ -68,6 +73,7 @@ pub struct hkpLimitedHingeConstraintDataAtoms<'a> {
     /// - name: `2dAng`(ctype: `struct hkp2dAngConstraintAtom`)
     /// - offset: `208`(x86)/`212`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "2dAng"))]
     #[cfg_attr(feature = "serde", serde(rename = "2dAng"))]
@@ -76,6 +82,7 @@ pub struct hkpLimitedHingeConstraintDataAtoms<'a> {
     /// - name: `ballSocket`(ctype: `struct hkpBallSocketConstraintAtom`)
     /// - offset: `212`(x86)/`216`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "ballSocket"))]
     #[cfg_attr(feature = "serde", serde(rename = "ballSocket"))]

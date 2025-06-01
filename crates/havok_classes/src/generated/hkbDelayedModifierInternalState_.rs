@@ -33,6 +33,7 @@ pub struct hkbDelayedModifierInternalState<'a> {
     /// - name: `secondsElapsed`(ctype: `hkReal`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "secondsElapsed"))]
     #[cfg_attr(feature = "serde", serde(rename = "secondsElapsed"))]
     pub m_secondsElapsed: f32,
@@ -40,6 +41,7 @@ pub struct hkbDelayedModifierInternalState<'a> {
     /// - name: `isActive`(ctype: `hkBool`)
     /// - offset: ` 12`(x86)/` 20`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isActive"))]
     #[cfg_attr(feature = "serde", serde(rename = "isActive"))]
     pub m_isActive: bool,

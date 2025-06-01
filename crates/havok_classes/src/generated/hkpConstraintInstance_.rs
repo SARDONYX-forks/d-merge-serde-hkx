@@ -34,8 +34,8 @@ pub struct hkpConstraintInstance<'a> {
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "owner"))]
     #[cfg_attr(feature = "serde", serde(rename = "owner"))]
     pub m_owner: Pointer<'a>,
@@ -43,6 +43,7 @@ pub struct hkpConstraintInstance<'a> {
     /// - name: `data`(ctype: `struct hkpConstraintData*`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "data"))]
     #[cfg_attr(feature = "serde", serde(rename = "data"))]
@@ -51,6 +52,7 @@ pub struct hkpConstraintInstance<'a> {
     /// - name: `constraintModifiers`(ctype: `struct hkpModifierConstraintAtom*`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "constraintModifiers"))]
     #[cfg_attr(feature = "serde", serde(rename = "constraintModifiers"))]
@@ -59,6 +61,7 @@ pub struct hkpConstraintInstance<'a> {
     /// - name: `entities`(ctype: `struct hkpEntity*`)
     /// - offset: ` 20`(x86)/` 40`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "entities"))]
     #[cfg_attr(feature = "serde", serde(rename = "entities"))]
@@ -67,6 +70,7 @@ pub struct hkpConstraintInstance<'a> {
     /// - name: `priority`(ctype: `enum ConstraintPriority`)
     /// - offset: ` 28`(x86)/` 56`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "priority"))]
     #[cfg_attr(feature = "serde", serde(rename = "priority"))]
     pub m_priority: ConstraintPriority,
@@ -74,6 +78,7 @@ pub struct hkpConstraintInstance<'a> {
     /// - name: `wantRuntime`(ctype: `hkBool`)
     /// - offset: ` 29`(x86)/` 57`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wantRuntime"))]
     #[cfg_attr(feature = "serde", serde(rename = "wantRuntime"))]
     pub m_wantRuntime: bool,
@@ -81,6 +86,7 @@ pub struct hkpConstraintInstance<'a> {
     /// - name: `destructionRemapInfo`(ctype: `enum OnDestructionRemapInfo`)
     /// - offset: ` 30`(x86)/` 58`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "destructionRemapInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "destructionRemapInfo"))]
     pub m_destructionRemapInfo: OnDestructionRemapInfo,
@@ -89,8 +95,8 @@ pub struct hkpConstraintInstance<'a> {
     /// - offset: ` 32`(x86)/` 64`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "listeners"))]
     #[cfg_attr(feature = "serde", serde(rename = "listeners"))]
     pub m_listeners: hkpConstraintInstanceSmallArraySerializeOverrideType<'a>,
@@ -98,6 +104,7 @@ pub struct hkpConstraintInstance<'a> {
     /// - name: `name`(ctype: `hkStringPtr`)
     /// - offset: ` 40`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "name"))]
     #[cfg_attr(feature = "serde", serde(rename = "name"))]
@@ -106,6 +113,7 @@ pub struct hkpConstraintInstance<'a> {
     /// - name: `userData`(ctype: `hkUlong`)
     /// - offset: ` 44`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "userData"))]
     #[cfg_attr(feature = "serde", serde(rename = "userData"))]
     pub m_userData: Ulong,
@@ -114,8 +122,8 @@ pub struct hkpConstraintInstance<'a> {
     /// - offset: ` 48`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "internal"))]
     #[cfg_attr(feature = "serde", serde(rename = "internal"))]
     pub m_internal: Pointer<'a>,
@@ -124,8 +132,8 @@ pub struct hkpConstraintInstance<'a> {
     /// - offset: ` 52`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "uid"))]
     #[cfg_attr(feature = "serde", serde(rename = "uid"))]
     pub m_uid: U32<'a>,

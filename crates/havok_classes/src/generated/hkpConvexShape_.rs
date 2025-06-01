@@ -33,6 +33,7 @@ pub struct hkpConvexShape<'a> {
     /// - name: `radius`(ctype: `hkReal`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "radius"))]
     #[cfg_attr(feature = "serde", serde(rename = "radius"))]
     pub m_radius: f32,

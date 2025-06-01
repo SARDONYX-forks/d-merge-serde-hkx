@@ -28,6 +28,7 @@ pub struct hkbFootIkModifierInternalLegData<'a> {
     /// - name: `groundPosition`(ctype: `hkVector4`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "groundPosition"))]
     #[cfg_attr(feature = "serde", serde(rename = "groundPosition"))]
     pub m_groundPosition: Vector4,
@@ -36,8 +37,8 @@ pub struct hkbFootIkModifierInternalLegData<'a> {
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "footIkSolver"))]
     #[cfg_attr(feature = "serde", serde(rename = "footIkSolver"))]
     pub m_footIkSolver: Pointer<'a>,

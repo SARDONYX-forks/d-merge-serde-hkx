@@ -33,6 +33,7 @@ pub struct hkaInterleavedUncompressedAnimation<'a> {
     /// - name: `transforms`(ctype: `hkArray<hkQsTransform>`)
     /// - offset: ` 40`(x86)/` 56`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transforms"))]
     #[cfg_attr(feature = "serde", serde(rename = "transforms"))]
     pub m_transforms: Vec<QsTransform>,
@@ -40,6 +41,7 @@ pub struct hkaInterleavedUncompressedAnimation<'a> {
     /// - name: `floats`(ctype: `hkArray<hkReal>`)
     /// - offset: ` 52`(x86)/` 72`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "floats"))]
     #[cfg_attr(feature = "serde", serde(rename = "floats"))]
     pub m_floats: Vec<f32>,

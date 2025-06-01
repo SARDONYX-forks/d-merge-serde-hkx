@@ -33,6 +33,7 @@ pub struct hkpGenericConstraintData<'a> {
     /// - name: `atoms`(ctype: `struct hkpBridgeAtoms`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: ` 12`(x86)/` 24`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "atoms"))]
     #[cfg_attr(feature = "serde", serde(rename = "atoms"))]
@@ -41,6 +42,7 @@ pub struct hkpGenericConstraintData<'a> {
     /// - name: `scheme`(ctype: `struct hkpGenericConstraintDataScheme`)
     /// - offset: ` 24`(x86)/` 48`(x86_64)
     /// - type_size: ` 64`(x86)/` 80`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "scheme"))]
     #[cfg_attr(feature = "serde", serde(rename = "scheme"))]

@@ -33,6 +33,7 @@ pub struct hkpCharacterRigidBodyCinfo<'a> {
     /// - name: `collisionFilterInfo`(ctype: `hkUint32`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "collisionFilterInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "collisionFilterInfo"))]
@@ -41,6 +42,7 @@ pub struct hkpCharacterRigidBodyCinfo<'a> {
     /// - name: `shape`(ctype: `struct hkpShape*`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "shape"))]
     #[cfg_attr(feature = "serde", serde(rename = "shape"))]
@@ -49,6 +51,7 @@ pub struct hkpCharacterRigidBodyCinfo<'a> {
     /// - name: `position`(ctype: `hkVector4`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "position"))]
     #[cfg_attr(feature = "serde", serde(rename = "position"))]
     pub m_position: Vector4,
@@ -56,6 +59,7 @@ pub struct hkpCharacterRigidBodyCinfo<'a> {
     /// - name: `rotation`(ctype: `hkQuaternion`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rotation"))]
     #[cfg_attr(feature = "serde", serde(rename = "rotation"))]
     pub m_rotation: Quaternion,
@@ -63,6 +67,7 @@ pub struct hkpCharacterRigidBodyCinfo<'a> {
     /// - name: `mass`(ctype: `hkReal`)
     /// - offset: ` 48`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "mass"))]
     #[cfg_attr(feature = "serde", serde(rename = "mass"))]
     pub m_mass: f32,
@@ -70,6 +75,7 @@ pub struct hkpCharacterRigidBodyCinfo<'a> {
     /// - name: `friction`(ctype: `hkReal`)
     /// - offset: ` 52`(x86)/` 68`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "friction"))]
     #[cfg_attr(feature = "serde", serde(rename = "friction"))]
     pub m_friction: f32,
@@ -77,6 +83,7 @@ pub struct hkpCharacterRigidBodyCinfo<'a> {
     /// - name: `maxLinearVelocity`(ctype: `hkReal`)
     /// - offset: ` 56`(x86)/` 72`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxLinearVelocity"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxLinearVelocity"))]
     pub m_maxLinearVelocity: f32,
@@ -84,6 +91,7 @@ pub struct hkpCharacterRigidBodyCinfo<'a> {
     /// - name: `allowedPenetrationDepth`(ctype: `hkReal`)
     /// - offset: ` 60`(x86)/` 76`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "allowedPenetrationDepth"))]
     #[cfg_attr(feature = "serde", serde(rename = "allowedPenetrationDepth"))]
     pub m_allowedPenetrationDepth: f32,
@@ -91,6 +99,7 @@ pub struct hkpCharacterRigidBodyCinfo<'a> {
     /// - name: `up`(ctype: `hkVector4`)
     /// - offset: ` 64`(x86)/` 80`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "up"))]
     #[cfg_attr(feature = "serde", serde(rename = "up"))]
     pub m_up: Vector4,
@@ -98,6 +107,7 @@ pub struct hkpCharacterRigidBodyCinfo<'a> {
     /// - name: `maxSlope`(ctype: `hkReal`)
     /// - offset: ` 80`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxSlope"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxSlope"))]
     pub m_maxSlope: f32,
@@ -105,6 +115,7 @@ pub struct hkpCharacterRigidBodyCinfo<'a> {
     /// - name: `maxForce`(ctype: `hkReal`)
     /// - offset: ` 84`(x86)/`100`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxForce"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxForce"))]
     pub m_maxForce: f32,
@@ -112,6 +123,7 @@ pub struct hkpCharacterRigidBodyCinfo<'a> {
     /// - name: `unweldingHeightOffsetFactor`(ctype: `hkReal`)
     /// - offset: ` 88`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "unweldingHeightOffsetFactor")
@@ -122,6 +134,7 @@ pub struct hkpCharacterRigidBodyCinfo<'a> {
     /// - name: `maxSpeedForSimplexSolver`(ctype: `hkReal`)
     /// - offset: ` 92`(x86)/`108`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxSpeedForSimplexSolver"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxSpeedForSimplexSolver"))]
     pub m_maxSpeedForSimplexSolver: f32,
@@ -129,6 +142,7 @@ pub struct hkpCharacterRigidBodyCinfo<'a> {
     /// - name: `supportDistance`(ctype: `hkReal`)
     /// - offset: ` 96`(x86)/`112`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "supportDistance"))]
     #[cfg_attr(feature = "serde", serde(rename = "supportDistance"))]
     pub m_supportDistance: f32,
@@ -136,6 +150,7 @@ pub struct hkpCharacterRigidBodyCinfo<'a> {
     /// - name: `hardSupportDistance`(ctype: `hkReal`)
     /// - offset: `100`(x86)/`116`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "hardSupportDistance"))]
     #[cfg_attr(feature = "serde", serde(rename = "hardSupportDistance"))]
     pub m_hardSupportDistance: f32,
@@ -143,6 +158,7 @@ pub struct hkpCharacterRigidBodyCinfo<'a> {
     /// - name: `vdbColor`(ctype: `hkInt32`)
     /// - offset: `104`(x86)/`120`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vdbColor"))]
     #[cfg_attr(feature = "serde", serde(rename = "vdbColor"))]

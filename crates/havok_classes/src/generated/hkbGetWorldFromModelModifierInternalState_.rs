@@ -33,6 +33,7 @@ pub struct hkbGetWorldFromModelModifierInternalState<'a> {
     /// - name: `translationOut`(ctype: `hkVector4`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "translationOut"))]
     #[cfg_attr(feature = "serde", serde(rename = "translationOut"))]
     pub m_translationOut: Vector4,
@@ -40,6 +41,7 @@ pub struct hkbGetWorldFromModelModifierInternalState<'a> {
     /// - name: `rotationOut`(ctype: `hkQuaternion`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rotationOut"))]
     #[cfg_attr(feature = "serde", serde(rename = "rotationOut"))]
     pub m_rotationOut: Quaternion,

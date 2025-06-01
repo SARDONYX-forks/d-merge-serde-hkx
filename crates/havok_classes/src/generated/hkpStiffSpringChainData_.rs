@@ -33,6 +33,7 @@ pub struct hkpStiffSpringChainData<'a> {
     /// - name: `atoms`(ctype: `struct hkpBridgeAtoms`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: ` 12`(x86)/` 24`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "atoms"))]
     #[cfg_attr(feature = "serde", serde(rename = "atoms"))]
@@ -41,6 +42,7 @@ pub struct hkpStiffSpringChainData<'a> {
     /// - name: `infos`(ctype: `hkArray<struct hkpStiffSpringChainDataConstraintInfo>`)
     /// - offset: ` 24`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "infos"))]
     #[cfg_attr(feature = "serde", serde(rename = "infos"))]
     pub m_infos: Vec<hkpStiffSpringChainDataConstraintInfo<'a>>,
@@ -48,6 +50,7 @@ pub struct hkpStiffSpringChainData<'a> {
     /// - name: `tau`(ctype: `hkReal`)
     /// - offset: ` 36`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "tau"))]
     #[cfg_attr(feature = "serde", serde(rename = "tau"))]
     pub m_tau: f32,
@@ -55,6 +58,7 @@ pub struct hkpStiffSpringChainData<'a> {
     /// - name: `damping`(ctype: `hkReal`)
     /// - offset: ` 40`(x86)/` 68`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "damping"))]
     #[cfg_attr(feature = "serde", serde(rename = "damping"))]
     pub m_damping: f32,
@@ -62,6 +66,7 @@ pub struct hkpStiffSpringChainData<'a> {
     /// - name: `cfm`(ctype: `hkReal`)
     /// - offset: ` 44`(x86)/` 72`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "cfm"))]
     #[cfg_attr(feature = "serde", serde(rename = "cfm"))]
     pub m_cfm: f32,

@@ -28,6 +28,7 @@ pub struct hkpPoweredChainDataConstraintInfo<'a> {
     /// - name: `pivotInA`(ctype: `hkVector4`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pivotInA"))]
     #[cfg_attr(feature = "serde", serde(rename = "pivotInA"))]
     pub m_pivotInA: Vector4,
@@ -35,6 +36,7 @@ pub struct hkpPoweredChainDataConstraintInfo<'a> {
     /// - name: `pivotInB`(ctype: `hkVector4`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pivotInB"))]
     #[cfg_attr(feature = "serde", serde(rename = "pivotInB"))]
     pub m_pivotInB: Vector4,
@@ -42,6 +44,7 @@ pub struct hkpPoweredChainDataConstraintInfo<'a> {
     /// - name: `aTc`(ctype: `hkQuaternion`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "aTc"))]
     #[cfg_attr(feature = "serde", serde(rename = "aTc"))]
     pub m_aTc: Quaternion,
@@ -49,6 +52,7 @@ pub struct hkpPoweredChainDataConstraintInfo<'a> {
     /// - name: `bTc`(ctype: `hkQuaternion`)
     /// - offset: ` 48`(x86)/` 48`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bTc"))]
     #[cfg_attr(feature = "serde", serde(rename = "bTc"))]
     pub m_bTc: Quaternion,
@@ -56,6 +60,7 @@ pub struct hkpPoweredChainDataConstraintInfo<'a> {
     /// - name: `motors`(ctype: `struct hkpConstraintMotor*`)
     /// - offset: ` 64`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 24`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "motors"))]
     #[cfg_attr(feature = "serde", serde(rename = "motors"))]
@@ -64,6 +69,7 @@ pub struct hkpPoweredChainDataConstraintInfo<'a> {
     /// - name: `switchBodies`(ctype: `hkBool`)
     /// - offset: ` 76`(x86)/` 88`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "switchBodies"))]
     #[cfg_attr(feature = "serde", serde(rename = "switchBodies"))]
     pub m_switchBodies: bool,

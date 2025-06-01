@@ -33,6 +33,7 @@ pub struct hkbStateMachine<'a> {
     /// - name: `eventToSendWhenStateOrTransitionChanges`(ctype: `struct hkbEvent`)
     /// - offset: ` 40`(x86)/` 72`(x86_64)
     /// - type_size: ` 12`(x86)/` 24`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
@@ -47,6 +48,7 @@ pub struct hkbStateMachine<'a> {
     /// - name: `startStateChooser`(ctype: `struct hkbStateChooser*`)
     /// - offset: ` 52`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "startStateChooser"))]
     #[cfg_attr(feature = "serde", serde(rename = "startStateChooser"))]
@@ -55,6 +57,7 @@ pub struct hkbStateMachine<'a> {
     /// - name: `startStateId`(ctype: `hkInt32`)
     /// - offset: ` 56`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "startStateId"))]
     #[cfg_attr(feature = "serde", serde(rename = "startStateId"))]
@@ -63,6 +66,7 @@ pub struct hkbStateMachine<'a> {
     /// - name: `returnToPreviousStateEventId`(ctype: `hkInt32`)
     /// - offset: ` 60`(x86)/`108`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
@@ -74,6 +78,7 @@ pub struct hkbStateMachine<'a> {
     /// - name: `randomTransitionEventId`(ctype: `hkInt32`)
     /// - offset: ` 64`(x86)/`112`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "randomTransitionEventId"))]
     #[cfg_attr(feature = "serde", serde(rename = "randomTransitionEventId"))]
@@ -82,6 +87,7 @@ pub struct hkbStateMachine<'a> {
     /// - name: `transitionToNextHigherStateEventId`(ctype: `hkInt32`)
     /// - offset: ` 68`(x86)/`116`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
@@ -93,6 +99,7 @@ pub struct hkbStateMachine<'a> {
     /// - name: `transitionToNextLowerStateEventId`(ctype: `hkInt32`)
     /// - offset: ` 72`(x86)/`120`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
@@ -104,6 +111,7 @@ pub struct hkbStateMachine<'a> {
     /// - name: `syncVariableIndex`(ctype: `hkInt32`)
     /// - offset: ` 76`(x86)/`124`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "syncVariableIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "syncVariableIndex"))]
@@ -113,8 +121,8 @@ pub struct hkbStateMachine<'a> {
     /// - offset: ` 80`(x86)/`128`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "currentStateId"))]
     #[cfg_attr(feature = "serde", serde(rename = "currentStateId"))]
     pub m_currentStateId: I32<'a>,
@@ -122,6 +130,7 @@ pub struct hkbStateMachine<'a> {
     /// - name: `wrapAroundStateId`(ctype: `hkBool`)
     /// - offset: ` 84`(x86)/`132`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wrapAroundStateId"))]
     #[cfg_attr(feature = "serde", serde(rename = "wrapAroundStateId"))]
     pub m_wrapAroundStateId: bool,
@@ -129,6 +138,7 @@ pub struct hkbStateMachine<'a> {
     /// - name: `maxSimultaneousTransitions`(ctype: `hkInt8`)
     /// - offset: ` 85`(x86)/`133`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxSimultaneousTransitions"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxSimultaneousTransitions"))]
@@ -137,6 +147,7 @@ pub struct hkbStateMachine<'a> {
     /// - name: `startStateMode`(ctype: `enum StartStateMode`)
     /// - offset: ` 86`(x86)/`134`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "startStateMode"))]
     #[cfg_attr(feature = "serde", serde(rename = "startStateMode"))]
     pub m_startStateMode: StartStateMode,
@@ -144,6 +155,7 @@ pub struct hkbStateMachine<'a> {
     /// - name: `selfTransitionMode`(ctype: `enum StateMachineSelfTransitionMode`)
     /// - offset: ` 87`(x86)/`135`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "selfTransitionMode"))]
     #[cfg_attr(feature = "serde", serde(rename = "selfTransitionMode"))]
     pub m_selfTransitionMode: StateMachineSelfTransitionMode,
@@ -160,6 +172,7 @@ pub struct hkbStateMachine<'a> {
     /// - name: `states`(ctype: `hkArray<hkbStateMachineStateInfo*>`)
     /// - offset: ` 92`(x86)/`144`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "states"))]
     #[cfg_attr(feature = "serde", serde(rename = "states"))]
@@ -168,6 +181,7 @@ pub struct hkbStateMachine<'a> {
     /// - name: `wildcardTransitions`(ctype: `struct hkbStateMachineTransitionInfoArray*`)
     /// - offset: `104`(x86)/`160`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wildcardTransitions"))]
     #[cfg_attr(feature = "serde", serde(rename = "wildcardTransitions"))]
@@ -177,8 +191,8 @@ pub struct hkbStateMachine<'a> {
     /// - offset: `108`(x86)/`168`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "stateIdToIndexMap"))]
     #[cfg_attr(feature = "serde", serde(rename = "stateIdToIndexMap"))]
     pub m_stateIdToIndexMap: Pointer<'a>,
@@ -241,8 +255,8 @@ pub struct hkbStateMachine<'a> {
     /// - offset: `168`(x86)/`248`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "previousStateId"))]
     #[cfg_attr(feature = "serde", serde(rename = "previousStateId"))]
     pub m_previousStateId: I32<'a>,
@@ -251,8 +265,8 @@ pub struct hkbStateMachine<'a> {
     /// - offset: `172`(x86)/`252`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "nextStartStateIndexOverride")
@@ -282,8 +296,8 @@ pub struct hkbStateMachine<'a> {
     /// - offset: `178`(x86)/`258`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "sCurrentStateIndexAndEntered")

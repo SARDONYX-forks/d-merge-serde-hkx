@@ -33,6 +33,7 @@ pub struct hkbSetWordVariableCommand<'a> {
     /// - name: `quadValue`(ctype: `hkVector4`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "quadValue"))]
     #[cfg_attr(feature = "serde", serde(rename = "quadValue"))]
     pub m_quadValue: Vector4,
@@ -40,6 +41,7 @@ pub struct hkbSetWordVariableCommand<'a> {
     /// - name: `characterId`(ctype: `hkUint64`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "characterId"))]
     #[cfg_attr(feature = "serde", serde(rename = "characterId"))]
@@ -48,6 +50,7 @@ pub struct hkbSetWordVariableCommand<'a> {
     /// - name: `variableId`(ctype: `hkInt32`)
     /// - offset: ` 40`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "variableId"))]
     #[cfg_attr(feature = "serde", serde(rename = "variableId"))]
@@ -56,6 +59,7 @@ pub struct hkbSetWordVariableCommand<'a> {
     /// - name: `value`(ctype: `struct hkbVariableValue`)
     /// - offset: ` 44`(x86)/` 44`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "value"))]
     #[cfg_attr(feature = "serde", serde(rename = "value"))]
@@ -64,6 +68,7 @@ pub struct hkbSetWordVariableCommand<'a> {
     /// - name: `type`(ctype: `enum VariableType`)
     /// - offset: ` 48`(x86)/` 48`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "type"))]
     #[cfg_attr(feature = "serde", serde(rename = "type"))]
     pub m_type: VariableType,
@@ -71,6 +76,7 @@ pub struct hkbSetWordVariableCommand<'a> {
     /// - name: `global`(ctype: `hkBool`)
     /// - offset: ` 49`(x86)/` 49`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "global"))]
     #[cfg_attr(feature = "serde", serde(rename = "global"))]
     pub m_global: bool,

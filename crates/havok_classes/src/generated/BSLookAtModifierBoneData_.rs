@@ -28,6 +28,7 @@ pub struct BSLookAtModifierBoneData<'a> {
     /// - name: `index`(ctype: `hkInt16`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "index"))]
     #[cfg_attr(feature = "serde", serde(rename = "index"))]
@@ -36,6 +37,7 @@ pub struct BSLookAtModifierBoneData<'a> {
     /// - name: `fwdAxisLS`(ctype: `hkVector4`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fwdAxisLS"))]
     #[cfg_attr(feature = "serde", serde(rename = "fwdAxisLS"))]
     pub m_fwdAxisLS: Vector4,
@@ -43,6 +45,7 @@ pub struct BSLookAtModifierBoneData<'a> {
     /// - name: `limitAngleDegrees`(ctype: `hkReal`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "limitAngleDegrees"))]
     #[cfg_attr(feature = "serde", serde(rename = "limitAngleDegrees"))]
     pub m_limitAngleDegrees: f32,
@@ -50,6 +53,7 @@ pub struct BSLookAtModifierBoneData<'a> {
     /// - name: `onGain`(ctype: `hkReal`)
     /// - offset: ` 36`(x86)/` 36`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "onGain"))]
     #[cfg_attr(feature = "serde", serde(rename = "onGain"))]
     pub m_onGain: f32,
@@ -57,6 +61,7 @@ pub struct BSLookAtModifierBoneData<'a> {
     /// - name: `offGain`(ctype: `hkReal`)
     /// - offset: ` 40`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "offGain"))]
     #[cfg_attr(feature = "serde", serde(rename = "offGain"))]
     pub m_offGain: f32,
@@ -64,6 +69,7 @@ pub struct BSLookAtModifierBoneData<'a> {
     /// - name: `enabled`(ctype: `hkBool`)
     /// - offset: ` 44`(x86)/` 44`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "enabled"))]
     #[cfg_attr(feature = "serde", serde(rename = "enabled"))]
     pub m_enabled: bool,

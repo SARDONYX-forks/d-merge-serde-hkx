@@ -33,6 +33,7 @@ pub struct hkpSetLocalTransformsConstraintAtom<'a> {
     /// - name: `transformA`(ctype: `hkTransform`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 64`(x86)/` 64`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transformA"))]
     #[cfg_attr(feature = "serde", serde(rename = "transformA"))]
     pub m_transformA: Transform,
@@ -40,6 +41,7 @@ pub struct hkpSetLocalTransformsConstraintAtom<'a> {
     /// - name: `transformB`(ctype: `hkTransform`)
     /// - offset: ` 80`(x86)/` 80`(x86_64)
     /// - type_size: ` 64`(x86)/` 64`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transformB"))]
     #[cfg_attr(feature = "serde", serde(rename = "transformB"))]
     pub m_transformB: Transform,

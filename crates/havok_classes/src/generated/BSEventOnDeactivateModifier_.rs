@@ -33,6 +33,7 @@ pub struct BSEventOnDeactivateModifier<'a> {
     /// - name: `event`(ctype: `struct hkbEventProperty`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "event"))]
     #[cfg_attr(feature = "serde", serde(rename = "event"))]

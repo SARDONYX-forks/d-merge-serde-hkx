@@ -33,6 +33,7 @@ pub struct hkpPulleyConstraintAtom<'a> {
     /// - name: `fixedPivotAinWorld`(ctype: `hkVector4`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fixedPivotAinWorld"))]
     #[cfg_attr(feature = "serde", serde(rename = "fixedPivotAinWorld"))]
     pub m_fixedPivotAinWorld: Vector4,
@@ -40,6 +41,7 @@ pub struct hkpPulleyConstraintAtom<'a> {
     /// - name: `fixedPivotBinWorld`(ctype: `hkVector4`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fixedPivotBinWorld"))]
     #[cfg_attr(feature = "serde", serde(rename = "fixedPivotBinWorld"))]
     pub m_fixedPivotBinWorld: Vector4,
@@ -47,6 +49,7 @@ pub struct hkpPulleyConstraintAtom<'a> {
     /// - name: `ropeLength`(ctype: `hkReal`)
     /// - offset: ` 48`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "ropeLength"))]
     #[cfg_attr(feature = "serde", serde(rename = "ropeLength"))]
     pub m_ropeLength: f32,
@@ -54,6 +57,7 @@ pub struct hkpPulleyConstraintAtom<'a> {
     /// - name: `leverageOnBodyB`(ctype: `hkReal`)
     /// - offset: ` 52`(x86)/` 52`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "leverageOnBodyB"))]
     #[cfg_attr(feature = "serde", serde(rename = "leverageOnBodyB"))]
     pub m_leverageOnBodyB: f32,

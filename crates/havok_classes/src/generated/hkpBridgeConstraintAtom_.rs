@@ -34,8 +34,8 @@ pub struct hkpBridgeConstraintAtom<'a> {
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "buildJacobianFunc"))]
     #[cfg_attr(feature = "serde", serde(rename = "buildJacobianFunc"))]
     pub m_buildJacobianFunc: Pointer<'a>,
@@ -44,6 +44,7 @@ pub struct hkpBridgeConstraintAtom<'a> {
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `NOT_OWNED`
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "constraintData"))]
     #[cfg_attr(feature = "serde", serde(rename = "constraintData"))]

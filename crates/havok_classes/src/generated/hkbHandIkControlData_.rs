@@ -28,6 +28,7 @@ pub struct hkbHandIkControlData<'a> {
     /// - name: `targetPosition`(ctype: `hkVector4`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "targetPosition"))]
     #[cfg_attr(feature = "serde", serde(rename = "targetPosition"))]
     pub m_targetPosition: Vector4,
@@ -35,6 +36,7 @@ pub struct hkbHandIkControlData<'a> {
     /// - name: `targetRotation`(ctype: `hkQuaternion`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "targetRotation"))]
     #[cfg_attr(feature = "serde", serde(rename = "targetRotation"))]
     pub m_targetRotation: Quaternion,
@@ -42,6 +44,7 @@ pub struct hkbHandIkControlData<'a> {
     /// - name: `targetNormal`(ctype: `hkVector4`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "targetNormal"))]
     #[cfg_attr(feature = "serde", serde(rename = "targetNormal"))]
     pub m_targetNormal: Vector4,
@@ -49,6 +52,7 @@ pub struct hkbHandIkControlData<'a> {
     /// - name: `targetHandle`(ctype: `struct hkbHandle*`)
     /// - offset: ` 48`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "targetHandle"))]
     #[cfg_attr(feature = "serde", serde(rename = "targetHandle"))]
@@ -57,6 +61,7 @@ pub struct hkbHandIkControlData<'a> {
     /// - name: `transformOnFraction`(ctype: `hkReal`)
     /// - offset: ` 52`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transformOnFraction"))]
     #[cfg_attr(feature = "serde", serde(rename = "transformOnFraction"))]
     pub m_transformOnFraction: f32,
@@ -64,6 +69,7 @@ pub struct hkbHandIkControlData<'a> {
     /// - name: `normalOnFraction`(ctype: `hkReal`)
     /// - offset: ` 56`(x86)/` 60`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "normalOnFraction"))]
     #[cfg_attr(feature = "serde", serde(rename = "normalOnFraction"))]
     pub m_normalOnFraction: f32,
@@ -71,6 +77,7 @@ pub struct hkbHandIkControlData<'a> {
     /// - name: `fadeInDuration`(ctype: `hkReal`)
     /// - offset: ` 60`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fadeInDuration"))]
     #[cfg_attr(feature = "serde", serde(rename = "fadeInDuration"))]
     pub m_fadeInDuration: f32,
@@ -78,6 +85,7 @@ pub struct hkbHandIkControlData<'a> {
     /// - name: `fadeOutDuration`(ctype: `hkReal`)
     /// - offset: ` 64`(x86)/` 68`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fadeOutDuration"))]
     #[cfg_attr(feature = "serde", serde(rename = "fadeOutDuration"))]
     pub m_fadeOutDuration: f32,
@@ -85,6 +93,7 @@ pub struct hkbHandIkControlData<'a> {
     /// - name: `extrapolationTimeStep`(ctype: `hkReal`)
     /// - offset: ` 68`(x86)/` 72`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "extrapolationTimeStep"))]
     #[cfg_attr(feature = "serde", serde(rename = "extrapolationTimeStep"))]
     pub m_extrapolationTimeStep: f32,
@@ -92,6 +101,7 @@ pub struct hkbHandIkControlData<'a> {
     /// - name: `handleChangeSpeed`(ctype: `hkReal`)
     /// - offset: ` 72`(x86)/` 76`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "handleChangeSpeed"))]
     #[cfg_attr(feature = "serde", serde(rename = "handleChangeSpeed"))]
     pub m_handleChangeSpeed: f32,
@@ -99,6 +109,7 @@ pub struct hkbHandIkControlData<'a> {
     /// - name: `handleChangeMode`(ctype: `enum HandleChangeMode`)
     /// - offset: ` 76`(x86)/` 80`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "handleChangeMode"))]
     #[cfg_attr(feature = "serde", serde(rename = "handleChangeMode"))]
     pub m_handleChangeMode: HandleChangeMode,
@@ -106,6 +117,7 @@ pub struct hkbHandIkControlData<'a> {
     /// - name: `fixUp`(ctype: `hkBool`)
     /// - offset: ` 77`(x86)/` 81`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fixUp"))]
     #[cfg_attr(feature = "serde", serde(rename = "fixUp"))]
     pub m_fixUp: bool,

@@ -33,6 +33,7 @@ pub struct hkbFootIkControlsModifier<'a> {
     /// - name: `controlData`(ctype: `struct hkbFootIkControlData`)
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "controlData"))]
     #[cfg_attr(feature = "serde", serde(rename = "controlData"))]
     pub m_controlData: hkbFootIkControlData<'a>,
@@ -40,6 +41,7 @@ pub struct hkbFootIkControlsModifier<'a> {
     /// - name: `legs`(ctype: `hkArray<struct hkbFootIkControlsModifierLeg>`)
     /// - offset: ` 96`(x86)/`128`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "legs"))]
     #[cfg_attr(feature = "serde", serde(rename = "legs"))]
@@ -48,6 +50,7 @@ pub struct hkbFootIkControlsModifier<'a> {
     /// - name: `errorOutTranslation`(ctype: `hkVector4`)
     /// - offset: `112`(x86)/`144`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "errorOutTranslation"))]
     #[cfg_attr(feature = "serde", serde(rename = "errorOutTranslation"))]
     pub m_errorOutTranslation: Vector4,
@@ -55,6 +58,7 @@ pub struct hkbFootIkControlsModifier<'a> {
     /// - name: `alignWithGroundRotation`(ctype: `hkQuaternion`)
     /// - offset: `128`(x86)/`160`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "alignWithGroundRotation"))]
     #[cfg_attr(feature = "serde", serde(rename = "alignWithGroundRotation"))]
     pub m_alignWithGroundRotation: Quaternion,

@@ -28,6 +28,7 @@ pub struct hkMeshSection<'a> {
     /// - name: `primitiveType`(ctype: `enum PrimitiveType`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "primitiveType"))]
     #[cfg_attr(feature = "serde", serde(rename = "primitiveType"))]
     pub m_primitiveType: PrimitiveType,
@@ -35,6 +36,7 @@ pub struct hkMeshSection<'a> {
     /// - name: `numPrimitives`(ctype: `hkInt32`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numPrimitives"))]
     #[cfg_attr(feature = "serde", serde(rename = "numPrimitives"))]
@@ -43,6 +45,7 @@ pub struct hkMeshSection<'a> {
     /// - name: `numIndices`(ctype: `hkInt32`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numIndices"))]
     #[cfg_attr(feature = "serde", serde(rename = "numIndices"))]
@@ -51,6 +54,7 @@ pub struct hkMeshSection<'a> {
     /// - name: `vertexStartIndex`(ctype: `hkInt32`)
     /// - offset: ` 12`(x86)/` 12`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vertexStartIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "vertexStartIndex"))]
@@ -59,6 +63,7 @@ pub struct hkMeshSection<'a> {
     /// - name: `transformIndex`(ctype: `hkInt32`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transformIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "transformIndex"))]
@@ -67,6 +72,7 @@ pub struct hkMeshSection<'a> {
     /// - name: `indexType`(ctype: `enum MeshSectionIndexType`)
     /// - offset: ` 20`(x86)/` 20`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "indexType"))]
     #[cfg_attr(feature = "serde", serde(rename = "indexType"))]
     pub m_indexType: MeshSectionIndexType,
@@ -75,8 +81,8 @@ pub struct hkMeshSection<'a> {
     /// - offset: ` 24`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "indices"))]
     #[cfg_attr(feature = "serde", serde(rename = "indices"))]
     pub m_indices: Pointer<'a>,
@@ -84,6 +90,7 @@ pub struct hkMeshSection<'a> {
     /// - name: `vertexBuffer`(ctype: `struct hkMeshVertexBuffer*`)
     /// - offset: ` 28`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vertexBuffer"))]
     #[cfg_attr(feature = "serde", serde(rename = "vertexBuffer"))]
@@ -92,6 +99,7 @@ pub struct hkMeshSection<'a> {
     /// - name: `material`(ctype: `struct hkMeshMaterial*`)
     /// - offset: ` 32`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "material"))]
     #[cfg_attr(feature = "serde", serde(rename = "material"))]
@@ -100,6 +108,7 @@ pub struct hkMeshSection<'a> {
     /// - name: `sectionIndex`(ctype: `hkInt32`)
     /// - offset: ` 36`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sectionIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "sectionIndex"))]

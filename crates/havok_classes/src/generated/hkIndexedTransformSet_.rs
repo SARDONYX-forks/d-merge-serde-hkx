@@ -33,6 +33,7 @@ pub struct hkIndexedTransformSet<'a> {
     /// - name: `matrices`(ctype: `hkArray<hkMatrix4>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "matrices"))]
     #[cfg_attr(feature = "serde", serde(rename = "matrices"))]
     pub m_matrices: Vec<Matrix4>,
@@ -40,6 +41,7 @@ pub struct hkIndexedTransformSet<'a> {
     /// - name: `inverseMatrices`(ctype: `hkArray<hkMatrix4>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "inverseMatrices"))]
     #[cfg_attr(feature = "serde", serde(rename = "inverseMatrices"))]
     pub m_inverseMatrices: Vec<Matrix4>,
@@ -47,6 +49,7 @@ pub struct hkIndexedTransformSet<'a> {
     /// - name: `matricesOrder`(ctype: `hkArray<hkInt16>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "matricesOrder"))]
     #[cfg_attr(feature = "serde", serde(rename = "matricesOrder"))]
@@ -55,6 +58,7 @@ pub struct hkIndexedTransformSet<'a> {
     /// - name: `matricesNames`(ctype: `hkArray<hkStringPtr>`)
     /// - offset: ` 44`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "matricesNames"))]
     #[cfg_attr(feature = "serde", serde(rename = "matricesNames"))]
@@ -63,6 +67,7 @@ pub struct hkIndexedTransformSet<'a> {
     /// - name: `indexMappings`(ctype: `hkArray<struct hkMeshBoneIndexMapping>`)
     /// - offset: ` 56`(x86)/` 80`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "indexMappings"))]
     #[cfg_attr(feature = "serde", serde(rename = "indexMappings"))]
@@ -71,6 +76,7 @@ pub struct hkIndexedTransformSet<'a> {
     /// - name: `allMatricesAreAffine`(ctype: `hkBool`)
     /// - offset: ` 68`(x86)/` 96`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "allMatricesAreAffine"))]
     #[cfg_attr(feature = "serde", serde(rename = "allMatricesAreAffine"))]
     pub m_allMatricesAreAffine: bool,

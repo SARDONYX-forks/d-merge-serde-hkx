@@ -28,6 +28,7 @@ pub struct hkbSenseHandleModifierRange<'a> {
     /// - name: `event`(ctype: `struct hkbEventProperty`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "event"))]
     #[cfg_attr(feature = "serde", serde(rename = "event"))]
@@ -36,6 +37,7 @@ pub struct hkbSenseHandleModifierRange<'a> {
     /// - name: `minDistance`(ctype: `hkReal`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "minDistance"))]
     #[cfg_attr(feature = "serde", serde(rename = "minDistance"))]
     pub m_minDistance: f32,
@@ -43,6 +45,7 @@ pub struct hkbSenseHandleModifierRange<'a> {
     /// - name: `maxDistance`(ctype: `hkReal`)
     /// - offset: ` 12`(x86)/` 20`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxDistance"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxDistance"))]
     pub m_maxDistance: f32,
@@ -50,6 +53,7 @@ pub struct hkbSenseHandleModifierRange<'a> {
     /// - name: `ignoreHandle`(ctype: `hkBool`)
     /// - offset: ` 16`(x86)/` 24`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "ignoreHandle"))]
     #[cfg_attr(feature = "serde", serde(rename = "ignoreHandle"))]
     pub m_ignoreHandle: bool,

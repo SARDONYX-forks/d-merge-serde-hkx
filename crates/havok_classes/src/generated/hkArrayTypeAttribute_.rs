@@ -28,6 +28,7 @@ pub struct hkArrayTypeAttribute<'a> {
     /// - name: `type`(ctype: `enum ArrayType`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "type"))]
     #[cfg_attr(feature = "serde", serde(rename = "type"))]
     pub m_type: ArrayType,

@@ -28,6 +28,7 @@ pub struct hkbCharacterControllerControlData<'a> {
     /// - name: `desiredVelocity`(ctype: `hkVector4`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "desiredVelocity"))]
     #[cfg_attr(feature = "serde", serde(rename = "desiredVelocity"))]
     pub m_desiredVelocity: Vector4,
@@ -35,6 +36,7 @@ pub struct hkbCharacterControllerControlData<'a> {
     /// - name: `verticalGain`(ctype: `hkReal`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "verticalGain"))]
     #[cfg_attr(feature = "serde", serde(rename = "verticalGain"))]
     pub m_verticalGain: f32,
@@ -42,6 +44,7 @@ pub struct hkbCharacterControllerControlData<'a> {
     /// - name: `horizontalCatchUpGain`(ctype: `hkReal`)
     /// - offset: ` 20`(x86)/` 20`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "horizontalCatchUpGain"))]
     #[cfg_attr(feature = "serde", serde(rename = "horizontalCatchUpGain"))]
     pub m_horizontalCatchUpGain: f32,
@@ -49,6 +52,7 @@ pub struct hkbCharacterControllerControlData<'a> {
     /// - name: `maxVerticalSeparation`(ctype: `hkReal`)
     /// - offset: ` 24`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxVerticalSeparation"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxVerticalSeparation"))]
     pub m_maxVerticalSeparation: f32,
@@ -56,6 +60,7 @@ pub struct hkbCharacterControllerControlData<'a> {
     /// - name: `maxHorizontalSeparation`(ctype: `hkReal`)
     /// - offset: ` 28`(x86)/` 28`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxHorizontalSeparation"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxHorizontalSeparation"))]
     pub m_maxHorizontalSeparation: f32,

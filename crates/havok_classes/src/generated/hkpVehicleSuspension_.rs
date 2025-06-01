@@ -33,6 +33,7 @@ pub struct hkpVehicleSuspension<'a> {
     /// - name: `wheelParams`(ctype: `hkArray<struct hkpVehicleSuspensionSuspensionWheelParameters>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wheelParams"))]
     #[cfg_attr(feature = "serde", serde(rename = "wheelParams"))]
     pub m_wheelParams: Vec<hkpVehicleSuspensionSuspensionWheelParameters<'a>>,

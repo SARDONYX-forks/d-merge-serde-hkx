@@ -28,6 +28,7 @@ pub struct hkClassEnum<'a> {
     /// - name: `name`(ctype: `char*`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "name"))]
     #[cfg_attr(feature = "serde", serde(rename = "name"))]
@@ -36,6 +37,7 @@ pub struct hkClassEnum<'a> {
     /// - name: `items`(ctype: `hkSimpleArray<struct hkClassEnumItem>`)
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  8`(x86)/` 12`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "items"))]
     #[cfg_attr(feature = "serde", serde(rename = "items"))]
@@ -45,8 +47,8 @@ pub struct hkClassEnum<'a> {
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "attributes"))]
     #[cfg_attr(feature = "serde", serde(rename = "attributes"))]
     pub m_attributes: Pointer<'a>,
@@ -54,6 +56,7 @@ pub struct hkClassEnum<'a> {
     /// - name: `flags`(ctype: `flags FlagValues`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "flags"))]
     #[cfg_attr(feature = "serde", serde(rename = "flags"))]
     pub m_flags: FlagValues,

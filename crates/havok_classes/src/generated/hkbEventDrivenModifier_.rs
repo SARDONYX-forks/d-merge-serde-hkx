@@ -33,6 +33,7 @@ pub struct hkbEventDrivenModifier<'a> {
     /// - name: `activateEventId`(ctype: `hkInt32`)
     /// - offset: ` 48`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "activateEventId"))]
     #[cfg_attr(feature = "serde", serde(rename = "activateEventId"))]
@@ -41,6 +42,7 @@ pub struct hkbEventDrivenModifier<'a> {
     /// - name: `deactivateEventId`(ctype: `hkInt32`)
     /// - offset: ` 52`(x86)/` 92`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "deactivateEventId"))]
     #[cfg_attr(feature = "serde", serde(rename = "deactivateEventId"))]
@@ -49,6 +51,7 @@ pub struct hkbEventDrivenModifier<'a> {
     /// - name: `activeByDefault`(ctype: `hkBool`)
     /// - offset: ` 56`(x86)/` 96`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "activeByDefault"))]
     #[cfg_attr(feature = "serde", serde(rename = "activeByDefault"))]
     pub m_activeByDefault: bool,

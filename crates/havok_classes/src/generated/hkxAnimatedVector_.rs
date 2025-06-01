@@ -33,6 +33,7 @@ pub struct hkxAnimatedVector<'a> {
     /// - name: `vectors`(ctype: `hkArray<hkVector4>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vectors"))]
     #[cfg_attr(feature = "serde", serde(rename = "vectors"))]
     pub m_vectors: Vec<Vector4>,
@@ -40,6 +41,7 @@ pub struct hkxAnimatedVector<'a> {
     /// - name: `hint`(ctype: `enum Hint`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "hint"))]
     #[cfg_attr(feature = "serde", serde(rename = "hint"))]
     pub m_hint: Hint,

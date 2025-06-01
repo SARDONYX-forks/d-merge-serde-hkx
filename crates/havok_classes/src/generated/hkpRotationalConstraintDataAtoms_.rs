@@ -28,6 +28,7 @@ pub struct hkpRotationalConstraintDataAtoms<'a> {
     /// - name: `rotations`(ctype: `struct hkpSetLocalRotationsConstraintAtom`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `112`(x86)/`112`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rotations"))]
     #[cfg_attr(feature = "serde", serde(rename = "rotations"))]
@@ -36,6 +37,7 @@ pub struct hkpRotationalConstraintDataAtoms<'a> {
     /// - name: `ang`(ctype: `struct hkpAngConstraintAtom`)
     /// - offset: `112`(x86)/`112`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "ang"))]
     #[cfg_attr(feature = "serde", serde(rename = "ang"))]

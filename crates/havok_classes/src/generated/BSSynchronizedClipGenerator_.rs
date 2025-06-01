@@ -34,6 +34,7 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pClipGenerator"))]
     #[cfg_attr(feature = "serde", serde(rename = "pClipGenerator"))]
@@ -42,6 +43,7 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - name: `SyncAnimPrefix`(ctype: `char*`)
     /// - offset: ` 52`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "SyncAnimPrefix"))]
     #[cfg_attr(feature = "serde", serde(rename = "SyncAnimPrefix"))]
@@ -50,6 +52,7 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - name: `bSyncClipIgnoreMarkPlacement`(ctype: `hkBool`)
     /// - offset: ` 56`(x86)/` 96`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "bSyncClipIgnoreMarkPlacement")
@@ -60,6 +63,7 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - name: `fGetToMarkTime`(ctype: `hkReal`)
     /// - offset: ` 60`(x86)/`100`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fGetToMarkTime"))]
     #[cfg_attr(feature = "serde", serde(rename = "fGetToMarkTime"))]
     pub m_fGetToMarkTime: f32,
@@ -67,6 +71,7 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - name: `fMarkErrorThreshold`(ctype: `hkReal`)
     /// - offset: ` 64`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fMarkErrorThreshold"))]
     #[cfg_attr(feature = "serde", serde(rename = "fMarkErrorThreshold"))]
     pub m_fMarkErrorThreshold: f32,
@@ -74,6 +79,7 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - name: `bLeadCharacter`(ctype: `hkBool`)
     /// - offset: ` 68`(x86)/`108`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bLeadCharacter"))]
     #[cfg_attr(feature = "serde", serde(rename = "bLeadCharacter"))]
     pub m_bLeadCharacter: bool,
@@ -81,6 +87,7 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - name: `bReorientSupportChar`(ctype: `hkBool`)
     /// - offset: ` 69`(x86)/`109`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bReorientSupportChar"))]
     #[cfg_attr(feature = "serde", serde(rename = "bReorientSupportChar"))]
     pub m_bReorientSupportChar: bool,
@@ -88,6 +95,7 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - name: `bApplyMotionFromRoot`(ctype: `hkBool`)
     /// - offset: ` 70`(x86)/`110`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bApplyMotionFromRoot"))]
     #[cfg_attr(feature = "serde", serde(rename = "bApplyMotionFromRoot"))]
     pub m_bApplyMotionFromRoot: bool,
@@ -96,8 +104,8 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - offset: ` 72`(x86)/`112`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pSyncScene"))]
     #[cfg_attr(feature = "serde", serde(rename = "pSyncScene"))]
     pub m_pSyncScene: Pointer<'a>,
@@ -142,8 +150,8 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - offset: `228`(x86)/`280`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pLocalSyncBinding"))]
     #[cfg_attr(feature = "serde", serde(rename = "pLocalSyncBinding"))]
     pub m_pLocalSyncBinding: Pointer<'a>,
@@ -152,8 +160,8 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - offset: `232`(x86)/`288`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pEventMap"))]
     #[cfg_attr(feature = "serde", serde(rename = "pEventMap"))]
     pub m_pEventMap: Pointer<'a>,
@@ -161,6 +169,7 @@ pub struct BSSynchronizedClipGenerator<'a> {
     /// - name: `sAnimationBindingIndex`(ctype: `hkInt16`)
     /// - offset: `236`(x86)/`296`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sAnimationBindingIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "sAnimationBindingIndex"))]

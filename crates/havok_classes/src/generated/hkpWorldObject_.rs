@@ -34,8 +34,8 @@ pub struct hkpWorldObject<'a> {
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "world"))]
     #[cfg_attr(feature = "serde", serde(rename = "world"))]
     pub m_world: Pointer<'a>,
@@ -43,6 +43,7 @@ pub struct hkpWorldObject<'a> {
     /// - name: `userData`(ctype: `hkUlong`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "userData"))]
     #[cfg_attr(feature = "serde", serde(rename = "userData"))]
     pub m_userData: Ulong,
@@ -50,6 +51,7 @@ pub struct hkpWorldObject<'a> {
     /// - name: `collidable`(ctype: `struct hkpLinkedCollidable`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: ` 92`(x86)/`128`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "collidable"))]
     #[cfg_attr(feature = "serde", serde(rename = "collidable"))]
@@ -58,6 +60,7 @@ pub struct hkpWorldObject<'a> {
     /// - name: `multiThreadCheck`(ctype: `struct hkMultiThreadCheck`)
     /// - offset: `108`(x86)/`160`(x86_64)
     /// - type_size: ` 12`(x86)/` 12`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "multiThreadCheck"))]
     #[cfg_attr(feature = "serde", serde(rename = "multiThreadCheck"))]
@@ -66,6 +69,7 @@ pub struct hkpWorldObject<'a> {
     /// - name: `name`(ctype: `hkStringPtr`)
     /// - offset: `120`(x86)/`176`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "name"))]
     #[cfg_attr(feature = "serde", serde(rename = "name"))]
@@ -74,6 +78,7 @@ pub struct hkpWorldObject<'a> {
     /// - name: `properties`(ctype: `hkArray<struct hkpProperty>`)
     /// - offset: `124`(x86)/`184`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "properties"))]
     #[cfg_attr(feature = "serde", serde(rename = "properties"))]
@@ -83,8 +88,8 @@ pub struct hkpWorldObject<'a> {
     /// - offset: `136`(x86)/`200`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "treeData"))]
     #[cfg_attr(feature = "serde", serde(rename = "treeData"))]
     pub m_treeData: Pointer<'a>,

@@ -33,6 +33,7 @@ pub struct hkaDefaultAnimatedReferenceFrame<'a> {
     /// - name: `up`(ctype: `hkVector4`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "up"))]
     #[cfg_attr(feature = "serde", serde(rename = "up"))]
     pub m_up: Vector4,
@@ -40,6 +41,7 @@ pub struct hkaDefaultAnimatedReferenceFrame<'a> {
     /// - name: `forward`(ctype: `hkVector4`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "forward"))]
     #[cfg_attr(feature = "serde", serde(rename = "forward"))]
     pub m_forward: Vector4,
@@ -47,6 +49,7 @@ pub struct hkaDefaultAnimatedReferenceFrame<'a> {
     /// - name: `duration`(ctype: `hkReal`)
     /// - offset: ` 48`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "duration"))]
     #[cfg_attr(feature = "serde", serde(rename = "duration"))]
     pub m_duration: f32,
@@ -54,6 +57,7 @@ pub struct hkaDefaultAnimatedReferenceFrame<'a> {
     /// - name: `referenceFrameSamples`(ctype: `hkArray<hkVector4>`)
     /// - offset: ` 52`(x86)/` 56`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "referenceFrameSamples"))]
     #[cfg_attr(feature = "serde", serde(rename = "referenceFrameSamples"))]
     pub m_referenceFrameSamples: Vec<Vector4>,

@@ -33,6 +33,7 @@ pub struct hkbTransitionEffect<'a> {
     /// - name: `selfTransitionMode`(ctype: `enum SelfTransitionMode`)
     /// - offset: ` 40`(x86)/` 72`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "selfTransitionMode"))]
     #[cfg_attr(feature = "serde", serde(rename = "selfTransitionMode"))]
     pub m_selfTransitionMode: SelfTransitionMode,
@@ -40,6 +41,7 @@ pub struct hkbTransitionEffect<'a> {
     /// - name: `eventMode`(ctype: `enum EventMode`)
     /// - offset: ` 41`(x86)/` 73`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "eventMode"))]
     #[cfg_attr(feature = "serde", serde(rename = "eventMode"))]
     pub m_eventMode: EventMode,

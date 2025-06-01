@@ -33,6 +33,7 @@ pub struct hkbLookAtModifierInternalState<'a> {
     /// - name: `lookAtLastTargetWS`(ctype: `hkVector4`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "lookAtLastTargetWS"))]
     #[cfg_attr(feature = "serde", serde(rename = "lookAtLastTargetWS"))]
     pub m_lookAtLastTargetWS: Vector4,
@@ -40,6 +41,7 @@ pub struct hkbLookAtModifierInternalState<'a> {
     /// - name: `lookAtWeight`(ctype: `hkReal`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "lookAtWeight"))]
     #[cfg_attr(feature = "serde", serde(rename = "lookAtWeight"))]
     pub m_lookAtWeight: f32,
@@ -47,6 +49,7 @@ pub struct hkbLookAtModifierInternalState<'a> {
     /// - name: `isTargetInsideLimitCone`(ctype: `hkBool`)
     /// - offset: ` 36`(x86)/` 36`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isTargetInsideLimitCone"))]
     #[cfg_attr(feature = "serde", serde(rename = "isTargetInsideLimitCone"))]
     pub m_isTargetInsideLimitCone: bool,

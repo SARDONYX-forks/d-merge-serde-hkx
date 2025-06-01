@@ -33,6 +33,7 @@ pub struct hkpCollisionFilter<'a> {
     /// - name: `prepad`(ctype: `hkUint32[2]`)
     /// - offset: ` 24`(x86)/` 48`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "prepad"))]
     #[cfg_attr(feature = "serde", serde(rename = "prepad"))]
@@ -41,6 +42,7 @@ pub struct hkpCollisionFilter<'a> {
     /// - name: `type`(ctype: `enum hkpFilterType`)
     /// - offset: ` 32`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "type"))]
     #[cfg_attr(feature = "serde", serde(rename = "type"))]
     pub m_type: hkpFilterType,
@@ -48,6 +50,7 @@ pub struct hkpCollisionFilter<'a> {
     /// - name: `postpad`(ctype: `hkUint32[3]`)
     /// - offset: ` 36`(x86)/` 60`(x86_64)
     /// - type_size: ` 12`(x86)/` 12`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "postpad"))]
     #[cfg_attr(feature = "serde", serde(rename = "postpad"))]

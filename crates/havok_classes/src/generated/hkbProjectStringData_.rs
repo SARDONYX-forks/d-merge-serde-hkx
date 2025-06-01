@@ -33,6 +33,7 @@ pub struct hkbProjectStringData<'a> {
     /// - name: `animationFilenames`(ctype: `hkArray<hkStringPtr>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "animationFilenames"))]
     #[cfg_attr(feature = "serde", serde(rename = "animationFilenames"))]
@@ -41,6 +42,7 @@ pub struct hkbProjectStringData<'a> {
     /// - name: `behaviorFilenames`(ctype: `hkArray<hkStringPtr>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "behaviorFilenames"))]
     #[cfg_attr(feature = "serde", serde(rename = "behaviorFilenames"))]
@@ -49,6 +51,7 @@ pub struct hkbProjectStringData<'a> {
     /// - name: `characterFilenames`(ctype: `hkArray<hkStringPtr>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "characterFilenames"))]
     #[cfg_attr(feature = "serde", serde(rename = "characterFilenames"))]
@@ -57,6 +60,7 @@ pub struct hkbProjectStringData<'a> {
     /// - name: `eventNames`(ctype: `hkArray<hkStringPtr>`)
     /// - offset: ` 44`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "eventNames"))]
     #[cfg_attr(feature = "serde", serde(rename = "eventNames"))]
@@ -65,6 +69,7 @@ pub struct hkbProjectStringData<'a> {
     /// - name: `animationPath`(ctype: `hkStringPtr`)
     /// - offset: ` 56`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "animationPath"))]
     #[cfg_attr(feature = "serde", serde(rename = "animationPath"))]
@@ -73,6 +78,7 @@ pub struct hkbProjectStringData<'a> {
     /// - name: `behaviorPath`(ctype: `hkStringPtr`)
     /// - offset: ` 60`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "behaviorPath"))]
     #[cfg_attr(feature = "serde", serde(rename = "behaviorPath"))]
@@ -81,6 +87,7 @@ pub struct hkbProjectStringData<'a> {
     /// - name: `characterPath`(ctype: `hkStringPtr`)
     /// - offset: ` 64`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "characterPath"))]
     #[cfg_attr(feature = "serde", serde(rename = "characterPath"))]
@@ -89,6 +96,7 @@ pub struct hkbProjectStringData<'a> {
     /// - name: `fullPathToSource`(ctype: `hkStringPtr`)
     /// - offset: ` 68`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fullPathToSource"))]
     #[cfg_attr(feature = "serde", serde(rename = "fullPathToSource"))]
@@ -98,8 +106,8 @@ pub struct hkbProjectStringData<'a> {
     /// - offset: ` 72`(x86)/`112`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rootPath"))]
     #[cfg_attr(feature = "serde", serde(rename = "rootPath"))]
     pub m_rootPath: StringPtr<'a>,

@@ -28,6 +28,7 @@ pub struct hkClassMember<'a> {
     /// - name: `name`(ctype: `char*`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "name"))]
     #[cfg_attr(feature = "serde", serde(rename = "name"))]
@@ -36,6 +37,7 @@ pub struct hkClassMember<'a> {
     /// - name: `class`(ctype: `struct hkClass*`)
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "class"))]
     #[cfg_attr(feature = "serde", serde(rename = "class"))]
@@ -44,6 +46,7 @@ pub struct hkClassMember<'a> {
     /// - name: `enum`(ctype: `struct hkClassEnum*`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "enum"))]
     #[cfg_attr(feature = "serde", serde(rename = "enum"))]
@@ -52,6 +55,7 @@ pub struct hkClassMember<'a> {
     /// - name: `type`(ctype: `enum Type`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "type"))]
     #[cfg_attr(feature = "serde", serde(rename = "type"))]
     pub m_type: Type,
@@ -59,6 +63,7 @@ pub struct hkClassMember<'a> {
     /// - name: `subtype`(ctype: `enum Type`)
     /// - offset: ` 13`(x86)/` 25`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "subtype"))]
     #[cfg_attr(feature = "serde", serde(rename = "subtype"))]
     pub m_subtype: Type,
@@ -66,6 +71,7 @@ pub struct hkClassMember<'a> {
     /// - name: `cArraySize`(ctype: `hkInt16`)
     /// - offset: ` 14`(x86)/` 26`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "cArraySize"))]
     #[cfg_attr(feature = "serde", serde(rename = "cArraySize"))]
@@ -74,6 +80,7 @@ pub struct hkClassMember<'a> {
     /// - name: `flags`(ctype: `flags FlagValues`)
     /// - offset: ` 16`(x86)/` 28`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "flags"))]
     #[cfg_attr(feature = "serde", serde(rename = "flags"))]
     pub m_flags: FlagValues,
@@ -81,6 +88,7 @@ pub struct hkClassMember<'a> {
     /// - name: `offset`(ctype: `hkUint16`)
     /// - offset: ` 18`(x86)/` 30`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "offset"))]
     #[cfg_attr(feature = "serde", serde(rename = "offset"))]
@@ -90,8 +98,8 @@ pub struct hkClassMember<'a> {
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "attributes"))]
     #[cfg_attr(feature = "serde", serde(rename = "attributes"))]
     pub m_attributes: Pointer<'a>,

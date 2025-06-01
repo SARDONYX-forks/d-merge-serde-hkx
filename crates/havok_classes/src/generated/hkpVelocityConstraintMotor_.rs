@@ -33,6 +33,7 @@ pub struct hkpVelocityConstraintMotor<'a> {
     /// - name: `tau`(ctype: `hkReal`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "tau"))]
     #[cfg_attr(feature = "serde", serde(rename = "tau"))]
     pub m_tau: f32,
@@ -40,6 +41,7 @@ pub struct hkpVelocityConstraintMotor<'a> {
     /// - name: `velocityTarget`(ctype: `hkReal`)
     /// - offset: ` 24`(x86)/` 36`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "velocityTarget"))]
     #[cfg_attr(feature = "serde", serde(rename = "velocityTarget"))]
     pub m_velocityTarget: f32,
@@ -47,6 +49,7 @@ pub struct hkpVelocityConstraintMotor<'a> {
     /// - name: `useVelocityTargetFromConstraintTargets`(ctype: `hkBool`)
     /// - offset: ` 28`(x86)/` 40`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "useVelocityTargetFromConstraintTargets")

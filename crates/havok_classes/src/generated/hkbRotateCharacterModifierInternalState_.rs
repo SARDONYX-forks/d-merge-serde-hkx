@@ -33,6 +33,7 @@ pub struct hkbRotateCharacterModifierInternalState<'a> {
     /// - name: `angle`(ctype: `hkReal`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "angle"))]
     #[cfg_attr(feature = "serde", serde(rename = "angle"))]
     pub m_angle: f32,

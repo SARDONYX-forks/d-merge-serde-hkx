@@ -33,6 +33,7 @@ pub struct hkpSerializedDisplayMarker<'a> {
     /// - name: `transform`(ctype: `hkTransform`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 64`(x86)/` 64`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transform"))]
     #[cfg_attr(feature = "serde", serde(rename = "transform"))]
     pub m_transform: Transform,

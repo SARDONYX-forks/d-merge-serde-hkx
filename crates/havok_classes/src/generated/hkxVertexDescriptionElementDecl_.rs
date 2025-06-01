@@ -28,6 +28,7 @@ pub struct hkxVertexDescriptionElementDecl<'a> {
     /// - name: `byteOffset`(ctype: `hkUint32`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "byteOffset"))]
     #[cfg_attr(feature = "serde", serde(rename = "byteOffset"))]
@@ -36,6 +37,7 @@ pub struct hkxVertexDescriptionElementDecl<'a> {
     /// - name: `type`(ctype: `enum DataType`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "type"))]
     #[cfg_attr(feature = "serde", serde(rename = "type"))]
     pub m_type: DataType,
@@ -43,6 +45,7 @@ pub struct hkxVertexDescriptionElementDecl<'a> {
     /// - name: `usage`(ctype: `enum DataUsage`)
     /// - offset: `  6`(x86)/`  6`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "usage"))]
     #[cfg_attr(feature = "serde", serde(rename = "usage"))]
     pub m_usage: DataUsage,
@@ -50,6 +53,7 @@ pub struct hkxVertexDescriptionElementDecl<'a> {
     /// - name: `byteStride`(ctype: `hkUint32`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "byteStride"))]
     #[cfg_attr(feature = "serde", serde(rename = "byteStride"))]
@@ -58,6 +62,7 @@ pub struct hkxVertexDescriptionElementDecl<'a> {
     /// - name: `numElements`(ctype: `hkUint8`)
     /// - offset: ` 12`(x86)/` 12`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numElements"))]
     #[cfg_attr(feature = "serde", serde(rename = "numElements"))]

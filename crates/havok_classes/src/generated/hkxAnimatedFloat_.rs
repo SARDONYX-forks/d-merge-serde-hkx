@@ -33,6 +33,7 @@ pub struct hkxAnimatedFloat<'a> {
     /// - name: `floats`(ctype: `hkArray<hkReal>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "floats"))]
     #[cfg_attr(feature = "serde", serde(rename = "floats"))]
     pub m_floats: Vec<f32>,
@@ -40,6 +41,7 @@ pub struct hkxAnimatedFloat<'a> {
     /// - name: `hint`(ctype: `enum Hint`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "hint"))]
     #[cfg_attr(feature = "serde", serde(rename = "hint"))]
     pub m_hint: Hint,

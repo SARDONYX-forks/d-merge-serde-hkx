@@ -33,6 +33,7 @@ pub struct hkpTriggerVolume<'a> {
     /// - name: `overlappingBodies`(ctype: `hkArray<hkpRigidBody*>`)
     /// - offset: ` 20`(x86)/` 40`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "overlappingBodies"))]
     #[cfg_attr(feature = "serde", serde(rename = "overlappingBodies"))]
@@ -41,6 +42,7 @@ pub struct hkpTriggerVolume<'a> {
     /// - name: `eventQueue`(ctype: `hkArray<struct hkpTriggerVolumeEventInfo>`)
     /// - offset: ` 32`(x86)/` 56`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "eventQueue"))]
     #[cfg_attr(feature = "serde", serde(rename = "eventQueue"))]
@@ -49,6 +51,7 @@ pub struct hkpTriggerVolume<'a> {
     /// - name: `triggerBody`(ctype: `struct hkpRigidBody*`)
     /// - offset: ` 44`(x86)/` 72`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "triggerBody"))]
     #[cfg_attr(feature = "serde", serde(rename = "triggerBody"))]
@@ -57,6 +60,7 @@ pub struct hkpTriggerVolume<'a> {
     /// - name: `sequenceNumber`(ctype: `hkUint32`)
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sequenceNumber"))]
     #[cfg_attr(feature = "serde", serde(rename = "sequenceNumber"))]

@@ -33,6 +33,7 @@ pub struct BSEventOnFalseToTrueModifier<'a> {
     /// - name: `bEnableEvent1`(ctype: `hkBool`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bEnableEvent1"))]
     #[cfg_attr(feature = "serde", serde(rename = "bEnableEvent1"))]
     pub m_bEnableEvent1: bool,
@@ -40,6 +41,7 @@ pub struct BSEventOnFalseToTrueModifier<'a> {
     /// - name: `bVariableToTest1`(ctype: `hkBool`)
     /// - offset: ` 45`(x86)/` 81`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bVariableToTest1"))]
     #[cfg_attr(feature = "serde", serde(rename = "bVariableToTest1"))]
     pub m_bVariableToTest1: bool,
@@ -47,6 +49,7 @@ pub struct BSEventOnFalseToTrueModifier<'a> {
     /// - name: `EventToSend1`(ctype: `struct hkbEventProperty`)
     /// - offset: ` 48`(x86)/` 88`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "EventToSend1"))]
     #[cfg_attr(feature = "serde", serde(rename = "EventToSend1"))]
@@ -55,6 +58,7 @@ pub struct BSEventOnFalseToTrueModifier<'a> {
     /// - name: `bEnableEvent2`(ctype: `hkBool`)
     /// - offset: ` 56`(x86)/`104`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bEnableEvent2"))]
     #[cfg_attr(feature = "serde", serde(rename = "bEnableEvent2"))]
     pub m_bEnableEvent2: bool,
@@ -62,6 +66,7 @@ pub struct BSEventOnFalseToTrueModifier<'a> {
     /// - name: `bVariableToTest2`(ctype: `hkBool`)
     /// - offset: ` 57`(x86)/`105`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bVariableToTest2"))]
     #[cfg_attr(feature = "serde", serde(rename = "bVariableToTest2"))]
     pub m_bVariableToTest2: bool,
@@ -69,6 +74,7 @@ pub struct BSEventOnFalseToTrueModifier<'a> {
     /// - name: `EventToSend2`(ctype: `struct hkbEventProperty`)
     /// - offset: ` 60`(x86)/`112`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "EventToSend2"))]
     #[cfg_attr(feature = "serde", serde(rename = "EventToSend2"))]
@@ -77,6 +83,7 @@ pub struct BSEventOnFalseToTrueModifier<'a> {
     /// - name: `bEnableEvent3`(ctype: `hkBool`)
     /// - offset: ` 68`(x86)/`128`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bEnableEvent3"))]
     #[cfg_attr(feature = "serde", serde(rename = "bEnableEvent3"))]
     pub m_bEnableEvent3: bool,
@@ -84,6 +91,7 @@ pub struct BSEventOnFalseToTrueModifier<'a> {
     /// - name: `bVariableToTest3`(ctype: `hkBool`)
     /// - offset: ` 69`(x86)/`129`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bVariableToTest3"))]
     #[cfg_attr(feature = "serde", serde(rename = "bVariableToTest3"))]
     pub m_bVariableToTest3: bool,
@@ -91,6 +99,7 @@ pub struct BSEventOnFalseToTrueModifier<'a> {
     /// - name: `EventToSend3`(ctype: `struct hkbEventProperty`)
     /// - offset: ` 72`(x86)/`136`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "EventToSend3"))]
     #[cfg_attr(feature = "serde", serde(rename = "EventToSend3"))]

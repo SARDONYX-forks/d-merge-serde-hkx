@@ -28,6 +28,7 @@ pub struct hkaSkeletonMapperDataSimpleMapping<'a> {
     /// - name: `boneA`(ctype: `hkInt16`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "boneA"))]
     #[cfg_attr(feature = "serde", serde(rename = "boneA"))]
@@ -36,6 +37,7 @@ pub struct hkaSkeletonMapperDataSimpleMapping<'a> {
     /// - name: `boneB`(ctype: `hkInt16`)
     /// - offset: `  2`(x86)/`  2`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "boneB"))]
     #[cfg_attr(feature = "serde", serde(rename = "boneB"))]
@@ -44,6 +46,7 @@ pub struct hkaSkeletonMapperDataSimpleMapping<'a> {
     /// - name: `aFromBTransform`(ctype: `hkQsTransform`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "aFromBTransform"))]
     #[cfg_attr(feature = "serde", serde(rename = "aFromBTransform"))]
     pub m_aFromBTransform: QsTransform,

@@ -33,6 +33,7 @@ pub struct hkbGetHandleOnBoneModifier<'a> {
     /// - name: `handleOut`(ctype: `struct hkbHandle*`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "handleOut"))]
     #[cfg_attr(feature = "serde", serde(rename = "handleOut"))]
@@ -41,6 +42,7 @@ pub struct hkbGetHandleOnBoneModifier<'a> {
     /// - name: `localFrameName`(ctype: `hkStringPtr`)
     /// - offset: ` 48`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "localFrameName"))]
     #[cfg_attr(feature = "serde", serde(rename = "localFrameName"))]
@@ -49,6 +51,7 @@ pub struct hkbGetHandleOnBoneModifier<'a> {
     /// - name: `ragdollBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 52`(x86)/` 96`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "ragdollBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "ragdollBoneIndex"))]
@@ -57,6 +60,7 @@ pub struct hkbGetHandleOnBoneModifier<'a> {
     /// - name: `animationBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 54`(x86)/` 98`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "animationBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "animationBoneIndex"))]

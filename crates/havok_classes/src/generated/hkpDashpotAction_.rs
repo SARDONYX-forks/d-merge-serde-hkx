@@ -33,6 +33,7 @@ pub struct hkpDashpotAction<'a> {
     /// - name: `point`(ctype: `hkVector4[2]`)
     /// - offset: ` 32`(x86)/` 64`(x86_64)
     /// - type_size: ` 32`(x86)/` 32`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "point"))]
     #[cfg_attr(feature = "serde", serde(rename = "point"))]
     pub m_point: [Vector4; 2usize],
@@ -40,6 +41,7 @@ pub struct hkpDashpotAction<'a> {
     /// - name: `strength`(ctype: `hkReal`)
     /// - offset: ` 64`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "strength"))]
     #[cfg_attr(feature = "serde", serde(rename = "strength"))]
     pub m_strength: f32,
@@ -47,6 +49,7 @@ pub struct hkpDashpotAction<'a> {
     /// - name: `damping`(ctype: `hkReal`)
     /// - offset: ` 68`(x86)/`100`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "damping"))]
     #[cfg_attr(feature = "serde", serde(rename = "damping"))]
     pub m_damping: f32,
@@ -54,6 +57,7 @@ pub struct hkpDashpotAction<'a> {
     /// - name: `impulse`(ctype: `hkVector4`)
     /// - offset: ` 80`(x86)/`112`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "impulse"))]
     #[cfg_attr(feature = "serde", serde(rename = "impulse"))]
     pub m_impulse: Vector4,

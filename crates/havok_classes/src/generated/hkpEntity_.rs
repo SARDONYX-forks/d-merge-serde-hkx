@@ -33,6 +33,7 @@ pub struct hkpEntity<'a> {
     /// - name: `material`(ctype: `struct hkpMaterial`)
     /// - offset: `140`(x86)/`208`(x86_64)
     /// - type_size: ` 12`(x86)/` 12`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "material"))]
     #[cfg_attr(feature = "serde", serde(rename = "material"))]
@@ -42,8 +43,8 @@ pub struct hkpEntity<'a> {
     /// - offset: `152`(x86)/`224`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "limitContactImpulseUtilAndFlag")
@@ -54,6 +55,7 @@ pub struct hkpEntity<'a> {
     /// - name: `damageMultiplier`(ctype: `hkReal`)
     /// - offset: `156`(x86)/`232`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "damageMultiplier"))]
     #[cfg_attr(feature = "serde", serde(rename = "damageMultiplier"))]
     pub m_damageMultiplier: f32,
@@ -62,8 +64,8 @@ pub struct hkpEntity<'a> {
     /// - offset: `160`(x86)/`240`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "breakableBody"))]
     #[cfg_attr(feature = "serde", serde(rename = "breakableBody"))]
     pub m_breakableBody: Pointer<'a>,
@@ -72,8 +74,8 @@ pub struct hkpEntity<'a> {
     /// - offset: `164`(x86)/`248`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "solverData"))]
     #[cfg_attr(feature = "serde", serde(rename = "solverData"))]
     pub m_solverData: U32<'a>,
@@ -81,6 +83,7 @@ pub struct hkpEntity<'a> {
     /// - name: `storageIndex`(ctype: `hkUint16`)
     /// - offset: `168`(x86)/`252`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "storageIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "storageIndex"))]
@@ -89,6 +92,7 @@ pub struct hkpEntity<'a> {
     /// - name: `contactPointCallbackDelay`(ctype: `hkUint16`)
     /// - offset: `170`(x86)/`254`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "contactPointCallbackDelay"))]
     #[cfg_attr(feature = "serde", serde(rename = "contactPointCallbackDelay"))]
@@ -98,8 +102,8 @@ pub struct hkpEntity<'a> {
     /// - offset: `172`(x86)/`256`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "constraintsMaster"))]
     #[cfg_attr(feature = "serde", serde(rename = "constraintsMaster"))]
     pub m_constraintsMaster: hkpEntitySmallArraySerializeOverrideType<'a>,
@@ -108,8 +112,8 @@ pub struct hkpEntity<'a> {
     /// - offset: `180`(x86)/`272`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `NOT_OWNED|SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "constraintsSlave"))]
     #[cfg_attr(feature = "serde", serde(rename = "constraintsSlave"))]
     pub m_constraintsSlave: Vec<Pointer<'a>>,
@@ -118,8 +122,8 @@ pub struct hkpEntity<'a> {
     /// - offset: `192`(x86)/`288`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "constraintRuntime"))]
     #[cfg_attr(feature = "serde", serde(rename = "constraintRuntime"))]
     pub m_constraintRuntime: Vec<U8<'a>>,
@@ -128,8 +132,8 @@ pub struct hkpEntity<'a> {
     /// - offset: `204`(x86)/`304`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "simulationIsland"))]
     #[cfg_attr(feature = "serde", serde(rename = "simulationIsland"))]
     pub m_simulationIsland: Pointer<'a>,
@@ -137,6 +141,7 @@ pub struct hkpEntity<'a> {
     /// - name: `autoRemoveLevel`(ctype: `hkInt8`)
     /// - offset: `208`(x86)/`312`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "autoRemoveLevel"))]
     #[cfg_attr(feature = "serde", serde(rename = "autoRemoveLevel"))]
@@ -145,6 +150,7 @@ pub struct hkpEntity<'a> {
     /// - name: `numShapeKeysInContactPointProperties`(ctype: `hkUint8`)
     /// - offset: `209`(x86)/`313`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
@@ -159,6 +165,7 @@ pub struct hkpEntity<'a> {
     /// - name: `responseModifierFlags`(ctype: `hkUint8`)
     /// - offset: `210`(x86)/`314`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "responseModifierFlags"))]
     #[cfg_attr(feature = "serde", serde(rename = "responseModifierFlags"))]
@@ -167,6 +174,7 @@ pub struct hkpEntity<'a> {
     /// - name: `uid`(ctype: `hkUint32`)
     /// - offset: `212`(x86)/`316`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "uid"))]
     #[cfg_attr(feature = "serde", serde(rename = "uid"))]
@@ -175,6 +183,7 @@ pub struct hkpEntity<'a> {
     /// - name: `spuCollisionCallback`(ctype: `struct hkpEntitySpuCollisionCallback`)
     /// - offset: `216`(x86)/`320`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "spuCollisionCallback"))]
     #[cfg_attr(feature = "serde", serde(rename = "spuCollisionCallback"))]
@@ -183,6 +192,7 @@ pub struct hkpEntity<'a> {
     /// - name: `motion`(ctype: `struct hkpMaxSizeMotion`)
     /// - offset: `224`(x86)/`336`(x86_64)
     /// - type_size: `288`(x86)/`320`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "motion"))]
     #[cfg_attr(feature = "serde", serde(rename = "motion"))]
@@ -192,8 +202,8 @@ pub struct hkpEntity<'a> {
     /// - offset: `512`(x86)/`656`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "contactListeners"))]
     #[cfg_attr(feature = "serde", serde(rename = "contactListeners"))]
     pub m_contactListeners: hkpEntitySmallArraySerializeOverrideType<'a>,
@@ -202,8 +212,8 @@ pub struct hkpEntity<'a> {
     /// - offset: `520`(x86)/`672`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "actions"))]
     #[cfg_attr(feature = "serde", serde(rename = "actions"))]
     pub m_actions: hkpEntitySmallArraySerializeOverrideType<'a>,
@@ -211,6 +221,7 @@ pub struct hkpEntity<'a> {
     /// - name: `localFrame`(ctype: `struct hkLocalFrame*`)
     /// - offset: `528`(x86)/`688`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "localFrame"))]
     #[cfg_attr(feature = "serde", serde(rename = "localFrame"))]
@@ -220,8 +231,8 @@ pub struct hkpEntity<'a> {
     /// - offset: `532`(x86)/`696`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "extendedListeners"))]
     #[cfg_attr(feature = "serde", serde(rename = "extendedListeners"))]
     pub m_extendedListeners: Pointer<'a>,
@@ -229,6 +240,7 @@ pub struct hkpEntity<'a> {
     /// - name: `npData`(ctype: `hkUint32`)
     /// - offset: `536`(x86)/`704`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "npData"))]
     #[cfg_attr(feature = "serde", serde(rename = "npData"))]

@@ -33,6 +33,7 @@ pub struct BSSpeedSamplerModifier<'a> {
     /// - name: `state`(ctype: `hkInt32`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "state"))]
     #[cfg_attr(feature = "serde", serde(rename = "state"))]
@@ -41,6 +42,7 @@ pub struct BSSpeedSamplerModifier<'a> {
     /// - name: `direction`(ctype: `hkReal`)
     /// - offset: ` 48`(x86)/` 84`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "direction"))]
     #[cfg_attr(feature = "serde", serde(rename = "direction"))]
     pub m_direction: f32,
@@ -48,6 +50,7 @@ pub struct BSSpeedSamplerModifier<'a> {
     /// - name: `goalSpeed`(ctype: `hkReal`)
     /// - offset: ` 52`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "goalSpeed"))]
     #[cfg_attr(feature = "serde", serde(rename = "goalSpeed"))]
     pub m_goalSpeed: f32,
@@ -55,6 +58,7 @@ pub struct BSSpeedSamplerModifier<'a> {
     /// - name: `speedOut`(ctype: `hkReal`)
     /// - offset: ` 56`(x86)/` 92`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "speedOut"))]
     #[cfg_attr(feature = "serde", serde(rename = "speedOut"))]
     pub m_speedOut: f32,

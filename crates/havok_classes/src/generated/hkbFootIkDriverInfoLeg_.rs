@@ -37,6 +37,7 @@ pub struct hkbFootIkDriverInfoLeg<'a> {
     /// - name: `kneeAxisLS`(ctype: `hkVector4`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "kneeAxisLS"))]
     #[cfg_attr(feature = "serde", serde(rename = "kneeAxisLS"))]
     pub m_kneeAxisLS: Vector4,
@@ -44,6 +45,7 @@ pub struct hkbFootIkDriverInfoLeg<'a> {
     /// - name: `footEndLS`(ctype: `hkVector4`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "footEndLS"))]
     #[cfg_attr(feature = "serde", serde(rename = "footEndLS"))]
     pub m_footEndLS: Vector4,
@@ -51,6 +53,7 @@ pub struct hkbFootIkDriverInfoLeg<'a> {
     /// - name: `footPlantedAnkleHeightMS`(ctype: `hkReal`)
     /// - offset: ` 48`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "footPlantedAnkleHeightMS"))]
     #[cfg_attr(feature = "serde", serde(rename = "footPlantedAnkleHeightMS"))]
     pub m_footPlantedAnkleHeightMS: f32,
@@ -58,6 +61,7 @@ pub struct hkbFootIkDriverInfoLeg<'a> {
     /// - name: `footRaisedAnkleHeightMS`(ctype: `hkReal`)
     /// - offset: ` 52`(x86)/` 52`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "footRaisedAnkleHeightMS"))]
     #[cfg_attr(feature = "serde", serde(rename = "footRaisedAnkleHeightMS"))]
     pub m_footRaisedAnkleHeightMS: f32,
@@ -65,6 +69,7 @@ pub struct hkbFootIkDriverInfoLeg<'a> {
     /// - name: `maxAnkleHeightMS`(ctype: `hkReal`)
     /// - offset: ` 56`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxAnkleHeightMS"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxAnkleHeightMS"))]
     pub m_maxAnkleHeightMS: f32,
@@ -72,6 +77,7 @@ pub struct hkbFootIkDriverInfoLeg<'a> {
     /// - name: `minAnkleHeightMS`(ctype: `hkReal`)
     /// - offset: ` 60`(x86)/` 60`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "minAnkleHeightMS"))]
     #[cfg_attr(feature = "serde", serde(rename = "minAnkleHeightMS"))]
     pub m_minAnkleHeightMS: f32,
@@ -79,6 +85,7 @@ pub struct hkbFootIkDriverInfoLeg<'a> {
     /// - name: `maxKneeAngleDegrees`(ctype: `hkReal`)
     /// - offset: ` 64`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxKneeAngleDegrees"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxKneeAngleDegrees"))]
     pub m_maxKneeAngleDegrees: f32,
@@ -86,6 +93,7 @@ pub struct hkbFootIkDriverInfoLeg<'a> {
     /// - name: `minKneeAngleDegrees`(ctype: `hkReal`)
     /// - offset: ` 68`(x86)/` 68`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "minKneeAngleDegrees"))]
     #[cfg_attr(feature = "serde", serde(rename = "minKneeAngleDegrees"))]
     pub m_minKneeAngleDegrees: f32,
@@ -93,6 +101,7 @@ pub struct hkbFootIkDriverInfoLeg<'a> {
     /// - name: `maxAnkleAngleDegrees`(ctype: `hkReal`)
     /// - offset: ` 72`(x86)/` 72`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxAnkleAngleDegrees"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxAnkleAngleDegrees"))]
     pub m_maxAnkleAngleDegrees: f32,
@@ -100,6 +109,7 @@ pub struct hkbFootIkDriverInfoLeg<'a> {
     /// - name: `hipIndex`(ctype: `hkInt16`)
     /// - offset: ` 76`(x86)/` 76`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "hipIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "hipIndex"))]
@@ -108,6 +118,7 @@ pub struct hkbFootIkDriverInfoLeg<'a> {
     /// - name: `kneeIndex`(ctype: `hkInt16`)
     /// - offset: ` 78`(x86)/` 78`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "kneeIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "kneeIndex"))]
@@ -116,6 +127,7 @@ pub struct hkbFootIkDriverInfoLeg<'a> {
     /// - name: `ankleIndex`(ctype: `hkInt16`)
     /// - offset: ` 80`(x86)/` 80`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "ankleIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "ankleIndex"))]

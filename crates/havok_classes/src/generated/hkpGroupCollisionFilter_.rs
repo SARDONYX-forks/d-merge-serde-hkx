@@ -33,6 +33,7 @@ pub struct hkpGroupCollisionFilter<'a> {
     /// - name: `noGroupCollisionEnabled`(ctype: `hkBool`)
     /// - offset: ` 48`(x86)/` 72`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "noGroupCollisionEnabled"))]
     #[cfg_attr(feature = "serde", serde(rename = "noGroupCollisionEnabled"))]
     pub m_noGroupCollisionEnabled: bool,
@@ -40,6 +41,7 @@ pub struct hkpGroupCollisionFilter<'a> {
     /// - name: `collisionGroups`(ctype: `hkUint32[32]`)
     /// - offset: ` 52`(x86)/` 76`(x86_64)
     /// - type_size: `128`(x86)/`128`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "collisionGroups"))]
     #[cfg_attr(feature = "serde", serde(rename = "collisionGroups"))]

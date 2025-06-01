@@ -33,6 +33,7 @@ pub struct hkbTimerModifier<'a> {
     /// - name: `alarmTimeSeconds`(ctype: `hkReal`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "alarmTimeSeconds"))]
     #[cfg_attr(feature = "serde", serde(rename = "alarmTimeSeconds"))]
     pub m_alarmTimeSeconds: f32,
@@ -40,6 +41,7 @@ pub struct hkbTimerModifier<'a> {
     /// - name: `alarmEvent`(ctype: `struct hkbEventProperty`)
     /// - offset: ` 48`(x86)/` 88`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "alarmEvent"))]
     #[cfg_attr(feature = "serde", serde(rename = "alarmEvent"))]

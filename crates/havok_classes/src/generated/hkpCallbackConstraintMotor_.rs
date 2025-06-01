@@ -34,8 +34,8 @@ pub struct hkpCallbackConstraintMotor<'a> {
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "callbackFunc"))]
     #[cfg_attr(feature = "serde", serde(rename = "callbackFunc"))]
     pub m_callbackFunc: Pointer<'a>,
@@ -43,6 +43,7 @@ pub struct hkpCallbackConstraintMotor<'a> {
     /// - name: `callbackType`(ctype: `enum CallbackType`)
     /// - offset: ` 24`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "callbackType"))]
     #[cfg_attr(feature = "serde", serde(rename = "callbackType"))]
     pub m_callbackType: CallbackType,
@@ -50,6 +51,7 @@ pub struct hkpCallbackConstraintMotor<'a> {
     /// - name: `userData0`(ctype: `hkUlong`)
     /// - offset: ` 28`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "userData0"))]
     #[cfg_attr(feature = "serde", serde(rename = "userData0"))]
     pub m_userData0: Ulong,
@@ -57,6 +59,7 @@ pub struct hkpCallbackConstraintMotor<'a> {
     /// - name: `userData1`(ctype: `hkUlong`)
     /// - offset: ` 32`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "userData1"))]
     #[cfg_attr(feature = "serde", serde(rename = "userData1"))]
     pub m_userData1: Ulong,
@@ -64,6 +67,7 @@ pub struct hkpCallbackConstraintMotor<'a> {
     /// - name: `userData2`(ctype: `hkUlong`)
     /// - offset: ` 36`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "userData2"))]
     #[cfg_attr(feature = "serde", serde(rename = "userData2"))]
     pub m_userData2: Ulong,

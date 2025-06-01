@@ -28,6 +28,7 @@ pub struct hkpTriggerVolumeEventInfo<'a> {
     /// - name: `sortValue`(ctype: `hkUint64`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sortValue"))]
     #[cfg_attr(feature = "serde", serde(rename = "sortValue"))]
@@ -36,6 +37,7 @@ pub struct hkpTriggerVolumeEventInfo<'a> {
     /// - name: `body`(ctype: `struct hkpRigidBody*`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "body"))]
     #[cfg_attr(feature = "serde", serde(rename = "body"))]
@@ -44,6 +46,7 @@ pub struct hkpTriggerVolumeEventInfo<'a> {
     /// - name: `operation`(ctype: `enum Operation`)
     /// - offset: ` 12`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "operation"))]
     #[cfg_attr(feature = "serde", serde(rename = "operation"))]
     pub m_operation: Operation,

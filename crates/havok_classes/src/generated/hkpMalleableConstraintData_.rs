@@ -33,6 +33,7 @@ pub struct hkpMalleableConstraintData<'a> {
     /// - name: `constraintData`(ctype: `struct hkpConstraintData*`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "constraintData"))]
     #[cfg_attr(feature = "serde", serde(rename = "constraintData"))]
@@ -41,6 +42,7 @@ pub struct hkpMalleableConstraintData<'a> {
     /// - name: `atoms`(ctype: `struct hkpBridgeAtoms`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 24`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "atoms"))]
     #[cfg_attr(feature = "serde", serde(rename = "atoms"))]
@@ -49,6 +51,7 @@ pub struct hkpMalleableConstraintData<'a> {
     /// - name: `strength`(ctype: `hkReal`)
     /// - offset: ` 28`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "strength"))]
     #[cfg_attr(feature = "serde", serde(rename = "strength"))]
     pub m_strength: f32,

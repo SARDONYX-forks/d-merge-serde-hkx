@@ -33,6 +33,7 @@ pub struct hkbBoolVariableSequencedData<'a> {
     /// - name: `samples`(ctype: `hkArray<struct hkbBoolVariableSequencedDataSample>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "samples"))]
     #[cfg_attr(feature = "serde", serde(rename = "samples"))]
     pub m_samples: Vec<hkbBoolVariableSequencedDataSample<'a>>,
@@ -40,6 +41,7 @@ pub struct hkbBoolVariableSequencedData<'a> {
     /// - name: `variableIndex`(ctype: `hkInt32`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "variableIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "variableIndex"))]

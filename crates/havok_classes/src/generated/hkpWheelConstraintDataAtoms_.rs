@@ -28,6 +28,7 @@ pub struct hkpWheelConstraintDataAtoms<'a> {
     /// - name: `suspensionBase`(ctype: `struct hkpSetLocalTransformsConstraintAtom`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `144`(x86)/`144`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "suspensionBase"))]
     #[cfg_attr(feature = "serde", serde(rename = "suspensionBase"))]
@@ -36,6 +37,7 @@ pub struct hkpWheelConstraintDataAtoms<'a> {
     /// - name: `lin0Limit`(ctype: `struct hkpLinLimitConstraintAtom`)
     /// - offset: `144`(x86)/`144`(x86_64)
     /// - type_size: ` 12`(x86)/` 12`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "lin0Limit"))]
     #[cfg_attr(feature = "serde", serde(rename = "lin0Limit"))]
@@ -44,6 +46,7 @@ pub struct hkpWheelConstraintDataAtoms<'a> {
     /// - name: `lin0Soft`(ctype: `struct hkpLinSoftConstraintAtom`)
     /// - offset: `156`(x86)/`156`(x86_64)
     /// - type_size: ` 12`(x86)/` 12`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "lin0Soft"))]
     #[cfg_attr(feature = "serde", serde(rename = "lin0Soft"))]
@@ -52,6 +55,7 @@ pub struct hkpWheelConstraintDataAtoms<'a> {
     /// - name: `lin1`(ctype: `struct hkpLinConstraintAtom`)
     /// - offset: `168`(x86)/`168`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "lin1"))]
     #[cfg_attr(feature = "serde", serde(rename = "lin1"))]
@@ -60,6 +64,7 @@ pub struct hkpWheelConstraintDataAtoms<'a> {
     /// - name: `lin2`(ctype: `struct hkpLinConstraintAtom`)
     /// - offset: `172`(x86)/`172`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "lin2"))]
     #[cfg_attr(feature = "serde", serde(rename = "lin2"))]
@@ -68,6 +73,7 @@ pub struct hkpWheelConstraintDataAtoms<'a> {
     /// - name: `steeringBase`(ctype: `struct hkpSetLocalRotationsConstraintAtom`)
     /// - offset: `176`(x86)/`176`(x86_64)
     /// - type_size: `112`(x86)/`112`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "steeringBase"))]
     #[cfg_attr(feature = "serde", serde(rename = "steeringBase"))]
@@ -76,6 +82,7 @@ pub struct hkpWheelConstraintDataAtoms<'a> {
     /// - name: `2dAng`(ctype: `struct hkp2dAngConstraintAtom`)
     /// - offset: `288`(x86)/`288`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "2dAng"))]
     #[cfg_attr(feature = "serde", serde(rename = "2dAng"))]

@@ -33,6 +33,7 @@ pub struct hkSimpleLocalFrame<'a> {
     /// - name: `transform`(ctype: `hkTransform`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 64`(x86)/` 64`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transform"))]
     #[cfg_attr(feature = "serde", serde(rename = "transform"))]
     pub m_transform: Transform,
@@ -40,6 +41,7 @@ pub struct hkSimpleLocalFrame<'a> {
     /// - name: `children`(ctype: `hkArray<hkLocalFrame*>`)
     /// - offset: ` 80`(x86)/` 80`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "children"))]
     #[cfg_attr(feature = "serde", serde(rename = "children"))]
@@ -49,6 +51,7 @@ pub struct hkSimpleLocalFrame<'a> {
     /// - offset: ` 92`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `NOT_OWNED`
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "parentFrame"))]
     #[cfg_attr(feature = "serde", serde(rename = "parentFrame"))]
@@ -57,6 +60,7 @@ pub struct hkSimpleLocalFrame<'a> {
     /// - name: `group`(ctype: `struct hkLocalFrameGroup*`)
     /// - offset: ` 96`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "group"))]
     #[cfg_attr(feature = "serde", serde(rename = "group"))]
@@ -65,6 +69,7 @@ pub struct hkSimpleLocalFrame<'a> {
     /// - name: `name`(ctype: `hkStringPtr`)
     /// - offset: `100`(x86)/`112`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "name"))]
     #[cfg_attr(feature = "serde", serde(rename = "name"))]

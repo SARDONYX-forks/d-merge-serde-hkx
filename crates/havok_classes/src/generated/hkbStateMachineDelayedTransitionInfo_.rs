@@ -28,6 +28,7 @@ pub struct hkbStateMachineDelayedTransitionInfo<'a> {
     /// - name: `delayedTransition`(ctype: `struct hkbStateMachineProspectiveTransitionInfo`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "delayedTransition"))]
     #[cfg_attr(feature = "serde", serde(rename = "delayedTransition"))]
@@ -36,6 +37,7 @@ pub struct hkbStateMachineDelayedTransitionInfo<'a> {
     /// - name: `timeDelayed`(ctype: `hkReal`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "timeDelayed"))]
     #[cfg_attr(feature = "serde", serde(rename = "timeDelayed"))]
     pub m_timeDelayed: f32,
@@ -43,6 +45,7 @@ pub struct hkbStateMachineDelayedTransitionInfo<'a> {
     /// - name: `isDelayedTransitionReturnToPreviousState`(ctype: `hkBool`)
     /// - offset: ` 20`(x86)/` 20`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "isDelayedTransitionReturnToPreviousState")
@@ -56,6 +59,7 @@ pub struct hkbStateMachineDelayedTransitionInfo<'a> {
     /// - name: `wasInAbutRangeLastFrame`(ctype: `hkBool`)
     /// - offset: ` 21`(x86)/` 21`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wasInAbutRangeLastFrame"))]
     #[cfg_attr(feature = "serde", serde(rename = "wasInAbutRangeLastFrame"))]
     pub m_wasInAbutRangeLastFrame: bool,

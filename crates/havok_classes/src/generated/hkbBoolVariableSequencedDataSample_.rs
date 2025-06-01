@@ -28,6 +28,7 @@ pub struct hkbBoolVariableSequencedDataSample<'a> {
     /// - name: `time`(ctype: `hkReal`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "time"))]
     #[cfg_attr(feature = "serde", serde(rename = "time"))]
     pub m_time: f32,
@@ -35,6 +36,7 @@ pub struct hkbBoolVariableSequencedDataSample<'a> {
     /// - name: `value`(ctype: `hkBool`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "value"))]
     #[cfg_attr(feature = "serde", serde(rename = "value"))]
     pub m_value: bool,

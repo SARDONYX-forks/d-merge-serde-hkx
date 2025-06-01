@@ -28,6 +28,7 @@ pub struct hkContactPointMaterial<'a> {
     /// - name: `userData`(ctype: `hkUlong`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "userData"))]
     #[cfg_attr(feature = "serde", serde(rename = "userData"))]
     pub m_userData: Ulong,
@@ -35,6 +36,7 @@ pub struct hkContactPointMaterial<'a> {
     /// - name: `friction`(ctype: `hkUint8`)
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "friction"))]
     #[cfg_attr(feature = "serde", serde(rename = "friction"))]
@@ -43,6 +45,7 @@ pub struct hkContactPointMaterial<'a> {
     /// - name: `restitution`(ctype: `hkUint8`)
     /// - offset: `  5`(x86)/`  9`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "restitution"))]
     #[cfg_attr(feature = "serde", serde(rename = "restitution"))]
@@ -51,6 +54,7 @@ pub struct hkContactPointMaterial<'a> {
     /// - name: `maxImpulse`(ctype: `hkUint8`)
     /// - offset: `  6`(x86)/` 10`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxImpulse"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxImpulse"))]
@@ -59,6 +63,7 @@ pub struct hkContactPointMaterial<'a> {
     /// - name: `flags`(ctype: `hkUint8`)
     /// - offset: `  7`(x86)/` 11`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "flags"))]
     #[cfg_attr(feature = "serde", serde(rename = "flags"))]

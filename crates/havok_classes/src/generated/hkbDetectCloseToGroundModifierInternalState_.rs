@@ -33,6 +33,7 @@ pub struct hkbDetectCloseToGroundModifierInternalState<'a> {
     /// - name: `isCloseToGround`(ctype: `hkBool`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isCloseToGround"))]
     #[cfg_attr(feature = "serde", serde(rename = "isCloseToGround"))]
     pub m_isCloseToGround: bool,

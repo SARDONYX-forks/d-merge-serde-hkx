@@ -34,6 +34,7 @@ pub struct hkpWheelConstraintData<'a> {
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `304`(x86)/`304`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "atoms"))]
     #[cfg_attr(feature = "serde", serde(rename = "atoms"))]
@@ -42,6 +43,7 @@ pub struct hkpWheelConstraintData<'a> {
     /// - name: `initialAxleInB`(ctype: `hkVector4`)
     /// - offset: `320`(x86)/`336`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "initialAxleInB"))]
     #[cfg_attr(feature = "serde", serde(rename = "initialAxleInB"))]
     pub m_initialAxleInB: Vector4,
@@ -49,6 +51,7 @@ pub struct hkpWheelConstraintData<'a> {
     /// - name: `initialSteeringAxisInB`(ctype: `hkVector4`)
     /// - offset: `336`(x86)/`352`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "initialSteeringAxisInB"))]
     #[cfg_attr(feature = "serde", serde(rename = "initialSteeringAxisInB"))]
     pub m_initialSteeringAxisInB: Vector4,

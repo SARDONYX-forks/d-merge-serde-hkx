@@ -33,6 +33,7 @@ pub struct hkMemoryMeshVertexBuffer<'a> {
     /// - name: `format`(ctype: `struct hkVertexFormat`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `260`(x86)/`260`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "format"))]
     #[cfg_attr(feature = "serde", serde(rename = "format"))]
@@ -41,6 +42,7 @@ pub struct hkMemoryMeshVertexBuffer<'a> {
     /// - name: `elementOffsets`(ctype: `hkInt32[32]`)
     /// - offset: `268`(x86)/`276`(x86_64)
     /// - type_size: `128`(x86)/`128`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "elementOffsets"))]
     #[cfg_attr(feature = "serde", serde(rename = "elementOffsets"))]
@@ -49,6 +51,7 @@ pub struct hkMemoryMeshVertexBuffer<'a> {
     /// - name: `memory`(ctype: `hkArray<hkUint8>`)
     /// - offset: `396`(x86)/`408`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "memory"))]
     #[cfg_attr(feature = "serde", serde(rename = "memory"))]
@@ -57,6 +60,7 @@ pub struct hkMemoryMeshVertexBuffer<'a> {
     /// - name: `vertexStride`(ctype: `hkInt32`)
     /// - offset: `408`(x86)/`424`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vertexStride"))]
     #[cfg_attr(feature = "serde", serde(rename = "vertexStride"))]
@@ -65,6 +69,7 @@ pub struct hkMemoryMeshVertexBuffer<'a> {
     /// - name: `locked`(ctype: `hkBool`)
     /// - offset: `412`(x86)/`428`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "locked"))]
     #[cfg_attr(feature = "serde", serde(rename = "locked"))]
     pub m_locked: bool,
@@ -72,6 +77,7 @@ pub struct hkMemoryMeshVertexBuffer<'a> {
     /// - name: `numVertices`(ctype: `hkInt32`)
     /// - offset: `416`(x86)/`432`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numVertices"))]
     #[cfg_attr(feature = "serde", serde(rename = "numVertices"))]
@@ -80,6 +86,7 @@ pub struct hkMemoryMeshVertexBuffer<'a> {
     /// - name: `isBigEndian`(ctype: `hkBool`)
     /// - offset: `420`(x86)/`436`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isBigEndian"))]
     #[cfg_attr(feature = "serde", serde(rename = "isBigEndian"))]
     pub m_isBigEndian: bool,
@@ -87,6 +94,7 @@ pub struct hkMemoryMeshVertexBuffer<'a> {
     /// - name: `isSharable`(ctype: `hkBool`)
     /// - offset: `421`(x86)/`437`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isSharable"))]
     #[cfg_attr(feature = "serde", serde(rename = "isSharable"))]
     pub m_isSharable: bool,

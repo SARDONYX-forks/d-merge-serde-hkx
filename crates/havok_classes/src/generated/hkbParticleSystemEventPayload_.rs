@@ -33,6 +33,7 @@ pub struct hkbParticleSystemEventPayload<'a> {
     /// - name: `type`(ctype: `enum SystemType`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "type"))]
     #[cfg_attr(feature = "serde", serde(rename = "type"))]
     pub m_type: SystemType,
@@ -40,6 +41,7 @@ pub struct hkbParticleSystemEventPayload<'a> {
     /// - name: `emitBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 10`(x86)/` 18`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "emitBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "emitBoneIndex"))]
@@ -48,6 +50,7 @@ pub struct hkbParticleSystemEventPayload<'a> {
     /// - name: `offset`(ctype: `hkVector4`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "offset"))]
     #[cfg_attr(feature = "serde", serde(rename = "offset"))]
     pub m_offset: Vector4,
@@ -55,6 +58,7 @@ pub struct hkbParticleSystemEventPayload<'a> {
     /// - name: `direction`(ctype: `hkVector4`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "direction"))]
     #[cfg_attr(feature = "serde", serde(rename = "direction"))]
     pub m_direction: Vector4,
@@ -62,6 +66,7 @@ pub struct hkbParticleSystemEventPayload<'a> {
     /// - name: `numParticles`(ctype: `hkInt32`)
     /// - offset: ` 48`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numParticles"))]
     #[cfg_attr(feature = "serde", serde(rename = "numParticles"))]
@@ -70,6 +75,7 @@ pub struct hkbParticleSystemEventPayload<'a> {
     /// - name: `speed`(ctype: `hkReal`)
     /// - offset: ` 52`(x86)/` 68`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "speed"))]
     #[cfg_attr(feature = "serde", serde(rename = "speed"))]
     pub m_speed: f32,

@@ -33,6 +33,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - name: `directAtTarget`(ctype: `hkBool`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "directAtTarget"))]
     #[cfg_attr(feature = "serde", serde(rename = "directAtTarget"))]
     pub m_directAtTarget: bool,
@@ -40,6 +41,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - name: `sourceBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 46`(x86)/` 82`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sourceBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "sourceBoneIndex"))]
@@ -48,6 +50,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - name: `startBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 48`(x86)/` 84`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "startBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "startBoneIndex"))]
@@ -56,6 +59,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - name: `endBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 50`(x86)/` 86`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "endBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "endBoneIndex"))]
@@ -64,6 +68,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - name: `limitHeadingDegrees`(ctype: `hkReal`)
     /// - offset: ` 52`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "limitHeadingDegrees"))]
     #[cfg_attr(feature = "serde", serde(rename = "limitHeadingDegrees"))]
     pub m_limitHeadingDegrees: f32,
@@ -71,6 +76,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - name: `limitPitchDegrees`(ctype: `hkReal`)
     /// - offset: ` 56`(x86)/` 92`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "limitPitchDegrees"))]
     #[cfg_attr(feature = "serde", serde(rename = "limitPitchDegrees"))]
     pub m_limitPitchDegrees: f32,
@@ -78,6 +84,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - name: `offsetHeadingDegrees`(ctype: `hkReal`)
     /// - offset: ` 60`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "offsetHeadingDegrees"))]
     #[cfg_attr(feature = "serde", serde(rename = "offsetHeadingDegrees"))]
     pub m_offsetHeadingDegrees: f32,
@@ -85,6 +92,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - name: `offsetPitchDegrees`(ctype: `hkReal`)
     /// - offset: ` 64`(x86)/`100`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "offsetPitchDegrees"))]
     #[cfg_attr(feature = "serde", serde(rename = "offsetPitchDegrees"))]
     pub m_offsetPitchDegrees: f32,
@@ -92,6 +100,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - name: `onGain`(ctype: `hkReal`)
     /// - offset: ` 68`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "onGain"))]
     #[cfg_attr(feature = "serde", serde(rename = "onGain"))]
     pub m_onGain: f32,
@@ -99,6 +108,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - name: `offGain`(ctype: `hkReal`)
     /// - offset: ` 72`(x86)/`108`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "offGain"))]
     #[cfg_attr(feature = "serde", serde(rename = "offGain"))]
     pub m_offGain: f32,
@@ -106,6 +116,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - name: `targetLocation`(ctype: `hkVector4`)
     /// - offset: ` 80`(x86)/`112`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "targetLocation"))]
     #[cfg_attr(feature = "serde", serde(rename = "targetLocation"))]
     pub m_targetLocation: Vector4,
@@ -113,6 +124,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - name: `userInfo`(ctype: `hkUint32`)
     /// - offset: ` 96`(x86)/`128`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "userInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "userInfo"))]
@@ -121,6 +133,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - name: `directAtCamera`(ctype: `hkBool`)
     /// - offset: `100`(x86)/`132`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "directAtCamera"))]
     #[cfg_attr(feature = "serde", serde(rename = "directAtCamera"))]
     pub m_directAtCamera: bool,
@@ -128,6 +141,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - name: `directAtCameraX`(ctype: `hkReal`)
     /// - offset: `104`(x86)/`136`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "directAtCameraX"))]
     #[cfg_attr(feature = "serde", serde(rename = "directAtCameraX"))]
     pub m_directAtCameraX: f32,
@@ -135,6 +149,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - name: `directAtCameraY`(ctype: `hkReal`)
     /// - offset: `108`(x86)/`140`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "directAtCameraY"))]
     #[cfg_attr(feature = "serde", serde(rename = "directAtCameraY"))]
     pub m_directAtCameraY: f32,
@@ -142,6 +157,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - name: `directAtCameraZ`(ctype: `hkReal`)
     /// - offset: `112`(x86)/`144`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "directAtCameraZ"))]
     #[cfg_attr(feature = "serde", serde(rename = "directAtCameraZ"))]
     pub m_directAtCameraZ: f32,
@@ -149,6 +165,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - name: `active`(ctype: `hkBool`)
     /// - offset: `116`(x86)/`148`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "active"))]
     #[cfg_attr(feature = "serde", serde(rename = "active"))]
     pub m_active: bool,
@@ -156,6 +173,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - name: `currentHeadingOffset`(ctype: `hkReal`)
     /// - offset: `120`(x86)/`152`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "currentHeadingOffset"))]
     #[cfg_attr(feature = "serde", serde(rename = "currentHeadingOffset"))]
     pub m_currentHeadingOffset: f32,
@@ -163,6 +181,7 @@ pub struct BSDirectAtModifier<'a> {
     /// - name: `currentPitchOffset`(ctype: `hkReal`)
     /// - offset: `124`(x86)/`156`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "currentPitchOffset"))]
     #[cfg_attr(feature = "serde", serde(rename = "currentPitchOffset"))]
     pub m_currentPitchOffset: f32,
@@ -180,8 +199,8 @@ pub struct BSDirectAtModifier<'a> {
     /// - offset: `132`(x86)/`168`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pSkeletonMemory"))]
     #[cfg_attr(feature = "serde", serde(rename = "pSkeletonMemory"))]
     pub m_pSkeletonMemory: Pointer<'a>,

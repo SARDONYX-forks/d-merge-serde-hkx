@@ -33,6 +33,7 @@ pub struct hkbBlendingTransitionEffect<'a> {
     /// - name: `duration`(ctype: `hkReal`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "duration"))]
     #[cfg_attr(feature = "serde", serde(rename = "duration"))]
     pub m_duration: f32,
@@ -40,6 +41,7 @@ pub struct hkbBlendingTransitionEffect<'a> {
     /// - name: `toGeneratorStartTimeFraction`(ctype: `hkReal`)
     /// - offset: ` 48`(x86)/` 84`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "toGeneratorStartTimeFraction")
@@ -50,6 +52,7 @@ pub struct hkbBlendingTransitionEffect<'a> {
     /// - name: `flags`(ctype: `flags FlagBits`)
     /// - offset: ` 52`(x86)/` 88`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "flags"))]
     #[cfg_attr(feature = "serde", serde(rename = "flags"))]
     pub m_flags: FlagBits,
@@ -57,6 +60,7 @@ pub struct hkbBlendingTransitionEffect<'a> {
     /// - name: `endMode`(ctype: `enum EndMode`)
     /// - offset: ` 54`(x86)/` 90`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "endMode"))]
     #[cfg_attr(feature = "serde", serde(rename = "endMode"))]
     pub m_endMode: EndMode,
@@ -64,6 +68,7 @@ pub struct hkbBlendingTransitionEffect<'a> {
     /// - name: `blendCurve`(ctype: `enum BlendCurve`)
     /// - offset: ` 55`(x86)/` 91`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "blendCurve"))]
     #[cfg_attr(feature = "serde", serde(rename = "blendCurve"))]
     pub m_blendCurve: BlendCurve,
@@ -72,8 +77,8 @@ pub struct hkbBlendingTransitionEffect<'a> {
     /// - offset: ` 56`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fromGenerator"))]
     #[cfg_attr(feature = "serde", serde(rename = "fromGenerator"))]
     pub m_fromGenerator: Pointer<'a>,
@@ -82,8 +87,8 @@ pub struct hkbBlendingTransitionEffect<'a> {
     /// - offset: ` 60`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "toGenerator"))]
     #[cfg_attr(feature = "serde", serde(rename = "toGenerator"))]
     pub m_toGenerator: Pointer<'a>,

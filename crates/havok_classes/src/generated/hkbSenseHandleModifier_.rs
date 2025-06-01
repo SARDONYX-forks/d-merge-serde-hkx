@@ -34,8 +34,8 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: ` 24`(x86)/` 48`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "handle"))]
     #[cfg_attr(feature = "serde", serde(rename = "handle"))]
     pub m_handle: hkbHandle<'a>,
@@ -43,6 +43,7 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - name: `sensorLocalOffset`(ctype: `hkVector4`)
     /// - offset: ` 80`(x86)/`128`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sensorLocalOffset"))]
     #[cfg_attr(feature = "serde", serde(rename = "sensorLocalOffset"))]
     pub m_sensorLocalOffset: Vector4,
@@ -50,6 +51,7 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - name: `ranges`(ctype: `hkArray<struct hkbSenseHandleModifierRange>`)
     /// - offset: ` 96`(x86)/`144`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "ranges"))]
     #[cfg_attr(feature = "serde", serde(rename = "ranges"))]
@@ -58,6 +60,7 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - name: `handleOut`(ctype: `struct hkbHandle*`)
     /// - offset: `108`(x86)/`160`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "handleOut"))]
     #[cfg_attr(feature = "serde", serde(rename = "handleOut"))]
@@ -66,6 +69,7 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - name: `handleIn`(ctype: `struct hkbHandle*`)
     /// - offset: `112`(x86)/`168`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "handleIn"))]
     #[cfg_attr(feature = "serde", serde(rename = "handleIn"))]
@@ -74,6 +78,7 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - name: `localFrameName`(ctype: `hkStringPtr`)
     /// - offset: `116`(x86)/`176`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "localFrameName"))]
     #[cfg_attr(feature = "serde", serde(rename = "localFrameName"))]
@@ -82,6 +87,7 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - name: `sensorLocalFrameName`(ctype: `hkStringPtr`)
     /// - offset: `120`(x86)/`184`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sensorLocalFrameName"))]
     #[cfg_attr(feature = "serde", serde(rename = "sensorLocalFrameName"))]
@@ -90,6 +96,7 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - name: `minDistance`(ctype: `hkReal`)
     /// - offset: `124`(x86)/`192`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "minDistance"))]
     #[cfg_attr(feature = "serde", serde(rename = "minDistance"))]
     pub m_minDistance: f32,
@@ -97,6 +104,7 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - name: `maxDistance`(ctype: `hkReal`)
     /// - offset: `128`(x86)/`196`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxDistance"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxDistance"))]
     pub m_maxDistance: f32,
@@ -104,6 +112,7 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - name: `distanceOut`(ctype: `hkReal`)
     /// - offset: `132`(x86)/`200`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "distanceOut"))]
     #[cfg_attr(feature = "serde", serde(rename = "distanceOut"))]
     pub m_distanceOut: f32,
@@ -111,6 +120,7 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - name: `collisionFilterInfo`(ctype: `hkUint32`)
     /// - offset: `136`(x86)/`204`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "collisionFilterInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "collisionFilterInfo"))]
@@ -119,6 +129,7 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - name: `sensorRagdollBoneIndex`(ctype: `hkInt16`)
     /// - offset: `140`(x86)/`208`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sensorRagdollBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "sensorRagdollBoneIndex"))]
@@ -127,6 +138,7 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - name: `sensorAnimationBoneIndex`(ctype: `hkInt16`)
     /// - offset: `142`(x86)/`210`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sensorAnimationBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "sensorAnimationBoneIndex"))]
@@ -135,6 +147,7 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - name: `sensingMode`(ctype: `enum SensingMode`)
     /// - offset: `144`(x86)/`212`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sensingMode"))]
     #[cfg_attr(feature = "serde", serde(rename = "sensingMode"))]
     pub m_sensingMode: SensingMode,
@@ -142,6 +155,7 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - name: `extrapolateSensorPosition`(ctype: `hkBool`)
     /// - offset: `145`(x86)/`213`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "extrapolateSensorPosition"))]
     #[cfg_attr(feature = "serde", serde(rename = "extrapolateSensorPosition"))]
     pub m_extrapolateSensorPosition: bool,
@@ -149,6 +163,7 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - name: `keepFirstSensedHandle`(ctype: `hkBool`)
     /// - offset: `146`(x86)/`214`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "keepFirstSensedHandle"))]
     #[cfg_attr(feature = "serde", serde(rename = "keepFirstSensedHandle"))]
     pub m_keepFirstSensedHandle: bool,
@@ -156,6 +171,7 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - name: `foundHandleOut`(ctype: `hkBool`)
     /// - offset: `147`(x86)/`215`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "foundHandleOut"))]
     #[cfg_attr(feature = "serde", serde(rename = "foundHandleOut"))]
     pub m_foundHandleOut: bool,
@@ -173,8 +189,8 @@ pub struct hkbSenseHandleModifier<'a> {
     /// - offset: `152`(x86)/`220`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "rangeIndexForEventToSendNextUpdate")

@@ -33,6 +33,7 @@ pub struct hkpStiffSpringConstraintAtom<'a> {
     /// - name: `length`(ctype: `hkReal`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "length"))]
     #[cfg_attr(feature = "serde", serde(rename = "length"))]
     pub m_length: f32,

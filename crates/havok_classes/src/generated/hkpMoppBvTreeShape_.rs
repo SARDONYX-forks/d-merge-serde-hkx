@@ -33,6 +33,7 @@ pub struct hkpMoppBvTreeShape<'a> {
     /// - name: `child`(ctype: `struct hkpSingleShapeContainer`)
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "child"))]
     #[cfg_attr(feature = "serde", serde(rename = "child"))]
@@ -42,8 +43,8 @@ pub struct hkpMoppBvTreeShape<'a> {
     /// - offset: ` 56`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "childSize"))]
     #[cfg_attr(feature = "serde", serde(rename = "childSize"))]
     pub m_childSize: I32<'a>,

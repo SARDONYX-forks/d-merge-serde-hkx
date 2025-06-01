@@ -33,6 +33,7 @@ pub struct hkpMultiSphereShape<'a> {
     /// - name: `numSpheres`(ctype: `hkInt32`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numSpheres"))]
     #[cfg_attr(feature = "serde", serde(rename = "numSpheres"))]
@@ -41,6 +42,7 @@ pub struct hkpMultiSphereShape<'a> {
     /// - name: `spheres`(ctype: `hkVector4[8]`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: `128`(x86)/`128`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "spheres"))]
     #[cfg_attr(feature = "serde", serde(rename = "spheres"))]
     pub m_spheres: [Vector4; 8usize],

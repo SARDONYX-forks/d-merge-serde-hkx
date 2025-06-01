@@ -33,6 +33,7 @@ pub struct BGSGamebryoSequenceGenerator<'a> {
     /// - name: `pSequence`(ctype: `char*`)
     /// - offset: ` 40`(x86)/` 72`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pSequence"))]
     #[cfg_attr(feature = "serde", serde(rename = "pSequence"))]
@@ -41,6 +42,7 @@ pub struct BGSGamebryoSequenceGenerator<'a> {
     /// - name: `eBlendModeFunction`(ctype: `enum BlendModeFunction`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "eBlendModeFunction"))]
     #[cfg_attr(feature = "serde", serde(rename = "eBlendModeFunction"))]
     pub m_eBlendModeFunction: BlendModeFunction,
@@ -48,6 +50,7 @@ pub struct BGSGamebryoSequenceGenerator<'a> {
     /// - name: `fPercent`(ctype: `hkReal`)
     /// - offset: ` 48`(x86)/` 84`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fPercent"))]
     #[cfg_attr(feature = "serde", serde(rename = "fPercent"))]
     pub m_fPercent: f32,

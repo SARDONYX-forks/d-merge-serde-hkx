@@ -33,6 +33,7 @@ pub struct hkbComputeDirectionModifierInternalState<'a> {
     /// - name: `pointOut`(ctype: `hkVector4`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pointOut"))]
     #[cfg_attr(feature = "serde", serde(rename = "pointOut"))]
     pub m_pointOut: Vector4,
@@ -40,6 +41,7 @@ pub struct hkbComputeDirectionModifierInternalState<'a> {
     /// - name: `groundAngleOut`(ctype: `hkReal`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "groundAngleOut"))]
     #[cfg_attr(feature = "serde", serde(rename = "groundAngleOut"))]
     pub m_groundAngleOut: f32,
@@ -47,6 +49,7 @@ pub struct hkbComputeDirectionModifierInternalState<'a> {
     /// - name: `upAngleOut`(ctype: `hkReal`)
     /// - offset: ` 36`(x86)/` 36`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "upAngleOut"))]
     #[cfg_attr(feature = "serde", serde(rename = "upAngleOut"))]
     pub m_upAngleOut: f32,
@@ -54,6 +57,7 @@ pub struct hkbComputeDirectionModifierInternalState<'a> {
     /// - name: `computedOutput`(ctype: `hkBool`)
     /// - offset: ` 40`(x86)/` 40`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "computedOutput"))]
     #[cfg_attr(feature = "serde", serde(rename = "computedOutput"))]
     pub m_computedOutput: bool,

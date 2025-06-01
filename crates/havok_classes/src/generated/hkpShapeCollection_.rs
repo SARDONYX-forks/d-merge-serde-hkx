@@ -33,6 +33,7 @@ pub struct hkpShapeCollection<'a> {
     /// - name: `disableWelding`(ctype: `hkBool`)
     /// - offset: ` 20`(x86)/` 40`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "disableWelding"))]
     #[cfg_attr(feature = "serde", serde(rename = "disableWelding"))]
     pub m_disableWelding: bool,
@@ -40,6 +41,7 @@ pub struct hkpShapeCollection<'a> {
     /// - name: `collectionType`(ctype: `enum CollectionType`)
     /// - offset: ` 21`(x86)/` 41`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "collectionType"))]
     #[cfg_attr(feature = "serde", serde(rename = "collectionType"))]
     pub m_collectionType: CollectionType,

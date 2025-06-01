@@ -33,6 +33,7 @@ pub struct hkpPoweredChainMapper<'a> {
     /// - name: `links`(ctype: `hkArray<struct hkpPoweredChainMapperLinkInfo>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "links"))]
     #[cfg_attr(feature = "serde", serde(rename = "links"))]
@@ -41,6 +42,7 @@ pub struct hkpPoweredChainMapper<'a> {
     /// - name: `targets`(ctype: `hkArray<struct hkpPoweredChainMapperTarget>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "targets"))]
     #[cfg_attr(feature = "serde", serde(rename = "targets"))]
@@ -49,6 +51,7 @@ pub struct hkpPoweredChainMapper<'a> {
     /// - name: `chains`(ctype: `hkArray<hkpConstraintChainInstance*>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "chains"))]
     #[cfg_attr(feature = "serde", serde(rename = "chains"))]

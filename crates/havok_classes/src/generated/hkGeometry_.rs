@@ -28,6 +28,7 @@ pub struct hkGeometry<'a> {
     /// - name: `vertices`(ctype: `hkArray<hkVector4>`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vertices"))]
     #[cfg_attr(feature = "serde", serde(rename = "vertices"))]
     pub m_vertices: Vec<Vector4>,
@@ -35,6 +36,7 @@ pub struct hkGeometry<'a> {
     /// - name: `triangles`(ctype: `hkArray<struct hkGeometryTriangle>`)
     /// - offset: ` 12`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "triangles"))]
     #[cfg_attr(feature = "serde", serde(rename = "triangles"))]

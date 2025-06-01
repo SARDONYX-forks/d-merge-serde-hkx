@@ -28,6 +28,7 @@ pub struct hkpCdBody<'a> {
     /// - name: `shape`(ctype: `struct hkpShape*`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "shape"))]
     #[cfg_attr(feature = "serde", serde(rename = "shape"))]
@@ -36,6 +37,7 @@ pub struct hkpCdBody<'a> {
     /// - name: `shapeKey`(ctype: `hkUint32`)
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "shapeKey"))]
     #[cfg_attr(feature = "serde", serde(rename = "shapeKey"))]
@@ -45,8 +47,8 @@ pub struct hkpCdBody<'a> {
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "motion"))]
     #[cfg_attr(feature = "serde", serde(rename = "motion"))]
     pub m_motion: Pointer<'a>,
@@ -55,8 +57,8 @@ pub struct hkpCdBody<'a> {
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "parent"))]
     #[cfg_attr(feature = "serde", serde(rename = "parent"))]
     pub m_parent: Pointer<'a>,

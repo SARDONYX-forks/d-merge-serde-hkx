@@ -33,6 +33,7 @@ pub struct hkbModifier<'a> {
     /// - name: `enable`(ctype: `hkBool`)
     /// - offset: ` 40`(x86)/` 72`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "enable"))]
     #[cfg_attr(feature = "serde", serde(rename = "enable"))]
     pub m_enable: bool,

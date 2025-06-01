@@ -33,6 +33,7 @@ pub struct hkbSetBehaviorCommand<'a> {
     /// - name: `characterId`(ctype: `hkUint64`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "characterId"))]
     #[cfg_attr(feature = "serde", serde(rename = "characterId"))]
@@ -41,6 +42,7 @@ pub struct hkbSetBehaviorCommand<'a> {
     /// - name: `behavior`(ctype: `struct hkbBehaviorGraph*`)
     /// - offset: ` 16`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "behavior"))]
     #[cfg_attr(feature = "serde", serde(rename = "behavior"))]
@@ -49,6 +51,7 @@ pub struct hkbSetBehaviorCommand<'a> {
     /// - name: `rootGenerator`(ctype: `struct hkbGenerator*`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rootGenerator"))]
     #[cfg_attr(feature = "serde", serde(rename = "rootGenerator"))]
@@ -57,6 +60,7 @@ pub struct hkbSetBehaviorCommand<'a> {
     /// - name: `referencedBehaviors`(ctype: `hkArray<hkbBehaviorGraph*>`)
     /// - offset: ` 24`(x86)/` 40`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "referencedBehaviors"))]
     #[cfg_attr(feature = "serde", serde(rename = "referencedBehaviors"))]
@@ -65,6 +69,7 @@ pub struct hkbSetBehaviorCommand<'a> {
     /// - name: `startStateIndex`(ctype: `hkInt32`)
     /// - offset: ` 36`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "startStateIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "startStateIndex"))]
@@ -73,6 +78,7 @@ pub struct hkbSetBehaviorCommand<'a> {
     /// - name: `randomizeSimulation`(ctype: `hkBool`)
     /// - offset: ` 40`(x86)/` 60`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "randomizeSimulation"))]
     #[cfg_attr(feature = "serde", serde(rename = "randomizeSimulation"))]
     pub m_randomizeSimulation: bool,
@@ -80,6 +86,7 @@ pub struct hkbSetBehaviorCommand<'a> {
     /// - name: `padding`(ctype: `hkInt32`)
     /// - offset: ` 44`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "padding"))]
     #[cfg_attr(feature = "serde", serde(rename = "padding"))]

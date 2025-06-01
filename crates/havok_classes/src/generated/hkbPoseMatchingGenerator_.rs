@@ -33,6 +33,7 @@ pub struct hkbPoseMatchingGenerator<'a> {
     /// - name: `worldFromModelRotation`(ctype: `hkQuaternion`)
     /// - offset: `128`(x86)/`160`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "worldFromModelRotation"))]
     #[cfg_attr(feature = "serde", serde(rename = "worldFromModelRotation"))]
     pub m_worldFromModelRotation: Quaternion,
@@ -40,6 +41,7 @@ pub struct hkbPoseMatchingGenerator<'a> {
     /// - name: `blendSpeed`(ctype: `hkReal`)
     /// - offset: `144`(x86)/`176`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "blendSpeed"))]
     #[cfg_attr(feature = "serde", serde(rename = "blendSpeed"))]
     pub m_blendSpeed: f32,
@@ -47,6 +49,7 @@ pub struct hkbPoseMatchingGenerator<'a> {
     /// - name: `minSpeedToSwitch`(ctype: `hkReal`)
     /// - offset: `148`(x86)/`180`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "minSpeedToSwitch"))]
     #[cfg_attr(feature = "serde", serde(rename = "minSpeedToSwitch"))]
     pub m_minSpeedToSwitch: f32,
@@ -54,6 +57,7 @@ pub struct hkbPoseMatchingGenerator<'a> {
     /// - name: `minSwitchTimeNoError`(ctype: `hkReal`)
     /// - offset: `152`(x86)/`184`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "minSwitchTimeNoError"))]
     #[cfg_attr(feature = "serde", serde(rename = "minSwitchTimeNoError"))]
     pub m_minSwitchTimeNoError: f32,
@@ -61,6 +65,7 @@ pub struct hkbPoseMatchingGenerator<'a> {
     /// - name: `minSwitchTimeFullError`(ctype: `hkReal`)
     /// - offset: `156`(x86)/`188`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "minSwitchTimeFullError"))]
     #[cfg_attr(feature = "serde", serde(rename = "minSwitchTimeFullError"))]
     pub m_minSwitchTimeFullError: f32,
@@ -68,6 +73,7 @@ pub struct hkbPoseMatchingGenerator<'a> {
     /// - name: `startPlayingEventId`(ctype: `hkInt32`)
     /// - offset: `160`(x86)/`192`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "startPlayingEventId"))]
     #[cfg_attr(feature = "serde", serde(rename = "startPlayingEventId"))]
@@ -76,6 +82,7 @@ pub struct hkbPoseMatchingGenerator<'a> {
     /// - name: `startMatchingEventId`(ctype: `hkInt32`)
     /// - offset: `164`(x86)/`196`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "startMatchingEventId"))]
     #[cfg_attr(feature = "serde", serde(rename = "startMatchingEventId"))]
@@ -84,6 +91,7 @@ pub struct hkbPoseMatchingGenerator<'a> {
     /// - name: `rootBoneIndex`(ctype: `hkInt16`)
     /// - offset: `168`(x86)/`200`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rootBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "rootBoneIndex"))]
@@ -92,6 +100,7 @@ pub struct hkbPoseMatchingGenerator<'a> {
     /// - name: `otherBoneIndex`(ctype: `hkInt16`)
     /// - offset: `170`(x86)/`202`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "otherBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "otherBoneIndex"))]
@@ -100,6 +109,7 @@ pub struct hkbPoseMatchingGenerator<'a> {
     /// - name: `anotherBoneIndex`(ctype: `hkInt16`)
     /// - offset: `172`(x86)/`204`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "anotherBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "anotherBoneIndex"))]
@@ -108,6 +118,7 @@ pub struct hkbPoseMatchingGenerator<'a> {
     /// - name: `pelvisIndex`(ctype: `hkInt16`)
     /// - offset: `174`(x86)/`206`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pelvisIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "pelvisIndex"))]
@@ -116,6 +127,7 @@ pub struct hkbPoseMatchingGenerator<'a> {
     /// - name: `mode`(ctype: `enum Mode`)
     /// - offset: `176`(x86)/`208`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "mode"))]
     #[cfg_attr(feature = "serde", serde(rename = "mode"))]
     pub m_mode: Mode,
@@ -124,8 +136,8 @@ pub struct hkbPoseMatchingGenerator<'a> {
     /// - offset: `180`(x86)/`212`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "currentMatch"))]
     #[cfg_attr(feature = "serde", serde(rename = "currentMatch"))]
     pub m_currentMatch: I32<'a>,
@@ -134,8 +146,8 @@ pub struct hkbPoseMatchingGenerator<'a> {
     /// - offset: `184`(x86)/`216`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bestMatch"))]
     #[cfg_attr(feature = "serde", serde(rename = "bestMatch"))]
     pub m_bestMatch: I32<'a>,
@@ -171,8 +183,8 @@ pub struct hkbPoseMatchingGenerator<'a> {
     /// - offset: `200`(x86)/`232`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "poseMatchingUtility"))]
     #[cfg_attr(feature = "serde", serde(rename = "poseMatchingUtility"))]
     pub m_poseMatchingUtility: Pointer<'a>,

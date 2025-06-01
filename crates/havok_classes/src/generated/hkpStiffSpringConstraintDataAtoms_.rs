@@ -28,6 +28,7 @@ pub struct hkpStiffSpringConstraintDataAtoms<'a> {
     /// - name: `pivots`(ctype: `struct hkpSetLocalTranslationsConstraintAtom`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pivots"))]
     #[cfg_attr(feature = "serde", serde(rename = "pivots"))]
@@ -36,6 +37,7 @@ pub struct hkpStiffSpringConstraintDataAtoms<'a> {
     /// - name: `spring`(ctype: `struct hkpStiffSpringConstraintAtom`)
     /// - offset: ` 48`(x86)/` 48`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "spring"))]
     #[cfg_attr(feature = "serde", serde(rename = "spring"))]

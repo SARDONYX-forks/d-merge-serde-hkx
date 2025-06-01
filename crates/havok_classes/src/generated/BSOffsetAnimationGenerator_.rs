@@ -34,6 +34,7 @@ pub struct BSOffsetAnimationGenerator<'a> {
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pDefaultGenerator"))]
     #[cfg_attr(feature = "serde", serde(rename = "pDefaultGenerator"))]
@@ -43,6 +44,7 @@ pub struct BSOffsetAnimationGenerator<'a> {
     /// - offset: ` 64`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pOffsetClipGenerator"))]
     #[cfg_attr(feature = "serde", serde(rename = "pOffsetClipGenerator"))]
@@ -51,6 +53,7 @@ pub struct BSOffsetAnimationGenerator<'a> {
     /// - name: `fOffsetVariable`(ctype: `hkReal`)
     /// - offset: ` 68`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fOffsetVariable"))]
     #[cfg_attr(feature = "serde", serde(rename = "fOffsetVariable"))]
     pub m_fOffsetVariable: f32,
@@ -58,6 +61,7 @@ pub struct BSOffsetAnimationGenerator<'a> {
     /// - name: `fOffsetRangeStart`(ctype: `hkReal`)
     /// - offset: ` 72`(x86)/`108`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fOffsetRangeStart"))]
     #[cfg_attr(feature = "serde", serde(rename = "fOffsetRangeStart"))]
     pub m_fOffsetRangeStart: f32,
@@ -65,6 +69,7 @@ pub struct BSOffsetAnimationGenerator<'a> {
     /// - name: `fOffsetRangeEnd`(ctype: `hkReal`)
     /// - offset: ` 76`(x86)/`112`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fOffsetRangeEnd"))]
     #[cfg_attr(feature = "serde", serde(rename = "fOffsetRangeEnd"))]
     pub m_fOffsetRangeEnd: f32,
@@ -100,8 +105,8 @@ pub struct BSOffsetAnimationGenerator<'a> {
     /// - offset: `108`(x86)/`156`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "iCurrentFrame"))]
     #[cfg_attr(feature = "serde", serde(rename = "iCurrentFrame"))]
     pub m_iCurrentFrame: U32<'a>,

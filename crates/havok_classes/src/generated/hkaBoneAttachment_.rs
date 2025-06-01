@@ -33,6 +33,7 @@ pub struct hkaBoneAttachment<'a> {
     /// - name: `originalSkeletonName`(ctype: `hkStringPtr`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "originalSkeletonName"))]
     #[cfg_attr(feature = "serde", serde(rename = "originalSkeletonName"))]
@@ -41,6 +42,7 @@ pub struct hkaBoneAttachment<'a> {
     /// - name: `boneFromAttachment`(ctype: `hkMatrix4`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: ` 64`(x86)/` 64`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "boneFromAttachment"))]
     #[cfg_attr(feature = "serde", serde(rename = "boneFromAttachment"))]
     pub m_boneFromAttachment: Matrix4,
@@ -48,6 +50,7 @@ pub struct hkaBoneAttachment<'a> {
     /// - name: `attachment`(ctype: `struct hkReferencedObject*`)
     /// - offset: ` 80`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "attachment"))]
     #[cfg_attr(feature = "serde", serde(rename = "attachment"))]
@@ -56,6 +59,7 @@ pub struct hkaBoneAttachment<'a> {
     /// - name: `name`(ctype: `hkStringPtr`)
     /// - offset: ` 84`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "name"))]
     #[cfg_attr(feature = "serde", serde(rename = "name"))]
@@ -64,6 +68,7 @@ pub struct hkaBoneAttachment<'a> {
     /// - name: `boneIndex`(ctype: `hkInt16`)
     /// - offset: ` 88`(x86)/`112`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "boneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "boneIndex"))]

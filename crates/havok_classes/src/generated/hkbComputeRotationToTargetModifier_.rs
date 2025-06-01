@@ -33,6 +33,7 @@ pub struct hkbComputeRotationToTargetModifier<'a> {
     /// - name: `rotationOut`(ctype: `hkQuaternion`)
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rotationOut"))]
     #[cfg_attr(feature = "serde", serde(rename = "rotationOut"))]
     pub m_rotationOut: Quaternion,
@@ -40,6 +41,7 @@ pub struct hkbComputeRotationToTargetModifier<'a> {
     /// - name: `targetPosition`(ctype: `hkVector4`)
     /// - offset: ` 64`(x86)/` 96`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "targetPosition"))]
     #[cfg_attr(feature = "serde", serde(rename = "targetPosition"))]
     pub m_targetPosition: Vector4,
@@ -47,6 +49,7 @@ pub struct hkbComputeRotationToTargetModifier<'a> {
     /// - name: `currentPosition`(ctype: `hkVector4`)
     /// - offset: ` 80`(x86)/`112`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "currentPosition"))]
     #[cfg_attr(feature = "serde", serde(rename = "currentPosition"))]
     pub m_currentPosition: Vector4,
@@ -54,6 +57,7 @@ pub struct hkbComputeRotationToTargetModifier<'a> {
     /// - name: `currentRotation`(ctype: `hkQuaternion`)
     /// - offset: ` 96`(x86)/`128`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "currentRotation"))]
     #[cfg_attr(feature = "serde", serde(rename = "currentRotation"))]
     pub m_currentRotation: Quaternion,
@@ -61,6 +65,7 @@ pub struct hkbComputeRotationToTargetModifier<'a> {
     /// - name: `localAxisOfRotation`(ctype: `hkVector4`)
     /// - offset: `112`(x86)/`144`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "localAxisOfRotation"))]
     #[cfg_attr(feature = "serde", serde(rename = "localAxisOfRotation"))]
     pub m_localAxisOfRotation: Vector4,
@@ -68,6 +73,7 @@ pub struct hkbComputeRotationToTargetModifier<'a> {
     /// - name: `localFacingDirection`(ctype: `hkVector4`)
     /// - offset: `128`(x86)/`160`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "localFacingDirection"))]
     #[cfg_attr(feature = "serde", serde(rename = "localFacingDirection"))]
     pub m_localFacingDirection: Vector4,
@@ -75,6 +81,7 @@ pub struct hkbComputeRotationToTargetModifier<'a> {
     /// - name: `resultIsDelta`(ctype: `hkBool`)
     /// - offset: `144`(x86)/`176`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "resultIsDelta"))]
     #[cfg_attr(feature = "serde", serde(rename = "resultIsDelta"))]
     pub m_resultIsDelta: bool,

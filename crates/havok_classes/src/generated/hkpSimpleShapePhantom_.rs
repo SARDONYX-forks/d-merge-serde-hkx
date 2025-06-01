@@ -34,8 +34,8 @@ pub struct hkpSimpleShapePhantom<'a> {
     /// - offset: `352`(x86)/`416`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "collisionDetails"))]
     #[cfg_attr(feature = "serde", serde(rename = "collisionDetails"))]
     pub m_collisionDetails: Vec<hkpSimpleShapePhantomCollisionDetail<'a>>,

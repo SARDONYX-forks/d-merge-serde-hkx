@@ -33,6 +33,7 @@ pub struct hkpSoftContactModifierConstraintAtom<'a> {
     /// - name: `tau`(ctype: `hkReal`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "tau"))]
     #[cfg_attr(feature = "serde", serde(rename = "tau"))]
     pub m_tau: f32,
@@ -40,6 +41,7 @@ pub struct hkpSoftContactModifierConstraintAtom<'a> {
     /// - name: `maxAcceleration`(ctype: `hkReal`)
     /// - offset: ` 36`(x86)/` 52`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxAcceleration"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxAcceleration"))]
     pub m_maxAcceleration: f32,

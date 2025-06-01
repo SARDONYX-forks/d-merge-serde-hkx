@@ -33,6 +33,7 @@ pub struct hkMoppBvTreeShapeBase<'a> {
     /// - name: `code`(ctype: `struct hkpMoppCode*`)
     /// - offset: ` 20`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "code"))]
     #[cfg_attr(feature = "serde", serde(rename = "code"))]
@@ -42,8 +43,8 @@ pub struct hkMoppBvTreeShapeBase<'a> {
     /// - offset: ` 24`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "moppData"))]
     #[cfg_attr(feature = "serde", serde(rename = "moppData"))]
     pub m_moppData: Pointer<'a>,
@@ -52,8 +53,8 @@ pub struct hkMoppBvTreeShapeBase<'a> {
     /// - offset: ` 28`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "moppDataSize"))]
     #[cfg_attr(feature = "serde", serde(rename = "moppDataSize"))]
     pub m_moppDataSize: U32<'a>,

@@ -33,6 +33,7 @@ pub struct hkxVertexVectorDataChannel<'a> {
     /// - name: `perVertexVectors`(ctype: `hkArray<hkVector4>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "perVertexVectors"))]
     #[cfg_attr(feature = "serde", serde(rename = "perVertexVectors"))]
     pub m_perVertexVectors: Vec<Vector4>,

@@ -28,6 +28,7 @@ pub struct hkpSerializedTrack1nInfo<'a> {
     /// - name: `sectors`(ctype: `hkArray<hkpAgent1nSector*>`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sectors"))]
     #[cfg_attr(feature = "serde", serde(rename = "sectors"))]
@@ -36,6 +37,7 @@ pub struct hkpSerializedTrack1nInfo<'a> {
     /// - name: `subTracks`(ctype: `hkArray<hkpSerializedSubTrack1nInfo*>`)
     /// - offset: ` 12`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "subTracks"))]
     #[cfg_attr(feature = "serde", serde(rename = "subTracks"))]

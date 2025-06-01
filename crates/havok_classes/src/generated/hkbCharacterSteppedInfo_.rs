@@ -33,6 +33,7 @@ pub struct hkbCharacterSteppedInfo<'a> {
     /// - name: `characterId`(ctype: `hkUint64`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "characterId"))]
     #[cfg_attr(feature = "serde", serde(rename = "characterId"))]
@@ -41,6 +42,7 @@ pub struct hkbCharacterSteppedInfo<'a> {
     /// - name: `deltaTime`(ctype: `hkReal`)
     /// - offset: ` 16`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "deltaTime"))]
     #[cfg_attr(feature = "serde", serde(rename = "deltaTime"))]
     pub m_deltaTime: f32,
@@ -48,6 +50,7 @@ pub struct hkbCharacterSteppedInfo<'a> {
     /// - name: `worldFromModel`(ctype: `hkQsTransform`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "worldFromModel"))]
     #[cfg_attr(feature = "serde", serde(rename = "worldFromModel"))]
     pub m_worldFromModel: QsTransform,
@@ -55,6 +58,7 @@ pub struct hkbCharacterSteppedInfo<'a> {
     /// - name: `poseModelSpace`(ctype: `hkArray<hkQsTransform>`)
     /// - offset: ` 80`(x86)/` 80`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "poseModelSpace"))]
     #[cfg_attr(feature = "serde", serde(rename = "poseModelSpace"))]
     pub m_poseModelSpace: Vec<QsTransform>,
@@ -62,6 +66,7 @@ pub struct hkbCharacterSteppedInfo<'a> {
     /// - name: `rigidAttachmentTransforms`(ctype: `hkArray<hkQsTransform>`)
     /// - offset: ` 92`(x86)/` 96`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rigidAttachmentTransforms"))]
     #[cfg_attr(feature = "serde", serde(rename = "rigidAttachmentTransforms"))]
     pub m_rigidAttachmentTransforms: Vec<QsTransform>,

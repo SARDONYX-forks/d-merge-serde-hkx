@@ -33,6 +33,7 @@ pub struct hkxNode<'a> {
     /// - name: `name`(ctype: `hkStringPtr`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "name"))]
     #[cfg_attr(feature = "serde", serde(rename = "name"))]
@@ -41,6 +42,7 @@ pub struct hkxNode<'a> {
     /// - name: `object`(ctype: `struct hkReferencedObject*`)
     /// - offset: ` 24`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "object"))]
     #[cfg_attr(feature = "serde", serde(rename = "object"))]
@@ -49,6 +51,7 @@ pub struct hkxNode<'a> {
     /// - name: `keyFrames`(ctype: `hkArray<hkMatrix4>`)
     /// - offset: ` 28`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "keyFrames"))]
     #[cfg_attr(feature = "serde", serde(rename = "keyFrames"))]
     pub m_keyFrames: Vec<Matrix4>,
@@ -56,6 +59,7 @@ pub struct hkxNode<'a> {
     /// - name: `children`(ctype: `hkArray<hkxNode*>`)
     /// - offset: ` 40`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "children"))]
     #[cfg_attr(feature = "serde", serde(rename = "children"))]
@@ -64,6 +68,7 @@ pub struct hkxNode<'a> {
     /// - name: `annotations`(ctype: `hkArray<struct hkxNodeAnnotationData>`)
     /// - offset: ` 52`(x86)/` 80`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "annotations"))]
     #[cfg_attr(feature = "serde", serde(rename = "annotations"))]
@@ -72,6 +77,7 @@ pub struct hkxNode<'a> {
     /// - name: `userProperties`(ctype: `hkStringPtr`)
     /// - offset: ` 64`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "userProperties"))]
     #[cfg_attr(feature = "serde", serde(rename = "userProperties"))]
@@ -80,6 +86,7 @@ pub struct hkxNode<'a> {
     /// - name: `selected`(ctype: `hkBool`)
     /// - offset: ` 68`(x86)/`104`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "selected"))]
     #[cfg_attr(feature = "serde", serde(rename = "selected"))]
     pub m_selected: bool,

@@ -28,6 +28,7 @@ pub struct hkbClipTrigger<'a> {
     /// - name: `localTime`(ctype: `hkReal`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "localTime"))]
     #[cfg_attr(feature = "serde", serde(rename = "localTime"))]
     pub m_localTime: f32,
@@ -35,6 +36,7 @@ pub struct hkbClipTrigger<'a> {
     /// - name: `event`(ctype: `struct hkbEventProperty`)
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "event"))]
     #[cfg_attr(feature = "serde", serde(rename = "event"))]
@@ -43,6 +45,7 @@ pub struct hkbClipTrigger<'a> {
     /// - name: `relativeToEndOfClip`(ctype: `hkBool`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "relativeToEndOfClip"))]
     #[cfg_attr(feature = "serde", serde(rename = "relativeToEndOfClip"))]
     pub m_relativeToEndOfClip: bool,
@@ -50,6 +53,7 @@ pub struct hkbClipTrigger<'a> {
     /// - name: `acyclic`(ctype: `hkBool`)
     /// - offset: ` 13`(x86)/` 25`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "acyclic"))]
     #[cfg_attr(feature = "serde", serde(rename = "acyclic"))]
     pub m_acyclic: bool,
@@ -57,6 +61,7 @@ pub struct hkbClipTrigger<'a> {
     /// - name: `isAnnotation`(ctype: `hkBool`)
     /// - offset: ` 14`(x86)/` 26`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isAnnotation"))]
     #[cfg_attr(feature = "serde", serde(rename = "isAnnotation"))]
     pub m_isAnnotation: bool,

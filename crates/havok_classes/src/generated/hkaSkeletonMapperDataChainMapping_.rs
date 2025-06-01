@@ -28,6 +28,7 @@ pub struct hkaSkeletonMapperDataChainMapping<'a> {
     /// - name: `startBoneA`(ctype: `hkInt16`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "startBoneA"))]
     #[cfg_attr(feature = "serde", serde(rename = "startBoneA"))]
@@ -36,6 +37,7 @@ pub struct hkaSkeletonMapperDataChainMapping<'a> {
     /// - name: `endBoneA`(ctype: `hkInt16`)
     /// - offset: `  2`(x86)/`  2`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "endBoneA"))]
     #[cfg_attr(feature = "serde", serde(rename = "endBoneA"))]
@@ -44,6 +46,7 @@ pub struct hkaSkeletonMapperDataChainMapping<'a> {
     /// - name: `startBoneB`(ctype: `hkInt16`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "startBoneB"))]
     #[cfg_attr(feature = "serde", serde(rename = "startBoneB"))]
@@ -52,6 +55,7 @@ pub struct hkaSkeletonMapperDataChainMapping<'a> {
     /// - name: `endBoneB`(ctype: `hkInt16`)
     /// - offset: `  6`(x86)/`  6`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "endBoneB"))]
     #[cfg_attr(feature = "serde", serde(rename = "endBoneB"))]
@@ -60,6 +64,7 @@ pub struct hkaSkeletonMapperDataChainMapping<'a> {
     /// - name: `startAFromBTransform`(ctype: `hkQsTransform`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "startAFromBTransform"))]
     #[cfg_attr(feature = "serde", serde(rename = "startAFromBTransform"))]
     pub m_startAFromBTransform: QsTransform,
@@ -67,6 +72,7 @@ pub struct hkaSkeletonMapperDataChainMapping<'a> {
     /// - name: `endAFromBTransform`(ctype: `hkQsTransform`)
     /// - offset: ` 64`(x86)/` 64`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "endAFromBTransform"))]
     #[cfg_attr(feature = "serde", serde(rename = "endAFromBTransform"))]
     pub m_endAFromBTransform: QsTransform,

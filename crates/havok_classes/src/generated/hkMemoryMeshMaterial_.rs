@@ -33,6 +33,7 @@ pub struct hkMemoryMeshMaterial<'a> {
     /// - name: `materialName`(ctype: `hkStringPtr`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materialName"))]
     #[cfg_attr(feature = "serde", serde(rename = "materialName"))]
@@ -41,6 +42,7 @@ pub struct hkMemoryMeshMaterial<'a> {
     /// - name: `textures`(ctype: `hkArray<hkMeshTexture*>`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "textures"))]
     #[cfg_attr(feature = "serde", serde(rename = "textures"))]

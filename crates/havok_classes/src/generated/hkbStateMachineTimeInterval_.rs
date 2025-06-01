@@ -28,6 +28,7 @@ pub struct hkbStateMachineTimeInterval<'a> {
     /// - name: `enterEventId`(ctype: `hkInt32`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "enterEventId"))]
     #[cfg_attr(feature = "serde", serde(rename = "enterEventId"))]
@@ -36,6 +37,7 @@ pub struct hkbStateMachineTimeInterval<'a> {
     /// - name: `exitEventId`(ctype: `hkInt32`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "exitEventId"))]
     #[cfg_attr(feature = "serde", serde(rename = "exitEventId"))]
@@ -44,6 +46,7 @@ pub struct hkbStateMachineTimeInterval<'a> {
     /// - name: `enterTime`(ctype: `hkReal`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "enterTime"))]
     #[cfg_attr(feature = "serde", serde(rename = "enterTime"))]
     pub m_enterTime: f32,
@@ -51,6 +54,7 @@ pub struct hkbStateMachineTimeInterval<'a> {
     /// - name: `exitTime`(ctype: `hkReal`)
     /// - offset: ` 12`(x86)/` 12`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "exitTime"))]
     #[cfg_attr(feature = "serde", serde(rename = "exitTime"))]
     pub m_exitTime: f32,

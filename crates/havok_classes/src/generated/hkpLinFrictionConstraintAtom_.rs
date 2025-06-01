@@ -33,6 +33,7 @@ pub struct hkpLinFrictionConstraintAtom<'a> {
     /// - name: `isEnabled`(ctype: `hkUint8`)
     /// - offset: `  2`(x86)/`  2`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isEnabled"))]
     #[cfg_attr(feature = "serde", serde(rename = "isEnabled"))]
@@ -41,6 +42,7 @@ pub struct hkpLinFrictionConstraintAtom<'a> {
     /// - name: `frictionAxis`(ctype: `hkUint8`)
     /// - offset: `  3`(x86)/`  3`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "frictionAxis"))]
     #[cfg_attr(feature = "serde", serde(rename = "frictionAxis"))]
@@ -49,6 +51,7 @@ pub struct hkpLinFrictionConstraintAtom<'a> {
     /// - name: `maxFrictionForce`(ctype: `hkReal`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxFrictionForce"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxFrictionForce"))]
     pub m_maxFrictionForce: f32,

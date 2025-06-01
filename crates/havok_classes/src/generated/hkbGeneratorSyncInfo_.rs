@@ -28,6 +28,7 @@ pub struct hkbGeneratorSyncInfo<'a> {
     /// - name: `syncPoints`(ctype: `struct hkbGeneratorSyncInfoSyncPoint[8]`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 64`(x86)/` 64`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "syncPoints"))]
     #[cfg_attr(feature = "serde", serde(rename = "syncPoints"))]
@@ -36,6 +37,7 @@ pub struct hkbGeneratorSyncInfo<'a> {
     /// - name: `baseFrequency`(ctype: `hkReal`)
     /// - offset: ` 64`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "baseFrequency"))]
     #[cfg_attr(feature = "serde", serde(rename = "baseFrequency"))]
     pub m_baseFrequency: f32,
@@ -43,6 +45,7 @@ pub struct hkbGeneratorSyncInfo<'a> {
     /// - name: `localTime`(ctype: `hkReal`)
     /// - offset: ` 68`(x86)/` 68`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "localTime"))]
     #[cfg_attr(feature = "serde", serde(rename = "localTime"))]
     pub m_localTime: f32,
@@ -50,6 +53,7 @@ pub struct hkbGeneratorSyncInfo<'a> {
     /// - name: `playbackSpeed`(ctype: `hkReal`)
     /// - offset: ` 72`(x86)/` 72`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "playbackSpeed"))]
     #[cfg_attr(feature = "serde", serde(rename = "playbackSpeed"))]
     pub m_playbackSpeed: f32,
@@ -57,6 +61,7 @@ pub struct hkbGeneratorSyncInfo<'a> {
     /// - name: `numSyncPoints`(ctype: `hkInt8`)
     /// - offset: ` 76`(x86)/` 76`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numSyncPoints"))]
     #[cfg_attr(feature = "serde", serde(rename = "numSyncPoints"))]
@@ -65,6 +70,7 @@ pub struct hkbGeneratorSyncInfo<'a> {
     /// - name: `isCyclic`(ctype: `hkBool`)
     /// - offset: ` 77`(x86)/` 77`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isCyclic"))]
     #[cfg_attr(feature = "serde", serde(rename = "isCyclic"))]
     pub m_isCyclic: bool,
@@ -72,6 +78,7 @@ pub struct hkbGeneratorSyncInfo<'a> {
     /// - name: `isMirrored`(ctype: `hkBool`)
     /// - offset: ` 78`(x86)/` 78`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isMirrored"))]
     #[cfg_attr(feature = "serde", serde(rename = "isMirrored"))]
     pub m_isMirrored: bool,
@@ -79,6 +86,7 @@ pub struct hkbGeneratorSyncInfo<'a> {
     /// - name: `isAdditive`(ctype: `hkBool`)
     /// - offset: ` 79`(x86)/` 79`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isAdditive"))]
     #[cfg_attr(feature = "serde", serde(rename = "isAdditive"))]
     pub m_isAdditive: bool,

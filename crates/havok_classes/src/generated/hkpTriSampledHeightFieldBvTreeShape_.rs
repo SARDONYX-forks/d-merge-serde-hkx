@@ -33,6 +33,7 @@ pub struct hkpTriSampledHeightFieldBvTreeShape<'a> {
     /// - name: `childContainer`(ctype: `struct hkpSingleShapeContainer`)
     /// - offset: ` 20`(x86)/` 40`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "childContainer"))]
     #[cfg_attr(feature = "serde", serde(rename = "childContainer"))]
@@ -42,8 +43,8 @@ pub struct hkpTriSampledHeightFieldBvTreeShape<'a> {
     /// - offset: ` 28`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "childSize"))]
     #[cfg_attr(feature = "serde", serde(rename = "childSize"))]
     pub m_childSize: I32<'a>,
@@ -51,6 +52,7 @@ pub struct hkpTriSampledHeightFieldBvTreeShape<'a> {
     /// - name: `wantAabbRejectionTest`(ctype: `hkBool`)
     /// - offset: ` 32`(x86)/` 60`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wantAabbRejectionTest"))]
     #[cfg_attr(feature = "serde", serde(rename = "wantAabbRejectionTest"))]
     pub m_wantAabbRejectionTest: bool,
@@ -58,6 +60,7 @@ pub struct hkpTriSampledHeightFieldBvTreeShape<'a> {
     /// - name: `padding`(ctype: `hkUint8[12]`)
     /// - offset: ` 33`(x86)/` 61`(x86_64)
     /// - type_size: ` 12`(x86)/` 12`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "padding"))]
     #[cfg_attr(feature = "serde", serde(rename = "padding"))]

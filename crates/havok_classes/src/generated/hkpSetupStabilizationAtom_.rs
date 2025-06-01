@@ -33,6 +33,7 @@ pub struct hkpSetupStabilizationAtom<'a> {
     /// - name: `enabled`(ctype: `hkBool`)
     /// - offset: `  2`(x86)/`  2`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "enabled"))]
     #[cfg_attr(feature = "serde", serde(rename = "enabled"))]
     pub m_enabled: bool,
@@ -40,6 +41,7 @@ pub struct hkpSetupStabilizationAtom<'a> {
     /// - name: `maxAngle`(ctype: `hkReal`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxAngle"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxAngle"))]
     pub m_maxAngle: f32,
@@ -47,6 +49,7 @@ pub struct hkpSetupStabilizationAtom<'a> {
     /// - name: `padding`(ctype: `hkUint8[8]`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  8`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "padding"))]
     #[cfg_attr(feature = "serde", serde(rename = "padding"))]

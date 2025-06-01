@@ -33,6 +33,7 @@ pub struct hkxVertexBuffer<'a> {
     /// - name: `data`(ctype: `struct hkxVertexBufferVertexData`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 84`(x86)/`104`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "data"))]
     #[cfg_attr(feature = "serde", serde(rename = "data"))]
@@ -41,6 +42,7 @@ pub struct hkxVertexBuffer<'a> {
     /// - name: `desc`(ctype: `struct hkxVertexDescription`)
     /// - offset: ` 92`(x86)/`120`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "desc"))]
     #[cfg_attr(feature = "serde", serde(rename = "desc"))]

@@ -33,6 +33,7 @@ pub struct hkbNodeInternalStateInfo<'a> {
     /// - name: `syncInfo`(ctype: `struct hkbGeneratorSyncInfo`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 80`(x86)/` 80`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "syncInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "syncInfo"))]
@@ -41,6 +42,7 @@ pub struct hkbNodeInternalStateInfo<'a> {
     /// - name: `name`(ctype: `hkStringPtr`)
     /// - offset: ` 88`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "name"))]
     #[cfg_attr(feature = "serde", serde(rename = "name"))]
@@ -49,6 +51,7 @@ pub struct hkbNodeInternalStateInfo<'a> {
     /// - name: `internalState`(ctype: `struct hkReferencedObject*`)
     /// - offset: ` 92`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "internalState"))]
     #[cfg_attr(feature = "serde", serde(rename = "internalState"))]
@@ -57,6 +60,7 @@ pub struct hkbNodeInternalStateInfo<'a> {
     /// - name: `nodeId`(ctype: `hkInt16`)
     /// - offset: ` 96`(x86)/`112`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nodeId"))]
     #[cfg_attr(feature = "serde", serde(rename = "nodeId"))]
@@ -65,6 +69,7 @@ pub struct hkbNodeInternalStateInfo<'a> {
     /// - name: `hasActivateBeenCalled`(ctype: `hkBool`)
     /// - offset: ` 98`(x86)/`114`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "hasActivateBeenCalled"))]
     #[cfg_attr(feature = "serde", serde(rename = "hasActivateBeenCalled"))]
     pub m_hasActivateBeenCalled: bool,

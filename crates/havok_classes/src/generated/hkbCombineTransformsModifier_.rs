@@ -33,6 +33,7 @@ pub struct hkbCombineTransformsModifier<'a> {
     /// - name: `translationOut`(ctype: `hkVector4`)
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "translationOut"))]
     #[cfg_attr(feature = "serde", serde(rename = "translationOut"))]
     pub m_translationOut: Vector4,
@@ -40,6 +41,7 @@ pub struct hkbCombineTransformsModifier<'a> {
     /// - name: `rotationOut`(ctype: `hkQuaternion`)
     /// - offset: ` 64`(x86)/` 96`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rotationOut"))]
     #[cfg_attr(feature = "serde", serde(rename = "rotationOut"))]
     pub m_rotationOut: Quaternion,
@@ -47,6 +49,7 @@ pub struct hkbCombineTransformsModifier<'a> {
     /// - name: `leftTranslation`(ctype: `hkVector4`)
     /// - offset: ` 80`(x86)/`112`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "leftTranslation"))]
     #[cfg_attr(feature = "serde", serde(rename = "leftTranslation"))]
     pub m_leftTranslation: Vector4,
@@ -54,6 +57,7 @@ pub struct hkbCombineTransformsModifier<'a> {
     /// - name: `leftRotation`(ctype: `hkQuaternion`)
     /// - offset: ` 96`(x86)/`128`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "leftRotation"))]
     #[cfg_attr(feature = "serde", serde(rename = "leftRotation"))]
     pub m_leftRotation: Quaternion,
@@ -61,6 +65,7 @@ pub struct hkbCombineTransformsModifier<'a> {
     /// - name: `rightTranslation`(ctype: `hkVector4`)
     /// - offset: `112`(x86)/`144`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rightTranslation"))]
     #[cfg_attr(feature = "serde", serde(rename = "rightTranslation"))]
     pub m_rightTranslation: Vector4,
@@ -68,6 +73,7 @@ pub struct hkbCombineTransformsModifier<'a> {
     /// - name: `rightRotation`(ctype: `hkQuaternion`)
     /// - offset: `128`(x86)/`160`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rightRotation"))]
     #[cfg_attr(feature = "serde", serde(rename = "rightRotation"))]
     pub m_rightRotation: Quaternion,
@@ -75,6 +81,7 @@ pub struct hkbCombineTransformsModifier<'a> {
     /// - name: `invertLeftTransform`(ctype: `hkBool`)
     /// - offset: `144`(x86)/`176`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "invertLeftTransform"))]
     #[cfg_attr(feature = "serde", serde(rename = "invertLeftTransform"))]
     pub m_invertLeftTransform: bool,
@@ -82,6 +89,7 @@ pub struct hkbCombineTransformsModifier<'a> {
     /// - name: `invertRightTransform`(ctype: `hkBool`)
     /// - offset: `145`(x86)/`177`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "invertRightTransform"))]
     #[cfg_attr(feature = "serde", serde(rename = "invertRightTransform"))]
     pub m_invertRightTransform: bool,
@@ -89,6 +97,7 @@ pub struct hkbCombineTransformsModifier<'a> {
     /// - name: `invertResult`(ctype: `hkBool`)
     /// - offset: `146`(x86)/`178`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "invertResult"))]
     #[cfg_attr(feature = "serde", serde(rename = "invertResult"))]
     pub m_invertResult: bool,

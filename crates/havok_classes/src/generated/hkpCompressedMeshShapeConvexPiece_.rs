@@ -28,6 +28,7 @@ pub struct hkpCompressedMeshShapeConvexPiece<'a> {
     /// - name: `offset`(ctype: `hkVector4`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "offset"))]
     #[cfg_attr(feature = "serde", serde(rename = "offset"))]
     pub m_offset: Vector4,
@@ -35,6 +36,7 @@ pub struct hkpCompressedMeshShapeConvexPiece<'a> {
     /// - name: `vertices`(ctype: `hkArray<hkUint16>`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vertices"))]
     #[cfg_attr(feature = "serde", serde(rename = "vertices"))]
@@ -43,6 +45,7 @@ pub struct hkpCompressedMeshShapeConvexPiece<'a> {
     /// - name: `faceVertices`(ctype: `hkArray<hkUint8>`)
     /// - offset: ` 28`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "faceVertices"))]
     #[cfg_attr(feature = "serde", serde(rename = "faceVertices"))]
@@ -51,6 +54,7 @@ pub struct hkpCompressedMeshShapeConvexPiece<'a> {
     /// - name: `faceOffsets`(ctype: `hkArray<hkUint16>`)
     /// - offset: ` 40`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "faceOffsets"))]
     #[cfg_attr(feature = "serde", serde(rename = "faceOffsets"))]
@@ -59,6 +63,7 @@ pub struct hkpCompressedMeshShapeConvexPiece<'a> {
     /// - name: `reference`(ctype: `hkUint16`)
     /// - offset: ` 52`(x86)/` 64`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "reference"))]
     #[cfg_attr(feature = "serde", serde(rename = "reference"))]
@@ -67,6 +72,7 @@ pub struct hkpCompressedMeshShapeConvexPiece<'a> {
     /// - name: `transformIndex`(ctype: `hkUint16`)
     /// - offset: ` 54`(x86)/` 66`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transformIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "transformIndex"))]

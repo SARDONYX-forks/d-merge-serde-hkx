@@ -28,6 +28,7 @@ pub struct hkTrackerSerializableScanSnapshotBlock<'a> {
     /// - name: `typeIndex`(ctype: `hkInt32`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "typeIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "typeIndex"))]
@@ -36,6 +37,7 @@ pub struct hkTrackerSerializableScanSnapshotBlock<'a> {
     /// - name: `start`(ctype: `hkUlong`)
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "start"))]
     #[cfg_attr(feature = "serde", serde(rename = "start"))]
     pub m_start: Ulong,
@@ -43,6 +45,7 @@ pub struct hkTrackerSerializableScanSnapshotBlock<'a> {
     /// - name: `size`(ctype: `hkUlong`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "size"))]
     #[cfg_attr(feature = "serde", serde(rename = "size"))]
     pub m_size: Ulong,
@@ -50,6 +53,7 @@ pub struct hkTrackerSerializableScanSnapshotBlock<'a> {
     /// - name: `arraySize`(ctype: `hkInt32`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "arraySize"))]
     #[cfg_attr(feature = "serde", serde(rename = "arraySize"))]
@@ -58,6 +62,7 @@ pub struct hkTrackerSerializableScanSnapshotBlock<'a> {
     /// - name: `startReferenceIndex`(ctype: `hkInt32`)
     /// - offset: ` 16`(x86)/` 28`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "startReferenceIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "startReferenceIndex"))]
@@ -66,6 +71,7 @@ pub struct hkTrackerSerializableScanSnapshotBlock<'a> {
     /// - name: `numReferences`(ctype: `hkInt32`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numReferences"))]
     #[cfg_attr(feature = "serde", serde(rename = "numReferences"))]

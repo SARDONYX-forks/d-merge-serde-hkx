@@ -33,6 +33,7 @@ pub struct hkpSetLocalTranslationsConstraintAtom<'a> {
     /// - name: `translationA`(ctype: `hkVector4`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "translationA"))]
     #[cfg_attr(feature = "serde", serde(rename = "translationA"))]
     pub m_translationA: Vector4,
@@ -40,6 +41,7 @@ pub struct hkpSetLocalTranslationsConstraintAtom<'a> {
     /// - name: `translationB`(ctype: `hkVector4`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "translationB"))]
     #[cfg_attr(feature = "serde", serde(rename = "translationB"))]
     pub m_translationB: Vector4,

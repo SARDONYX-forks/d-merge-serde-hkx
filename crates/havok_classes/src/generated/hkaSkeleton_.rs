@@ -33,6 +33,7 @@ pub struct hkaSkeleton<'a> {
     /// - name: `name`(ctype: `hkStringPtr`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "name"))]
     #[cfg_attr(feature = "serde", serde(rename = "name"))]
@@ -41,6 +42,7 @@ pub struct hkaSkeleton<'a> {
     /// - name: `parentIndices`(ctype: `hkArray<hkInt16>`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "parentIndices"))]
     #[cfg_attr(feature = "serde", serde(rename = "parentIndices"))]
@@ -49,6 +51,7 @@ pub struct hkaSkeleton<'a> {
     /// - name: `bones`(ctype: `hkArray<struct hkaBone>`)
     /// - offset: ` 24`(x86)/` 40`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bones"))]
     #[cfg_attr(feature = "serde", serde(rename = "bones"))]
@@ -57,6 +60,7 @@ pub struct hkaSkeleton<'a> {
     /// - name: `referencePose`(ctype: `hkArray<hkQsTransform>`)
     /// - offset: ` 36`(x86)/` 56`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "referencePose"))]
     #[cfg_attr(feature = "serde", serde(rename = "referencePose"))]
     pub m_referencePose: Vec<QsTransform>,
@@ -64,6 +68,7 @@ pub struct hkaSkeleton<'a> {
     /// - name: `referenceFloats`(ctype: `hkArray<hkReal>`)
     /// - offset: ` 48`(x86)/` 72`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "referenceFloats"))]
     #[cfg_attr(feature = "serde", serde(rename = "referenceFloats"))]
     pub m_referenceFloats: Vec<f32>,
@@ -71,6 +76,7 @@ pub struct hkaSkeleton<'a> {
     /// - name: `floatSlots`(ctype: `hkArray<hkStringPtr>`)
     /// - offset: ` 60`(x86)/` 88`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "floatSlots"))]
     #[cfg_attr(feature = "serde", serde(rename = "floatSlots"))]
@@ -79,6 +85,7 @@ pub struct hkaSkeleton<'a> {
     /// - name: `localFrames`(ctype: `hkArray<struct hkaSkeletonLocalFrameOnBone>`)
     /// - offset: ` 72`(x86)/`104`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "localFrames"))]
     #[cfg_attr(feature = "serde", serde(rename = "localFrames"))]

@@ -33,6 +33,7 @@ pub struct hkbAttachmentModifier<'a> {
     /// - name: `sendToAttacherOnAttach`(ctype: `struct hkbEventProperty`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sendToAttacherOnAttach"))]
     #[cfg_attr(feature = "serde", serde(rename = "sendToAttacherOnAttach"))]
@@ -41,6 +42,7 @@ pub struct hkbAttachmentModifier<'a> {
     /// - name: `sendToAttacheeOnAttach`(ctype: `struct hkbEventProperty`)
     /// - offset: ` 52`(x86)/` 96`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sendToAttacheeOnAttach"))]
     #[cfg_attr(feature = "serde", serde(rename = "sendToAttacheeOnAttach"))]
@@ -49,6 +51,7 @@ pub struct hkbAttachmentModifier<'a> {
     /// - name: `sendToAttacherOnDetach`(ctype: `struct hkbEventProperty`)
     /// - offset: ` 60`(x86)/`112`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sendToAttacherOnDetach"))]
     #[cfg_attr(feature = "serde", serde(rename = "sendToAttacherOnDetach"))]
@@ -57,6 +60,7 @@ pub struct hkbAttachmentModifier<'a> {
     /// - name: `sendToAttacheeOnDetach`(ctype: `struct hkbEventProperty`)
     /// - offset: ` 68`(x86)/`128`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sendToAttacheeOnDetach"))]
     #[cfg_attr(feature = "serde", serde(rename = "sendToAttacheeOnDetach"))]
@@ -65,6 +69,7 @@ pub struct hkbAttachmentModifier<'a> {
     /// - name: `attachmentSetup`(ctype: `struct hkbAttachmentSetup*`)
     /// - offset: ` 76`(x86)/`144`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "attachmentSetup"))]
     #[cfg_attr(feature = "serde", serde(rename = "attachmentSetup"))]
@@ -73,6 +78,7 @@ pub struct hkbAttachmentModifier<'a> {
     /// - name: `attacherHandle`(ctype: `struct hkbHandle*`)
     /// - offset: ` 80`(x86)/`152`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "attacherHandle"))]
     #[cfg_attr(feature = "serde", serde(rename = "attacherHandle"))]
@@ -81,6 +87,7 @@ pub struct hkbAttachmentModifier<'a> {
     /// - name: `attacheeHandle`(ctype: `struct hkbHandle*`)
     /// - offset: ` 84`(x86)/`160`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "attacheeHandle"))]
     #[cfg_attr(feature = "serde", serde(rename = "attacheeHandle"))]
@@ -89,6 +96,7 @@ pub struct hkbAttachmentModifier<'a> {
     /// - name: `attacheeLayer`(ctype: `hkInt32`)
     /// - offset: ` 88`(x86)/`168`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "attacheeLayer"))]
     #[cfg_attr(feature = "serde", serde(rename = "attacheeLayer"))]
@@ -98,8 +106,8 @@ pub struct hkbAttachmentModifier<'a> {
     /// - offset: ` 92`(x86)/`176`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "attacheeRB"))]
     #[cfg_attr(feature = "serde", serde(rename = "attacheeRB"))]
     pub m_attacheeRB: Pointer<'a>,
@@ -117,8 +125,8 @@ pub struct hkbAttachmentModifier<'a> {
     /// - offset: `100`(x86)/`188`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "oldFilterInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "oldFilterInfo"))]
     pub m_oldFilterInfo: I32<'a>,
@@ -127,8 +135,8 @@ pub struct hkbAttachmentModifier<'a> {
     /// - offset: `104`(x86)/`192`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "attachment"))]
     #[cfg_attr(feature = "serde", serde(rename = "attachment"))]
     pub m_attachment: Pointer<'a>,

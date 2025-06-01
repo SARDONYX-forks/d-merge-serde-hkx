@@ -33,6 +33,7 @@ pub struct hkxScene<'a> {
     /// - name: `modeller`(ctype: `hkStringPtr`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "modeller"))]
     #[cfg_attr(feature = "serde", serde(rename = "modeller"))]
@@ -41,6 +42,7 @@ pub struct hkxScene<'a> {
     /// - name: `asset`(ctype: `hkStringPtr`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "asset"))]
     #[cfg_attr(feature = "serde", serde(rename = "asset"))]
@@ -49,6 +51,7 @@ pub struct hkxScene<'a> {
     /// - name: `sceneLength`(ctype: `hkReal`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "sceneLength"))]
     #[cfg_attr(feature = "serde", serde(rename = "sceneLength"))]
     pub m_sceneLength: f32,
@@ -56,6 +59,7 @@ pub struct hkxScene<'a> {
     /// - name: `rootNode`(ctype: `struct hkxNode*`)
     /// - offset: ` 20`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rootNode"))]
     #[cfg_attr(feature = "serde", serde(rename = "rootNode"))]
@@ -64,6 +68,7 @@ pub struct hkxScene<'a> {
     /// - name: `selectionSets`(ctype: `hkArray<hkxNodeSelectionSet*>`)
     /// - offset: ` 24`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "selectionSets"))]
     #[cfg_attr(feature = "serde", serde(rename = "selectionSets"))]
@@ -72,6 +77,7 @@ pub struct hkxScene<'a> {
     /// - name: `cameras`(ctype: `hkArray<hkxCamera*>`)
     /// - offset: ` 36`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "cameras"))]
     #[cfg_attr(feature = "serde", serde(rename = "cameras"))]
@@ -80,6 +86,7 @@ pub struct hkxScene<'a> {
     /// - name: `lights`(ctype: `hkArray<hkxLight*>`)
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "lights"))]
     #[cfg_attr(feature = "serde", serde(rename = "lights"))]
@@ -88,6 +95,7 @@ pub struct hkxScene<'a> {
     /// - name: `meshes`(ctype: `hkArray<hkxMesh*>`)
     /// - offset: ` 60`(x86)/` 96`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "meshes"))]
     #[cfg_attr(feature = "serde", serde(rename = "meshes"))]
@@ -96,6 +104,7 @@ pub struct hkxScene<'a> {
     /// - name: `materials`(ctype: `hkArray<hkxMaterial*>`)
     /// - offset: ` 72`(x86)/`112`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materials"))]
     #[cfg_attr(feature = "serde", serde(rename = "materials"))]
@@ -104,6 +113,7 @@ pub struct hkxScene<'a> {
     /// - name: `inplaceTextures`(ctype: `hkArray<hkxTextureInplace*>`)
     /// - offset: ` 84`(x86)/`128`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "inplaceTextures"))]
     #[cfg_attr(feature = "serde", serde(rename = "inplaceTextures"))]
@@ -112,6 +122,7 @@ pub struct hkxScene<'a> {
     /// - name: `externalTextures`(ctype: `hkArray<hkxTextureFile*>`)
     /// - offset: ` 96`(x86)/`144`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "externalTextures"))]
     #[cfg_attr(feature = "serde", serde(rename = "externalTextures"))]
@@ -120,6 +131,7 @@ pub struct hkxScene<'a> {
     /// - name: `skinBindings`(ctype: `hkArray<hkxSkinBinding*>`)
     /// - offset: `108`(x86)/`160`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "skinBindings"))]
     #[cfg_attr(feature = "serde", serde(rename = "skinBindings"))]
@@ -128,6 +140,7 @@ pub struct hkxScene<'a> {
     /// - name: `appliedTransform`(ctype: `hkMatrix3`)
     /// - offset: `128`(x86)/`176`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "appliedTransform"))]
     #[cfg_attr(feature = "serde", serde(rename = "appliedTransform"))]
     pub m_appliedTransform: Matrix3,

@@ -28,6 +28,7 @@ pub struct hkpMassProperties<'a> {
     /// - name: `volume`(ctype: `hkReal`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "volume"))]
     #[cfg_attr(feature = "serde", serde(rename = "volume"))]
     pub m_volume: f32,
@@ -35,6 +36,7 @@ pub struct hkpMassProperties<'a> {
     /// - name: `mass`(ctype: `hkReal`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "mass"))]
     #[cfg_attr(feature = "serde", serde(rename = "mass"))]
     pub m_mass: f32,
@@ -42,6 +44,7 @@ pub struct hkpMassProperties<'a> {
     /// - name: `centerOfMass`(ctype: `hkVector4`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "centerOfMass"))]
     #[cfg_attr(feature = "serde", serde(rename = "centerOfMass"))]
     pub m_centerOfMass: Vector4,
@@ -49,6 +52,7 @@ pub struct hkpMassProperties<'a> {
     /// - name: `inertiaTensor`(ctype: `hkMatrix3`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "inertiaTensor"))]
     #[cfg_attr(feature = "serde", serde(rename = "inertiaTensor"))]
     pub m_inertiaTensor: Matrix3,

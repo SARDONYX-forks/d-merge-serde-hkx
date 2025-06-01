@@ -33,6 +33,7 @@ pub struct hkpTransformShape<'a> {
     /// - name: `childShape`(ctype: `struct hkpSingleShapeContainer`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `  8`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "childShape"))]
     #[cfg_attr(feature = "serde", serde(rename = "childShape"))]
@@ -42,8 +43,8 @@ pub struct hkpTransformShape<'a> {
     /// - offset: ` 24`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "childShapeSize"))]
     #[cfg_attr(feature = "serde", serde(rename = "childShapeSize"))]
     pub m_childShapeSize: I32<'a>,
@@ -51,6 +52,7 @@ pub struct hkpTransformShape<'a> {
     /// - name: `rotation`(ctype: `hkQuaternion`)
     /// - offset: ` 32`(x86)/` 64`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rotation"))]
     #[cfg_attr(feature = "serde", serde(rename = "rotation"))]
     pub m_rotation: Quaternion,
@@ -58,6 +60,7 @@ pub struct hkpTransformShape<'a> {
     /// - name: `transform`(ctype: `hkTransform`)
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: ` 64`(x86)/` 64`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transform"))]
     #[cfg_attr(feature = "serde", serde(rename = "transform"))]
     pub m_transform: Transform,

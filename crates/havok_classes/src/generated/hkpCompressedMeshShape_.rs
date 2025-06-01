@@ -33,6 +33,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `bitsPerIndex`(ctype: `hkInt32`)
     /// - offset: ` 24`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bitsPerIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "bitsPerIndex"))]
@@ -41,6 +42,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `bitsPerWIndex`(ctype: `hkInt32`)
     /// - offset: ` 28`(x86)/` 52`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bitsPerWIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "bitsPerWIndex"))]
@@ -49,6 +51,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `wIndexMask`(ctype: `hkInt32`)
     /// - offset: ` 32`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wIndexMask"))]
     #[cfg_attr(feature = "serde", serde(rename = "wIndexMask"))]
@@ -57,6 +60,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `indexMask`(ctype: `hkInt32`)
     /// - offset: ` 36`(x86)/` 60`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "indexMask"))]
     #[cfg_attr(feature = "serde", serde(rename = "indexMask"))]
@@ -65,6 +69,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `radius`(ctype: `hkReal`)
     /// - offset: ` 40`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "radius"))]
     #[cfg_attr(feature = "serde", serde(rename = "radius"))]
     pub m_radius: f32,
@@ -72,6 +77,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `weldingType`(ctype: `enum WeldingType`)
     /// - offset: ` 44`(x86)/` 68`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "weldingType"))]
     #[cfg_attr(feature = "serde", serde(rename = "weldingType"))]
     pub m_weldingType: WeldingType,
@@ -79,6 +85,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `materialType`(ctype: `enum MaterialType`)
     /// - offset: ` 45`(x86)/` 69`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materialType"))]
     #[cfg_attr(feature = "serde", serde(rename = "materialType"))]
     pub m_materialType: MaterialType,
@@ -86,6 +93,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `materials`(ctype: `hkArray<hkUint32>`)
     /// - offset: ` 48`(x86)/` 72`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materials"))]
     #[cfg_attr(feature = "serde", serde(rename = "materials"))]
@@ -94,6 +102,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `materials16`(ctype: `hkArray<hkUint16>`)
     /// - offset: ` 60`(x86)/` 88`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materials16"))]
     #[cfg_attr(feature = "serde", serde(rename = "materials16"))]
@@ -102,6 +111,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `materials8`(ctype: `hkArray<hkUint8>`)
     /// - offset: ` 72`(x86)/`104`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materials8"))]
     #[cfg_attr(feature = "serde", serde(rename = "materials8"))]
@@ -110,6 +120,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `transforms`(ctype: `hkArray<hkQsTransform>`)
     /// - offset: ` 84`(x86)/`120`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transforms"))]
     #[cfg_attr(feature = "serde", serde(rename = "transforms"))]
     pub m_transforms: Vec<QsTransform>,
@@ -117,6 +128,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `bigVertices`(ctype: `hkArray<hkVector4>`)
     /// - offset: ` 96`(x86)/`136`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bigVertices"))]
     #[cfg_attr(feature = "serde", serde(rename = "bigVertices"))]
     pub m_bigVertices: Vec<Vector4>,
@@ -124,6 +136,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `bigTriangles`(ctype: `hkArray<struct hkpCompressedMeshShapeBigTriangle>`)
     /// - offset: `108`(x86)/`152`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bigTriangles"))]
     #[cfg_attr(feature = "serde", serde(rename = "bigTriangles"))]
@@ -132,6 +145,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `chunks`(ctype: `hkArray<struct hkpCompressedMeshShapeChunk>`)
     /// - offset: `120`(x86)/`168`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "chunks"))]
     #[cfg_attr(feature = "serde", serde(rename = "chunks"))]
@@ -140,6 +154,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `convexPieces`(ctype: `hkArray<struct hkpCompressedMeshShapeConvexPiece>`)
     /// - offset: `132`(x86)/`184`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "convexPieces"))]
     #[cfg_attr(feature = "serde", serde(rename = "convexPieces"))]
@@ -148,6 +163,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `error`(ctype: `hkReal`)
     /// - offset: `144`(x86)/`200`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "error"))]
     #[cfg_attr(feature = "serde", serde(rename = "error"))]
     pub m_error: f32,
@@ -155,6 +171,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `bounds`(ctype: `struct hkAabb`)
     /// - offset: `160`(x86)/`208`(x86_64)
     /// - type_size: ` 32`(x86)/` 32`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bounds"))]
     #[cfg_attr(feature = "serde", serde(rename = "bounds"))]
     pub m_bounds: hkAabb<'a>,
@@ -162,6 +179,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `defaultCollisionFilterInfo`(ctype: `hkUint32`)
     /// - offset: `192`(x86)/`240`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "defaultCollisionFilterInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "defaultCollisionFilterInfo"))]
@@ -171,8 +189,8 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - offset: `196`(x86)/`248`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "meshMaterials"))]
     #[cfg_attr(feature = "serde", serde(rename = "meshMaterials"))]
     pub m_meshMaterials: Pointer<'a>,
@@ -180,6 +198,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `materialStriding`(ctype: `hkUint16`)
     /// - offset: `200`(x86)/`256`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materialStriding"))]
     #[cfg_attr(feature = "serde", serde(rename = "materialStriding"))]
@@ -188,6 +207,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `numMaterials`(ctype: `hkUint16`)
     /// - offset: `202`(x86)/`258`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numMaterials"))]
     #[cfg_attr(feature = "serde", serde(rename = "numMaterials"))]
@@ -196,6 +216,7 @@ pub struct hkpCompressedMeshShape<'a> {
     /// - name: `namedMaterials`(ctype: `hkArray<struct hkpNamedMeshMaterial>`)
     /// - offset: `204`(x86)/`264`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "namedMaterials"))]
     #[cfg_attr(feature = "serde", serde(rename = "namedMaterials"))]

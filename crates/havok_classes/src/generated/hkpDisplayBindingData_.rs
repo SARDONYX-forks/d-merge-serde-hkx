@@ -33,6 +33,7 @@ pub struct hkpDisplayBindingData<'a> {
     /// - name: `rigidBodyBindings`(ctype: `hkArray<hkpDisplayBindingDataRigidBody*>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rigidBodyBindings"))]
     #[cfg_attr(feature = "serde", serde(rename = "rigidBodyBindings"))]
@@ -41,6 +42,7 @@ pub struct hkpDisplayBindingData<'a> {
     /// - name: `physicsSystemBindings`(ctype: `hkArray<hkpDisplayBindingDataPhysicsSystem*>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "physicsSystemBindings"))]
     #[cfg_attr(feature = "serde", serde(rename = "physicsSystemBindings"))]

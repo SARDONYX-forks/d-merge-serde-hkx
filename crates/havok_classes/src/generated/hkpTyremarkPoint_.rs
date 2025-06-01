@@ -28,6 +28,7 @@ pub struct hkpTyremarkPoint<'a> {
     /// - name: `pointLeft`(ctype: `hkVector4`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pointLeft"))]
     #[cfg_attr(feature = "serde", serde(rename = "pointLeft"))]
     pub m_pointLeft: Vector4,
@@ -35,6 +36,7 @@ pub struct hkpTyremarkPoint<'a> {
     /// - name: `pointRight`(ctype: `hkVector4`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pointRight"))]
     #[cfg_attr(feature = "serde", serde(rename = "pointRight"))]
     pub m_pointRight: Vector4,

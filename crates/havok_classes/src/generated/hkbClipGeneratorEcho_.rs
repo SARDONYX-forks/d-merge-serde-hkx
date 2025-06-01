@@ -29,6 +29,7 @@ pub struct hkbClipGeneratorEcho<'a> {
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "offsetLocalTime"))]
     #[cfg_attr(feature = "serde", serde(rename = "offsetLocalTime"))]
     pub m_offsetLocalTime: f32,
@@ -36,6 +37,7 @@ pub struct hkbClipGeneratorEcho<'a> {
     /// - name: `weight`(ctype: `hkReal`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "weight"))]
     #[cfg_attr(feature = "serde", serde(rename = "weight"))]
     pub m_weight: f32,
@@ -43,6 +45,7 @@ pub struct hkbClipGeneratorEcho<'a> {
     /// - name: `dwdt`(ctype: `hkReal`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "dwdt"))]
     #[cfg_attr(feature = "serde", serde(rename = "dwdt"))]
     pub m_dwdt: f32,

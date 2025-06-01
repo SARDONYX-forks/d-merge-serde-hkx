@@ -33,6 +33,7 @@ pub struct hkpSimpleMeshShape<'a> {
     /// - name: `vertices`(ctype: `hkArray<hkVector4>`)
     /// - offset: ` 24`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vertices"))]
     #[cfg_attr(feature = "serde", serde(rename = "vertices"))]
     pub m_vertices: Vec<Vector4>,
@@ -40,6 +41,7 @@ pub struct hkpSimpleMeshShape<'a> {
     /// - name: `triangles`(ctype: `hkArray<struct hkpSimpleMeshShapeTriangle>`)
     /// - offset: ` 36`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "triangles"))]
     #[cfg_attr(feature = "serde", serde(rename = "triangles"))]
@@ -48,6 +50,7 @@ pub struct hkpSimpleMeshShape<'a> {
     /// - name: `materialIndices`(ctype: `hkArray<hkUint8>`)
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materialIndices"))]
     #[cfg_attr(feature = "serde", serde(rename = "materialIndices"))]
@@ -56,6 +59,7 @@ pub struct hkpSimpleMeshShape<'a> {
     /// - name: `radius`(ctype: `hkReal`)
     /// - offset: ` 60`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "radius"))]
     #[cfg_attr(feature = "serde", serde(rename = "radius"))]
     pub m_radius: f32,
@@ -63,6 +67,7 @@ pub struct hkpSimpleMeshShape<'a> {
     /// - name: `weldingType`(ctype: `enum WeldingType`)
     /// - offset: ` 64`(x86)/`100`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "weldingType"))]
     #[cfg_attr(feature = "serde", serde(rename = "weldingType"))]
     pub m_weldingType: WeldingType,

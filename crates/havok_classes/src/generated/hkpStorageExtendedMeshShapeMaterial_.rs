@@ -33,6 +33,7 @@ pub struct hkpStorageExtendedMeshShapeMaterial<'a> {
     /// - name: `restitution`(ctype: `hkHalf`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "restitution"))]
     #[cfg_attr(feature = "serde", serde(rename = "restitution"))]
     pub m_restitution: f16,
@@ -40,6 +41,7 @@ pub struct hkpStorageExtendedMeshShapeMaterial<'a> {
     /// - name: `friction`(ctype: `hkHalf`)
     /// - offset: `  6`(x86)/`  6`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "friction"))]
     #[cfg_attr(feature = "serde", serde(rename = "friction"))]
     pub m_friction: f16,
@@ -47,6 +49,7 @@ pub struct hkpStorageExtendedMeshShapeMaterial<'a> {
     /// - name: `userData`(ctype: `hkUlong`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "userData"))]
     #[cfg_attr(feature = "serde", serde(rename = "userData"))]
     pub m_userData: Ulong,

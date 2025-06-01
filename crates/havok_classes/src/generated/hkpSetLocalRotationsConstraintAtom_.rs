@@ -33,6 +33,7 @@ pub struct hkpSetLocalRotationsConstraintAtom<'a> {
     /// - name: `rotationA`(ctype: `hkRotation`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rotationA"))]
     #[cfg_attr(feature = "serde", serde(rename = "rotationA"))]
     pub m_rotationA: Rotation,
@@ -40,6 +41,7 @@ pub struct hkpSetLocalRotationsConstraintAtom<'a> {
     /// - name: `rotationB`(ctype: `hkRotation`)
     /// - offset: ` 64`(x86)/` 64`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rotationB"))]
     #[cfg_attr(feature = "serde", serde(rename = "rotationB"))]
     pub m_rotationB: Rotation,

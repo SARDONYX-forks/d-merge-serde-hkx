@@ -33,6 +33,7 @@ pub struct hkbEventDrivenModifierInternalState<'a> {
     /// - name: `isActive`(ctype: `hkBool`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isActive"))]
     #[cfg_attr(feature = "serde", serde(rename = "isActive"))]
     pub m_isActive: bool,

@@ -28,6 +28,7 @@ pub struct hkbExpressionData<'a> {
     /// - name: `expression`(ctype: `hkStringPtr`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "expression"))]
     #[cfg_attr(feature = "serde", serde(rename = "expression"))]
@@ -36,6 +37,7 @@ pub struct hkbExpressionData<'a> {
     /// - name: `assignmentVariableIndex`(ctype: `hkInt32`)
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "assignmentVariableIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "assignmentVariableIndex"))]
@@ -44,6 +46,7 @@ pub struct hkbExpressionData<'a> {
     /// - name: `assignmentEventIndex`(ctype: `hkInt32`)
     /// - offset: `  8`(x86)/` 12`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "assignmentEventIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "assignmentEventIndex"))]
@@ -52,6 +55,7 @@ pub struct hkbExpressionData<'a> {
     /// - name: `eventMode`(ctype: `enum ExpressionEventMode`)
     /// - offset: ` 12`(x86)/` 16`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "eventMode"))]
     #[cfg_attr(feature = "serde", serde(rename = "eventMode"))]
     pub m_eventMode: ExpressionEventMode,

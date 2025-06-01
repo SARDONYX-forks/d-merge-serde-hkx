@@ -33,6 +33,7 @@ pub struct hkpStorageSampledHeightFieldShape<'a> {
     /// - name: `storage`(ctype: `hkArray<hkReal>`)
     /// - offset: ` 96`(x86)/`112`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "storage"))]
     #[cfg_attr(feature = "serde", serde(rename = "storage"))]
     pub m_storage: Vec<f32>,
@@ -40,6 +41,7 @@ pub struct hkpStorageSampledHeightFieldShape<'a> {
     /// - name: `triangleFlip`(ctype: `hkBool`)
     /// - offset: `108`(x86)/`128`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "triangleFlip"))]
     #[cfg_attr(feature = "serde", serde(rename = "triangleFlip"))]
     pub m_triangleFlip: bool,

@@ -29,6 +29,7 @@ pub struct hkbRigidBodyRagdollControlData<'a> {
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "keyFrameHierarchyControlData")
@@ -39,6 +40,7 @@ pub struct hkbRigidBodyRagdollControlData<'a> {
     /// - name: `durationToBlend`(ctype: `hkReal`)
     /// - offset: ` 48`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "durationToBlend"))]
     #[cfg_attr(feature = "serde", serde(rename = "durationToBlend"))]
     pub m_durationToBlend: f32,

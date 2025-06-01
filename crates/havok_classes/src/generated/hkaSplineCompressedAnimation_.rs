@@ -33,6 +33,7 @@ pub struct hkaSplineCompressedAnimation<'a> {
     /// - name: `numFrames`(ctype: `hkInt32`)
     /// - offset: ` 40`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numFrames"))]
     #[cfg_attr(feature = "serde", serde(rename = "numFrames"))]
@@ -41,6 +42,7 @@ pub struct hkaSplineCompressedAnimation<'a> {
     /// - name: `numBlocks`(ctype: `hkInt32`)
     /// - offset: ` 44`(x86)/` 60`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numBlocks"))]
     #[cfg_attr(feature = "serde", serde(rename = "numBlocks"))]
@@ -49,6 +51,7 @@ pub struct hkaSplineCompressedAnimation<'a> {
     /// - name: `maxFramesPerBlock`(ctype: `hkInt32`)
     /// - offset: ` 48`(x86)/` 64`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxFramesPerBlock"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxFramesPerBlock"))]
@@ -57,6 +60,7 @@ pub struct hkaSplineCompressedAnimation<'a> {
     /// - name: `maskAndQuantizationSize`(ctype: `hkInt32`)
     /// - offset: ` 52`(x86)/` 68`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maskAndQuantizationSize"))]
     #[cfg_attr(feature = "serde", serde(rename = "maskAndQuantizationSize"))]
@@ -65,6 +69,7 @@ pub struct hkaSplineCompressedAnimation<'a> {
     /// - name: `blockDuration`(ctype: `hkReal`)
     /// - offset: ` 56`(x86)/` 72`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "blockDuration"))]
     #[cfg_attr(feature = "serde", serde(rename = "blockDuration"))]
     pub m_blockDuration: f32,
@@ -72,6 +77,7 @@ pub struct hkaSplineCompressedAnimation<'a> {
     /// - name: `blockInverseDuration`(ctype: `hkReal`)
     /// - offset: ` 60`(x86)/` 76`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "blockInverseDuration"))]
     #[cfg_attr(feature = "serde", serde(rename = "blockInverseDuration"))]
     pub m_blockInverseDuration: f32,
@@ -79,6 +85,7 @@ pub struct hkaSplineCompressedAnimation<'a> {
     /// - name: `frameDuration`(ctype: `hkReal`)
     /// - offset: ` 64`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "frameDuration"))]
     #[cfg_attr(feature = "serde", serde(rename = "frameDuration"))]
     pub m_frameDuration: f32,
@@ -86,6 +93,7 @@ pub struct hkaSplineCompressedAnimation<'a> {
     /// - name: `blockOffsets`(ctype: `hkArray<hkUint32>`)
     /// - offset: ` 68`(x86)/` 88`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "blockOffsets"))]
     #[cfg_attr(feature = "serde", serde(rename = "blockOffsets"))]
@@ -94,6 +102,7 @@ pub struct hkaSplineCompressedAnimation<'a> {
     /// - name: `floatBlockOffsets`(ctype: `hkArray<hkUint32>`)
     /// - offset: ` 80`(x86)/`104`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "floatBlockOffsets"))]
     #[cfg_attr(feature = "serde", serde(rename = "floatBlockOffsets"))]
@@ -102,6 +111,7 @@ pub struct hkaSplineCompressedAnimation<'a> {
     /// - name: `transformOffsets`(ctype: `hkArray<hkUint32>`)
     /// - offset: ` 92`(x86)/`120`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transformOffsets"))]
     #[cfg_attr(feature = "serde", serde(rename = "transformOffsets"))]
@@ -110,6 +120,7 @@ pub struct hkaSplineCompressedAnimation<'a> {
     /// - name: `floatOffsets`(ctype: `hkArray<hkUint32>`)
     /// - offset: `104`(x86)/`136`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "floatOffsets"))]
     #[cfg_attr(feature = "serde", serde(rename = "floatOffsets"))]
@@ -118,6 +129,7 @@ pub struct hkaSplineCompressedAnimation<'a> {
     /// - name: `data`(ctype: `hkArray<hkUint8>`)
     /// - offset: `116`(x86)/`152`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "data"))]
     #[cfg_attr(feature = "serde", serde(rename = "data"))]
@@ -126,6 +138,7 @@ pub struct hkaSplineCompressedAnimation<'a> {
     /// - name: `endian`(ctype: `hkInt32`)
     /// - offset: `128`(x86)/`168`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "endian"))]
     #[cfg_attr(feature = "serde", serde(rename = "endian"))]

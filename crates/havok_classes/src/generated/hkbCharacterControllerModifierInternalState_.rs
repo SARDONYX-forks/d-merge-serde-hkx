@@ -33,6 +33,7 @@ pub struct hkbCharacterControllerModifierInternalState<'a> {
     /// - name: `gravity`(ctype: `hkVector4`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "gravity"))]
     #[cfg_attr(feature = "serde", serde(rename = "gravity"))]
     pub m_gravity: Vector4,
@@ -40,6 +41,7 @@ pub struct hkbCharacterControllerModifierInternalState<'a> {
     /// - name: `timestep`(ctype: `hkReal`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "timestep"))]
     #[cfg_attr(feature = "serde", serde(rename = "timestep"))]
     pub m_timestep: f32,
@@ -47,6 +49,7 @@ pub struct hkbCharacterControllerModifierInternalState<'a> {
     /// - name: `isInitialVelocityAdded`(ctype: `hkBool`)
     /// - offset: ` 36`(x86)/` 36`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isInitialVelocityAdded"))]
     #[cfg_attr(feature = "serde", serde(rename = "isInitialVelocityAdded"))]
     pub m_isInitialVelocityAdded: bool,
@@ -54,6 +57,7 @@ pub struct hkbCharacterControllerModifierInternalState<'a> {
     /// - name: `isTouchingGround`(ctype: `hkBool`)
     /// - offset: ` 37`(x86)/` 37`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isTouchingGround"))]
     #[cfg_attr(feature = "serde", serde(rename = "isTouchingGround"))]
     pub m_isTouchingGround: bool,

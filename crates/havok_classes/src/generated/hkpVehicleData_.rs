@@ -33,6 +33,7 @@ pub struct hkpVehicleData<'a> {
     /// - name: `gravity`(ctype: `hkVector4`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "gravity"))]
     #[cfg_attr(feature = "serde", serde(rename = "gravity"))]
     pub m_gravity: Vector4,
@@ -40,6 +41,7 @@ pub struct hkpVehicleData<'a> {
     /// - name: `numWheels`(ctype: `hkInt8`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numWheels"))]
     #[cfg_attr(feature = "serde", serde(rename = "numWheels"))]
@@ -48,6 +50,7 @@ pub struct hkpVehicleData<'a> {
     /// - name: `chassisOrientation`(ctype: `hkRotation`)
     /// - offset: ` 48`(x86)/` 48`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "chassisOrientation"))]
     #[cfg_attr(feature = "serde", serde(rename = "chassisOrientation"))]
     pub m_chassisOrientation: Rotation,
@@ -55,6 +58,7 @@ pub struct hkpVehicleData<'a> {
     /// - name: `torqueRollFactor`(ctype: `hkReal`)
     /// - offset: ` 96`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "torqueRollFactor"))]
     #[cfg_attr(feature = "serde", serde(rename = "torqueRollFactor"))]
     pub m_torqueRollFactor: f32,
@@ -62,6 +66,7 @@ pub struct hkpVehicleData<'a> {
     /// - name: `torquePitchFactor`(ctype: `hkReal`)
     /// - offset: `100`(x86)/`100`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "torquePitchFactor"))]
     #[cfg_attr(feature = "serde", serde(rename = "torquePitchFactor"))]
     pub m_torquePitchFactor: f32,
@@ -69,6 +74,7 @@ pub struct hkpVehicleData<'a> {
     /// - name: `torqueYawFactor`(ctype: `hkReal`)
     /// - offset: `104`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "torqueYawFactor"))]
     #[cfg_attr(feature = "serde", serde(rename = "torqueYawFactor"))]
     pub m_torqueYawFactor: f32,
@@ -76,6 +82,7 @@ pub struct hkpVehicleData<'a> {
     /// - name: `extraTorqueFactor`(ctype: `hkReal`)
     /// - offset: `108`(x86)/`108`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "extraTorqueFactor"))]
     #[cfg_attr(feature = "serde", serde(rename = "extraTorqueFactor"))]
     pub m_extraTorqueFactor: f32,
@@ -83,6 +90,7 @@ pub struct hkpVehicleData<'a> {
     /// - name: `maxVelocityForPositionalFriction`(ctype: `hkReal`)
     /// - offset: `112`(x86)/`112`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "maxVelocityForPositionalFriction")
@@ -93,6 +101,7 @@ pub struct hkpVehicleData<'a> {
     /// - name: `chassisUnitInertiaYaw`(ctype: `hkReal`)
     /// - offset: `116`(x86)/`116`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "chassisUnitInertiaYaw"))]
     #[cfg_attr(feature = "serde", serde(rename = "chassisUnitInertiaYaw"))]
     pub m_chassisUnitInertiaYaw: f32,
@@ -100,6 +109,7 @@ pub struct hkpVehicleData<'a> {
     /// - name: `chassisUnitInertiaRoll`(ctype: `hkReal`)
     /// - offset: `120`(x86)/`120`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "chassisUnitInertiaRoll"))]
     #[cfg_attr(feature = "serde", serde(rename = "chassisUnitInertiaRoll"))]
     pub m_chassisUnitInertiaRoll: f32,
@@ -107,6 +117,7 @@ pub struct hkpVehicleData<'a> {
     /// - name: `chassisUnitInertiaPitch`(ctype: `hkReal`)
     /// - offset: `124`(x86)/`124`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "chassisUnitInertiaPitch"))]
     #[cfg_attr(feature = "serde", serde(rename = "chassisUnitInertiaPitch"))]
     pub m_chassisUnitInertiaPitch: f32,
@@ -114,6 +125,7 @@ pub struct hkpVehicleData<'a> {
     /// - name: `frictionEqualizer`(ctype: `hkReal`)
     /// - offset: `128`(x86)/`128`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "frictionEqualizer"))]
     #[cfg_attr(feature = "serde", serde(rename = "frictionEqualizer"))]
     pub m_frictionEqualizer: f32,
@@ -121,6 +133,7 @@ pub struct hkpVehicleData<'a> {
     /// - name: `normalClippingAngleCos`(ctype: `hkReal`)
     /// - offset: `132`(x86)/`132`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "normalClippingAngleCos"))]
     #[cfg_attr(feature = "serde", serde(rename = "normalClippingAngleCos"))]
     pub m_normalClippingAngleCos: f32,
@@ -128,6 +141,7 @@ pub struct hkpVehicleData<'a> {
     /// - name: `maxFrictionSolverMassRatio`(ctype: `hkReal`)
     /// - offset: `136`(x86)/`136`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxFrictionSolverMassRatio"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxFrictionSolverMassRatio"))]
     pub m_maxFrictionSolverMassRatio: f32,
@@ -135,6 +149,7 @@ pub struct hkpVehicleData<'a> {
     /// - name: `wheelParams`(ctype: `hkArray<struct hkpVehicleDataWheelComponentParams>`)
     /// - offset: `140`(x86)/`144`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wheelParams"))]
     #[cfg_attr(feature = "serde", serde(rename = "wheelParams"))]
@@ -143,6 +158,7 @@ pub struct hkpVehicleData<'a> {
     /// - name: `numWheelsPerAxle`(ctype: `hkArray<hkInt8>`)
     /// - offset: `152`(x86)/`160`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numWheelsPerAxle"))]
     #[cfg_attr(feature = "serde", serde(rename = "numWheelsPerAxle"))]
@@ -151,6 +167,7 @@ pub struct hkpVehicleData<'a> {
     /// - name: `frictionDescription`(ctype: `struct hkpVehicleFrictionDescription`)
     /// - offset: `164`(x86)/`176`(x86_64)
     /// - type_size: `208`(x86)/`208`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "frictionDescription"))]
     #[cfg_attr(feature = "serde", serde(rename = "frictionDescription"))]
     pub m_frictionDescription: hkpVehicleFrictionDescription<'a>,
@@ -158,6 +175,7 @@ pub struct hkpVehicleData<'a> {
     /// - name: `chassisFrictionInertiaInvDiag`(ctype: `hkVector4`)
     /// - offset: `384`(x86)/`384`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "chassisFrictionInertiaInvDiag")
@@ -168,6 +186,7 @@ pub struct hkpVehicleData<'a> {
     /// - name: `alreadyInitialised`(ctype: `hkBool`)
     /// - offset: `400`(x86)/`400`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "alreadyInitialised"))]
     #[cfg_attr(feature = "serde", serde(rename = "alreadyInitialised"))]
     pub m_alreadyInitialised: bool,

@@ -33,6 +33,7 @@ pub struct BSLimbIKModifier<'a> {
     /// - name: `limitAngleDegrees`(ctype: `hkReal`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "limitAngleDegrees"))]
     #[cfg_attr(feature = "serde", serde(rename = "limitAngleDegrees"))]
     pub m_limitAngleDegrees: f32,
@@ -49,6 +50,7 @@ pub struct BSLimbIKModifier<'a> {
     /// - name: `startBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 52`(x86)/` 88`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "startBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "startBoneIndex"))]
@@ -57,6 +59,7 @@ pub struct BSLimbIKModifier<'a> {
     /// - name: `endBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 54`(x86)/` 90`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "endBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "endBoneIndex"))]
@@ -65,6 +68,7 @@ pub struct BSLimbIKModifier<'a> {
     /// - name: `gain`(ctype: `hkReal`)
     /// - offset: ` 56`(x86)/` 92`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "gain"))]
     #[cfg_attr(feature = "serde", serde(rename = "gain"))]
     pub m_gain: f32,
@@ -72,6 +76,7 @@ pub struct BSLimbIKModifier<'a> {
     /// - name: `boneRadius`(ctype: `hkReal`)
     /// - offset: ` 60`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "boneRadius"))]
     #[cfg_attr(feature = "serde", serde(rename = "boneRadius"))]
     pub m_boneRadius: f32,
@@ -79,6 +84,7 @@ pub struct BSLimbIKModifier<'a> {
     /// - name: `castOffset`(ctype: `hkReal`)
     /// - offset: ` 64`(x86)/`100`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "castOffset"))]
     #[cfg_attr(feature = "serde", serde(rename = "castOffset"))]
     pub m_castOffset: f32,
@@ -96,8 +102,8 @@ pub struct BSLimbIKModifier<'a> {
     /// - offset: ` 72`(x86)/`112`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pSkeletonMemory"))]
     #[cfg_attr(feature = "serde", serde(rename = "pSkeletonMemory"))]
     pub m_pSkeletonMemory: Pointer<'a>,

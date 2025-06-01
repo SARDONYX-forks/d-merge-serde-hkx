@@ -33,6 +33,7 @@ pub struct hkbCameraShakeEventPayload<'a> {
     /// - name: `amplitude`(ctype: `hkReal`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "amplitude"))]
     #[cfg_attr(feature = "serde", serde(rename = "amplitude"))]
     pub m_amplitude: f32,
@@ -40,6 +41,7 @@ pub struct hkbCameraShakeEventPayload<'a> {
     /// - name: `halfLife`(ctype: `hkReal`)
     /// - offset: ` 12`(x86)/` 20`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "halfLife"))]
     #[cfg_attr(feature = "serde", serde(rename = "halfLife"))]
     pub m_halfLife: f32,

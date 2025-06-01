@@ -33,6 +33,7 @@ pub struct hkbPoseMatchingGeneratorInternalState<'a> {
     /// - name: `currentMatch`(ctype: `hkInt32`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "currentMatch"))]
     #[cfg_attr(feature = "serde", serde(rename = "currentMatch"))]
@@ -41,6 +42,7 @@ pub struct hkbPoseMatchingGeneratorInternalState<'a> {
     /// - name: `bestMatch`(ctype: `hkInt32`)
     /// - offset: ` 12`(x86)/` 20`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bestMatch"))]
     #[cfg_attr(feature = "serde", serde(rename = "bestMatch"))]
@@ -49,6 +51,7 @@ pub struct hkbPoseMatchingGeneratorInternalState<'a> {
     /// - name: `timeSinceBetterMatch`(ctype: `hkReal`)
     /// - offset: ` 16`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "timeSinceBetterMatch"))]
     #[cfg_attr(feature = "serde", serde(rename = "timeSinceBetterMatch"))]
     pub m_timeSinceBetterMatch: f32,
@@ -56,6 +59,7 @@ pub struct hkbPoseMatchingGeneratorInternalState<'a> {
     /// - name: `error`(ctype: `hkReal`)
     /// - offset: ` 20`(x86)/` 28`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "error"))]
     #[cfg_attr(feature = "serde", serde(rename = "error"))]
     pub m_error: f32,
@@ -63,6 +67,7 @@ pub struct hkbPoseMatchingGeneratorInternalState<'a> {
     /// - name: `resetCurrentMatchLocalTime`(ctype: `hkBool`)
     /// - offset: ` 24`(x86)/` 32`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "resetCurrentMatchLocalTime"))]
     #[cfg_attr(feature = "serde", serde(rename = "resetCurrentMatchLocalTime"))]
     pub m_resetCurrentMatchLocalTime: bool,

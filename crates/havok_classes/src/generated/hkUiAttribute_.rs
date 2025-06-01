@@ -28,6 +28,7 @@ pub struct hkUiAttribute<'a> {
     /// - name: `visible`(ctype: `hkBool`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "visible"))]
     #[cfg_attr(feature = "serde", serde(rename = "visible"))]
     pub m_visible: bool,
@@ -35,6 +36,7 @@ pub struct hkUiAttribute<'a> {
     /// - name: `hideInModeler`(ctype: `enum HideInModeler`)
     /// - offset: `  1`(x86)/`  1`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "hideInModeler"))]
     #[cfg_attr(feature = "serde", serde(rename = "hideInModeler"))]
     pub m_hideInModeler: HideInModeler,
@@ -42,6 +44,7 @@ pub struct hkUiAttribute<'a> {
     /// - name: `label`(ctype: `char*`)
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "label"))]
     #[cfg_attr(feature = "serde", serde(rename = "label"))]
@@ -50,6 +53,7 @@ pub struct hkUiAttribute<'a> {
     /// - name: `group`(ctype: `char*`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "group"))]
     #[cfg_attr(feature = "serde", serde(rename = "group"))]
@@ -58,6 +62,7 @@ pub struct hkUiAttribute<'a> {
     /// - name: `hideBaseClassMembers`(ctype: `char*`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "hideBaseClassMembers"))]
     #[cfg_attr(feature = "serde", serde(rename = "hideBaseClassMembers"))]
@@ -66,6 +71,7 @@ pub struct hkUiAttribute<'a> {
     /// - name: `endGroup`(ctype: `hkBool`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "endGroup"))]
     #[cfg_attr(feature = "serde", serde(rename = "endGroup"))]
     pub m_endGroup: bool,
@@ -73,6 +79,7 @@ pub struct hkUiAttribute<'a> {
     /// - name: `endGroup2`(ctype: `hkBool`)
     /// - offset: ` 17`(x86)/` 33`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "endGroup2"))]
     #[cfg_attr(feature = "serde", serde(rename = "endGroup2"))]
     pub m_endGroup2: bool,
@@ -80,6 +87,7 @@ pub struct hkUiAttribute<'a> {
     /// - name: `advanced`(ctype: `hkBool`)
     /// - offset: ` 18`(x86)/` 34`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "advanced"))]
     #[cfg_attr(feature = "serde", serde(rename = "advanced"))]
     pub m_advanced: bool,

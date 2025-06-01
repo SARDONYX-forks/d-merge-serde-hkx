@@ -28,6 +28,7 @@ pub struct hkpCompressedMeshShapeBigTriangle<'a> {
     /// - name: `a`(ctype: `hkUint16`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "a"))]
     #[cfg_attr(feature = "serde", serde(rename = "a"))]
@@ -36,6 +37,7 @@ pub struct hkpCompressedMeshShapeBigTriangle<'a> {
     /// - name: `b`(ctype: `hkUint16`)
     /// - offset: `  2`(x86)/`  2`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "b"))]
     #[cfg_attr(feature = "serde", serde(rename = "b"))]
@@ -44,6 +46,7 @@ pub struct hkpCompressedMeshShapeBigTriangle<'a> {
     /// - name: `c`(ctype: `hkUint16`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "c"))]
     #[cfg_attr(feature = "serde", serde(rename = "c"))]
@@ -52,6 +55,7 @@ pub struct hkpCompressedMeshShapeBigTriangle<'a> {
     /// - name: `material`(ctype: `hkUint32`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "material"))]
     #[cfg_attr(feature = "serde", serde(rename = "material"))]
@@ -60,6 +64,7 @@ pub struct hkpCompressedMeshShapeBigTriangle<'a> {
     /// - name: `weldingInfo`(ctype: `hkUint16`)
     /// - offset: ` 12`(x86)/` 12`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "weldingInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "weldingInfo"))]
@@ -68,6 +73,7 @@ pub struct hkpCompressedMeshShapeBigTriangle<'a> {
     /// - name: `transformIndex`(ctype: `hkUint16`)
     /// - offset: ` 14`(x86)/` 14`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transformIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "transformIndex"))]

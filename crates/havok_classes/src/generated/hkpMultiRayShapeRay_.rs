@@ -28,6 +28,7 @@ pub struct hkpMultiRayShapeRay<'a> {
     /// - name: `start`(ctype: `hkVector4`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "start"))]
     #[cfg_attr(feature = "serde", serde(rename = "start"))]
     pub m_start: Vector4,
@@ -35,6 +36,7 @@ pub struct hkpMultiRayShapeRay<'a> {
     /// - name: `end`(ctype: `hkVector4`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "end"))]
     #[cfg_attr(feature = "serde", serde(rename = "end"))]
     pub m_end: Vector4,

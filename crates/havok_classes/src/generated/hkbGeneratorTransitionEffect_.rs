@@ -33,6 +33,7 @@ pub struct hkbGeneratorTransitionEffect<'a> {
     /// - name: `transitionGenerator`(ctype: `struct hkbGenerator*`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "transitionGenerator"))]
     #[cfg_attr(feature = "serde", serde(rename = "transitionGenerator"))]
@@ -41,6 +42,7 @@ pub struct hkbGeneratorTransitionEffect<'a> {
     /// - name: `blendInDuration`(ctype: `hkReal`)
     /// - offset: ` 48`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "blendInDuration"))]
     #[cfg_attr(feature = "serde", serde(rename = "blendInDuration"))]
     pub m_blendInDuration: f32,
@@ -48,6 +50,7 @@ pub struct hkbGeneratorTransitionEffect<'a> {
     /// - name: `blendOutDuration`(ctype: `hkReal`)
     /// - offset: ` 52`(x86)/` 92`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "blendOutDuration"))]
     #[cfg_attr(feature = "serde", serde(rename = "blendOutDuration"))]
     pub m_blendOutDuration: f32,
@@ -55,6 +58,7 @@ pub struct hkbGeneratorTransitionEffect<'a> {
     /// - name: `syncToGeneratorStartTime`(ctype: `hkBool`)
     /// - offset: ` 56`(x86)/` 96`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "syncToGeneratorStartTime"))]
     #[cfg_attr(feature = "serde", serde(rename = "syncToGeneratorStartTime"))]
     pub m_syncToGeneratorStartTime: bool,
@@ -63,8 +67,8 @@ pub struct hkbGeneratorTransitionEffect<'a> {
     /// - offset: ` 60`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "fromGenerator"))]
     #[cfg_attr(feature = "serde", serde(rename = "fromGenerator"))]
     pub m_fromGenerator: Pointer<'a>,
@@ -73,8 +77,8 @@ pub struct hkbGeneratorTransitionEffect<'a> {
     /// - offset: ` 64`(x86)/`112`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "toGenerator"))]
     #[cfg_attr(feature = "serde", serde(rename = "toGenerator"))]
     pub m_toGenerator: Pointer<'a>,

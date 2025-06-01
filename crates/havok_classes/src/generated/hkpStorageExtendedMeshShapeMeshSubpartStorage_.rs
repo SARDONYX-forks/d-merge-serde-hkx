@@ -33,6 +33,7 @@ pub struct hkpStorageExtendedMeshShapeMeshSubpartStorage<'a> {
     /// - name: `vertices`(ctype: `hkArray<hkVector4>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "vertices"))]
     #[cfg_attr(feature = "serde", serde(rename = "vertices"))]
     pub m_vertices: Vec<Vector4>,
@@ -40,6 +41,7 @@ pub struct hkpStorageExtendedMeshShapeMeshSubpartStorage<'a> {
     /// - name: `indices8`(ctype: `hkArray<hkUint8>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "indices8"))]
     #[cfg_attr(feature = "serde", serde(rename = "indices8"))]
@@ -48,6 +50,7 @@ pub struct hkpStorageExtendedMeshShapeMeshSubpartStorage<'a> {
     /// - name: `indices16`(ctype: `hkArray<hkUint16>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "indices16"))]
     #[cfg_attr(feature = "serde", serde(rename = "indices16"))]
@@ -56,6 +59,7 @@ pub struct hkpStorageExtendedMeshShapeMeshSubpartStorage<'a> {
     /// - name: `indices32`(ctype: `hkArray<hkUint32>`)
     /// - offset: ` 44`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "indices32"))]
     #[cfg_attr(feature = "serde", serde(rename = "indices32"))]
@@ -64,6 +68,7 @@ pub struct hkpStorageExtendedMeshShapeMeshSubpartStorage<'a> {
     /// - name: `materialIndices`(ctype: `hkArray<hkUint8>`)
     /// - offset: ` 56`(x86)/` 80`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materialIndices"))]
     #[cfg_attr(feature = "serde", serde(rename = "materialIndices"))]
@@ -72,6 +77,7 @@ pub struct hkpStorageExtendedMeshShapeMeshSubpartStorage<'a> {
     /// - name: `materials`(ctype: `hkArray<struct hkpStorageExtendedMeshShapeMaterial>`)
     /// - offset: ` 68`(x86)/` 96`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materials"))]
     #[cfg_attr(feature = "serde", serde(rename = "materials"))]
@@ -80,6 +86,7 @@ pub struct hkpStorageExtendedMeshShapeMeshSubpartStorage<'a> {
     /// - name: `namedMaterials`(ctype: `hkArray<struct hkpNamedMeshMaterial>`)
     /// - offset: ` 80`(x86)/`112`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "namedMaterials"))]
     #[cfg_attr(feature = "serde", serde(rename = "namedMaterials"))]
@@ -88,6 +95,7 @@ pub struct hkpStorageExtendedMeshShapeMeshSubpartStorage<'a> {
     /// - name: `materialIndices16`(ctype: `hkArray<hkUint16>`)
     /// - offset: ` 92`(x86)/`128`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "materialIndices16"))]
     #[cfg_attr(feature = "serde", serde(rename = "materialIndices16"))]

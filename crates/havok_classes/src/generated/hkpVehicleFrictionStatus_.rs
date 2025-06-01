@@ -28,6 +28,7 @@ pub struct hkpVehicleFrictionStatus<'a> {
     /// - name: `axis`(ctype: `struct hkpVehicleFrictionStatusAxisStatus[2]`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 72`(x86)/` 72`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "axis"))]
     #[cfg_attr(feature = "serde", serde(rename = "axis"))]
     pub m_axis: [hkpVehicleFrictionStatusAxisStatus<'a>; 2usize],

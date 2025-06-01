@@ -28,6 +28,7 @@ pub struct hkTraceStreamTitle<'a> {
     /// - name: `value`(ctype: `hkChar[32]`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 32`(x86)/` 32`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "value"))]
     #[cfg_attr(feature = "serde", serde(rename = "value"))]
     pub m_value: [char; 32usize],

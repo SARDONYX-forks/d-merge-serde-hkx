@@ -28,6 +28,7 @@ pub struct hkbHandIkControlsModifierHand<'a> {
     /// - name: `controlData`(ctype: `struct hkbHandIkControlData`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 80`(x86)/` 96`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "controlData"))]
     #[cfg_attr(feature = "serde", serde(rename = "controlData"))]
@@ -36,6 +37,7 @@ pub struct hkbHandIkControlsModifierHand<'a> {
     /// - name: `handIndex`(ctype: `hkInt32`)
     /// - offset: ` 80`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "handIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "handIndex"))]
@@ -44,6 +46,7 @@ pub struct hkbHandIkControlsModifierHand<'a> {
     /// - name: `enable`(ctype: `hkBool`)
     /// - offset: ` 84`(x86)/`100`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "enable"))]
     #[cfg_attr(feature = "serde", serde(rename = "enable"))]
     pub m_enable: bool,

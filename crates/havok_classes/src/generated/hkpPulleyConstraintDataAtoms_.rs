@@ -28,6 +28,7 @@ pub struct hkpPulleyConstraintDataAtoms<'a> {
     /// - name: `translations`(ctype: `struct hkpSetLocalTranslationsConstraintAtom`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "translations"))]
     #[cfg_attr(feature = "serde", serde(rename = "translations"))]
@@ -36,6 +37,7 @@ pub struct hkpPulleyConstraintDataAtoms<'a> {
     /// - name: `pulley`(ctype: `struct hkpPulleyConstraintAtom`)
     /// - offset: ` 48`(x86)/` 48`(x86_64)
     /// - type_size: ` 64`(x86)/` 64`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pulley"))]
     #[cfg_attr(feature = "serde", serde(rename = "pulley"))]

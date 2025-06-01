@@ -28,6 +28,7 @@ pub struct hkpBridgeAtoms<'a> {
     /// - name: `bridgeAtom`(ctype: `struct hkpBridgeConstraintAtom`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 12`(x86)/` 24`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bridgeAtom"))]
     #[cfg_attr(feature = "serde", serde(rename = "bridgeAtom"))]

@@ -33,6 +33,7 @@ pub struct hkpSimulation<'a> {
     /// - name: `determinismCheckFrameCounter`(ctype: `hkUint32`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
@@ -44,6 +45,7 @@ pub struct hkpSimulation<'a> {
     /// - name: `world`(ctype: `struct hkpWorld*`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "world"))]
     #[cfg_attr(feature = "serde", serde(rename = "world"))]
@@ -52,6 +54,7 @@ pub struct hkpSimulation<'a> {
     /// - name: `lastProcessingStep`(ctype: `enum LastProcessingStep`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "lastProcessingStep"))]
     #[cfg_attr(feature = "serde", serde(rename = "lastProcessingStep"))]
     pub m_lastProcessingStep: LastProcessingStep,
@@ -59,6 +62,7 @@ pub struct hkpSimulation<'a> {
     /// - name: `currentTime`(ctype: `hkReal`)
     /// - offset: ` 20`(x86)/` 36`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "currentTime"))]
     #[cfg_attr(feature = "serde", serde(rename = "currentTime"))]
     pub m_currentTime: f32,
@@ -66,6 +70,7 @@ pub struct hkpSimulation<'a> {
     /// - name: `currentPsiTime`(ctype: `hkReal`)
     /// - offset: ` 24`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "currentPsiTime"))]
     #[cfg_attr(feature = "serde", serde(rename = "currentPsiTime"))]
     pub m_currentPsiTime: f32,
@@ -73,6 +78,7 @@ pub struct hkpSimulation<'a> {
     /// - name: `physicsDeltaTime`(ctype: `hkReal`)
     /// - offset: ` 28`(x86)/` 44`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "physicsDeltaTime"))]
     #[cfg_attr(feature = "serde", serde(rename = "physicsDeltaTime"))]
     pub m_physicsDeltaTime: f32,
@@ -80,6 +86,7 @@ pub struct hkpSimulation<'a> {
     /// - name: `simulateUntilTime`(ctype: `hkReal`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "simulateUntilTime"))]
     #[cfg_attr(feature = "serde", serde(rename = "simulateUntilTime"))]
     pub m_simulateUntilTime: f32,
@@ -87,6 +94,7 @@ pub struct hkpSimulation<'a> {
     /// - name: `frameMarkerPsiSnap`(ctype: `hkReal`)
     /// - offset: ` 36`(x86)/` 52`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "frameMarkerPsiSnap"))]
     #[cfg_attr(feature = "serde", serde(rename = "frameMarkerPsiSnap"))]
     pub m_frameMarkerPsiSnap: f32,
@@ -94,6 +102,7 @@ pub struct hkpSimulation<'a> {
     /// - name: `previousStepResult`(ctype: `hkUint32`)
     /// - offset: ` 40`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "previousStepResult"))]
     #[cfg_attr(feature = "serde", serde(rename = "previousStepResult"))]

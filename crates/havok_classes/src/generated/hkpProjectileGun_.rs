@@ -33,6 +33,7 @@ pub struct hkpProjectileGun<'a> {
     /// - name: `maxProjectiles`(ctype: `hkInt32`)
     /// - offset: ` 32`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxProjectiles"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxProjectiles"))]
@@ -41,6 +42,7 @@ pub struct hkpProjectileGun<'a> {
     /// - name: `reloadTime`(ctype: `hkReal`)
     /// - offset: ` 36`(x86)/` 60`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "reloadTime"))]
     #[cfg_attr(feature = "serde", serde(rename = "reloadTime"))]
     pub m_reloadTime: f32,
@@ -58,8 +60,8 @@ pub struct hkpProjectileGun<'a> {
     /// - offset: ` 44`(x86)/` 72`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "projectiles"))]
     #[cfg_attr(feature = "serde", serde(rename = "projectiles"))]
     pub m_projectiles: Vec<Pointer<'a>>,
@@ -68,8 +70,8 @@ pub struct hkpProjectileGun<'a> {
     /// - offset: ` 56`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "world"))]
     #[cfg_attr(feature = "serde", serde(rename = "world"))]
     pub m_world: Pointer<'a>,
@@ -78,8 +80,8 @@ pub struct hkpProjectileGun<'a> {
     /// - offset: ` 60`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "destructionWorld"))]
     #[cfg_attr(feature = "serde", serde(rename = "destructionWorld"))]
     pub m_destructionWorld: Pointer<'a>,

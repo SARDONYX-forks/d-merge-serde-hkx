@@ -34,6 +34,7 @@ pub struct BSiStateTaggingGenerator<'a> {
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pDefaultGenerator"))]
     #[cfg_attr(feature = "serde", serde(rename = "pDefaultGenerator"))]
@@ -42,6 +43,7 @@ pub struct BSiStateTaggingGenerator<'a> {
     /// - name: `iStateToSetAs`(ctype: `hkInt32`)
     /// - offset: ` 52`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "iStateToSetAs"))]
     #[cfg_attr(feature = "serde", serde(rename = "iStateToSetAs"))]
@@ -50,6 +52,7 @@ pub struct BSiStateTaggingGenerator<'a> {
     /// - name: `iPriority`(ctype: `hkInt32`)
     /// - offset: ` 56`(x86)/` 92`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "iPriority"))]
     #[cfg_attr(feature = "serde", serde(rename = "iPriority"))]

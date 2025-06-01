@@ -33,6 +33,7 @@ pub struct hkbSimulationStateInfo<'a> {
     /// - name: `simulationState`(ctype: `enum SimulationState`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "simulationState"))]
     #[cfg_attr(feature = "serde", serde(rename = "simulationState"))]
     pub m_simulationState: SimulationState,

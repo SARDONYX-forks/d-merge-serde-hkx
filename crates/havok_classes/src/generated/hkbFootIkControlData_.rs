@@ -29,6 +29,7 @@ pub struct hkbFootIkControlData<'a> {
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "gains"))]
     #[cfg_attr(feature = "serde", serde(rename = "gains"))]
     pub m_gains: hkbFootIkGains<'a>,

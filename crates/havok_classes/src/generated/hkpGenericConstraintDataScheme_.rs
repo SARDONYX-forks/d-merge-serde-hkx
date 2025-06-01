@@ -29,8 +29,8 @@ pub struct hkpGenericConstraintDataScheme<'a> {
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "info"))]
     #[cfg_attr(feature = "serde", serde(rename = "info"))]
     pub m_info: hkpGenericConstraintDataSchemeConstraintInfo<'a>,
@@ -38,6 +38,7 @@ pub struct hkpGenericConstraintDataScheme<'a> {
     /// - name: `data`(ctype: `hkArray<hkVector4>`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "data"))]
     #[cfg_attr(feature = "serde", serde(rename = "data"))]
     pub m_data: Vec<Vector4>,
@@ -45,6 +46,7 @@ pub struct hkpGenericConstraintDataScheme<'a> {
     /// - name: `commands`(ctype: `hkArray<hkInt32>`)
     /// - offset: ` 28`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "commands"))]
     #[cfg_attr(feature = "serde", serde(rename = "commands"))]
@@ -54,8 +56,8 @@ pub struct hkpGenericConstraintDataScheme<'a> {
     /// - offset: ` 40`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "modifiers"))]
     #[cfg_attr(feature = "serde", serde(rename = "modifiers"))]
     pub m_modifiers: Vec<Pointer<'a>>,
@@ -63,6 +65,7 @@ pub struct hkpGenericConstraintDataScheme<'a> {
     /// - name: `motors`(ctype: `hkArray<hkpConstraintMotor*>`)
     /// - offset: ` 52`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "motors"))]
     #[cfg_attr(feature = "serde", serde(rename = "motors"))]

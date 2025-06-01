@@ -33,6 +33,7 @@ pub struct hkpPositionConstraintMotor<'a> {
     /// - name: `tau`(ctype: `hkReal`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "tau"))]
     #[cfg_attr(feature = "serde", serde(rename = "tau"))]
     pub m_tau: f32,
@@ -40,6 +41,7 @@ pub struct hkpPositionConstraintMotor<'a> {
     /// - name: `damping`(ctype: `hkReal`)
     /// - offset: ` 24`(x86)/` 36`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "damping"))]
     #[cfg_attr(feature = "serde", serde(rename = "damping"))]
     pub m_damping: f32,
@@ -47,6 +49,7 @@ pub struct hkpPositionConstraintMotor<'a> {
     /// - name: `proportionalRecoveryVelocity`(ctype: `hkReal`)
     /// - offset: ` 28`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "proportionalRecoveryVelocity")
@@ -57,6 +60,7 @@ pub struct hkpPositionConstraintMotor<'a> {
     /// - name: `constantRecoveryVelocity`(ctype: `hkReal`)
     /// - offset: ` 32`(x86)/` 44`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "constantRecoveryVelocity"))]
     #[cfg_attr(feature = "serde", serde(rename = "constantRecoveryVelocity"))]
     pub m_constantRecoveryVelocity: f32,

@@ -33,6 +33,7 @@ pub struct hkbTwistModifier<'a> {
     /// - name: `axisOfRotation`(ctype: `hkVector4`)
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "axisOfRotation"))]
     #[cfg_attr(feature = "serde", serde(rename = "axisOfRotation"))]
     pub m_axisOfRotation: Vector4,
@@ -40,6 +41,7 @@ pub struct hkbTwistModifier<'a> {
     /// - name: `twistAngle`(ctype: `hkReal`)
     /// - offset: ` 64`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "twistAngle"))]
     #[cfg_attr(feature = "serde", serde(rename = "twistAngle"))]
     pub m_twistAngle: f32,
@@ -47,6 +49,7 @@ pub struct hkbTwistModifier<'a> {
     /// - name: `startBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 68`(x86)/`100`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "startBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "startBoneIndex"))]
@@ -55,6 +58,7 @@ pub struct hkbTwistModifier<'a> {
     /// - name: `endBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 70`(x86)/`102`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "endBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "endBoneIndex"))]
@@ -63,6 +67,7 @@ pub struct hkbTwistModifier<'a> {
     /// - name: `setAngleMethod`(ctype: `enum SetAngleMethod`)
     /// - offset: ` 72`(x86)/`104`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "setAngleMethod"))]
     #[cfg_attr(feature = "serde", serde(rename = "setAngleMethod"))]
     pub m_setAngleMethod: SetAngleMethod,
@@ -70,6 +75,7 @@ pub struct hkbTwistModifier<'a> {
     /// - name: `rotationAxisCoordinates`(ctype: `enum RotationAxisCoordinates`)
     /// - offset: ` 73`(x86)/`105`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rotationAxisCoordinates"))]
     #[cfg_attr(feature = "serde", serde(rename = "rotationAxisCoordinates"))]
     pub m_rotationAxisCoordinates: RotationAxisCoordinates,
@@ -77,6 +83,7 @@ pub struct hkbTwistModifier<'a> {
     /// - name: `isAdditive`(ctype: `hkBool`)
     /// - offset: ` 74`(x86)/`106`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isAdditive"))]
     #[cfg_attr(feature = "serde", serde(rename = "isAdditive"))]
     pub m_isAdditive: bool,

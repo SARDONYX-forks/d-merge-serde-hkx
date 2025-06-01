@@ -33,6 +33,7 @@ pub struct hkpAngLimitConstraintAtom<'a> {
     /// - name: `isEnabled`(ctype: `hkUint8`)
     /// - offset: `  2`(x86)/`  2`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isEnabled"))]
     #[cfg_attr(feature = "serde", serde(rename = "isEnabled"))]
@@ -41,6 +42,7 @@ pub struct hkpAngLimitConstraintAtom<'a> {
     /// - name: `limitAxis`(ctype: `hkUint8`)
     /// - offset: `  3`(x86)/`  3`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "limitAxis"))]
     #[cfg_attr(feature = "serde", serde(rename = "limitAxis"))]
@@ -49,6 +51,7 @@ pub struct hkpAngLimitConstraintAtom<'a> {
     /// - name: `minAngle`(ctype: `hkReal`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "minAngle"))]
     #[cfg_attr(feature = "serde", serde(rename = "minAngle"))]
     pub m_minAngle: f32,
@@ -56,6 +59,7 @@ pub struct hkpAngLimitConstraintAtom<'a> {
     /// - name: `maxAngle`(ctype: `hkReal`)
     /// - offset: `  8`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxAngle"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxAngle"))]
     pub m_maxAngle: f32,
@@ -63,6 +67,7 @@ pub struct hkpAngLimitConstraintAtom<'a> {
     /// - name: `angularLimitsTauFactor`(ctype: `hkReal`)
     /// - offset: ` 12`(x86)/` 12`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "angularLimitsTauFactor"))]
     #[cfg_attr(feature = "serde", serde(rename = "angularLimitsTauFactor"))]
     pub m_angularLimitsTauFactor: f32,

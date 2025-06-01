@@ -33,6 +33,7 @@ pub struct hkpSerializedAgentNnEntry<'a> {
     /// - name: `bodyA`(ctype: `struct hkpEntity*`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bodyA"))]
     #[cfg_attr(feature = "serde", serde(rename = "bodyA"))]
@@ -41,6 +42,7 @@ pub struct hkpSerializedAgentNnEntry<'a> {
     /// - name: `bodyB`(ctype: `struct hkpEntity*`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bodyB"))]
     #[cfg_attr(feature = "serde", serde(rename = "bodyB"))]
@@ -49,6 +51,7 @@ pub struct hkpSerializedAgentNnEntry<'a> {
     /// - name: `bodyAId`(ctype: `hkUlong`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bodyAId"))]
     #[cfg_attr(feature = "serde", serde(rename = "bodyAId"))]
     pub m_bodyAId: Ulong,
@@ -56,6 +59,7 @@ pub struct hkpSerializedAgentNnEntry<'a> {
     /// - name: `bodyBId`(ctype: `hkUlong`)
     /// - offset: ` 20`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "bodyBId"))]
     #[cfg_attr(feature = "serde", serde(rename = "bodyBId"))]
     pub m_bodyBId: Ulong,
@@ -63,6 +67,7 @@ pub struct hkpSerializedAgentNnEntry<'a> {
     /// - name: `useEntityIds`(ctype: `hkBool`)
     /// - offset: ` 24`(x86)/` 48`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "useEntityIds"))]
     #[cfg_attr(feature = "serde", serde(rename = "useEntityIds"))]
     pub m_useEntityIds: bool,
@@ -70,6 +75,7 @@ pub struct hkpSerializedAgentNnEntry<'a> {
     /// - name: `agentType`(ctype: `enum SerializedAgentType`)
     /// - offset: ` 25`(x86)/` 49`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "agentType"))]
     #[cfg_attr(feature = "serde", serde(rename = "agentType"))]
     pub m_agentType: SerializedAgentType,
@@ -77,6 +83,7 @@ pub struct hkpSerializedAgentNnEntry<'a> {
     /// - name: `atom`(ctype: `struct hkpSimpleContactConstraintAtom`)
     /// - offset: ` 32`(x86)/` 64`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "atom"))]
     #[cfg_attr(feature = "serde", serde(rename = "atom"))]
@@ -85,6 +92,7 @@ pub struct hkpSerializedAgentNnEntry<'a> {
     /// - name: `propertiesStream`(ctype: `hkArray<hkUint8>`)
     /// - offset: ` 80`(x86)/`112`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "propertiesStream"))]
     #[cfg_attr(feature = "serde", serde(rename = "propertiesStream"))]
@@ -93,6 +101,7 @@ pub struct hkpSerializedAgentNnEntry<'a> {
     /// - name: `contactPoints`(ctype: `hkArray<struct hkContactPoint>`)
     /// - offset: ` 92`(x86)/`128`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "contactPoints"))]
     #[cfg_attr(feature = "serde", serde(rename = "contactPoints"))]
     pub m_contactPoints: Vec<hkContactPoint<'a>>,
@@ -100,6 +109,7 @@ pub struct hkpSerializedAgentNnEntry<'a> {
     /// - name: `cpIdMgr`(ctype: `hkArray<hkUint8>`)
     /// - offset: `104`(x86)/`144`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "cpIdMgr"))]
     #[cfg_attr(feature = "serde", serde(rename = "cpIdMgr"))]
@@ -112,6 +122,7 @@ pub struct hkpSerializedAgentNnEntry<'a> {
         feature = "json_schema",
         schemars(schema_with = "make_large_int_array_schema")
     )]
+    #[cfg_attr(feature = "serde_default", serde(default = "crate::default_array"))]
     #[cfg_attr(
         feature = "serde",
         serde(with = "::serde_with::As::<[::serde_with::Same; 160]>")
@@ -125,6 +136,7 @@ pub struct hkpSerializedAgentNnEntry<'a> {
     /// - name: `trackInfo`(ctype: `struct hkpSerializedTrack1nInfo`)
     /// - offset: `276`(x86)/`320`(x86_64)
     /// - type_size: ` 24`(x86)/` 32`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "trackInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "trackInfo"))]
@@ -133,6 +145,7 @@ pub struct hkpSerializedAgentNnEntry<'a> {
     /// - name: `endianCheckBuffer`(ctype: `hkUint8[4]`)
     /// - offset: `300`(x86)/`352`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "endianCheckBuffer"))]
     #[cfg_attr(feature = "serde", serde(rename = "endianCheckBuffer"))]
@@ -141,6 +154,7 @@ pub struct hkpSerializedAgentNnEntry<'a> {
     /// - name: `version`(ctype: `hkUint32`)
     /// - offset: `304`(x86)/`356`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "version"))]
     #[cfg_attr(feature = "serde", serde(rename = "version"))]

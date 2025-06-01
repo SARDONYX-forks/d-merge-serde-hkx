@@ -29,6 +29,7 @@ pub struct hkHalf8<'a> {
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "quad"))]
     #[cfg_attr(feature = "serde", serde(rename = "quad"))]
     pub m_quad: [f16; 8usize],

@@ -28,6 +28,7 @@ pub struct hkaSkeletonMapperData<'a> {
     /// - name: `skeletonA`(ctype: `struct hkaSkeleton*`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "skeletonA"))]
     #[cfg_attr(feature = "serde", serde(rename = "skeletonA"))]
@@ -36,6 +37,7 @@ pub struct hkaSkeletonMapperData<'a> {
     /// - name: `skeletonB`(ctype: `struct hkaSkeleton*`)
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "skeletonB"))]
     #[cfg_attr(feature = "serde", serde(rename = "skeletonB"))]
@@ -44,6 +46,7 @@ pub struct hkaSkeletonMapperData<'a> {
     /// - name: `simpleMappings`(ctype: `hkArray<struct hkaSkeletonMapperDataSimpleMapping>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "simpleMappings"))]
     #[cfg_attr(feature = "serde", serde(rename = "simpleMappings"))]
@@ -52,6 +55,7 @@ pub struct hkaSkeletonMapperData<'a> {
     /// - name: `chainMappings`(ctype: `hkArray<struct hkaSkeletonMapperDataChainMapping>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "chainMappings"))]
     #[cfg_attr(feature = "serde", serde(rename = "chainMappings"))]
@@ -60,6 +64,7 @@ pub struct hkaSkeletonMapperData<'a> {
     /// - name: `unmappedBones`(ctype: `hkArray<hkInt16>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "unmappedBones"))]
     #[cfg_attr(feature = "serde", serde(rename = "unmappedBones"))]
@@ -68,6 +73,7 @@ pub struct hkaSkeletonMapperData<'a> {
     /// - name: `extractedMotionMapping`(ctype: `hkQsTransform`)
     /// - offset: ` 48`(x86)/` 64`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "extractedMotionMapping"))]
     #[cfg_attr(feature = "serde", serde(rename = "extractedMotionMapping"))]
     pub m_extractedMotionMapping: QsTransform,
@@ -75,6 +81,7 @@ pub struct hkaSkeletonMapperData<'a> {
     /// - name: `keepUnmappedLocal`(ctype: `hkBool`)
     /// - offset: ` 96`(x86)/`112`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "keepUnmappedLocal"))]
     #[cfg_attr(feature = "serde", serde(rename = "keepUnmappedLocal"))]
     pub m_keepUnmappedLocal: bool,
@@ -82,6 +89,7 @@ pub struct hkaSkeletonMapperData<'a> {
     /// - name: `mappingType`(ctype: `enum MappingType`)
     /// - offset: `100`(x86)/`116`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "mappingType"))]
     #[cfg_attr(feature = "serde", serde(rename = "mappingType"))]
     pub m_mappingType: MappingType,

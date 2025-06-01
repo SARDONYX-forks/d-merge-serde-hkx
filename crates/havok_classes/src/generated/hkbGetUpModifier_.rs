@@ -33,6 +33,7 @@ pub struct hkbGetUpModifier<'a> {
     /// - name: `groundNormal`(ctype: `hkVector4`)
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "groundNormal"))]
     #[cfg_attr(feature = "serde", serde(rename = "groundNormal"))]
     pub m_groundNormal: Vector4,
@@ -40,6 +41,7 @@ pub struct hkbGetUpModifier<'a> {
     /// - name: `duration`(ctype: `hkReal`)
     /// - offset: ` 64`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "duration"))]
     #[cfg_attr(feature = "serde", serde(rename = "duration"))]
     pub m_duration: f32,
@@ -47,6 +49,7 @@ pub struct hkbGetUpModifier<'a> {
     /// - name: `alignWithGroundDuration`(ctype: `hkReal`)
     /// - offset: ` 68`(x86)/`100`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "alignWithGroundDuration"))]
     #[cfg_attr(feature = "serde", serde(rename = "alignWithGroundDuration"))]
     pub m_alignWithGroundDuration: f32,
@@ -54,6 +57,7 @@ pub struct hkbGetUpModifier<'a> {
     /// - name: `rootBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 72`(x86)/`104`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rootBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "rootBoneIndex"))]
@@ -62,6 +66,7 @@ pub struct hkbGetUpModifier<'a> {
     /// - name: `otherBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 74`(x86)/`106`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "otherBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "otherBoneIndex"))]
@@ -70,6 +75,7 @@ pub struct hkbGetUpModifier<'a> {
     /// - name: `anotherBoneIndex`(ctype: `hkInt16`)
     /// - offset: ` 76`(x86)/`108`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "anotherBoneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "anotherBoneIndex"))]

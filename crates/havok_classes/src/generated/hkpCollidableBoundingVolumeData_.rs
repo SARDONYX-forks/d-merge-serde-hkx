@@ -28,6 +28,7 @@ pub struct hkpCollidableBoundingVolumeData<'a> {
     /// - name: `min`(ctype: `hkUint32[3]`)
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: ` 12`(x86)/` 12`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "min"))]
     #[cfg_attr(feature = "serde", serde(rename = "min"))]
@@ -36,6 +37,7 @@ pub struct hkpCollidableBoundingVolumeData<'a> {
     /// - name: `expansionMin`(ctype: `hkUint8[3]`)
     /// - offset: ` 12`(x86)/` 12`(x86_64)
     /// - type_size: `  3`(x86)/`  3`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "expansionMin"))]
     #[cfg_attr(feature = "serde", serde(rename = "expansionMin"))]
@@ -44,6 +46,7 @@ pub struct hkpCollidableBoundingVolumeData<'a> {
     /// - name: `expansionShift`(ctype: `hkUint8`)
     /// - offset: ` 15`(x86)/` 15`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "expansionShift"))]
     #[cfg_attr(feature = "serde", serde(rename = "expansionShift"))]
@@ -52,6 +55,7 @@ pub struct hkpCollidableBoundingVolumeData<'a> {
     /// - name: `max`(ctype: `hkUint32[3]`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 12`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "max"))]
     #[cfg_attr(feature = "serde", serde(rename = "max"))]
@@ -60,6 +64,7 @@ pub struct hkpCollidableBoundingVolumeData<'a> {
     /// - name: `expansionMax`(ctype: `hkUint8[3]`)
     /// - offset: ` 28`(x86)/` 28`(x86_64)
     /// - type_size: `  3`(x86)/`  3`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "expansionMax"))]
     #[cfg_attr(feature = "serde", serde(rename = "expansionMax"))]
@@ -68,6 +73,7 @@ pub struct hkpCollidableBoundingVolumeData<'a> {
     /// - name: `padding`(ctype: `hkUint8`)
     /// - offset: ` 31`(x86)/` 31`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "padding"))]
     #[cfg_attr(feature = "serde", serde(rename = "padding"))]
@@ -77,8 +83,8 @@ pub struct hkpCollidableBoundingVolumeData<'a> {
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "numChildShapeAabbs"))]
     #[cfg_attr(feature = "serde", serde(rename = "numChildShapeAabbs"))]
     pub m_numChildShapeAabbs: U16<'a>,
@@ -87,8 +93,8 @@ pub struct hkpCollidableBoundingVolumeData<'a> {
     /// - offset: ` 34`(x86)/` 34`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "capacityChildShapeAabbs"))]
     #[cfg_attr(feature = "serde", serde(rename = "capacityChildShapeAabbs"))]
     pub m_capacityChildShapeAabbs: U16<'a>,
@@ -97,8 +103,8 @@ pub struct hkpCollidableBoundingVolumeData<'a> {
     /// - offset: ` 36`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "childShapeAabbs"))]
     #[cfg_attr(feature = "serde", serde(rename = "childShapeAabbs"))]
     pub m_childShapeAabbs: Pointer<'a>,
@@ -107,8 +113,8 @@ pub struct hkpCollidableBoundingVolumeData<'a> {
     /// - offset: ` 40`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "childShapeKeys"))]
     #[cfg_attr(feature = "serde", serde(rename = "childShapeKeys"))]
     pub m_childShapeKeys: Pointer<'a>,

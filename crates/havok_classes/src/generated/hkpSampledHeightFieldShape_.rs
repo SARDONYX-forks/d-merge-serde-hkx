@@ -33,6 +33,7 @@ pub struct hkpSampledHeightFieldShape<'a> {
     /// - name: `xRes`(ctype: `hkInt32`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "xRes"))]
     #[cfg_attr(feature = "serde", serde(rename = "xRes"))]
@@ -41,6 +42,7 @@ pub struct hkpSampledHeightFieldShape<'a> {
     /// - name: `zRes`(ctype: `hkInt32`)
     /// - offset: ` 20`(x86)/` 36`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "zRes"))]
     #[cfg_attr(feature = "serde", serde(rename = "zRes"))]
@@ -49,6 +51,7 @@ pub struct hkpSampledHeightFieldShape<'a> {
     /// - name: `heightCenter`(ctype: `hkReal`)
     /// - offset: ` 24`(x86)/` 40`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "heightCenter"))]
     #[cfg_attr(feature = "serde", serde(rename = "heightCenter"))]
     pub m_heightCenter: f32,
@@ -56,6 +59,7 @@ pub struct hkpSampledHeightFieldShape<'a> {
     /// - name: `useProjectionBasedHeight`(ctype: `hkBool`)
     /// - offset: ` 28`(x86)/` 44`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "useProjectionBasedHeight"))]
     #[cfg_attr(feature = "serde", serde(rename = "useProjectionBasedHeight"))]
     pub m_useProjectionBasedHeight: bool,
@@ -63,6 +67,7 @@ pub struct hkpSampledHeightFieldShape<'a> {
     /// - name: `heightfieldType`(ctype: `enum HeightFieldType`)
     /// - offset: ` 29`(x86)/` 45`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "heightfieldType"))]
     #[cfg_attr(feature = "serde", serde(rename = "heightfieldType"))]
     pub m_heightfieldType: HeightFieldType,
@@ -70,6 +75,7 @@ pub struct hkpSampledHeightFieldShape<'a> {
     /// - name: `intToFloatScale`(ctype: `hkVector4`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "intToFloatScale"))]
     #[cfg_attr(feature = "serde", serde(rename = "intToFloatScale"))]
     pub m_intToFloatScale: Vector4,
@@ -77,6 +83,7 @@ pub struct hkpSampledHeightFieldShape<'a> {
     /// - name: `floatToIntScale`(ctype: `hkVector4`)
     /// - offset: ` 48`(x86)/` 64`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "floatToIntScale"))]
     #[cfg_attr(feature = "serde", serde(rename = "floatToIntScale"))]
     pub m_floatToIntScale: Vector4,
@@ -84,6 +91,7 @@ pub struct hkpSampledHeightFieldShape<'a> {
     /// - name: `floatToIntOffsetFloorCorrected`(ctype: `hkVector4`)
     /// - offset: ` 64`(x86)/` 80`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "floatToIntOffsetFloorCorrected")
@@ -94,6 +102,7 @@ pub struct hkpSampledHeightFieldShape<'a> {
     /// - name: `extents`(ctype: `hkVector4`)
     /// - offset: ` 80`(x86)/` 96`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "extents"))]
     #[cfg_attr(feature = "serde", serde(rename = "extents"))]
     pub m_extents: Vector4,

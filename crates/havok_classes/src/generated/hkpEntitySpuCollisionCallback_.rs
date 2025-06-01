@@ -29,8 +29,8 @@ pub struct hkpEntitySpuCollisionCallback<'a> {
     /// - offset: `  0`(x86)/`  0`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "util"))]
     #[cfg_attr(feature = "serde", serde(rename = "util"))]
     pub m_util: Pointer<'a>,
@@ -39,8 +39,8 @@ pub struct hkpEntitySpuCollisionCallback<'a> {
     /// - offset: `  4`(x86)/`  8`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "capacity"))]
     #[cfg_attr(feature = "serde", serde(rename = "capacity"))]
     pub m_capacity: U16<'a>,
@@ -48,6 +48,7 @@ pub struct hkpEntitySpuCollisionCallback<'a> {
     /// - name: `eventFilter`(ctype: `hkUint8`)
     /// - offset: `  6`(x86)/` 10`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "eventFilter"))]
     #[cfg_attr(feature = "serde", serde(rename = "eventFilter"))]
@@ -56,6 +57,7 @@ pub struct hkpEntitySpuCollisionCallback<'a> {
     /// - name: `userFilter`(ctype: `hkUint8`)
     /// - offset: `  7`(x86)/` 11`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "userFilter"))]
     #[cfg_attr(feature = "serde", serde(rename = "userFilter"))]

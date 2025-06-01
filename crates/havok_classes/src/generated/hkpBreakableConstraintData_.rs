@@ -33,6 +33,7 @@ pub struct hkpBreakableConstraintData<'a> {
     /// - name: `atoms`(ctype: `struct hkpBridgeAtoms`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: ` 12`(x86)/` 24`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "atoms"))]
     #[cfg_attr(feature = "serde", serde(rename = "atoms"))]
@@ -41,6 +42,7 @@ pub struct hkpBreakableConstraintData<'a> {
     /// - name: `constraintData`(ctype: `struct hkpConstraintData*`)
     /// - offset: ` 24`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "constraintData"))]
     #[cfg_attr(feature = "serde", serde(rename = "constraintData"))]
@@ -49,6 +51,7 @@ pub struct hkpBreakableConstraintData<'a> {
     /// - name: `childRuntimeSize`(ctype: `hkUint16`)
     /// - offset: ` 28`(x86)/` 56`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "childRuntimeSize"))]
     #[cfg_attr(feature = "serde", serde(rename = "childRuntimeSize"))]
@@ -57,6 +60,7 @@ pub struct hkpBreakableConstraintData<'a> {
     /// - name: `childNumSolverResults`(ctype: `hkUint16`)
     /// - offset: ` 30`(x86)/` 58`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "childNumSolverResults"))]
     #[cfg_attr(feature = "serde", serde(rename = "childNumSolverResults"))]
@@ -65,6 +69,7 @@ pub struct hkpBreakableConstraintData<'a> {
     /// - name: `solverResultLimit`(ctype: `hkReal`)
     /// - offset: ` 32`(x86)/` 60`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "solverResultLimit"))]
     #[cfg_attr(feature = "serde", serde(rename = "solverResultLimit"))]
     pub m_solverResultLimit: f32,
@@ -72,6 +77,7 @@ pub struct hkpBreakableConstraintData<'a> {
     /// - name: `removeWhenBroken`(ctype: `hkBool`)
     /// - offset: ` 36`(x86)/` 64`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "removeWhenBroken"))]
     #[cfg_attr(feature = "serde", serde(rename = "removeWhenBroken"))]
     pub m_removeWhenBroken: bool,
@@ -79,6 +85,7 @@ pub struct hkpBreakableConstraintData<'a> {
     /// - name: `revertBackVelocityOnBreak`(ctype: `hkBool`)
     /// - offset: ` 37`(x86)/` 65`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "revertBackVelocityOnBreak"))]
     #[cfg_attr(feature = "serde", serde(rename = "revertBackVelocityOnBreak"))]
     pub m_revertBackVelocityOnBreak: bool,

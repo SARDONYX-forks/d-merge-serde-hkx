@@ -33,6 +33,7 @@ pub struct hkpTriSampledHeightFieldCollection<'a> {
     /// - name: `heightfield`(ctype: `struct hkpSampledHeightFieldShape*`)
     /// - offset: ` 24`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "heightfield"))]
     #[cfg_attr(feature = "serde", serde(rename = "heightfield"))]
@@ -42,8 +43,8 @@ pub struct hkpTriSampledHeightFieldCollection<'a> {
     /// - offset: ` 28`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "childSize"))]
     #[cfg_attr(feature = "serde", serde(rename = "childSize"))]
     pub m_childSize: I32<'a>,
@@ -51,6 +52,7 @@ pub struct hkpTriSampledHeightFieldCollection<'a> {
     /// - name: `radius`(ctype: `hkReal`)
     /// - offset: ` 32`(x86)/` 60`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "radius"))]
     #[cfg_attr(feature = "serde", serde(rename = "radius"))]
     pub m_radius: f32,
@@ -58,6 +60,7 @@ pub struct hkpTriSampledHeightFieldCollection<'a> {
     /// - name: `weldingInfo`(ctype: `hkArray<hkUint16>`)
     /// - offset: ` 36`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "weldingInfo"))]
     #[cfg_attr(feature = "serde", serde(rename = "weldingInfo"))]
@@ -66,6 +69,7 @@ pub struct hkpTriSampledHeightFieldCollection<'a> {
     /// - name: `triangleExtrusion`(ctype: `hkVector4`)
     /// - offset: ` 48`(x86)/` 80`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "triangleExtrusion"))]
     #[cfg_attr(feature = "serde", serde(rename = "triangleExtrusion"))]
     pub m_triangleExtrusion: Vector4,

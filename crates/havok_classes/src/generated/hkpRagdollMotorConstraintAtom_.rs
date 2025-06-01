@@ -33,6 +33,7 @@ pub struct hkpRagdollMotorConstraintAtom<'a> {
     /// - name: `isEnabled`(ctype: `hkBool`)
     /// - offset: `  2`(x86)/`  2`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "isEnabled"))]
     #[cfg_attr(feature = "serde", serde(rename = "isEnabled"))]
     pub m_isEnabled: bool,
@@ -40,6 +41,7 @@ pub struct hkpRagdollMotorConstraintAtom<'a> {
     /// - name: `initializedOffset`(ctype: `hkInt16`)
     /// - offset: `  4`(x86)/`  4`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "initializedOffset"))]
     #[cfg_attr(feature = "serde", serde(rename = "initializedOffset"))]
@@ -48,6 +50,7 @@ pub struct hkpRagdollMotorConstraintAtom<'a> {
     /// - name: `previousTargetAnglesOffset`(ctype: `hkInt16`)
     /// - offset: `  6`(x86)/`  6`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "previousTargetAnglesOffset"))]
     #[cfg_attr(feature = "serde", serde(rename = "previousTargetAnglesOffset"))]
@@ -56,6 +59,7 @@ pub struct hkpRagdollMotorConstraintAtom<'a> {
     /// - name: `target_bRca`(ctype: `hkMatrix3`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 48`(x86)/` 48`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "target_bRca"))]
     #[cfg_attr(feature = "serde", serde(rename = "target_bRca"))]
     pub m_target_bRca: Matrix3,
@@ -63,6 +67,7 @@ pub struct hkpRagdollMotorConstraintAtom<'a> {
     /// - name: `motors`(ctype: `struct hkpConstraintMotor*`)
     /// - offset: ` 64`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 24`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "motors"))]
     #[cfg_attr(feature = "serde", serde(rename = "motors"))]

@@ -33,6 +33,7 @@ pub struct hkpPhysicsSystem<'a> {
     /// - name: `rigidBodies`(ctype: `hkArray<hkpRigidBody*>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rigidBodies"))]
     #[cfg_attr(feature = "serde", serde(rename = "rigidBodies"))]
@@ -41,6 +42,7 @@ pub struct hkpPhysicsSystem<'a> {
     /// - name: `constraints`(ctype: `hkArray<hkpConstraintInstance*>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "constraints"))]
     #[cfg_attr(feature = "serde", serde(rename = "constraints"))]
@@ -49,6 +51,7 @@ pub struct hkpPhysicsSystem<'a> {
     /// - name: `actions`(ctype: `hkArray<hkpAction*>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "actions"))]
     #[cfg_attr(feature = "serde", serde(rename = "actions"))]
@@ -57,6 +60,7 @@ pub struct hkpPhysicsSystem<'a> {
     /// - name: `phantoms`(ctype: `hkArray<hkpPhantom*>`)
     /// - offset: ` 44`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "phantoms"))]
     #[cfg_attr(feature = "serde", serde(rename = "phantoms"))]
@@ -65,6 +69,7 @@ pub struct hkpPhysicsSystem<'a> {
     /// - name: `name`(ctype: `hkStringPtr`)
     /// - offset: ` 56`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "name"))]
     #[cfg_attr(feature = "serde", serde(rename = "name"))]
@@ -73,6 +78,7 @@ pub struct hkpPhysicsSystem<'a> {
     /// - name: `userData`(ctype: `hkUlong`)
     /// - offset: ` 60`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "userData"))]
     #[cfg_attr(feature = "serde", serde(rename = "userData"))]
     pub m_userData: Ulong,
@@ -80,6 +86,7 @@ pub struct hkpPhysicsSystem<'a> {
     /// - name: `active`(ctype: `hkBool`)
     /// - offset: ` 64`(x86)/` 96`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "active"))]
     #[cfg_attr(feature = "serde", serde(rename = "active"))]
     pub m_active: bool,

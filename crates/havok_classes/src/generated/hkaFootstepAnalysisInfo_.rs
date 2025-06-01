@@ -33,6 +33,7 @@ pub struct hkaFootstepAnalysisInfo<'a> {
     /// - name: `name`(ctype: `hkArray<hkChar>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "name"))]
     #[cfg_attr(feature = "serde", serde(rename = "name"))]
     pub m_name: Vec<char>,
@@ -40,6 +41,7 @@ pub struct hkaFootstepAnalysisInfo<'a> {
     /// - name: `nameStrike`(ctype: `hkArray<hkChar>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nameStrike"))]
     #[cfg_attr(feature = "serde", serde(rename = "nameStrike"))]
     pub m_nameStrike: Vec<char>,
@@ -47,6 +49,7 @@ pub struct hkaFootstepAnalysisInfo<'a> {
     /// - name: `nameLift`(ctype: `hkArray<hkChar>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nameLift"))]
     #[cfg_attr(feature = "serde", serde(rename = "nameLift"))]
     pub m_nameLift: Vec<char>,
@@ -54,6 +57,7 @@ pub struct hkaFootstepAnalysisInfo<'a> {
     /// - name: `nameLock`(ctype: `hkArray<hkChar>`)
     /// - offset: ` 44`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nameLock"))]
     #[cfg_attr(feature = "serde", serde(rename = "nameLock"))]
     pub m_nameLock: Vec<char>,
@@ -61,6 +65,7 @@ pub struct hkaFootstepAnalysisInfo<'a> {
     /// - name: `nameUnlock`(ctype: `hkArray<hkChar>`)
     /// - offset: ` 56`(x86)/` 80`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "nameUnlock"))]
     #[cfg_attr(feature = "serde", serde(rename = "nameUnlock"))]
     pub m_nameUnlock: Vec<char>,
@@ -68,6 +73,7 @@ pub struct hkaFootstepAnalysisInfo<'a> {
     /// - name: `minPos`(ctype: `hkArray<hkReal>`)
     /// - offset: ` 68`(x86)/` 96`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "minPos"))]
     #[cfg_attr(feature = "serde", serde(rename = "minPos"))]
     pub m_minPos: Vec<f32>,
@@ -75,6 +81,7 @@ pub struct hkaFootstepAnalysisInfo<'a> {
     /// - name: `maxPos`(ctype: `hkArray<hkReal>`)
     /// - offset: ` 80`(x86)/`112`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxPos"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxPos"))]
     pub m_maxPos: Vec<f32>,
@@ -82,6 +89,7 @@ pub struct hkaFootstepAnalysisInfo<'a> {
     /// - name: `minVel`(ctype: `hkArray<hkReal>`)
     /// - offset: ` 92`(x86)/`128`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "minVel"))]
     #[cfg_attr(feature = "serde", serde(rename = "minVel"))]
     pub m_minVel: Vec<f32>,
@@ -89,6 +97,7 @@ pub struct hkaFootstepAnalysisInfo<'a> {
     /// - name: `maxVel`(ctype: `hkArray<hkReal>`)
     /// - offset: `104`(x86)/`144`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxVel"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxVel"))]
     pub m_maxVel: Vec<f32>,
@@ -96,6 +105,7 @@ pub struct hkaFootstepAnalysisInfo<'a> {
     /// - name: `allBonesDown`(ctype: `hkArray<hkReal>`)
     /// - offset: `116`(x86)/`160`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "allBonesDown"))]
     #[cfg_attr(feature = "serde", serde(rename = "allBonesDown"))]
     pub m_allBonesDown: Vec<f32>,
@@ -103,6 +113,7 @@ pub struct hkaFootstepAnalysisInfo<'a> {
     /// - name: `anyBonesDown`(ctype: `hkArray<hkReal>`)
     /// - offset: `128`(x86)/`176`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "anyBonesDown"))]
     #[cfg_attr(feature = "serde", serde(rename = "anyBonesDown"))]
     pub m_anyBonesDown: Vec<f32>,
@@ -110,6 +121,7 @@ pub struct hkaFootstepAnalysisInfo<'a> {
     /// - name: `posTol`(ctype: `hkReal`)
     /// - offset: `140`(x86)/`192`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "posTol"))]
     #[cfg_attr(feature = "serde", serde(rename = "posTol"))]
     pub m_posTol: f32,
@@ -117,6 +129,7 @@ pub struct hkaFootstepAnalysisInfo<'a> {
     /// - name: `velTol`(ctype: `hkReal`)
     /// - offset: `144`(x86)/`196`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "velTol"))]
     #[cfg_attr(feature = "serde", serde(rename = "velTol"))]
     pub m_velTol: f32,
@@ -124,6 +137,7 @@ pub struct hkaFootstepAnalysisInfo<'a> {
     /// - name: `duration`(ctype: `hkReal`)
     /// - offset: `148`(x86)/`200`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "duration"))]
     #[cfg_attr(feature = "serde", serde(rename = "duration"))]
     pub m_duration: f32,

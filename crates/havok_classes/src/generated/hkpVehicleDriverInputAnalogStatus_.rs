@@ -33,6 +33,7 @@ pub struct hkpVehicleDriverInputAnalogStatus<'a> {
     /// - name: `positionX`(ctype: `hkReal`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "positionX"))]
     #[cfg_attr(feature = "serde", serde(rename = "positionX"))]
     pub m_positionX: f32,
@@ -40,6 +41,7 @@ pub struct hkpVehicleDriverInputAnalogStatus<'a> {
     /// - name: `positionY`(ctype: `hkReal`)
     /// - offset: ` 12`(x86)/` 20`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "positionY"))]
     #[cfg_attr(feature = "serde", serde(rename = "positionY"))]
     pub m_positionY: f32,
@@ -47,6 +49,7 @@ pub struct hkpVehicleDriverInputAnalogStatus<'a> {
     /// - name: `handbrakeButtonPressed`(ctype: `hkBool`)
     /// - offset: ` 16`(x86)/` 24`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "handbrakeButtonPressed"))]
     #[cfg_attr(feature = "serde", serde(rename = "handbrakeButtonPressed"))]
     pub m_handbrakeButtonPressed: bool,
@@ -54,6 +57,7 @@ pub struct hkpVehicleDriverInputAnalogStatus<'a> {
     /// - name: `reverseButtonPressed`(ctype: `hkBool`)
     /// - offset: ` 17`(x86)/` 25`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "reverseButtonPressed"))]
     #[cfg_attr(feature = "serde", serde(rename = "reverseButtonPressed"))]
     pub m_reverseButtonPressed: bool,

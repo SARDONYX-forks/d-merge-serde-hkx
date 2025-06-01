@@ -33,6 +33,7 @@ pub struct hkpCharacterProxyCinfo<'a> {
     /// - name: `position`(ctype: `hkVector4`)
     /// - offset: ` 16`(x86)/` 16`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "position"))]
     #[cfg_attr(feature = "serde", serde(rename = "position"))]
     pub m_position: Vector4,
@@ -40,6 +41,7 @@ pub struct hkpCharacterProxyCinfo<'a> {
     /// - name: `velocity`(ctype: `hkVector4`)
     /// - offset: ` 32`(x86)/` 32`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "velocity"))]
     #[cfg_attr(feature = "serde", serde(rename = "velocity"))]
     pub m_velocity: Vector4,
@@ -47,6 +49,7 @@ pub struct hkpCharacterProxyCinfo<'a> {
     /// - name: `dynamicFriction`(ctype: `hkReal`)
     /// - offset: ` 48`(x86)/` 48`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "dynamicFriction"))]
     #[cfg_attr(feature = "serde", serde(rename = "dynamicFriction"))]
     pub m_dynamicFriction: f32,
@@ -54,6 +57,7 @@ pub struct hkpCharacterProxyCinfo<'a> {
     /// - name: `staticFriction`(ctype: `hkReal`)
     /// - offset: ` 52`(x86)/` 52`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "staticFriction"))]
     #[cfg_attr(feature = "serde", serde(rename = "staticFriction"))]
     pub m_staticFriction: f32,
@@ -61,6 +65,7 @@ pub struct hkpCharacterProxyCinfo<'a> {
     /// - name: `keepContactTolerance`(ctype: `hkReal`)
     /// - offset: ` 56`(x86)/` 56`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "keepContactTolerance"))]
     #[cfg_attr(feature = "serde", serde(rename = "keepContactTolerance"))]
     pub m_keepContactTolerance: f32,
@@ -68,6 +73,7 @@ pub struct hkpCharacterProxyCinfo<'a> {
     /// - name: `up`(ctype: `hkVector4`)
     /// - offset: ` 64`(x86)/` 64`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "up"))]
     #[cfg_attr(feature = "serde", serde(rename = "up"))]
     pub m_up: Vector4,
@@ -75,6 +81,7 @@ pub struct hkpCharacterProxyCinfo<'a> {
     /// - name: `extraUpStaticFriction`(ctype: `hkReal`)
     /// - offset: ` 80`(x86)/` 80`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "extraUpStaticFriction"))]
     #[cfg_attr(feature = "serde", serde(rename = "extraUpStaticFriction"))]
     pub m_extraUpStaticFriction: f32,
@@ -82,6 +89,7 @@ pub struct hkpCharacterProxyCinfo<'a> {
     /// - name: `extraDownStaticFriction`(ctype: `hkReal`)
     /// - offset: ` 84`(x86)/` 84`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "extraDownStaticFriction"))]
     #[cfg_attr(feature = "serde", serde(rename = "extraDownStaticFriction"))]
     pub m_extraDownStaticFriction: f32,
@@ -89,6 +97,7 @@ pub struct hkpCharacterProxyCinfo<'a> {
     /// - name: `shapePhantom`(ctype: `struct hkpShapePhantom*`)
     /// - offset: ` 88`(x86)/` 88`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "shapePhantom"))]
     #[cfg_attr(feature = "serde", serde(rename = "shapePhantom"))]
@@ -97,6 +106,7 @@ pub struct hkpCharacterProxyCinfo<'a> {
     /// - name: `keepDistance`(ctype: `hkReal`)
     /// - offset: ` 92`(x86)/` 96`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "keepDistance"))]
     #[cfg_attr(feature = "serde", serde(rename = "keepDistance"))]
     pub m_keepDistance: f32,
@@ -104,6 +114,7 @@ pub struct hkpCharacterProxyCinfo<'a> {
     /// - name: `contactAngleSensitivity`(ctype: `hkReal`)
     /// - offset: ` 96`(x86)/`100`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "contactAngleSensitivity"))]
     #[cfg_attr(feature = "serde", serde(rename = "contactAngleSensitivity"))]
     pub m_contactAngleSensitivity: f32,
@@ -111,6 +122,7 @@ pub struct hkpCharacterProxyCinfo<'a> {
     /// - name: `userPlanes`(ctype: `hkUint32`)
     /// - offset: `100`(x86)/`104`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "userPlanes"))]
     #[cfg_attr(feature = "serde", serde(rename = "userPlanes"))]
@@ -119,6 +131,7 @@ pub struct hkpCharacterProxyCinfo<'a> {
     /// - name: `maxCharacterSpeedForSolver`(ctype: `hkReal`)
     /// - offset: `104`(x86)/`108`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxCharacterSpeedForSolver"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxCharacterSpeedForSolver"))]
     pub m_maxCharacterSpeedForSolver: f32,
@@ -126,6 +139,7 @@ pub struct hkpCharacterProxyCinfo<'a> {
     /// - name: `characterStrength`(ctype: `hkReal`)
     /// - offset: `108`(x86)/`112`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "characterStrength"))]
     #[cfg_attr(feature = "serde", serde(rename = "characterStrength"))]
     pub m_characterStrength: f32,
@@ -133,6 +147,7 @@ pub struct hkpCharacterProxyCinfo<'a> {
     /// - name: `characterMass`(ctype: `hkReal`)
     /// - offset: `112`(x86)/`116`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "characterMass"))]
     #[cfg_attr(feature = "serde", serde(rename = "characterMass"))]
     pub m_characterMass: f32,
@@ -140,6 +155,7 @@ pub struct hkpCharacterProxyCinfo<'a> {
     /// - name: `maxSlope`(ctype: `hkReal`)
     /// - offset: `116`(x86)/`120`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxSlope"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxSlope"))]
     pub m_maxSlope: f32,
@@ -147,6 +163,7 @@ pub struct hkpCharacterProxyCinfo<'a> {
     /// - name: `penetrationRecoverySpeed`(ctype: `hkReal`)
     /// - offset: `120`(x86)/`124`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "penetrationRecoverySpeed"))]
     #[cfg_attr(feature = "serde", serde(rename = "penetrationRecoverySpeed"))]
     pub m_penetrationRecoverySpeed: f32,
@@ -154,6 +171,7 @@ pub struct hkpCharacterProxyCinfo<'a> {
     /// - name: `maxCastIterations`(ctype: `hkInt32`)
     /// - offset: `124`(x86)/`128`(x86_64)
     /// - type_size: `  4`(x86)/`  4`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "maxCastIterations"))]
     #[cfg_attr(feature = "serde", serde(rename = "maxCastIterations"))]
@@ -162,6 +180,7 @@ pub struct hkpCharacterProxyCinfo<'a> {
     /// - name: `refreshManifoldInCheckSupport`(ctype: `hkBool`)
     /// - offset: `128`(x86)/`132`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(
         feature = "json_schema",
         schemars(rename = "refreshManifoldInCheckSupport")

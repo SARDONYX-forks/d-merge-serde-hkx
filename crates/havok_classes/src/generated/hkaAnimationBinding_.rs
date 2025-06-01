@@ -33,6 +33,7 @@ pub struct hkaAnimationBinding<'a> {
     /// - name: `originalSkeletonName`(ctype: `hkStringPtr`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "originalSkeletonName"))]
     #[cfg_attr(feature = "serde", serde(rename = "originalSkeletonName"))]
@@ -41,6 +42,7 @@ pub struct hkaAnimationBinding<'a> {
     /// - name: `animation`(ctype: `struct hkaAnimation*`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "animation"))]
     #[cfg_attr(feature = "serde", serde(rename = "animation"))]
@@ -49,6 +51,7 @@ pub struct hkaAnimationBinding<'a> {
     /// - name: `transformTrackToBoneIndices`(ctype: `hkArray<hkInt16>`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
@@ -60,6 +63,7 @@ pub struct hkaAnimationBinding<'a> {
     /// - name: `floatTrackToFloatSlotIndices`(ctype: `hkArray<hkInt16>`)
     /// - offset: ` 28`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(
         feature = "json_schema",
@@ -71,6 +75,7 @@ pub struct hkaAnimationBinding<'a> {
     /// - name: `blendHint`(ctype: `enum BlendHint`)
     /// - offset: ` 40`(x86)/` 64`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "blendHint"))]
     #[cfg_attr(feature = "serde", serde(rename = "blendHint"))]
     pub m_blendHint: BlendHint,

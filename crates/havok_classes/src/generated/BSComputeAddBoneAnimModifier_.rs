@@ -33,6 +33,7 @@ pub struct BSComputeAddBoneAnimModifier<'a> {
     /// - name: `boneIndex`(ctype: `hkInt16`)
     /// - offset: ` 44`(x86)/` 80`(x86_64)
     /// - type_size: `  2`(x86)/`  2`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "boneIndex"))]
     #[cfg_attr(feature = "serde", serde(rename = "boneIndex"))]
@@ -41,6 +42,7 @@ pub struct BSComputeAddBoneAnimModifier<'a> {
     /// - name: `translationLSOut`(ctype: `hkVector4`)
     /// - offset: ` 48`(x86)/` 96`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "translationLSOut"))]
     #[cfg_attr(feature = "serde", serde(rename = "translationLSOut"))]
     pub m_translationLSOut: Vector4,
@@ -48,6 +50,7 @@ pub struct BSComputeAddBoneAnimModifier<'a> {
     /// - name: `rotationLSOut`(ctype: `hkQuaternion`)
     /// - offset: ` 64`(x86)/`112`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "rotationLSOut"))]
     #[cfg_attr(feature = "serde", serde(rename = "rotationLSOut"))]
     pub m_rotationLSOut: Quaternion,
@@ -55,6 +58,7 @@ pub struct BSComputeAddBoneAnimModifier<'a> {
     /// - name: `scaleLSOut`(ctype: `hkVector4`)
     /// - offset: ` 80`(x86)/`128`(x86_64)
     /// - type_size: ` 16`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "scaleLSOut"))]
     #[cfg_attr(feature = "serde", serde(rename = "scaleLSOut"))]
     pub m_scaleLSOut: Vector4,
@@ -63,8 +67,8 @@ pub struct BSComputeAddBoneAnimModifier<'a> {
     /// - offset: ` 96`(x86)/`144`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pSkeletonMemory"))]
     #[cfg_attr(feature = "serde", serde(rename = "pSkeletonMemory"))]
     pub m_pSkeletonMemory: Pointer<'a>,

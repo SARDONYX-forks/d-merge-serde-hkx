@@ -33,6 +33,7 @@ pub struct hkbBehaviorGraphData<'a> {
     /// - name: `attributeDefaults`(ctype: `hkArray<hkReal>`)
     /// - offset: `  8`(x86)/` 16`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "attributeDefaults"))]
     #[cfg_attr(feature = "serde", serde(rename = "attributeDefaults"))]
     pub m_attributeDefaults: Vec<f32>,
@@ -40,6 +41,7 @@ pub struct hkbBehaviorGraphData<'a> {
     /// - name: `variableInfos`(ctype: `hkArray<struct hkbVariableInfo>`)
     /// - offset: ` 20`(x86)/` 32`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "variableInfos"))]
     #[cfg_attr(feature = "serde", serde(rename = "variableInfos"))]
@@ -48,6 +50,7 @@ pub struct hkbBehaviorGraphData<'a> {
     /// - name: `characterPropertyInfos`(ctype: `hkArray<struct hkbVariableInfo>`)
     /// - offset: ` 32`(x86)/` 48`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "characterPropertyInfos"))]
     #[cfg_attr(feature = "serde", serde(rename = "characterPropertyInfos"))]
@@ -56,6 +59,7 @@ pub struct hkbBehaviorGraphData<'a> {
     /// - name: `eventInfos`(ctype: `hkArray<struct hkbEventInfo>`)
     /// - offset: ` 44`(x86)/` 64`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "eventInfos"))]
     #[cfg_attr(feature = "serde", serde(rename = "eventInfos"))]
@@ -64,6 +68,7 @@ pub struct hkbBehaviorGraphData<'a> {
     /// - name: `wordMinVariableValues`(ctype: `hkArray<struct hkbVariableValue>`)
     /// - offset: ` 56`(x86)/` 80`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wordMinVariableValues"))]
     #[cfg_attr(feature = "serde", serde(rename = "wordMinVariableValues"))]
@@ -72,6 +77,7 @@ pub struct hkbBehaviorGraphData<'a> {
     /// - name: `wordMaxVariableValues`(ctype: `hkArray<struct hkbVariableValue>`)
     /// - offset: ` 68`(x86)/` 96`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "wordMaxVariableValues"))]
     #[cfg_attr(feature = "serde", serde(rename = "wordMaxVariableValues"))]
@@ -80,6 +86,7 @@ pub struct hkbBehaviorGraphData<'a> {
     /// - name: `variableInitialValues`(ctype: `struct hkbVariableValueSet*`)
     /// - offset: ` 80`(x86)/`112`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "variableInitialValues"))]
     #[cfg_attr(feature = "serde", serde(rename = "variableInitialValues"))]
@@ -88,6 +95,7 @@ pub struct hkbBehaviorGraphData<'a> {
     /// - name: `stringData`(ctype: `struct hkbBehaviorGraphStringData*`)
     /// - offset: ` 84`(x86)/`120`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "stringData"))]
     #[cfg_attr(feature = "serde", serde(rename = "stringData"))]

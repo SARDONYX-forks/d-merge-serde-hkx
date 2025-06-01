@@ -34,8 +34,8 @@ pub struct hkpSphereShape<'a> {
     /// - offset: ` 20`(x86)/` 40`(x86_64)
     /// - type_size: ` 12`(x86)/` 12`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "pad16"))]
     #[cfg_attr(feature = "serde", serde(rename = "pad16"))]
     pub m_pad16: [U32<'a>; 3usize],

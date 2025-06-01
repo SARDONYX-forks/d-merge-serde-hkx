@@ -34,6 +34,7 @@ pub struct hkpHingeConstraintData<'a> {
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `192`(x86)/`192`(x86_64)
     /// - flags: `ALIGN_16`
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "atoms"))]
     #[cfg_attr(feature = "serde", serde(rename = "atoms"))]

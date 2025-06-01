@@ -42,6 +42,7 @@ pub struct hkpFirstPersonGun<'a> {
     /// - name: `name`(ctype: `hkStringPtr`)
     /// - offset: ` 12`(x86)/` 24`(x86_64)
     /// - type_size: `  4`(x86)/`  8`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "name"))]
     #[cfg_attr(feature = "serde", serde(rename = "name"))]
@@ -50,6 +51,7 @@ pub struct hkpFirstPersonGun<'a> {
     /// - name: `keyboardKey`(ctype: `enum KeyboardKey`)
     /// - offset: ` 16`(x86)/` 32`(x86_64)
     /// - type_size: `  1`(x86)/`  1`(x86_64)
+    #[cfg_attr(feature = "serde_default", serde(default))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "keyboardKey"))]
     #[cfg_attr(feature = "serde", serde(rename = "keyboardKey"))]
     pub m_keyboardKey: KeyboardKey,
@@ -58,8 +60,8 @@ pub struct hkpFirstPersonGun<'a> {
     /// - offset: ` 20`(x86)/` 40`(x86_64)
     /// - type_size: ` 12`(x86)/` 16`(x86_64)
     /// - flags: `SERIALIZE_IGNORED`
-    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "serde", serde(default))]
+    #[cfg_attr(feature = "serde", serde(borrow))]
     #[cfg_attr(feature = "json_schema", schemars(rename = "listeners"))]
     #[cfg_attr(feature = "serde", serde(rename = "listeners"))]
     pub m_listeners: Vec<Pointer<'a>>,
