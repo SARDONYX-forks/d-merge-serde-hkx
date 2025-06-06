@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["colored_diff","diff"],"mod":["color_builder"]};

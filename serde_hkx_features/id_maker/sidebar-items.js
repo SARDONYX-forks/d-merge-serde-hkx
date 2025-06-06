@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["crate_maps_from_id_class"]};
