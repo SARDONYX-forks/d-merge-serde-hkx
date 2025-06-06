@@ -1,4 +1,4 @@
-pub mod color_builder;
+mod color_builder;
 
 use imara_diff::{Algorithm, UnifiedDiffBuilder, intern::InternedInput};
 

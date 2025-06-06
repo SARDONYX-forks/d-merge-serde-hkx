@@ -59,6 +59,7 @@ where
 {
     /// Create a new `UnifiedDiffBuilder` for the given `input`,
     /// that will writes it output to the provided implementation of [`Write`].
+    #[allow(unused)]
     pub fn with_writer(input: &'a InternedInput<T>, writer: W) -> Self {
         Self {
             before_hunk_start: 0,
