@@ -81,8 +81,7 @@ mod tests {
         let before = "foo\nbar\nbaz";
         let after = "foo\nqux\nbaz";
 
-        let diff = colored_diff(before, after);
-        println!("{diff}");
+        let diff = diff(before, after);
         let expected = "@@ -1,3 +1,3 @@
  foo
 -bar
