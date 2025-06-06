@@ -71,32 +71,8 @@ where
 ///
 /// - `color`: ANSI color diff. (red & green)
 pub fn diff(old: impl AsRef<str>, new: impl AsRef<str>, color: bool) -> String {
-    let mut output_diff = String::new();
-
-    let diff = similar::TextDiff::from_lines(old.as_ref(), new.as_ref());
-    for change in diff.iter_all_changes() {
-        let (sign, end) = if color {
-            const DELETE: &str = "\u{1b}[31m-"; // 31 is red
-            const INSERT: &str = "\u{1b}[32m+"; // 32 is green
-            const RESET_COLOR: &str = "\u{1b}[39m";
-
-            output_diff.push_str(RESET_COLOR);
-
-            let sign = match change.tag() {
-                similar::ChangeTag::Delete => DELETE,
-                similar::ChangeTag::Insert => INSERT,
-                similar::ChangeTag::Equal => " ",
-            };
-            (sign, RESET_COLOR)
-        } else {
-            let sign = match change.tag() {
-                similar::ChangeTag::Delete => "-",
-                similar::ChangeTag::Insert => "+",
-                similar::ChangeTag::Equal => " ",
-            };
-            (sign, "")
-        };
-        output_diff += &format!("{sign}{change}{end}");
+    match color {
+        true => ::diff::colored_diff(old.as_ref(), new.as_ref()),
+        false => ::diff::diff(old.as_ref(), new.as_ref()),
     }
-    output_diff
 }

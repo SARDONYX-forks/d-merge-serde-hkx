@@ -507,6 +507,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "56254986775e3233ffa9c4d7d3faaf6d36a2c09d30b20687e9f88bc8bafc16c8"
 
 [[package]]
+name = "diff"
+version = "0.8.4"
+dependencies = [
+ "imara-diff",
+]
+
+[[package]]
 name = "dyn-clone"
 version = "1.0.19"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -729,6 +736,7 @@ dependencies = [
  "clap",
  "clap_complete_command",
  "color-print",
+ "diff 0.8.4",
  "indicatif",
  "parse-display",
  "serde_hkx_features",
@@ -782,6 +790,15 @@ name = "if_chain"
 version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cb56e1aa765b4b4f3aadfab769793b7087bb03a4ea4920644a6d238e2df5b9ed"
+
+[[package]]
+name = "imara-diff"
+version = "0.1.8"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "17d34b7d42178945f775e84bc4c36dde7c1c6cdfea656d3354d009056f2bb3d2"
+dependencies = [
+ "hashbrown 0.15.3",
+]
 
 [[package]]
 name = "indexmap"
@@ -1106,7 +1123,7 @@ version = "1.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3ae130e2f271fbc2ac3a40fb1d07180839cdbbe443c7a27e1e3c13c5cac0116d"
 dependencies = [
- "diff",
+ "diff 0.1.13",
  "yansi",
 ]
 
@@ -1353,6 +1370,7 @@ version = "0.8.4"
 dependencies = [
  "basic-toml",
  "clap",
+ "diff 0.8.4",
  "encoding_rs_io",
  "havok_classes",
  "havok_serde",
@@ -1367,7 +1385,6 @@ dependencies = [
  "serde_hkx",
  "serde_yml",
  "simd-json",
- "similar",
  "snafu",
  "tokio",
  "tracing",

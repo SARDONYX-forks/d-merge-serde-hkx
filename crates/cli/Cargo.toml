@@ -30,6 +30,7 @@ tracing = { workspace = true }
 tracing-subscriber = "0.3.19"
 
 # workspace members
+diff = { workspace = true }
 serde_hkx_features = { workspace = true, features = ["clap", "tracing"] }
 
 [build-dependencies]

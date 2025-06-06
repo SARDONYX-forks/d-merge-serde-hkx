@@ -14,13 +14,14 @@ version = "0.8.4"
 members = [
   "crates/class_generator",
   "crates/cli",
-  "crates/serde_hkx_features",
+  "crates/diff",
   "crates/havok_classes",
   "crates/havok_serde",
   "crates/havok_types",
   "crates/havok_types_derive",
   "crates/havok_types_derive/src/proc_macros",
   "crates/inheritance_tree_gen",
+  "crates/serde_hkx_features",
   "serde_hkx",
 ]
 default-members = ["crates/cli"]
@@ -53,6 +54,7 @@ tracing = { version = "0.1.41" }                               # logger
 winnow = { version = "0.7.10", features = ["simd"] } # Parser combinator
 
 # workspace members
+diff = { path= "./crates/diff" }
 havok_classes = { path = "./crates/havok_classes" }
 havok_serde = { path = "./crates/havok_serde" }
 havok_types = { path = "./crates/havok_types" }
