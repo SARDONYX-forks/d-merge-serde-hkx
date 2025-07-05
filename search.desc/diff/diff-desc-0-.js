@@ -1,0 +1,1 @@
+searchState.loadedDescShard("diff", 0, "Computes a line-based diff between <code>before</code> and <code>after</code> …\nComputes a line-based diff between <code>before</code> and <code>after</code> …")
