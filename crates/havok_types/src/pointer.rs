@@ -71,7 +71,7 @@ impl<'a> Pointer<'a> {
     /// ```
     #[inline]
     pub fn from_usize(value: usize) -> Self {
-        Self::new(format!("#{:04}", value).into())
+        Self::new(format!("#{value:04}").into())
     }
 
     /// Pointer(Class index) is null?

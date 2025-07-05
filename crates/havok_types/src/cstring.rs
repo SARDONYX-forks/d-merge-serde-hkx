@@ -145,10 +145,10 @@ mod tests {
     #[test]
     fn test_display() {
         let null_cstring = CString::new(None);
-        assert_eq!(format!("{}", null_cstring), NULL_STR);
+        assert_eq!(format!("{null_cstring}"), NULL_STR);
 
         let cstring = CString::from_str("display test");
-        assert_eq!(format!("{}", cstring), "display test");
+        assert_eq!(format!("{cstring}"), "display test");
     }
 
     #[test]

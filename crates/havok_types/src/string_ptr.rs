@@ -136,10 +136,10 @@ mod tests {
     #[test]
     fn stringptr_display() {
         let string_ptr = StringPtr::from_str(TEST_STR);
-        assert_eq!(format!("{}", string_ptr), TEST_STR);
+        assert_eq!(format!("{string_ptr}"), TEST_STR);
 
         let none_string_ptr = StringPtr::new(None);
-        assert_eq!(format!("{}", none_string_ptr), NULL_STR);
+        assert_eq!(format!("{none_string_ptr}"), NULL_STR);
     }
 
     #[cfg(feature = "serde")]
@@ -147,7 +147,7 @@ mod tests {
     fn stringptr_serialize() {
         let string_ptr = StringPtr::from_str(TEST_STR);
         let json = serde_json::to_string(&string_ptr).unwrap();
-        assert_eq!(json, format!("\"{}\"", TEST_STR));
+        assert_eq!(json, format!("\"{TEST_STR}\""));
 
         let none_string_ptr = StringPtr::new(None);
         let json = serde_json::to_string(&none_string_ptr).unwrap();
@@ -157,7 +157,7 @@ mod tests {
     #[cfg(feature = "serde")]
     #[test]
     fn stringptr_deserialize() {
-        let json = format!("\"{}\"", TEST_STR);
+        let json = format!("\"{TEST_STR}\"");
         let string_ptr: StringPtr = serde_json::from_str(&json).unwrap();
         assert_eq!(string_ptr.get_ref().as_deref(), Some(TEST_STR));
 
