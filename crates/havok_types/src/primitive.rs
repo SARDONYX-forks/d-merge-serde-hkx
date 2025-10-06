@@ -135,6 +135,20 @@ macro_rules! create_enum {
                             $name::try_from(value).map_err(E::custom)
                         }
 
+                        fn visit_str<E>(self, value: &str) -> Result<Self::Value, E>
+                        where
+                            E: serde::de::Error,
+                        {
+                            $name::try_from(value.to_string()).map_err(E::custom)
+                        }
+
+                        fn visit_string<E>(self, value: String) -> Result<Self::Value, E>
+                        where
+                            E: serde::de::Error,
+                        {
+                            $name::try_from(value).map_err(E::custom)
+                        }
+
                         fn visit_u64<E>(self, value: u64) -> Result<Self::Value, E>
                         where
                             E: serde::de::Error,
