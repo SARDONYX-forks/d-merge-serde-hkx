@@ -3,7 +3,7 @@ use crate::errors::ser::{Error, Result};
 use havok_serde::{Serialize, ser::SerializeSeq};
 use havok_types::{CString, StringPtr};
 
-impl SerializeSeq for &mut ByteSerializer {
+impl SerializeSeq for &mut ByteSerializer<'_> {
     type Ok = ();
     type Error = Error;
 

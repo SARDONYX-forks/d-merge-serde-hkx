@@ -176,7 +176,7 @@ where
 /// # Note
 /// - All of these fixups are from the `__data__` section.
 #[derive(Debug, Default)]
-pub struct ByteSerializer {
+pub struct ByteSerializer<'ser> {
     /// Endianness of serialization target
     is_little_endian: bool,
     /// Ptr size of serialization target.
@@ -197,7 +197,7 @@ pub struct ByteSerializer {
     /// This ID substitution takes place only for integer types.
     ///
     /// The pointer refers to the special ID (`e.g. $aaa$10`) of Nemesis as it is.
-    event_id_map: EventIdMap,
+    event_id_map: EventIdMap<'ser>,
     /// `variableNames` indexes of `hkbBehaviorGraphStringData`.
     ///
     /// # Example
@@ -209,7 +209,7 @@ pub struct ByteSerializer {
     /// This ID substitution takes place only for integer types.
     ///
     /// The pointer refers to the special ID (`e.g. $aaa$10`) of Nemesis as it is.
-    variable_id_map: VariableIdMap,
+    variable_id_map: VariableIdMap<'ser>,
 
     /// This is cached to find the relative position of the binary.
     abs_data_offset: u32,
@@ -276,7 +276,7 @@ pub struct ByteSerializer {
     contents_class_name_section_index: i32,
 }
 
-impl ByteSerializer {
+impl<'ser> ByteSerializer<'ser> {
     /// Get the position relative to the start of the `__data__` section.
     #[inline]
     fn relative_position(&self) -> Result<u32> {
@@ -535,12 +535,12 @@ macro_rules! impl_serialize_math {
     };
 }
 
-impl<'a> Serializer for &'a mut ByteSerializer {
+impl<'a, 'ser> Serializer for &'a mut ByteSerializer<'ser> {
     type Ok = ();
     type Error = Error;
 
     type SerializeSeq = Self;
-    type SerializeStruct = StructSerializer<'a>;
+    type SerializeStruct = StructSerializer<'a, 'ser>;
     type SerializeFlags = Self;
 
     #[inline]

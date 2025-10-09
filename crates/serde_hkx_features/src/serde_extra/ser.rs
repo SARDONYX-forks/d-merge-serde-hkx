@@ -1,5 +1,5 @@
 //! Serialize/Deserialize ClassMap with extra formats.
-use super::error::{JsonSnafu, TomlSnafu, YamlSnafu};
+use super::error::{JsonSnafu, TomlSnafu};
 use crate::convert::OutFormat;
 use crate::error::Result;
 use crate::types_wrapper::ClassPtrMap;
@@ -14,7 +14,7 @@ use std::path::Path;
 /// See `serde_hkx::errors::ser::Error` for possible errors that may occur.
 ///
 /// # Panics
-/// If the `OutFormat` is not `json`, `toml` or `yaml`.
+/// If the `OutFormat` is not `json`, `toml`.
 /// That means the API is being used incorrectly.
 pub fn to_bytes<I>(input: I, format: OutFormat, classes: &mut ClassPtrMap<'_>) -> Result<Vec<u8>>
 where
@@ -27,9 +27,6 @@ where
             input: input.to_path_buf(),
         })?,
         OutFormat::Toml => basic_toml::to_string(&classes).with_context(|_| TomlSnafu {
-            input: input.to_path_buf(),
-        })?,
-        OutFormat::Yaml => serde_yml::to_string(&classes).with_context(|_| YamlSnafu {
             input: input.to_path_buf(),
         })?,
         _ => unreachable!(),

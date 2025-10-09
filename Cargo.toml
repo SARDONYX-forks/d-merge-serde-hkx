@@ -28,30 +28,30 @@ default-members = ["crates/cli"]
 resolver = "2"
 
 [workspace.dependencies]
-bitflags = "2.9.0"                                             # To generate flags type
-clap = { version = "4.5.38", features = ["derive"] }           # For CLI
+bitflags = "2.9.4"                                             # To generate flags type
+clap = { version = "4.5.48", features = ["derive"] }           # For CLI
 color-print = "0.3.7"                                          # To color example help
 educe = "0.6.0"                                                # Custom derive by derive
-indexmap = "2.9.0"                                             # Ordering HashMap
+indexmap = "2.11.4"                                             # Ordering HashMap
 jwalk = { version = "0.8.1" }                                  # To enumerate json class files
 num-derive = "0.4"                                             # To serialize Enum & Flags
 num-traits = "0.2.19"                                          # To serialize Enum & Flags
 parse-display = "0.10.0"                                       # Display derive
-lexical = { version = "7.0.4", features = ["radix", "format", "power-of-two"] }
-proc-macro2 = { version = "1.0.95", default-features = false } # Rust token
-quote = { version = "1.0.40", default-features = false }       # Rust token gen to more convenience
-rayon = { version = "1.10.0" }                                 # Parallel
+lexical = { version = "7.0.5", features = ["radix", "format", "power-of-two"] }
+proc-macro2 = { version = "1.0.101", default-features = false } # Rust token
+quote = { version = "1.0.41", default-features = false }       # Rust token gen to more convenience
+rayon = { version = "1.11.0" }                                 # Parallel
 schemars = { version = "1.0.0-alpha.17" }
 serde = { version = "1.0.219", features = ["derive"] }         # (De)Serializer
-serde_json = { version = "1.0.140" }                           # To read and write Json files
+serde_json = { version = "1.0.145" }                           # To read and write Json files
 serde_with = "3.12.0"                                          # Serde utility
 similar = "2.7.0"                                              # Create diff
-snafu = "0.8.5"                                                # Define all error patterns(with backtrace)
+snafu = "0.8.9"                                                # Define all error patterns(with backtrace)
 static_assertions = "1.1.0"                                    # Compile tim assertions
-syn = { version = "2.0.101", default-features = false }         # Rust parser
-tokio = { version = "1.45.0" }                                 # Async runtime
+syn = { version = "2.0.106", default-features = false }         # Rust parser
+tokio = { version = "1.47.1" }                                 # Async runtime
 tracing = { version = "0.1.41" }                               # logger
-winnow = { version = "0.7.10", features = ["simd"] } # Parser combinator
+winnow = { version = "0.7.13", features = ["simd"] } # Parser combinator
 
 # workspace members
 diff = { path= "./crates/diff" }

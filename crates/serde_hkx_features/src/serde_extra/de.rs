@@ -1,6 +1,6 @@
 //! Deserialize ClassMap with extra formats.
 
-use super::error::{JsonSnafu, TomlSnafu, YamlSnafu};
+use super::error::{JsonSnafu, TomlSnafu};
 use crate::types_wrapper::ClassPtrMap;
 use crate::{
     ClassMap,
@@ -68,15 +68,6 @@ where
                         let classes =
                             basic_toml::from_str::<ClassPtrMap>(string).with_context(|_| {
                                 TomlSnafu {
-                                    input: input.to_path_buf(),
-                                }
-                            })?;
-                        classes.into_class_map()
-                    }
-                    OutFormat::Yaml => {
-                        let classes =
-                            serde_yml::from_str::<ClassPtrMap>(string).with_context(|_| {
-                                YamlSnafu {
                                     input: input.to_path_buf(),
                                 }
                             })?;

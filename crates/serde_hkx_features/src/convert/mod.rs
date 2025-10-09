@@ -31,9 +31,6 @@ pub enum OutFormat {
     #[cfg(feature = "extra_fmt")]
     /// yaml
     Toml,
-    #[cfg(feature = "extra_fmt")]
-    /// yaml
-    Yaml,
 }
 
 impl OutFormat {
@@ -58,8 +55,6 @@ impl OutFormat {
             Self::Json => "json",
             #[cfg(feature = "extra_fmt")]
             Self::Toml => "toml",
-            #[cfg(feature = "extra_fmt")]
-            Self::Yaml => "yaml",
         }
     }
 
@@ -121,7 +116,6 @@ impl OutFormat {
     /// When enable `extra_fmt` feature.
     /// - `json` -> `Self::Json`
     /// - `toml` -> `Self::Toml`
-    /// - `yaml` -> `Self::Yaml`
     ///
     /// # Errors
     /// Unknown extension.
@@ -139,10 +133,6 @@ impl OutFormat {
             ext if ext.eq_ignore_ascii_case("json") => Self::Json,
             #[cfg(feature = "extra_fmt")]
             ext if ext.eq_ignore_ascii_case("toml") => Self::Toml,
-            #[cfg(feature = "extra_fmt")]
-            ext if ext.eq_ignore_ascii_case("yaml") || ext.eq_ignore_ascii_case("yml") => {
-                Self::Yaml
-            }
             _ => {
                 return Err(Error::UnsupportedExtension {
                     ext: ext.to_string_lossy().to_string(),
@@ -234,7 +224,7 @@ where
             crate::serde::ser::to_bytes(input, format, &mut classes)?
         }
         #[cfg(feature = "extra_fmt")]
-        OutFormat::Json | OutFormat::Toml | OutFormat::Yaml => {
+        OutFormat::Json | OutFormat::Toml => {
             let mut classes = crate::types_wrapper::ClassPtrMap::from_class_map(classes);
             crate::serde_extra::ser::to_bytes(input, format, &mut classes)?
         }

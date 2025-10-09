@@ -11,13 +11,13 @@ use std::io::Write as _;
 ///
 /// # Why separate `ByteSerializer`?
 /// Avoid mixing `local_fixups` for each field by creating local variables with separate Serializer.
-pub struct StructSerializer<'a> {
-    ser: &'a mut ByteSerializer,
+pub struct StructSerializer<'a, 'ser: 'a> {
+    ser: &'a mut ByteSerializer<'ser>,
     is_root: bool,
 }
 
-impl<'a> StructSerializer<'a> {
-    pub const fn new(ser: &'a mut ByteSerializer, is_root: bool) -> Self {
+impl<'a, 'ser> StructSerializer<'a, 'ser> {
+    pub const fn new(ser: &'a mut ByteSerializer<'ser>, is_root: bool) -> Self {
         Self { ser, is_root }
     }
 
@@ -181,7 +181,7 @@ impl<'a> StructSerializer<'a> {
     }
 }
 
-impl SerializeStruct for StructSerializer<'_> {
+impl<'a, 'ser> SerializeStruct for StructSerializer<'a, 'ser> {
     type Ok = ();
     type Error = Error;
 

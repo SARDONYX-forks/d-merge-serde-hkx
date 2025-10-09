@@ -63,8 +63,8 @@ pub type GenericClassMap<'a, V, K = ClassMapKey<'a>> = IndexMap<K, V>;
 ///
 /// The value is the index of the `eventSample` element in the `variableNames` field array of the `hkbBehaviorGraphStringData` class.
 #[derive(Debug, Default, Clone, PartialEq)]
-pub struct VariableIdMap(pub HashMap<String, usize>);
-impl VariableIdMap {
+pub struct VariableIdMap<'a>(pub HashMap<&'a str, usize>);
+impl VariableIdMap<'_> {
     /// Creates a new `EventIdMap`
     #[inline]
     pub fn new() -> Self {
@@ -79,9 +79,9 @@ impl VariableIdMap {
 ///
 /// The value is the index of the `variableSample` element in the `variableNames` field array of the `hkbBehaviorGraphStringData` class.
 #[derive(Debug, Default, Clone, PartialEq)]
-pub struct EventIdMap(pub HashMap<String, usize>);
+pub struct EventIdMap<'a>(pub HashMap<&'a str, usize>);
 
-impl EventIdMap {
+impl EventIdMap<'_> {
     /// Creates a new `EventIdMap`
     #[inline]
     pub fn new() -> Self {

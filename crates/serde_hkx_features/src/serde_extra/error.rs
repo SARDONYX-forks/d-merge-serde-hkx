@@ -27,14 +27,4 @@ pub enum ExtraSerdeError {
         #[snafu(implicit)]
         location: Location,
     },
-
-    /// (De)Serialize yaml error
-    #[cfg(feature = "extra_fmt")]
-    #[snafu(display("{}:\n {source}", input.display()))]
-    YamlError {
-        input: PathBuf,
-        source: serde_yml::Error,
-        #[snafu(implicit)]
-        location: Location,
-    },
 }

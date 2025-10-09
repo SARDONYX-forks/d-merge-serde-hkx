@@ -3,7 +3,7 @@ use havok_serde::{Serialize, ser::SerializeFlags};
 
 use super::super::ByteSerializer;
 
-impl SerializeFlags for &mut ByteSerializer {
+impl SerializeFlags for &mut ByteSerializer<'_> {
     type Ok = ();
     type Error = Error;
 
