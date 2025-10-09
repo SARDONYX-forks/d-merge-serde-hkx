@@ -107,6 +107,9 @@ pub fn dedup_event_variables<'a>(
     };
 
     dedup_len_check(
+        string_data_index.as_ref(),
+        behavior_graph_index,
+        binding_set_index.as_ref(),
         string_data.m_eventNames.len(),
         graph_data.m_eventInfos.len(),
         string_data.m_variableNames.len(),
@@ -144,15 +147,23 @@ pub fn dedup_event_variables<'a>(
 }
 
 /// before dedup
+#[allow(clippy::too_many_arguments)]
 fn dedup_len_check(
+    string_data_index: &str,
+    behavior_graph_index: &'static str,
+    binding_set_index: &str,
+
     event_names_len: usize,
     event_infos_len: usize,
+
     variable_names_len: usize,
     variable_infos_len: usize,
     word_values_len: usize,
 ) -> Result<(), DedupError> {
     let event_error = if event_names_len != event_infos_len {
         Some(DedupError::EventLengthMismatch {
+            string_data_index: string_data_index.to_string(),
+            behavior_graph_index,
             names: event_names_len,
             infos: event_infos_len,
         })
@@ -163,6 +174,9 @@ fn dedup_len_check(
     let variable_error =
         if variable_names_len != variable_infos_len || variable_names_len != word_values_len {
             Some(DedupError::VariableLengthMismatch {
+                string_data_index: string_data_index.to_string(),
+                behavior_graph_index,
+                binding_set_index: binding_set_index.to_string(),
                 names: variable_names_len,
                 infos: variable_infos_len,
                 word_values: word_values_len,
@@ -182,32 +196,56 @@ fn dedup_len_check(
     }
 }
 
+/// Errors that may occur during duplicate removal
 #[derive(Debug, snafu::Snafu)]
 pub enum DedupError {
-    /// BehaviorGraphData not found for index '{index}'
+    /// BehaviorGraphData not found for index.
+    #[snafu(display("BehaviorGraphData not found for index '{index}'"))]
     BehaviorGraphDataMissing { index: &'static str },
 
-    /// BehaviorGraphStringData not found for index '{index}'
+    /// BehaviorGraphStringData not found for index.
+    #[snafu(display("BehaviorGraphStringData not found for index '{index}'"))]
     BehaviorGraphStringDataMissing {
         index: std::borrow::Cow<'static, str>,
     },
 
-    /// VariableValueSet not found for index '{index}'
+    /// VariableValueSet not found for index.
+    #[snafu(display("VariableValueSet not found for index '{}'", index))]
     VariableValueSetMissing {
         index: std::borrow::Cow<'static, str>,
     },
 
-    /// Event names/infos length mismatch: names={names}, infos={infos}
-    EventLengthMismatch { names: usize, infos: usize },
+    /// Event names/infos length mismatch
+    #[snafu(display(
+        "Length mismatch in '{string_data_index}.hkbBehaviorGraphStringData.eventNames' (names len={names}) and '{behavior_graph_index}.hkbBehaviorGraphData.eventInfos' (infos len={infos}). \
+         This usually means mod added an eventName but forgot to add a corresponding eventInfo.",
+    ))]
+    EventLengthMismatch {
+        string_data_index: String,
+        behavior_graph_index: &'static str,
+        names: usize,
+        infos: usize,
+    },
 
-    /// Variable names/infos/word_values length mismatch: names={names}, infos={infos}, word_values={word_values}
+    /// Variable names/infos/word_values length mismatch
+    #[snafu(display(
+        "Length mismatch in '{string_data_index}.hkbBehaviorGraphStringData.variableNames' (names len={names}), '{behavior_graph_index}.hkbBehaviorGraphData.variableInfos' (infos len={infos}), \
+         and '{binding_set_index}.hkbVariableValueSet.wordVariableValues' (word_values len={word_values}). \
+         This usually means mod added a variableName but forgot to add corresponding variableInfo or wordValue.",
+    ))]
     VariableLengthMismatch {
+        string_data_index: String,
+        behavior_graph_index: &'static str,
+        binding_set_index: String,
         names: usize,
         infos: usize,
         word_values: usize,
     },
 
-    /// Multiple dedup pre_check errors: event_error={event_error:?}, variable_error={variable_error:?}
+    /// Multiple dedup pre_check errors
+    #[snafu(display(
+        "Multiple length mismatch errors.\nEvent error: {event_error}\nVariable error: {variable_error}",
+    ))]
     BothLengthErrors {
         event_error: Box<DedupError>,
         variable_error: Box<DedupError>,
