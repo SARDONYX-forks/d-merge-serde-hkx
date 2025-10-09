@@ -127,6 +127,16 @@ pub fn dedup_event_variables<'a>(
         },
     );
 
+    class_map.insert(
+        std::borrow::Cow::Borrowed(behavior_graph_index),
+        Classes::hkbBehaviorGraphData(graph_data),
+    );
+    class_map.insert(
+        string_data_index,
+        Classes::hkbBehaviorGraphStringData(string_data),
+    );
+    class_map.insert(binding_set_index, Classes::hkbVariableValueSet(binding_set));
+
     Ok(())
 }
 
