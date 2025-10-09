@@ -56,6 +56,31 @@ use std::collections::HashMap;
 pub type ClassMapKey<'a> = Cow<'a, str>;
 pub type GenericClassMap<'a, V, K = ClassMapKey<'a>> = IndexMap<K, V>;
 
+/// ASCII-ignore wrapper for &str in HashSet
+#[derive(Debug, Default, Clone)]
+pub struct AsciiIgnore<'a>(&'a str);
+
+impl<'a> AsciiIgnore<'a> {
+    #[inline]
+    pub const fn new(value: &'a str) -> Self {
+        Self(value)
+    }
+}
+
+impl<'a> PartialEq for AsciiIgnore<'a> {
+    fn eq(&self, other: &Self) -> bool {
+        self.0.eq_ignore_ascii_case(other.0)
+    }
+}
+impl<'a> Eq for AsciiIgnore<'a> {}
+impl<'a> core::hash::Hash for AsciiIgnore<'a> {
+    fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
+        for b in self.0.as_bytes() {
+            state.write_u8(b.to_ascii_lowercase());
+        }
+    }
+}
+
 /// `eventNames` indexes of `hkbBehaviorGraphStringData`.
 ///
 /// # Example
@@ -63,12 +88,18 @@ pub type GenericClassMap<'a, V, K = ClassMapKey<'a>> = IndexMap<K, V>;
 ///
 /// The value is the index of the `eventSample` element in the `variableNames` field array of the `hkbBehaviorGraphStringData` class.
 #[derive(Debug, Default, Clone, PartialEq)]
-pub struct VariableIdMap<'a>(pub HashMap<&'a str, usize>);
+pub struct VariableIdMap<'a>(pub HashMap<AsciiIgnore<'a>, usize>);
 impl VariableIdMap<'_> {
     /// Creates a new `EventIdMap`
     #[inline]
     pub fn new() -> Self {
         Self(HashMap::new())
+    }
+
+    /// Get the index for an event name, ignoring ASCII case.
+    #[inline]
+    pub fn get(&self, key: &str) -> Option<usize> {
+        self.0.get(&AsciiIgnore(key)).copied()
     }
 }
 
@@ -79,12 +110,18 @@ impl VariableIdMap<'_> {
 ///
 /// The value is the index of the `variableSample` element in the `variableNames` field array of the `hkbBehaviorGraphStringData` class.
 #[derive(Debug, Default, Clone, PartialEq)]
-pub struct EventIdMap<'a>(pub HashMap<&'a str, usize>);
+pub struct EventIdMap<'a>(pub HashMap<AsciiIgnore<'a>, usize>);
 
 impl EventIdMap<'_> {
     /// Creates a new `EventIdMap`
     #[inline]
     pub fn new() -> Self {
         Self(HashMap::new())
+    }
+
+    /// Get the index for an event name, ignoring ASCII case.
+    #[inline]
+    pub fn get(&self, key: &str) -> Option<usize> {
+        self.0.get(&AsciiIgnore(key)).copied()
     }
 }

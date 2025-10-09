@@ -29,7 +29,7 @@
 use havok_classes::Classes;
 use havok_types::StringPtr;
 use rayon::prelude::*;
-use serde_hkx::{EventIdMap, VariableIdMap};
+use serde_hkx::{AsciiIgnore, EventIdMap, VariableIdMap};
 use std::collections::{HashMap, HashSet};
 
 use crate::ClassMap;
@@ -52,6 +52,9 @@ use crate::ClassMap;
 /// - Only mutates the `ClassMap`; does not create maps or return references.
 ///
 /// # Errors
+/// After an error occurs, the class_map has its processed data deleted to avoid ownership errors.
+/// Therefore, it cannot be converted to hkx in that state.
+///
 /// Returns `DedupError` if:
 /// - `BehaviorGraphData`, `BehaviorGraphStringData`, or `VariableValueSet` is missing.
 /// - Event or variable vector lengths do not match (can report both simultaneously).
@@ -211,31 +214,13 @@ pub enum DedupError {
     },
 }
 
-/// ASCII-ignore wrapper for &str in HashSet
-#[derive(Debug)]
-struct AsciiIgnore<'a>(&'a str);
-
-impl<'a> PartialEq for AsciiIgnore<'a> {
-    fn eq(&self, other: &Self) -> bool {
-        self.0.eq_ignore_ascii_case(other.0)
-    }
-}
-impl<'a> Eq for AsciiIgnore<'a> {}
-impl<'a> core::hash::Hash for AsciiIgnore<'a> {
-    fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
-        for b in self.0.as_bytes() {
-            state.write_u8(b.to_ascii_lowercase());
-        }
-    }
-}
-
 fn dedup_names_and_infos_in_place<'a, T>(names: &mut Vec<StringPtr<'a>>, infos: &mut Vec<T>) {
     let mut seen = HashSet::new();
     let mut keep = vec![false; names.len()];
 
     for (i, name) in names.iter().enumerate() {
         if let Some(s) = name.get_ref().as_ref().map(|s| s.as_ref()) {
-            if seen.insert(AsciiIgnore(s)) {
+            if seen.insert(AsciiIgnore::new(s)) {
                 keep[i] = true;
             } else {
                 #[cfg(feature = "dedup_tracing")]
@@ -245,7 +230,13 @@ fn dedup_names_and_infos_in_place<'a, T>(names: &mut Vec<StringPtr<'a>>, infos: 
     }
 
     #[cfg(feature = "dedup_tracing")]
-    tracing::info!(?keep, "Deduplication mask");
+    {
+        tracing::info!(
+            ?names,
+            "Just before duplicate deletion hkbBehaviorGraphStringData.eventNames"
+        );
+        tracing::info!(?keep, "Deduplication mask");
+    }
 
     let mut j = 0;
     names.retain(|_| {
@@ -269,11 +260,16 @@ fn dedup_three_way<T, U>(names: &mut Vec<StringPtr>, infos: &mut Vec<T>, word_va
 
     for (i, name) in names.iter().enumerate() {
         if let Some(s) = name.get_ref().as_ref().map(|s| s.as_ref()) {
-            if seen.insert(AsciiIgnore(s)) {
+            if seen.insert(AsciiIgnore::new(s)) {
                 keep[i] = true;
             }
         }
     }
+    #[cfg(feature = "dedup_tracing")]
+    tracing::debug!(
+        ?names,
+        "Just before duplicate deletion hkbBehaviorGraphStringData.variableNames"
+    );
 
     let mut j = 0;
     names.retain(|_| {
@@ -341,11 +337,11 @@ pub fn create_maps<'a>(
     Some((EventIdMap(event_map), VariableIdMap(variable_map)))
 }
 
-fn create_map_from_vec<'a, 'b: 'a>(names: &'b [StringPtr<'a>]) -> HashMap<&'a str, usize> {
+fn create_map_from_vec<'a, 'b: 'a>(names: &'b [StringPtr<'a>]) -> HashMap<AsciiIgnore<'a>, usize> {
     names
         .par_iter()
         .enumerate()
-        .filter_map(|(i, name)| Some((name.get_ref().as_deref()?, i)))
+        .filter_map(|(i, name)| Some((AsciiIgnore::new(name.get_ref().as_deref()?), i)))
         .collect()
 }
 
@@ -462,15 +458,15 @@ mod tests {
 
         // Check event map
         assert_eq!(event_map.0.len(), 3);
-        assert_eq!(event_map.0.get("Run"), Some(&0));
-        assert_eq!(event_map.0.get("Walk"), Some(&1));
-        assert_eq!(event_map.0.get("Jump"), Some(&2));
+        assert_eq!(event_map.get("Run"), Some(0));
+        assert_eq!(event_map.get("Walk"), Some(1));
+        assert_eq!(event_map.get("Jump"), Some(2));
 
         // Check variable map
         assert_eq!(variable_map.0.len(), 3);
-        assert_eq!(variable_map.0.get("Health"), Some(&0));
-        assert_eq!(variable_map.0.get("Stamina"), Some(&1));
-        assert_eq!(variable_map.0.get("Mana"), Some(&2));
+        assert_eq!(variable_map.get("Health"), Some(0));
+        assert_eq!(variable_map.get("Stamina"), Some(1));
+        assert_eq!(variable_map.get("Mana"), Some(2));
 
         // Optionally, inspect the deduplicated names/infos
         if let Classes::hkbBehaviorGraphStringData(s) = &class_map["#0000"] {

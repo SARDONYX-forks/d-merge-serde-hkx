@@ -496,20 +496,20 @@ macro_rules! impl_serialize_primitive {
                 let v = match v {
                     $num(n) => *n,
                     $eid(id) => {
-                        let n = tri!(self.event_id_map.0.get(id.as_ref()).ok_or_else(||
+                        let n = tri!(self.event_id_map.get(id.as_ref()).ok_or_else(||
                             NotFoundEventIdSnafu {
                                 event_id: id.to_string(),
                             }.build()
                         ));
-                        *n as $cast_ty
+                        n as $cast_ty
                     },
                     $vid(id) => {
-                        let n = tri!(self.variable_id_map.0.get(id.as_ref()).ok_or_else(||
+                        let n = tri!(self.variable_id_map.get(id.as_ref()).ok_or_else(||
                             NotFoundVariableIdSnafu {
                                 variable_id: id.to_string(),
                             }.build()
                         ));
-                        *n as $cast_ty
+                        n as $cast_ty
                     },
                 };
                 match self.is_little_endian {
@@ -561,60 +561,62 @@ impl<'a, 'ser> Serializer for &'a mut ByteSerializer<'ser> {
 
     #[inline]
     fn serialize_int8(self, v: &I8) -> Result<Self::Ok, Self::Error> {
-        let v =
-            match v {
-                I8::Number(n) => *n,
-                I8::EventId(event_id) => {
-                    let n = self.event_id_map.0.get(event_id.as_ref()).ok_or_else(|| {
-                        NotFoundEventIdSnafu {
-                            event_id: event_id.to_string(),
-                        }
-                        .build()
-                    })?;
-                    *n as i8
-                }
-                I8::VariableId(variable_id) => {
-                    let n = tri!(self.variable_id_map.0.get(variable_id.as_ref()).ok_or_else(
-                        || {
+        let v = match v {
+            I8::Number(n) => *n,
+            I8::EventId(event_id) => {
+                let n = self.event_id_map.get(event_id.as_ref()).ok_or_else(|| {
+                    NotFoundEventIdSnafu {
+                        event_id: event_id.to_string(),
+                    }
+                    .build()
+                })?;
+                n as i8
+            }
+            I8::VariableId(variable_id) => {
+                let n = tri!(
+                    self.variable_id_map
+                        .get(variable_id.as_ref())
+                        .ok_or_else(|| {
                             NotFoundVariableIdSnafu {
                                 variable_id: variable_id.to_string(),
                             }
                             .build()
-                        }
-                    ));
-                    *n as i8
-                }
-            };
+                        })
+                );
+                n as i8
+            }
+        };
         self.output.write_i8(v)?;
         Ok(())
     }
 
     #[inline]
     fn serialize_uint8(self, v: &U8) -> Result<Self::Ok, Self::Error> {
-        let v =
-            match v {
-                U8::Number(n) => *n,
-                U8::EventId(event_id) => {
-                    let n = self.event_id_map.0.get(event_id.as_ref()).ok_or_else(|| {
-                        NotFoundEventIdSnafu {
-                            event_id: event_id.to_string(),
-                        }
-                        .build()
-                    })?;
-                    *n as u8
-                }
-                U8::VariableId(variable_id) => {
-                    let n = tri!(self.variable_id_map.0.get(variable_id.as_ref()).ok_or_else(
-                        || {
+        let v = match v {
+            U8::Number(n) => *n,
+            U8::EventId(event_id) => {
+                let n = self.event_id_map.get(event_id.as_ref()).ok_or_else(|| {
+                    NotFoundEventIdSnafu {
+                        event_id: event_id.to_string(),
+                    }
+                    .build()
+                })?;
+                n as u8
+            }
+            U8::VariableId(variable_id) => {
+                let n = tri!(
+                    self.variable_id_map
+                        .get(variable_id.as_ref())
+                        .ok_or_else(|| {
                             NotFoundVariableIdSnafu {
                                 variable_id: variable_id.to_string(),
                             }
                             .build()
-                        }
-                    ));
-                    *n as u8
-                }
-            };
+                        })
+                );
+                n as u8
+            }
+        };
         self.output.write_u8(v)?;
         Ok(())
     }
