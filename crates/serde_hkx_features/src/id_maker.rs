@@ -34,47 +34,51 @@ use std::collections::{HashMap, HashSet};
 
 use crate::ClassMap;
 
-/// Deduplicate event and variable names in-place within a `ClassMap`. Return deduped or `None`
+/// Deduplicates event and variable names in-place within a `ClassMap`.
 ///
-/// This function mutably borrows the `ClassMap` to remove duplicate names
-/// from the event and variable name vectors, and synchronizes the corresponding
-/// info vectors so that the indices remain aligned.
+/// Removes duplicates from `eventNames`/`variableNames` and keeps the
+/// associated info vectors (`eventInfos`, `variableInfos`, `wordVariableValues`)
+/// aligned.
 ///
-/// Specifically:
-/// - `value_index` points to a `hkbBehaviorGraphData` class in `ClassMap`.
-///   The function accesses:
-///     - `m_eventInfos`
-///     - `m_variableInfos`
+/// This function **checks vector lengths before deduplication**. If there is a
+/// mismatch, it returns an error. Both event and variable length errors can be
+/// reported simultaneously.
 ///
-///   These vectors are pruned in-place to stay aligned with the deduplicated name vectors.
+/// Must be called **before** [`create_maps`] if you intend to create maps
+/// referencing internal `&str` data.
 ///
 /// # Notes
-/// - Using this changes the order of the ClassMap, so when converting to hkx, you must always call `sort_for_bytes` afterward.
-/// - Only mutates the `ClassMap`. Does not return any maps or external references.
-/// - Must be called **before** [`create_maps`] if you intend to create maps referencing
-///   the internal `&str` data.
+/// - The order of `ClassMap` may change; call `sort_for_bytes` afterward if needed.
+/// - Only mutates the `ClassMap`; does not create maps or return references.
+///
+/// # Errors
+/// Returns `DedupError` if:
+/// - `BehaviorGraphData`, `BehaviorGraphStringData`, or `VariableValueSet` is missing.
+/// - Event or variable vector lengths do not match (can report both simultaneously).
 ///
 /// # Example
 /// ```no_run
-/// use serde_hkx_features::id_maker::dedup_event_variables;
+/// use serde_hkx_features::id_maker::{dedup_event_variables, DedupError};
 /// use serde_hkx_features::ClassMap;
 ///
 /// let mut class_map: ClassMap = ClassMap::new();
 ///
 /// // Fill class_map with hkbBehaviorGraphStringData and hkbBehaviorGraphData...
 ///
-/// dedup_event_variables(&mut class_map, "#0000", "#0002")
-///     .expect("Should deduplicate event/variable names");
-///
-/// // At this point, internal vectors in class_map are unique
+/// dedup_event_variables(&mut class_map, "#0002")
+///     .expect("Deduplication should succeed");
 /// ```
 pub fn dedup_event_variables<'a>(
     class_map: &mut ClassMap<'a>,
     behavior_graph_index: &'static str,
-) -> Option<()> {
+) -> Result<(), DedupError> {
     let mut graph_data = match class_map.swap_remove(behavior_graph_index) {
         Some(Classes::hkbBehaviorGraphData(g)) => g,
-        _ => return None,
+        _ => {
+            return Err(DedupError::BehaviorGraphDataMissing {
+                index: behavior_graph_index,
+            });
+        }
     };
     let (string_data_index, binding_set_index) = (
         graph_data.m_stringData.to_static().into_inner(),
@@ -83,40 +87,118 @@ pub fn dedup_event_variables<'a>(
 
     let mut string_data = match class_map.swap_remove(&string_data_index) {
         Some(Classes::hkbBehaviorGraphStringData(g)) => g,
-        _ => return None,
+        _ => {
+            return Err(DedupError::BehaviorGraphStringDataMissing {
+                index: string_data_index,
+            });
+        }
     };
 
     let mut binding_set = match class_map.swap_remove(&binding_set_index) {
         Some(Classes::hkbVariableValueSet(g)) => g,
-        _ => return None,
+        _ => {
+            return Err(DedupError::VariableValueSetMissing {
+                index: binding_set_index,
+            });
+        }
     };
 
-    // eventNames / eventInfos dedup
-    let (event_names, event_infos) = (&mut string_data.m_eventNames, &mut graph_data.m_eventInfos);
-
-    // variableNames / variableInfos / wordVariableValues dedup
-    let (variable_names, variable_infos, word_values) = (
-        &mut string_data.m_variableNames,
-        &mut graph_data.m_variableInfos,
-        &mut binding_set.m_wordVariableValues,
-    );
+    dedup_len_check(
+        string_data.m_eventNames.len(),
+        graph_data.m_eventInfos.len(),
+        string_data.m_variableNames.len(),
+        graph_data.m_variableInfos.len(),
+        binding_set.m_wordVariableValues.len(),
+    )?;
 
     rayon::join(
-        || dedup_names_and_infos_in_place(event_names, event_infos),
-        || dedup_three_way(variable_names, variable_infos, word_values),
+        || {
+            dedup_names_and_infos_in_place(
+                &mut string_data.m_eventNames,
+                &mut graph_data.m_eventInfos,
+            );
+        },
+        || {
+            dedup_three_way(
+                &mut string_data.m_variableNames,
+                &mut graph_data.m_variableInfos,
+                &mut binding_set.m_wordVariableValues,
+            );
+        },
     );
 
-    class_map.insert(
-        std::borrow::Cow::Borrowed(behavior_graph_index),
-        Classes::hkbBehaviorGraphData(graph_data),
-    );
-    class_map.insert(
-        string_data_index,
-        Classes::hkbBehaviorGraphStringData(string_data),
-    );
-    class_map.insert(binding_set_index, Classes::hkbVariableValueSet(binding_set));
+    Ok(())
+}
 
-    Some(())
+/// before dedup
+fn dedup_len_check(
+    event_names_len: usize,
+    event_infos_len: usize,
+    variable_names_len: usize,
+    variable_infos_len: usize,
+    word_values_len: usize,
+) -> Result<(), DedupError> {
+    let event_error = if event_names_len != event_infos_len {
+        Some(DedupError::EventLengthMismatch {
+            names: event_names_len,
+            infos: event_infos_len,
+        })
+    } else {
+        None
+    };
+
+    let variable_error =
+        if variable_names_len != variable_infos_len || variable_names_len != word_values_len {
+            Some(DedupError::VariableLengthMismatch {
+                names: variable_names_len,
+                infos: variable_infos_len,
+                word_values: word_values_len,
+            })
+        } else {
+            None
+        };
+
+    match (event_error, variable_error) {
+        (None, None) => Ok(()),
+        (Some(e), None) => Err(e),
+        (None, Some(v)) => Err(v),
+        (Some(e), Some(v)) => Err(DedupError::BothLengthErrors {
+            event_error: Box::new(e),
+            variable_error: Box::new(v),
+        }),
+    }
+}
+
+#[derive(Debug, snafu::Snafu)]
+pub enum DedupError {
+    /// BehaviorGraphData not found for index '{index}'
+    BehaviorGraphDataMissing { index: &'static str },
+
+    /// BehaviorGraphStringData not found for index '{index}'
+    BehaviorGraphStringDataMissing {
+        index: std::borrow::Cow<'static, str>,
+    },
+
+    /// VariableValueSet not found for index '{index}'
+    VariableValueSetMissing {
+        index: std::borrow::Cow<'static, str>,
+    },
+
+    /// Event names/infos length mismatch: names={names}, infos={infos}
+    EventLengthMismatch { names: usize, infos: usize },
+
+    /// Variable names/infos/word_values length mismatch: names={names}, infos={infos}, word_values={word_values}
+    VariableLengthMismatch {
+        names: usize,
+        infos: usize,
+        word_values: usize,
+    },
+
+    /// Multiple dedup pre_check errors: event_error={event_error:?}, variable_error={variable_error:?}
+    BothLengthErrors {
+        event_error: Box<DedupError>,
+        variable_error: Box<DedupError>,
+    },
 }
 
 fn dedup_names_and_infos_in_place<'a, T>(names: &mut Vec<StringPtr<'a>>, infos: &mut Vec<T>) {
@@ -348,7 +430,7 @@ mod tests {
 
         dedup_event_variables(&mut class_map, "#0002").expect("Should dedup class maps");
         let (event_map, variable_map) =
-            create_maps(&class_map, "#0000").expect("Should create maps");
+            create_maps(&class_map, "#0002").expect("Should create maps");
 
         // Check event map
         assert_eq!(event_map.0.len(), 3);
