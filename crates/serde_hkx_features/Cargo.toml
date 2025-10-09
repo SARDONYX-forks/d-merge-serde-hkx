@@ -32,7 +32,7 @@ serde = { workspace = true, optional = true }
 simd-json = { version = "0.17.0", optional = true }
 
 # workspace members
-diff = { workspace = true }                                               # Create diff
+diff = { workspace = true }                                            # Create diff
 havok_serde = { workspace = true }
 havok_classes = { workspace = true, features = ["ignore_duplicates"] }
 serde_hkx = { workspace = true }
@@ -45,7 +45,7 @@ tracing = { workspace = true }
 
 [features]
 # default = ["serde_default", "extra_fmt"] # For debug
-# default = ["extra_fmt", "json_schema"] # For debug
+# default = ["json_schema"] # For debug
 
 # `derive(clap::ValueEnum)` For `OutFormat`
 clap = ["dep:clap"]

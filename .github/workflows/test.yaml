@@ -54,3 +54,35 @@ jobs:
           cargo miri setup
       - name: Search undefined behavior
         run: cargo miri test --workspace
+
+  schema:
+    runs-on: macos-latest # macOS is chosen for this job as it provides the fastest build time
+    steps:
+      - uses: actions/checkout@v4.2.2
+
+      - name: Rust cache
+        uses: Swatinem/rust-cache@v2.7.8
+        with:
+          prefix-key: cargo-debug-schema-macos
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Run JSON schema generation
+        run: |
+          cargo test --package serde_hkx_features \
+              --lib \
+              --features json_schema \
+              -- json_schema_gen::tests::gen_schema \
+              --exact \
+              --show-output \
+              --ignored
+
+      - name: Upload JSON schema artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: serde_hkx_schema
+          path: assets/serde_hkx_schema.json
