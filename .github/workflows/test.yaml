@@ -82,7 +82,7 @@ jobs:
               --ignored
 
       - name: Upload JSON schema artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: serde_hkx_schema
           path: assets/serde_hkx_schema.json
