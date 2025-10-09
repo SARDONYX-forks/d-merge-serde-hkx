@@ -18,6 +18,7 @@
     "cprintln",
     "CSTRING",
     "ctype",
+    "dedup",
     "defaultmale",
     "deserializations",
     "deserializers",

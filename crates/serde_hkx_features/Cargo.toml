@@ -50,7 +50,9 @@ tracing = { workspace = true }
 # `derive(clap::ValueEnum)` For `OutFormat`
 clap = ["dep:clap"]
 # Enable tracing logging
-tracing = ["dep:tracing", "serde_hkx/tracing"]
+tracing = ["dedup_tracing", "serde_hkx/tracing"]
+# Enable tracing logging
+dedup_tracing = ["dep:tracing"]
 # Extra output format(json, toml, yaml)
 extra_fmt = [
   "dep:basic-toml",

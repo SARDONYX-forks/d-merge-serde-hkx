@@ -111,9 +111,15 @@ fn dedup_names_and_infos_in_place<'a, T>(names: &mut Vec<StringPtr<'a>>, infos: 
         if let Some(s) = name.get_ref().as_ref().map(|s| s.as_ref()) {
             if seen.insert(s) {
                 keep[i] = true;
+            } else {
+                #[cfg(feature = "dedup_tracing")]
+                tracing::debug!(index = i, duplicate = s, "Duplicate entry will be removed");
             }
         }
     }
+
+    #[cfg(feature = "dedup_tracing")]
+    tracing::info!(?keep, "Deduplication mask");
 
     let mut j = 0;
     names.retain(|_| {
