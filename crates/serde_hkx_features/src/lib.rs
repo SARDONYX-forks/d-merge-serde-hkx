@@ -22,7 +22,7 @@ pub use crate::convert::{OutFormat, tokio::convert};
 pub use crate::error::Result;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/// - key: class index(e.g `1`)
+/// - key: class index(e.g `#0001`, `#slide$1`)
 /// - value: C++ Class
 pub type ClassMap<'a> = serde_hkx::GenericClassMap<'a, havok_classes::Classes<'a>>;
 

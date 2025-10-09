@@ -41,13 +41,6 @@ use crate::ClassMap;
 /// info vectors so that the indices remain aligned.
 ///
 /// Specifically:
-/// - `string_data_index` points to a `hkbBehaviorGraphStringData` class in `ClassMap`.
-///   The function accesses:
-///     - `m_eventNames`
-///     - `m_variableNames`
-///
-///   These vectors are deduplicated in-place, preserving order of first occurrences.
-///
 /// - `value_index` points to a `hkbBehaviorGraphData` class in `ClassMap`.
 ///   The function accesses:
 ///     - `m_eventInfos`
@@ -77,28 +70,51 @@ use crate::ClassMap;
 /// ```
 pub fn dedup_event_variables<'a>(
     class_map: &mut ClassMap<'a>,
-    string_data_index: &'static str,
-    value_index: &'static str,
+    behavior_graph_index: &'static str,
 ) -> Option<()> {
-    let mut graph_names = class_map.swap_remove(string_data_index)?;
-    let mut graph_infos = class_map.swap_remove(value_index)?;
+    let mut graph_data = match class_map.swap_remove(behavior_graph_index) {
+        Some(Classes::hkbBehaviorGraphData(g)) => g,
+        _ => return None,
+    };
+    let (string_data_index, binding_set_index) = (
+        graph_data.m_stringData.to_static().into_inner(),
+        graph_data.m_variableInitialValues.to_static().into_inner(),
+    );
 
-    let (event_names, variable_names) = match &mut graph_names {
-        Classes::hkbBehaviorGraphStringData(g) => (&mut g.m_eventNames, &mut g.m_variableNames),
+    let mut string_data = match class_map.swap_remove(&string_data_index) {
+        Some(Classes::hkbBehaviorGraphStringData(g)) => g,
         _ => return None,
     };
-    let (event_infos, variable_infos) = match &mut graph_infos {
-        Classes::hkbBehaviorGraphData(g) => (&mut g.m_eventInfos, &mut g.m_variableInfos),
+
+    let mut binding_set = match class_map.swap_remove(&binding_set_index) {
+        Some(Classes::hkbVariableValueSet(g)) => g,
         _ => return None,
     };
+
+    // eventNames / eventInfos dedup
+    let (event_names, event_infos) = (&mut string_data.m_eventNames, &mut graph_data.m_eventInfos);
+
+    // variableNames / variableInfos / wordVariableValues dedup
+    let (variable_names, variable_infos, word_values) = (
+        &mut string_data.m_variableNames,
+        &mut graph_data.m_variableInfos,
+        &mut binding_set.m_wordVariableValues,
+    );
 
     rayon::join(
         || dedup_names_and_infos_in_place(event_names, event_infos),
-        || dedup_names_and_infos_in_place(variable_names, variable_infos),
+        || dedup_three_way(variable_names, variable_infos, word_values),
     );
 
-    class_map.insert(std::borrow::Cow::Borrowed(string_data_index), graph_names);
-    class_map.insert(std::borrow::Cow::Borrowed(value_index), graph_infos);
+    class_map.insert(
+        std::borrow::Cow::Borrowed(behavior_graph_index),
+        Classes::hkbBehaviorGraphData(graph_data),
+    );
+    class_map.insert(
+        string_data_index,
+        Classes::hkbBehaviorGraphStringData(string_data),
+    );
+    class_map.insert(binding_set_index, Classes::hkbVariableValueSet(binding_set));
 
     Some(())
 }
@@ -137,6 +153,38 @@ fn dedup_names_and_infos_in_place<'a, T>(names: &mut Vec<StringPtr<'a>>, infos: 
     });
 }
 
+fn dedup_three_way<T, U>(names: &mut Vec<StringPtr>, infos: &mut Vec<T>, word_values: &mut Vec<U>) {
+    let mut seen = HashSet::new();
+    let mut keep = vec![false; names.len()];
+
+    for (i, name) in names.iter().enumerate() {
+        if let Some(s) = name.get_ref().as_ref().map(|s| s.as_ref()) {
+            if seen.insert(s) {
+                keep[i] = true;
+            }
+        }
+    }
+
+    let mut j = 0;
+    names.retain(|_| {
+        let k = keep[j];
+        j += 1;
+        k
+    });
+    let mut j = 0;
+    infos.retain(|_| {
+        let k = keep[j];
+        j += 1;
+        k
+    });
+    let mut j = 0;
+    word_values.retain(|_| {
+        let k = keep[j];
+        j += 1;
+        k
+    });
+}
+
 /// Create `EventIdMap` and `VariableIdMap` referencing internal strings in a `ClassMap`.
 ///
 /// This function immutably borrows the `ClassMap` and returns maps where keys
@@ -164,23 +212,20 @@ fn dedup_names_and_infos_in_place<'a, T>(names: &mut Vec<StringPtr<'a>>, infos: 
 /// ```
 pub fn create_maps<'a>(
     class_map: &'a ClassMap<'a>,
-    string_data_index: &'static str,
+    behavior_graph_index: &'static str,
 ) -> Option<(EventIdMap<'a>, VariableIdMap<'a>)> {
+    let string_data_index = match &class_map.get(behavior_graph_index)? {
+        Classes::hkbBehaviorGraphData(g) => g.m_stringData.get(),
+        _ => return None,
+    };
+    let string_data = match class_map.get(string_data_index)? {
+        Classes::hkbBehaviorGraphStringData(g) => g,
+        _ => return None,
+    };
+
     let (event_map, variable_map) = rayon::join(
-        || {
-            let names_ref = match &class_map[string_data_index] {
-                Classes::hkbBehaviorGraphStringData(g) => &g.m_eventNames,
-                _ => unreachable!(),
-            };
-            create_map_from_vec(names_ref)
-        },
-        || {
-            let names_ref = match &class_map[string_data_index] {
-                Classes::hkbBehaviorGraphStringData(g) => &g.m_variableNames,
-                _ => unreachable!(),
-            };
-            create_map_from_vec(names_ref)
-        },
+        || create_map_from_vec(&string_data.m_eventNames),
+        || create_map_from_vec(&string_data.m_variableNames),
     );
 
     Some((EventIdMap(event_map), VariableIdMap(variable_map)))
@@ -200,8 +245,9 @@ mod tests {
 
     use havok_classes::{
         hkbBehaviorGraphData, hkbBehaviorGraphStringData, hkbEventInfo, hkbVariableInfo,
+        hkbVariableValue, hkbVariableValueSet,
     };
-    use havok_types::StringPtr;
+    use havok_types::{I32, Pointer, StringPtr};
     use std::borrow::Cow;
 
     #[test]
@@ -222,6 +268,30 @@ mod tests {
                     StringPtr::from_str("Stamina"),
                     StringPtr::from_str("Health"),
                     StringPtr::from_str("Mana"),
+                ],
+                ..Default::default()
+            })),
+        );
+        class_map.insert(
+            Cow::Borrowed("#0001"),
+            Classes::hkbVariableValueSet(Box::new(hkbVariableValueSet {
+                m_wordVariableValues: vec![
+                    hkbVariableValue {
+                        __ptr: None,
+                        m_value: I32::Number(0),
+                    },
+                    hkbVariableValue {
+                        __ptr: None,
+                        m_value: I32::Number(1),
+                    },
+                    hkbVariableValue {
+                        __ptr: None,
+                        m_value: I32::Number(0),
+                    },
+                    hkbVariableValue {
+                        __ptr: None,
+                        m_value: I32::Number(0),
+                    },
                 ],
                 ..Default::default()
             })),
@@ -270,11 +340,13 @@ mod tests {
                         ..Default::default()
                     },
                 ],
+                m_stringData: Pointer::new(Cow::Borrowed("#0000")),
+                m_variableInitialValues: Pointer::new(Cow::Borrowed("#0001")),
                 ..Default::default()
             })),
         );
 
-        dedup_event_variables(&mut class_map, "#0000", "#0002").expect("Should dedup class maps");
+        dedup_event_variables(&mut class_map, "#0002").expect("Should dedup class maps");
         let (event_map, variable_map) =
             create_maps(&class_map, "#0000").expect("Should create maps");
 
