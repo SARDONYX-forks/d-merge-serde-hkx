@@ -65,12 +65,6 @@ jobs:
         with:
           prefix-key: cargo-debug-schema-macos
 
-      - name: Install Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          override: true
-
       - name: Run JSON schema generation
         run: |
           cargo test --package serde_hkx_features \
