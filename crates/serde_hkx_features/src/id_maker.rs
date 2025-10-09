@@ -201,13 +201,31 @@ pub enum DedupError {
     },
 }
 
+/// ASCII-ignore wrapper for &str in HashSet
+#[derive(Debug)]
+struct AsciiIgnore<'a>(&'a str);
+
+impl<'a> PartialEq for AsciiIgnore<'a> {
+    fn eq(&self, other: &Self) -> bool {
+        self.0.eq_ignore_ascii_case(other.0)
+    }
+}
+impl<'a> Eq for AsciiIgnore<'a> {}
+impl<'a> core::hash::Hash for AsciiIgnore<'a> {
+    fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
+        for b in self.0.as_bytes() {
+            state.write_u8(b.to_ascii_lowercase());
+        }
+    }
+}
+
 fn dedup_names_and_infos_in_place<'a, T>(names: &mut Vec<StringPtr<'a>>, infos: &mut Vec<T>) {
     let mut seen = HashSet::new();
     let mut keep = vec![false; names.len()];
 
     for (i, name) in names.iter().enumerate() {
         if let Some(s) = name.get_ref().as_ref().map(|s| s.as_ref()) {
-            if seen.insert(s) {
+            if seen.insert(AsciiIgnore(s)) {
                 keep[i] = true;
             } else {
                 #[cfg(feature = "dedup_tracing")]
@@ -241,7 +259,7 @@ fn dedup_three_way<T, U>(names: &mut Vec<StringPtr>, infos: &mut Vec<T>, word_va
 
     for (i, name) in names.iter().enumerate() {
         if let Some(s) = name.get_ref().as_ref().map(|s| s.as_ref()) {
-            if seen.insert(s) {
+            if seen.insert(AsciiIgnore(s)) {
                 keep[i] = true;
             }
         }
@@ -348,7 +366,7 @@ mod tests {
                 m_variableNames: vec![
                     StringPtr::from_str("Health"),
                     StringPtr::from_str("Stamina"),
-                    StringPtr::from_str("Health"),
+                    StringPtr::from_str("health"),
                     StringPtr::from_str("Mana"),
                 ],
                 ..Default::default()
