@@ -253,27 +253,27 @@ pub enum DedupError {
 }
 
 fn dedup_names_and_infos_in_place<'a, T>(names: &mut Vec<StringPtr<'a>>, infos: &mut Vec<T>) {
+    #[cfg(feature = "dedup_tracing")]
+    let mut duplicates = Vec::new();
+
     let mut seen = HashSet::new();
     let mut keep = vec![false; names.len()];
-
     for (i, name) in names.iter().enumerate() {
         if let Some(s) = name.get_ref().as_ref().map(|s| s.as_ref()) {
             if seen.insert(AsciiIgnore::new(s)) {
                 keep[i] = true;
             } else {
                 #[cfg(feature = "dedup_tracing")]
-                tracing::debug!(index = i, duplicate = s, "Duplicate entry will be removed");
+                duplicates.push((i, s));
             }
         }
     }
 
     #[cfg(feature = "dedup_tracing")]
-    {
-        tracing::info!(
-            ?names,
-            "Just before duplicate deletion hkbBehaviorGraphStringData.eventNames"
+    if !duplicates.is_empty() {
+        tracing::debug!(
+            "[hkbBehaviorGraphStringData.eventNames] Duplicate events will be removed: {duplicates:#?}"
         );
-        tracing::info!(?keep, "Deduplication mask");
     }
 
     let mut j = 0;
@@ -293,21 +293,28 @@ fn dedup_names_and_infos_in_place<'a, T>(names: &mut Vec<StringPtr<'a>>, infos: 
 }
 
 fn dedup_three_way<T, U>(names: &mut Vec<StringPtr>, infos: &mut Vec<T>, word_values: &mut Vec<U>) {
+    #[cfg(feature = "dedup_tracing")]
+    let mut duplicates = Vec::new();
+
     let mut seen = HashSet::new();
     let mut keep = vec![false; names.len()];
-
     for (i, name) in names.iter().enumerate() {
         if let Some(s) = name.get_ref().as_ref().map(|s| s.as_ref()) {
             if seen.insert(AsciiIgnore::new(s)) {
                 keep[i] = true;
+            } else {
+                #[cfg(feature = "dedup_tracing")]
+                duplicates.push((i, s));
             }
         }
     }
+
     #[cfg(feature = "dedup_tracing")]
-    tracing::debug!(
-        ?names,
-        "Just before duplicate deletion hkbBehaviorGraphStringData.variableNames"
-    );
+    if !duplicates.is_empty() {
+        tracing::debug!(
+            "[hkbBehaviorGraphStringData.variableNames] Duplicate variables will be removed: {duplicates:#?}"
+        );
+    }
 
     let mut j = 0;
     names.retain(|_| {
