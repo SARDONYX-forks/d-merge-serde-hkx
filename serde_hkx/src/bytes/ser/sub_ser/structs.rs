@@ -42,45 +42,28 @@ impl<'a, 'ser> StructSerializer<'a, 'ser> {
 
         // push nest
         let len = array.as_ref().len() as u32;
+
         match size {
             TypeSize::Struct {
                 size_x86,
                 size_x86_64,
             } => {
-                let one_size = if self.ser.is_x86 {
-                    size_x86
-                } else {
-                    size_x86_64
-                };
-                let mut write_pointed_pos = { array_base_pos + (one_size * (len as u64)) };
-                #[cfg(feature = "tracing")]
-                tracing::trace!(
-                    "Calculate Struct of Array local dst: array_base_pos({array_base_pos:#x}) + one_size({one_size}) * len({len}) = {write_pointed_pos:#x}"
-                );
+                #[rustfmt::skip]
+                let one_size = if self.ser.is_x86 { size_x86 } else { size_x86_64 };
+                let nested = self.ser.pointed_pos.len() >= 2; // need align16 or not.
 
-                // NOTE: The first write beyond the ptr after the Array nests twice should be align16 (not sure why)
-                //       Then, for some reason, the binary data reproduction is perfect.
-                if self.ser.pointed_pos.len() >= 2 {
-                    let new_write_pointed_pos = align!(write_pointed_pos, 16_u64);
-                    #[cfg(feature = "tracing")]
-                    tracing::trace!(
-                        "Apply special align16 to `next_struct_local_dst` because the hkArray is nested twice: {write_pointed_pos:#x} -> {new_write_pointed_pos:#x}"
-                    );
-                    write_pointed_pos = new_write_pointed_pos;
-                }
-                self.ser.pointed_pos.push(write_pointed_pos); // To write inner member type.
+                let write_pointed_pos =
+                    calc_array_element_write_pos(array_base_pos, len, one_size, nested, "Struct");
+                self.ser.pointed_pos.push(write_pointed_pos);
             }
             TypeSize::String => {
                 self.ser.is_in_str_array = true;
                 let one_size = if self.ser.is_x86 { 4 } else { 8 };
-                let write_pointed_pos = { array_base_pos + (one_size * (len as u64)) };
+                let nested = self.ser.pointed_pos.len() >= 2; // need align16 or not.
 
-                #[cfg(feature = "tracing")]
-                tracing::trace!(
-                    "Calculate String of Array local dst: array_base_pos({array_base_pos:#x}) + one_size({one_size}) * len({len}) = {write_pointed_pos:#x}"
-                );
-
-                self.ser.pointed_pos.push(write_pointed_pos); // To write pointed string data.
+                let write_pointed_pos =
+                    calc_array_element_write_pos(array_base_pos, len, one_size, nested, "String");
+                self.ser.pointed_pos.push(write_pointed_pos);
             }
             TypeSize::NonPtr => {}
         }
@@ -126,46 +109,32 @@ impl<'a, 'ser> StructSerializer<'a, 'ser> {
         V: AsRef<[T]> + Serialize,
         T: Serialize,
     {
-        let need_local_jump = size != TypeSize::NonPtr;
-        if need_local_jump {
+        // NOTE: struct in fixed array
+        // `hkbGeneratorSyncInfo.syncPoints: [hkbGeneratorSyncInfoSyncPoint; 8]` and this is 64 bytes.
+        // In other words, embed everything except String types directly into the array.
+        // If hkArray is encountered, undefined behavior occurs.
+        // However, currently there are no classes in hk2010 that place hkArray into fixed arrays.
+        if size == TypeSize::String {
             let pointed_pos = tri!(self.ser.goto_local_dst());
             let array_base_pos = self.ser.current_last_local_dst;
             self.ser.write_local_fixup_pair(local_src, pointed_pos)?;
 
-            // push nest
+            self.ser.is_in_str_array = true;
+            let one_size = if self.ser.is_x86 { 4 } else { 8 };
+            let nested = self.ser.pointed_pos.len() >= 2; // need align16 or not.
             let len = array.as_ref().len() as u32;
-            match size {
-                TypeSize::Struct {
-                    size_x86,
-                    size_x86_64,
-                } => {
-                    let write_pointed_pos = {
-                        let one_size = if self.ser.is_x86 {
-                            size_x86
-                        } else {
-                            size_x86_64
-                        };
-                        array_base_pos + (one_size * (len as u64))
-                    }; // `local_dst` starting position of class.
-                    self.ser.pointed_pos.push(write_pointed_pos); // To write inner member type.
-                }
-                TypeSize::String => {
-                    let write_pointed_pos = {
-                        let one_size = if self.ser.is_x86 { 4 } else { 8 };
-                        array_base_pos + (one_size * (len as u64))
-                    }; // `local_dst` starting position of string.
 
-                    self.ser.pointed_pos.push(write_pointed_pos); // To write pointed string data.
-                }
-                TypeSize::NonPtr => {}
-            }
-        };
-        #[cfg(feature = "tracing")]
-        tracing::trace!("pointed_pos:({:#x?})", self.ser.pointed_pos);
+            let write_pointed_pos =
+                calc_array_element_write_pos(array_base_pos, len, one_size, nested, "String");
+            self.ser.pointed_pos.push(write_pointed_pos);
+            #[cfg(feature = "tracing")]
+            tracing::trace!("pointed_pos:({:#x?})", self.ser.pointed_pos);
+        }
 
         tri!(array.serialize(&mut *self.ser));
 
-        if size != TypeSize::NonPtr {
+        if self.ser.is_in_str_array {
+            self.ser.is_in_str_array = false;
             // HACK: unused last value to update;
             let pos = tri!(
                 self.ser
@@ -177,6 +146,7 @@ impl<'a, 'ser> StructSerializer<'a, 'ser> {
                 *last = pos;
             };
         }
+
         Ok(())
     }
 }
@@ -329,4 +299,34 @@ impl<'a, 'ser> SerializeStruct for StructSerializer<'a, 'ser> {
         }
         Ok(())
     }
+}
+
+/// Calculate the write position for an array element,
+///
+/// applying align16 if twice nested.(The reason is unknown. However, it has been determined through hkx binary analysis.)
+fn calc_array_element_write_pos(
+    array_base_pos: u64,
+    len: u32,
+    one_size: u64,
+    nested: bool,
+    _type_kind: &'static str,
+) -> u64 {
+    let mut write_pointed_pos = array_base_pos + (one_size * len as u64);
+
+    #[cfg(feature = "tracing")]
+    tracing::trace!(
+        "Calculate hkArray<{_type_kind}> local dst: array_base_pos({array_base_pos:#x}) + one_size({one_size}) * len({len}) = {write_pointed_pos:#x}"
+    );
+
+    // NOTE: hkx analysis of `hkArray<hkaAnnotationTrack>` has revealed that align16 is performed when a `hkStringPtr`/`hkCString` is nested twice.
+    if nested {
+        let new_write_pointed_pos = align!(write_pointed_pos, 16_u64);
+        #[cfg(feature = "tracing")]
+        tracing::trace!(
+            "Apply special align16 because the hkArray<{_type_kind}> is nested twice: {write_pointed_pos:#x} -> {new_write_pointed_pos:#x}"
+        );
+        write_pointed_pos = new_write_pointed_pos;
+    }
+
+    write_pointed_pos
 }
