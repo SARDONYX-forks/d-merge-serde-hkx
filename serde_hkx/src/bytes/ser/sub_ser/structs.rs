@@ -13,6 +13,7 @@ use std::io::Write as _;
 /// Avoid mixing `local_fixups` for each field by creating local variables with separate Serializer.
 pub struct StructSerializer<'a, 'ser: 'a> {
     ser: &'a mut ByteSerializer<'ser>,
+    /// Is it a virtual fixups class? (This indicates it is not a class within a field)
     is_root: bool,
 }
 
@@ -34,41 +35,30 @@ impl<'a, 'ser> StructSerializer<'a, 'ser> {
     {
         let next_src_pos = self.ser.output.position();
 
-        let (abs_last_local_dst, last_local_dst) = tri!(self.ser.goto_latest_local_dst());
+        let (current_abs, last_local_dst) = tri!(self.ser.goto_latest_local_dst(true));
         self.ser.write_local_fixup_pair(local_src, last_local_dst)?;
 
-        // push nest
         let len = array.as_ref().len() as u32;
-        let nested = !self.ser.pointed_pos.is_empty(); // need align16 or not.
 
         match size {
             TypeSize::Struct {
                 size_x86,
                 size_x86_64,
             } => {
+                self.ser.is_in_str_array = false;
                 #[rustfmt::skip]
                 let one_size = if self.ser.is_x86 { size_x86 } else { size_x86_64 };
 
-                let write_pointed_pos = calc_next_array_element_write_pos(
-                    abs_last_local_dst,
-                    len,
-                    one_size,
-                    nested,
-                    "Struct",
-                );
+                let write_pointed_pos =
+                    calc_array_elements_write_pos(current_abs, len, one_size, "Struct");
                 self.ser.pointed_pos.push(write_pointed_pos);
             }
             TypeSize::String => {
                 self.ser.is_in_str_array = true;
                 let one_size = if self.ser.is_x86 { 4 } else { 8 };
 
-                let write_pointed_pos = calc_next_array_element_write_pos(
-                    abs_last_local_dst,
-                    len,
-                    one_size,
-                    nested,
-                    "String",
-                );
+                let write_pointed_pos =
+                    calc_array_elements_write_pos(current_abs, len, one_size, "String");
                 self.ser.pointed_pos.push(write_pointed_pos);
             }
             TypeSize::NonPtr => {}
@@ -79,26 +69,23 @@ impl<'a, 'ser> StructSerializer<'a, 'ser> {
         tri!(array.serialize(&mut *self.ser)); // serialize elements all
         self.ser.is_in_str_array = false;
 
-        if size == TypeSize::NonPtr {
-            let next_pointed_ser_pos = align!(self.ser.output.position(), 16_u64);
-            if let Some(last) = self.ser.pointed_pos.last_mut() {
-                *last = next_pointed_ser_pos; // Update to serialize the next pointed data.
-            };
+        let updated_last_local_dst = if matches!(size, TypeSize::NonPtr) {
+            self.ser.output.position()
         } else {
-            // HACK: unused last value to update;
-            let pos = tri!(
+            // Deletes the ptr write destination for the String/Struct pushed by this function.
+            tri!(
                 self.ser
                     .pointed_pos
                     .pop()
                     .context(NotFoundPointedPositionSnafu)
-            );
-            let pos = align!(pos, 16_u64);
-            if let Some(last) = self.ser.pointed_pos.last_mut() {
-                *last = pos;
-            };
-        }
+            )
+        };
+        tri!(
+            self.ser
+                .update_last_local_dst(align!(updated_last_local_dst, 16_u64))
+        );
 
-        self.ser.output.set_position(next_src_pos); // Go to the next field serialization position.
+        self.ser.output.set_position(next_src_pos); // Go back to the next field serialization position.
         Ok(())
     }
 
@@ -121,43 +108,42 @@ impl<'a, 'ser> StructSerializer<'a, 'ser> {
         V: AsRef<[T]> + Serialize,
         T: Serialize,
     {
+        // NOTE: In C++, structs within arrays reside on the stack, not the heap. Unlike hkArray,
+        //       they are allocated in place because their size affects the allocation.
+        if matches!(size, TypeSize::NonPtr | TypeSize::Struct { .. }) {
+            tri!(array.serialize(&mut *self.ser)); // serialize [T; N] all.
+            return Ok(());
+        };
+        // ---------------------------------------------------------------------------------
         // TODO: `[hkStringPtr; N]` does not currently exist, so We're not sure if this is correct.
-        if size == TypeSize::String {
-            let (abs_last_local_dst, pointed_pos) = tri!(self.ser.goto_latest_local_dst());
-            self.ser.write_local_fixup_pair(local_src, pointed_pos)?;
 
-            self.ser.is_in_str_array = true;
-            let one_size = if self.ser.is_x86 { 4 } else { 8 };
-            let len = array.as_ref().len() as u32;
-            let nested = !self.ser.pointed_pos.is_empty(); // need align16 or not.
+        let next_src_pos = self.ser.output.position();
 
-            let write_pointed_pos = calc_next_array_element_write_pos(
-                abs_last_local_dst,
-                len,
-                one_size,
-                nested,
-                "String",
-            );
-            self.ser.pointed_pos.push(write_pointed_pos);
-            #[cfg(feature = "tracing")]
-            tracing::trace!("pointed_pos:({:#x?})", self.ser.pointed_pos);
-        }
+        let (current_abs, last_local_dst) = tri!(self.ser.goto_latest_local_dst(true));
+        self.ser.write_local_fixup_pair(local_src, last_local_dst)?;
+
+        let len = array.as_ref().len() as u32;
+
+        self.ser.is_in_str_array = true;
+        let one_size = if self.ser.is_x86 { 4 } else { 8 };
+
+        let write_pointed_pos = calc_array_elements_write_pos(current_abs, len, one_size, "String");
+        self.ser.pointed_pos.push(write_pointed_pos);
 
         tri!(array.serialize(&mut *self.ser)); // serialize [T; N] all.
 
-        if self.ser.is_in_str_array {
-            self.ser.is_in_str_array = false;
-            // HACK: unused last value to update;
-            let pos = tri!(
-                self.ser
-                    .pointed_pos
-                    .pop()
-                    .context(NotFoundPointedPositionSnafu)
-            );
-            if let Some(last) = self.ser.pointed_pos.last_mut() {
-                *last = pos;
-            };
-        }
+        // Deletes the ptr write destination for the String/Struct pushed by this function.
+        let updated_last_local_dst = tri!(
+            self.ser
+                .pointed_pos
+                .pop()
+                .context(NotFoundPointedPositionSnafu)
+        );
+        tri!(
+            self.ser
+                .update_last_local_dst(align!(updated_last_local_dst, 16_u64))
+        );
+        self.ser.output.set_position(next_src_pos); // Go back to the next field serialization position.
 
         Ok(())
     }
@@ -301,12 +287,10 @@ impl<'a, 'ser> SerializeStruct for StructSerializer<'a, 'ser> {
         if self.is_root {
             #[cfg(feature = "tracing")]
             tracing::trace!("pointed_pos:({:#x?})", self.ser.pointed_pos);
-
+            // NOTE Write the next virtual fixup after the contents pointed to by the ptr.
+            // Otherwise, we'll overwrite it!
+            tri!(self.ser.goto_latest_local_dst(true));
             self.ser.pointed_pos.clear();
-            let (_latest, _) = tri!(self.ser.goto_latest_local_dst());
-
-            #[cfg(feature = "tracing")]
-            tracing::trace!("current_last_pos:({_latest:#x?})");
         }
         Ok(())
     }
@@ -315,29 +299,18 @@ impl<'a, 'ser> SerializeStruct for StructSerializer<'a, 'ser> {
 /// Calculate the write position for an array element,
 ///
 /// applying align16 if twice nested.(The reason is unknown. However, it has been determined through hkx binary analysis.)
-fn calc_next_array_element_write_pos(
-    abs_last_local_dst: u64,
+fn calc_array_elements_write_pos(
+    current_abs_pos: u64,
     len: u32,
     one_size: u64,
-    need_align16: bool,
     _type_kind: &'static str,
 ) -> u64 {
-    let mut write_pointed_pos = abs_last_local_dst + (one_size * len as u64);
+    let write_pointed_pos = current_abs_pos + (one_size * len as u64);
 
     #[cfg(feature = "tracing")]
     tracing::trace!(
-        "Calculate hkArray<{_type_kind}> local dst: array_base_pos({abs_last_local_dst:#x}) + one_size({one_size}) * len({len}) = {write_pointed_pos:#x}"
+        "Calculate hkArray<{_type_kind}> next local dst: array_base_pos({current_abs_pos:#x}) + one_size({one_size}) * len({len}) = {write_pointed_pos:#x}"
     );
-
-    // NOTE: hkx analysis of `hkArray<hkaAnnotationTrack>` has revealed that align16 is performed when a `hkStringPtr`/`hkCString` is nested twice.
-    if need_align16 {
-        let new_write_pointed_pos = align!(write_pointed_pos, 16_u64);
-        #[cfg(feature = "tracing")]
-        tracing::trace!(
-            "Apply special align16 because the hkArray<{_type_kind}> is nested twice: {write_pointed_pos:#x} -> {new_write_pointed_pos:#x}"
-        );
-        write_pointed_pos = new_write_pointed_pos;
-    }
 
     write_pointed_pos
 }
