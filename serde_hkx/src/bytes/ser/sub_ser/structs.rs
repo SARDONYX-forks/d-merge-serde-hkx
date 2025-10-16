@@ -34,11 +34,8 @@ impl<'a, 'ser> StructSerializer<'a, 'ser> {
     {
         let next_src_pos = self.ser.output.position();
 
-        {
-            let pointed_pos = tri!(self.ser.goto_local_dst());
-            self.ser.write_local_fixup_pair(local_src, pointed_pos)?;
-        }
-        let array_base_pos = self.ser.current_last_local_dst;
+        let (abs_last_local_dst, last_local_dst) = tri!(self.ser.goto_latest_local_dst());
+        self.ser.write_local_fixup_pair(local_src, last_local_dst)?;
 
         // push nest
         let len = array.as_ref().len() as u32;
@@ -52,16 +49,26 @@ impl<'a, 'ser> StructSerializer<'a, 'ser> {
                 #[rustfmt::skip]
                 let one_size = if self.ser.is_x86 { size_x86 } else { size_x86_64 };
 
-                let write_pointed_pos =
-                    calc_array_element_write_pos(array_base_pos, len, one_size, nested, "Struct");
+                let write_pointed_pos = calc_next_array_element_write_pos(
+                    abs_last_local_dst,
+                    len,
+                    one_size,
+                    nested,
+                    "Struct",
+                );
                 self.ser.pointed_pos.push(write_pointed_pos);
             }
             TypeSize::String => {
                 self.ser.is_in_str_array = true;
                 let one_size = if self.ser.is_x86 { 4 } else { 8 };
 
-                let write_pointed_pos =
-                    calc_array_element_write_pos(array_base_pos, len, one_size, nested, "String");
+                let write_pointed_pos = calc_next_array_element_write_pos(
+                    abs_last_local_dst,
+                    len,
+                    one_size,
+                    nested,
+                    "String",
+                );
                 self.ser.pointed_pos.push(write_pointed_pos);
             }
             TypeSize::NonPtr => {}
@@ -74,7 +81,6 @@ impl<'a, 'ser> StructSerializer<'a, 'ser> {
 
         if size == TypeSize::NonPtr {
             let next_pointed_ser_pos = align!(self.ser.output.position(), 16_u64);
-            self.ser.current_last_local_dst = next_pointed_ser_pos;
             if let Some(last) = self.ser.pointed_pos.last_mut() {
                 *last = next_pointed_ser_pos; // Update to serialize the next pointed data.
             };
@@ -90,7 +96,6 @@ impl<'a, 'ser> StructSerializer<'a, 'ser> {
             if let Some(last) = self.ser.pointed_pos.last_mut() {
                 *last = pos;
             };
-            self.ser.current_last_local_dst = pos;
         }
 
         self.ser.output.set_position(next_src_pos); // Go to the next field serialization position.
@@ -118,17 +123,21 @@ impl<'a, 'ser> StructSerializer<'a, 'ser> {
     {
         // TODO: `[hkStringPtr; N]` does not currently exist, so We're not sure if this is correct.
         if size == TypeSize::String {
-            let pointed_pos = tri!(self.ser.goto_local_dst());
-            let array_base_pos = self.ser.current_last_local_dst;
+            let (abs_last_local_dst, pointed_pos) = tri!(self.ser.goto_latest_local_dst());
             self.ser.write_local_fixup_pair(local_src, pointed_pos)?;
 
             self.ser.is_in_str_array = true;
             let one_size = if self.ser.is_x86 { 4 } else { 8 };
             let len = array.as_ref().len() as u32;
-            let nested = self.ser.pointed_pos.len() >= 2; // need align16 or not.
+            let nested = !self.ser.pointed_pos.is_empty(); // need align16 or not.
 
-            let write_pointed_pos =
-                calc_array_element_write_pos(array_base_pos, len, one_size, nested, "String");
+            let write_pointed_pos = calc_next_array_element_write_pos(
+                abs_last_local_dst,
+                len,
+                one_size,
+                nested,
+                "String",
+            );
             self.ser.pointed_pos.push(write_pointed_pos);
             #[cfg(feature = "tracing")]
             tracing::trace!("pointed_pos:({:#x?})", self.ser.pointed_pos);
@@ -292,13 +301,12 @@ impl<'a, 'ser> SerializeStruct for StructSerializer<'a, 'ser> {
         if self.is_root {
             #[cfg(feature = "tracing")]
             tracing::trace!("pointed_pos:({:#x?})", self.ser.pointed_pos);
+
             self.ser.pointed_pos.clear();
+            let (_latest, _) = tri!(self.ser.goto_latest_local_dst());
 
             #[cfg(feature = "tracing")]
-            tracing::trace!("current_last_pos:({:#x?})", self.ser.current_last_local_dst);
-            self.ser
-                .output
-                .set_position(self.ser.current_last_local_dst);
+            tracing::trace!("current_last_pos:({_latest:#x?})");
         }
         Ok(())
     }
@@ -307,22 +315,22 @@ impl<'a, 'ser> SerializeStruct for StructSerializer<'a, 'ser> {
 /// Calculate the write position for an array element,
 ///
 /// applying align16 if twice nested.(The reason is unknown. However, it has been determined through hkx binary analysis.)
-fn calc_array_element_write_pos(
-    array_base_pos: u64,
+fn calc_next_array_element_write_pos(
+    abs_last_local_dst: u64,
     len: u32,
     one_size: u64,
-    nested: bool,
+    need_align16: bool,
     _type_kind: &'static str,
 ) -> u64 {
-    let mut write_pointed_pos = array_base_pos + (one_size * len as u64);
+    let mut write_pointed_pos = abs_last_local_dst + (one_size * len as u64);
 
     #[cfg(feature = "tracing")]
     tracing::trace!(
-        "Calculate hkArray<{_type_kind}> local dst: array_base_pos({array_base_pos:#x}) + one_size({one_size}) * len({len}) = {write_pointed_pos:#x}"
+        "Calculate hkArray<{_type_kind}> local dst: array_base_pos({abs_last_local_dst:#x}) + one_size({one_size}) * len({len}) = {write_pointed_pos:#x}"
     );
 
     // NOTE: hkx analysis of `hkArray<hkaAnnotationTrack>` has revealed that align16 is performed when a `hkStringPtr`/`hkCString` is nested twice.
-    if nested {
+    if need_align16 {
         let new_write_pointed_pos = align!(write_pointed_pos, 16_u64);
         #[cfg(feature = "tracing")]
         tracing::trace!(

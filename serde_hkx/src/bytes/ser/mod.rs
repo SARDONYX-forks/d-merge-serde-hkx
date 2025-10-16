@@ -125,7 +125,6 @@ where
 
     // - `__data__` section
     serializer.abs_data_offset = header.padding_size() + serializer.output.position() as u32;
-    serializer.current_last_local_dst = serializer.abs_data_offset as u64;
     value.serialize(&mut serializer)?;
 
     // 4/5: Write fixups_offsets of `__data__` section header.
@@ -226,8 +225,6 @@ pub struct ByteSerializer<'ser> {
     /// where the Nth element means N hierarchically nested.
     /// - Example: `u32` <- `ClassB.b: u32` <- `ClassA.a: Array<ClassB>` <- `Array<ClassA>`
     pointed_pos: Vec<u64>,
-    /// each Root class ptr pointed data position.
-    current_last_local_dst: u64,
     /// Coordination information to associate a pointer of a pointer type of a field in a class with the data location to which it points.
     ///
     /// # Note
@@ -413,17 +410,24 @@ impl<'ser> ByteSerializer<'ser> {
         Ok(())
     }
 
-    /// The data position pointed to by ptr.
-    /// And return destination position.
+    /// Go to relative The data position pointed to by ptr.
+    ///
+    /// Returns
+    /// (
+    ///  The last write position for the pointer type,
+    ///  `__data__` section relative offset) destination position,
+    /// )
     #[inline]
-    fn goto_local_dst(&mut self) -> Result<u32> {
-        let &dest_abs_pos = tri!(
+    fn goto_latest_local_dst(&mut self) -> Result<(u64, u32)> {
+        let dest_abs_pos = tri!(
             self.pointed_pos
                 .last()
+                .copied()
                 .context(NotFoundPointedPositionSnafu)
         );
         self.output.set_position(dest_abs_pos);
-        self.relative_position()
+        let local_dst = tri!(self.relative_position());
+        Ok((dest_abs_pos, local_dst))
     }
 
     /// Write a pair of local_fixups.
@@ -462,8 +466,8 @@ impl<'ser> ByteSerializer<'ser> {
             tracing::trace!("Serialize `CString`/`StringPtr` ({next_ser_pos:#x}): (\"{v}\")",);
 
             // local dst
-            let pointed_pos = tri!(self.goto_local_dst());
-            tri!(self.write_local_fixup_pair(ptr_start, pointed_pos));
+            let (_, local_dst) = tri!(self.goto_latest_local_dst());
+            tri!(self.write_local_fixup_pair(ptr_start, local_dst));
 
             let c_string = StdCString::new(v.as_bytes())?;
             let _ = self.output.write(c_string.as_bytes_with_nul())?;
@@ -474,7 +478,6 @@ impl<'ser> ByteSerializer<'ser> {
             }
 
             let next_pointed_ser_pos = self.output.position();
-            self.current_last_local_dst = next_pointed_ser_pos;
             if let Some(last) = self.pointed_pos.last_mut() {
                 *last = next_pointed_ser_pos; // Update to serialize the next pointed data.
             };
@@ -703,7 +706,6 @@ impl<'a, 'ser> Serializer for &'a mut ByteSerializer<'ser> {
 
             // The data pointed to by the pointer (`T* m_data`) must first be aligned 16 bytes before it is written.
             let last_local_dst = align!(virtual_fixup_abs + size, 16_u64);
-            self.current_last_local_dst = last_local_dst;
             self.pointed_pos.push(last_local_dst);
             true
         } else {
