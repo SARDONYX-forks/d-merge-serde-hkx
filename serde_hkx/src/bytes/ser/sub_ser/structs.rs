@@ -21,8 +21,8 @@ impl<'a, 'ser> StructSerializer<'a, 'ser> {
         Self { ser, is_root }
     }
 
-    /// processing of array(`hkArray`).
-    fn serialize_array_inner<V, T>(
+    /// serialize elements of `hkArray`.
+    fn serialize_array_elements<V, T>(
         &mut self,
         array: V,
         size: TypeSize,
@@ -42,6 +42,7 @@ impl<'a, 'ser> StructSerializer<'a, 'ser> {
 
         // push nest
         let len = array.as_ref().len() as u32;
+        let nested = !self.ser.pointed_pos.is_empty(); // need align16 or not.
 
         match size {
             TypeSize::Struct {
@@ -50,7 +51,6 @@ impl<'a, 'ser> StructSerializer<'a, 'ser> {
             } => {
                 #[rustfmt::skip]
                 let one_size = if self.ser.is_x86 { size_x86 } else { size_x86_64 };
-                let nested = self.ser.pointed_pos.len() >= 2; // need align16 or not.
 
                 let write_pointed_pos =
                     calc_array_element_write_pos(array_base_pos, len, one_size, nested, "Struct");
@@ -59,7 +59,6 @@ impl<'a, 'ser> StructSerializer<'a, 'ser> {
             TypeSize::String => {
                 self.ser.is_in_str_array = true;
                 let one_size = if self.ser.is_x86 { 4 } else { 8 };
-                let nested = self.ser.pointed_pos.len() >= 2; // need align16 or not.
 
                 let write_pointed_pos =
                     calc_array_element_write_pos(array_base_pos, len, one_size, nested, "String");
@@ -70,7 +69,7 @@ impl<'a, 'ser> StructSerializer<'a, 'ser> {
         #[cfg(feature = "tracing")]
         tracing::trace!("pointed_pos:({:#x?})", self.ser.pointed_pos);
 
-        tri!(array.serialize(&mut *self.ser));
+        tri!(array.serialize(&mut *self.ser)); // serialize elements all
         self.ser.is_in_str_array = false;
 
         if size == TypeSize::NonPtr {
@@ -98,8 +97,16 @@ impl<'a, 'ser> StructSerializer<'a, 'ser> {
         Ok(())
     }
 
-    /// Common processing of fixed_array(e.g. `[bool; 3]`)
-    fn serialize_array_fixed<V, T>(
+    /// Serialize elements of fixed_array(e.g. `[bool; 3]`)
+    ///
+    /// # NOTE
+    /// `hkbGeneratorSyncInfo.syncPoints: [hkbGeneratorSyncInfoSyncPoint; 8]` and this is 64 bytes.
+    /// In other words, embed everything except String types directly into the array.
+    ///
+    /// # Undefined behavior
+    /// If `hkArray` is encountered, undefined behavior occurs.
+    /// However, currently there are no classes in hk2010 that place `[hkArray<T>; N]`.
+    fn serialize_fixed_array_elements<V, T>(
         &mut self,
         array: V,
         size: TypeSize,
@@ -109,11 +116,7 @@ impl<'a, 'ser> StructSerializer<'a, 'ser> {
         V: AsRef<[T]> + Serialize,
         T: Serialize,
     {
-        // NOTE: struct in fixed array
-        // `hkbGeneratorSyncInfo.syncPoints: [hkbGeneratorSyncInfoSyncPoint; 8]` and this is 64 bytes.
-        // In other words, embed everything except String types directly into the array.
-        // If hkArray is encountered, undefined behavior occurs.
-        // However, currently there are no classes in hk2010 that place hkArray into fixed arrays.
+        // TODO: `[hkStringPtr; N]` does not currently exist, so We're not sure if this is correct.
         if size == TypeSize::String {
             let pointed_pos = tri!(self.ser.goto_local_dst());
             let array_base_pos = self.ser.current_last_local_dst;
@@ -121,8 +124,8 @@ impl<'a, 'ser> StructSerializer<'a, 'ser> {
 
             self.ser.is_in_str_array = true;
             let one_size = if self.ser.is_x86 { 4 } else { 8 };
-            let nested = self.ser.pointed_pos.len() >= 2; // need align16 or not.
             let len = array.as_ref().len() as u32;
+            let nested = self.ser.pointed_pos.len() >= 2; // need align16 or not.
 
             let write_pointed_pos =
                 calc_array_element_write_pos(array_base_pos, len, one_size, nested, "String");
@@ -131,7 +134,7 @@ impl<'a, 'ser> StructSerializer<'a, 'ser> {
             tracing::trace!("pointed_pos:({:#x?})", self.ser.pointed_pos);
         }
 
-        tri!(array.serialize(&mut *self.ser));
+        tri!(array.serialize(&mut *self.ser)); // serialize [T; N] all.
 
         if self.ser.is_in_str_array {
             self.ser.is_in_str_array = false;
@@ -220,7 +223,7 @@ impl<'a, 'ser> SerializeStruct for StructSerializer<'a, 'ser> {
             return Ok(());
         }
         let start_relative = tri!(self.ser.relative_position()); // Ptr type need to pointing data position(local.dst).
-        self.serialize_array_fixed(value, size, start_relative)
+        self.serialize_fixed_array_elements(value, size, start_relative)
     }
 
     #[inline]
@@ -270,7 +273,7 @@ impl<'a, 'ser> SerializeStruct for StructSerializer<'a, 'ser> {
         if len == 0 {
             return Ok(());
         }
-        self.serialize_array_inner(value, size, local_src)
+        self.serialize_array_elements(value, size, local_src)
     }
 
     #[inline]
