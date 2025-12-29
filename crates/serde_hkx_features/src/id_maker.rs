@@ -30,7 +30,10 @@ use havok_classes::Classes;
 use havok_types::StringPtr;
 use rayon::prelude::*;
 use serde_hkx::{AsciiIgnore, EventIdMap, VariableIdMap};
-use std::collections::{HashMap, HashSet};
+use std::{
+    borrow::Cow,
+    collections::{HashMap, HashSet},
+};
 
 use crate::ClassMap;
 
@@ -73,13 +76,13 @@ use crate::ClassMap;
 /// ```
 pub fn dedup_event_variables<'a>(
     class_map: &mut ClassMap<'a>,
-    behavior_graph_index: &'static str,
+    behavior_graph_index: Cow<'a, str>,
 ) -> Result<(), DedupError> {
-    let mut graph_data = match class_map.swap_remove(behavior_graph_index) {
+    let mut graph_data = match class_map.swap_remove(&behavior_graph_index) {
         Some(Classes::hkbBehaviorGraphData(g)) => g,
         _ => {
             return Err(DedupError::BehaviorGraphDataMissing {
-                index: behavior_graph_index,
+                index: behavior_graph_index.to_string(),
             });
         }
     };
@@ -108,7 +111,7 @@ pub fn dedup_event_variables<'a>(
 
     dedup_len_check(
         string_data_index.as_ref(),
-        behavior_graph_index,
+        &behavior_graph_index,
         binding_set_index.as_ref(),
         string_data.m_eventNames.len(),
         graph_data.m_eventInfos.len(),
@@ -134,7 +137,7 @@ pub fn dedup_event_variables<'a>(
     );
 
     class_map.insert(
-        std::borrow::Cow::Borrowed(behavior_graph_index),
+        behavior_graph_index,
         Classes::hkbBehaviorGraphData(graph_data),
     );
     class_map.insert(
@@ -150,7 +153,7 @@ pub fn dedup_event_variables<'a>(
 #[allow(clippy::too_many_arguments)]
 fn dedup_len_check(
     string_data_index: &str,
-    behavior_graph_index: &'static str,
+    behavior_graph_index: &str,
     binding_set_index: &str,
 
     event_names_len: usize,
@@ -163,7 +166,7 @@ fn dedup_len_check(
     let event_error = if event_names_len != event_infos_len {
         Some(DedupError::EventLengthMismatch {
             string_data_index: string_data_index.to_string(),
-            behavior_graph_index,
+            behavior_graph_index: behavior_graph_index.to_string(),
             names: event_names_len,
             infos: event_infos_len,
         })
@@ -175,7 +178,7 @@ fn dedup_len_check(
         if variable_names_len != variable_infos_len || variable_names_len != word_values_len {
             Some(DedupError::VariableLengthMismatch {
                 string_data_index: string_data_index.to_string(),
-                behavior_graph_index,
+                behavior_graph_index: behavior_graph_index.to_string(),
                 binding_set_index: binding_set_index.to_string(),
                 names: variable_names_len,
                 infos: variable_infos_len,
@@ -201,7 +204,7 @@ fn dedup_len_check(
 pub enum DedupError {
     /// BehaviorGraphData not found for index.
     #[snafu(display("BehaviorGraphData not found for index '{index}'"))]
-    BehaviorGraphDataMissing { index: &'static str },
+    BehaviorGraphDataMissing { index: String },
 
     /// BehaviorGraphStringData not found for index.
     #[snafu(display("BehaviorGraphStringData not found for index '{index}'"))]
@@ -222,7 +225,7 @@ pub enum DedupError {
     ))]
     EventLengthMismatch {
         string_data_index: String,
-        behavior_graph_index: &'static str,
+        behavior_graph_index: String,
         names: usize,
         infos: usize,
     },
@@ -235,7 +238,7 @@ pub enum DedupError {
     ))]
     VariableLengthMismatch {
         string_data_index: String,
-        behavior_graph_index: &'static str,
+        behavior_graph_index: String,
         binding_set_index: String,
         names: usize,
         infos: usize,
@@ -246,6 +249,7 @@ pub enum DedupError {
     #[snafu(display(
         "Multiple length mismatch errors.\nEvent error: {event_error}\nVariable error: {variable_error}",
     ))]
+    #[allow(clippy::use_self)]
     BothLengthErrors {
         event_error: Box<DedupError>,
         variable_error: Box<DedupError>,
@@ -363,7 +367,7 @@ fn dedup_three_way<T, U>(names: &mut Vec<StringPtr>, infos: &mut Vec<T>, word_va
 /// ```
 pub fn create_maps<'a>(
     class_map: &'a ClassMap<'a>,
-    behavior_graph_index: &'static str,
+    behavior_graph_index: &'a str,
 ) -> Option<(EventIdMap<'a>, VariableIdMap<'a>)> {
     let string_data_index = match &class_map.get(behavior_graph_index)? {
         Classes::hkbBehaviorGraphData(g) => g.m_stringData.get(),
@@ -497,7 +501,7 @@ mod tests {
             })),
         );
 
-        dedup_event_variables(&mut class_map, "#0002").expect("Should dedup class maps");
+        dedup_event_variables(&mut class_map, "#0002".into()).expect("Should dedup class maps");
         let (event_map, variable_map) =
             create_maps(&class_map, "#0002").expect("Should create maps");
 
