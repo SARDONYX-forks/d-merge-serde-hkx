@@ -367,7 +367,7 @@ fn dedup_three_way<T, U>(names: &mut Vec<StringPtr>, infos: &mut Vec<T>, word_va
 /// ```
 pub fn create_maps<'a>(
     class_map: &'a ClassMap<'a>,
-    behavior_graph_index: &'a str,
+    behavior_graph_index: &str,
 ) -> Option<(EventIdMap<'a>, VariableIdMap<'a>)> {
     let string_data_index = match &class_map.get(behavior_graph_index)? {
         Classes::hkbBehaviorGraphData(g) => g.m_stringData.get(),
