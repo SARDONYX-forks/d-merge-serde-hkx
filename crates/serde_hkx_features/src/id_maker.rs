@@ -394,6 +394,7 @@ fn create_map_from_vec<'a, 'b: 'a>(names: &'b [StringPtr<'a>]) -> HashMap<AsciiI
         .collect()
 }
 
+#[cfg_attr(miri, ignore)] // It's impossible until the rayon fixes.
 #[cfg(test)]
 mod tests {
     use super::*;
