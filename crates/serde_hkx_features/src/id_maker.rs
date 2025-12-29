@@ -394,7 +394,6 @@ fn create_map_from_vec<'a, 'b: 'a>(names: &'b [StringPtr<'a>]) -> HashMap<AsciiI
         .collect()
 }
 
-#[cfg_attr(miri, ignore)] // It's impossible until the rayon fixes.
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -406,6 +405,7 @@ mod tests {
     use havok_types::{I32, Pointer, StringPtr};
     use std::borrow::Cow;
 
+    #[cfg_attr(miri, ignore)] // It's impossible until the rayon fixes.
     #[test]
     fn test_crate_maps_from_classmap() {
         let mut class_map: ClassMap = ClassMap::new();
