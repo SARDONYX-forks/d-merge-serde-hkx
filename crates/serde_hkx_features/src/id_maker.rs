@@ -71,7 +71,7 @@ use crate::ClassMap;
 ///
 /// // Fill class_map with hkbBehaviorGraphStringData and hkbBehaviorGraphData...
 ///
-/// dedup_event_variables(&mut class_map, "#0002")
+/// dedup_event_variables(&mut class_map, "#0002".into())
 ///     .expect("Deduplication should succeed");
 /// ```
 pub fn dedup_event_variables<'a>(
@@ -353,8 +353,9 @@ fn dedup_three_way<T, U>(names: &mut Vec<StringPtr>, infos: &mut Vec<T>, word_va
 ///
 /// # Example
 /// ```no_run
+/// use serde_hkx::{EventIdMap, VariableIdMap};
+/// use serde_hkx_features::ClassMap;
 /// use serde_hkx_features::id_maker::create_maps;
-/// use serde_hkx_features::{ClassMap, EventIdMap, VariableIdMap};
 ///
 /// let class_map: ClassMap = ClassMap::new();
 ///
@@ -396,18 +397,18 @@ fn create_map_from_vec<'a, 'b: 'a>(names: &'b [StringPtr<'a>]) -> HashMap<AsciiI
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-
-    use havok_classes::{
-        hkbBehaviorGraphData, hkbBehaviorGraphStringData, hkbEventInfo, hkbVariableInfo,
-        hkbVariableValue, hkbVariableValueSet,
-    };
-    use havok_types::{I32, Pointer, StringPtr};
-    use std::borrow::Cow;
-
     #[cfg_attr(miri, ignore)] // It's impossible until the rayon fixes.
     #[test]
     fn test_crate_maps_from_classmap() {
+        use super::*;
+
+        use havok_classes::{
+            hkbBehaviorGraphData, hkbBehaviorGraphStringData, hkbEventInfo, hkbVariableInfo,
+            hkbVariableValue, hkbVariableValueSet,
+        };
+        use havok_types::{I32, Pointer, StringPtr};
+        use std::borrow::Cow;
+
         let mut class_map: ClassMap = ClassMap::new();
 
         class_map.insert(
