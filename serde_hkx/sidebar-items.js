@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["align"],"mod":["bytes","errors","prelude","tree","xml"],"struct":["AsciiIgnore","EventIdMap","VariableIdMap"],"trait":["HavokSort"],"type":["ClassMapKey","GenericClassMap"]};

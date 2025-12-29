@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Algorithm"],"fn":["diff","diff_with_tokens"],"mod":["intern","sink","sources"],"struct":["UnifiedDiffBuilder"]};
