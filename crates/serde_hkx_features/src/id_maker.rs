@@ -149,6 +149,60 @@ pub fn dedup_event_variables<'a>(
     Ok(())
 }
 
+/// Validates event/variable length consistency from a `ClassMap` directly.
+///
+/// Extracts the necessary data from `class_map` and checks lengths,
+/// without performing any mutation. Use this for read-only validation.
+///
+/// # Errors
+/// Returns `DedupError` if:
+/// - `BehaviorGraphData`, `BehaviorGraphStringData`, or `VariableValueSet` is missing.
+/// - Event or variable vector lengths do not match (can report both simultaneously).
+pub fn check_len_from_map<'a>(
+    class_map: &ClassMap<'a>,
+    behavior_graph_index: &str,
+) -> Result<(), DedupError> {
+    let graph_data = match class_map.get(behavior_graph_index) {
+        Some(Classes::hkbBehaviorGraphData(g)) => g,
+        _ => {
+            return Err(DedupError::BehaviorGraphDataMissing {
+                index: behavior_graph_index.to_string(),
+            });
+        }
+    };
+    let string_data_index = graph_data.m_stringData.to_static().into_inner();
+    let binding_set_index = graph_data.m_variableInitialValues.to_static().into_inner();
+
+    let string_data = match class_map.get(&string_data_index) {
+        Some(Classes::hkbBehaviorGraphStringData(g)) => g,
+        _ => {
+            return Err(DedupError::BehaviorGraphStringDataMissing {
+                index: string_data_index,
+            });
+        }
+    };
+
+    let binding_set = match class_map.get(&binding_set_index) {
+        Some(Classes::hkbVariableValueSet(g)) => g,
+        _ => {
+            return Err(DedupError::VariableValueSetMissing {
+                index: binding_set_index,
+            });
+        }
+    };
+
+    dedup_len_check(
+        &string_data_index,
+        behavior_graph_index,
+        &binding_set_index,
+        string_data.m_eventNames.len(),
+        graph_data.m_eventInfos.len(),
+        string_data.m_variableNames.len(),
+        graph_data.m_variableInfos.len(),
+        binding_set.m_wordVariableValues.len(),
+    )
+}
+
 /// before dedup
 #[allow(clippy::too_many_arguments)]
 fn dedup_len_check(
