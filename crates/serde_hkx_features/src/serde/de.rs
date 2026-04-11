@@ -21,7 +21,7 @@ pub enum DeError {
     /// {location}: Json Deserialize Error: {source}
     #[cfg(any(feature = "extra_fmt", feature = "json_schema"))]
     Json {
-        source: simd_json::Error,
+        source: sonic_rs::Error,
         #[snafu(implicit)]
         location: snafu::Location,
     },

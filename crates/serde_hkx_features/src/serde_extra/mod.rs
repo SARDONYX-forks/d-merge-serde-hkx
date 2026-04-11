@@ -21,7 +21,7 @@ pub mod ser {
         output_format: Format,
     ) -> Result<Vec<u8>, crate::serde::ser::SerError> {
         let contents = match output_format {
-            Format::Json => simd_json::to_string_pretty(&classes).context(JsonSnafu {})?,
+            Format::Json => sonic_rs::to_string_pretty(&classes).context(JsonSnafu {})?,
             Format::Toml => basic_toml::to_string(&classes).context(TomlSnafu {})?,
             _ => unreachable!(),
         };

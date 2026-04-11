@@ -1,4 +1,7 @@
-use std::io::{self, ErrorKind};
+use std::{
+    borrow::Cow,
+    io::{self, ErrorKind},
+};
 
 use chardetng::{EncodingDetector, Iso2022JpDetection, Utf8Detection};
 
@@ -33,6 +36,30 @@ pub fn decode_to_utf8(input: Vec<u8>) -> io::Result<String> {
         std::borrow::Cow::Borrowed(_s) => unsafe { String::from_utf8_unchecked(input) },
         std::borrow::Cow::Owned(s) => s,
     })
+}
+
+/// Converts an arbitrary byte slice to a UTF-8 `String` using automatic encoding detection.
+///
+/// Supported encodings include UTF-8, Shift_JIS, EUC-JP, ISO-2022-JP, etc.
+/// Returns an `io::Error` if the input is empty or cannot be decoded properly.
+///
+/// # Errors
+/// If input couldn't read.
+pub fn decode_str_to_utf8(input: &[u8]) -> io::Result<Cow<'_, str>> {
+    if input.is_empty() {
+        return Ok(Cow::Borrowed(""));
+    }
+    let mut detector = EncodingDetector::new(Iso2022JpDetection::Allow);
+    detector.feed(input, true);
+    let encoding = detector.guess(Some(b"utf-8"), Utf8Detection::Allow);
+    let (decoded, _, had_errors) = encoding.decode(input);
+    if had_errors {
+        return Err(io::Error::new(
+            ErrorKind::InvalidData,
+            "Failed to decode all characters",
+        ));
+    }
+    Ok(decoded)
 }
 
 #[cfg(test)]

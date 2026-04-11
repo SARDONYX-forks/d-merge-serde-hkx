@@ -236,31 +236,40 @@ fn get_supported_files(input_dir: &Path) -> Vec<PathBuf> {
         .collect()
 }
 
-/// Deserializes HKX/XML/JSON/TOML bytes, applies an update to the in-memory
-/// [`ClassMap`], then serializes back to the requested output format.
+/// Deserializes HKX/XML/JSON/TOML bytes into a [`ClassMap`], then applies one
+/// of two caller-supplied closures depending on the input format, and returns
+/// the result as `T`.
 ///
-/// This is the lower-level building block used by [`process_serde`] and any
-/// caller that needs to mutate the class map between decode and encode steps
-/// (e.g. patching animation annotations).
+/// Two closures are required because XML decoding produces a [`ClassMap`] that
+/// borrows from a locally-owned [`String`], while all other formats borrow
+/// directly from the input `bytes`. Splitting the paths allows the caller to
+/// handle each lifetime separately (e.g. calling [`Hkanno::into_static`] on
+/// the XML path while returning a borrowed [`Hkanno`] on the binary path).
+///
+/// # Arguments
+/// * `bytes`     - Raw input file bytes. Consumed by the function.
+/// * `input`     - Source path used **only** for error context and extension-based format detection; no I/O is performed.
+/// * `on_xml`    - Called when the input format is XML. The [`ClassMap`] borrows from a function-local [`String`].
+/// * `on_other`  - Called for all other formats (HKX, JSON, TOML). The [`ClassMap`] borrows from `bytes`.
 ///
 /// # Returns
-/// A new [`Vec<u8>`] containing the serialized output.
+/// The `T` produced by whichever closure was invoked.
 ///
 /// # Errors
-/// * [`Error::MissingExtension`]        – `input` has no file extension.
-/// * [`Error::UnsupportedExtensionPath`]– The extension is not a recognized format.
-/// * [`Error::De`]                      – Deserialization of the input bytes failed.
-/// * [`Error::Ser`]                     – Serialization of the updated class map failed.
-/// * Any error returned by `update_fn` is propagated as-is.
-pub fn process_serde_with<I, F>(
-    #[allow(unused_mut)] mut bytes: Vec<u8>,
+/// * [`Error::MissingExtension`]         – `input` has no file extension.
+/// * [`Error::UnsupportedExtensionPath`] – The extension is not a recognized format.
+/// * [`Error::De`]                       – Deserialization of the input bytes failed.
+/// * Any error returned by `on_xml` or `on_other` is propagated as-is.
+pub fn process_serde_with<'a, I, F, G, T>(
+    bytes: &'a [u8],
     input: I,
-    output_format: Format,
-    update_fn: F,
-) -> Result<Vec<u8>, Error>
+    on_xml: G,   // ClassMap borrows from local String, must return T directly
+    on_other: F, // ClassMap borrows from bytes ('a), T can carry 'a
+) -> Result<T>
 where
     I: AsRef<Path>,
-    F: for<'c> FnOnce(&mut crate::ClassMap<'c>) -> Result<()>,
+    F: FnOnce(crate::ClassMap<'a>) -> Result<T>,
+    G: FnOnce(crate::ClassMap<'_>) -> Result<T>, // '_ = local String lifetime
 {
     let input = input.as_ref();
     let input_fmt = {
@@ -274,40 +283,26 @@ where
         })?
     };
 
-    let mut classes = match input_fmt {
-        Format::Amd64 | Format::Win32 => serde_hkx::from_bytes(&bytes)
+    let classes = match input_fmt {
+        Format::Amd64 | Format::Win32 => serde_hkx::from_bytes(bytes)
             .context(crate::serde::de::HkxSnafu {})
             .with_context(|_| DeSnafu {
                 input: input.to_path_buf(),
             })?,
         Format::Xml => {
-            let string = auto_charset::decode_to_utf8(bytes)?;
-            let mut classes = serde_hkx::from_str(&string)
+            let string = auto_charset::decode_str_to_utf8(bytes)?;
+            let classes = serde_hkx::from_str(&string)
                 .context(crate::serde::de::XmlSnafu {})
                 .with_context(|_| DeSnafu {
                     input: input.to_path_buf(),
                 })?;
 
-            update_fn(&mut classes)?; // <- apply update before early return
-
-            return match output_format {
-                Format::Amd64 | Format::Win32 | Format::Xml => {
-                    crate::serde::ser::to_bytes(&mut classes, output_format)
-                }
-                #[cfg(feature = "extra_fmt")]
-                Format::Json | Format::Toml => {
-                    let mut classes = crate::types_wrapper::ClassPtrMap::from_class_map(classes);
-                    crate::serde_extra::ser::to_bytes(&mut classes, output_format)
-                }
-            }
-            .with_context(|_| crate::error::SerSnafu {
-                input: input.to_path_buf(),
-            });
+            return on_xml(classes);
         }
         #[cfg(feature = "extra_fmt")]
         Format::Json => {
             use crate::types_wrapper::ClassPtrMap;
-            let classes = simd_json::from_slice::<ClassPtrMap>(&mut bytes)
+            let classes = sonic_rs::from_slice::<ClassPtrMap>(bytes)
                 .context(crate::serde::de::JsonSnafu {})
                 .with_context(|_| crate::error::DeSnafu {
                     input: input.to_path_buf(),
@@ -317,7 +312,7 @@ where
         #[cfg(feature = "extra_fmt")]
         Format::Toml => {
             use crate::types_wrapper::ClassPtrMap;
-            let classes = basic_toml::from_slice::<ClassPtrMap>(&bytes)
+            let classes = basic_toml::from_slice::<ClassPtrMap>(bytes)
                 .context(crate::serde::de::TomlSnafu {})
                 .with_context(|_| crate::error::DeSnafu {
                     input: input.to_path_buf(),
@@ -326,28 +321,7 @@ where
         }
     };
 
-    update_fn(&mut classes)?; // <-- apply update before serialization
-
-    let out_bytes = match output_format {
-        Format::Amd64 | Format::Win32 | Format::Xml => {
-            crate::serde::ser::to_bytes(&mut classes, output_format).with_context(|_| {
-                crate::error::SerSnafu {
-                    input: input.to_path_buf(),
-                }
-            })?
-        }
-        #[cfg(feature = "extra_fmt")]
-        Format::Json | Format::Toml => {
-            let mut classes = crate::types_wrapper::ClassPtrMap::from_class_map(classes);
-            crate::serde_extra::ser::to_bytes(&mut classes, output_format).with_context(|_| {
-                crate::error::SerSnafu {
-                    input: input.to_path_buf(),
-                }
-            })?
-        }
-    };
-
-    Ok(out_bytes)
+    on_other(classes)
 }
 
 /// bytes(input) -> output_format
@@ -359,5 +333,47 @@ pub(crate) fn process_serde<I>(
 where
     I: AsRef<Path>,
 {
-    process_serde_with(bytes, input, output_format, |_| Ok(()))
+    let input = input.as_ref();
+
+    process_serde_with(
+        &bytes,
+        input,
+        |mut classes| {
+            match output_format {
+                Format::Amd64 | Format::Win32 | Format::Xml => {
+                    crate::serde::ser::to_bytes(&mut classes, output_format)
+                }
+                #[cfg(feature = "extra_fmt")]
+                Format::Json | Format::Toml => {
+                    let mut classes = crate::types_wrapper::ClassPtrMap::from_class_map(classes);
+                    crate::serde_extra::ser::to_bytes(&mut classes, output_format)
+                }
+            }
+            .with_context(|_| crate::error::SerSnafu {
+                input: input.to_path_buf(),
+            })
+        },
+        |mut classes| {
+            let bytes = match output_format {
+                Format::Amd64 | Format::Win32 | Format::Xml => {
+                    crate::serde::ser::to_bytes(&mut classes, output_format).with_context(|_| {
+                        crate::error::SerSnafu {
+                            input: input.to_path_buf(),
+                        }
+                    })?
+                }
+                #[cfg(feature = "extra_fmt")]
+                Format::Json | Format::Toml => {
+                    let mut classes = crate::types_wrapper::ClassPtrMap::from_class_map(classes);
+                    crate::serde_extra::ser::to_bytes(&mut classes, output_format).with_context(
+                        |_| crate::error::SerSnafu {
+                            input: input.to_path_buf(),
+                        },
+                    )?
+                }
+            };
+
+            Ok(bytes)
+        },
+    )
 }

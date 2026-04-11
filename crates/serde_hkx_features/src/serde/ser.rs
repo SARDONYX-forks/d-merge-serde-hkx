@@ -29,7 +29,7 @@ pub fn to_bytes(classes: &mut ClassMap<'_>, output_format: Format) -> Result<Vec
         #[cfg(feature = "extra_fmt")]
         Format::Json => {
             classes.sort_for_bytes();
-            let json = simd_json::to_string_pretty(&classes).context(JsonSnafu {})?;
+            let json = sonic_rs::to_string_pretty(&classes).context(JsonSnafu {})?;
             Ok(json.into_bytes())
         }
         #[cfg(feature = "extra_fmt")]
@@ -62,7 +62,7 @@ pub enum SerError {
     /// {location}: Json Serialize Error: {source}
     #[cfg(any(feature = "extra_fmt", feature = "json_schema"))]
     Json {
-        source: simd_json::Error,
+        source: sonic_rs::Error,
         #[snafu(implicit)]
         location: snafu::Location,
     },

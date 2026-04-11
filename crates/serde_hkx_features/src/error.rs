@@ -108,7 +108,7 @@ pub enum Error {
     // Extra formats
     #[cfg(feature = "json_schema")]
     #[snafu(transparent)]
-    JsonError { source: simd_json::Error },
+    JsonError { source: sonic_rs::Error },
 }
 
 /// `Result` for `serde_hkx_features` crate.
