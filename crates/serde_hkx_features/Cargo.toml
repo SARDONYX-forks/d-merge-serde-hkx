@@ -44,7 +44,7 @@ serde_hkx = { workspace = true, features = ["tracing"] }
 tracing = { workspace = true }
 
 [features]
-default = ["serde_default", "extra_fmt"] # For debug
+# default = ["serde_default", "extra_fmt"] # For debug
 # default = ["json_schema"] # For debug
 
 # `derive(clap::ValueEnum)` For `OutFormat`
