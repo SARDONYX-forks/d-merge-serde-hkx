@@ -236,17 +236,33 @@ fn get_supported_files(input_dir: &Path) -> Vec<PathBuf> {
         .collect()
 }
 
-/// bytes(input) -> output_format
-pub(crate) fn process_serde<I>(
-    #[allow(unused_mut)] mut bytes: Vec<u8>, // need mut for `extra_fmt` feature
+/// Deserializes HKX/XML/JSON/TOML bytes, applies an update to the in-memory
+/// [`ClassMap`], then serializes back to the requested output format.
+///
+/// This is the lower-level building block used by [`process_serde`] and any
+/// caller that needs to mutate the class map between decode and encode steps
+/// (e.g. patching animation annotations).
+///
+/// # Returns
+/// A new [`Vec<u8>`] containing the serialized output.
+///
+/// # Errors
+/// * [`Error::MissingExtension`]        – `input` has no file extension.
+/// * [`Error::UnsupportedExtensionPath`]– The extension is not a recognized format.
+/// * [`Error::De`]                      – Deserialization of the input bytes failed.
+/// * [`Error::Ser`]                     – Serialization of the updated class map failed.
+/// * Any error returned by `update_fn` is propagated as-is.
+pub fn process_serde_with<I, F>(
+    #[allow(unused_mut)] mut bytes: Vec<u8>,
     input: I,
     output_format: Format,
-) -> Result<Vec<u8>>
+    update_fn: F,
+) -> Result<Vec<u8>, Error>
 where
     I: AsRef<Path>,
+    F: FnOnce(&mut crate::ClassMap<'_>) -> Result<(), Error>,
 {
     let input = input.as_ref();
-
     let input_fmt = {
         let Some(input_ext) = input.extension() else {
             return Err(Error::MissingExtension {
@@ -258,7 +274,6 @@ where
         })?
     };
 
-    // Deserialize
     let mut classes = match input_fmt {
         Format::Amd64 | Format::Win32 => serde_hkx::from_bytes(&bytes)
             .context(crate::serde::de::HkxSnafu {})
@@ -273,11 +288,12 @@ where
                     input: input.to_path_buf(),
                 })?;
 
+            update_fn(&mut classes)?; // <-- apply update before early return
+
             return match output_format {
                 Format::Amd64 | Format::Win32 | Format::Xml => {
                     crate::serde::ser::to_bytes(&mut classes, output_format)
                 }
-
                 #[cfg(feature = "extra_fmt")]
                 Format::Json | Format::Toml => {
                     let mut classes = crate::types_wrapper::ClassPtrMap::from_class_map(classes);
@@ -288,11 +304,9 @@ where
                 input: input.to_path_buf(),
             });
         }
-
         #[cfg(feature = "extra_fmt")]
         Format::Json => {
             use crate::types_wrapper::ClassPtrMap;
-
             let classes = simd_json::from_slice::<ClassPtrMap>(&mut bytes)
                 .context(crate::serde::de::JsonSnafu {})
                 .with_context(|_| crate::error::DeSnafu {
@@ -303,7 +317,6 @@ where
         #[cfg(feature = "extra_fmt")]
         Format::Toml => {
             use crate::types_wrapper::ClassPtrMap;
-
             let classes = basic_toml::from_slice::<ClassPtrMap>(&bytes)
                 .context(crate::serde::de::TomlSnafu {})
                 .with_context(|_| crate::error::DeSnafu {
@@ -313,7 +326,8 @@ where
         }
     };
 
-    // Serialize
+    update_fn(&mut classes)?; // <-- apply update before serialization
+
     let out_bytes = match output_format {
         Format::Amd64 | Format::Win32 | Format::Xml => {
             crate::serde::ser::to_bytes(&mut classes, output_format).with_context(|_| {
@@ -334,4 +348,16 @@ where
     };
 
     Ok(out_bytes)
+}
+
+/// bytes(input) -> output_format
+pub(crate) fn process_serde<I>(
+    #[allow(unused_mut)] mut bytes: Vec<u8>, // need mut for `extra_fmt` feature
+    input: I,
+    output_format: Format,
+) -> Result<Vec<u8>, Error>
+where
+    I: AsRef<Path>,
+{
+    process_serde_with(bytes, input, output_format, |_| Ok(()))
 }
