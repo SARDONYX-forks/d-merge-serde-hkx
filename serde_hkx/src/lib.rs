@@ -17,13 +17,15 @@ mod lib {
     }
 
     pub use self::core::f32;
-    pub use self::core::fmt;
     pub use self::core::fmt::Display;
     pub use self::core::ops::Range;
     pub use self::core::str;
     pub use self::core::str::FromStr;
 
     pub use std::string::{String, ToString};
+
+    #[cfg(test)]
+    pub use self::core::fmt;
 }
 
 /// Avoiding type inference by the compiler, such as `?` and `into`, can speed up compile

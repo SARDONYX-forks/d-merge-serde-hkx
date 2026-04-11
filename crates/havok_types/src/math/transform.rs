@@ -36,7 +36,7 @@ pub struct Transform {
     pub transition: Vector4,
 }
 
-static_assertions::assert_eq_size!(Transform, [u8; 64]);
+const _: () = assert!(core::mem::size_of::<Transform>() == 64);
 
 impl Transform {
     /// Create a new `Transform`

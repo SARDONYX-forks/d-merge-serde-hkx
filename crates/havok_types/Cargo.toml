@@ -20,7 +20,6 @@ parse-display = { workspace = true }               # Display derive
 schemars = { workspace = true, optional = true }
 serde = { workspace = true, optional = true }      # Implement (De)Serializer
 serde_with = { workspace = true, optional = true }
-static_assertions = { workspace = true }
 winnow = { workspace = true }
 
 [dev-dependencies]

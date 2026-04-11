@@ -18,10 +18,7 @@ use self::parser::{
     },
 };
 use self::seq::SeqDeserializer;
-use crate::errors::{
-    de::{Error, Result},
-    readable::ReadableError,
-};
+use crate::errors::de::{Error, Result};
 use havok_serde::de::{self, Deserialize, ReadEnumSize, Visitor};
 use havok_types::*;
 use parser::tag::{class_start_tag, start_tag};
@@ -29,6 +26,7 @@ use winnow::Parser;
 use winnow::ascii::{dec_int, dec_uint};
 use winnow::combinator::opt;
 use winnow::error::{ContextError, ErrMode};
+use winnow_ext::ReadableError;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

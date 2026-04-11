@@ -210,7 +210,7 @@ fn radix_digits(input: &mut &str) -> ModalResult<usize> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::errors::readable::ReadableError;
+    use winnow_ext::ReadableError;
 
     #[test]
     fn test_radix_digits() {

@@ -56,7 +56,7 @@ pub struct Rotation {
     pub z: Vector4,
 }
 
-static_assertions::assert_eq_size!(Rotation, [u8; 48]);
+const _: () = assert!(core::mem::size_of::<Rotation>() == 48);
 
 impl Rotation {
     /// Creates a new `Rotation`
