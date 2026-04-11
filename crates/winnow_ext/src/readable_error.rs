@@ -1,11 +1,5 @@
-// SPDX-License-Identifier: MIT
-//! HexDump Display(For binary)/XML human-readable error message
-//! This code is a fork of winnow's docs.
-//!
-//! # Ref
-//! - [MIT License](https://github.com/winnow-rs/winnow/blob/v0.7.10/LICENSE-MIT)
-//! - [Code](https://github.com/winnow-rs/winnow/blob/v0.7.10/src/error.rs#L1316)
-use crate::lib::*;
+use core::{fmt, ops::Range};
+
 use winnow::error::{ContextError, ErrMode, ParseError, StrContext};
 
 /// Error struct to represent parsing errors in a more user-friendly way.
@@ -79,8 +73,8 @@ impl ReadableError {
     #[inline]
     pub fn from_display<T, U>(message: T, input: U, err_pos: usize) -> Self
     where
-        T: core::fmt::Display,
-        U: core::fmt::Display,
+        T: fmt::Display,
+        U: fmt::Display,
     {
         let input = input.to_string();
         let span = char_boundary(input.as_bytes(), err_pos);
@@ -96,17 +90,19 @@ impl ReadableError {
 
 impl fmt::Display for ReadableError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        let message = annotate_snippets::Level::Error.title(&self.title).snippet(
-            annotate_snippets::Snippet::source(&self.input)
-                .fold(true)
-                .annotation(
-                    annotate_snippets::Level::Error
-                        .span(self.span.clone())
-                        .label(&self.message),
-                ),
-        );
-        let renderer = annotate_snippets::Renderer::plain();
-        let rendered = renderer.render(message);
+        let report = &[annotate_snippets::Level::ERROR
+            .primary_title(&self.title)
+            .element(
+                annotate_snippets::Snippet::source(&self.input)
+                    .fold(true)
+                    .annotation(
+                        annotate_snippets::AnnotationKind::Context
+                            .span(self.span.clone())
+                            .label(&self.message),
+                    ),
+            )];
+
+        let rendered = annotate_snippets::Renderer::plain().render(report);
         rendered.fmt(f)
     }
 }

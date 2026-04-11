@@ -56,7 +56,7 @@ pub struct Matrix3 {
     pub z: Vector4,
 }
 
-static_assertions::assert_eq_size!(Matrix3, [u8; 48]);
+const _: () = assert!(core::mem::size_of::<Matrix3>() == 48);
 
 impl Matrix3 {
     /// Creates a new `Matrix3`

@@ -54,7 +54,7 @@ impl Default for XmlSerializer {
 /// # Errors
 /// serde(fork version) Error defined on crate's trace definition, but will not fail due to mere XML stringing.
 #[inline]
-pub fn to_string<T>(value: &T, top_ptr: &Pointer<'_>) -> Result<String>
+pub fn to_string<T>(value: &T, top_ptr: &Pointer<'_>) -> Result<String, Error>
 where
     T: Serialize,
 {

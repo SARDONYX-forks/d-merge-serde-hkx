@@ -52,7 +52,7 @@ jobs:
             }
     runs-on: ${{ matrix.job.os }}
     steps:
-      - uses: actions/checkout@v4.2.2
+      - uses: actions/checkout@v6
 
       - name: Build and Compress
         uses: ./.github/actions/build-and-compress
@@ -64,7 +64,7 @@ jobs:
           features: ${{ matrix.job.features }}
 
       - name: Release
-        uses: ncipollo/release-action@v1.16.0
+        uses: ncipollo/release-action@v1.21.0
         with:
           allowUpdates: true
           artifacts: ${{ matrix.job.asset }}

@@ -21,15 +21,13 @@ use self::parser::{
 use self::seq::SeqDeserializer;
 use super::hexdump::{self, to_hexdump_pos};
 use super::serde::{hkx_header::HkxHeader, section_header::SectionHeader};
-use crate::errors::{
-    de::{Error, Result},
-    readable::ReadableError,
-};
+use crate::errors::de::{Error, Result};
 use havok_serde::de::{self, Deserialize, ReadEnumSize, Visitor};
 use havok_types::*;
 use winnow::binary::Endianness;
 use winnow::error::{ContextError, ErrMode, StrContext, StrContextValue};
 use winnow::{Parser, binary};
+use winnow_ext::ReadableError;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -38,7 +38,7 @@ pub struct Quaternion {
     pub scaler: f32,
 }
 
-static_assertions::assert_eq_size!(Quaternion, [u8; 16]);
+const _: () = assert!(core::mem::size_of::<Quaternion>() == 16);
 
 impl Quaternion {
     /// Creates a new `Quaternion`

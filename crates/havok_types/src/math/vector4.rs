@@ -49,7 +49,8 @@ pub struct Vector4 {
     pub w: f32,
 }
 
-static_assertions::assert_eq_size!(Vector4, [u8; 16]);
+const _: () = assert!(core::mem::size_of::<Vector4>() == 16);
+const _: () = assert!(core::mem::align_of::<Vector4>() == 16); // Vector4 must be 16bytes(16 * 8 = 128bit) align.
 
 impl Vector4 {
     /// Creates a new `Vector4`
@@ -101,9 +102,6 @@ impl Vector4 {
         }
     }
 }
-
-static_assertions::assert_eq_size!(Vector4, [u8; 16]); // Vector4 must be 16bytes size.
-static_assertions::assert_eq_align!(Vector4, u128); // Vector4 must be 16bytes(16 * 8 = 128bit) align.
 
 #[cfg(test)]
 mod tests {

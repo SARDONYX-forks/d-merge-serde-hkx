@@ -16,7 +16,6 @@ rust-version.workspace = true
 
 [dependencies]
 clap = { workspace = true, optional = true }          # For CLI
-encoding_rs_io = "0.1.7"                              # Read any string
 indexmap = { workspace = true, features = ["rayon"] } # Ordering HashMap
 jwalk = { workspace = true }                          # To enumerate json class files
 parse-display = { workspace = true }                  # Display derive
@@ -32,6 +31,7 @@ serde = { workspace = true, optional = true }
 simd-json = { version = "0.17.0", optional = true }
 
 # workspace members
+auto_charset = { workspace = true }
 diff = { workspace = true }                                            # Create diff
 havok_serde = { workspace = true }
 havok_classes = { workspace = true, features = ["ignore_duplicates"] }

@@ -80,7 +80,7 @@ pub struct SectionHeader {
     /// - The `exports`, `imports` and `end` offsets are all the same value.
     pub end_offset: u32,
 }
-static_assertions::assert_eq_size!(SectionHeader, [u8; 48]); // Must be 48bytes.
+const _: () = assert!(core::mem::size_of::<SectionHeader>() == 48);
 
 impl SectionHeader {
     /// `*b"__data__\0\0\0\0\0\0\0\0\0\0\0"`
