@@ -260,7 +260,7 @@ pub fn process_serde_with<I, F>(
 ) -> Result<Vec<u8>, Error>
 where
     I: AsRef<Path>,
-    F: FnOnce(crate::ClassMap<'_>) -> Result<crate::ClassMap<'_>, Error>,
+    F: for<'c> FnOnce(&mut crate::ClassMap<'c>) -> Result<()>,
 {
     let input = input.as_ref();
     let input_fmt = {
@@ -274,7 +274,7 @@ where
         })?
     };
 
-    let classes = match input_fmt {
+    let mut classes = match input_fmt {
         Format::Amd64 | Format::Win32 => serde_hkx::from_bytes(&bytes)
             .context(crate::serde::de::HkxSnafu {})
             .with_context(|_| DeSnafu {
@@ -282,13 +282,13 @@ where
             })?,
         Format::Xml => {
             let string = auto_charset::decode_to_utf8(bytes)?;
-            let classes = serde_hkx::from_str(&string)
+            let mut classes = serde_hkx::from_str(&string)
                 .context(crate::serde::de::XmlSnafu {})
                 .with_context(|_| DeSnafu {
                     input: input.to_path_buf(),
                 })?;
 
-            let mut classes = update_fn(classes)?; // <- apply update before early return
+            update_fn(&mut classes)?; // <- apply update before early return
 
             return match output_format {
                 Format::Amd64 | Format::Win32 | Format::Xml => {
@@ -326,7 +326,7 @@ where
         }
     };
 
-    let mut classes = update_fn(classes)?; // <-- apply update before serialization
+    update_fn(&mut classes)?; // <-- apply update before serialization
 
     let out_bytes = match output_format {
         Format::Amd64 | Format::Win32 | Format::Xml => {
@@ -359,5 +359,5 @@ pub(crate) fn process_serde<I>(
 where
     I: AsRef<Path>,
 {
-    process_serde_with(bytes, input, output_format, |t| Ok(t))
+    process_serde_with(bytes, input, output_format, |_| Ok(()))
 }
