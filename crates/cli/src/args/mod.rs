@@ -25,7 +25,7 @@ pub(crate) async fn run(args: Args) -> Result<()> {
 
     // For drag & drop
     if let Some(input) = args.input {
-        let out_fmt = Format::from_current_format(&input)?;
+        let out_fmt = Format::infer_output_from_input(&input)?;
         let output: Option<PathBuf> = None;
         return tokio_convert(input, output, out_fmt).await;
     }

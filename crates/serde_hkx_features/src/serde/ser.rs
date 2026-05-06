@@ -12,14 +12,8 @@ use snafu::ResultExt as _;
 /// See `serde_hkx::errors::ser::Error` for possible errors that may occur.
 pub fn to_bytes(classes: &mut ClassMap<'_>, output_format: Format) -> Result<Vec<u8>, SerError> {
     match output_format {
-        Format::Win32 => {
-            classes.sort_for_bytes();
-            serde_hkx::to_bytes(classes, &HkxHeader::new_skyrim_le()).context(HkxSnafu {})
-        }
-        Format::Amd64 => {
-            classes.sort_for_bytes();
-            serde_hkx::to_bytes(classes, &HkxHeader::new_skyrim_se()).context(HkxSnafu {})
-        }
+        Format::Win32 => to_bytes_inner(classes, &HkxHeader::new_skyrim_le()),
+        Format::Amd64 => to_bytes_inner(classes, &HkxHeader::new_skyrim_se()),
         Format::Xml => {
             let top_ptr = classes.sort_for_xml().context(XmlSnafu {})?;
             let xml = serde_hkx::to_string(classes, &top_ptr).context(XmlSnafu {})?;
@@ -74,4 +68,40 @@ pub enum SerError {
         #[snafu(implicit)]
         location: snafu::Location,
     },
+}
+
+fn find_behavior_graph_index<'a>(class_map: &'a crate::ClassMap<'a>) -> Option<&'a str> {
+    use ::rayon::prelude::*;
+    let results: Vec<_> = class_map
+        .par_iter()
+        .filter(|(_, class)| matches!(class, havok_classes::Classes::hkbBehaviorGraphData(_)))
+        .map(|(key, _)| key)
+        .collect();
+
+    match results.len() {
+        1 => Some(results[0]),
+        _ => None,
+    }
+}
+
+fn to_bytes_inner<'a>(classes: &mut ClassMap<'a>, header: &HkxHeader) -> Result<Vec<u8>, SerError> {
+    classes.sort_for_bytes();
+
+    let (event_id_map, variable_id_map) = find_behavior_graph_index(classes)
+        .and_then(|idx| {
+            #[cfg(feature = "tracing")]
+            tracing::info!("Found hkbBehaviorGraphData({idx}). Creating id maps...");
+            let (event_id_map, variable_id_map) = crate::id_maker::create_maps(classes, idx)?;
+
+            #[cfg(feature = "tracing")]
+            {
+                tracing::debug!("event_id_map={event_id_map:#?}");
+                tracing::debug!("variable_id_map={variable_id_map:#?}");
+            }
+            Some((event_id_map, variable_id_map))
+        })
+        .unwrap_or_default();
+
+    serde_hkx::to_bytes_with_maps(classes, header, event_id_map, variable_id_map)
+        .context(HkxSnafu {})
 }

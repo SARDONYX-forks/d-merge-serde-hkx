@@ -16,9 +16,9 @@ rust-version.workspace = true
 
 [dependencies]
 clap = { workspace = true } # For CLI
-clap_complete_command = "0.6.1" # Generate auto complition
+clap_complete_command = "0.6.1" # Generate auto completion
 color-print = { workspace = true } # To color example help
-indicatif = { version = "0.18.4", features = ["rayon"] } # CLI progress bar
+indicatif = { version = "0.18.0", features = ["rayon"] } # CLI progress bar
 parse-display = { workspace = true } # Display derive
 tokio = { workspace = true, features = [
   "macros",
@@ -30,7 +30,6 @@ tracing = { workspace = true }
 tracing-subscriber = "0.3.23"
 
 # workspace members
-diff = { workspace = true }
 serde_hkx_features = { workspace = true, features = ["clap", "tracing"] }
 
 [build-dependencies]

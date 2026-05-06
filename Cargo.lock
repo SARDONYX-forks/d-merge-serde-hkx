@@ -847,7 +847,6 @@ dependencies = [
  "clap",
  "clap_complete_command",
  "color-print",
- "diff 0.9.0",
  "ico",
  "indicatif",
  "parse-display",
