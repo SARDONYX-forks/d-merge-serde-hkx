@@ -1,6 +1,11 @@
 //! Show dependency tree from havok behavior state machine (hkx/xml file)
-use crate::{error::Error, fs::ReadExt as _};
+use crate::{
+    error::{Error, SerSnafu},
+    fs::ReadExt as _,
+    serde::ser::HkxSnafu,
+};
 use serde_hkx::tree::HavokTree as _;
+use snafu::ResultExt;
 use std::path::Path;
 use tokio::fs;
 
@@ -31,11 +36,21 @@ pub async fn generate<P>(input: P) -> Result<String, Error>
 where
     P: AsRef<Path>,
 {
+    let input = input.as_ref();
+
     let bytes = input.read_bytes().await?;
     crate::convert::process_serde_with(
         &bytes,
         input,
-        |mut c| Ok(c.tree_for_bytes()),
-        |mut c| Ok(c.tree_for_bytes()),
+        |mut c| {
+            c.tree_for_bytes()
+                .with_context(|_| HkxSnafu {})
+                .with_context(|_| SerSnafu { input })
+        },
+        |mut c| {
+            c.tree_for_bytes()
+                .with_context(|_| HkxSnafu {})
+                .with_context(|_| SerSnafu { input })
+        },
     )
 }

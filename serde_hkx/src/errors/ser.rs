@@ -1,4 +1,5 @@
 //! Serialize error
+
 use crate::lib::*;
 use havok_types::Pointer;
 
@@ -112,6 +113,21 @@ pub enum Error {
     UnexpectedCyclicSort {
         #[snafu(implicit)]
         location: snafu::Location,
+    },
+
+    /// Expected exactly one hkRootLevelContainer class as the root of the tree, but none was found.
+    MissingRootClass,
+
+    /// A cyclic reference was detected in the dependency graph.
+    ///
+    /// HKX state machines are acyclic, and the binary serialization format relies
+    /// on references being non-cyclic. Cycles cannot be serialized correctly.
+    #[snafu(display(
+        "A cyclic reference was detected in the dependency graph: {cycle:?}; hkx serialization requires acyclic references"
+    ))]
+    CycleDetected {
+        /// Pointer forming the cycle.
+        cycle: Vec<Pointer<'static>>,
     },
 }
 

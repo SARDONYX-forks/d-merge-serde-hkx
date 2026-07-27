@@ -49,7 +49,7 @@ where
     } else if input.is_file() {
         convert_file(input, output, format).await?;
     } else {
-        return Err(io::Error::new(
+        Err(io::Error::new(
             io::ErrorKind::NotFound,
             format!("The path does not exist: {}", input.display()),
         ))?;

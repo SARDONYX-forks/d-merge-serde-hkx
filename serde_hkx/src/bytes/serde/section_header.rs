@@ -224,22 +224,22 @@ impl Display for SectionHeader {
             f,
             r#"
           section tag: {section_tag}
-section tag separator: {section_tag_separator:#02x}
+section tag separator: {section_tag_separator:#x}
 
 Offsets:
-  absolute data start: {absolute_data_start:#02x}
-         local fixups: {local_fixups_offset:#02x}
-        global fixups: {global_fixups_offset:#02x}
-       virtual fixups: {virtual_fixups_offset:#02x}
-              exports: {exports_offset:#02x}
-              imports; {imports_offset:#02x}
-                  end: {end_offset:#02x}
-        abs +   local: {l_offset:#02x}
-        abs +  global: {g_offset:#02x}
-        abs + virtual: {v_offset:#02x}
-        abs + exports: {e_offset:#02x}
-        abs + imports: {i_offset:#02x}
-        abs +     end: {end_off:#02x}
+  absolute data start: {absolute_data_start:#x}
+         local fixups: {local_fixups_offset:#x}
+        global fixups: {global_fixups_offset:#x}
+       virtual fixups: {virtual_fixups_offset:#x}
+              exports: {exports_offset:#x}
+              imports; {imports_offset:#x}
+                  end: {end_offset:#x}
+        abs +   local: {l_offset:#x}
+        abs +  global: {g_offset:#x}
+        abs + virtual: {v_offset:#x}
+        abs + exports: {e_offset:#x}
+        abs + imports: {i_offset:#x}
+        abs +     end: {end_off:#x}
 "#
         )
     }
