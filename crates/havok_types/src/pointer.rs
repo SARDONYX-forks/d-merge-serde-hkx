@@ -7,7 +7,6 @@
 //! - `#0457`
 //! - `#0007`
 use crate::lib::*;
-use parse_display::Display;
 
 /// Havok C++ Class unique number.
 ///
@@ -30,11 +29,16 @@ use parse_display::Display;
 )]
 #[cfg_attr(feature = "serde", serde(transparent))]
 #[repr(transparent)]
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Display)]
-#[display("{0}")]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct Pointer<'a>(
     #[cfg_attr(feature = "json_schema", schemars(with = "String"))] Cow<'a, str>,
 );
+
+impl core::fmt::Display for Pointer<'_> {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        write!(f, "{}", self.0)
+    }
+}
 
 impl Default for Pointer<'_> {
     #[inline]

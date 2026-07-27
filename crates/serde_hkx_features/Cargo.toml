@@ -18,7 +18,6 @@ rust-version.workspace = true
 clap = { workspace = true, optional = true }          # For CLI
 indexmap = { workspace = true, features = ["rayon"] } # Ordering HashMap
 jwalk = { workspace = true }                          # To enumerate json class files
-parse-display = { workspace = true }                  # Display derive
 rayon = { workspace = true }                          # Parallel
 snafu = { workspace = true }                          # Define all error patterns(with backtrace)
 tokio = { workspace = true, features = ["fs", "rt"] }

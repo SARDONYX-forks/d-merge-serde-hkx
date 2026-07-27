@@ -262,6 +262,7 @@ mod tests {
 
         let tree = classes.tree_for_bytes().unwrap();
 
+        // std::fs::write("../target/tree.log", &tree).unwrap();
         tracing::debug!("tree =\n{tree}");
     }
 

@@ -19,7 +19,6 @@ clap = { workspace = true } # For CLI
 clap_complete_command = "0.6.1" # Generate auto completion
 color-print = { workspace = true } # To color example help
 indicatif = { version = "0.18.4", features = ["rayon"] } # CLI progress bar
-parse-display = { workspace = true } # Display derive
 tokio = { workspace = true, features = [
   "macros",
   "rt",
