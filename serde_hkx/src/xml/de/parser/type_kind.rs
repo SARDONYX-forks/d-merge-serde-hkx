@@ -6,49 +6,50 @@ use super::delimited_with_multispace0;
 use havok_types::*;
 use std::borrow::Cow;
 use winnow::ascii::{Caseless, float, multispace0};
-use winnow::combinator::{alt, delimited, opt, seq};
+use winnow::combinator::{alt, delimited, fail, opt, seq};
 use winnow::error::{StrContext, StrContextValue};
 use winnow::token::{take_until, take_while};
 use winnow::{ModalResult, Parser};
 
-/// Defined by `havok_types`.
-/// For example, `I8::try_from()` parses a numeric value,
-/// an event ID, or a variable ID.
-///
-/// # Examples
-///
-/// ```
-/// use havok_types::I8;
-/// use serde_hkx::xml::de::parser::type_kind::number;
-/// use winnow::Parser as _;
-///
-/// assert_eq!(number::<I8>.parse("42"), Ok(I8::Number(42)));
-/// assert_eq!(number::<I8>.parse("-10"), Ok(I8::Number(-10)));
-///
-/// assert_eq!(
-///     number::<I8>.parse("$eventID[Start]$"),
-///     Ok(I8::EventId("Start".into()))
-/// );
-///
-/// assert_eq!(
-///     number::<I8>.parse("$variableID[Health]$"),
-///     Ok(I8::VariableId("Health".into()))
-/// );
-///
-/// assert!(number::<I8>.parse("invalid").is_err());
-/// ```
-///
-/// # Errors
-///
-/// When the input is not a valid number, event ID, or variable ID.
-pub fn number<'a, T: TryFrom<&'a str>>(s: &mut &'a str) -> winnow::ModalResult<T> {
-    s.verify_map(|s| T::try_from(s).ok())
-        .context(StrContext::Label("bool"))
-        .context(StrContext::Expected(StrContextValue::Description(
-            "number, event ID(e.g. `$eventID[sampleEventName]$`), or variable ID(e.g. `$variableID[sampleName]$`)",
-        )))
-    .parse_next(s)
+fn signed_number<'a, T>(input: &mut &'a str) -> ModalResult<T>
+where
+    T: havok_types::parse_int::ParseNumber + 'a,
+{
+    (opt(alt(('-', '+'))), winnow::ascii::digit1)
+        .take()
+        .verify_map(|s| <T as havok_types::parse_int::ParseNumber>::parse(s).ok())
+        .parse_next(input)
 }
+
+macro_rules! create_parser {
+    ($name:ident, $enum:ident, $type:ty) => {
+        /// parses a numeric value, an event ID, or a variable ID.
+        ///
+        /// # Errors
+        /// When the input is not a valid number, event ID, or variable ID.
+        pub fn $name<'a>(input: &mut &'a str) -> winnow::ModalResult<$enum<'a>> {
+            alt((
+                signed_number.map($enum::Number),
+                event_id.map(|n| $enum::EventId(n.into())),
+                variable_id.map(|n| $enum::VariableId(n.into())),
+                fail.context(StrContext::Expected(StrContextValue::Description(
+                    concat!(stringify!($enum), ", event ID(e.g. `$eventID[sampleEventName]$`), or variable ID(e.g. `$variableID[sampleName]$`)"),
+                )
+            ))))
+            .context(StrContext::Label(stringify!($enum)))
+            .parse_next(input)
+        }
+    };
+}
+
+create_parser!(int8, I8, i8);
+create_parser!(int16, I16, i16);
+create_parser!(int32, I32, i32);
+create_parser!(int64, I64, i64);
+create_parser!(uint8, U8, u8);
+create_parser!(uint16, U16, u16);
+create_parser!(uint32, U32, u32);
+create_parser!(uint64, U64, u64);
 
 /// Parses [`bool`]. `true` or `false`
 /// - The corresponding type kind: `Bool`
@@ -532,6 +533,40 @@ pub fn vector3(input: &mut &str) -> ModalResult<Vector4> {
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;
+
+    #[test]
+    fn test_int8_number() {
+        assert_eq!(int8.parse("42"), Ok(I8::Number(42)));
+        assert_eq!(int8.parse("-10"), Ok(I8::Number(-10)));
+        assert_eq!(int8.parse("+10"), Ok(I8::Number(10)));
+    }
+
+    #[test]
+    fn test_int8_event_id() {
+        assert_eq!(
+            int8.parse("$eventID[Start]$"),
+            Ok(I8::EventId("Start".into()))
+        );
+    }
+
+    #[test]
+    fn test_int8_variable_id() {
+        assert_eq!(
+            int8.parse("$variableID[Health]$"),
+            Ok(I8::VariableId("Health".into()))
+        );
+    }
+
+    #[test]
+    fn test_int8_invalid() {
+        assert!(int8.parse("invalid").is_err());
+    }
+
+    #[test]
+    fn test_int8_vec_like_input() {
+        let mut input = "-10 1 2";
+        assert_eq!(int8.parse_next(&mut input), Ok(I8::Number(-10)));
+    }
 
     #[test]
     fn test_matrix3() {

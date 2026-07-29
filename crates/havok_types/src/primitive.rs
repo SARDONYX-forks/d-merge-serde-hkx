@@ -11,7 +11,7 @@ use winnow::{
 ///
 /// # Errors
 /// If not found `$eventID[` `]$`
-fn event_id<'a>(input: &mut &'a str) -> ModalResult<&'a str> {
+pub fn event_id<'a>(input: &mut &'a str) -> ModalResult<&'a str> {
     delimited(Caseless("$eventID["), take_until(0.., "]$"), "]$")
         .context(Expected(Description(
             "eventID(e.g. `$eventID[sampleEventName]$`)",
@@ -23,7 +23,7 @@ fn event_id<'a>(input: &mut &'a str) -> ModalResult<&'a str> {
 ///
 /// # Errors
 /// If not found `$variableID[` `]$`
-fn variable_id<'a>(input: &mut &'a str) -> ModalResult<&'a str> {
+pub fn variable_id<'a>(input: &mut &'a str) -> ModalResult<&'a str> {
     delimited(Caseless("$variableID["), take_until(0.., "]$"), "]$")
         .context(Expected(Description(
             "variableID(e.g. `$variableID[sampleName]$`)",
@@ -65,6 +65,23 @@ macro_rules! create_enum {
                             alt((
                                 event_id.map(|n| Self::EventId(n.into())),
                                 variable_id.map(|n| Self::VariableId(n.into())),
+                            ))
+                            .parse(s)
+                            .map_err(|_| format!("Expected number/`$eventID[IdName]$`/`$variableID[IdName]$`. but got invalid string: {s}")) }
+                    }
+                }
+            }
+
+            impl core::str::FromStr for $name<'_> {
+                type Err = String;
+
+                fn from_str(s: &str) -> Result<Self, Self::Err> {
+                    match <$type as crate::parse_int::ParseNumber>::parse(s) {
+                        Ok(value) => return Ok(Self::Number(value)),
+                        Err(_) => {
+                            alt((
+                                event_id.map(|n| Self::EventId(n.to_string().into())),
+                                variable_id.map(|n| Self::VariableId(n.to_string().into())),
                             ))
                             .parse(s)
                             .map_err(|_| format!("Expected number/`$eventID[IdName]$`/`$variableID[IdName]$`. but got invalid string: {s}")) }
@@ -184,12 +201,15 @@ create_enum! [
 
 #[cfg(test)]
 mod tests {
+    use core::str::FromStr;
+
     use super::*;
 
     #[test]
     fn test_from_str_number() {
         assert_eq!(U32::try_from("42"), Ok(U32::Number(42)));
         assert_eq!(I16::try_from("-10"), Ok(I16::Number(-10)));
+        assert_eq!(I16::from_str("-10"), Ok(I16::Number(-10)));
     }
 
     #[test]

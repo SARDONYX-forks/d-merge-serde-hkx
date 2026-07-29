@@ -12,10 +12,7 @@ use self::map::MapDeserializer;
 use self::parser::{
     comment_multispace0,
     tag::{attr_string, end_tag},
-    type_kind::{
-        boolean, matrix3, matrix4, number, pointer, qstransform, quaternion, real, rotation,
-        string, transform, vector4,
-    },
+    type_kind::*,
 };
 use self::seq::SeqDeserializer;
 use crate::errors::de::{Error, Result};
@@ -90,14 +87,14 @@ pub fn from_partial_str_with_opt<'a, T>(de: XmlDeserializer<'a>) -> Result<T>
 where
     T: Deserialize<'a>,
 {
-    let mut deserializer = de;
-    let t = tri!(T::deserialize(&mut deserializer));
+    let mut de = de;
+    let t = tri!(T::deserialize(&mut de).map_err(|err| de.to_readable_err(err)));
 
-    if deserializer.input.is_empty() {
+    if de.input.is_empty() {
         Ok(t)
     } else {
         Err(Error::TrailingCharacters {
-            remain: deserializer.input.to_string(),
+            remain: de.input.to_string(),
         })
     }
 }
@@ -299,7 +296,7 @@ impl<'de> de::Deserializer<'de> for &mut XmlDeserializer<'de> {
     where
         V: Visitor<'de>,
     {
-        visitor.visit_int8(tri!(self.parse_next(number)))
+        visitor.visit_int8(tri!(self.parse_next(int8)))
     }
 
     #[inline]
@@ -307,7 +304,7 @@ impl<'de> de::Deserializer<'de> for &mut XmlDeserializer<'de> {
     where
         V: Visitor<'de>,
     {
-        visitor.visit_uint8(tri!(self.parse_next(number)))
+        visitor.visit_uint8(tri!(self.parse_next(uint8)))
     }
 
     #[inline]
@@ -315,7 +312,7 @@ impl<'de> de::Deserializer<'de> for &mut XmlDeserializer<'de> {
     where
         V: Visitor<'de>,
     {
-        visitor.visit_int16(tri!(self.parse_next(number)))
+        visitor.visit_int16(tri!(self.parse_next(int16)))
     }
 
     #[inline]
@@ -323,7 +320,7 @@ impl<'de> de::Deserializer<'de> for &mut XmlDeserializer<'de> {
     where
         V: Visitor<'de>,
     {
-        visitor.visit_uint16(tri!(self.parse_next(number)))
+        visitor.visit_uint16(tri!(self.parse_next(uint16)))
     }
 
     #[inline]
@@ -331,7 +328,7 @@ impl<'de> de::Deserializer<'de> for &mut XmlDeserializer<'de> {
     where
         V: Visitor<'de>,
     {
-        visitor.visit_int32(tri!(self.parse_next(number)))
+        visitor.visit_int32(tri!(self.parse_next(int32)))
     }
 
     #[inline]
@@ -339,7 +336,7 @@ impl<'de> de::Deserializer<'de> for &mut XmlDeserializer<'de> {
     where
         V: Visitor<'de>,
     {
-        visitor.visit_uint32(tri!(self.parse_next(number)))
+        visitor.visit_uint32(tri!(self.parse_next(uint32)))
     }
 
     #[inline]
@@ -347,7 +344,7 @@ impl<'de> de::Deserializer<'de> for &mut XmlDeserializer<'de> {
     where
         V: Visitor<'de>,
     {
-        visitor.visit_int64(tri!(self.parse_next(number)))
+        visitor.visit_int64(tri!(self.parse_next(int64)))
     }
 
     #[inline]
@@ -355,7 +352,7 @@ impl<'de> de::Deserializer<'de> for &mut XmlDeserializer<'de> {
     where
         V: Visitor<'de>,
     {
-        visitor.visit_uint64(tri!(self.parse_next(number)))
+        visitor.visit_uint64(tri!(self.parse_next(uint64)))
     }
 
     fn deserialize_real<V>(self, visitor: V) -> Result<V::Value, Self::Error>
