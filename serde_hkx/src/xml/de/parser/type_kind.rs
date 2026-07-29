@@ -11,6 +11,45 @@ use winnow::error::{StrContext, StrContextValue};
 use winnow::token::{take_until, take_while};
 use winnow::{ModalResult, Parser};
 
+/// Defined by `havok_types`.
+/// For example, `I8::try_from()` parses a numeric value,
+/// an event ID, or a variable ID.
+///
+/// # Examples
+///
+/// ```
+/// use havok_types::I8;
+/// use serde_hkx::xml::de::parser::type_kind::number;
+/// use winnow::Parser as _;
+///
+/// assert_eq!(number::<I8>.parse("42"), Ok(I8::Number(42)));
+/// assert_eq!(number::<I8>.parse("-10"), Ok(I8::Number(-10)));
+///
+/// assert_eq!(
+///     number::<I8>.parse("$eventID[Start]$"),
+///     Ok(I8::EventId("Start".into()))
+/// );
+///
+/// assert_eq!(
+///     number::<I8>.parse("$variableID[Health]$"),
+///     Ok(I8::VariableId("Health".into()))
+/// );
+///
+/// assert!(number::<I8>.parse("invalid").is_err());
+/// ```
+///
+/// # Errors
+///
+/// When the input is not a valid number, event ID, or variable ID.
+pub fn number<'a, T: TryFrom<&'a str>>(s: &mut &'a str) -> winnow::ModalResult<T> {
+    s.verify_map(|s| T::try_from(s).ok())
+        .context(StrContext::Label("bool"))
+        .context(StrContext::Expected(StrContextValue::Description(
+            "number, event ID(e.g. `$eventID[sampleEventName]$`), or variable ID(e.g. `$variableID[sampleName]$`)",
+        )))
+    .parse_next(s)
+}
+
 /// Parses [`bool`]. `true` or `false`
 /// - The corresponding type kind: `Bool`
 ///

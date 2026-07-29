@@ -13,8 +13,8 @@ use self::parser::{
     comment_multispace0,
     tag::{attr_string, end_tag},
     type_kind::{
-        boolean, matrix3, matrix4, pointer, qstransform, quaternion, real, rotation, string,
-        transform, vector4,
+        boolean, matrix3, matrix4, number, pointer, qstransform, quaternion, real, rotation,
+        string, transform, vector4,
     },
 };
 use self::seq::SeqDeserializer;
@@ -23,7 +23,6 @@ use havok_serde::de::{self, Deserialize, ReadEnumSize, Visitor};
 use havok_types::*;
 use parser::tag::{class_start_tag, start_tag};
 use winnow::Parser;
-use winnow::ascii::{dec_int, dec_uint};
 use winnow::combinator::opt;
 use winnow::error::{ContextError, ErrMode};
 use winnow_ext::ReadableError;
@@ -278,6 +277,7 @@ impl<'de> de::Deserializer<'de> for &mut XmlDeserializer<'de> {
         visitor.visit_void(())
     }
 
+    #[inline]
     fn deserialize_bool<V>(self, visitor: V) -> Result<V::Value, Self::Error>
     where
         V: Visitor<'de>,
@@ -294,64 +294,68 @@ impl<'de> de::Deserializer<'de> for &mut XmlDeserializer<'de> {
         visitor.visit_char(ch)
     }
 
+    #[inline]
     fn deserialize_int8<V>(self, visitor: V) -> Result<V::Value, Self::Error>
     where
         V: Visitor<'de>,
     {
-        let n = tri!(self.parse_next(dec_int));
-        visitor.visit_int8(I8::Number(n))
+        visitor.visit_int8(tri!(self.parse_next(number)))
     }
 
+    #[inline]
     fn deserialize_uint8<V>(self, visitor: V) -> Result<V::Value, Self::Error>
     where
         V: Visitor<'de>,
     {
-        let n = tri!(self.parse_next(dec_uint));
-        visitor.visit_uint8(U8::Number(n))
+        visitor.visit_uint8(tri!(self.parse_next(number)))
     }
 
+    #[inline]
     fn deserialize_int16<V>(self, visitor: V) -> Result<V::Value, Self::Error>
     where
         V: Visitor<'de>,
     {
-        let n = tri!(self.parse_next(dec_int));
-        visitor.visit_int16(I16::Number(n))
+        visitor.visit_int16(tri!(self.parse_next(number)))
     }
 
+    #[inline]
     fn deserialize_uint16<V>(self, visitor: V) -> Result<V::Value, Self::Error>
     where
         V: Visitor<'de>,
     {
-        let n = tri!(self.parse_next(dec_uint));
-        visitor.visit_uint16(U16::Number(n))
+        visitor.visit_uint16(tri!(self.parse_next(number)))
     }
 
+    #[inline]
     fn deserialize_int32<V>(self, visitor: V) -> Result<V::Value, Self::Error>
     where
         V: Visitor<'de>,
     {
-        visitor.visit_int32(I32::Number(tri!(self.parse_next(dec_int))))
+        visitor.visit_int32(tri!(self.parse_next(number)))
     }
 
+    #[inline]
     fn deserialize_uint32<V>(self, visitor: V) -> Result<V::Value, Self::Error>
     where
         V: Visitor<'de>,
     {
-        visitor.visit_uint32(U32::Number(tri!(self.parse_next(dec_uint))))
+        visitor.visit_uint32(tri!(self.parse_next(number)))
     }
 
+    #[inline]
     fn deserialize_int64<V>(self, visitor: V) -> Result<V::Value, Self::Error>
     where
         V: Visitor<'de>,
     {
-        visitor.visit_int64(I64::Number(tri!(self.parse_next(dec_int))))
+        visitor.visit_int64(tri!(self.parse_next(number)))
     }
 
+    #[inline]
     fn deserialize_uint64<V>(self, visitor: V) -> Result<V::Value, Self::Error>
     where
         V: Visitor<'de>,
     {
-        visitor.visit_uint64(U64::Number(tri!(self.parse_next(dec_uint))))
+        visitor.visit_uint64(tri!(self.parse_next(number)))
     }
 
     fn deserialize_real<V>(self, visitor: V) -> Result<V::Value, Self::Error>
@@ -410,6 +414,7 @@ impl<'de> de::Deserializer<'de> for &mut XmlDeserializer<'de> {
         visitor.visit_transform(tri!(self.parse_next(transform)))
     }
 
+    #[inline]
     fn deserialize_pointer<V>(self, visitor: V) -> Result<V::Value, Self::Error>
     where
         V: Visitor<'de>,
