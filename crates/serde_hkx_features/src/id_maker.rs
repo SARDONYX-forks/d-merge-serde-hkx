@@ -422,12 +422,8 @@ fn dedup_three_way<T, U>(names: &mut Vec<StringPtr>, infos: &mut Vec<T>, word_va
 /// ```
 pub fn create_maps<'a>(
     class_map: &'a ClassMap<'a>,
-    behavior_graph_index: &str,
+    string_data_index: &str,
 ) -> Option<(EventIdMap<'a>, VariableIdMap<'a>)> {
-    let string_data_index = match &class_map.get(behavior_graph_index)? {
-        Classes::hkbBehaviorGraphData(g) => g.m_stringData.get(),
-        _ => return None,
-    };
     let string_data = match class_map.get(string_data_index)? {
         Classes::hkbBehaviorGraphStringData(g) => g,
         _ => return None,
@@ -466,7 +462,7 @@ mod tests {
         let mut class_map: ClassMap = ClassMap::new();
 
         class_map.insert(
-            Cow::Borrowed("#0000"),
+            Cow::Borrowed("#0001"),
             Classes::hkbBehaviorGraphStringData(Box::new(hkbBehaviorGraphStringData {
                 m_eventNames: vec![
                     StringPtr::from_str("Run"),
@@ -484,7 +480,7 @@ mod tests {
             })),
         );
         class_map.insert(
-            Cow::Borrowed("#0001"),
+            Cow::Borrowed("#0002"),
             Classes::hkbVariableValueSet(Box::new(hkbVariableValueSet {
                 m_wordVariableValues: vec![
                     hkbVariableValue {
@@ -509,7 +505,7 @@ mod tests {
         );
 
         class_map.insert(
-            Cow::Borrowed("#0002"),
+            Cow::Borrowed("#0003"),
             Classes::hkbBehaviorGraphData(Box::new(hkbBehaviorGraphData {
                 m_eventInfos: vec![
                     hkbEventInfo {
@@ -551,15 +547,15 @@ mod tests {
                         ..Default::default()
                     },
                 ],
-                m_stringData: Pointer::new(Cow::Borrowed("#0000")),
-                m_variableInitialValues: Pointer::new(Cow::Borrowed("#0001")),
+                m_stringData: Pointer::new(Cow::Borrowed("#0001")),
+                m_variableInitialValues: Pointer::new(Cow::Borrowed("#0002")),
                 ..Default::default()
             })),
         );
 
-        dedup_event_variables(&mut class_map, "#0002".into()).expect("Should dedup class maps");
+        dedup_event_variables(&mut class_map, "#0003".into()).expect("Should dedup class maps");
         let (event_map, variable_map) =
-            create_maps(&class_map, "#0002").expect("Should create maps");
+            create_maps(&class_map, "#0001").expect("Should create maps");
 
         // Check event map
         assert_eq!(event_map.0.len(), 3);

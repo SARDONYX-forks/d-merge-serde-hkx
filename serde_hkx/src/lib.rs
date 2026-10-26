@@ -16,7 +16,6 @@ mod lib {
         pub use core::*;
     }
 
-    pub use self::core::f32;
     pub use self::core::fmt::Display;
     pub use self::core::ops::Range;
     pub use self::core::str;
