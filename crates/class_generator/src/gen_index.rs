@@ -53,7 +53,7 @@ pub fn gen_index(class_index_map: &[(&String, bool)]) -> Result<String> {
         enum_match_variants.push(quote! { Classes::#class_name_ident });
 
         de_matcher.push(quote! {
-            #class_name => Ok(Classes::#class_name_ident(Box::new(map.next_value()?)))
+            #class_name => Ok(Classes::#class_name_ident(next_boxed(&mut map)?))
         });
     }
 
@@ -112,6 +112,23 @@ pub fn gen_index(class_index_map: &[(&String, bool)]) -> Result<String> {
                         #(#enum_match_variants(class) => class.serialize(serializer),)*
                     }
                 }
+            }
+
+            /// Deserializes the next class directly into a `Box`.
+            ///
+            /// # Why a separate, non-inlined function?
+            /// Without optimization (debug builds) every arm of the big `match` in
+            /// `visit_class_index` keeps its own stack slot for the unboxed class value, so that
+            /// frame grows to the sum of all class sizes and overflows the stack
+            /// (e.g., `thread 'main' has overflowed its stack` with Windows' 1 MiB main stack).
+            /// Here, each frame holds only one class.
+            #[inline(never)]
+            fn next_boxed<'de, A, T>(map: &mut A) -> Result<Box<T>, A::Error>
+            where
+                A: _serde::de::ClassIndexAccess<'de>,
+                T: _serde::Deserialize<'de>,
+            {
+                map.next_value().map(Box::new)
             }
 
             impl<'a, 'de: 'a> _serde::Deserialize<'de> for Classes<'a> {

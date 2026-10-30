@@ -6011,6 +6011,22 @@ impl<'a> _serde::Serialize for Classes<'a> {
         }
     }
 }
+/// Deserializes the next class directly into a `Box`.
+///
+/// # Why a separate, non-inlined function?
+/// Without optimization (debug builds) every arm of the big `match` in
+/// `visit_class_index` keeps its own stack slot for the unboxed class value, so that
+/// frame grows to the sum of all class sizes and overflows the stack
+/// (e.g., `thread 'main' has overflowed its stack` with Windows' 1 MiB main stack).
+/// Here, each frame holds only one class.
+#[inline(never)]
+fn next_boxed<'de, A, T>(map: &mut A) -> Result<Box<T>, A::Error>
+where
+    A: _serde::de::ClassIndexAccess<'de>,
+    T: _serde::Deserialize<'de>,
+{
+    map.next_value().map(Box::new)
+}
 impl<'a, 'de: 'a> _serde::Deserialize<'de> for Classes<'a> {
     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
     where
@@ -6034,3248 +6050,2488 @@ impl<'a, 'de: 'a> _serde::Deserialize<'de> for Classes<'a> {
                 let class_name = map.next_key()?;
                 match class_name {
                     "BGSGamebryoSequenceGenerator" => {
-                        Ok(
-                            Classes::BGSGamebryoSequenceGenerator(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::BGSGamebryoSequenceGenerator(next_boxed(&mut map)?))
                     }
                     "BSBoneSwitchGenerator" => {
-                        Ok(Classes::BSBoneSwitchGenerator(Box::new(map.next_value()?)))
+                        Ok(Classes::BSBoneSwitchGenerator(next_boxed(&mut map)?))
                     }
                     "BSBoneSwitchGeneratorBoneData" => {
-                        Ok(
-                            Classes::BSBoneSwitchGeneratorBoneData(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::BSBoneSwitchGeneratorBoneData(next_boxed(&mut map)?))
                     }
                     "BSComputeAddBoneAnimModifier" => {
-                        Ok(
-                            Classes::BSComputeAddBoneAnimModifier(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::BSComputeAddBoneAnimModifier(next_boxed(&mut map)?))
                     }
                     "BSCyclicBlendTransitionGenerator" => {
                         Ok(
                             Classes::BSCyclicBlendTransitionGenerator(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "BSDecomposeVectorModifier" => {
-                        Ok(
-                            Classes::BSDecomposeVectorModifier(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::BSDecomposeVectorModifier(next_boxed(&mut map)?))
                     }
                     "BSDirectAtModifier" => {
-                        Ok(Classes::BSDirectAtModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::BSDirectAtModifier(next_boxed(&mut map)?))
                     }
                     "BSDistTriggerModifier" => {
-                        Ok(Classes::BSDistTriggerModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::BSDistTriggerModifier(next_boxed(&mut map)?))
                     }
                     "BSEventEveryNEventsModifier" => {
-                        Ok(
-                            Classes::BSEventEveryNEventsModifier(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::BSEventEveryNEventsModifier(next_boxed(&mut map)?))
                     }
                     "BSEventOnDeactivateModifier" => {
-                        Ok(
-                            Classes::BSEventOnDeactivateModifier(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::BSEventOnDeactivateModifier(next_boxed(&mut map)?))
                     }
                     "BSEventOnFalseToTrueModifier" => {
-                        Ok(
-                            Classes::BSEventOnFalseToTrueModifier(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::BSEventOnFalseToTrueModifier(next_boxed(&mut map)?))
                     }
                     "BSGetTimeStepModifier" => {
-                        Ok(Classes::BSGetTimeStepModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::BSGetTimeStepModifier(next_boxed(&mut map)?))
                     }
                     "BSInterpValueModifier" => {
-                        Ok(Classes::BSInterpValueModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::BSInterpValueModifier(next_boxed(&mut map)?))
                     }
                     "BSIsActiveModifier" => {
-                        Ok(Classes::BSIsActiveModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::BSIsActiveModifier(next_boxed(&mut map)?))
                     }
                     "BSIStateManagerModifier" => {
-                        Ok(Classes::BSIStateManagerModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::BSIStateManagerModifier(next_boxed(&mut map)?))
                     }
                     "BSIStateManagerModifierBSiStateData" => {
                         Ok(
                             Classes::BSIStateManagerModifierBSiStateData(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "BSIStateManagerModifierBSIStateManagerStateListener" => {
                         Ok(
                             Classes::BSIStateManagerModifierBSIStateManagerStateListener(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "BSiStateTaggingGenerator" => {
-                        Ok(
-                            Classes::BSiStateTaggingGenerator(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::BSiStateTaggingGenerator(next_boxed(&mut map)?))
                     }
                     "BSLimbIKModifier" => {
-                        Ok(Classes::BSLimbIKModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::BSLimbIKModifier(next_boxed(&mut map)?))
                     }
                     "BSLookAtModifier" => {
-                        Ok(Classes::BSLookAtModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::BSLookAtModifier(next_boxed(&mut map)?))
                     }
                     "BSLookAtModifierBoneData" => {
-                        Ok(
-                            Classes::BSLookAtModifierBoneData(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::BSLookAtModifierBoneData(next_boxed(&mut map)?))
                     }
                     "BSModifyOnceModifier" => {
-                        Ok(Classes::BSModifyOnceModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::BSModifyOnceModifier(next_boxed(&mut map)?))
                     }
                     "BSOffsetAnimationGenerator" => {
-                        Ok(
-                            Classes::BSOffsetAnimationGenerator(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::BSOffsetAnimationGenerator(next_boxed(&mut map)?))
                     }
                     "BSPassByTargetTriggerModifier" => {
-                        Ok(
-                            Classes::BSPassByTargetTriggerModifier(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::BSPassByTargetTriggerModifier(next_boxed(&mut map)?))
                     }
                     "BSRagdollContactListenerModifier" => {
                         Ok(
                             Classes::BSRagdollContactListenerModifier(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "BSSpeedSamplerModifier" => {
-                        Ok(Classes::BSSpeedSamplerModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::BSSpeedSamplerModifier(next_boxed(&mut map)?))
                     }
                     "BSSynchronizedClipGenerator" => {
-                        Ok(
-                            Classes::BSSynchronizedClipGenerator(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::BSSynchronizedClipGenerator(next_boxed(&mut map)?))
                     }
                     "BSTimerModifier" => {
-                        Ok(Classes::BSTimerModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::BSTimerModifier(next_boxed(&mut map)?))
                     }
                     "BSTweenerModifier" => {
-                        Ok(Classes::BSTweenerModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::BSTweenerModifier(next_boxed(&mut map)?))
                     }
-                    "hkAabb" => Ok(Classes::hkAabb(Box::new(map.next_value()?))),
-                    "hkAabbHalf" => Ok(Classes::hkAabbHalf(Box::new(map.next_value()?))),
-                    "hkAabbUint32" => {
-                        Ok(Classes::hkAabbUint32(Box::new(map.next_value()?)))
-                    }
+                    "hkAabb" => Ok(Classes::hkAabb(next_boxed(&mut map)?)),
+                    "hkAabbHalf" => Ok(Classes::hkAabbHalf(next_boxed(&mut map)?)),
+                    "hkAabbUint32" => Ok(Classes::hkAabbUint32(next_boxed(&mut map)?)),
                     "hkaAnimatedReferenceFrame" => {
-                        Ok(
-                            Classes::hkaAnimatedReferenceFrame(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkaAnimatedReferenceFrame(next_boxed(&mut map)?))
                     }
-                    "hkaAnimation" => {
-                        Ok(Classes::hkaAnimation(Box::new(map.next_value()?)))
-                    }
+                    "hkaAnimation" => Ok(Classes::hkaAnimation(next_boxed(&mut map)?)),
                     "hkaAnimationBinding" => {
-                        Ok(Classes::hkaAnimationBinding(Box::new(map.next_value()?)))
+                        Ok(Classes::hkaAnimationBinding(next_boxed(&mut map)?))
                     }
                     "hkaAnimationContainer" => {
-                        Ok(Classes::hkaAnimationContainer(Box::new(map.next_value()?)))
+                        Ok(Classes::hkaAnimationContainer(next_boxed(&mut map)?))
                     }
                     "hkaAnimationPreviewColorContainer" => {
                         Ok(
                             Classes::hkaAnimationPreviewColorContainer(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkaAnnotationTrack" => {
-                        Ok(Classes::hkaAnnotationTrack(Box::new(map.next_value()?)))
+                        Ok(Classes::hkaAnnotationTrack(next_boxed(&mut map)?))
                     }
                     "hkaAnnotationTrackAnnotation" => {
-                        Ok(
-                            Classes::hkaAnnotationTrackAnnotation(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkaAnnotationTrackAnnotation(next_boxed(&mut map)?))
                     }
-                    "hkaBone" => Ok(Classes::hkaBone(Box::new(map.next_value()?))),
+                    "hkaBone" => Ok(Classes::hkaBone(next_boxed(&mut map)?)),
                     "hkaBoneAttachment" => {
-                        Ok(Classes::hkaBoneAttachment(Box::new(map.next_value()?)))
+                        Ok(Classes::hkaBoneAttachment(next_boxed(&mut map)?))
                     }
                     "hkaDefaultAnimatedReferenceFrame" => {
                         Ok(
                             Classes::hkaDefaultAnimatedReferenceFrame(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkaDeltaCompressedAnimation" => {
-                        Ok(
-                            Classes::hkaDeltaCompressedAnimation(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkaDeltaCompressedAnimation(next_boxed(&mut map)?))
                     }
                     "hkaDeltaCompressedAnimationQuantizationFormat" => {
                         Ok(
                             Classes::hkaDeltaCompressedAnimationQuantizationFormat(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkaFootstepAnalysisInfo" => {
-                        Ok(Classes::hkaFootstepAnalysisInfo(Box::new(map.next_value()?)))
+                        Ok(Classes::hkaFootstepAnalysisInfo(next_boxed(&mut map)?))
                     }
                     "hkaFootstepAnalysisInfoContainer" => {
                         Ok(
                             Classes::hkaFootstepAnalysisInfoContainer(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkaInterleavedUncompressedAnimation" => {
                         Ok(
                             Classes::hkaInterleavedUncompressedAnimation(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkaKeyFrameHierarchyUtility" => {
-                        Ok(
-                            Classes::hkaKeyFrameHierarchyUtility(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkaKeyFrameHierarchyUtility(next_boxed(&mut map)?))
                     }
                     "hkaKeyFrameHierarchyUtilityControlData" => {
                         Ok(
                             Classes::hkaKeyFrameHierarchyUtilityControlData(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkAlignSceneToNodeOptions" => {
-                        Ok(
-                            Classes::hkAlignSceneToNodeOptions(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkAlignSceneToNodeOptions(next_boxed(&mut map)?))
                     }
                     "hkaMeshBinding" => {
-                        Ok(Classes::hkaMeshBinding(Box::new(map.next_value()?)))
+                        Ok(Classes::hkaMeshBinding(next_boxed(&mut map)?))
                     }
                     "hkaMeshBindingMapping" => {
-                        Ok(Classes::hkaMeshBindingMapping(Box::new(map.next_value()?)))
+                        Ok(Classes::hkaMeshBindingMapping(next_boxed(&mut map)?))
                     }
                     "hkaQuantizedAnimation" => {
-                        Ok(Classes::hkaQuantizedAnimation(Box::new(map.next_value()?)))
+                        Ok(Classes::hkaQuantizedAnimation(next_boxed(&mut map)?))
                     }
                     "hkaQuantizedAnimationTrackCompressionParams" => {
                         Ok(
                             Classes::hkaQuantizedAnimationTrackCompressionParams(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkaRagdollInstance" => {
-                        Ok(Classes::hkaRagdollInstance(Box::new(map.next_value()?)))
+                        Ok(Classes::hkaRagdollInstance(next_boxed(&mut map)?))
                     }
                     "hkArrayTypeAttribute" => {
-                        Ok(Classes::hkArrayTypeAttribute(Box::new(map.next_value()?)))
+                        Ok(Classes::hkArrayTypeAttribute(next_boxed(&mut map)?))
                     }
-                    "hkaSkeleton" => {
-                        Ok(Classes::hkaSkeleton(Box::new(map.next_value()?)))
-                    }
+                    "hkaSkeleton" => Ok(Classes::hkaSkeleton(next_boxed(&mut map)?)),
                     "hkaSkeletonLocalFrameOnBone" => {
-                        Ok(
-                            Classes::hkaSkeletonLocalFrameOnBone(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkaSkeletonLocalFrameOnBone(next_boxed(&mut map)?))
                     }
                     "hkaSkeletonMapper" => {
-                        Ok(Classes::hkaSkeletonMapper(Box::new(map.next_value()?)))
+                        Ok(Classes::hkaSkeletonMapper(next_boxed(&mut map)?))
                     }
                     "hkaSkeletonMapperData" => {
-                        Ok(Classes::hkaSkeletonMapperData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkaSkeletonMapperData(next_boxed(&mut map)?))
                     }
                     "hkaSkeletonMapperDataChainMapping" => {
                         Ok(
                             Classes::hkaSkeletonMapperDataChainMapping(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkaSkeletonMapperDataSimpleMapping" => {
                         Ok(
                             Classes::hkaSkeletonMapperDataSimpleMapping(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkaSplineCompressedAnimation" => {
-                        Ok(
-                            Classes::hkaSplineCompressedAnimation(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkaSplineCompressedAnimation(next_boxed(&mut map)?))
                     }
                     "hkaSplineCompressedAnimationAnimationCompressionParams" => {
                         Ok(
                             Classes::hkaSplineCompressedAnimationAnimationCompressionParams(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkaSplineCompressedAnimationTrackCompressionParams" => {
                         Ok(
                             Classes::hkaSplineCompressedAnimationTrackCompressionParams(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkaWaveletCompressedAnimation" => {
-                        Ok(
-                            Classes::hkaWaveletCompressedAnimation(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkaWaveletCompressedAnimation(next_boxed(&mut map)?))
                     }
                     "hkaWaveletCompressedAnimationCompressionParams" => {
                         Ok(
                             Classes::hkaWaveletCompressedAnimationCompressionParams(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkaWaveletCompressedAnimationQuantizationFormat" => {
                         Ok(
                             Classes::hkaWaveletCompressedAnimationQuantizationFormat(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
-                    "hkBaseObject" => {
-                        Ok(Classes::hkBaseObject(Box::new(map.next_value()?)))
-                    }
+                    "hkBaseObject" => Ok(Classes::hkBaseObject(next_boxed(&mut map)?)),
                     "hkbAttachmentModifier" => {
-                        Ok(Classes::hkbAttachmentModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbAttachmentModifier(next_boxed(&mut map)?))
                     }
                     "hkbAttachmentSetup" => {
-                        Ok(Classes::hkbAttachmentSetup(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbAttachmentSetup(next_boxed(&mut map)?))
                     }
                     "hkbAttributeModifier" => {
-                        Ok(Classes::hkbAttributeModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbAttributeModifier(next_boxed(&mut map)?))
                     }
                     "hkbAttributeModifierAssignment" => {
                         Ok(
                             Classes::hkbAttributeModifierAssignment(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbAuxiliaryNodeInfo" => {
-                        Ok(Classes::hkbAuxiliaryNodeInfo(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbAuxiliaryNodeInfo(next_boxed(&mut map)?))
                     }
                     "hkbBehaviorEventsInfo" => {
-                        Ok(Classes::hkbBehaviorEventsInfo(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbBehaviorEventsInfo(next_boxed(&mut map)?))
                     }
                     "hkbBehaviorGraph" => {
-                        Ok(Classes::hkbBehaviorGraph(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbBehaviorGraph(next_boxed(&mut map)?))
                     }
                     "hkbBehaviorGraphData" => {
-                        Ok(Classes::hkbBehaviorGraphData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbBehaviorGraphData(next_boxed(&mut map)?))
                     }
                     "hkbBehaviorGraphInternalState" => {
-                        Ok(
-                            Classes::hkbBehaviorGraphInternalState(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbBehaviorGraphInternalState(next_boxed(&mut map)?))
                     }
                     "hkbBehaviorGraphInternalStateInfo" => {
                         Ok(
                             Classes::hkbBehaviorGraphInternalStateInfo(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbBehaviorGraphStringData" => {
-                        Ok(
-                            Classes::hkbBehaviorGraphStringData(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbBehaviorGraphStringData(next_boxed(&mut map)?))
                     }
                     "hkbBehaviorInfo" => {
-                        Ok(Classes::hkbBehaviorInfo(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbBehaviorInfo(next_boxed(&mut map)?))
                     }
                     "hkbBehaviorInfoIdToNamePair" => {
-                        Ok(
-                            Classes::hkbBehaviorInfoIdToNamePair(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbBehaviorInfoIdToNamePair(next_boxed(&mut map)?))
                     }
                     "hkbBehaviorReferenceGenerator" => {
-                        Ok(
-                            Classes::hkbBehaviorReferenceGenerator(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbBehaviorReferenceGenerator(next_boxed(&mut map)?))
                     }
-                    "hkbBindable" => {
-                        Ok(Classes::hkbBindable(Box::new(map.next_value()?)))
-                    }
+                    "hkbBindable" => Ok(Classes::hkbBindable(next_boxed(&mut map)?)),
                     "hkbBlendCurveUtils" => {
-                        Ok(Classes::hkbBlendCurveUtils(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbBlendCurveUtils(next_boxed(&mut map)?))
                     }
                     "hkbBlenderGenerator" => {
-                        Ok(Classes::hkbBlenderGenerator(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbBlenderGenerator(next_boxed(&mut map)?))
                     }
                     "hkbBlenderGeneratorChild" => {
-                        Ok(
-                            Classes::hkbBlenderGeneratorChild(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbBlenderGeneratorChild(next_boxed(&mut map)?))
                     }
                     "hkbBlenderGeneratorChildInternalState" => {
                         Ok(
                             Classes::hkbBlenderGeneratorChildInternalState(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbBlenderGeneratorInternalState" => {
                         Ok(
                             Classes::hkbBlenderGeneratorInternalState(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbBlendingTransitionEffect" => {
-                        Ok(
-                            Classes::hkbBlendingTransitionEffect(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbBlendingTransitionEffect(next_boxed(&mut map)?))
                     }
                     "hkbBlendingTransitionEffectInternalState" => {
                         Ok(
                             Classes::hkbBlendingTransitionEffectInternalState(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbBoneIndexArray" => {
-                        Ok(Classes::hkbBoneIndexArray(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbBoneIndexArray(next_boxed(&mut map)?))
                     }
                     "hkbBoneWeightArray" => {
-                        Ok(Classes::hkbBoneWeightArray(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbBoneWeightArray(next_boxed(&mut map)?))
                     }
                     "hkbBoolVariableSequencedData" => {
-                        Ok(
-                            Classes::hkbBoolVariableSequencedData(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbBoolVariableSequencedData(next_boxed(&mut map)?))
                     }
                     "hkbBoolVariableSequencedDataSample" => {
                         Ok(
                             Classes::hkbBoolVariableSequencedDataSample(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbCameraShakeEventPayload" => {
-                        Ok(
-                            Classes::hkbCameraShakeEventPayload(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbCameraShakeEventPayload(next_boxed(&mut map)?))
                     }
-                    "hkbCharacter" => {
-                        Ok(Classes::hkbCharacter(Box::new(map.next_value()?)))
-                    }
+                    "hkbCharacter" => Ok(Classes::hkbCharacter(next_boxed(&mut map)?)),
                     "hkbCharacterAddedInfo" => {
-                        Ok(Classes::hkbCharacterAddedInfo(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbCharacterAddedInfo(next_boxed(&mut map)?))
                     }
                     "hkbCharacterControlCommand" => {
-                        Ok(
-                            Classes::hkbCharacterControlCommand(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbCharacterControlCommand(next_boxed(&mut map)?))
                     }
                     "hkbCharacterControllerControlData" => {
                         Ok(
                             Classes::hkbCharacterControllerControlData(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbCharacterControllerModifier" => {
                         Ok(
                             Classes::hkbCharacterControllerModifier(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbCharacterControllerModifierInternalState" => {
                         Ok(
                             Classes::hkbCharacterControllerModifierInternalState(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbCharacterData" => {
-                        Ok(Classes::hkbCharacterData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbCharacterData(next_boxed(&mut map)?))
                     }
                     "hkbCharacterDataCharacterControllerInfo" => {
                         Ok(
                             Classes::hkbCharacterDataCharacterControllerInfo(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbCharacterInfo" => {
-                        Ok(Classes::hkbCharacterInfo(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbCharacterInfo(next_boxed(&mut map)?))
                     }
                     "hkbCharacterSetup" => {
-                        Ok(Classes::hkbCharacterSetup(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbCharacterSetup(next_boxed(&mut map)?))
                     }
                     "hkbCharacterSkinInfo" => {
-                        Ok(Classes::hkbCharacterSkinInfo(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbCharacterSkinInfo(next_boxed(&mut map)?))
                     }
                     "hkbCharacterSteppedInfo" => {
-                        Ok(Classes::hkbCharacterSteppedInfo(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbCharacterSteppedInfo(next_boxed(&mut map)?))
                     }
                     "hkbCharacterStringData" => {
-                        Ok(Classes::hkbCharacterStringData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbCharacterStringData(next_boxed(&mut map)?))
                     }
                     "hkbClientCharacterState" => {
-                        Ok(Classes::hkbClientCharacterState(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbClientCharacterState(next_boxed(&mut map)?))
                     }
                     "hkbClipGenerator" => {
-                        Ok(Classes::hkbClipGenerator(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbClipGenerator(next_boxed(&mut map)?))
                     }
                     "hkbClipGeneratorEcho" => {
-                        Ok(Classes::hkbClipGeneratorEcho(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbClipGeneratorEcho(next_boxed(&mut map)?))
                     }
                     "hkbClipGeneratorInternalState" => {
-                        Ok(
-                            Classes::hkbClipGeneratorInternalState(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbClipGeneratorInternalState(next_boxed(&mut map)?))
                     }
                     "hkbClipTrigger" => {
-                        Ok(Classes::hkbClipTrigger(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbClipTrigger(next_boxed(&mut map)?))
                     }
                     "hkbClipTriggerArray" => {
-                        Ok(Classes::hkbClipTriggerArray(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbClipTriggerArray(next_boxed(&mut map)?))
                     }
                     "hkbCombineTransformsModifier" => {
-                        Ok(
-                            Classes::hkbCombineTransformsModifier(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbCombineTransformsModifier(next_boxed(&mut map)?))
                     }
                     "hkbCombineTransformsModifierInternalState" => {
                         Ok(
                             Classes::hkbCombineTransformsModifierInternalState(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbCompiledExpressionSet" => {
-                        Ok(
-                            Classes::hkbCompiledExpressionSet(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbCompiledExpressionSet(next_boxed(&mut map)?))
                     }
                     "hkbCompiledExpressionSetToken" => {
-                        Ok(
-                            Classes::hkbCompiledExpressionSetToken(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbCompiledExpressionSetToken(next_boxed(&mut map)?))
                     }
                     "hkbComputeDirectionModifier" => {
-                        Ok(
-                            Classes::hkbComputeDirectionModifier(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbComputeDirectionModifier(next_boxed(&mut map)?))
                     }
                     "hkbComputeDirectionModifierInternalState" => {
                         Ok(
                             Classes::hkbComputeDirectionModifierInternalState(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbComputeRotationFromAxisAngleModifier" => {
                         Ok(
                             Classes::hkbComputeRotationFromAxisAngleModifier(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbComputeRotationFromAxisAngleModifierInternalState" => {
                         Ok(
                             Classes::hkbComputeRotationFromAxisAngleModifierInternalState(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbComputeRotationToTargetModifier" => {
                         Ok(
                             Classes::hkbComputeRotationToTargetModifier(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbComputeRotationToTargetModifierInternalState" => {
                         Ok(
                             Classes::hkbComputeRotationToTargetModifierInternalState(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
-                    "hkbCondition" => {
-                        Ok(Classes::hkbCondition(Box::new(map.next_value()?)))
-                    }
-                    "hkbContext" => Ok(Classes::hkbContext(Box::new(map.next_value()?))),
+                    "hkbCondition" => Ok(Classes::hkbCondition(next_boxed(&mut map)?)),
+                    "hkbContext" => Ok(Classes::hkbContext(next_boxed(&mut map)?)),
                     "hkbDampingModifier" => {
-                        Ok(Classes::hkbDampingModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbDampingModifier(next_boxed(&mut map)?))
                     }
                     "hkbDampingModifierInternalState" => {
                         Ok(
                             Classes::hkbDampingModifierInternalState(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbDefaultMessageLog" => {
-                        Ok(Classes::hkbDefaultMessageLog(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbDefaultMessageLog(next_boxed(&mut map)?))
                     }
                     "hkbDelayedModifier" => {
-                        Ok(Classes::hkbDelayedModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbDelayedModifier(next_boxed(&mut map)?))
                     }
                     "hkbDelayedModifierInternalState" => {
                         Ok(
                             Classes::hkbDelayedModifierInternalState(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbDetectCloseToGroundModifier" => {
                         Ok(
                             Classes::hkbDetectCloseToGroundModifier(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbDetectCloseToGroundModifierInternalState" => {
                         Ok(
                             Classes::hkbDetectCloseToGroundModifierInternalState(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbEvaluateExpressionModifier" => {
-                        Ok(
-                            Classes::hkbEvaluateExpressionModifier(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbEvaluateExpressionModifier(next_boxed(&mut map)?))
                     }
                     "hkbEvaluateExpressionModifierInternalExpressionData" => {
                         Ok(
                             Classes::hkbEvaluateExpressionModifierInternalExpressionData(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbEvaluateExpressionModifierInternalState" => {
                         Ok(
                             Classes::hkbEvaluateExpressionModifierInternalState(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbEvaluateHandleModifier" => {
-                        Ok(
-                            Classes::hkbEvaluateHandleModifier(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbEvaluateHandleModifier(next_boxed(&mut map)?))
                     }
-                    "hkbEvent" => Ok(Classes::hkbEvent(Box::new(map.next_value()?))),
-                    "hkbEventBase" => {
-                        Ok(Classes::hkbEventBase(Box::new(map.next_value()?)))
-                    }
+                    "hkbEvent" => Ok(Classes::hkbEvent(next_boxed(&mut map)?)),
+                    "hkbEventBase" => Ok(Classes::hkbEventBase(next_boxed(&mut map)?)),
                     "hkbEventDrivenModifier" => {
-                        Ok(Classes::hkbEventDrivenModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbEventDrivenModifier(next_boxed(&mut map)?))
                     }
                     "hkbEventDrivenModifierInternalState" => {
                         Ok(
                             Classes::hkbEventDrivenModifierInternalState(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
-                    "hkbEventInfo" => {
-                        Ok(Classes::hkbEventInfo(Box::new(map.next_value()?)))
-                    }
+                    "hkbEventInfo" => Ok(Classes::hkbEventInfo(next_boxed(&mut map)?)),
                     "hkbEventPayload" => {
-                        Ok(Classes::hkbEventPayload(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbEventPayload(next_boxed(&mut map)?))
                     }
                     "hkbEventPayloadList" => {
-                        Ok(Classes::hkbEventPayloadList(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbEventPayloadList(next_boxed(&mut map)?))
                     }
                     "hkbEventProperty" => {
-                        Ok(Classes::hkbEventProperty(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbEventProperty(next_boxed(&mut map)?))
                     }
                     "hkbEventRaisedInfo" => {
-                        Ok(Classes::hkbEventRaisedInfo(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbEventRaisedInfo(next_boxed(&mut map)?))
                     }
                     "hkbEventRangeData" => {
-                        Ok(Classes::hkbEventRangeData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbEventRangeData(next_boxed(&mut map)?))
                     }
                     "hkbEventRangeDataArray" => {
-                        Ok(Classes::hkbEventRangeDataArray(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbEventRangeDataArray(next_boxed(&mut map)?))
                     }
                     "hkbEventSequencedData" => {
-                        Ok(Classes::hkbEventSequencedData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbEventSequencedData(next_boxed(&mut map)?))
                     }
                     "hkbEventSequencedDataSequencedEvent" => {
                         Ok(
                             Classes::hkbEventSequencedDataSequencedEvent(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbEventsFromRangeModifier" => {
-                        Ok(
-                            Classes::hkbEventsFromRangeModifier(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbEventsFromRangeModifier(next_boxed(&mut map)?))
                     }
                     "hkbEventsFromRangeModifierInternalState" => {
                         Ok(
                             Classes::hkbEventsFromRangeModifierInternalState(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbExpressionCondition" => {
-                        Ok(Classes::hkbExpressionCondition(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbExpressionCondition(next_boxed(&mut map)?))
                     }
                     "hkbExpressionData" => {
-                        Ok(Classes::hkbExpressionData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbExpressionData(next_boxed(&mut map)?))
                     }
                     "hkbExpressionDataArray" => {
-                        Ok(Classes::hkbExpressionDataArray(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbExpressionDataArray(next_boxed(&mut map)?))
                     }
                     "hkbExtractRagdollPoseModifier" => {
-                        Ok(
-                            Classes::hkbExtractRagdollPoseModifier(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbExtractRagdollPoseModifier(next_boxed(&mut map)?))
                     }
                     "hkbFootIkControlData" => {
-                        Ok(Classes::hkbFootIkControlData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbFootIkControlData(next_boxed(&mut map)?))
                     }
                     "hkbFootIkControlsModifier" => {
-                        Ok(
-                            Classes::hkbFootIkControlsModifier(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbFootIkControlsModifier(next_boxed(&mut map)?))
                     }
                     "hkbFootIkControlsModifierLeg" => {
-                        Ok(
-                            Classes::hkbFootIkControlsModifierLeg(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbFootIkControlsModifierLeg(next_boxed(&mut map)?))
                     }
                     "hkbFootIkDriverInfo" => {
-                        Ok(Classes::hkbFootIkDriverInfo(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbFootIkDriverInfo(next_boxed(&mut map)?))
                     }
                     "hkbFootIkDriverInfoLeg" => {
-                        Ok(Classes::hkbFootIkDriverInfoLeg(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbFootIkDriverInfoLeg(next_boxed(&mut map)?))
                     }
                     "hkbFootIkGains" => {
-                        Ok(Classes::hkbFootIkGains(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbFootIkGains(next_boxed(&mut map)?))
                     }
                     "hkbFootIkModifier" => {
-                        Ok(Classes::hkbFootIkModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbFootIkModifier(next_boxed(&mut map)?))
                     }
                     "hkbFootIkModifierInternalLegData" => {
                         Ok(
                             Classes::hkbFootIkModifierInternalLegData(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbFootIkModifierLeg" => {
-                        Ok(Classes::hkbFootIkModifierLeg(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbFootIkModifierLeg(next_boxed(&mut map)?))
                     }
-                    "hkbGenerator" => {
-                        Ok(Classes::hkbGenerator(Box::new(map.next_value()?)))
-                    }
+                    "hkbGenerator" => Ok(Classes::hkbGenerator(next_boxed(&mut map)?)),
                     "hkbGeneratorOutputListener" => {
-                        Ok(
-                            Classes::hkbGeneratorOutputListener(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbGeneratorOutputListener(next_boxed(&mut map)?))
                     }
                     "hkbGeneratorSyncInfo" => {
-                        Ok(Classes::hkbGeneratorSyncInfo(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbGeneratorSyncInfo(next_boxed(&mut map)?))
                     }
                     "hkbGeneratorSyncInfoSyncPoint" => {
-                        Ok(
-                            Classes::hkbGeneratorSyncInfoSyncPoint(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbGeneratorSyncInfoSyncPoint(next_boxed(&mut map)?))
                     }
                     "hkbGeneratorTransitionEffect" => {
-                        Ok(
-                            Classes::hkbGeneratorTransitionEffect(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbGeneratorTransitionEffect(next_boxed(&mut map)?))
                     }
                     "hkbGeneratorTransitionEffectInternalState" => {
                         Ok(
                             Classes::hkbGeneratorTransitionEffectInternalState(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbGetHandleOnBoneModifier" => {
-                        Ok(
-                            Classes::hkbGetHandleOnBoneModifier(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbGetHandleOnBoneModifier(next_boxed(&mut map)?))
                     }
                     "hkbGetUpModifier" => {
-                        Ok(Classes::hkbGetUpModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbGetUpModifier(next_boxed(&mut map)?))
                     }
                     "hkbGetUpModifierInternalState" => {
-                        Ok(
-                            Classes::hkbGetUpModifierInternalState(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbGetUpModifierInternalState(next_boxed(&mut map)?))
                     }
                     "hkbGetWorldFromModelModifier" => {
-                        Ok(
-                            Classes::hkbGetWorldFromModelModifier(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbGetWorldFromModelModifier(next_boxed(&mut map)?))
                     }
                     "hkbGetWorldFromModelModifierInternalState" => {
                         Ok(
                             Classes::hkbGetWorldFromModelModifierInternalState(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbHandIkControlData" => {
-                        Ok(Classes::hkbHandIkControlData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbHandIkControlData(next_boxed(&mut map)?))
                     }
                     "hkbHandIkControlsModifier" => {
-                        Ok(
-                            Classes::hkbHandIkControlsModifier(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbHandIkControlsModifier(next_boxed(&mut map)?))
                     }
                     "hkbHandIkControlsModifierHand" => {
-                        Ok(
-                            Classes::hkbHandIkControlsModifierHand(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbHandIkControlsModifierHand(next_boxed(&mut map)?))
                     }
                     "hkbHandIkDriverInfo" => {
-                        Ok(Classes::hkbHandIkDriverInfo(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbHandIkDriverInfo(next_boxed(&mut map)?))
                     }
                     "hkbHandIkDriverInfoHand" => {
-                        Ok(Classes::hkbHandIkDriverInfoHand(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbHandIkDriverInfoHand(next_boxed(&mut map)?))
                     }
                     "hkbHandIkModifier" => {
-                        Ok(Classes::hkbHandIkModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbHandIkModifier(next_boxed(&mut map)?))
                     }
                     "hkbHandIkModifierHand" => {
-                        Ok(Classes::hkbHandIkModifierHand(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbHandIkModifierHand(next_boxed(&mut map)?))
                     }
-                    "hkbHandle" => Ok(Classes::hkbHandle(Box::new(map.next_value()?))),
+                    "hkbHandle" => Ok(Classes::hkbHandle(next_boxed(&mut map)?)),
                     "hkbIntEventPayload" => {
-                        Ok(Classes::hkbIntEventPayload(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbIntEventPayload(next_boxed(&mut map)?))
                     }
                     "hkbIntVariableSequencedData" => {
-                        Ok(
-                            Classes::hkbIntVariableSequencedData(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbIntVariableSequencedData(next_boxed(&mut map)?))
                     }
                     "hkbIntVariableSequencedDataSample" => {
                         Ok(
                             Classes::hkbIntVariableSequencedDataSample(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
-                    "hkBitField" => Ok(Classes::hkBitField(Box::new(map.next_value()?))),
+                    "hkBitField" => Ok(Classes::hkBitField(next_boxed(&mut map)?)),
                     "hkbKeyframeBonesModifier" => {
-                        Ok(
-                            Classes::hkbKeyframeBonesModifier(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbKeyframeBonesModifier(next_boxed(&mut map)?))
                     }
                     "hkbKeyframeBonesModifierKeyframeInfo" => {
                         Ok(
                             Classes::hkbKeyframeBonesModifierKeyframeInfo(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbLinkedSymbolInfo" => {
-                        Ok(Classes::hkbLinkedSymbolInfo(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbLinkedSymbolInfo(next_boxed(&mut map)?))
                     }
                     "hkbLookAtModifier" => {
-                        Ok(Classes::hkbLookAtModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbLookAtModifier(next_boxed(&mut map)?))
                     }
                     "hkbLookAtModifierInternalState" => {
                         Ok(
                             Classes::hkbLookAtModifierInternalState(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbManualSelectorGenerator" => {
-                        Ok(
-                            Classes::hkbManualSelectorGenerator(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbManualSelectorGenerator(next_boxed(&mut map)?))
                     }
                     "hkbManualSelectorGeneratorInternalState" => {
                         Ok(
                             Classes::hkbManualSelectorGeneratorInternalState(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
-                    "hkbMessageLog" => {
-                        Ok(Classes::hkbMessageLog(Box::new(map.next_value()?)))
-                    }
+                    "hkbMessageLog" => Ok(Classes::hkbMessageLog(next_boxed(&mut map)?)),
                     "hkbMirroredSkeletonInfo" => {
-                        Ok(Classes::hkbMirroredSkeletonInfo(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbMirroredSkeletonInfo(next_boxed(&mut map)?))
                     }
                     "hkbMirrorModifier" => {
-                        Ok(Classes::hkbMirrorModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbMirrorModifier(next_boxed(&mut map)?))
                     }
-                    "hkbModifier" => {
-                        Ok(Classes::hkbModifier(Box::new(map.next_value()?)))
-                    }
+                    "hkbModifier" => Ok(Classes::hkbModifier(next_boxed(&mut map)?)),
                     "hkbModifierGenerator" => {
-                        Ok(Classes::hkbModifierGenerator(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbModifierGenerator(next_boxed(&mut map)?))
                     }
                     "hkbModifierList" => {
-                        Ok(Classes::hkbModifierList(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbModifierList(next_boxed(&mut map)?))
                     }
                     "hkbModifierWrapper" => {
-                        Ok(Classes::hkbModifierWrapper(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbModifierWrapper(next_boxed(&mut map)?))
                     }
                     "hkbMoveCharacterModifier" => {
-                        Ok(
-                            Classes::hkbMoveCharacterModifier(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbMoveCharacterModifier(next_boxed(&mut map)?))
                     }
                     "hkbMoveCharacterModifierInternalState" => {
                         Ok(
                             Classes::hkbMoveCharacterModifierInternalState(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbNamedEventPayload" => {
-                        Ok(Classes::hkbNamedEventPayload(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbNamedEventPayload(next_boxed(&mut map)?))
                     }
                     "hkbNamedIntEventPayload" => {
-                        Ok(Classes::hkbNamedIntEventPayload(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbNamedIntEventPayload(next_boxed(&mut map)?))
                     }
                     "hkbNamedRealEventPayload" => {
-                        Ok(
-                            Classes::hkbNamedRealEventPayload(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbNamedRealEventPayload(next_boxed(&mut map)?))
                     }
                     "hkbNamedStringEventPayload" => {
-                        Ok(
-                            Classes::hkbNamedStringEventPayload(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbNamedStringEventPayload(next_boxed(&mut map)?))
                     }
-                    "hkbNode" => Ok(Classes::hkbNode(Box::new(map.next_value()?))),
+                    "hkbNode" => Ok(Classes::hkbNode(next_boxed(&mut map)?)),
                     "hkbNodeInternalStateInfo" => {
-                        Ok(
-                            Classes::hkbNodeInternalStateInfo(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbNodeInternalStateInfo(next_boxed(&mut map)?))
                     }
                     "hkbParticleSystemEventPayload" => {
-                        Ok(
-                            Classes::hkbParticleSystemEventPayload(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbParticleSystemEventPayload(next_boxed(&mut map)?))
                     }
                     "hkbPoseMatchingGenerator" => {
-                        Ok(
-                            Classes::hkbPoseMatchingGenerator(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbPoseMatchingGenerator(next_boxed(&mut map)?))
                     }
                     "hkbPoseMatchingGeneratorInternalState" => {
                         Ok(
                             Classes::hkbPoseMatchingGeneratorInternalState(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbPoweredRagdollControlData" => {
-                        Ok(
-                            Classes::hkbPoweredRagdollControlData(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbPoweredRagdollControlData(next_boxed(&mut map)?))
                     }
                     "hkbPoweredRagdollControlsModifier" => {
                         Ok(
                             Classes::hkbPoweredRagdollControlsModifier(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbProjectData" => {
-                        Ok(Classes::hkbProjectData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbProjectData(next_boxed(&mut map)?))
                     }
                     "hkbProjectStringData" => {
-                        Ok(Classes::hkbProjectStringData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbProjectStringData(next_boxed(&mut map)?))
                     }
                     "hkbProxyModifier" => {
-                        Ok(Classes::hkbProxyModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbProxyModifier(next_boxed(&mut map)?))
                     }
                     "hkbProxyModifierProxyInfo" => {
-                        Ok(
-                            Classes::hkbProxyModifierProxyInfo(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbProxyModifierProxyInfo(next_boxed(&mut map)?))
                     }
                     "hkbRaiseEventCommand" => {
-                        Ok(Classes::hkbRaiseEventCommand(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbRaiseEventCommand(next_boxed(&mut map)?))
                     }
                     "hkbRealEventPayload" => {
-                        Ok(Classes::hkbRealEventPayload(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbRealEventPayload(next_boxed(&mut map)?))
                     }
                     "hkbRealVariableSequencedData" => {
-                        Ok(
-                            Classes::hkbRealVariableSequencedData(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbRealVariableSequencedData(next_boxed(&mut map)?))
                     }
                     "hkbRealVariableSequencedDataSample" => {
                         Ok(
                             Classes::hkbRealVariableSequencedDataSample(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbReferencePoseGenerator" => {
-                        Ok(
-                            Classes::hkbReferencePoseGenerator(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbReferencePoseGenerator(next_boxed(&mut map)?))
                     }
                     "hkbRegisteredGenerator" => {
-                        Ok(Classes::hkbRegisteredGenerator(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbRegisteredGenerator(next_boxed(&mut map)?))
                     }
                     "hkbRigidBodyRagdollControlData" => {
                         Ok(
                             Classes::hkbRigidBodyRagdollControlData(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbRigidBodyRagdollControlsModifier" => {
                         Ok(
                             Classes::hkbRigidBodyRagdollControlsModifier(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbRoleAttribute" => {
-                        Ok(Classes::hkbRoleAttribute(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbRoleAttribute(next_boxed(&mut map)?))
                     }
                     "hkbRotateCharacterModifier" => {
-                        Ok(
-                            Classes::hkbRotateCharacterModifier(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbRotateCharacterModifier(next_boxed(&mut map)?))
                     }
                     "hkbRotateCharacterModifierInternalState" => {
                         Ok(
                             Classes::hkbRotateCharacterModifierInternalState(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbSenseHandleModifier" => {
-                        Ok(Classes::hkbSenseHandleModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbSenseHandleModifier(next_boxed(&mut map)?))
                     }
                     "hkbSenseHandleModifierRange" => {
-                        Ok(
-                            Classes::hkbSenseHandleModifierRange(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbSenseHandleModifierRange(next_boxed(&mut map)?))
                     }
-                    "hkbSequence" => {
-                        Ok(Classes::hkbSequence(Box::new(map.next_value()?)))
-                    }
+                    "hkbSequence" => Ok(Classes::hkbSequence(next_boxed(&mut map)?)),
                     "hkbSequencedData" => {
-                        Ok(Classes::hkbSequencedData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbSequencedData(next_boxed(&mut map)?))
                     }
                     "hkbSequenceInternalState" => {
-                        Ok(
-                            Classes::hkbSequenceInternalState(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbSequenceInternalState(next_boxed(&mut map)?))
                     }
                     "hkbSequenceStringData" => {
-                        Ok(Classes::hkbSequenceStringData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbSequenceStringData(next_boxed(&mut map)?))
                     }
                     "hkbSetBehaviorCommand" => {
-                        Ok(Classes::hkbSetBehaviorCommand(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbSetBehaviorCommand(next_boxed(&mut map)?))
                     }
                     "hkbSetLocalTimeOfClipGeneratorCommand" => {
                         Ok(
                             Classes::hkbSetLocalTimeOfClipGeneratorCommand(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbSetNodePropertyCommand" => {
-                        Ok(
-                            Classes::hkbSetNodePropertyCommand(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbSetNodePropertyCommand(next_boxed(&mut map)?))
                     }
                     "hkbSetWordVariableCommand" => {
-                        Ok(
-                            Classes::hkbSetWordVariableCommand(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbSetWordVariableCommand(next_boxed(&mut map)?))
                     }
                     "hkbSetWorldFromModelModifier" => {
-                        Ok(
-                            Classes::hkbSetWorldFromModelModifier(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbSetWorldFromModelModifier(next_boxed(&mut map)?))
                     }
                     "hkbSimulationControlCommand" => {
-                        Ok(
-                            Classes::hkbSimulationControlCommand(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbSimulationControlCommand(next_boxed(&mut map)?))
                     }
                     "hkbSimulationStateInfo" => {
-                        Ok(Classes::hkbSimulationStateInfo(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbSimulationStateInfo(next_boxed(&mut map)?))
                     }
                     "hkbStateChooser" => {
-                        Ok(Classes::hkbStateChooser(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbStateChooser(next_boxed(&mut map)?))
                     }
                     "hkbStateListener" => {
-                        Ok(Classes::hkbStateListener(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbStateListener(next_boxed(&mut map)?))
                     }
                     "hkbStateMachine" => {
-                        Ok(Classes::hkbStateMachine(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbStateMachine(next_boxed(&mut map)?))
                     }
                     "hkbStateMachineActiveTransitionInfo" => {
                         Ok(
                             Classes::hkbStateMachineActiveTransitionInfo(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbStateMachineDelayedTransitionInfo" => {
                         Ok(
                             Classes::hkbStateMachineDelayedTransitionInfo(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbStateMachineEventPropertyArray" => {
                         Ok(
                             Classes::hkbStateMachineEventPropertyArray(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbStateMachineInternalState" => {
-                        Ok(
-                            Classes::hkbStateMachineInternalState(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbStateMachineInternalState(next_boxed(&mut map)?))
                     }
                     "hkbStateMachineNestedStateMachineData" => {
                         Ok(
                             Classes::hkbStateMachineNestedStateMachineData(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbStateMachineProspectiveTransitionInfo" => {
                         Ok(
                             Classes::hkbStateMachineProspectiveTransitionInfo(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbStateMachineStateInfo" => {
-                        Ok(
-                            Classes::hkbStateMachineStateInfo(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbStateMachineStateInfo(next_boxed(&mut map)?))
                     }
                     "hkbStateMachineTimeInterval" => {
-                        Ok(
-                            Classes::hkbStateMachineTimeInterval(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbStateMachineTimeInterval(next_boxed(&mut map)?))
                     }
                     "hkbStateMachineTransitionInfo" => {
-                        Ok(
-                            Classes::hkbStateMachineTransitionInfo(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbStateMachineTransitionInfo(next_boxed(&mut map)?))
                     }
                     "hkbStateMachineTransitionInfoArray" => {
                         Ok(
                             Classes::hkbStateMachineTransitionInfoArray(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbStateMachineTransitionInfoReference" => {
                         Ok(
                             Classes::hkbStateMachineTransitionInfoReference(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbStringCondition" => {
-                        Ok(Classes::hkbStringCondition(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbStringCondition(next_boxed(&mut map)?))
                     }
                     "hkbStringEventPayload" => {
-                        Ok(Classes::hkbStringEventPayload(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbStringEventPayload(next_boxed(&mut map)?))
                     }
                     "hkbTestStateChooser" => {
-                        Ok(Classes::hkbTestStateChooser(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbTestStateChooser(next_boxed(&mut map)?))
                     }
                     "hkbTimerModifier" => {
-                        Ok(Classes::hkbTimerModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbTimerModifier(next_boxed(&mut map)?))
                     }
                     "hkbTimerModifierInternalState" => {
-                        Ok(
-                            Classes::hkbTimerModifierInternalState(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbTimerModifierInternalState(next_boxed(&mut map)?))
                     }
                     "hkbTransformVectorModifier" => {
-                        Ok(
-                            Classes::hkbTransformVectorModifier(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbTransformVectorModifier(next_boxed(&mut map)?))
                     }
                     "hkbTransformVectorModifierInternalState" => {
                         Ok(
                             Classes::hkbTransformVectorModifierInternalState(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkbTransitionEffect" => {
-                        Ok(Classes::hkbTransitionEffect(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbTransitionEffect(next_boxed(&mut map)?))
                     }
                     "hkbTwistModifier" => {
-                        Ok(Classes::hkbTwistModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbTwistModifier(next_boxed(&mut map)?))
                     }
                     "hkbVariableBindingSet" => {
-                        Ok(Classes::hkbVariableBindingSet(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbVariableBindingSet(next_boxed(&mut map)?))
                     }
                     "hkbVariableBindingSetBinding" => {
-                        Ok(
-                            Classes::hkbVariableBindingSetBinding(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbVariableBindingSetBinding(next_boxed(&mut map)?))
                     }
                     "hkbVariableInfo" => {
-                        Ok(Classes::hkbVariableInfo(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbVariableInfo(next_boxed(&mut map)?))
                     }
                     "hkbVariableValue" => {
-                        Ok(Classes::hkbVariableValue(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbVariableValue(next_boxed(&mut map)?))
                     }
                     "hkbVariableValueSet" => {
-                        Ok(Classes::hkbVariableValueSet(Box::new(map.next_value()?)))
+                        Ok(Classes::hkbVariableValueSet(next_boxed(&mut map)?))
                     }
-                    "hkbWorldEnums" => {
-                        Ok(Classes::hkbWorldEnums(Box::new(map.next_value()?)))
-                    }
+                    "hkbWorldEnums" => Ok(Classes::hkbWorldEnums(next_boxed(&mut map)?)),
                     "hkbWorldFromModelModeData" => {
-                        Ok(
-                            Classes::hkbWorldFromModelModeData(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkbWorldFromModelModeData(next_boxed(&mut map)?))
                     }
-                    "hkClass" => Ok(Classes::hkClass(Box::new(map.next_value()?))),
-                    "hkClassEnum" => {
-                        Ok(Classes::hkClassEnum(Box::new(map.next_value()?)))
-                    }
+                    "hkClass" => Ok(Classes::hkClass(next_boxed(&mut map)?)),
+                    "hkClassEnum" => Ok(Classes::hkClassEnum(next_boxed(&mut map)?)),
                     "hkClassEnumItem" => {
-                        Ok(Classes::hkClassEnumItem(Box::new(map.next_value()?)))
+                        Ok(Classes::hkClassEnumItem(next_boxed(&mut map)?))
                     }
-                    "hkClassMember" => {
-                        Ok(Classes::hkClassMember(Box::new(map.next_value()?)))
-                    }
-                    "hkColor" => Ok(Classes::hkColor(Box::new(map.next_value()?))),
+                    "hkClassMember" => Ok(Classes::hkClassMember(next_boxed(&mut map)?)),
+                    "hkColor" => Ok(Classes::hkColor(next_boxed(&mut map)?)),
                     "hkContactPoint" => {
-                        Ok(Classes::hkContactPoint(Box::new(map.next_value()?)))
+                        Ok(Classes::hkContactPoint(next_boxed(&mut map)?))
                     }
                     "hkContactPointMaterial" => {
-                        Ok(Classes::hkContactPointMaterial(Box::new(map.next_value()?)))
+                        Ok(Classes::hkContactPointMaterial(next_boxed(&mut map)?))
                     }
                     "hkCustomAttributes" => {
-                        Ok(Classes::hkCustomAttributes(Box::new(map.next_value()?)))
+                        Ok(Classes::hkCustomAttributes(next_boxed(&mut map)?))
                     }
                     "hkCustomAttributesAttribute" => {
-                        Ok(
-                            Classes::hkCustomAttributesAttribute(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkCustomAttributesAttribute(next_boxed(&mut map)?))
                     }
                     "hkDataObjectTypeAttribute" => {
-                        Ok(
-                            Classes::hkDataObjectTypeAttribute(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkDataObjectTypeAttribute(next_boxed(&mut map)?))
                     }
                     "hkDescriptionAttribute" => {
-                        Ok(Classes::hkDescriptionAttribute(Box::new(map.next_value()?)))
+                        Ok(Classes::hkDescriptionAttribute(next_boxed(&mut map)?))
                     }
                     "hkDocumentationAttribute" => {
-                        Ok(
-                            Classes::hkDocumentationAttribute(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkDocumentationAttribute(next_boxed(&mut map)?))
                     }
-                    "hkGeometry" => Ok(Classes::hkGeometry(Box::new(map.next_value()?))),
+                    "hkGeometry" => Ok(Classes::hkGeometry(next_boxed(&mut map)?)),
                     "hkGeometryTriangle" => {
-                        Ok(Classes::hkGeometryTriangle(Box::new(map.next_value()?)))
+                        Ok(Classes::hkGeometryTriangle(next_boxed(&mut map)?))
                     }
                     "hkGizmoAttribute" => {
-                        Ok(Classes::hkGizmoAttribute(Box::new(map.next_value()?)))
+                        Ok(Classes::hkGizmoAttribute(next_boxed(&mut map)?))
                     }
-                    "hkHalf8" => Ok(Classes::hkHalf8(Box::new(map.next_value()?))),
+                    "hkHalf8" => Ok(Classes::hkHalf8(next_boxed(&mut map)?)),
                     "hkIndexedTransformSet" => {
-                        Ok(Classes::hkIndexedTransformSet(Box::new(map.next_value()?)))
+                        Ok(Classes::hkIndexedTransformSet(next_boxed(&mut map)?))
                     }
                     "hkLinkAttribute" => {
-                        Ok(Classes::hkLinkAttribute(Box::new(map.next_value()?)))
+                        Ok(Classes::hkLinkAttribute(next_boxed(&mut map)?))
                     }
-                    "hkLocalFrame" => {
-                        Ok(Classes::hkLocalFrame(Box::new(map.next_value()?)))
-                    }
+                    "hkLocalFrame" => Ok(Classes::hkLocalFrame(next_boxed(&mut map)?)),
                     "hkLocalFrameGroup" => {
-                        Ok(Classes::hkLocalFrameGroup(Box::new(map.next_value()?)))
+                        Ok(Classes::hkLocalFrameGroup(next_boxed(&mut map)?))
                     }
                     "hkMemoryMeshBody" => {
-                        Ok(Classes::hkMemoryMeshBody(Box::new(map.next_value()?)))
+                        Ok(Classes::hkMemoryMeshBody(next_boxed(&mut map)?))
                     }
                     "hkMemoryMeshMaterial" => {
-                        Ok(Classes::hkMemoryMeshMaterial(Box::new(map.next_value()?)))
+                        Ok(Classes::hkMemoryMeshMaterial(next_boxed(&mut map)?))
                     }
                     "hkMemoryMeshShape" => {
-                        Ok(Classes::hkMemoryMeshShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkMemoryMeshShape(next_boxed(&mut map)?))
                     }
                     "hkMemoryMeshTexture" => {
-                        Ok(Classes::hkMemoryMeshTexture(Box::new(map.next_value()?)))
+                        Ok(Classes::hkMemoryMeshTexture(next_boxed(&mut map)?))
                     }
                     "hkMemoryMeshVertexBuffer" => {
-                        Ok(
-                            Classes::hkMemoryMeshVertexBuffer(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkMemoryMeshVertexBuffer(next_boxed(&mut map)?))
                     }
                     "hkMemoryResourceContainer" => {
-                        Ok(
-                            Classes::hkMemoryResourceContainer(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkMemoryResourceContainer(next_boxed(&mut map)?))
                     }
                     "hkMemoryResourceHandle" => {
-                        Ok(Classes::hkMemoryResourceHandle(Box::new(map.next_value()?)))
+                        Ok(Classes::hkMemoryResourceHandle(next_boxed(&mut map)?))
                     }
                     "hkMemoryResourceHandleExternalLink" => {
                         Ok(
                             Classes::hkMemoryResourceHandleExternalLink(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkMemoryTrackerAttribute" => {
-                        Ok(
-                            Classes::hkMemoryTrackerAttribute(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkMemoryTrackerAttribute(next_boxed(&mut map)?))
                     }
-                    "hkMeshBody" => Ok(Classes::hkMeshBody(Box::new(map.next_value()?))),
+                    "hkMeshBody" => Ok(Classes::hkMeshBody(next_boxed(&mut map)?)),
                     "hkMeshBoneIndexMapping" => {
-                        Ok(Classes::hkMeshBoneIndexMapping(Box::new(map.next_value()?)))
+                        Ok(Classes::hkMeshBoneIndexMapping(next_boxed(&mut map)?))
                     }
                     "hkMeshMaterial" => {
-                        Ok(Classes::hkMeshMaterial(Box::new(map.next_value()?)))
+                        Ok(Classes::hkMeshMaterial(next_boxed(&mut map)?))
                     }
-                    "hkMeshSection" => {
-                        Ok(Classes::hkMeshSection(Box::new(map.next_value()?)))
-                    }
+                    "hkMeshSection" => Ok(Classes::hkMeshSection(next_boxed(&mut map)?)),
                     "hkMeshSectionCinfo" => {
-                        Ok(Classes::hkMeshSectionCinfo(Box::new(map.next_value()?)))
+                        Ok(Classes::hkMeshSectionCinfo(next_boxed(&mut map)?))
                     }
-                    "hkMeshShape" => {
-                        Ok(Classes::hkMeshShape(Box::new(map.next_value()?)))
-                    }
-                    "hkMeshTexture" => {
-                        Ok(Classes::hkMeshTexture(Box::new(map.next_value()?)))
-                    }
+                    "hkMeshShape" => Ok(Classes::hkMeshShape(next_boxed(&mut map)?)),
+                    "hkMeshTexture" => Ok(Classes::hkMeshTexture(next_boxed(&mut map)?)),
                     "hkMeshVertexBuffer" => {
-                        Ok(Classes::hkMeshVertexBuffer(Box::new(map.next_value()?)))
+                        Ok(Classes::hkMeshVertexBuffer(next_boxed(&mut map)?))
                     }
                     "hkModelerNodeTypeAttribute" => {
-                        Ok(
-                            Classes::hkModelerNodeTypeAttribute(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkModelerNodeTypeAttribute(next_boxed(&mut map)?))
                     }
                     "hkMonitorStreamColorTable" => {
-                        Ok(
-                            Classes::hkMonitorStreamColorTable(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkMonitorStreamColorTable(next_boxed(&mut map)?))
                     }
                     "hkMonitorStreamColorTableColorPair" => {
                         Ok(
                             Classes::hkMonitorStreamColorTableColorPair(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkMonitorStreamFrameInfo" => {
-                        Ok(
-                            Classes::hkMonitorStreamFrameInfo(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkMonitorStreamFrameInfo(next_boxed(&mut map)?))
                     }
                     "hkMonitorStreamStringMap" => {
-                        Ok(
-                            Classes::hkMonitorStreamStringMap(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkMonitorStreamStringMap(next_boxed(&mut map)?))
                     }
                     "hkMonitorStreamStringMapStringMap" => {
                         Ok(
                             Classes::hkMonitorStreamStringMapStringMap(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkMoppBvTreeShapeBase" => {
-                        Ok(Classes::hkMoppBvTreeShapeBase(Box::new(map.next_value()?)))
+                        Ok(Classes::hkMoppBvTreeShapeBase(next_boxed(&mut map)?))
                     }
-                    "hkMotionState" => {
-                        Ok(Classes::hkMotionState(Box::new(map.next_value()?)))
-                    }
+                    "hkMotionState" => Ok(Classes::hkMotionState(next_boxed(&mut map)?)),
                     "hkMultipleVertexBuffer" => {
-                        Ok(Classes::hkMultipleVertexBuffer(Box::new(map.next_value()?)))
+                        Ok(Classes::hkMultipleVertexBuffer(next_boxed(&mut map)?))
                     }
                     "hkMultipleVertexBufferElementInfo" => {
                         Ok(
                             Classes::hkMultipleVertexBufferElementInfo(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkMultipleVertexBufferLockedElement" => {
                         Ok(
                             Classes::hkMultipleVertexBufferLockedElement(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkMultipleVertexBufferVertexBufferInfo" => {
                         Ok(
                             Classes::hkMultipleVertexBufferVertexBufferInfo(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkMultiThreadCheck" => {
-                        Ok(Classes::hkMultiThreadCheck(Box::new(map.next_value()?)))
+                        Ok(Classes::hkMultiThreadCheck(next_boxed(&mut map)?))
                     }
                     "hkp2dAngConstraintAtom" => {
-                        Ok(Classes::hkp2dAngConstraintAtom(Box::new(map.next_value()?)))
+                        Ok(Classes::hkp2dAngConstraintAtom(next_boxed(&mut map)?))
                     }
                     "hkpAabbPhantom" => {
-                        Ok(Classes::hkpAabbPhantom(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpAabbPhantom(next_boxed(&mut map)?))
                     }
                     "hkPackedVector3" => {
-                        Ok(Classes::hkPackedVector3(Box::new(map.next_value()?)))
+                        Ok(Classes::hkPackedVector3(next_boxed(&mut map)?))
                     }
                     "hkPackfileHeader" => {
-                        Ok(Classes::hkPackfileHeader(Box::new(map.next_value()?)))
+                        Ok(Classes::hkPackfileHeader(next_boxed(&mut map)?))
                     }
                     "hkPackfileSectionHeader" => {
-                        Ok(Classes::hkPackfileSectionHeader(Box::new(map.next_value()?)))
+                        Ok(Classes::hkPackfileSectionHeader(next_boxed(&mut map)?))
                     }
-                    "hkpAction" => Ok(Classes::hkpAction(Box::new(map.next_value()?))),
+                    "hkpAction" => Ok(Classes::hkpAction(next_boxed(&mut map)?)),
                     "hkpAgent1nSector" => {
-                        Ok(Classes::hkpAgent1nSector(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpAgent1nSector(next_boxed(&mut map)?))
                     }
                     "hkpAngConstraintAtom" => {
-                        Ok(Classes::hkpAngConstraintAtom(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpAngConstraintAtom(next_boxed(&mut map)?))
                     }
                     "hkpAngFrictionConstraintAtom" => {
-                        Ok(
-                            Classes::hkpAngFrictionConstraintAtom(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpAngFrictionConstraintAtom(next_boxed(&mut map)?))
                     }
                     "hkpAngLimitConstraintAtom" => {
-                        Ok(
-                            Classes::hkpAngLimitConstraintAtom(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpAngLimitConstraintAtom(next_boxed(&mut map)?))
                     }
                     "hkpAngMotorConstraintAtom" => {
-                        Ok(
-                            Classes::hkpAngMotorConstraintAtom(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpAngMotorConstraintAtom(next_boxed(&mut map)?))
                     }
                     "hkpAngularDashpotAction" => {
-                        Ok(Classes::hkpAngularDashpotAction(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpAngularDashpotAction(next_boxed(&mut map)?))
                     }
                     "hkpArrayAction" => {
-                        Ok(Classes::hkpArrayAction(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpArrayAction(next_boxed(&mut map)?))
                     }
                     "hkpBallAndSocketConstraintData" => {
                         Ok(
                             Classes::hkpBallAndSocketConstraintData(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpBallAndSocketConstraintDataAtoms" => {
                         Ok(
                             Classes::hkpBallAndSocketConstraintDataAtoms(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
-                    "hkpBallGun" => Ok(Classes::hkpBallGun(Box::new(map.next_value()?))),
+                    "hkpBallGun" => Ok(Classes::hkpBallGun(next_boxed(&mut map)?)),
                     "hkpBallSocketChainData" => {
-                        Ok(Classes::hkpBallSocketChainData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpBallSocketChainData(next_boxed(&mut map)?))
                     }
                     "hkpBallSocketChainDataConstraintInfo" => {
                         Ok(
                             Classes::hkpBallSocketChainDataConstraintInfo(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpBallSocketConstraintAtom" => {
-                        Ok(
-                            Classes::hkpBallSocketConstraintAtom(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpBallSocketConstraintAtom(next_boxed(&mut map)?))
                     }
                     "hkpBinaryAction" => {
-                        Ok(Classes::hkpBinaryAction(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpBinaryAction(next_boxed(&mut map)?))
                     }
-                    "hkpBoxMotion" => {
-                        Ok(Classes::hkpBoxMotion(Box::new(map.next_value()?)))
-                    }
-                    "hkpBoxShape" => {
-                        Ok(Classes::hkpBoxShape(Box::new(map.next_value()?)))
-                    }
+                    "hkpBoxMotion" => Ok(Classes::hkpBoxMotion(next_boxed(&mut map)?)),
+                    "hkpBoxShape" => Ok(Classes::hkpBoxShape(next_boxed(&mut map)?)),
                     "hkpBreakableBody" => {
-                        Ok(Classes::hkpBreakableBody(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpBreakableBody(next_boxed(&mut map)?))
                     }
                     "hkpBreakableConstraintData" => {
-                        Ok(
-                            Classes::hkpBreakableConstraintData(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpBreakableConstraintData(next_boxed(&mut map)?))
                     }
                     "hkpBridgeAtoms" => {
-                        Ok(Classes::hkpBridgeAtoms(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpBridgeAtoms(next_boxed(&mut map)?))
                     }
                     "hkpBridgeConstraintAtom" => {
-                        Ok(Classes::hkpBridgeConstraintAtom(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpBridgeConstraintAtom(next_boxed(&mut map)?))
                     }
                     "hkpBroadPhaseHandle" => {
-                        Ok(Classes::hkpBroadPhaseHandle(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpBroadPhaseHandle(next_boxed(&mut map)?))
                     }
-                    "hkpBvShape" => Ok(Classes::hkpBvShape(Box::new(map.next_value()?))),
+                    "hkpBvShape" => Ok(Classes::hkpBvShape(next_boxed(&mut map)?)),
                     "hkpBvTreeShape" => {
-                        Ok(Classes::hkpBvTreeShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpBvTreeShape(next_boxed(&mut map)?))
                     }
                     "hkpCachingShapePhantom" => {
-                        Ok(Classes::hkpCachingShapePhantom(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpCachingShapePhantom(next_boxed(&mut map)?))
                     }
                     "hkpCallbackConstraintMotor" => {
-                        Ok(
-                            Classes::hkpCallbackConstraintMotor(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpCallbackConstraintMotor(next_boxed(&mut map)?))
                     }
                     "hkpCapsuleShape" => {
-                        Ok(Classes::hkpCapsuleShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpCapsuleShape(next_boxed(&mut map)?))
                     }
-                    "hkpCdBody" => Ok(Classes::hkpCdBody(Box::new(map.next_value()?))),
+                    "hkpCdBody" => Ok(Classes::hkpCdBody(next_boxed(&mut map)?)),
                     "hkpCenterOfMassChangerModifierConstraintAtom" => {
                         Ok(
                             Classes::hkpCenterOfMassChangerModifierConstraintAtom(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpCharacterControllerCinfo" => {
-                        Ok(
-                            Classes::hkpCharacterControllerCinfo(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpCharacterControllerCinfo(next_boxed(&mut map)?))
                     }
                     "hkpCharacterMotion" => {
-                        Ok(Classes::hkpCharacterMotion(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpCharacterMotion(next_boxed(&mut map)?))
                     }
                     "hkpCharacterProxyCinfo" => {
-                        Ok(Classes::hkpCharacterProxyCinfo(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpCharacterProxyCinfo(next_boxed(&mut map)?))
                     }
                     "hkpCharacterRigidBodyCinfo" => {
-                        Ok(
-                            Classes::hkpCharacterRigidBodyCinfo(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpCharacterRigidBodyCinfo(next_boxed(&mut map)?))
                     }
                     "hkpCogWheelConstraintAtom" => {
-                        Ok(
-                            Classes::hkpCogWheelConstraintAtom(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpCogWheelConstraintAtom(next_boxed(&mut map)?))
                     }
                     "hkpCogWheelConstraintData" => {
-                        Ok(
-                            Classes::hkpCogWheelConstraintData(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpCogWheelConstraintData(next_boxed(&mut map)?))
                     }
                     "hkpCogWheelConstraintDataAtoms" => {
                         Ok(
                             Classes::hkpCogWheelConstraintDataAtoms(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
-                    "hkpCollidable" => {
-                        Ok(Classes::hkpCollidable(Box::new(map.next_value()?)))
-                    }
+                    "hkpCollidable" => Ok(Classes::hkpCollidable(next_boxed(&mut map)?)),
                     "hkpCollidableBoundingVolumeData" => {
                         Ok(
                             Classes::hkpCollidableBoundingVolumeData(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpCollidableCollidableFilter" => {
-                        Ok(
-                            Classes::hkpCollidableCollidableFilter(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpCollidableCollidableFilter(next_boxed(&mut map)?))
                     }
                     "hkpCollisionFilter" => {
-                        Ok(Classes::hkpCollisionFilter(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpCollisionFilter(next_boxed(&mut map)?))
                     }
                     "hkpCollisionFilterList" => {
-                        Ok(Classes::hkpCollisionFilterList(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpCollisionFilterList(next_boxed(&mut map)?))
                     }
                     "hkpCompressedMeshShape" => {
-                        Ok(Classes::hkpCompressedMeshShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpCompressedMeshShape(next_boxed(&mut map)?))
                     }
                     "hkpCompressedMeshShapeBigTriangle" => {
                         Ok(
                             Classes::hkpCompressedMeshShapeBigTriangle(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpCompressedMeshShapeChunk" => {
-                        Ok(
-                            Classes::hkpCompressedMeshShapeChunk(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpCompressedMeshShapeChunk(next_boxed(&mut map)?))
                     }
                     "hkpCompressedMeshShapeConvexPiece" => {
                         Ok(
                             Classes::hkpCompressedMeshShapeConvexPiece(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpCompressedSampledHeightFieldShape" => {
                         Ok(
                             Classes::hkpCompressedSampledHeightFieldShape(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpConeLimitConstraintAtom" => {
-                        Ok(
-                            Classes::hkpConeLimitConstraintAtom(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpConeLimitConstraintAtom(next_boxed(&mut map)?))
                     }
                     "hkpConstrainedSystemFilter" => {
-                        Ok(
-                            Classes::hkpConstrainedSystemFilter(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpConstrainedSystemFilter(next_boxed(&mut map)?))
                     }
                     "hkpConstraintAtom" => {
-                        Ok(Classes::hkpConstraintAtom(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpConstraintAtom(next_boxed(&mut map)?))
                     }
                     "hkpConstraintChainData" => {
-                        Ok(Classes::hkpConstraintChainData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpConstraintChainData(next_boxed(&mut map)?))
                     }
                     "hkpConstraintChainInstance" => {
-                        Ok(
-                            Classes::hkpConstraintChainInstance(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpConstraintChainInstance(next_boxed(&mut map)?))
                     }
                     "hkpConstraintChainInstanceAction" => {
                         Ok(
                             Classes::hkpConstraintChainInstanceAction(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpConstraintCollisionFilter" => {
-                        Ok(
-                            Classes::hkpConstraintCollisionFilter(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpConstraintCollisionFilter(next_boxed(&mut map)?))
                     }
                     "hkpConstraintData" => {
-                        Ok(Classes::hkpConstraintData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpConstraintData(next_boxed(&mut map)?))
                     }
                     "hkpConstraintInstance" => {
-                        Ok(Classes::hkpConstraintInstance(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpConstraintInstance(next_boxed(&mut map)?))
                     }
                     "hkpConstraintInstanceSmallArraySerializeOverrideType" => {
                         Ok(
                             Classes::hkpConstraintInstanceSmallArraySerializeOverrideType(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpConstraintMotor" => {
-                        Ok(Classes::hkpConstraintMotor(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpConstraintMotor(next_boxed(&mut map)?))
                     }
                     "hkpConvexListFilter" => {
-                        Ok(Classes::hkpConvexListFilter(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpConvexListFilter(next_boxed(&mut map)?))
                     }
                     "hkpConvexListShape" => {
-                        Ok(Classes::hkpConvexListShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpConvexListShape(next_boxed(&mut map)?))
                     }
                     "hkpConvexPieceMeshShape" => {
-                        Ok(Classes::hkpConvexPieceMeshShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpConvexPieceMeshShape(next_boxed(&mut map)?))
                     }
                     "hkpConvexPieceStreamData" => {
-                        Ok(
-                            Classes::hkpConvexPieceStreamData(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpConvexPieceStreamData(next_boxed(&mut map)?))
                     }
                     "hkpConvexShape" => {
-                        Ok(Classes::hkpConvexShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpConvexShape(next_boxed(&mut map)?))
                     }
                     "hkpConvexTransformShape" => {
-                        Ok(Classes::hkpConvexTransformShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpConvexTransformShape(next_boxed(&mut map)?))
                     }
                     "hkpConvexTransformShapeBase" => {
-                        Ok(
-                            Classes::hkpConvexTransformShapeBase(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpConvexTransformShapeBase(next_boxed(&mut map)?))
                     }
                     "hkpConvexTranslateShape" => {
-                        Ok(Classes::hkpConvexTranslateShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpConvexTranslateShape(next_boxed(&mut map)?))
                     }
                     "hkpConvexVerticesConnectivity" => {
-                        Ok(
-                            Classes::hkpConvexVerticesConnectivity(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpConvexVerticesConnectivity(next_boxed(&mut map)?))
                     }
                     "hkpConvexVerticesShape" => {
-                        Ok(Classes::hkpConvexVerticesShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpConvexVerticesShape(next_boxed(&mut map)?))
                     }
                     "hkpConvexVerticesShapeFourVectors" => {
                         Ok(
                             Classes::hkpConvexVerticesShapeFourVectors(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpCylinderShape" => {
-                        Ok(Classes::hkpCylinderShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpCylinderShape(next_boxed(&mut map)?))
                     }
                     "hkpDashpotAction" => {
-                        Ok(Classes::hkpDashpotAction(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpDashpotAction(next_boxed(&mut map)?))
                     }
                     "hkpDefaultConvexListFilter" => {
-                        Ok(
-                            Classes::hkpDefaultConvexListFilter(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpDefaultConvexListFilter(next_boxed(&mut map)?))
                     }
                     "hkpDefaultWorldMemoryWatchDog" => {
-                        Ok(
-                            Classes::hkpDefaultWorldMemoryWatchDog(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpDefaultWorldMemoryWatchDog(next_boxed(&mut map)?))
                     }
                     "hkpDisableEntityCollisionFilter" => {
                         Ok(
                             Classes::hkpDisableEntityCollisionFilter(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpDisplayBindingData" => {
-                        Ok(Classes::hkpDisplayBindingData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpDisplayBindingData(next_boxed(&mut map)?))
                     }
                     "hkpDisplayBindingDataPhysicsSystem" => {
                         Ok(
                             Classes::hkpDisplayBindingDataPhysicsSystem(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpDisplayBindingDataRigidBody" => {
                         Ok(
                             Classes::hkpDisplayBindingDataRigidBody(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
-                    "hkpEntity" => Ok(Classes::hkpEntity(Box::new(map.next_value()?))),
+                    "hkpEntity" => Ok(Classes::hkpEntity(next_boxed(&mut map)?)),
                     "hkpEntityExtendedListeners" => {
-                        Ok(
-                            Classes::hkpEntityExtendedListeners(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpEntityExtendedListeners(next_boxed(&mut map)?))
                     }
                     "hkpEntitySmallArraySerializeOverrideType" => {
                         Ok(
                             Classes::hkpEntitySmallArraySerializeOverrideType(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpEntitySpuCollisionCallback" => {
-                        Ok(
-                            Classes::hkpEntitySpuCollisionCallback(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpEntitySpuCollisionCallback(next_boxed(&mut map)?))
                     }
                     "hkpExtendedMeshShape" => {
-                        Ok(Classes::hkpExtendedMeshShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpExtendedMeshShape(next_boxed(&mut map)?))
                     }
                     "hkpExtendedMeshShapeShapesSubpart" => {
                         Ok(
                             Classes::hkpExtendedMeshShapeShapesSubpart(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpExtendedMeshShapeSubpart" => {
-                        Ok(
-                            Classes::hkpExtendedMeshShapeSubpart(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpExtendedMeshShapeSubpart(next_boxed(&mut map)?))
                     }
                     "hkpExtendedMeshShapeTrianglesSubpart" => {
                         Ok(
                             Classes::hkpExtendedMeshShapeTrianglesSubpart(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpFastMeshShape" => {
-                        Ok(Classes::hkpFastMeshShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpFastMeshShape(next_boxed(&mut map)?))
                     }
                     "hkpFirstPersonGun" => {
-                        Ok(Classes::hkpFirstPersonGun(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpFirstPersonGun(next_boxed(&mut map)?))
                     }
                     "hkpFixedRigidMotion" => {
-                        Ok(Classes::hkpFixedRigidMotion(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpFixedRigidMotion(next_boxed(&mut map)?))
                     }
                     "hkpGenericConstraintData" => {
-                        Ok(
-                            Classes::hkpGenericConstraintData(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpGenericConstraintData(next_boxed(&mut map)?))
                     }
                     "hkpGenericConstraintDataScheme" => {
                         Ok(
                             Classes::hkpGenericConstraintDataScheme(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpGenericConstraintDataSchemeConstraintInfo" => {
                         Ok(
                             Classes::hkpGenericConstraintDataSchemeConstraintInfo(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
-                    "hkpGravityGun" => {
-                        Ok(Classes::hkpGravityGun(Box::new(map.next_value()?)))
-                    }
+                    "hkpGravityGun" => Ok(Classes::hkpGravityGun(next_boxed(&mut map)?)),
                     "hkpGroupCollisionFilter" => {
-                        Ok(Classes::hkpGroupCollisionFilter(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpGroupCollisionFilter(next_boxed(&mut map)?))
                     }
                     "hkpGroupFilter" => {
-                        Ok(Classes::hkpGroupFilter(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpGroupFilter(next_boxed(&mut map)?))
                     }
                     "hkpHeightFieldShape" => {
-                        Ok(Classes::hkpHeightFieldShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpHeightFieldShape(next_boxed(&mut map)?))
                     }
                     "hkpHingeConstraintData" => {
-                        Ok(Classes::hkpHingeConstraintData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpHingeConstraintData(next_boxed(&mut map)?))
                     }
                     "hkpHingeConstraintDataAtoms" => {
-                        Ok(
-                            Classes::hkpHingeConstraintDataAtoms(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpHingeConstraintDataAtoms(next_boxed(&mut map)?))
                     }
                     "hkpHingeLimitsData" => {
-                        Ok(Classes::hkpHingeLimitsData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpHingeLimitsData(next_boxed(&mut map)?))
                     }
                     "hkpHingeLimitsDataAtoms" => {
-                        Ok(Classes::hkpHingeLimitsDataAtoms(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpHingeLimitsDataAtoms(next_boxed(&mut map)?))
                     }
                     "hkpIgnoreModifierConstraintAtom" => {
                         Ok(
                             Classes::hkpIgnoreModifierConstraintAtom(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpKeyframedRigidMotion" => {
-                        Ok(Classes::hkpKeyframedRigidMotion(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpKeyframedRigidMotion(next_boxed(&mut map)?))
                     }
                     "hkpLimitedForceConstraintMotor" => {
                         Ok(
                             Classes::hkpLimitedForceConstraintMotor(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpLimitedHingeConstraintData" => {
-                        Ok(
-                            Classes::hkpLimitedHingeConstraintData(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpLimitedHingeConstraintData(next_boxed(&mut map)?))
                     }
                     "hkpLimitedHingeConstraintDataAtoms" => {
                         Ok(
                             Classes::hkpLimitedHingeConstraintDataAtoms(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpLinConstraintAtom" => {
-                        Ok(Classes::hkpLinConstraintAtom(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpLinConstraintAtom(next_boxed(&mut map)?))
                     }
                     "hkpLinearParametricCurve" => {
-                        Ok(
-                            Classes::hkpLinearParametricCurve(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpLinearParametricCurve(next_boxed(&mut map)?))
                     }
                     "hkpLinFrictionConstraintAtom" => {
-                        Ok(
-                            Classes::hkpLinFrictionConstraintAtom(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpLinFrictionConstraintAtom(next_boxed(&mut map)?))
                     }
                     "hkpLinkedCollidable" => {
-                        Ok(Classes::hkpLinkedCollidable(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpLinkedCollidable(next_boxed(&mut map)?))
                     }
                     "hkpLinLimitConstraintAtom" => {
-                        Ok(
-                            Classes::hkpLinLimitConstraintAtom(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpLinLimitConstraintAtom(next_boxed(&mut map)?))
                     }
                     "hkpLinMotorConstraintAtom" => {
-                        Ok(
-                            Classes::hkpLinMotorConstraintAtom(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpLinMotorConstraintAtom(next_boxed(&mut map)?))
                     }
                     "hkpLinSoftConstraintAtom" => {
-                        Ok(
-                            Classes::hkpLinSoftConstraintAtom(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpLinSoftConstraintAtom(next_boxed(&mut map)?))
                     }
-                    "hkpListShape" => {
-                        Ok(Classes::hkpListShape(Box::new(map.next_value()?)))
-                    }
+                    "hkpListShape" => Ok(Classes::hkpListShape(next_boxed(&mut map)?)),
                     "hkpListShapeChildInfo" => {
-                        Ok(Classes::hkpListShapeChildInfo(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpListShapeChildInfo(next_boxed(&mut map)?))
                     }
                     "hkpMalleableConstraintData" => {
-                        Ok(
-                            Classes::hkpMalleableConstraintData(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpMalleableConstraintData(next_boxed(&mut map)?))
                     }
                     "hkpMassChangerModifierConstraintAtom" => {
                         Ok(
                             Classes::hkpMassChangerModifierConstraintAtom(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpMassProperties" => {
-                        Ok(Classes::hkpMassProperties(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpMassProperties(next_boxed(&mut map)?))
                     }
-                    "hkpMaterial" => {
-                        Ok(Classes::hkpMaterial(Box::new(map.next_value()?)))
-                    }
+                    "hkpMaterial" => Ok(Classes::hkpMaterial(next_boxed(&mut map)?)),
                     "hkpMaxSizeMotion" => {
-                        Ok(Classes::hkpMaxSizeMotion(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpMaxSizeMotion(next_boxed(&mut map)?))
                     }
                     "hkpMeshMaterial" => {
-                        Ok(Classes::hkpMeshMaterial(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpMeshMaterial(next_boxed(&mut map)?))
                     }
-                    "hkpMeshShape" => {
-                        Ok(Classes::hkpMeshShape(Box::new(map.next_value()?)))
-                    }
+                    "hkpMeshShape" => Ok(Classes::hkpMeshShape(next_boxed(&mut map)?)),
                     "hkpMeshShapeSubpart" => {
-                        Ok(Classes::hkpMeshShapeSubpart(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpMeshShapeSubpart(next_boxed(&mut map)?))
                     }
                     "hkpModifierConstraintAtom" => {
-                        Ok(
-                            Classes::hkpModifierConstraintAtom(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpModifierConstraintAtom(next_boxed(&mut map)?))
                     }
                     "hkpMoppBvTreeShape" => {
-                        Ok(Classes::hkpMoppBvTreeShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpMoppBvTreeShape(next_boxed(&mut map)?))
                     }
-                    "hkpMoppCode" => {
-                        Ok(Classes::hkpMoppCode(Box::new(map.next_value()?)))
-                    }
+                    "hkpMoppCode" => Ok(Classes::hkpMoppCode(next_boxed(&mut map)?)),
                     "hkpMoppCodeCodeInfo" => {
-                        Ok(Classes::hkpMoppCodeCodeInfo(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpMoppCodeCodeInfo(next_boxed(&mut map)?))
                     }
                     "hkpMoppCodeReindexedTerminal" => {
-                        Ok(
-                            Classes::hkpMoppCodeReindexedTerminal(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpMoppCodeReindexedTerminal(next_boxed(&mut map)?))
                     }
-                    "hkpMotion" => Ok(Classes::hkpMotion(Box::new(map.next_value()?))),
+                    "hkpMotion" => Ok(Classes::hkpMotion(next_boxed(&mut map)?)),
                     "hkpMotorAction" => {
-                        Ok(Classes::hkpMotorAction(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpMotorAction(next_boxed(&mut map)?))
                     }
                     "hkpMountedBallGun" => {
-                        Ok(Classes::hkpMountedBallGun(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpMountedBallGun(next_boxed(&mut map)?))
                     }
                     "hkpMouseSpringAction" => {
-                        Ok(Classes::hkpMouseSpringAction(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpMouseSpringAction(next_boxed(&mut map)?))
                     }
                     "hkpMovingSurfaceModifierConstraintAtom" => {
                         Ok(
                             Classes::hkpMovingSurfaceModifierConstraintAtom(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpMultiRayShape" => {
-                        Ok(Classes::hkpMultiRayShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpMultiRayShape(next_boxed(&mut map)?))
                     }
                     "hkpMultiRayShapeRay" => {
-                        Ok(Classes::hkpMultiRayShapeRay(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpMultiRayShapeRay(next_boxed(&mut map)?))
                     }
                     "hkpMultiSphereShape" => {
-                        Ok(Classes::hkpMultiSphereShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpMultiSphereShape(next_boxed(&mut map)?))
                     }
                     "hkpMultithreadedVehicleManager" => {
                         Ok(
                             Classes::hkpMultithreadedVehicleManager(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpNamedMeshMaterial" => {
-                        Ok(Classes::hkpNamedMeshMaterial(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpNamedMeshMaterial(next_boxed(&mut map)?))
                     }
                     "hkpNullCollisionFilter" => {
-                        Ok(Classes::hkpNullCollisionFilter(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpNullCollisionFilter(next_boxed(&mut map)?))
                     }
                     "hkPostFinishAttribute" => {
-                        Ok(Classes::hkPostFinishAttribute(Box::new(map.next_value()?)))
+                        Ok(Classes::hkPostFinishAttribute(next_boxed(&mut map)?))
                     }
                     "hkpOverwritePivotConstraintAtom" => {
                         Ok(
                             Classes::hkpOverwritePivotConstraintAtom(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpPairCollisionFilter" => {
-                        Ok(Classes::hkpPairCollisionFilter(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpPairCollisionFilter(next_boxed(&mut map)?))
                     }
                     "hkpPairCollisionFilterMapPairFilterKeyOverrideType" => {
                         Ok(
                             Classes::hkpPairCollisionFilterMapPairFilterKeyOverrideType(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpParametricCurve" => {
-                        Ok(Classes::hkpParametricCurve(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpParametricCurve(next_boxed(&mut map)?))
                     }
-                    "hkpPhantom" => Ok(Classes::hkpPhantom(Box::new(map.next_value()?))),
+                    "hkpPhantom" => Ok(Classes::hkpPhantom(next_boxed(&mut map)?)),
                     "hkpPhantomCallbackShape" => {
-                        Ok(Classes::hkpPhantomCallbackShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpPhantomCallbackShape(next_boxed(&mut map)?))
                     }
                     "hkpPhysicsData" => {
-                        Ok(Classes::hkpPhysicsData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpPhysicsData(next_boxed(&mut map)?))
                     }
                     "hkpPhysicsSystem" => {
-                        Ok(Classes::hkpPhysicsSystem(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpPhysicsSystem(next_boxed(&mut map)?))
                     }
                     "hkpPhysicsSystemWithContacts" => {
-                        Ok(
-                            Classes::hkpPhysicsSystemWithContacts(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpPhysicsSystemWithContacts(next_boxed(&mut map)?))
                     }
-                    "hkpPlaneShape" => {
-                        Ok(Classes::hkpPlaneShape(Box::new(map.next_value()?)))
-                    }
+                    "hkpPlaneShape" => Ok(Classes::hkpPlaneShape(next_boxed(&mut map)?)),
                     "hkpPointToPathConstraintData" => {
-                        Ok(
-                            Classes::hkpPointToPathConstraintData(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpPointToPathConstraintData(next_boxed(&mut map)?))
                     }
                     "hkpPointToPlaneConstraintData" => {
-                        Ok(
-                            Classes::hkpPointToPlaneConstraintData(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpPointToPlaneConstraintData(next_boxed(&mut map)?))
                     }
                     "hkpPointToPlaneConstraintDataAtoms" => {
                         Ok(
                             Classes::hkpPointToPlaneConstraintDataAtoms(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpPositionConstraintMotor" => {
-                        Ok(
-                            Classes::hkpPositionConstraintMotor(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpPositionConstraintMotor(next_boxed(&mut map)?))
                     }
                     "hkpPoweredChainData" => {
-                        Ok(Classes::hkpPoweredChainData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpPoweredChainData(next_boxed(&mut map)?))
                     }
                     "hkpPoweredChainDataConstraintInfo" => {
                         Ok(
                             Classes::hkpPoweredChainDataConstraintInfo(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpPoweredChainMapper" => {
-                        Ok(Classes::hkpPoweredChainMapper(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpPoweredChainMapper(next_boxed(&mut map)?))
                     }
                     "hkpPoweredChainMapperLinkInfo" => {
-                        Ok(
-                            Classes::hkpPoweredChainMapperLinkInfo(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpPoweredChainMapperLinkInfo(next_boxed(&mut map)?))
                     }
                     "hkpPoweredChainMapperTarget" => {
-                        Ok(
-                            Classes::hkpPoweredChainMapperTarget(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpPoweredChainMapperTarget(next_boxed(&mut map)?))
                     }
                     "hkpPrismaticConstraintData" => {
-                        Ok(
-                            Classes::hkpPrismaticConstraintData(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpPrismaticConstraintData(next_boxed(&mut map)?))
                     }
                     "hkpPrismaticConstraintDataAtoms" => {
                         Ok(
                             Classes::hkpPrismaticConstraintDataAtoms(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpProjectileGun" => {
-                        Ok(Classes::hkpProjectileGun(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpProjectileGun(next_boxed(&mut map)?))
                     }
-                    "hkpProperty" => {
-                        Ok(Classes::hkpProperty(Box::new(map.next_value()?)))
-                    }
+                    "hkpProperty" => Ok(Classes::hkpProperty(next_boxed(&mut map)?)),
                     "hkpPropertyValue" => {
-                        Ok(Classes::hkpPropertyValue(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpPropertyValue(next_boxed(&mut map)?))
                     }
                     "hkpPulleyConstraintAtom" => {
-                        Ok(Classes::hkpPulleyConstraintAtom(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpPulleyConstraintAtom(next_boxed(&mut map)?))
                     }
                     "hkpPulleyConstraintData" => {
-                        Ok(Classes::hkpPulleyConstraintData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpPulleyConstraintData(next_boxed(&mut map)?))
                     }
                     "hkpPulleyConstraintDataAtoms" => {
-                        Ok(
-                            Classes::hkpPulleyConstraintDataAtoms(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpPulleyConstraintDataAtoms(next_boxed(&mut map)?))
                     }
                     "hkpRackAndPinionConstraintAtom" => {
                         Ok(
                             Classes::hkpRackAndPinionConstraintAtom(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpRackAndPinionConstraintData" => {
                         Ok(
                             Classes::hkpRackAndPinionConstraintData(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpRackAndPinionConstraintDataAtoms" => {
                         Ok(
                             Classes::hkpRackAndPinionConstraintDataAtoms(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpRagdollConstraintData" => {
-                        Ok(
-                            Classes::hkpRagdollConstraintData(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpRagdollConstraintData(next_boxed(&mut map)?))
                     }
                     "hkpRagdollConstraintDataAtoms" => {
-                        Ok(
-                            Classes::hkpRagdollConstraintDataAtoms(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpRagdollConstraintDataAtoms(next_boxed(&mut map)?))
                     }
                     "hkpRagdollLimitsData" => {
-                        Ok(Classes::hkpRagdollLimitsData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpRagdollLimitsData(next_boxed(&mut map)?))
                     }
                     "hkpRagdollLimitsDataAtoms" => {
-                        Ok(
-                            Classes::hkpRagdollLimitsDataAtoms(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpRagdollLimitsDataAtoms(next_boxed(&mut map)?))
                     }
                     "hkpRagdollMotorConstraintAtom" => {
-                        Ok(
-                            Classes::hkpRagdollMotorConstraintAtom(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpRagdollMotorConstraintAtom(next_boxed(&mut map)?))
                     }
                     "hkpRayCollidableFilter" => {
-                        Ok(Classes::hkpRayCollidableFilter(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpRayCollidableFilter(next_boxed(&mut map)?))
                     }
                     "hkpRayShapeCollectionFilter" => {
-                        Ok(
-                            Classes::hkpRayShapeCollectionFilter(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpRayShapeCollectionFilter(next_boxed(&mut map)?))
                     }
                     "hkpRejectChassisListener" => {
-                        Ok(
-                            Classes::hkpRejectChassisListener(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpRejectChassisListener(next_boxed(&mut map)?))
                     }
                     "hkpRemoveTerminalsMoppModifier" => {
                         Ok(
                             Classes::hkpRemoveTerminalsMoppModifier(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpReorientAction" => {
-                        Ok(Classes::hkpReorientAction(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpReorientAction(next_boxed(&mut map)?))
                     }
-                    "hkpRigidBody" => {
-                        Ok(Classes::hkpRigidBody(Box::new(map.next_value()?)))
-                    }
+                    "hkpRigidBody" => Ok(Classes::hkpRigidBody(next_boxed(&mut map)?)),
                     "hkpRotationalConstraintData" => {
-                        Ok(
-                            Classes::hkpRotationalConstraintData(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpRotationalConstraintData(next_boxed(&mut map)?))
                     }
                     "hkpRotationalConstraintDataAtoms" => {
                         Ok(
                             Classes::hkpRotationalConstraintDataAtoms(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpSampledHeightFieldShape" => {
-                        Ok(
-                            Classes::hkpSampledHeightFieldShape(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpSampledHeightFieldShape(next_boxed(&mut map)?))
                     }
                     "hkpSerializedAgentNnEntry" => {
-                        Ok(
-                            Classes::hkpSerializedAgentNnEntry(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpSerializedAgentNnEntry(next_boxed(&mut map)?))
                     }
                     "hkpSerializedDisplayMarker" => {
-                        Ok(
-                            Classes::hkpSerializedDisplayMarker(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpSerializedDisplayMarker(next_boxed(&mut map)?))
                     }
                     "hkpSerializedDisplayMarkerList" => {
                         Ok(
                             Classes::hkpSerializedDisplayMarkerList(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpSerializedDisplayRbTransforms" => {
                         Ok(
                             Classes::hkpSerializedDisplayRbTransforms(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpSerializedDisplayRbTransformsDisplayTransformPair" => {
                         Ok(
                             Classes::hkpSerializedDisplayRbTransformsDisplayTransformPair(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpSerializedSubTrack1nInfo" => {
-                        Ok(
-                            Classes::hkpSerializedSubTrack1nInfo(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpSerializedSubTrack1nInfo(next_boxed(&mut map)?))
                     }
                     "hkpSerializedTrack1nInfo" => {
-                        Ok(
-                            Classes::hkpSerializedTrack1nInfo(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpSerializedTrack1nInfo(next_boxed(&mut map)?))
                     }
                     "hkpSetLocalRotationsConstraintAtom" => {
                         Ok(
                             Classes::hkpSetLocalRotationsConstraintAtom(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpSetLocalTransformsConstraintAtom" => {
                         Ok(
                             Classes::hkpSetLocalTransformsConstraintAtom(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpSetLocalTranslationsConstraintAtom" => {
                         Ok(
                             Classes::hkpSetLocalTranslationsConstraintAtom(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpSetupStabilizationAtom" => {
-                        Ok(
-                            Classes::hkpSetupStabilizationAtom(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpSetupStabilizationAtom(next_boxed(&mut map)?))
                     }
-                    "hkpShape" => Ok(Classes::hkpShape(Box::new(map.next_value()?))),
+                    "hkpShape" => Ok(Classes::hkpShape(next_boxed(&mut map)?)),
                     "hkpShapeCollection" => {
-                        Ok(Classes::hkpShapeCollection(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpShapeCollection(next_boxed(&mut map)?))
                     }
                     "hkpShapeCollectionFilter" => {
-                        Ok(
-                            Classes::hkpShapeCollectionFilter(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpShapeCollectionFilter(next_boxed(&mut map)?))
                     }
                     "hkpShapeContainer" => {
-                        Ok(Classes::hkpShapeContainer(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpShapeContainer(next_boxed(&mut map)?))
                     }
-                    "hkpShapeInfo" => {
-                        Ok(Classes::hkpShapeInfo(Box::new(map.next_value()?)))
-                    }
+                    "hkpShapeInfo" => Ok(Classes::hkpShapeInfo(next_boxed(&mut map)?)),
                     "hkpShapeModifier" => {
-                        Ok(Classes::hkpShapeModifier(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpShapeModifier(next_boxed(&mut map)?))
                     }
                     "hkpShapePhantom" => {
-                        Ok(Classes::hkpShapePhantom(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpShapePhantom(next_boxed(&mut map)?))
                     }
                     "hkpSimpleContactConstraintAtom" => {
                         Ok(
                             Classes::hkpSimpleContactConstraintAtom(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpSimpleContactConstraintDataInfo" => {
                         Ok(
                             Classes::hkpSimpleContactConstraintDataInfo(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpSimpleMeshShape" => {
-                        Ok(Classes::hkpSimpleMeshShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpSimpleMeshShape(next_boxed(&mut map)?))
                     }
                     "hkpSimpleMeshShapeTriangle" => {
-                        Ok(
-                            Classes::hkpSimpleMeshShapeTriangle(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpSimpleMeshShapeTriangle(next_boxed(&mut map)?))
                     }
                     "hkpSimpleShapePhantom" => {
-                        Ok(Classes::hkpSimpleShapePhantom(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpSimpleShapePhantom(next_boxed(&mut map)?))
                     }
                     "hkpSimpleShapePhantomCollisionDetail" => {
                         Ok(
                             Classes::hkpSimpleShapePhantomCollisionDetail(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
-                    "hkpSimulation" => {
-                        Ok(Classes::hkpSimulation(Box::new(map.next_value()?)))
-                    }
+                    "hkpSimulation" => Ok(Classes::hkpSimulation(next_boxed(&mut map)?)),
                     "hkpSingleShapeContainer" => {
-                        Ok(Classes::hkpSingleShapeContainer(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpSingleShapeContainer(next_boxed(&mut map)?))
                     }
                     "hkpSoftContactModifierConstraintAtom" => {
                         Ok(
                             Classes::hkpSoftContactModifierConstraintAtom(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpSphereMotion" => {
-                        Ok(Classes::hkpSphereMotion(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpSphereMotion(next_boxed(&mut map)?))
                     }
                     "hkpSphereRepShape" => {
-                        Ok(Classes::hkpSphereRepShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpSphereRepShape(next_boxed(&mut map)?))
                     }
                     "hkpSphereShape" => {
-                        Ok(Classes::hkpSphereShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpSphereShape(next_boxed(&mut map)?))
                     }
                     "hkpSpringAction" => {
-                        Ok(Classes::hkpSpringAction(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpSpringAction(next_boxed(&mut map)?))
                     }
                     "hkpSpringDamperConstraintMotor" => {
                         Ok(
                             Classes::hkpSpringDamperConstraintMotor(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpStiffSpringChainData" => {
-                        Ok(Classes::hkpStiffSpringChainData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpStiffSpringChainData(next_boxed(&mut map)?))
                     }
                     "hkpStiffSpringChainDataConstraintInfo" => {
                         Ok(
                             Classes::hkpStiffSpringChainDataConstraintInfo(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpStiffSpringConstraintAtom" => {
-                        Ok(
-                            Classes::hkpStiffSpringConstraintAtom(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpStiffSpringConstraintAtom(next_boxed(&mut map)?))
                     }
                     "hkpStiffSpringConstraintData" => {
-                        Ok(
-                            Classes::hkpStiffSpringConstraintData(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpStiffSpringConstraintData(next_boxed(&mut map)?))
                     }
                     "hkpStiffSpringConstraintDataAtoms" => {
                         Ok(
                             Classes::hkpStiffSpringConstraintDataAtoms(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpStorageExtendedMeshShape" => {
-                        Ok(
-                            Classes::hkpStorageExtendedMeshShape(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpStorageExtendedMeshShape(next_boxed(&mut map)?))
                     }
                     "hkpStorageExtendedMeshShapeMaterial" => {
                         Ok(
                             Classes::hkpStorageExtendedMeshShapeMaterial(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpStorageExtendedMeshShapeMeshSubpartStorage" => {
                         Ok(
                             Classes::hkpStorageExtendedMeshShapeMeshSubpartStorage(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpStorageExtendedMeshShapeShapeSubpartStorage" => {
                         Ok(
                             Classes::hkpStorageExtendedMeshShapeShapeSubpartStorage(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpStorageMeshShape" => {
-                        Ok(Classes::hkpStorageMeshShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpStorageMeshShape(next_boxed(&mut map)?))
                     }
                     "hkpStorageMeshShapeSubpartStorage" => {
                         Ok(
                             Classes::hkpStorageMeshShapeSubpartStorage(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpStorageSampledHeightFieldShape" => {
                         Ok(
                             Classes::hkpStorageSampledHeightFieldShape(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpThinBoxMotion" => {
-                        Ok(Classes::hkpThinBoxMotion(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpThinBoxMotion(next_boxed(&mut map)?))
                     }
                     "hkpTransformShape" => {
-                        Ok(Classes::hkpTransformShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpTransformShape(next_boxed(&mut map)?))
                     }
                     "hkpTriangleShape" => {
-                        Ok(Classes::hkpTriangleShape(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpTriangleShape(next_boxed(&mut map)?))
                     }
                     "hkpTriggerVolume" => {
-                        Ok(Classes::hkpTriggerVolume(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpTriggerVolume(next_boxed(&mut map)?))
                     }
                     "hkpTriggerVolumeEventInfo" => {
-                        Ok(
-                            Classes::hkpTriggerVolumeEventInfo(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpTriggerVolumeEventInfo(next_boxed(&mut map)?))
                     }
                     "hkpTriSampledHeightFieldBvTreeShape" => {
                         Ok(
                             Classes::hkpTriSampledHeightFieldBvTreeShape(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpTriSampledHeightFieldCollection" => {
                         Ok(
                             Classes::hkpTriSampledHeightFieldCollection(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpTwistLimitConstraintAtom" => {
-                        Ok(
-                            Classes::hkpTwistLimitConstraintAtom(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpTwistLimitConstraintAtom(next_boxed(&mut map)?))
                     }
                     "hkpTypedBroadPhaseHandle" => {
-                        Ok(
-                            Classes::hkpTypedBroadPhaseHandle(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpTypedBroadPhaseHandle(next_boxed(&mut map)?))
                     }
                     "hkpTyremarkPoint" => {
-                        Ok(Classes::hkpTyremarkPoint(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpTyremarkPoint(next_boxed(&mut map)?))
                     }
                     "hkpTyremarksInfo" => {
-                        Ok(Classes::hkpTyremarksInfo(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpTyremarksInfo(next_boxed(&mut map)?))
                     }
                     "hkpTyremarksWheel" => {
-                        Ok(Classes::hkpTyremarksWheel(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpTyremarksWheel(next_boxed(&mut map)?))
                     }
                     "hkpUnaryAction" => {
-                        Ok(Classes::hkpUnaryAction(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpUnaryAction(next_boxed(&mut map)?))
                     }
                     "hkpVehicleAerodynamics" => {
-                        Ok(Classes::hkpVehicleAerodynamics(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpVehicleAerodynamics(next_boxed(&mut map)?))
                     }
                     "hkpVehicleBrake" => {
-                        Ok(Classes::hkpVehicleBrake(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpVehicleBrake(next_boxed(&mut map)?))
                     }
                     "hkpVehicleCastBatchingManager" => {
-                        Ok(
-                            Classes::hkpVehicleCastBatchingManager(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpVehicleCastBatchingManager(next_boxed(&mut map)?))
                     }
                     "hkpVehicleData" => {
-                        Ok(Classes::hkpVehicleData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpVehicleData(next_boxed(&mut map)?))
                     }
                     "hkpVehicleDataWheelComponentParams" => {
                         Ok(
                             Classes::hkpVehicleDataWheelComponentParams(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpVehicleDefaultAerodynamics" => {
-                        Ok(
-                            Classes::hkpVehicleDefaultAerodynamics(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpVehicleDefaultAerodynamics(next_boxed(&mut map)?))
                     }
                     "hkpVehicleDefaultAnalogDriverInput" => {
                         Ok(
                             Classes::hkpVehicleDefaultAnalogDriverInput(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpVehicleDefaultBrake" => {
-                        Ok(Classes::hkpVehicleDefaultBrake(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpVehicleDefaultBrake(next_boxed(&mut map)?))
                     }
                     "hkpVehicleDefaultBrakeWheelBrakingProperties" => {
                         Ok(
                             Classes::hkpVehicleDefaultBrakeWheelBrakingProperties(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpVehicleDefaultEngine" => {
-                        Ok(Classes::hkpVehicleDefaultEngine(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpVehicleDefaultEngine(next_boxed(&mut map)?))
                     }
                     "hkpVehicleDefaultSteering" => {
-                        Ok(
-                            Classes::hkpVehicleDefaultSteering(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpVehicleDefaultSteering(next_boxed(&mut map)?))
                     }
                     "hkpVehicleDefaultSuspension" => {
-                        Ok(
-                            Classes::hkpVehicleDefaultSuspension(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpVehicleDefaultSuspension(next_boxed(&mut map)?))
                     }
                     "hkpVehicleDefaultSuspensionWheelSpringSuspensionParameters" => {
                         Ok(
                             Classes::hkpVehicleDefaultSuspensionWheelSpringSuspensionParameters(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpVehicleDefaultTransmission" => {
-                        Ok(
-                            Classes::hkpVehicleDefaultTransmission(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpVehicleDefaultTransmission(next_boxed(&mut map)?))
                     }
                     "hkpVehicleDefaultVelocityDamper" => {
                         Ok(
                             Classes::hkpVehicleDefaultVelocityDamper(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpVehicleDriverInput" => {
-                        Ok(Classes::hkpVehicleDriverInput(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpVehicleDriverInput(next_boxed(&mut map)?))
                     }
                     "hkpVehicleDriverInputAnalogStatus" => {
                         Ok(
                             Classes::hkpVehicleDriverInputAnalogStatus(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpVehicleDriverInputStatus" => {
-                        Ok(
-                            Classes::hkpVehicleDriverInputStatus(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpVehicleDriverInputStatus(next_boxed(&mut map)?))
                     }
                     "hkpVehicleEngine" => {
-                        Ok(Classes::hkpVehicleEngine(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpVehicleEngine(next_boxed(&mut map)?))
                     }
                     "hkpVehicleFrictionDescription" => {
-                        Ok(
-                            Classes::hkpVehicleFrictionDescription(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpVehicleFrictionDescription(next_boxed(&mut map)?))
                     }
                     "hkpVehicleFrictionDescriptionAxisDescription" => {
                         Ok(
                             Classes::hkpVehicleFrictionDescriptionAxisDescription(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpVehicleFrictionStatus" => {
-                        Ok(
-                            Classes::hkpVehicleFrictionStatus(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpVehicleFrictionStatus(next_boxed(&mut map)?))
                     }
                     "hkpVehicleFrictionStatusAxisStatus" => {
                         Ok(
                             Classes::hkpVehicleFrictionStatusAxisStatus(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpVehicleInstance" => {
-                        Ok(Classes::hkpVehicleInstance(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpVehicleInstance(next_boxed(&mut map)?))
                     }
                     "hkpVehicleInstanceWheelInfo" => {
-                        Ok(
-                            Classes::hkpVehicleInstanceWheelInfo(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpVehicleInstanceWheelInfo(next_boxed(&mut map)?))
                     }
                     "hkpVehicleLinearCastBatchingManager" => {
                         Ok(
                             Classes::hkpVehicleLinearCastBatchingManager(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpVehicleLinearCastWheelCollide" => {
                         Ok(
                             Classes::hkpVehicleLinearCastWheelCollide(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpVehicleLinearCastWheelCollideWheelState" => {
                         Ok(
                             Classes::hkpVehicleLinearCastWheelCollideWheelState(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpVehicleManager" => {
-                        Ok(Classes::hkpVehicleManager(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpVehicleManager(next_boxed(&mut map)?))
                     }
                     "hkpVehicleRayCastBatchingManager" => {
                         Ok(
                             Classes::hkpVehicleRayCastBatchingManager(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpVehicleRayCastWheelCollide" => {
-                        Ok(
-                            Classes::hkpVehicleRayCastWheelCollide(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpVehicleRayCastWheelCollide(next_boxed(&mut map)?))
                     }
                     "hkpVehicleSteering" => {
-                        Ok(Classes::hkpVehicleSteering(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpVehicleSteering(next_boxed(&mut map)?))
                     }
                     "hkpVehicleSuspension" => {
-                        Ok(Classes::hkpVehicleSuspension(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpVehicleSuspension(next_boxed(&mut map)?))
                     }
                     "hkpVehicleSuspensionSuspensionWheelParameters" => {
                         Ok(
                             Classes::hkpVehicleSuspensionSuspensionWheelParameters(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpVehicleTransmission" => {
-                        Ok(Classes::hkpVehicleTransmission(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpVehicleTransmission(next_boxed(&mut map)?))
                     }
                     "hkpVehicleVelocityDamper" => {
-                        Ok(
-                            Classes::hkpVehicleVelocityDamper(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpVehicleVelocityDamper(next_boxed(&mut map)?))
                     }
                     "hkpVehicleWheelCollide" => {
-                        Ok(Classes::hkpVehicleWheelCollide(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpVehicleWheelCollide(next_boxed(&mut map)?))
                     }
                     "hkpVelocityConstraintMotor" => {
-                        Ok(
-                            Classes::hkpVelocityConstraintMotor(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpVelocityConstraintMotor(next_boxed(&mut map)?))
                     }
                     "hkpViscousSurfaceModifierConstraintAtom" => {
                         Ok(
                             Classes::hkpViscousSurfaceModifierConstraintAtom(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkpWeldingUtility" => {
-                        Ok(Classes::hkpWeldingUtility(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpWeldingUtility(next_boxed(&mut map)?))
                     }
                     "hkpWheelConstraintData" => {
-                        Ok(Classes::hkpWheelConstraintData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpWheelConstraintData(next_boxed(&mut map)?))
                     }
                     "hkpWheelConstraintDataAtoms" => {
-                        Ok(
-                            Classes::hkpWheelConstraintDataAtoms(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkpWheelConstraintDataAtoms(next_boxed(&mut map)?))
                     }
-                    "hkpWorld" => Ok(Classes::hkpWorld(Box::new(map.next_value()?))),
-                    "hkpWorldCinfo" => {
-                        Ok(Classes::hkpWorldCinfo(Box::new(map.next_value()?)))
-                    }
+                    "hkpWorld" => Ok(Classes::hkpWorld(next_boxed(&mut map)?)),
+                    "hkpWorldCinfo" => Ok(Classes::hkpWorldCinfo(next_boxed(&mut map)?)),
                     "hkpWorldObject" => {
-                        Ok(Classes::hkpWorldObject(Box::new(map.next_value()?)))
+                        Ok(Classes::hkpWorldObject(next_boxed(&mut map)?))
                     }
-                    "hkQTransform" => {
-                        Ok(Classes::hkQTransform(Box::new(map.next_value()?)))
-                    }
+                    "hkQTransform" => Ok(Classes::hkQTransform(next_boxed(&mut map)?)),
                     "hkRangeInt32Attribute" => {
-                        Ok(Classes::hkRangeInt32Attribute(Box::new(map.next_value()?)))
+                        Ok(Classes::hkRangeInt32Attribute(next_boxed(&mut map)?))
                     }
                     "hkRangeRealAttribute" => {
-                        Ok(Classes::hkRangeRealAttribute(Box::new(map.next_value()?)))
+                        Ok(Classes::hkRangeRealAttribute(next_boxed(&mut map)?))
                     }
                     "hkReferencedObject" => {
-                        Ok(Classes::hkReferencedObject(Box::new(map.next_value()?)))
+                        Ok(Classes::hkReferencedObject(next_boxed(&mut map)?))
                     }
                     "hkReflectedFileAttribute" => {
-                        Ok(
-                            Classes::hkReflectedFileAttribute(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkReflectedFileAttribute(next_boxed(&mut map)?))
                     }
                     "hkResourceBase" => {
-                        Ok(Classes::hkResourceBase(Box::new(map.next_value()?)))
+                        Ok(Classes::hkResourceBase(next_boxed(&mut map)?))
                     }
                     "hkResourceContainer" => {
-                        Ok(Classes::hkResourceContainer(Box::new(map.next_value()?)))
+                        Ok(Classes::hkResourceContainer(next_boxed(&mut map)?))
                     }
                     "hkResourceHandle" => {
-                        Ok(Classes::hkResourceHandle(Box::new(map.next_value()?)))
+                        Ok(Classes::hkResourceHandle(next_boxed(&mut map)?))
                     }
                     "hkRootLevelContainer" => {
-                        Ok(Classes::hkRootLevelContainer(Box::new(map.next_value()?)))
+                        Ok(Classes::hkRootLevelContainer(next_boxed(&mut map)?))
                     }
                     "hkRootLevelContainerNamedVariant" => {
                         Ok(
                             Classes::hkRootLevelContainerNamedVariant(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkSemanticsAttribute" => {
-                        Ok(Classes::hkSemanticsAttribute(Box::new(map.next_value()?)))
+                        Ok(Classes::hkSemanticsAttribute(next_boxed(&mut map)?))
                     }
                     "hkSimpleLocalFrame" => {
-                        Ok(Classes::hkSimpleLocalFrame(Box::new(map.next_value()?)))
+                        Ok(Classes::hkSimpleLocalFrame(next_boxed(&mut map)?))
                     }
-                    "hkSphere" => Ok(Classes::hkSphere(Box::new(map.next_value()?))),
+                    "hkSphere" => Ok(Classes::hkSphere(next_boxed(&mut map)?)),
                     "hkSweptTransform" => {
-                        Ok(Classes::hkSweptTransform(Box::new(map.next_value()?)))
+                        Ok(Classes::hkSweptTransform(next_boxed(&mut map)?))
                     }
                     "hkTraceStreamTitle" => {
-                        Ok(Classes::hkTraceStreamTitle(Box::new(map.next_value()?)))
+                        Ok(Classes::hkTraceStreamTitle(next_boxed(&mut map)?))
                     }
                     "hkTrackerSerializableScanSnapshot" => {
                         Ok(
                             Classes::hkTrackerSerializableScanSnapshot(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkTrackerSerializableScanSnapshotAllocation" => {
                         Ok(
                             Classes::hkTrackerSerializableScanSnapshotAllocation(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkTrackerSerializableScanSnapshotBlock" => {
                         Ok(
                             Classes::hkTrackerSerializableScanSnapshotBlock(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
-                    "hkUiAttribute" => {
-                        Ok(Classes::hkUiAttribute(Box::new(map.next_value()?)))
-                    }
+                    "hkUiAttribute" => Ok(Classes::hkUiAttribute(next_boxed(&mut map)?)),
                     "hkVertexFormat" => {
-                        Ok(Classes::hkVertexFormat(Box::new(map.next_value()?)))
+                        Ok(Classes::hkVertexFormat(next_boxed(&mut map)?))
                     }
                     "hkVertexFormatElement" => {
-                        Ok(Classes::hkVertexFormatElement(Box::new(map.next_value()?)))
+                        Ok(Classes::hkVertexFormatElement(next_boxed(&mut map)?))
                     }
                     "hkWorldMemoryAvailableWatchDog" => {
                         Ok(
                             Classes::hkWorldMemoryAvailableWatchDog(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkxAnimatedFloat" => {
-                        Ok(Classes::hkxAnimatedFloat(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxAnimatedFloat(next_boxed(&mut map)?))
                     }
                     "hkxAnimatedMatrix" => {
-                        Ok(Classes::hkxAnimatedMatrix(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxAnimatedMatrix(next_boxed(&mut map)?))
                     }
                     "hkxAnimatedQuaternion" => {
-                        Ok(Classes::hkxAnimatedQuaternion(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxAnimatedQuaternion(next_boxed(&mut map)?))
                     }
                     "hkxAnimatedVector" => {
-                        Ok(Classes::hkxAnimatedVector(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxAnimatedVector(next_boxed(&mut map)?))
                     }
-                    "hkxAttribute" => {
-                        Ok(Classes::hkxAttribute(Box::new(map.next_value()?)))
-                    }
+                    "hkxAttribute" => Ok(Classes::hkxAttribute(next_boxed(&mut map)?)),
                     "hkxAttributeGroup" => {
-                        Ok(Classes::hkxAttributeGroup(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxAttributeGroup(next_boxed(&mut map)?))
                     }
                     "hkxAttributeHolder" => {
-                        Ok(Classes::hkxAttributeHolder(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxAttributeHolder(next_boxed(&mut map)?))
                     }
-                    "hkxCamera" => Ok(Classes::hkxCamera(Box::new(map.next_value()?))),
+                    "hkxCamera" => Ok(Classes::hkxCamera(next_boxed(&mut map)?)),
                     "hkxEdgeSelectionChannel" => {
-                        Ok(Classes::hkxEdgeSelectionChannel(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxEdgeSelectionChannel(next_boxed(&mut map)?))
                     }
-                    "hkxEnum" => Ok(Classes::hkxEnum(Box::new(map.next_value()?))),
-                    "hkxEnumItem" => {
-                        Ok(Classes::hkxEnumItem(Box::new(map.next_value()?)))
-                    }
+                    "hkxEnum" => Ok(Classes::hkxEnum(next_boxed(&mut map)?)),
+                    "hkxEnumItem" => Ok(Classes::hkxEnumItem(next_boxed(&mut map)?)),
                     "hkxEnvironment" => {
-                        Ok(Classes::hkxEnvironment(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxEnvironment(next_boxed(&mut map)?))
                     }
                     "hkxEnvironmentVariable" => {
-                        Ok(Classes::hkxEnvironmentVariable(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxEnvironmentVariable(next_boxed(&mut map)?))
                     }
                     "hkxIndexBuffer" => {
-                        Ok(Classes::hkxIndexBuffer(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxIndexBuffer(next_boxed(&mut map)?))
                     }
-                    "hkxLight" => Ok(Classes::hkxLight(Box::new(map.next_value()?))),
-                    "hkxMaterial" => {
-                        Ok(Classes::hkxMaterial(Box::new(map.next_value()?)))
-                    }
+                    "hkxLight" => Ok(Classes::hkxLight(next_boxed(&mut map)?)),
+                    "hkxMaterial" => Ok(Classes::hkxMaterial(next_boxed(&mut map)?)),
                     "hkxMaterialEffect" => {
-                        Ok(Classes::hkxMaterialEffect(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxMaterialEffect(next_boxed(&mut map)?))
                     }
                     "hkxMaterialProperty" => {
-                        Ok(Classes::hkxMaterialProperty(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxMaterialProperty(next_boxed(&mut map)?))
                     }
                     "hkxMaterialShader" => {
-                        Ok(Classes::hkxMaterialShader(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxMaterialShader(next_boxed(&mut map)?))
                     }
                     "hkxMaterialShaderSet" => {
-                        Ok(Classes::hkxMaterialShaderSet(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxMaterialShaderSet(next_boxed(&mut map)?))
                     }
                     "hkxMaterialTextureStage" => {
-                        Ok(Classes::hkxMaterialTextureStage(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxMaterialTextureStage(next_boxed(&mut map)?))
                     }
-                    "hkxMesh" => Ok(Classes::hkxMesh(Box::new(map.next_value()?))),
+                    "hkxMesh" => Ok(Classes::hkxMesh(next_boxed(&mut map)?)),
                     "hkxMeshSection" => {
-                        Ok(Classes::hkxMeshSection(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxMeshSection(next_boxed(&mut map)?))
                     }
                     "hkxMeshUserChannelInfo" => {
-                        Ok(Classes::hkxMeshUserChannelInfo(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxMeshUserChannelInfo(next_boxed(&mut map)?))
                     }
-                    "hkxNode" => Ok(Classes::hkxNode(Box::new(map.next_value()?))),
+                    "hkxNode" => Ok(Classes::hkxNode(next_boxed(&mut map)?)),
                     "hkxNodeAnnotationData" => {
-                        Ok(Classes::hkxNodeAnnotationData(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxNodeAnnotationData(next_boxed(&mut map)?))
                     }
                     "hkxNodeSelectionSet" => {
-                        Ok(Classes::hkxNodeSelectionSet(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxNodeSelectionSet(next_boxed(&mut map)?))
                     }
-                    "hkxScene" => Ok(Classes::hkxScene(Box::new(map.next_value()?))),
+                    "hkxScene" => Ok(Classes::hkxScene(next_boxed(&mut map)?)),
                     "hkxSkinBinding" => {
-                        Ok(Classes::hkxSkinBinding(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxSkinBinding(next_boxed(&mut map)?))
                     }
                     "hkxSparselyAnimatedBool" => {
-                        Ok(Classes::hkxSparselyAnimatedBool(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxSparselyAnimatedBool(next_boxed(&mut map)?))
                     }
                     "hkxSparselyAnimatedEnum" => {
-                        Ok(Classes::hkxSparselyAnimatedEnum(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxSparselyAnimatedEnum(next_boxed(&mut map)?))
                     }
                     "hkxSparselyAnimatedInt" => {
-                        Ok(Classes::hkxSparselyAnimatedInt(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxSparselyAnimatedInt(next_boxed(&mut map)?))
                     }
                     "hkxSparselyAnimatedString" => {
-                        Ok(
-                            Classes::hkxSparselyAnimatedString(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkxSparselyAnimatedString(next_boxed(&mut map)?))
                     }
                     "hkxTextureFile" => {
-                        Ok(Classes::hkxTextureFile(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxTextureFile(next_boxed(&mut map)?))
                     }
                     "hkxTextureInplace" => {
-                        Ok(Classes::hkxTextureInplace(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxTextureInplace(next_boxed(&mut map)?))
                     }
                     "hkxTriangleSelectionChannel" => {
-                        Ok(
-                            Classes::hkxTriangleSelectionChannel(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkxTriangleSelectionChannel(next_boxed(&mut map)?))
                     }
                     "hkxVertexBuffer" => {
-                        Ok(Classes::hkxVertexBuffer(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxVertexBuffer(next_boxed(&mut map)?))
                     }
                     "hkxVertexBufferVertexData" => {
-                        Ok(
-                            Classes::hkxVertexBufferVertexData(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkxVertexBufferVertexData(next_boxed(&mut map)?))
                     }
                     "hkxVertexDescription" => {
-                        Ok(Classes::hkxVertexDescription(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxVertexDescription(next_boxed(&mut map)?))
                     }
                     "hkxVertexDescriptionElementDecl" => {
                         Ok(
                             Classes::hkxVertexDescriptionElementDecl(
-                                Box::new(map.next_value()?),
+                                next_boxed(&mut map)?,
                             ),
                         )
                     }
                     "hkxVertexFloatDataChannel" => {
-                        Ok(
-                            Classes::hkxVertexFloatDataChannel(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkxVertexFloatDataChannel(next_boxed(&mut map)?))
                     }
                     "hkxVertexIntDataChannel" => {
-                        Ok(Classes::hkxVertexIntDataChannel(Box::new(map.next_value()?)))
+                        Ok(Classes::hkxVertexIntDataChannel(next_boxed(&mut map)?))
                     }
                     "hkxVertexSelectionChannel" => {
-                        Ok(
-                            Classes::hkxVertexSelectionChannel(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkxVertexSelectionChannel(next_boxed(&mut map)?))
                     }
                     "hkxVertexVectorDataChannel" => {
-                        Ok(
-                            Classes::hkxVertexVectorDataChannel(
-                                Box::new(map.next_value()?),
-                            ),
-                        )
+                        Ok(Classes::hkxVertexVectorDataChannel(next_boxed(&mut map)?))
                     }
                     _ => {
                         Err(

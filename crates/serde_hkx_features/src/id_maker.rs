@@ -570,7 +570,7 @@ mod tests {
         assert_eq!(variable_map.get("Mana"), Some(2));
 
         // Optionally, inspect the deduplicated names/infos
-        if let Classes::hkbBehaviorGraphStringData(s) = &class_map["#0000"] {
+        if let Classes::hkbBehaviorGraphStringData(s) = &class_map["#0001"] {
             assert_eq!(
                 s.m_eventNames
                     .iter()
