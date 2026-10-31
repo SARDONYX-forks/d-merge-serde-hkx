@@ -1,42 +1,42 @@
 [package]
-name = "serde_hkx"
+name                  = "serde_hkx"
 description.workspace = true
-version.workspace = true
+version.workspace     = true
 
-authors.workspace = true
-categories.workspace = true
-edition.workspace = true
-keywords.workspace = true
-license.workspace = true
-readme.workspace = true
-repository.workspace = true
+authors.workspace      = true
+categories.workspace   = true
+edition.workspace      = true
+keywords.workspace     = true
+license.workspace      = true
+readme.workspace       = true
+repository.workspace   = true
 rust-version.workspace = true
 
 
 [dependencies]
-byteorder = "1.5.0"                             # Care Endianness
-educe = { workspace = true }                    # Custom derive Trait with partially
-html-escape = "0.2.14"                          # Use XML escaping
-indexmap = { workspace = true }                 # bytes info is ordered
-snafu = { workspace = true }                    # Define all error patterns(with backtrace)
-tracing = { workspace = true, optional = true } # Log trace
-winnow = { workspace = true }                   # Parser combinator
+byteorder   = "1.5.0" # Care Endianness
+educe       = { workspace = true } # Custom derive Trait with partially
+html-escape = "0.3.0" # Use XML escaping
+indexmap    = { workspace = true } # bytes info is ordered
+snafu       = { workspace = true } # Define all error patterns(with backtrace)
+tracing     = { workspace = true, optional = true } # Log trace
+winnow      = { workspace = true } # Parser combinator
 
 # workspace members
 havok_serde = { workspace = true, features = ["indexmap"] }
 havok_types = { workspace = true }
-winnow_ext = { workspace = true }
+winnow_ext  = { workspace = true }
 
 
 [dev-dependencies]
-bitflags = { workspace = true }          # To generate flags type
-num-derive = { workspace = true }        # enum to number(mock)
-num-traits = { workspace = true }        # enum to number(mock)
+bitflags          = { workspace = true } # To generate flags type
+num-derive        = { workspace = true } # enum to number(mock)
+num-traits        = { workspace = true } # enum to number(mock)
 pretty_assertions = { workspace = true } # To make diffs color and easy to read on test
-quick_tracing = { workspace = true }
-similar = { workspace = true }           # Create diff
-tracing = { workspace = true }
-zerocopy = { version = "0.8.55" }        # To(As)Bytes
+quick_tracing     = { workspace = true }
+similar           = { workspace = true } # Create diff
+tracing           = { workspace = true }
+zerocopy          = { version = "0.8.55" } # To(As)Bytes
 
 # workspace members
 havok_classes = { workspace = true, features = ["ignore_duplicates"] }

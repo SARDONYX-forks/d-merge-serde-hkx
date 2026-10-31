@@ -1,24 +1,24 @@
 [package]
-name = "havok_types_derive_proc_macros"
+name        = "havok_types_derive_proc_macros"
 description = "Internal library so that proc_macro depends on the 3rd_party library and the user does not have to install that dependent library."
-version = "0.1.0"
+version     = "0.1.0"
 
-authors.workspace = true
-categories.workspace = true
-edition.workspace = true
-keywords.workspace = true
-license.workspace = true
-readme = "./readme.md"
-repository.workspace = true
+authors.workspace      = true
+categories.workspace   = true
+edition.workspace      = true
+keywords.workspace     = true
+license.workspace      = true
+readme                 = "./readme.md"
+repository.workspace   = true
 rust-version.workspace = true
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [lib]
 proc-macro = true
-path = "mod.rs"
+path       = "mod.rs"
 
 [dependencies]
 proc-macro2 = { workspace = true }
-quote = { workspace = true }
-syn = { workspace = true, features = ["extra-traits"] }
+quote       = { workspace = true }
+syn         = { workspace = true, features = ["extra-traits"] }

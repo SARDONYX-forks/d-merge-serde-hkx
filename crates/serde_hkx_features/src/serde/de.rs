@@ -19,7 +19,7 @@ pub enum DeError {
     },
 
     /// {location}: Json Deserialize Error: {source}
-    #[cfg(any(feature = "extra_fmt", feature = "json_schema"))]
+    #[cfg(any(feature = "json", feature = "json_schema"))]
     Json {
         source: sonic_rs::Error,
         #[snafu(implicit)]
@@ -27,7 +27,7 @@ pub enum DeError {
     },
 
     /// {location}: Toml Serialize Error: {source}
-    #[cfg(feature = "extra_fmt")]
+    #[cfg(feature = "toml")]
     Toml {
         source: basic_toml::Error,
         #[snafu(implicit)]

@@ -1,15 +1,15 @@
 [package]
-name = "havok_classes"
-description = "Havok Behavior generated classes(ver. hk_2010.2.0-r1)"
+name              = "havok_classes"
+description       = "Havok Behavior generated classes(ver. hk_2010.2.0-r1)"
 version.workspace = true
 
-authors.workspace = true
-categories.workspace = true
-edition.workspace = true
-keywords.workspace = true
-license.workspace = true
-readme.workspace = true
-repository.workspace = true
+authors.workspace      = true
+categories.workspace   = true
+edition.workspace      = true
+keywords.workspace     = true
+license.workspace      = true
+readme.workspace       = true
+repository.workspace   = true
 rust-version.workspace = true
 
 [dependencies]
@@ -19,15 +19,15 @@ educe = { workspace = true, features = [
 ] } # To support the `Default` trait implementation for huge fixed-size arrays.
 num-derive = { workspace = true } # To serialize Enum & Flags
 num-traits = { workspace = true } # To serialize Enum & Flags
-schemars = { workspace = true, features = ["indexmap2"], optional = true }
+schemars   = { workspace = true, features = ["indexmap2"], optional = true }
 serde = { workspace = true, features = [
   "derive",
 ], optional = true } # Implement (De)Serializer
 serde_with = { workspace = true, optional = true } # Serde utility
 
 # workspace members
-havok_serde = { workspace = true }
-havok_types = { workspace = true }
+havok_serde        = { workspace = true }
+havok_types        = { workspace = true }
 havok_types_derive = { workspace = true }
 
 

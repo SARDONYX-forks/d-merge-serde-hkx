@@ -4,5 +4,5 @@
 # - https://github.com/rust-lang/rust-clippy?tab=readme-ov-file#configuration
 
 allow-expect-in-tests = true
-allow-panic-in-tests = true
+allow-panic-in-tests  = true
 allow-unwrap-in-tests = true # https://rust-lang.github.io/rust-clippy/master/index.html#unwrap_used

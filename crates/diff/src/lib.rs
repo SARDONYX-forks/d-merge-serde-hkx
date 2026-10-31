@@ -1,6 +1,6 @@
 mod color_builder;
 
-use imara_diff::{Algorithm, UnifiedDiffBuilder, intern::InternedInput};
+use imara_diff::{Algorithm, BasicLineDiffPrinter, Diff, InternedInput, UnifiedDiffConfig};
 
 /// Computes a line-based diff between `before` and `after` strings,
 /// returning a string that includes all lines, marking changed lines with `-` or `+`,
@@ -27,11 +27,16 @@ use imara_diff::{Algorithm, UnifiedDiffBuilder, intern::InternedInput};
 /// ```
 pub fn diff(before: &str, after: &str) -> String {
     let input = InternedInput::new(before, after);
-    imara_diff::diff(
-        Algorithm::Histogram,
-        &input,
-        UnifiedDiffBuilder::new(&input),
-    )
+    let diff = line_diff(&input);
+    diff.unified_diff(&BasicLineDiffPrinter(&input.interner), UnifiedDiffConfig::default(), &input)
+        .to_string()
+}
+
+/// Histogram diff of the lines of `input`, with the hunks moved to natural line boundaries.
+fn line_diff(input: &InternedInput<&str>) -> Diff {
+    let mut diff = Diff::compute(Algorithm::Histogram, input);
+    diff.postprocess_lines(input);
+    diff
 }
 
 /// Computes a line-based diff between `before` and `after` strings,
@@ -65,11 +70,9 @@ pub fn diff(before: &str, after: &str) -> String {
 /// ```
 pub fn colored_diff(before: &str, after: &str) -> String {
     let input = InternedInput::new(before, after);
-    imara_diff::diff(
-        Algorithm::Histogram,
-        &input,
-        color_builder::UnifiedDiffBuilder::new(&input, true),
-    )
+    let diff = line_diff(&input);
+    let printer = color_builder::ColorLinePrinter(&input.interner);
+    diff.unified_diff(&printer, UnifiedDiffConfig::default(), &input).to_string()
 }
 
 #[cfg(test)]

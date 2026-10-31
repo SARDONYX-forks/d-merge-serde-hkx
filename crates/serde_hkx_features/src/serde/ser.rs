@@ -20,13 +20,13 @@ pub fn to_bytes(classes: &mut ClassMap<'_>, output_format: Format) -> Result<Vec
             Ok(xml.into_bytes())
         }
 
-        #[cfg(feature = "extra_fmt")]
+        #[cfg(feature = "json")]
         Format::Json => {
             classes.sort_for_bytes();
             let json = sonic_rs::to_string_pretty(&classes).context(JsonSnafu {})?;
             Ok(json.into_bytes())
         }
-        #[cfg(feature = "extra_fmt")]
+        #[cfg(feature = "toml")]
         Format::Toml => {
             classes.sort_for_bytes();
             let toml = basic_toml::to_string(&classes).context(TomlSnafu {})?;
@@ -54,7 +54,7 @@ pub enum SerError {
     },
 
     /// {location}: Json Serialize Error: {source}
-    #[cfg(any(feature = "extra_fmt", feature = "json_schema"))]
+    #[cfg(any(feature = "json", feature = "json_schema"))]
     Json {
         source: sonic_rs::Error,
         #[snafu(implicit)]
@@ -62,7 +62,7 @@ pub enum SerError {
     },
 
     /// {location}: Toml Serialize Error: {source}
-    #[cfg(feature = "extra_fmt")]
+    #[cfg(feature = "toml")]
     Toml {
         source: basic_toml::Error,
         #[snafu(implicit)]

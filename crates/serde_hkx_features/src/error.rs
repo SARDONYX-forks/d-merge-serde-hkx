@@ -7,19 +7,19 @@ use std::{io, path::PathBuf};
 #[snafu(visibility(pub))]
 pub enum Error {
     /// The only supported extension is `.hkx` or `.xml`. But this path is neither: {path}.
-    #[cfg(not(feature = "extra_fmt"))]
+    #[cfg(not(any(feature = "json", feature = "toml")))]
     #[snafu(display("The only supported extension is `.hkx` or `.xml`. But this path is neither: {}.", path.display()))]
     UnsupportedExtensionPath { path: PathBuf },
-    #[cfg(feature = "extra_fmt")]
-    /// The only supported extension is  `.hkx`, `.xml`, `.json`, `yaml`. But this path is neither: {path}.
-    #[snafu(display("The only supported extension is `.hkx`, `.xml`, `.json`, `yaml`. But this path is neither: {}.", path.display()))]
+    #[cfg(any(feature = "json", feature = "toml"))]
+    /// The only supported extension is  `.hkx`, `.xml`, `.json`, `.toml`. But this path is neither: {path}.
+    #[snafu(display("The only supported extension is `.hkx`, `.xml`, `.json`, `.toml`. But this path is neither: {}.", path.display()))]
     UnsupportedExtensionPath { path: PathBuf },
 
     /// The only supported extension is `.hkx` or `.xml`. But this is neither: {ext}.
-    #[cfg(not(feature = "extra_fmt"))]
+    #[cfg(not(any(feature = "json", feature = "toml")))]
     UnsupportedExtension { ext: String },
-    #[cfg(feature = "extra_fmt")]
-    /// The only supported extension is  `.hkx`, `.xml`, `.json`, `.toml`, `.yaml`. But this is neither: {ext}.
+    #[cfg(any(feature = "json", feature = "toml"))]
+    /// The only supported extension is  `.hkx`, `.xml`, `.json`, `.toml`. But this is neither: {ext}.
     UnsupportedExtension { ext: String },
 
     /// This path has a missing extension.

@@ -20,5 +20,6 @@
     "MD033": false,
     "no-hard-tabs": false
   },
-  "rust-analyzer.check.command": "clippy"
+  "rust-analyzer.check.command": "clippy",
+  "toml.formatter.alignEntries": true
 }

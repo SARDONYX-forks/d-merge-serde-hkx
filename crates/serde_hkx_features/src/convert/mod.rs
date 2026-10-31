@@ -24,11 +24,11 @@ pub enum Format {
     /// XML
     Xml,
 
-    #[cfg(feature = "extra_fmt")]
+    #[cfg(feature = "json")]
     /// json
     Json,
-    #[cfg(feature = "extra_fmt")]
-    /// yaml
+    #[cfg(feature = "toml")]
+    /// toml
     Toml,
 }
 
@@ -38,9 +38,9 @@ impl core::fmt::Display for Format {
             Self::Amd64 => write!(f, "amd64"),
             Self::Win32 => write!(f, "win32"),
             Self::Xml => write!(f, "xml"),
-            #[cfg(feature = "extra_fmt")]
+            #[cfg(feature = "json")]
             Self::Json => write!(f, "json"),
-            #[cfg(feature = "extra_fmt")]
+            #[cfg(feature = "toml")]
             Self::Toml => write!(f, "toml"),
         }
     }
@@ -66,9 +66,9 @@ impl core::str::FromStr for Format {
             _ if value.eq_ignore_ascii_case("amd64") => Ok(Self::Amd64),
             _ if value.eq_ignore_ascii_case("win32") => Ok(Self::Win32),
             _ if value.eq_ignore_ascii_case("xml") => Ok(Self::Xml),
-            #[cfg(feature = "extra_fmt")]
+            #[cfg(feature = "json")]
             _ if value.eq_ignore_ascii_case("json") => Ok(Self::Json),
-            #[cfg(feature = "extra_fmt")]
+            #[cfg(feature = "toml")]
             _ if value.eq_ignore_ascii_case("toml") => Ok(Self::Toml),
             _ => Err(ParseFormatError),
         }
@@ -93,9 +93,9 @@ impl Format {
             Self::Win32 => "hkx",
             Self::Xml => "xml",
 
-            #[cfg(feature = "extra_fmt")]
+            #[cfg(feature = "json")]
             Self::Json => "json",
-            #[cfg(feature = "extra_fmt")]
+            #[cfg(feature = "toml")]
             Self::Toml => "toml",
         }
     }
@@ -133,9 +133,9 @@ impl Format {
             ext if ext.eq_ignore_ascii_case("hkx") => hkx_checker::detect_hkx_format(path)?,
             ext if ext.eq_ignore_ascii_case("xml") => Self::Xml,
 
-            #[cfg(feature = "extra_fmt")]
+            #[cfg(feature = "json")]
             ext if ext.eq_ignore_ascii_case("json") => Self::Json,
-            #[cfg(feature = "extra_fmt")]
+            #[cfg(feature = "toml")]
             ext if ext.eq_ignore_ascii_case("toml") => Self::Toml,
             _ => {
                 return Err(Error::UnsupportedExtensionPath {
@@ -174,9 +174,9 @@ impl Format {
             ext if ext.eq_ignore_ascii_case("hkx") => Self::Xml,
             ext if ext.eq_ignore_ascii_case("xml") => Self::Amd64,
 
-            #[cfg(feature = "extra_fmt")]
+            #[cfg(feature = "json")]
             ext if ext.eq_ignore_ascii_case("json") => Self::Amd64,
-            #[cfg(feature = "extra_fmt")]
+            #[cfg(feature = "toml")]
             ext if ext.eq_ignore_ascii_case("toml") => Self::Amd64,
             _ => {
                 return Err(Error::UnsupportedExtensionPath {
@@ -213,9 +213,9 @@ impl Format {
             ext if ext.eq_ignore_ascii_case("hkx") => Self::Amd64,
             ext if ext.eq_ignore_ascii_case("xml") => Self::Xml,
 
-            #[cfg(feature = "extra_fmt")]
+            #[cfg(feature = "json")]
             ext if ext.eq_ignore_ascii_case("json") => Self::Json,
-            #[cfg(feature = "extra_fmt")]
+            #[cfg(feature = "toml")]
             ext if ext.eq_ignore_ascii_case("toml") => Self::Toml,
             _ => {
                 return Err(Error::UnsupportedExtension {
@@ -258,13 +258,12 @@ fn filter_supported_files(entry: &jwalk::DirEntry<((), ())>) -> bool {
     path.extension()
         .and_then(|ext| ext.to_str())
         .is_some_and(|ext| {
-            if Format::from_extension(ext).is_err() {
-                #[cfg(feature = "tracing")]
+            let supported = Format::from_extension(ext).is_ok();
+            #[cfg(feature = "tracing")]
+            if !supported {
                 tracing::info!("Skip this unsupported extension: {}", path.display());
-                false
-            } else {
-                true
             }
+            supported
         })
 }
 
@@ -340,7 +339,7 @@ where
 
             return on_xml(classes);
         }
-        #[cfg(feature = "extra_fmt")]
+        #[cfg(feature = "json")]
         Format::Json => {
             use crate::types_wrapper::ClassPtrMap;
             let classes = sonic_rs::from_slice::<ClassPtrMap>(bytes)
@@ -350,7 +349,7 @@ where
                 })?;
             classes.into_class_map()
         }
-        #[cfg(feature = "extra_fmt")]
+        #[cfg(feature = "toml")]
         Format::Toml => {
             use crate::types_wrapper::ClassPtrMap;
             let classes = basic_toml::from_slice::<ClassPtrMap>(bytes)
@@ -384,8 +383,10 @@ where
                 Format::Amd64 | Format::Win32 | Format::Xml => {
                     crate::serde::ser::to_bytes(&mut classes, output_format)
                 }
-                #[cfg(feature = "extra_fmt")]
-                Format::Json | Format::Toml => {
+                // Json and/or Toml, depending on the features.
+                #[cfg(any(feature = "json", feature = "toml"))]
+                #[allow(clippy::match_wildcard_for_single_variants)]
+                _ => {
                     let mut classes = crate::types_wrapper::ClassPtrMap::from_class_map(classes);
                     crate::serde_extra::ser::to_bytes(&mut classes, output_format)
                 }
@@ -403,8 +404,10 @@ where
                         }
                     })?
                 }
-                #[cfg(feature = "extra_fmt")]
-                Format::Json | Format::Toml => {
+                // Json and/or Toml, depending on the features.
+                #[cfg(any(feature = "json", feature = "toml"))]
+                #[allow(clippy::match_wildcard_for_single_variants)]
+                _ => {
                     let mut classes = crate::types_wrapper::ClassPtrMap::from_class_map(classes);
                     crate::serde_extra::ser::to_bytes(&mut classes, output_format).with_context(
                         |_| crate::error::SerSnafu {

@@ -1,34 +1,34 @@
 [package]
-name = "havok_types"
-description = "Havok Behavior basic types"
+name              = "havok_types"
+description       = "Havok Behavior basic types"
 version.workspace = true
 
-authors.workspace = true
-categories.workspace = true
-edition.workspace = true
-keywords.workspace = true
-license.workspace = true
-readme.workspace = true
-repository.workspace = true
+authors.workspace      = true
+categories.workspace   = true
+edition.workspace      = true
+keywords.workspace     = true
+license.workspace      = true
+readme.workspace       = true
+repository.workspace   = true
 rust-version.workspace = true
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-lexical = { workspace = true }
-schemars = { workspace = true, optional = true }
-serde = { workspace = true, optional = true }      # Implement (De)Serializer
+lexical    = { workspace = true }
+schemars   = { workspace = true, optional = true }
+serde      = { workspace = true, optional = true } # Implement (De)Serializer
 serde_with = { workspace = true, optional = true }
-winnow = { workspace = true }
+winnow     = { workspace = true }
 
 [dev-dependencies]
 pretty_assertions = { workspace = true } # To make diffs color and easy to read on test
-serde_json = { workspace = true }        # To read and write Json files
+serde_json        = { workspace = true } # To read and write Json files
 
 [features]
-default = []
+default     = []
 json_schema = ["dep:schemars"]
-serde = ["dep:serde", "dep:serde_with"]
+serde       = ["dep:serde", "dep:serde_with"]
 
 [lints]
 workspace = true
