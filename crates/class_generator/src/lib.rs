@@ -5,7 +5,6 @@ pub mod error;
 mod gen_index;
 mod get_class_map;
 mod rust_gen;
-pub mod type_table_gen;
 
 use crate::{cpp_info::Class, error::*};
 use indexmap::IndexMap;
@@ -13,7 +12,30 @@ use rayon::{iter::Either, prelude::*};
 use snafu::prelude::*;
 use std::{fs, path::Path};
 
+pub use get_class_map::{get_inherited_class, get_inherited_members};
+
 pub type ClassMap<'a> = IndexMap<String, Class<'a>>;
+
+/// `assets/classes` of this repository: the class json files.
+///
+/// For generators in other repositories (e.g. a richer class table): a git dependency checks out
+/// the whole repository, so this path exists next to the crate.
+pub fn classes_json_dir() -> std::path::PathBuf {
+    Path::new(env!("CARGO_MANIFEST_DIR")).join("../../assets/classes")
+}
+
+/// Reads every class json file of `classes_json_dir` (see [`classes_json_dir`]).
+///
+/// # Errors
+/// A file cannot be read or parsed (all failures, as text).
+pub fn load_class_map<P: AsRef<Path>>(classes_json_dir: P) -> Result<ClassMap<'static>> {
+    let (errors, class_map) = create_class_map(classes_json_dir);
+    if errors.is_empty() {
+        return Ok(class_map);
+    }
+    let errors: Vec<_> = errors.into_iter().map(|err| err.to_string()).collect();
+    FailedGenerateSnafu { errors }.fail()
+}
 
 /// Generate havok class code(For Rust) from class info json files.
 ///
