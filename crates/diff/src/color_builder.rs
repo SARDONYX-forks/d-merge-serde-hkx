@@ -27,7 +27,14 @@ impl UnifiedDiffPrinter for ColorLinePrinter<'_> {
         len_before: u32,
         len_after: u32,
     ) -> fmt::Result {
-        writeln!(f, "@@ -{},{} +{},{} @@", start_before + 1, len_before, start_after + 1, len_after)
+        writeln!(
+            f,
+            "@@ -{},{} +{},{} @@",
+            start_before + 1,
+            len_before,
+            start_after + 1,
+            len_after
+        )
     }
 
     fn display_context_token(&self, mut f: impl Write, token: Token) -> fmt::Result {

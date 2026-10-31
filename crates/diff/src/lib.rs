@@ -28,8 +28,12 @@ use imara_diff::{Algorithm, BasicLineDiffPrinter, Diff, InternedInput, UnifiedDi
 pub fn diff(before: &str, after: &str) -> String {
     let input = InternedInput::new(before, after);
     let diff = line_diff(&input);
-    diff.unified_diff(&BasicLineDiffPrinter(&input.interner), UnifiedDiffConfig::default(), &input)
-        .to_string()
+    diff.unified_diff(
+        &BasicLineDiffPrinter(&input.interner),
+        UnifiedDiffConfig::default(),
+        &input,
+    )
+    .to_string()
 }
 
 /// Histogram diff of the lines of `input`, with the hunks moved to natural line boundaries.
@@ -72,7 +76,8 @@ pub fn colored_diff(before: &str, after: &str) -> String {
     let input = InternedInput::new(before, after);
     let diff = line_diff(&input);
     let printer = color_builder::ColorLinePrinter(&input.interner);
-    diff.unified_diff(&printer, UnifiedDiffConfig::default(), &input).to_string()
+    diff.unified_diff(&printer, UnifiedDiffConfig::default(), &input)
+        .to_string()
 }
 
 #[cfg(test)]
