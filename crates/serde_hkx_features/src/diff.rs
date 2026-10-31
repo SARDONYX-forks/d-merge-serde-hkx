@@ -30,8 +30,14 @@ where
     I2: AsRef<Path>,
     O: AsRef<Path>,
 {
-    let old_str = read_any_to_string(old).await?;
-    let new_str = read_any_to_string(new).await?;
+    // NOTE: Two inputs, so the caller cannot tell which one failed. Attach the path here.
+    let (old, new) = (old.as_ref(), new.as_ref());
+    let old_str = read_any_to_string(old)
+        .await
+        .map_err(|e| e.with_path(old))?;
+    let new_str = read_any_to_string(new)
+        .await
+        .map_err(|e| e.with_path(new))?;
 
     let diff_str = diff(old_str, new_str, use_color);
     match output {
@@ -61,9 +67,7 @@ where
             path.read_any_string().await
         }
     } else {
-        Err(Error::MissingExtension {
-            path: path.to_path_buf(),
-        })
+        Err(Error::MissingExtension)
     }
 }
 

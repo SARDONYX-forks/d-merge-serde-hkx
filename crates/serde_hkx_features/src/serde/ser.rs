@@ -1,6 +1,9 @@
 //! Serialize/Deserialize ClassMap
 use crate::ClassMap;
-use crate::{convert::Format, error::Result};
+use crate::{
+    convert::Format,
+    error::{HkxSerSnafu, Result, XmlSerSnafu},
+};
 use serde_hkx::{HavokSort as _, bytes::serde::hkx_header::HkxHeader};
 use snafu::ResultExt as _;
 
@@ -10,64 +13,29 @@ use snafu::ResultExt as _;
 /// If the information required for serialization is missing.
 ///
 /// See `serde_hkx::errors::ser::Error` for possible errors that may occur.
-pub fn to_bytes(classes: &mut ClassMap<'_>, output_format: Format) -> Result<Vec<u8>, SerError> {
+pub fn to_bytes(classes: &mut ClassMap<'_>, output_format: Format) -> Result<Vec<u8>> {
     match output_format {
         Format::Win32 => to_bytes_inner(classes, &HkxHeader::new_skyrim_le()),
         Format::Amd64 => to_bytes_inner(classes, &HkxHeader::new_skyrim_se()),
         Format::Xml => {
-            let top_ptr = classes.sort_for_xml().context(XmlSnafu {})?;
-            let xml = serde_hkx::to_string(classes, &top_ptr).context(XmlSnafu {})?;
+            let top_ptr = classes.sort_for_xml().context(XmlSerSnafu)?;
+            let xml = serde_hkx::to_string(classes, &top_ptr).context(XmlSerSnafu)?;
             Ok(xml.into_bytes())
         }
 
         #[cfg(feature = "json")]
         Format::Json => {
             classes.sort_for_bytes();
-            let json = sonic_rs::to_string_pretty(&classes).context(JsonSnafu {})?;
+            let json = sonic_rs::to_string_pretty(&classes).context(crate::error::JsonSerSnafu)?;
             Ok(json.into_bytes())
         }
         #[cfg(feature = "toml")]
         Format::Toml => {
             classes.sort_for_bytes();
-            let toml = basic_toml::to_string(&classes).context(TomlSnafu {})?;
+            let toml = toml::to_string(&classes).context(crate::error::TomlSerSnafu)?;
             Ok(toml.into_bytes())
         }
     }
-}
-
-/// Serialize Error
-#[allow(clippy::enum_variant_names)]
-#[derive(Debug, snafu::Snafu)]
-#[snafu(visibility(pub(crate)))]
-pub enum SerError {
-    /// {location}: hkx Serialize Error: {source}
-    Hkx {
-        source: serde_hkx::errors::ser::Error,
-        #[snafu(implicit)]
-        location: snafu::Location,
-    },
-    /// {location}: XML Serialize Error: {source}
-    Xml {
-        source: serde_hkx::errors::ser::Error,
-        #[snafu(implicit)]
-        location: snafu::Location,
-    },
-
-    /// {location}: Json Serialize Error: {source}
-    #[cfg(any(feature = "json", feature = "json_schema"))]
-    Json {
-        source: sonic_rs::Error,
-        #[snafu(implicit)]
-        location: snafu::Location,
-    },
-
-    /// {location}: Toml Serialize Error: {source}
-    #[cfg(feature = "toml")]
-    Toml {
-        source: basic_toml::Error,
-        #[snafu(implicit)]
-        location: snafu::Location,
-    },
 }
 
 fn find_behavior_graph_index<'a>(class_map: &'a crate::ClassMap<'a>) -> Option<&'a str> {
@@ -84,7 +52,7 @@ fn find_behavior_graph_index<'a>(class_map: &'a crate::ClassMap<'a>) -> Option<&
     }
 }
 
-fn to_bytes_inner<'a>(classes: &mut ClassMap<'a>, header: &HkxHeader) -> Result<Vec<u8>, SerError> {
+fn to_bytes_inner<'a>(classes: &mut ClassMap<'a>, header: &HkxHeader) -> Result<Vec<u8>> {
     classes.sort_for_bytes();
 
     let (event_id_map, variable_id_map) = find_behavior_graph_index(classes)
@@ -103,5 +71,5 @@ fn to_bytes_inner<'a>(classes: &mut ClassMap<'a>, header: &HkxHeader) -> Result<
         .unwrap_or_default();
 
     serde_hkx::to_bytes_with_maps(classes, header, event_id_map, variable_id_map)
-        .context(HkxSnafu {})
+        .context(HkxSerSnafu)
 }

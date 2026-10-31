@@ -1,7 +1,8 @@
 //! Json schema generator.
-use crate::error::Result;
+use crate::error::{JsonSerSnafu, Result};
 use crate::types_wrapper::ClassPtrMap;
 use schemars::schema_for;
+use snafu::ResultExt as _;
 
 /// Generate json schema.
 ///
@@ -9,7 +10,7 @@ use schemars::schema_for;
 /// - When parse Json failed.
 pub fn generate_json_schema() -> Result<String> {
     let schema = schema_for!(ClassPtrMap);
-    let schema = sonic_rs::to_string_pretty(&schema)?;
+    let schema = sonic_rs::to_string_pretty(&schema).context(JsonSerSnafu)?;
     Ok(schema)
 }
 

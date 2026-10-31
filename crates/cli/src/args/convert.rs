@@ -45,7 +45,7 @@ pub(crate) struct Args {
 pub enum Runtime {
     /// Uses Rayon for multi-threaded parallel processing & Enumerate error paths
     Rayon,
-    /// Uses Tokio for async processing(M:N thread) & fail fast
+    /// Uses Tokio for async processing(M:N thread) & Enumerate error paths
     Tokio,
 }
 

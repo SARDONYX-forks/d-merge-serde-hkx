@@ -8,7 +8,7 @@ pub use self::file::verify_file;
 use crate::progress::ProgressHandler;
 use crate::{
     ClassMap,
-    error::{DeSnafu, FailedReadFileSnafu, Result, SerSnafu},
+    error::{HkxDeSnafu, HkxSerSnafu, Result},
 };
 use serde_hkx::bytes::serde::hkx_header::HkxHeader;
 use snafu::ResultExt as _;
@@ -32,29 +32,16 @@ where
     }
 }
 
-pub(super) fn verify_inner<I>(input: I) -> Result<(Vec<u8>, Vec<u8>), crate::error::Error>
+pub(super) fn verify_inner<I>(input: I) -> Result<(Vec<u8>, Vec<u8>)>
 where
     I: AsRef<Path>,
 {
-    let input = input.as_ref();
-
-    let expected_bytes = std::fs::read(input).with_context(|_| FailedReadFileSnafu {
-        path: input.to_path_buf(),
-    })?;
+    let expected_bytes = std::fs::read(input)?;
 
     let actual_bytes = {
-        let classes: ClassMap = serde_hkx::from_bytes(&expected_bytes)
-            .context(crate::serde::de::HkxSnafu {})
-            .with_context(|_| DeSnafu {
-                input: input.to_path_buf(),
-            })?;
-        let header = HkxHeader::from_bytes(&expected_bytes)
-            .context(crate::serde::de::HkxSnafu {})
-            .with_context(|_| DeSnafu { input })?;
-
-        serde_hkx::to_bytes(&classes, &header)
-            .context(crate::serde::ser::HkxSnafu {})
-            .with_context(|_| SerSnafu { input })?
+        let classes: ClassMap = serde_hkx::from_bytes(&expected_bytes).context(HkxDeSnafu)?;
+        let header = HkxHeader::from_bytes(&expected_bytes).context(HkxDeSnafu)?;
+        serde_hkx::to_bytes(&classes, &header).context(HkxSerSnafu)?
     };
 
     Ok((expected_bytes, actual_bytes))

@@ -2,7 +2,7 @@
 
 use super::{Format, get_output_path, get_supported_files, process_serde};
 use crate::{
-    error::{FailedConvertFilesSnafu, Result},
+    error::{Error, FailedConvertFilesSnafu, Result},
     fs::write_sync,
     progress::ProgressHandler,
 };
@@ -75,7 +75,7 @@ where
     let total_files = files.len();
     progress.on_set_total(total_files);
 
-    let err_paths: Vec<PathBuf> = files
+    let errors: Vec<(PathBuf, Error)> = files
         .into_par_iter()
         .filter_map(|input| {
             progress.on_processing_path(&input);
@@ -84,25 +84,27 @@ where
             let res = convert_file(&input, output, format);
             progress.inc(1);
 
-            if matches!(res, Ok(())) {
-                progress.success_inc(1);
-                None
-            } else {
-                progress.failure_inc(1);
-                Some(input)
+            match res {
+                Ok(()) => {
+                    progress.success_inc(1);
+                    None
+                }
+                Err(err) => {
+                    progress.failure_inc(1);
+                    Some((input, err))
+                }
             }
         })
         .collect();
 
     progress.on_finish();
 
-    if err_paths.is_empty() {
+    if errors.is_empty() {
         Ok(())
     } else {
         FailedConvertFilesSnafu {
-            path: input_dir.to_path_buf(),
             total_files,
-            err_paths,
+            errors,
         }
         .fail()
     }

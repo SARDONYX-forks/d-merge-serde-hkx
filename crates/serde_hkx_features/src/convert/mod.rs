@@ -2,7 +2,7 @@ pub mod hkx_checker;
 pub mod rayon;
 pub mod tokio;
 
-use crate::error::{DeSnafu, Error, Result};
+use crate::error::{Error, HkxDeSnafu, Result, XmlDeSnafu};
 use snafu::ResultExt as _;
 use std::{
     ffi::OsStr,
@@ -125,24 +125,12 @@ impl Format {
         P: AsRef<Path>,
     {
         let path = path.as_ref();
-        let ext = path.extension().ok_or(Error::UnsupportedExtensionPath {
-            path: path.to_path_buf(),
-        })?;
+        let ext = path.extension().ok_or(Error::MissingExtension)?;
 
-        Ok(match ext {
-            ext if ext.eq_ignore_ascii_case("hkx") => hkx_checker::detect_hkx_format(path)?,
-            ext if ext.eq_ignore_ascii_case("xml") => Self::Xml,
-
-            #[cfg(feature = "json")]
-            ext if ext.eq_ignore_ascii_case("json") => Self::Json,
-            #[cfg(feature = "toml")]
-            ext if ext.eq_ignore_ascii_case("toml") => Self::Toml,
-            _ => {
-                return Err(Error::UnsupportedExtensionPath {
-                    path: path.to_path_buf(),
-                });
-            }
-        })
+        match Self::from_extension(ext)? {
+            Self::Amd64 => hkx_checker::detect_hkx_format(path),
+            format => Ok(format),
+        }
     }
 
     /// Return output format from input path.
@@ -166,23 +154,11 @@ impl Format {
         P: AsRef<Path>,
     {
         let path = path.as_ref();
-        let ext = path.extension().ok_or(Error::UnsupportedExtensionPath {
-            path: path.to_path_buf(),
-        })?;
+        let ext = path.extension().ok_or(Error::MissingExtension)?;
 
-        Ok(match ext {
-            ext if ext.eq_ignore_ascii_case("hkx") => Self::Xml,
-            ext if ext.eq_ignore_ascii_case("xml") => Self::Amd64,
-
-            #[cfg(feature = "json")]
-            ext if ext.eq_ignore_ascii_case("json") => Self::Amd64,
-            #[cfg(feature = "toml")]
-            ext if ext.eq_ignore_ascii_case("toml") => Self::Amd64,
-            _ => {
-                return Err(Error::UnsupportedExtensionPath {
-                    path: path.to_path_buf(),
-                });
-            }
+        Ok(match Self::from_extension(ext)? {
+            Self::Amd64 | Self::Win32 => Self::Xml,
+            _ => Self::Amd64,
         })
     }
 
@@ -296,9 +272,9 @@ fn get_supported_files(input_dir: &Path) -> Vec<PathBuf> {
 /// The `T` produced by whichever closure was invoked.
 ///
 /// # Errors
-/// * [`Error::MissingExtension`]         – `input` has no file extension.
-/// * [`Error::UnsupportedExtensionPath`] – The extension is not a recognized format.
-/// * [`Error::De`]                       – Deserialization of the input bytes failed.
+/// * [`Error::MissingExtension`]     – `input` has no file extension.
+/// * [`Error::UnsupportedExtension`] – The extension is not a recognized format.
+/// * `Error::*De`                    – Deserialization of the input bytes failed.
 /// * Any error returned by `on_xml` or `on_other` is propagated as-is.
 pub fn process_serde_with<'a, I, F, G, T>(
     bytes: &'a [u8],
@@ -312,52 +288,29 @@ where
     G: FnOnce(crate::ClassMap<'_>) -> Result<T>, // '_ = local String lifetime
 {
     let input = input.as_ref();
-    let input_fmt = {
-        let Some(input_ext) = input.extension() else {
-            return Err(Error::MissingExtension {
-                path: input.to_path_buf(),
-            });
-        };
-        Format::from_extension(input_ext).map_err(|_| Error::UnsupportedExtensionPath {
-            path: input.to_path_buf(),
-        })?
-    };
+    let input_ext = input.extension().ok_or(Error::MissingExtension)?;
+    let input_fmt = Format::from_extension(input_ext)?;
 
     let classes = match input_fmt {
-        Format::Amd64 | Format::Win32 => serde_hkx::from_bytes(bytes)
-            .context(crate::serde::de::HkxSnafu {})
-            .with_context(|_| DeSnafu {
-                input: input.to_path_buf(),
-            })?,
+        Format::Amd64 | Format::Win32 => serde_hkx::from_bytes(bytes).context(HkxDeSnafu)?,
         Format::Xml => {
             let string = auto_charset::decode_str_to_utf8(bytes)?;
-            let classes = serde_hkx::from_str(&string)
-                .context(crate::serde::de::XmlSnafu {})
-                .with_context(|_| DeSnafu {
-                    input: input.to_path_buf(),
-                })?;
-
+            let classes = serde_hkx::from_str(&string).context(XmlDeSnafu)?;
             return on_xml(classes);
         }
         #[cfg(feature = "json")]
         Format::Json => {
             use crate::types_wrapper::ClassPtrMap;
-            let classes = sonic_rs::from_slice::<ClassPtrMap>(bytes)
-                .context(crate::serde::de::JsonSnafu {})
-                .with_context(|_| crate::error::DeSnafu {
-                    input: input.to_path_buf(),
-                })?;
-            classes.into_class_map()
+            sonic_rs::from_slice::<ClassPtrMap>(bytes)
+                .context(crate::error::JsonDeSnafu)?
+                .into_class_map()
         }
         #[cfg(feature = "toml")]
         Format::Toml => {
             use crate::types_wrapper::ClassPtrMap;
-            let classes = basic_toml::from_slice::<ClassPtrMap>(bytes)
-                .context(crate::serde::de::TomlSnafu {})
-                .with_context(|_| crate::error::DeSnafu {
-                    input: input.to_path_buf(),
-                })?;
-            classes.into_class_map()
+            toml::from_slice::<ClassPtrMap>(bytes)
+                .context(crate::error::TomlDeSnafu)?
+                .into_class_map()
         }
     };
 
@@ -373,51 +326,25 @@ pub(crate) fn process_serde<I>(
 where
     I: AsRef<Path>,
 {
-    let input = input.as_ref();
+    fn to_bytes(mut classes: crate::ClassMap<'_>, output_format: Format) -> Result<Vec<u8>> {
+        match output_format {
+            Format::Amd64 | Format::Win32 | Format::Xml => {
+                crate::serde::ser::to_bytes(&mut classes, output_format)
+            }
+            // Json and/or Toml, depending on the features.
+            #[cfg(any(feature = "json", feature = "toml"))]
+            #[allow(clippy::match_wildcard_for_single_variants)]
+            _ => {
+                let mut classes = crate::types_wrapper::ClassPtrMap::from_class_map(classes);
+                crate::serde_extra::ser::to_bytes(&mut classes, output_format)
+            }
+        }
+    }
 
     process_serde_with(
         &bytes,
         input,
-        |mut classes| {
-            match output_format {
-                Format::Amd64 | Format::Win32 | Format::Xml => {
-                    crate::serde::ser::to_bytes(&mut classes, output_format)
-                }
-                // Json and/or Toml, depending on the features.
-                #[cfg(any(feature = "json", feature = "toml"))]
-                #[allow(clippy::match_wildcard_for_single_variants)]
-                _ => {
-                    let mut classes = crate::types_wrapper::ClassPtrMap::from_class_map(classes);
-                    crate::serde_extra::ser::to_bytes(&mut classes, output_format)
-                }
-            }
-            .with_context(|_| crate::error::SerSnafu {
-                input: input.to_path_buf(),
-            })
-        },
-        |mut classes| {
-            let bytes = match output_format {
-                Format::Amd64 | Format::Win32 | Format::Xml => {
-                    crate::serde::ser::to_bytes(&mut classes, output_format).with_context(|_| {
-                        crate::error::SerSnafu {
-                            input: input.to_path_buf(),
-                        }
-                    })?
-                }
-                // Json and/or Toml, depending on the features.
-                #[cfg(any(feature = "json", feature = "toml"))]
-                #[allow(clippy::match_wildcard_for_single_variants)]
-                _ => {
-                    let mut classes = crate::types_wrapper::ClassPtrMap::from_class_map(classes);
-                    crate::serde_extra::ser::to_bytes(&mut classes, output_format).with_context(
-                        |_| crate::error::SerSnafu {
-                            input: input.to_path_buf(),
-                        },
-                    )?
-                }
-            };
-
-            Ok(bytes)
-        },
+        |classes| to_bytes(classes, output_format),
+        |classes| to_bytes(classes, output_format),
     )
 }

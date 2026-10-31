@@ -1,7 +1,6 @@
 //! Convenience file I/O.
 
-use crate::error::{FailedReadFileSnafu, Result};
-use snafu::ResultExt as _;
+use crate::error::Result;
 use std::borrow::Cow;
 use std::io;
 use std::{future::Future, path::Path};
@@ -25,18 +24,12 @@ where
     P: AsRef<Path>,
 {
     async fn read_any_string(&self) -> Result<String> {
-        let input = self.as_ref();
-        let bytes = input.read_bytes().await?;
-        auto_charset::decode_to_utf8(bytes).with_context(|_| FailedReadFileSnafu {
-            path: input.to_path_buf(),
-        })
+        let bytes = self.read_bytes().await?;
+        Ok(auto_charset::decode_to_utf8(bytes)?)
     }
 
     async fn read_bytes(&self) -> Result<Vec<u8>> {
-        let input = self.as_ref();
-        fs::read(input).await.with_context(|_| FailedReadFileSnafu {
-            path: input.to_path_buf(),
-        })
+        Ok(fs::read(self.as_ref()).await?)
     }
 }
 

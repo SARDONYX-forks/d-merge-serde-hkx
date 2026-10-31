@@ -29,7 +29,6 @@ where
     let actual = hexdump::to_string(&actual_bytes);
     let expected = hexdump::to_string(&expected_bytes);
     FailedReproduceFileSnafu {
-        path: input.to_path_buf(),
         diff: diff::diff(expected, actual, color),
     }
     .fail()

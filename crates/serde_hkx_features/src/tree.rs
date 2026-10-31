@@ -1,8 +1,7 @@
 //! Show dependency tree from havok behavior state machine (hkx/xml file)
 use crate::{
-    error::{Error, SerSnafu},
+    error::{Error, HkxSerSnafu},
     fs::ReadExt as _,
-    serde::ser::HkxSnafu,
 };
 use serde_hkx::tree::HavokTree as _;
 use snafu::ResultExt;
@@ -42,15 +41,7 @@ where
     crate::convert::process_serde_with(
         &bytes,
         input,
-        |mut c| {
-            c.tree_for_bytes()
-                .with_context(|_| HkxSnafu {})
-                .with_context(|_| SerSnafu { input })
-        },
-        |mut c| {
-            c.tree_for_bytes()
-                .with_context(|_| HkxSnafu {})
-                .with_context(|_| SerSnafu { input })
-        },
+        |mut c| c.tree_for_bytes().context(HkxSerSnafu),
+        |mut c| c.tree_for_bytes().context(HkxSerSnafu),
     )
 }

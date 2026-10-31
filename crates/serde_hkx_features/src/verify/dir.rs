@@ -1,5 +1,5 @@
 use super::verify_inner;
-use crate::error::{FailedReproduceFilesSnafu, Result};
+use crate::error::{Error, FailedReproduceFilesSnafu, Result};
 use crate::progress::ProgressHandler;
 use rayon::prelude::*;
 use std::path::{Path, PathBuf};
@@ -45,46 +45,41 @@ where
 
     progress.on_set_total(total_files);
 
-    let results: Vec<_> = filtered_entries
+    let errors: Vec<(PathBuf, Error)> = filtered_entries
         .into_par_iter()
-        .map(|path| {
-            let result = verify_inner(&path);
-
-            let is_valid = if let Ok((expected_bytes, actual_bytes)) = &result {
-                expected_bytes == actual_bytes
-            } else {
-                false
+        .filter_map(|path| {
+            let result = match verify_inner(&path) {
+                Ok((expected_bytes, actual_bytes)) if expected_bytes == actual_bytes => Ok(()),
+                Ok(_) => Err(Error::ReproduceMismatch),
+                Err(err) => Err(err),
             };
-
-            if is_valid {
-                progress.success_inc(1);
-                #[cfg(feature = "tracing")]
-                tracing::info!("Passed Reproduction: {}", path.display());
-            } else {
-                progress.failure_inc(1);
-            }
 
             progress.inc(1);
             progress.on_processing_path(path.as_path());
 
-            (path, is_valid)
+            match result {
+                Ok(()) => {
+                    progress.success_inc(1);
+                    #[cfg(feature = "tracing")]
+                    tracing::info!("Passed Reproduction: {}", path.display());
+                    None
+                }
+                Err(err) => {
+                    progress.failure_inc(1);
+                    Some((path, err))
+                }
+            }
         })
         .collect();
 
     progress.on_finish();
 
-    let err_paths: Vec<PathBuf> = results
-        .into_par_iter()
-        .filter_map(|(path, is_valid)| if !is_valid { Some(path) } else { None })
-        .collect();
-
-    if err_paths.is_empty() {
+    if errors.is_empty() {
         Ok(())
     } else {
         FailedReproduceFilesSnafu {
-            path: dir.to_path_buf(),
             total_files,
-            err_paths,
+            errors,
         }
         .fail()
     }

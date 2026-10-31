@@ -25,27 +25,38 @@ pub(crate) async fn run(args: Args) -> Result<()> {
 
     // For drag & drop
     if let Some(input) = args.input {
-        let out_fmt = Format::infer_output_from_input(&input)?;
-        let output: Option<PathBuf> = None;
-        return tokio_convert(input, output, out_fmt).await;
+        let res = async {
+            let out_fmt = Format::infer_output_from_input(&input)?;
+            let output: Option<PathBuf> = None;
+            tokio_convert(&input, output, out_fmt).await
+        };
+        return res.await.map_err(|e| e.with_path(&input));
     }
 
     if let Some(command) = args.subcommand {
+        // NOTE: Errors do not carry the input path, so attach it here.
         match command {
             SubCommands::Convert(args) => {
-                convert(&args.input, args.output, args.format, args.runtime).await
+                convert(&args.input, args.output, args.format, args.runtime)
+                    .await
+                    .map_err(|e| e.with_path(&args.input))
             }
-            SubCommands::Tree(args) => write_tree(args.input, args.output).await,
+            SubCommands::Tree(args) => write_tree(&args.input, args.output)
+                .await
+                .map_err(|e| e.with_path(&args.input)),
             SubCommands::Dump(args) => match args.reverse {
-                true => hexdump::to_bytes(args.input, args.output).await,
-                false => hexdump::to_string(args.input, args.output).await,
-            },
+                true => hexdump::to_bytes(&args.input, args.output).await,
+                false => hexdump::to_string(&args.input, args.output).await,
+            }
+            .map_err(|e| e.with_path(&args.input)),
             SubCommands::Diff(inner_args) => {
+                // NOTE: `write_diff` attaches each input path by itself.
                 let use_color = is_color_enabled(args.color);
                 write_diff(inner_args.old, inner_args.new, inner_args.output, use_color).await
             }
             SubCommands::Verify(inner_args) => {
                 self::verify::verify(&inner_args.path, is_color_enabled(args.color))
+                    .map_err(|e| e.with_path(&inner_args.path))
             }
 
             SubCommands::Completions { shell } => {
@@ -61,7 +72,7 @@ pub(crate) async fn run(args: Args) -> Result<()> {
 For more information, try '<cyan!>--help</cyan!>'.
 "#
         );
-        Err(Error::IoError {
+        Err(Error::Io {
             source: io::Error::new(io::ErrorKind::InvalidInput, ERR_MSG),
         })
     }

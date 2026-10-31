@@ -1,7 +1,7 @@
 //! Async Convert hkx <-> xml
 use super::{Format, get_output_path, get_supported_files, process_serde};
 use crate::{
-    error::Result,
+    error::{Error, FailedConvertFilesSnafu, Result},
     fs::{ReadExt as _, write},
     progress::{DefaultProgressMonitor, ProgressHandler},
 };
@@ -76,7 +76,7 @@ where
     O: AsRef<Path>,
     P: ProgressHandler + Send + Clone + 'static,
 {
-    let mut task_handles: Vec<tokio::task::JoinHandle<Result<()>>> = Vec::new();
+    let mut task_handles: Vec<(PathBuf, tokio::task::JoinHandle<Result<()>>)> = Vec::new();
 
     let input_dir = input_dir.as_ref();
     let files: Vec<PathBuf> = get_supported_files(input_dir);
@@ -86,7 +86,8 @@ where
         return Ok(());
     }
 
-    progress.on_set_total(files.len());
+    let total_files = files.len();
+    progress.on_set_total(total_files);
 
     for input in files {
         // Convert only if there is a supported extension.
@@ -96,30 +97,42 @@ where
         let output = get_output_path(input_dir, &input, &output_dir, format);
 
         let progress = progress.clone();
-        task_handles.push(tokio::spawn(async move {
-            match convert_file(&input, output, format).await {
-                Ok(_) => {
-                    progress.success_inc(1);
-                    Ok(())
-                }
-                Err(err) => {
-                    progress.failure_inc(1);
-                    #[cfg(feature = "tracing")]
-                    tracing::error!("Failed to convert: {}", input.display());
-                    Err(err)
-                }
-            }?;
+        let task_input = input.clone();
+        let handle = tokio::spawn(async move {
+            let res = convert_file(&task_input, output, format).await;
+            if matches!(&res, Ok(())) {
+                progress.success_inc(1);
+            } else {
+                progress.failure_inc(1);
+                #[cfg(feature = "tracing")]
+                tracing::error!("Failed to convert: {}", task_input.display());
+            }
             progress.inc(1);
-            Result::Ok(())
-        }));
+            res
+        });
+        task_handles.push((input, handle));
     }
 
-    for task_handle in task_handles {
-        task_handle.await??;
+    let mut errors: Vec<(PathBuf, Error)> = Vec::new();
+    for (input, task_handle) in task_handles {
+        match task_handle.await {
+            Ok(Ok(())) => {}
+            Ok(Err(err)) => errors.push((input, err)),
+            Err(err) => errors.push((input, err.into())),
+        }
     }
 
     progress.on_finish();
-    Ok(())
+
+    if errors.is_empty() {
+        Ok(())
+    } else {
+        FailedConvertFilesSnafu {
+            total_files,
+            errors,
+        }
+        .fail()
+    }
 }
 
 /// Convert `hkx`/`xml` file and vice vasa.
