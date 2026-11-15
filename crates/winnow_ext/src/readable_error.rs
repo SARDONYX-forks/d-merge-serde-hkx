@@ -88,6 +88,49 @@ impl ReadableError {
     }
 }
 
+/// What the error says, for a tool that shows it in its own way (e.g. an editor's underline) instead
+/// of the rendered report of [`fmt::Display`].
+///
+/// e.g. for input `"a\nbcd"` with an error at `c`:
+/// - [`Self::span`]: `3..4` (bytes)
+/// - [`Self::line_column`]: `(1, 1)` (0-based line, column in chars)
+impl ReadableError {
+    /// The heading of the report. e.g. `Parse error`, ` <- Field <- Object` (may be empty)
+    #[inline]
+    pub fn title(&self) -> &str {
+        &self.title
+    }
+
+    /// What is wrong at [`Self::span`]. e.g. `expected </hkparam>`
+    #[inline]
+    pub fn message(&self) -> &str {
+        &self.message
+    }
+
+    /// Where the error is in [`Self::input`], in bytes. Always on char boundaries: one char, or empty
+    /// at the end of the input.
+    #[inline]
+    pub fn span(&self) -> Range<usize> {
+        self.span.clone()
+    }
+
+    /// The text that was parsed.
+    #[inline]
+    pub fn input(&self) -> &str {
+        &self.input
+    }
+
+    /// The start of [`Self::span`] as `(line, column)`: both 0-based, the column in chars. A `\r\n`
+    /// ends a line as `\n` does.
+    pub fn line_column(&self) -> (usize, usize) {
+        let before = self.input.get(..self.span.start).unwrap_or(&self.input);
+        let line = before.matches('\n').count();
+        let line_start = before.rfind('\n').map_or(0, |at| at + 1);
+        let column = before[line_start..].chars().count();
+        (line, column)
+    }
+}
+
 impl fmt::Display for ReadableError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         let report = &[annotate_snippets::Level::ERROR
@@ -130,4 +173,33 @@ fn char_boundary(input: &[u8], offset: usize) -> core::ops::Range<usize> {
         .find(|i| input.get(*i).copied().is_some_and(is_utf8_char_boundary))
         .unwrap_or(len);
     start..end
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// The example of the accessors' docs: an error at `c` of `"a\nbcd"`.
+    #[test]
+    fn the_place_of_an_error_is_given_as_is() {
+        let error = ReadableError::from_display("bad", "a\nbcd", 3);
+        assert_eq!((error.title(), error.message(), error.input()), ("Validation Error", "bad", "a\nbcd"));
+        assert_eq!(error.span(), 3..4);
+        assert_eq!(error.line_column(), (1, 1));
+    }
+
+    /// The column counts chars, not bytes: `あ` is 3 bytes.
+    #[test]
+    fn the_column_is_in_chars() {
+        let error = ReadableError::from_display("bad", "x\nあいz", 8);
+        assert_eq!(error.span(), 8..9);
+        assert_eq!(error.line_column(), (1, 2));
+    }
+
+    #[test]
+    fn an_error_at_the_end_is_after_the_last_char() {
+        let error = ReadableError::from_display("bad", "ab", 2);
+        assert_eq!(error.span(), 2..2);
+        assert_eq!(error.line_column(), (0, 2));
+    }
 }
