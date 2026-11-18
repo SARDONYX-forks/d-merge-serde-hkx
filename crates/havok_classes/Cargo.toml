@@ -13,16 +13,12 @@ repository.workspace   = true
 rust-version.workspace = true
 
 [dependencies]
-bitflags = { workspace = true } # To generate flags type
-educe = { workspace = true, features = [
-  "full",
-] } # To support the `Default` trait implementation for huge fixed-size arrays.
+bitflags   = { workspace = true } # To generate flags type
+educe      = { workspace = true, features = ["full"] } # To support the `Default` trait implementation for huge fixed-size arrays.
 num-derive = { workspace = true } # To serialize Enum & Flags
 num-traits = { workspace = true } # To serialize Enum & Flags
 schemars   = { workspace = true, features = ["indexmap2"], optional = true }
-serde = { workspace = true, features = [
-  "derive",
-], optional = true } # Implement (De)Serializer
+serde      = { workspace = true, features = ["derive"], optional = true } # Implement (De)Serializer
 serde_with = { workspace = true, optional = true } # Serde utility
 
 # workspace members

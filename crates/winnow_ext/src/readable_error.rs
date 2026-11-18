@@ -92,8 +92,8 @@ impl ReadableError {
 /// of the rendered report of [`fmt::Display`].
 ///
 /// e.g. for input `"a\nbcd"` with an error at `c`:
-/// - [`Self::span`]: `3..4` (bytes)
-/// - [`Self::line_column`]: `(1, 1)` (0-based line, column in chars)
+/// - `Self::span`: `3..4` (bytes)
+/// - `Self::line_column`: `(1, 1)` (0-based line, column in chars)
 impl ReadableError {
     /// The heading of the report. e.g. `Parse error`, ` <- Field <- Object` (may be empty)
     #[inline]
@@ -183,7 +183,10 @@ mod tests {
     #[test]
     fn the_place_of_an_error_is_given_as_is() {
         let error = ReadableError::from_display("bad", "a\nbcd", 3);
-        assert_eq!((error.title(), error.message(), error.input()), ("Validation Error", "bad", "a\nbcd"));
+        assert_eq!(
+            (error.title(), error.message(), error.input()),
+            ("Validation Error", "bad", "a\nbcd")
+        );
         assert_eq!(error.span(), 3..4);
         assert_eq!(error.line_column(), (1, 1));
     }

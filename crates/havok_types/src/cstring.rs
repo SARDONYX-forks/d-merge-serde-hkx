@@ -80,15 +80,9 @@ impl<'a> CString<'a> {
     /// This is an invalid value or not.
     #[inline]
     pub fn should_write_binary(&self) -> bool {
-        match self.get_ref() {
-            Some(s) => {
-                if s.is_empty() || s == NULL_STR {
-                    return false;
-                };
-                true
-            }
-            _ => false,
-        }
+        self.get_ref()
+            .as_ref()
+            .is_some_and(|s| !(s.is_empty() || s == NULL_STR))
     }
 }
 

@@ -13,13 +13,7 @@
       "url": "./assets/havok_class_schema.json"
     }
   ],
-  "markdownlint.config": {
-    "default": true,
-    "MD024": false,
-    "MD025": false,
-    "MD033": false,
-    "no-hard-tabs": false
-  },
+  "rumdl.rules.disable": ["MD033", "MD013", "MD007", "no-hard-tabs"],
   "rust-analyzer.check.command": "clippy",
   "toml.formatter.alignEntries": true
 }
