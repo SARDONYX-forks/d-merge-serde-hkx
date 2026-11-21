@@ -1,7 +1,7 @@
 use crate::{
     ClassMap, bail_syn_err,
-    get_class_map::is_empty_base_class,
     cpp_info::{Class, Member, TypeKind},
+    get_class_map::is_empty_base_class,
     rust_gen::structure::{
         impls::deserialize::member_to_de_rust_type, to_rust_token::to_rust_field_ident,
     },
