@@ -15,12 +15,10 @@ use snafu::ResultExt as _;
 /// See `serde_hkx::errors::ser::Error` for possible errors that may occur.
 pub fn to_bytes(classes: &mut ClassMap<'_>, output_format: Format) -> Result<Vec<u8>> {
     match output_format {
-        Format::Win32 => to_bytes_inner(classes, &HkxHeader::new_skyrim_le()),
-        Format::Amd64 => to_bytes_inner(classes, &HkxHeader::new_skyrim_se()),
+        Format::Win32 | Format::Amd64 => to_bytes_inner(classes, &output_header(output_format)?),
         Format::Xml => {
             let top_ptr = classes.sort_for_xml().context(XmlSerSnafu)?;
-            // TODO: Use the header of the source file after Fallout4(hk2014) classes are supported.
-            let header = HkxHeader::new_skyrim_se();
+            let header = output_header(Format::Amd64)?; // Only the version is used for XML.
             let xml = serde_hkx::to_string(classes, &top_ptr, &header).context(XmlSerSnafu)?;
             Ok(xml.into_bytes())
         }
@@ -30,6 +28,29 @@ pub fn to_bytes(classes: &mut ClassMap<'_>, output_format: Format) -> Result<Vec
             classes.sort_for_bytes();
             let json = sonic_rs::to_string_pretty(&classes).context(crate::error::JsonSerSnafu)?;
             Ok(json.into_bytes())
+        }
+    }
+}
+
+/// Header of the output hkx by the havok classes version(`hk2010`/`hk2014` feature).
+///
+/// # Errors
+/// Fallout4(hk2014) does not have 32bit(`Win32`).
+#[allow(clippy::missing_const_for_fn)]
+pub fn output_header(format: Format) -> Result<HkxHeader> {
+    #[cfg(feature = "hk2010")]
+    {
+        Ok(match format {
+            Format::Win32 => HkxHeader::new_skyrim_le(),
+            _ => HkxHeader::new_skyrim_se(),
+        })
+    }
+
+    #[cfg(all(feature = "hk2014", not(feature = "hk2010")))]
+    {
+        match format {
+            Format::Win32 => crate::error::Unsupported32bitSnafu.fail(),
+            _ => Ok(HkxHeader::new_fallout4()),
         }
     }
 }

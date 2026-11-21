@@ -766,6 +766,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "havok_classes_hk2014"
+version = "0.1.0"
+dependencies = [
+ "bitflags",
+ "educe",
+ "havok_serde",
+ "havok_types",
+ "havok_types_derive",
+ "num-derive",
+ "num-traits",
+ "schemars",
+ "serde",
+ "serde_with",
+]
+
+[[package]]
 name = "havok_serde"
 version = "1.0.1"
 dependencies = [
@@ -1612,6 +1628,7 @@ dependencies = [
  "clap",
  "diff 1.0.1",
  "havok_classes",
+ "havok_classes_hk2014",
  "havok_serde",
  "havok_types",
  "indexmap",

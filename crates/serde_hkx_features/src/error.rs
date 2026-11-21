@@ -35,6 +35,10 @@ pub enum Error {
     #[snafu(display("This path has a missing extension."))]
     MissingExtension,
 
+    /// Fallout4(hk2014) does not have 32bit hkx.
+    #[snafu(display("Fallout4(hk2014) does not have 32bit hkx. Use `amd64` instead of `win32`."))]
+    Unsupported32bit,
+
     /// Please specify the output path.(OS cannot output bytes as stdout.)
     #[snafu(display("Please specify the output path.(OS cannot output bytes as stdout.)"))]
     InvalidStdout,

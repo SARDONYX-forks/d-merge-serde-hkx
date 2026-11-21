@@ -24,7 +24,7 @@ tracing               = { workspace = true }
 tracing-subscriber    = { workspace = true }
 
 # workspace members
-serde_hkx_features = { workspace = true, features = ["clap", "tracing"] }
+serde_hkx_features = { workspace = true, features = ["clap", "tracing", "serde_default"] }
 
 [build-dependencies]
 ico       = { workspace = true }
@@ -35,7 +35,11 @@ winres    = { workspace = true } # Meta information can be added to the exe.
 
 
 [features]
-default = ["color"]
+default = ["color", "hk2010", "extra_fmt"]
+
+# Havok classes version.(Exclusive) e.g. Fallout4: `--no-default-features --features color,hk2014,extra_fmt`
+hk2010 = ["serde_hkx_features/hk2010"]
+hk2014 = ["serde_hkx_features/hk2014"]
 
 # ANSI color
 color = []

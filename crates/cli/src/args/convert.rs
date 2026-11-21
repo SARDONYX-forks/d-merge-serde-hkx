@@ -18,10 +18,12 @@ pub fn examples() -> String {
                 "xml -> hkx(64bit)",
                 "hkxc convert -i ./defaultmale.xml -v amd64 --stdout --log-level trace",
             ),
+            #[cfg(feature = "hk2010")]
             Example::new(
                 "hkx(32bit) -> hkx(64bit)",
                 r#"hkxc convert -i ./defaultmale_x86.hkx -o ./defaultmale_x64.hkx -v amd64 --log-level debug --log-file "./convert_x86_to_x64_bytes.log""#,
             ),
+            #[cfg(feature = "hk2010")]
             Example::new(
                 "hkx(64bit) -> hkx(32bit)",
                 "hkxc convert -i ./defaultmale_x64.hkx -o ./defaultmale_x86.hkx -v win32 --log-level trace --log-file ./convert_x64_to_x86_bytes.log",

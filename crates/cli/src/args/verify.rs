@@ -50,6 +50,11 @@ where
 {
     let path = path.as_ref();
 
+    // NOTE: Without this, a missing path is treated as an empty dir and exits with success.
+    if !path.exists() {
+        return Err(std::io::Error::new(std::io::ErrorKind::NotFound, "No such file or directory").into());
+    }
+
     if path.is_file() {
         println!("Verifying...");
         let res = match mode {
