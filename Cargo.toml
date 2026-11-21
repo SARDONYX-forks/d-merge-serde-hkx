@@ -18,7 +18,6 @@ resolver        = "3"
 [workspace.dependencies]
 bitflags    = "2.13.2" # To generate flags type
 clap        = { version = "4.6.8", features = ["derive"] } # For CLI
-color-print = "0.3.7"
 educe       = "0.8.2"
 indexmap    = "2.14.2"
 jwalk       = { version = "0.9.0" }

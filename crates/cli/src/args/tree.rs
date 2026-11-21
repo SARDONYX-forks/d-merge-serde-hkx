@@ -1,22 +1,30 @@
 //! Show dependency tree from havok behavior state machine (hkx/xml file)
 use std::path::PathBuf;
 
-/// ANSI color representation command examples.
-pub const EXAMPLES: &str = color_print::cstr!(
-    r#"<blue><bold><underline>Examples</underline></bold></blue>
-- <blue!>xml -> dependencies tree -> stdout</blue!>
-  <cyan!>hkxc tree</cyan!> ./defaultmale.xml
-
-- <blue!>hkx -> dependencies tree -> stdout(+log)</blue!>
-  <cyan!>hkxc tree</cyan!> ./defaultmale.hkx <cyan!>--log-level</cyan!> trace <cyan!>--log-file</cyan!> ./hkx_tree.log
-
-- <blue!>hkx -> dependencies tree -> a file</blue!>
-  <cyan!>hkxc tree</cyan!> ./defaultmale.hkx <cyan!>-o</cyan!> tree.txt
-"#
-);
+/// Command examples.
+pub fn examples() -> String {
+    use super::color::{Example, examples};
+    examples(
+        None,
+        &[
+            Example::new(
+                "xml -> dependencies tree -> stdout",
+                "hkxc tree ./defaultmale.xml",
+            ),
+            Example::new(
+                "hkx -> dependencies tree -> stdout(+log)",
+                "hkxc tree ./defaultmale.hkx --log-level trace --log-file ./hkx_tree.log",
+            ),
+            Example::new(
+                "hkx -> dependencies tree -> a file",
+                "hkxc tree ./defaultmale.hkx -o tree.txt",
+            ),
+        ],
+    )
+}
 
 #[derive(Debug, clap::Args)]
-#[clap(arg_required_else_help = true, after_long_help = EXAMPLES)]
+#[clap(arg_required_else_help = true, after_long_help = examples())]
 pub(crate) struct Args {
     /// hkx/xml file path
     pub input: PathBuf,

@@ -1,4 +1,4 @@
-mod color;
+pub(crate) mod color;
 mod convert;
 mod diff;
 mod dump;
@@ -10,7 +10,7 @@ mod verify;
 use self::color::get_styles;
 use self::convert::{convert, tokio_convert};
 use crate::logger::LogLevel;
-use clap::{ColorChoice, CommandFactory as _};
+use clap::CommandFactory as _;
 use serde_hkx_features::{
     convert::Format,
     diff::write_diff,
@@ -51,12 +51,14 @@ pub(crate) async fn run(args: Args) -> Result<()> {
             .map_err(|e| e.with_path(&args.input)),
             SubCommands::Diff(inner_args) => {
                 // NOTE: `write_diff` attaches each input path by itself.
-                let use_color = is_color_enabled(args.color);
+                // A file output never has color.
+                let use_color =
+                    inner_args.output.is_none() && color::is_color_enabled(&io::stdout());
                 write_diff(inner_args.old, inner_args.new, inner_args.output, use_color).await
             }
             SubCommands::Verify(inner_args) => self::verify::verify(
                 &inner_args.path,
-                is_color_enabled(args.color),
+                color::is_color_enabled(&io::stderr()), // diff is in the error(stderr)
                 inner_args.mode,
                 inner_args.report.as_deref(),
             )
@@ -69,25 +71,16 @@ pub(crate) async fn run(args: Args) -> Result<()> {
         }
     } else {
         Args::command().print_long_help()?;
-        pub const ERR_MSG: &str = color_print::cstr!(
-            r#"
-<red>error:</red> '<red>hkxc</red>' requires a subcommand or hkx/xml path.
-For more information, try '<cyan!>--help</cyan!>'.
-"#
+        let err = color::ERROR;
+        let msg = format!(
+            "
+{err}error:{err:#} '{err}hkxc{err:#}' requires a subcommand or hkx/xml path.
+For more information, try '--help'.
+"
         );
         Err(Error::Io {
-            source: io::Error::new(io::ErrorKind::InvalidInput, ERR_MSG),
+            source: io::Error::new(io::ErrorKind::InvalidInput, msg),
         })
-    }
-}
-
-fn is_color_enabled(color_choice: ColorChoice) -> bool {
-    use std::io::IsTerminal as _;
-
-    match color_choice {
-        ColorChoice::Always => true,
-        ColorChoice::Never => false,
-        ColorChoice::Auto => std::io::stdout().is_terminal(),
     }
 }
 
@@ -95,7 +88,7 @@ fn is_color_enabled(color_choice: ColorChoice) -> bool {
 #[derive(Debug, clap::Parser)]
 #[clap(version, about, author)]
 #[cfg_attr(feature = "color", clap(styles=get_styles()))]
-#[clap(arg_required_else_help = true, args_conflicts_with_subcommands = true, after_long_help = convert::EXAMPLES)]
+#[clap(arg_required_else_help = true, args_conflicts_with_subcommands = true, after_long_help = convert::examples())]
 pub(crate) struct Args {
     /// The path of the target for drag and drop hkx(64bit) <-> xml conversion (The converted file will be created in the same location)
     pub input: Option<PathBuf>,
@@ -115,9 +108,31 @@ pub(crate) struct Args {
     /// Output path of log file
     pub log_file: Option<PathBuf>,
 
-    #[arg(long, default_value = "auto", display_order = 103)]
-    /// When to use colored output
-    color: ColorChoice,
+    /// Disable colored output.(Color is enabled by default only when the output is a terminal.)
+    ///
+    /// NOTE: This is read before parsing(see `main`) to apply it to help/errors of clap too.
+    #[clap(global = true, long, display_order = 103)]
+    pub no_color: bool,
+}
+
+impl Args {
+    /// Parse args with `--no-color`/`NO_COLOR` applied to clap(help, errors) and `anstream`(others).
+    pub fn parse_with_color() -> Self {
+        use clap::FromArgMatches as _;
+
+        let no_color = std::env::args_os().any(|arg| arg == "--no-color");
+        if no_color {
+            anstream::ColorChoice::Never.write_global();
+        }
+        let color = if no_color {
+            clap::ColorChoice::Never
+        } else {
+            clap::ColorChoice::Auto // Auto: terminal only, respects `NO_COLOR` env
+        };
+
+        let mut matches = Self::command().color(color).get_matches();
+        Self::from_arg_matches_mut(&mut matches).unwrap_or_else(|err| err.exit())
+    }
 }
 
 #[derive(Debug, clap::Parser)]
