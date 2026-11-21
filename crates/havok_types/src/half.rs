@@ -149,8 +149,8 @@ fn test_half() {
         let half = f16(bits);
         let f = half.to_f32();
         // `{:.06}`(error <= 5e-7) can't distinguish very small values.
-        // Half ulp of f16(8bit mantissa) = 2^(exp - 8) must be larger than 5e-7 -> exp >= -12
-        if !f.is_finite() || f.abs() < 0.000_244_140_625 {
+        // Half ulp of f16(8bit mantissa) = 2^(exp - 8) must be larger than 5e-7 -> exp >= -12(`1 / 4096`)
+        if !f.is_finite() || f.abs() < 1.0 / 4096.0 {
             continue;
         }
         let parsed = f16::from_f32(half.to_string().parse().unwrap());
