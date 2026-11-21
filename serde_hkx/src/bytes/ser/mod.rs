@@ -240,6 +240,19 @@ pub struct ByteSerializer<'ser> {
     /// - For a single field -> align16 is done after string serialization.
     is_in_str_array: bool,
 
+    /// Depth of the non-root struct being serialized.(root object: 0, its array element/embedded struct: 1, ...)
+    ///
+    /// # Why need this?
+    /// When entering a struct at depth >= 2, the position to write the pointed data(e.g. strings) is aligned 16,
+    /// even if the struct has no pointed data.
+    /// (The reason is unknown, but it is the real hkx layout. Same in hk2010 and hk2014.)
+    /// - depth 1: `hkRootLevelContainer.namedVariants[i].name` -> not aligned.
+    /// - depth 2: `hkaAnimation.annotationTracks[i].annotations[j].text`(x86) -> aligned.
+    /// - depth 2: `hclSimClothSetupObject.perInstanceCollidables[i]`(x64)
+    ///   `{ collidingParticles: hclVertexSelectionInput(embedded: depth 2), drivingBoneName: StringPtr(depth 1) }`
+    ///   -> Even if `collidingParticles.channelName` is null, `drivingBoneName` is aligned.
+    struct_depth: usize,
+
     // ---- local fixup information
     /// The position to which the pointer returns after writing the end of the pointer.
     /// Holds positional information for writing the destination of the nested array pointers in the field,
@@ -754,6 +767,13 @@ impl<'a, 'ser> Serializer for &'a mut ByteSerializer<'ser> {
         } else {
             #[cfg(feature = "tracing")]
             tracing::debug!("serialize struct {name}(A class within a field.)");
+            self.struct_depth += 1; // decremented by `StructSerializer::end`
+            if self.struct_depth >= 2 {
+                // See `Self::struct_depth`
+                if let Some(last) = self.pointed_pos.last_mut() {
+                    *last = align!(*last, 16_u64);
+                }
+            }
             false
         };
 

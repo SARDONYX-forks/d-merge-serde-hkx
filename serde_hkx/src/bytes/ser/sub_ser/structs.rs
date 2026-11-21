@@ -74,19 +74,8 @@ impl<'a, 'ser> StructSerializer<'a, 'ser> {
             // The data pointed by the elements is written after all elements.
             let len = array.as_ref().len() as u64;
             let elements_end = elements_abs + one_size * len;
-            // NOTE: If the struct array is nested(an array in the element of another array),
-            //       the data pointed by its elements starts at align 16.(The reason is unknown, but it is the real hkx layout.)
-            // - nested: x86 `hkaAnimation.annotationTracks[].annotations`: `{ time: f32, text: StringPtr }`(8bytes) x 3
-            //   -> elements end: 0x588, text: 0x590
-            // - not nested: x86 `hkRootLevelContainer.namedVariants`: elements end: 0x1d8, name: 0x1d8
-            // (x64 is usually aligned anyway because the element size is a multiple of 16.)
-            let is_nested = self.ser.pointed_pos.len() >= 2; // root object + parent array
-            let pointed_start = if !is_str && is_nested {
-                align!(elements_end, 16_u64)
-            } else {
-                elements_end
-            };
-            self.ser.pointed_pos.push(pointed_start);
+            // NOTE: The alignment of strings in deep structs is done by `ByteSerializer::serialize_cow`.
+            self.ser.pointed_pos.push(elements_end);
         }
         #[cfg(feature = "tracing")]
         tracing::trace!("pointed_pos:({:#x?})", self.ser.pointed_pos);
@@ -320,6 +309,9 @@ impl<'a, 'ser> SerializeStruct for StructSerializer<'a, 'ser> {
 
     #[inline]
     fn end(self) -> Result<()> {
+        if !self.is_root {
+            self.ser.struct_depth -= 1; // See `ByteSerializer::struct_depth`
+        }
         if self.is_root {
             #[cfg(feature = "tracing")]
             tracing::trace!("pointed_pos:({:#x?})", self.ser.pointed_pos);

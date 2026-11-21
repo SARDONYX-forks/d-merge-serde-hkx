@@ -768,7 +768,7 @@ dependencies = [
 [[package]]
 name = "havok_classes_hk2014"
 version = "0.1.0"
-source = "git+https://github.com/SARDONYX-forks/havok_classes_hk2014?rev=b9cd0cc#b9cd0ccfb12c8cf923e3706499bd1673d59e021d"
+source = "git+https://github.com/SARDONYX-forks/havok_classes_hk2014?rev=8b1f2b8#8b1f2b8a478144546e7f31191a4cc32525cbb461"
 dependencies = [
  "bitflags",
  "educe",
