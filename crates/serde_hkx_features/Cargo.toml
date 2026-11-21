@@ -41,6 +41,7 @@ havok_types   = { workspace = true }
 [dev-dependencies]
 quick_tracing = { workspace = true }
 serde_hkx     = { workspace = true, features = ["tracing"] }
+tokio         = { workspace = true, features = ["macros", "rt-multi-thread"] } # For `#[tokio::main]` in README doctest
 tracing       = { workspace = true }
 
 [features]

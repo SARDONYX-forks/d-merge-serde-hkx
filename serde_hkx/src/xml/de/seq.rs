@@ -4,7 +4,7 @@ use std::borrow::Cow;
 use super::XmlDeserializer;
 use super::parser::{
     comment_multispace0,
-    tag::{end_tag, start_tag},
+    tag::{end_tag, value_start_tag},
 };
 
 use crate::errors::de::{Error, Result};
@@ -136,7 +136,7 @@ impl<'de> SeqAccess<'de> for SeqDeserializer<'_, 'de> {
             return Ok(None);
         };
 
-        tri!(self.de.parse_next(start_tag("hkcstring")));
+        tri!(self.de.parse_next(value_start_tag("hkcstring")));
         let ret = seed.deserialize(&mut *self.de).map(Some)?;
         tri!(self.de.parse_next(end_tag("hkcstring")));
         Ok(ret)

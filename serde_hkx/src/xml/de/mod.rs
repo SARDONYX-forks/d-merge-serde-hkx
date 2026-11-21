@@ -174,7 +174,24 @@ impl<'de> XmlDeserializer<'de> {
     /// Parse by argument parser.
     ///
     /// If an error occurs, it is converted to [`ReadableError`] and returned.
+    /// - Skip whitespace & comments before parsing.
+    ///   (The start tag of a value(`<hkparam ...>`, `<hkcstring>`) does not skip the whitespace after `>`
+    ///   because it is a part of the value for strings. See [`Self::parse_next_raw`].)
     fn parse_next<O>(
+        &mut self,
+        mut parser: impl Parser<&'de str, O, ErrMode<ContextError>>,
+    ) -> Result<O> {
+        let res = (comment_multispace0, parser.by_ref())
+            .map(|(_, res)| res)
+            .parse_next(&mut self.input)
+            .map_err(|err| Error::ContextError { err })?;
+        Ok(res)
+    }
+
+    /// Parse by argument parser without skipping whitespace.(For string values)
+    ///
+    /// e.g. `<hkcstring> iState_NPCSneaking</hkcstring>` in vanilla `magicbehavior.hkx`
+    fn parse_next_raw<O>(
         &mut self,
         mut parser: impl Parser<&'de str, O, ErrMode<ContextError>>,
     ) -> Result<O> {
@@ -518,7 +535,7 @@ impl<'de> de::Deserializer<'de> for &mut XmlDeserializer<'de> {
     where
         V: Visitor<'de>,
     {
-        let s = tri!(self.parse_next(string)); // take until `</`
+        let s = tri!(self.parse_next_raw(string)); // take until `</`(Keep leading whitespace)
         let s = if s == "\u{2400}" { None } else { Some(s) }; // NOTE: Unicode null to null ptr.
         visitor.visit_cstring(CString::from_option(s))
     }
@@ -552,7 +569,7 @@ impl<'de> de::Deserializer<'de> for &mut XmlDeserializer<'de> {
     where
         V: Visitor<'de>,
     {
-        let s = tri!(self.parse_next(string)); // take until `</`
+        let s = tri!(self.parse_next_raw(string)); // take until `</`(Keep leading whitespace)
         let s = if s == "\u{2400}" { None } else { Some(s) }; // NOTE: Unicode null to null ptr.
         visitor.visit_stringptr(StringPtr::from_option(s))
     }
