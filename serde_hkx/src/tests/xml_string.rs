@@ -38,11 +38,20 @@ fn should_keep_whitespace_of_strings() {
         .iter()
         .map(|s| s.get_ref().as_deref().unwrap_or_default().to_string())
         .collect();
-    assert_eq!(names, [" iState_NPCSneaking", "\ttab_and_trailing ", "normal"]);
+    assert_eq!(
+        names,
+        [" iState_NPCSneaking", "\ttab_and_trailing ", "normal"]
+    );
 
     // XML -> classes -> XML must be the same strings.
     let top_ptr = classes.sort_for_xml().unwrap();
     let xml = to_string(&classes, &top_ptr, &HkxHeader::new_skyrim_se()).unwrap();
-    assert!(xml.contains("<hkcstring> iState_NPCSneaking</hkcstring>"), "{xml}");
-    assert!(xml.contains("<hkcstring>\ttab_and_trailing </hkcstring>"), "{xml}");
+    assert!(
+        xml.contains("<hkcstring> iState_NPCSneaking</hkcstring>"),
+        "{xml}"
+    );
+    assert!(
+        xml.contains("<hkcstring>\ttab_and_trailing </hkcstring>"),
+        "{xml}"
+    );
 }
