@@ -81,7 +81,7 @@ where
             progress.on_processing_path(&input);
 
             let output = get_output_path(input_dir, &input, &output_dir, format);
-            let res = convert_file(&input, output, format);
+            let res = crate::error::catch_panic(|| convert_file(&input, output, format));
             progress.inc(1);
 
             match res {

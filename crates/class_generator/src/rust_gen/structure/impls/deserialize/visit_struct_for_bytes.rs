@@ -1,6 +1,7 @@
 use crate::{
     ClassMap, bail_syn_err,
-    cpp_info::{Class, Member},
+    get_class_map::is_empty_base_class,
+    cpp_info::{Class, Member, TypeKind},
     rust_gen::structure::{
         impls::deserialize::member_to_de_rust_type, to_rust_token::to_rust_field_ident,
     },
@@ -21,7 +22,11 @@ pub fn generate(class: &Class, class_map: &ClassMap) -> Result<TokenStream> {
             let Some(parent_class) = class_map.get(parent_name) else {
                 bail_syn_err!("Need parent({parent_name}), but it's not found")
             };
-            (parent_class.size_x86, parent_class.size_x86_64)
+            if is_empty_base_class(parent_name, class_map) {
+                (0, 0) // EBO: empty base occupies 0 bytes.
+            } else {
+                (parent_class.size_x86, parent_class.size_x86_64)
+            }
         }
         _ => class
             .members
@@ -40,8 +45,16 @@ pub fn generate(class: &Class, class_map: &ClassMap) -> Result<TokenStream> {
         } = member;
 
         // Align
-        let x86_pad = (*offset_x86 - x86_current_offset) as usize;
-        let x64_pad = (*offset_x86_64 - x64_current_offset) as usize;
+        let (Some(x86_pad), Some(x64_pad)) = (
+            offset_x86.checked_sub(x86_current_offset),
+            offset_x86_64.checked_sub(x64_current_offset),
+        ) else {
+            let class_name = &class.name;
+            bail_syn_err!(
+                "{class_name}({name}): member offset(x86: {offset_x86}, x64: {offset_x86_64}) < current offset(x86: {x86_current_offset}, x64: {x64_current_offset})"
+            )
+        };
+        let (x86_pad, x64_pad) = (x86_pad as usize, x64_pad as usize);
         let pad_code = if x86_pad != 0 || x64_pad != 0 {
             tracing::debug!(?name, x86_pad, x86_current_offset);
             tracing::debug!(?name, x64_pad, x64_current_offset);
@@ -66,6 +79,13 @@ pub fn generate(class: &Class, class_map: &ClassMap) -> Result<TokenStream> {
 
         field_idents.push(field_ident.clone());
 
+        // `hkRelArray<T>`(hk2014~) has a different binary layout from `hkArray<T>`.
+        let next_value = if member.vtype == TypeKind::RelArray {
+            quote! { __A::next_value_seed(&mut __map, _serde::de::RelArraySeed::<_>::new()) }
+        } else {
+            quote! { __A::next_value::<#rust_type>(&mut __map) }
+        };
+
         visit_fields_matcher.push(quote! {
             #index => {
                 if _serde::__private::Option::is_some(&#field_ident) {
@@ -75,7 +95,7 @@ pub fn generate(class: &Class, class_map: &ClassMap) -> Result<TokenStream> {
                 }
                 #pad_code
                 #field_ident = _serde::__private::Some(
-                    match __A::next_value::<#rust_type>(&mut __map) {
+                    match #next_value {
                         _serde::__private::Ok(__val) => __val,
                         _serde::__private::Err(__err) => {
                             return _serde::__private::Err(__err);
@@ -107,10 +127,13 @@ pub fn generate(class: &Class, class_map: &ClassMap) -> Result<TokenStream> {
         x64_current_offset,
     );
 
-    let deserialize_parent = if class.parent.is_some() {
-        quote! { let parent = __A::parent_value(&mut __map)?; }
-    } else {
-        quote! {}
+    let deserialize_parent = match &class.parent {
+        // EBO: empty base has no bytes. So it must not be read(and must not read tail padding).
+        Some(parent_name) if is_empty_base_class(parent_name, class_map) => {
+            quote! { let parent = _serde::__private::Default::default(); }
+        }
+        Some(_) => quote! { let parent = __A::parent_value(&mut __map)?; },
+        None => quote! {},
     };
     if class.parent.is_some() {
         field_idents.insert(0, format_ident!("parent"));

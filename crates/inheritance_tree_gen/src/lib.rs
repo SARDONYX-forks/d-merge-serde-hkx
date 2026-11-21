@@ -39,12 +39,12 @@ fn should_gen_inheritance_tree() -> std::io::Result<()> {
     let repo_root = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
         .join("..")
         .join("..");
-    let classes_json_dir = repo_root.join("assets").join("classes");
     let out_path = repo_root
         .join("docs")
         .join("specification")
         .join("inheritance_tree")
         .join("hk_2010_2_0_r1.md");
+    let classes_json_dir = class_generator::classes_json_dir();
 
     std::fs::write(out_path, generate_inheritance_tree(classes_json_dir)?)
 }

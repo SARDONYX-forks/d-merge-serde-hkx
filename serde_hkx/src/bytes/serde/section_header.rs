@@ -125,7 +125,7 @@ impl SectionHeader {
     /// This method returns the same errors as [`Write::write_all`].
     ///
     /// [`Write::write_all`]: https://doc.rust-lang.org/std/io/trait.Write.html#method.write_all
-    pub fn write_bytes<O>(&self, mut writer: impl WriteBytesExt) -> io::Result<()>
+    pub fn write_bytes<O>(&self, mut writer: impl WriteBytesExt, header_size: u32) -> io::Result<()>
     where
         O: ByteOrder,
     {
@@ -138,12 +138,15 @@ impl SectionHeader {
         writer.write_u32::<O>(self.exports_offset)?;
         writer.write_u32::<O>(self.imports_offset)?;
         writer.write_u32::<O>(self.end_offset)?;
-        Ok(())
+        write_tail_padding(writer, header_size)
     }
 
     /// Create new `__classnames__` section header
     ///
-    /// - `section_offset`: usually 0xff(ver. hk2010), this case padding is none.
+    /// - `classnames_abs`: absolute start position of `__classnames__` section.
+    ///   (root header + predicate array + all section headers. e.g. hk2010: `0xd0`, hk2014: `0x100`(+ predicate array))
+    /// - `section_end_abs`: absolute end position of `__classnames__` section.
+    /// - `header_size`: section header size. (hk2010: 48, hk2014: 64)
     ///
     /// # Errors
     ///
@@ -153,27 +156,24 @@ impl SectionHeader {
     /// [`write`]: Write::write
     pub fn write_classnames<O>(
         mut writer: impl WriteBytesExt,
-        section_offset: i16,
+        classnames_abs: u32,
         section_end_abs: u32,
+        header_size: u32,
     ) -> io::Result<()>
     where
         O: ByteOrder,
     {
         writer.write_all(b"__classnames__\0\0\0\0\0\xff")?; // with separator(0xff)
-        let section_offset = match section_offset {
-            i16::MIN..=0_i16 => 0,
-            1.. => section_offset as u32,
-        };
-        const ABSOLUTE_CLASSNAMES_OFFSET: u32 = 0xd0;
-        writer.write_u32::<O>(ABSOLUTE_CLASSNAMES_OFFSET + section_offset)?; // write absolute_data_start
+        writer.write_u32::<O>(classnames_abs)?; // write absolute_data_start
 
-        let fixups_offset = section_end_abs - 0xd0;
+        let fixups_offset = section_end_abs - classnames_abs;
         writer.write_u32::<O>(fixups_offset)?; // local_fixups_offset
         writer.write_u32::<O>(fixups_offset)?; // global_fixups_offset
         writer.write_u32::<O>(fixups_offset)?; // virtual_fixups_offset
         writer.write_u32::<O>(fixups_offset)?; // exports_offset
         writer.write_u32::<O>(fixups_offset)?; // imports_offset
-        writer.write_u32::<O>(fixups_offset) // end_offset
+        writer.write_u32::<O>(fixups_offset)?; // end_offset
+        write_tail_padding(writer, header_size)
     }
 
     /// Write `__types__` section header.
@@ -184,15 +184,29 @@ impl SectionHeader {
     /// non-[`ErrorKind::Interrupted`] kind that [`write`] returns.
     ///
     /// [`write`]: Write::write
-    pub fn write_types<O>(mut writer: impl WriteBytesExt, abs_offset: u32) -> io::Result<()>
+    pub fn write_types<O>(
+        mut writer: impl WriteBytesExt,
+        abs_offset: u32,
+        header_size: u32,
+    ) -> io::Result<()>
     where
         O: ByteOrder,
     {
         writer.write_all(b"__types__\0\0\0\0\0\0\0\0\0\0\xff")?; // with separator(0xff)
         writer.write_u32::<O>(abs_offset)?; // same as `__data__` section's `absolute_data_offset`
         tri!(writer.write_all([0_u8; 24].as_slice())); // Fixup does not exist in `types` section, always 0.
-        Ok(())
+        write_tail_padding(writer, header_size)
     }
+}
+
+/// hk2014(`file_version` >= 11) section header has extra `0xff` padding after the 48bytes common part.
+fn write_tail_padding(mut writer: impl WriteBytesExt, header_size: u32) -> io::Result<()> {
+    const COMMON_SIZE: u32 = core::mem::size_of::<SectionHeader>() as u32;
+    let pad = header_size.saturating_sub(COMMON_SIZE) as usize;
+    for _ in 0..pad {
+        writer.write_u8(0xff)?;
+    }
+    Ok(())
 }
 
 // To improve visualization of hex dump.
@@ -254,7 +268,7 @@ mod tests {
     #[test]
     fn test_write_classnames() -> io::Result<()> {
         let mut buffer = Cursor::new(Vec::new());
-        SectionHeader::write_classnames::<LittleEndian>(&mut buffer, 0, 0x160)?;
+        SectionHeader::write_classnames::<LittleEndian>(&mut buffer, 0xd0, 0x160, 48)?;
         let written = buffer.into_inner();
 
         #[rustfmt::skip]
@@ -277,7 +291,7 @@ mod tests {
     #[test]
     fn test_write_types() -> io::Result<()> {
         let mut buffer = Cursor::new(Vec::new());
-        SectionHeader::write_types::<LittleEndian>(&mut buffer, 0x160)?;
+        SectionHeader::write_types::<LittleEndian>(&mut buffer, 0x160, 48)?;
         let written = buffer.into_inner();
 
         #[rustfmt::skip]
@@ -313,7 +327,7 @@ mod tests {
             imports_offset: 0x210,
             end_offset: 0x210,
         }
-        .write_bytes::<LittleEndian>(&mut buffer)?;
+        .write_bytes::<LittleEndian>(&mut buffer, 48)?;
         let written = buffer.into_inner();
 
         #[rustfmt::skip]

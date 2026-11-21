@@ -1,6 +1,7 @@
 //! XML Serialization
 use crate::{lib::*, tri};
 
+use crate::bytes::serde::hkx_header::HkxHeader;
 use crate::errors::ser::{Error, Result};
 use havok_serde::ser::{
     Serialize, SerializeFlags, SerializeSeq, SerializeStruct, Serializer, TypeSize,
@@ -10,6 +11,7 @@ use havok_types::{
     CString, I8, I16, I32, I64, Matrix3, Matrix4, Pointer, QsTransform, Quaternion, Rotation,
     Signature, StringPtr, Transform, U8, U16, U32, U64, Ulong, Vector4, f16,
 };
+use std::borrow::Cow;
 
 #[derive(Debug)]
 pub struct XmlSerializer {
@@ -25,7 +27,7 @@ pub struct XmlSerializer {
     /// <?xml version="1.0" encoding="ascii"?>
     /// <hkpackfile classversion="8" contentsversion="hk_2010.2.0-r1" toplevelobject=""
     /// ```
-    start_root: Option<&'static str>,
+    start_root: Option<Cow<'static, str>>,
     /// If you want to output XML partially, put [`Option::None`].
     /// # Example XML
     /// ```xml
@@ -40,25 +42,55 @@ impl Default for XmlSerializer {
             output: String::new(),
             indent: "\t",
             depth: 0,
-            start_root: Some(
+            start_root: Some(Cow::Borrowed(
                 r###"<?xml version="1.0" encoding="ascii"?>
 <hkpackfile classversion="8" contentsversion="hk_2010.2.0-r1" toplevelobject=""###,
-            ),
+            )),
             end_root: Some("</hkpackfile>\n"),
         }
     }
 }
 
+impl XmlSerializer {
+    /// Create a serializer whose root `<hkpackfile>` has the version of the given hkx header.
+    ///
+    /// - SkyrimLE/SE(hk2010): `classversion="8" contentsversion="hk_2010.2.0-r1"`(same as [`Default`])
+    /// - Fallout4(hk2014): `classversion="11" contentsversion="hk_2014.1.0-r1"`
+    ///
+    /// # Errors
+    /// If `contents_version_string` of the header is invalid.(not null terminated or not UTF-8)
+    pub fn from_header(header: &HkxHeader) -> Result<Self> {
+        let contents_version =
+            header
+                .contents_version_string()
+                .map_err(|_| Error::InvalidContentsVersion {
+                    version: String::from_utf8_lossy(&header.contents_version_string).into_owned(),
+                })?;
+        let start_root = format!(
+            r#"<?xml version="1.0" encoding="ascii"?>
+<hkpackfile classversion="{}" contentsversion="{contents_version}" toplevelobject=""#,
+            header.file_version
+        );
+        Ok(Self {
+            start_root: Some(Cow::Owned(start_root)),
+            ..Default::default()
+        })
+    }
+}
+
 /// To XML String.
 ///
+/// - `header`: Used for the version of root `<hkpackfile>`.(e.g. the header of the source hkx)
+///
 /// # Errors
-/// serde(fork version) Error defined on crate's trace definition, but will not fail due to mere XML stringing.
+/// - Invalid `contents_version_string` of the header.
+/// - serde(fork version) Error defined on crate's trace definition, but will not fail due to mere XML stringing.
 #[inline]
-pub fn to_string<T>(value: &T, top_ptr: &Pointer<'_>) -> Result<String, Error>
+pub fn to_string<T>(value: &T, top_ptr: &Pointer<'_>, header: &HkxHeader) -> Result<String, Error>
 where
     T: Serialize,
 {
-    to_string_with_opt(value, top_ptr, XmlSerializer::default())
+    to_string_with_opt(value, top_ptr, tri!(XmlSerializer::from_header(header)))
 }
 
 /// To xml string with custom `XmlSerializer` settings.
@@ -74,8 +106,8 @@ where
 {
     let mut serializer = ser;
 
-    if let Some(start_root) = serializer.start_root {
-        serializer.output += start_root;
+    if let Some(start_root) = serializer.start_root.take() {
+        serializer.output += &start_root;
         serializer.output += &top_ptr.to_string();
         serializer.output += "\">\n\n";
         serializer.increment_depth();
@@ -622,7 +654,7 @@ mod tests {
     fn test_serialize_defaultmale() -> Result<()> {
         let mut classes = new_defaultmale();
         let top_ptr = classes.sort_for_xml()?; // hkRootContainer" is processed last.
-        let actual = tri!(to_string(&classes, &top_ptr));
+        let actual = tri!(to_string(&classes, &top_ptr, &HkxHeader::new_skyrim_se()));
         let expected =
             include_str!("../../../../docs/handson_hex_dump/defaultmale/defaultmale_x86.xml");
 

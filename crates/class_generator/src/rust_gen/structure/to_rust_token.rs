@@ -44,7 +44,7 @@ pub(super) fn member_to_rust_type(member: &Member, class_name: &str) -> Result<T
                     .ok_or_else(|| create_cast_error(class_name, name, vsubtype))?
             }
         }
-        TypeKind::SimpleArray | TypeKind::Array => {
+        TypeKind::SimpleArray | TypeKind::Array | TypeKind::RelArray => {
             let field_subtype = match vsubtype {
                 TypeKind::Struct => match class_ref {
                     Some(class_ref) => {
@@ -102,7 +102,7 @@ fn to_rust_type(ty: &TypeKind) -> Option<TokenStream> {
         // TypeKind::Zero => todo!(),
         TypeKind::Pointer => quote!(Pointer<'a>),
         // TypeKind::FnPtr => todo!(),
-        TypeKind::Array | TypeKind::SimpleArray => quote!(Vec),
+        TypeKind::Array | TypeKind::SimpleArray | TypeKind::RelArray => quote!(Vec),
         // TypeKind::InplaceArray => todo!(),
         // TypeKind::Enum => todo!(),
         // TypeKind::Struct => todo!(),
@@ -114,7 +114,6 @@ fn to_rust_type(ty: &TypeKind) -> Option<TokenStream> {
         // TypeKind::Flags => todo!(),
         TypeKind::Half => quote!(f16),
         TypeKind::StringPtr => quote!(StringPtr<'a>),
-        // TypeKind::RelArray => todo!(),
         // TypeKind::Max => todo!(),
         _ => return None,
     })

@@ -165,7 +165,8 @@ pub enum TypeKind {
     /// - C++ type: `hkRelArray<T>`
     ///
     /// # Remarks
-    /// Not used in `hk_2010.2.0-r1` havok class.
+    /// Not used in `hk_2010.2.0-r1`(SkyrimSE/LE) havok class.
+    /// But used in `hk_2014.1.0-r1`(Fallout4) havok class.
     RelArray,
 
     /// Max value.

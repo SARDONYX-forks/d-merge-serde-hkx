@@ -111,7 +111,8 @@ fn should_reproduce_xml() -> Result<()> {
     let bytes_to_xml = || {
         let mut actual_classes: ClassMap = from_bytes(bytes)?;
         let top_ptr = actual_classes.sort_for_xml()?;
-        Result::Ok(to_string(&actual_classes, &top_ptr)?)
+        let header = HkxHeader::from_bytes(bytes)?;
+        Result::Ok(to_string(&actual_classes, &top_ptr, &header)?)
     };
 
     let actual = match bytes_to_xml() {

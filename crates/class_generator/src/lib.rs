@@ -82,6 +82,19 @@ fn create_class_map(
             let class: Class = serde_json::from_str(&json)?;
             Ok((class_name, class))
         })
+        // NOTE: hk2014(Fallout4) dump has multiple versions of the same meta class.
+        // (e.g. `hkClass_5B0A250.json`(name: `hkClass`))
+        // These have the same Rust struct name, and some have broken offsets, so skip them.
+        .filter(|result| match result {
+            Ok((file_stem, class)) if file_stem != class.name.as_ref() => {
+                tracing::warn!(
+                    "Skip: file stem `{file_stem}` != class name `{}`. (Duplicated class version?)",
+                    class.name
+                );
+                false
+            }
+            _ => true,
+        })
         .collect();
 
     results
@@ -153,7 +166,7 @@ mod tests {
         let output_dir = repo_root.join("crates/havok_classes/src");
         std::fs::create_dir_all(&output_dir).unwrap();
 
-        let classes_json_dir = repo_root.join("assets").join("classes_fo4");
+        let classes_json_dir = repo_root.join("assets").join("classes/fallout4");
         generate_havok_class(classes_json_dir, output_dir).unwrap_or_else(|err| panic!("{err}"));
     }
 }

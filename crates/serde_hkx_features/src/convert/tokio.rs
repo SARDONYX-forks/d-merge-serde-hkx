@@ -96,29 +96,28 @@ where
         // If `out_dir` is specified, join the internal dirs of `input_dir` with it as root.
         let output = get_output_path(input_dir, &input, &output_dir, format);
 
-        let progress = progress.clone();
         let task_input = input.clone();
-        let handle = tokio::spawn(async move {
-            let res = convert_file(&task_input, output, format).await;
-            if matches!(&res, Ok(())) {
-                progress.success_inc(1);
-            } else {
-                progress.failure_inc(1);
-                #[cfg(feature = "tracing")]
-                tracing::error!("Failed to convert: {}", task_input.display());
-            }
-            progress.inc(1);
-            res
-        });
+        let handle = tokio::spawn(async move { convert_file(&task_input, output, format).await });
         task_handles.push((input, handle));
     }
 
+    // NOTE: Count here(not in each task). If a task panics, the task cannot count itself,
+    //       then `success + failure` would not match the total.
     let mut errors: Vec<(PathBuf, Error)> = Vec::new();
     for (input, task_handle) in task_handles {
-        match task_handle.await {
-            Ok(Ok(())) => {}
-            Ok(Err(err)) => errors.push((input, err)),
-            Err(err) => errors.push((input, err.into())),
+        let res = match task_handle.await {
+            Ok(res) => res,
+            Err(err) => Err(err.into()), // panicked or cancelled
+        };
+        progress.inc(1);
+        match res {
+            Ok(()) => progress.success_inc(1),
+            Err(err) => {
+                progress.failure_inc(1);
+                #[cfg(feature = "tracing")]
+                tracing::error!("Failed to convert: {}", input.display());
+                errors.push((input, err));
+            }
         }
     }
 

@@ -76,7 +76,9 @@ declare_error_trait!(Error: Sized + Debug + Display);
 ///
 /// # Unsupported types
 /// There're never used in the Havok classes.(ver. hk2010)
-/// - `Zero`, `FunctionPointer`, `InplaceArray`, `HomogeneousArray`, `RelArray`, `Max`
+/// - `Zero`, `FunctionPointer`, `InplaceArray`, `HomogeneousArray`, `Max`
+///
+/// `RelArray`(hk2014~) is supported by [`SerializeStruct::serialize_rel_array_field`].
 pub trait Serialize {
     /// Serialize this value into the given Serde serializer.
     fn serialize<S: Serializer>(&self, serializer: S) -> Result<S::Ok, S::Error>;
@@ -417,6 +419,29 @@ pub trait SerializeStruct {
     {
         let _ = size;
         self.skip_field(key, &value)
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Relative Array(hk2014~)
+
+    /// Serialize a struct field for `hkRelArray<T>`.
+    /// -   XML: same as `hkArray<T>`.(add `numelements` attribute to `hkparam` and write vec contents.)
+    /// - Bytes: `{ u16 size; u16 offset; }`(4bytes) & elements are placed inline just after the object.
+    ///   (`offset` is relative to this field's position.)
+    ///
+    /// The default implementation same as [`Self::serialize_array_field`].
+    #[inline]
+    fn serialize_rel_array_field<V, T>(
+        &mut self,
+        key: &'static str,
+        value: V,
+        size: TypeSize,
+    ) -> Result<(), Self::Error>
+    where
+        V: AsRef<[T]> + Serialize,
+        T: Serialize,
+    {
+        self.serialize_array_field(key, value, size)
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

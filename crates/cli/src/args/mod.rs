@@ -54,10 +54,13 @@ pub(crate) async fn run(args: Args) -> Result<()> {
                 let use_color = is_color_enabled(args.color);
                 write_diff(inner_args.old, inner_args.new, inner_args.output, use_color).await
             }
-            SubCommands::Verify(inner_args) => {
-                self::verify::verify(&inner_args.path, is_color_enabled(args.color))
-                    .map_err(|e| e.with_path(&inner_args.path))
-            }
+            SubCommands::Verify(inner_args) => self::verify::verify(
+                &inner_args.path,
+                is_color_enabled(args.color),
+                inner_args.mode,
+                inner_args.report.as_deref(),
+            )
+            .map_err(|e| e.with_path(&inner_args.path)),
 
             SubCommands::Completions { shell } => {
                 shell.generate(&mut Args::command(), &mut io::stdout());

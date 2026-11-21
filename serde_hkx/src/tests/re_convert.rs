@@ -38,7 +38,11 @@ fn reproduce_bytes(expected_bytes: &[u8]) -> Result<()> {
     let xml = {
         let mut actual_classes: ClassMap = from_bytes(expected_bytes)?;
         let top_ptr = actual_classes.sort_for_xml()?;
-        to_string(&actual_classes, &top_ptr)?
+        to_string(
+            &actual_classes,
+            &top_ptr,
+            &HkxHeader::from_bytes(expected_bytes)?,
+        )?
     };
 
     // XML => bytes

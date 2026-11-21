@@ -13,8 +13,11 @@
 //! Deserialization
 
 mod impls;
+mod rel_array;
 mod seed;
 mod size_hint;
+
+pub use self::rel_array::RelArraySeed;
 
 use havok_types::*;
 
@@ -674,6 +677,21 @@ pub trait Deserializer<'de>: Sized {
     fn deserialize_fixed_array<V>(self, visitor: V) -> Result<V::Value, Self::Error>
     where
         V: Visitor<'de>;
+
+    /// Deserialize an `hkRelArray<T>` value.(hk2014~)
+    ///
+    /// - Bytes: `{ u16 size; u16 offset; }`. `offset` is relative to this field's position,
+    ///   and the elements are placed inline just after the object.
+    /// -   XML: same as `hkArray<T>`.
+    ///
+    /// The default implementation same as [`Self::deserialize_array`].
+    #[inline]
+    fn deserialize_rel_array<V>(self, visitor: V) -> Result<V::Value, Self::Error>
+    where
+        V: Visitor<'de>,
+    {
+        self.deserialize_array(visitor)
+    }
 
     /// Deserialize a Class Index Array value.
     fn deserialize_class_index_seq<V>(self, visitor: V) -> Result<V::Value, Self::Error>

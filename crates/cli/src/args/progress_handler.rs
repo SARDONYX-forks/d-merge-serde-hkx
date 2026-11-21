@@ -1,8 +1,6 @@
 use indicatif::{MultiProgress, ProgressBar, ProgressStyle};
 use serde_hkx_features::progress::ProgressHandler;
 use std::path::Path;
-use std::sync::Arc;
-use std::sync::atomic::{AtomicU64, Ordering};
 
 /// For CLI progress bar
 #[derive(Debug, Clone)] // need clone for `tokio::spawn`
@@ -10,8 +8,6 @@ pub struct CliProgressHandler {
     progress_bar: ProgressBar,
     success_bar: ProgressBar,
     failure_bar: ProgressBar,
-    success_count: Arc<AtomicU64>,
-    failure_count: Arc<AtomicU64>,
 }
 
 impl CliProgressHandler {
@@ -24,7 +20,7 @@ impl CliProgressHandler {
 
         // Attempt to set the template and handle errors
         match ProgressStyle::default_bar()
-            .template("{spinner:.green} [{elapsed_precise}] {bar:40.cyan/blue} {pos}/{len} {msg}")
+            .template("{spinner:.green} [{elapsed_precise}] {bar:40.cyan/blue} {pos}/{len} {wide_msg}") // NOTE: `wide_msg` truncates long paths. Wrapped lines break redraw of `MultiProgress`(stale counts remain).
         {
             Ok(style) => {
                 progress_bar.set_style(style.progress_chars("#>-"));
@@ -55,8 +51,6 @@ impl CliProgressHandler {
             progress_bar,
             success_bar,
             failure_bar,
-            success_count: Arc::new(AtomicU64::new(0)),
-            failure_count: Arc::new(AtomicU64::new(0)),
         }
     }
 }
@@ -73,29 +67,21 @@ impl ProgressHandler for CliProgressHandler {
         self.progress_bar.set_length(total);
         self.success_bar.set_length(total);
         self.failure_bar.set_length(total);
-
-        let success_bar = self.success_bar.clone();
-        let failure_bar = self.failure_bar.clone();
-        let success_count = Arc::clone(&self.success_count);
-        let failure_count = Arc::clone(&self.failure_count);
-        std::thread::spawn({
-            move || loop {
-                success_bar.set_position(success_count.load(Ordering::Acquire));
-                failure_bar.set_position(failure_count.load(Ordering::Acquire));
-            }
-        });
     }
 
     fn inc(&self, progress: u64) {
         self.progress_bar.inc(progress);
     }
 
+    // NOTE: `ProgressBar` is thread-safe(`Arc` inside), so it can be updated directly from rayon threads.
+    //       (Previously, a busy loop thread copied atomics to bars, so the last counts were sometimes not
+    //       reflected at exit and the total did not match.)
     fn success_inc(&self, progress: u64) {
-        self.success_count.fetch_add(progress, Ordering::AcqRel);
+        self.success_bar.inc(progress);
     }
 
     fn failure_inc(&self, progress: u64) {
-        self.failure_count.fetch_add(progress, Ordering::AcqRel);
+        self.failure_bar.inc(progress);
     }
 
     fn on_processing_path(&self, path: &Path) {
@@ -104,5 +90,8 @@ impl ProgressHandler for CliProgressHandler {
 
     fn on_finish(&self) {
         self.progress_bar.finish_with_message("All files processed");
+        // Draw the final counts.
+        self.success_bar.finish();
+        self.failure_bar.finish();
     }
 }

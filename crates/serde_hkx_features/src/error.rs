@@ -142,6 +142,12 @@ pub enum Error {
     #[snafu(display("Failed to reproduce: output bytes do not match input bytes."))]
     ReproduceMismatch,
 
+    /// hkx -> XML -> hkx round trip check failed.
+    ///
+    /// - `check`: `xml_fixed_point`, `xml_semantic`, `xml_to_bytes`
+    #[snafu(display("XML round trip check failed [{check}]:\n{detail}"))]
+    XmlRoundTripMismatch { check: &'static str, detail: String },
+
     // ---------------------------------------------------------------------------------------------
     // Multiple paths
     /// dir conversion error
@@ -174,6 +180,32 @@ pub enum Error {
     /// Async task join error
     #[snafu(transparent)]
     ThreadJoin { source: tokio::task::JoinError },
+
+    /// Panicked while processing a file.(Caught to continue other files & count it as failure)
+    #[snafu(display("Panicked: {msg}"))]
+    Panicked { msg: String },
+}
+
+/// Run `f` and convert a panic into [`Error::Panicked`].
+///
+/// # Why need this?
+/// In parallel processing of dir, a panic of one file stops the progress count of the file,
+/// so `success + failure` no longer matches the total.
+///
+/// # Errors
+/// Error of `f` or [`Error::Panicked`]
+pub fn catch_panic<T, F>(f: F) -> Result<T>
+where
+    F: FnOnce() -> Result<T>,
+{
+    std::panic::catch_unwind(std::panic::AssertUnwindSafe(f)).unwrap_or_else(|payload| {
+        let msg = payload
+            .downcast_ref::<&str>()
+            .map(|s| (*s).to_string())
+            .or_else(|| payload.downcast_ref::<String>().cloned())
+            .unwrap_or_else(|| "unknown panic payload".to_string());
+        Err(Error::Panicked { msg })
+    })
 }
 
 impl Error {

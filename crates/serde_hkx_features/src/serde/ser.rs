@@ -19,7 +19,9 @@ pub fn to_bytes(classes: &mut ClassMap<'_>, output_format: Format) -> Result<Vec
         Format::Amd64 => to_bytes_inner(classes, &HkxHeader::new_skyrim_se()),
         Format::Xml => {
             let top_ptr = classes.sort_for_xml().context(XmlSerSnafu)?;
-            let xml = serde_hkx::to_string(classes, &top_ptr).context(XmlSerSnafu)?;
+            // TODO: Use the header of the source file after Fallout4(hk2014) classes are supported.
+            let header = HkxHeader::new_skyrim_se();
+            let xml = serde_hkx::to_string(classes, &top_ptr, &header).context(XmlSerSnafu)?;
             Ok(xml.into_bytes())
         }
 

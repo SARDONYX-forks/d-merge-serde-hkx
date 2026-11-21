@@ -1,7 +1,7 @@
 use crate::args::progress_handler::CliProgressHandler;
 use serde_hkx_features::{
     error::Result,
-    verify::{verify_dir, verify_file},
+    verify::{VerifyMode, verify_dir_with, verify_file, verify_xml_file},
 };
 use std::path::{Path, PathBuf};
 
@@ -17,6 +17,9 @@ pub const EXAMPLES: &str = color_print::cstr!(
 
 - <blue!>Test the reproducibility of hkx files</blue!>
   <cyan!>./hkxc verify</cyan!> ./input --log-level info --log-file "./verify_inputs.log"
+
+- <blue!>Test hkx -> XML -> hkx round trip & write a report to compare with the previous run</blue!>
+  <cyan!>./hkxc verify</cyan!> ./input --mode xml --report ./test_results/xml.tsv
 "#
 );
 
@@ -28,9 +31,15 @@ pub(crate) struct Args {
     /// Option to make the diff display colorful in case of error when file is specified.
     #[clap(long)]
     pub color: bool,
+    /// Verification mode.
+    #[clap(long, value_enum, default_value_t = VerifyMode::Bytes)]
+    pub mode: VerifyMode,
+    /// (dir only) Write `OK|NG<TAB>relative path[<TAB>error kind]` lines sorted by path.
+    #[clap(long)]
+    pub report: Option<PathBuf>,
 }
 
-pub fn verify<P>(path: P, color: bool) -> Result<()>
+pub fn verify<P>(path: P, color: bool, mode: VerifyMode, report: Option<&Path>) -> Result<()>
 where
     P: AsRef<Path>,
 {
@@ -38,14 +47,18 @@ where
 
     if path.is_file() {
         println!("Verifying...");
-        verify_file(path, color).map(|_| {
+        let res = match mode {
+            VerifyMode::Bytes => verify_file(path, color),
+            VerifyMode::Xml => verify_xml_file(path, color),
+        };
+        res.map(|_| {
             color_print::cprintln!(
                 "<green>Complete hkx reproduction: {}</green>",
                 path.display()
             );
         })
     } else {
-        verify_dir(path, CliProgressHandler::new())
+        verify_dir_with(path, mode, CliProgressHandler::new(), report)
     }
 }
 
@@ -58,6 +71,6 @@ mod tests {
     #[test]
     fn test_verify_dir() {
         let input = "../../tests/input";
-        verify(input, false).unwrap_or_else(|err| panic!("{err}"));
+        verify(input, false, VerifyMode::Bytes, None).unwrap_or_else(|err| panic!("{err}"));
     }
 }
