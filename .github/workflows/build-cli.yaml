@@ -59,6 +59,29 @@ jobs:
               asset: serde-hkx-cli-x86_64-unknown-linux-gnu-extra_fmt.tar.gz,
               features: extra_fmt,
             }
+
+          # Fallout4(hk2014) classes
+          - {
+              target: aarch64-apple-darwin,
+              os: macos-latest,
+              asset: serde-hkx-cli-aarch64-apple-darwin-fallout4.tar.gz,
+              features: "color,hk2014",
+              cargo_args: --no-default-features,
+            }
+          - {
+              target: x86_64-pc-windows-msvc,
+              os: windows-latest,
+              asset: serde-hkx-cli-x86_64-pc-windows-msvc-fallout4.zip,
+              features: "color,hk2014",
+              cargo_args: --no-default-features,
+            }
+          - {
+              target: x86_64-unknown-linux-gnu,
+              os: ubuntu-latest,
+              asset: serde-hkx-cli-x86_64-unknown-linux-gnu-fallout4.tar.gz,
+              features: "color,hk2014",
+              cargo_args: --no-default-features,
+            }
     runs-on: ${{ matrix.job.os }}
     steps:
       - uses: actions/checkout@v6
@@ -71,6 +94,7 @@ jobs:
           app_name: ${{ env.APP_NAME }}
           asset_name: ${{ matrix.job.asset }}
           features: ${{ matrix.job.features }}
+          cargo_args: ${{ matrix.job.cargo_args }}
 
       # NOTE: For some reason, the artifact is not pre-compressed even though it is compressed. So we compress it.
       - name: Upload a Build Artifact
