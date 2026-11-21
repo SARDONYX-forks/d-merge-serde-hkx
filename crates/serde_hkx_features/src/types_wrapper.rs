@@ -1,4 +1,4 @@
-//! For Json, Toml, Yaml
+//! For Json
 
 use crate::ClassMap;
 use havok_classes::Classes;

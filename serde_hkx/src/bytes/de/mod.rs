@@ -156,7 +156,7 @@ where
         de.parse_peek(HkxHeader::parser())
             .map_err(|err| de.to_readable_err(err))
     );
-    de.current_position += 64; // Advance the position by the header size.
+    de.current_position += header.root_header_size() as usize; // Advance the position by the header size(+ predicate array).
     de.is_x86 = header.pointer_size == 4;
     de.endian = header.endian();
 
@@ -166,6 +166,7 @@ where
             header.contents_class_name_section_index,
             header.contents_section_index,
             header.section_count,
+            header.section_header_size() as usize,
         )
         .map_err(|err| de.to_readable_err(err))
     );
@@ -238,6 +239,7 @@ impl<'de> BytesDeserializer<'de> {
         classnames_section_index: i32,
         data_section_index: i32,
         section_len: i32,
+        section_header_size: usize,
     ) -> Result<()> {
         for i in 0..section_len {
             match i {
@@ -276,7 +278,7 @@ impl<'de> BytesDeserializer<'de> {
                 }
                 _ => {} // Skip unused __types__ section
             };
-            self.current_position += 48; // advance section header size(48bytes)
+            self.current_position += section_header_size; // advance section header size(hk2010: 48, hk2014: 64)
         }
         Ok(())
     }
@@ -701,6 +703,42 @@ impl<'de> de::Deserializer<'de> for &mut BytesDeserializer<'de> {
             self.current_position = backup_position;
             res
         }
+    }
+
+    /// `hkRelArray<T>` = `{ u16 size; u16 offset; }`(4bytes)
+    ///
+    /// The elements are placed inline just after the object(not pointed by local fixups).
+    /// - `offset` is relative to this field's position.
+    fn deserialize_rel_array<V>(self, visitor: V) -> Result<V::Value, Self::Error>
+    where
+        V: Visitor<'de>,
+    {
+        let field_position = self.current_position;
+        let (size, offset) = tri!(
+            self.parse_peek(
+                (binary::u16(self.endian), binary::u16(self.endian))
+                    .context(StrContext::Label("hkRelArray"))
+                    .context(StrContext::Expected(StrContextValue::Description(
+                        "{ size: u16, offset: u16 }"
+                    )))
+            )
+        );
+        #[cfg(feature = "tracing")]
+        tracing::debug!(
+            "hkRelArray: relative({:#x})/abs({field_position:#x}), size: {size}, offset: {offset}",
+            self.relative_position(),
+        );
+        self.current_position += 4;
+
+        if size == 0 {
+            return visitor.visit_array(SeqDeserializer::new(self, 0));
+        }
+
+        let backup_position = self.current_position;
+        self.current_position = field_position + offset as usize;
+        let res = visitor.visit_array(SeqDeserializer::new(self, size as usize));
+        self.current_position = backup_position;
+        res
     }
 
     // Fixed size array(stack array) is written directly without metadata

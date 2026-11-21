@@ -16,31 +16,35 @@ rust-version.workspace = true
 
 [dependencies]
 clap                  = { workspace = true } # For CLI
-clap_complete_command = "0.6.1" # Generate auto completion
-color-print           = { workspace = true } # To color example help
-indicatif             = { version = "0.18.6", features = ["rayon"] } # CLI progress bar
+clap_complete_command = { workspace = true } # Generate auto completion
+anstream              = { workspace = true } # Strip ANSI color automatically when not terminal(same as clap)
+indicatif             = { workspace = true, features = ["rayon"] } # CLI progress bar
 tokio                 = { workspace = true, features = ["macros", "rt", "time", "rt-multi-thread"] }
 tracing               = { workspace = true }
-tracing-subscriber    = "0.3.23"
+tracing-subscriber    = { workspace = true }
 
 # workspace members
-serde_hkx_features = { workspace = true, features = ["clap", "tracing"] }
+serde_hkx_features = { workspace = true, features = ["clap", "tracing", "serde_default"] }
 
 [build-dependencies]
-ico       = "0.6.0"
-resvg     = "0.50.0"
-tiny-skia = "0.12.0"
-usvg      = "0.50.0"
-winres    = "0.1.12" # Meta information can be added to the exe.
+ico       = { workspace = true }
+resvg     = { workspace = true }
+tiny-skia = { workspace = true }
+usvg      = { workspace = true }
+winres    = { workspace = true } # Meta information can be added to the exe.
 
 
 [features]
-default = ["color"]
+default = ["color", "hk2010", "extra_fmt"]
+
+# Havok classes version.(Exclusive) e.g. Fallout4: `--no-default-features --features color,hk2014,extra_fmt`
+hk2010 = ["serde_hkx_features/hk2010"]
+hk2014 = ["serde_hkx_features/hk2014"]
 
 # ANSI color
 color = []
 
-# Extra output format(json, toml, yaml)
+# Extra output format(json)
 extra_fmt = ["serde_hkx_features/extra_fmt"]
 
 [lints]

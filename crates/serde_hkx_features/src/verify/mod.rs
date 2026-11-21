@@ -1,10 +1,24 @@
 //! Verification of hkx -> Rust data type -> hkx conversion to original hkx
 
+mod debug_cmp;
 mod dir;
 mod file;
+mod xml;
 
-pub use self::dir::verify_dir;
+pub use self::dir::{verify_dir, verify_dir_with};
 pub use self::file::verify_file;
+pub use self::xml::{verify_xml_bytes, verify_xml_file};
+
+/// Verification mode
+#[cfg_attr(feature = "clap", derive(clap::ValueEnum))]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub enum VerifyMode {
+    /// hkx -> hkx must be the same bytes.
+    #[default]
+    Bytes,
+    /// hkx -> XML -> hkx round trip.(XML is lossy by the specification, so checks semantic equality.)
+    Xml,
+}
 use crate::progress::ProgressHandler;
 use crate::{
     ClassMap,

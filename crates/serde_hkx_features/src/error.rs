@@ -9,14 +9,10 @@
 use snafu::Location;
 use std::path::{Path, PathBuf};
 
-#[cfg(not(any(feature = "json", feature = "toml")))]
+#[cfg(not(feature = "json"))]
 const SUPPORTED_EXTENSIONS: &str = "`.hkx`, `.xml`";
-#[cfg(all(feature = "json", not(feature = "toml")))]
+#[cfg(feature = "json")]
 const SUPPORTED_EXTENSIONS: &str = "`.hkx`, `.xml`, `.json`";
-#[cfg(all(not(feature = "json"), feature = "toml"))]
-const SUPPORTED_EXTENSIONS: &str = "`.hkx`, `.xml`, `.toml`";
-#[cfg(all(feature = "json", feature = "toml"))]
-const SUPPORTED_EXTENSIONS: &str = "`.hkx`, `.xml`, `.json`, `.toml`";
 
 /// `serde_hkx_features` error
 #[allow(clippy::enum_variant_names, clippy::use_self)]
@@ -38,6 +34,10 @@ pub enum Error {
     /// This path has a missing extension.
     #[snafu(display("This path has a missing extension."))]
     MissingExtension,
+
+    /// Fallout4(hk2014) does not have 32bit hkx.
+    #[snafu(display("Fallout4(hk2014) does not have 32bit hkx. Use `amd64` instead of `win32`."))]
+    Unsupported32bit,
 
     /// Please specify the output path.(OS cannot output bytes as stdout.)
     #[snafu(display("Please specify the output path.(OS cannot output bytes as stdout.)"))]
@@ -115,23 +115,6 @@ pub enum Error {
         location: Location,
     },
 
-    /// Toml deserialize error
-    #[cfg(feature = "toml")]
-    #[snafu(display("{location}: Toml Deserialize Error: {source}"))]
-    TomlDe {
-        source: toml::de::Error,
-        #[snafu(implicit)]
-        location: Location,
-    },
-    /// Toml serialize error
-    #[cfg(feature = "toml")]
-    #[snafu(display("{location}: Toml Serialize Error: {source}"))]
-    TomlSer {
-        source: toml::ser::Error,
-        #[snafu(implicit)]
-        location: Location,
-    },
-
     // ---------------------------------------------------------------------------------------------
     // Reproduce
     /// Reproduce file error
@@ -141,6 +124,12 @@ pub enum Error {
     /// The output bytes did not match the input bytes.
     #[snafu(display("Failed to reproduce: output bytes do not match input bytes."))]
     ReproduceMismatch,
+
+    /// hkx -> XML -> hkx round trip check failed.
+    ///
+    /// - `check`: `xml_fixed_point`, `xml_semantic`, `xml_to_bytes`
+    #[snafu(display("XML round trip check failed [{check}]:\n{detail}"))]
+    XmlRoundTripMismatch { check: &'static str, detail: String },
 
     // ---------------------------------------------------------------------------------------------
     // Multiple paths
@@ -174,6 +163,32 @@ pub enum Error {
     /// Async task join error
     #[snafu(transparent)]
     ThreadJoin { source: tokio::task::JoinError },
+
+    /// Panicked while processing a file.(Caught to continue other files & count it as failure)
+    #[snafu(display("Panicked: {msg}"))]
+    Panicked { msg: String },
+}
+
+/// Run `f` and convert a panic into [`Error::Panicked`].
+///
+/// # Why need this?
+/// In parallel processing of dir, a panic of one file stops the progress count of the file,
+/// so `success + failure` no longer matches the total.
+///
+/// # Errors
+/// Error of `f` or [`Error::Panicked`]
+pub fn catch_panic<T, F>(f: F) -> Result<T>
+where
+    F: FnOnce() -> Result<T>,
+{
+    std::panic::catch_unwind(std::panic::AssertUnwindSafe(f)).unwrap_or_else(|payload| {
+        let msg = payload
+            .downcast_ref::<&str>()
+            .map(|s| (*s).to_string())
+            .or_else(|| payload.downcast_ref::<String>().cloned())
+            .unwrap_or_else(|| "unknown panic payload".to_string());
+        Err(Error::Panicked { msg })
+    })
 }
 
 impl Error {

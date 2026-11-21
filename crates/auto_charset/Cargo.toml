@@ -13,8 +13,8 @@ repository.workspace   = true
 rust-version.workspace = true
 
 [dependencies]
-chardetng   = "1.0.0"
-encoding_rs = "0.8.44"
+chardetng   = { workspace = true }
+encoding_rs = { workspace = true }
 
 [lints]
 workspace = true

@@ -1,0 +1,5 @@
+# Normalize all text files to LF.(binary files are detected automatically)
+* text=auto eol=lf
+
+# Havok binary data
+*.hkx binary

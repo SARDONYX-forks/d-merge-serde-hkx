@@ -104,7 +104,17 @@ pub struct HkxHeader {
     /// Section offset. None is -1 (== `0xFF 0xFF`)
     ///
     /// If this number is 16, read 64bytes header plus an extra 16bytes as padding.
+    ///
+    /// # Note
+    /// Actually this is `predicateArraySizePlusPadding`. See also [`Self::predicate_array`].
     pub section_offset: i16,
+
+    /// Predicate array(raw bytes) just after the 64bytes root header.
+    ///
+    /// The length is [`Self::padding_size`].
+    /// - SkyrimSE/LE(hk2010): always empty.
+    /// - Fallout4(hk2014): empty for behavior. 16bytes(`14 00 00 00 ..`) for animation/skeleton.
+    pub predicate_array: Vec<u8>,
 }
 
 impl HkxHeader {
@@ -158,7 +168,7 @@ impl HkxHeader {
                 .context(StrContext::Label("magic1"))
                 .context(StrContext::Expected(StringLiteral("0x10C0C010")));
 
-            seq! {
+            let mut header = seq! {
                 Self {
                     magic0: verify_magic0,
                     magic1: verify_magic1,
@@ -196,9 +206,16 @@ impl HkxHeader {
                         .context(StrContext::Expected(Description("i16"))),
                     section_offset: binary::i16(endianness).context(StrContext::Label("section_offset"))
                         .context(StrContext::Expected(Description("i16"))),
+                    predicate_array: empty.value(Vec::new()),
                 }
             }.context(StrContext::Label("Hkx Root Header"))
-            .parse_next(bytes)
+            .parse_next(bytes)?;
+
+            header.predicate_array = take(header.padding_size() as usize)
+                .context(StrContext::Label("predicate_array"))
+                .parse_next(bytes)?
+                .to_vec();
+            Ok(header)
         }
     }
 
@@ -315,7 +332,52 @@ impl HkxHeader {
             flags: 0,
             max_predicate: -1,
             section_offset: -1,
+            predicate_array: Vec::new(),
         }
+    }
+
+    /// Fallout4(hk2014, x64) behavior header.
+    ///
+    /// # Note
+    /// Animation/skeleton files of Fallout4 have predicate array.
+    /// To write such files, use the header obtained by [`Self::from_bytes`] of the original file instead.
+    pub const fn new_fallout4() -> Self {
+        Self {
+            magic0: i32::from_le_bytes([0x57, 0xE0, 0xE0, 0x57]),
+            magic1: i32::from_le_bytes([0x10, 0xC0, 0xC0, 0x10]),
+            user_tag: 0,
+            file_version: 11,
+            pointer_size: 8,
+            endian: 1,
+            padding_option: 0,
+            base_class: 1,
+            section_count: 3,
+            contents_section_index: 2,
+            contents_section_offset: 0,
+            contents_class_name_section_index: 0,
+            contents_class_name_section_offset: 0x4B,
+            contents_version_string: *b"hk_2014.1.0-r1\0",
+            contents_version_string_separator: 0xff,
+            flags: 0,
+            max_predicate: 21,
+            section_offset: 0,
+            predicate_array: Vec::new(),
+        }
+    }
+
+    /// Section header size.
+    ///
+    /// - `file_version` <= 8(hk2010): 48bytes
+    /// - `file_version` >= 11(hk2014): 64bytes(48bytes + `0xff` x 16 padding)
+    #[inline]
+    pub const fn section_header_size(&self) -> u32 {
+        if self.file_version >= 11 { 64 } else { 48 }
+    }
+
+    /// Root header(64bytes) + predicate array size.
+    #[inline]
+    pub const fn root_header_size(&self) -> u32 {
+        64 + self.padding_size()
     }
 
     /// Create a new `HkXHeader` instance with default values for Skyrim Legendary Edition.
@@ -404,28 +466,11 @@ pub const SKYRIM_SE_ROW_HEADER: [u8; 64] = [
 /// 0xFF, 0xFF, //  max predicate: -1 as i16. This means is none.
 /// 0xFF, 0xFF, // section offset: -1 as i16. This means is none.
 /// ```
-#[rustfmt::skip]
-pub const SKYRIM_LE_ROW_HEADER: [u8; 64] = [
-    0x57, 0xE0, 0xE0, 0x57, // magic0(Always 0x57, 0xE0, 0xE0, 0x57)
-    0x10, 0xC0, 0xC0, 0x10, // magic1(Always 0x10, 0xC0, 0xC0, 0x10)
-    0x00, 0x00, 0x00, 0x00, // user tag
-    0x08, 0x00, 0x00, 0x00, // file version
-    0x04, // pointer size
-    0x01, // endian
-    0x00, // padding option
-    0x01, // base class
-    0x03, 0x00, 0x00, 0x00, // section count
-    0x02, 0x00, 0x00, 0x00, // contents section index
-    0x00, 0x00, 0x00, 0x00, // content section offset
-    0x00, 0x00, 0x00, 0x00, // contents class name section index
-    0x4b, 0x00, 0x00, 0x00, // contents class name section offset
-    // contents version string: b"hk_2010.2.0-r1\0\0" =  ([u8;15])
-    0x68, 0x6B, 0x5F, 0x32, 0x30, 0x31, 0x30, 0x2E, 0x32, 0x2E, 0x30, 0x2D, 0x72, 0x31, 0x00,
-    0xFF, //  separator (always 0xFF)
-    0x00, 0x00, 0x00, 0x00, // flags
-    0xFF, 0xFF, //  max predicate: -1 as i16. This means is none.
-    0xFF, 0xFF, // section offset: -1 as i16. This means is none.
-];
+pub const SKYRIM_LE_ROW_HEADER: [u8; 64] = {
+    let mut header = SKYRIM_SE_ROW_HEADER;
+    header[16] = 0x04; // pointer size
+    header
+};
 
 #[cfg(test)]
 mod tests {
@@ -451,5 +496,43 @@ mod tests {
     #[test]
     fn should_write_hkx_bytes() {
         assert_eq!(HkxHeader::new_skyrim_se().to_bytes(), SKYRIM_SE_ROW_HEADER);
+    }
+
+    /// Fallout4 behavior header (e.g. `Meshes\Actors\Character\Behaviors\*.hkx`)
+    #[rustfmt::skip]
+    const FALLOUT4_BEHAVIOR_ROW_HEADER: [u8; 64] = [
+        0x57, 0xE0, 0xE0, 0x57, 0x10, 0xC0, 0xC0, 0x10, 0x00, 0x00, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00,
+        0x08, 0x01, 0x00, 0x01, 0x03, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+        0x00, 0x00, 0x00, 0x00, 0x4B, 0x00, 0x00, 0x00, 0x68, 0x6B, 0x5F, 0x32, 0x30, 0x31, 0x34, 0x2E,
+        0x31, 0x2E, 0x30, 0x2D, 0x72, 0x31, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x15, 0x00, 0x00, 0x00,
+    ];
+
+    #[test]
+    fn should_read_write_fallout4_behavior_header() {
+        let header = HkxHeader::parser()
+            .parse(&FALLOUT4_BEHAVIOR_ROW_HEADER)
+            .unwrap();
+        assert_eq!(header, HkxHeader::new_fallout4());
+        assert_eq!(header.contents_version_string(), Ok("hk_2014.1.0-r1"));
+        assert_eq!(header.section_header_size(), 64);
+        assert_eq!(header.root_header_size(), 64);
+        assert_eq!(header.to_bytes(), FALLOUT4_BEHAVIOR_ROW_HEADER);
+    }
+
+    /// Fallout4 animation/skeleton header has 16bytes predicate array.
+    #[test]
+    fn should_read_fallout4_header_with_predicate_array() {
+        let mut bytes = FALLOUT4_BEHAVIOR_ROW_HEADER.to_vec();
+        bytes[62] = 0x10; // predicateArraySizePlusPadding: 16
+        let predicate = [0x14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        bytes.extend_from_slice(&predicate);
+        bytes.extend_from_slice(b"__classnames__"); // next data(must not be consumed)
+
+        let mut input = bytes.as_slice();
+        let header = HkxHeader::parser().parse_next(&mut input).unwrap();
+        assert_eq!(header.section_offset, 16);
+        assert_eq!(header.predicate_array, predicate);
+        assert_eq!(header.root_header_size(), 80);
+        assert_eq!(input, b"__classnames__");
     }
 }

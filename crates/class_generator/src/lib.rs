@@ -21,7 +21,7 @@ pub type ClassMap<'a> = IndexMap<String, Class<'a>>;
 /// For generators in other repositories (e.g. a richer class table): a git dependency checks out
 /// the whole repository, so this path exists next to the crate.
 pub fn classes_json_dir() -> std::path::PathBuf {
-    Path::new(env!("CARGO_MANIFEST_DIR")).join("../../assets/classes")
+    Path::new(env!("CARGO_MANIFEST_DIR")).join("../../assets/classes/skyrim")
 }
 
 /// Reads every class json file of `classes_json_dir` (see [`classes_json_dir`]).
@@ -82,6 +82,19 @@ fn create_class_map(
             let class: Class = serde_json::from_str(&json)?;
             Ok((class_name, class))
         })
+        // NOTE: hk2014(Fallout4) dump has multiple versions of the same meta class.
+        // (e.g. `hkClass_5B0A250.json`(name: `hkClass`))
+        // These have the same Rust struct name, and some have broken offsets, so skip them.
+        .filter(|result| match result {
+            Ok((file_stem, class)) if file_stem != class.name.as_ref() => {
+                tracing::warn!(
+                    "Skip: file stem `{file_stem}` != class name `{}`. (Duplicated class version?)",
+                    class.name
+                );
+                false
+            }
+            _ => true,
+        })
         .collect();
 
     results
@@ -129,18 +142,31 @@ mod tests {
     use super::*;
     use std::path::PathBuf;
 
+    fn repo_root() -> PathBuf {
+        PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+            .join("..")
+            .join("..")
+    }
+
     #[ignore = "because it generates code and is not strictly a test."]
     // #[quick_tracing::init(test = "should_generate_classes")]
     #[test]
     fn should_generate_classes() {
-        let repo_root = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-            .join("..")
-            .join("..");
+        let output_dir = repo_root().join("crates/havok_classes/src");
+        std::fs::create_dir_all(&output_dir).unwrap();
 
-        let classes_json_dir = repo_root.join("assets").join("classes");
+        generate_havok_class(classes_json_dir(), output_dir).unwrap_or_else(|err| panic!("{err}"));
+    }
+
+    #[ignore = "because it generates code and is not strictly a test."]
+    // #[quick_tracing::init(test = "should_generate_classes")]
+    #[test]
+    fn should_generate_classes_fo4() {
+        let repo_root = repo_root();
         let output_dir = repo_root.join("crates/havok_classes/src");
         std::fs::create_dir_all(&output_dir).unwrap();
 
+        let classes_json_dir = repo_root.join("assets").join("classes/fallout4");
         generate_havok_class(classes_json_dir, output_dir).unwrap_or_else(|err| panic!("{err}"));
     }
 }

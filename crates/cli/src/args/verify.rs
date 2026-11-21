@@ -1,51 +1,77 @@
 use crate::args::progress_handler::CliProgressHandler;
 use serde_hkx_features::{
     error::Result,
-    verify::{verify_dir, verify_file},
+    verify::{VerifyMode, verify_dir_with, verify_file, verify_xml_file},
 };
 use std::path::{Path, PathBuf};
 
-/// ANSI color representation command examples.
-pub const EXAMPLES: &str = color_print::cstr!(
-    r#"In case of error, dir and file behave differently
+/// Command examples.
+pub fn examples() -> String {
+    use super::color::{Example, examples};
+    examples(
+        Some(
+            "In case of error, dir and file behave differently
     - dir: All error paths are displayed
-    - file: Error path + diff displayed
-
-<blue><bold><underline>Examples</underline></bold></blue>
-- <blue!>Test the reproducibility of hkx</blue!>
-  <cyan!>hkxc verify</cyan!> ./defaultmale.hkx
-
-- <blue!>Test the reproducibility of hkx files</blue!>
-  <cyan!>./hkxc verify</cyan!> ./input --log-level info --log-file "./verify_inputs.log"
-"#
-);
+    - file: Error path + diff displayed",
+        ),
+        &[
+            Example::new(
+                "Test the reproducibility of hkx",
+                "hkxc verify ./defaultmale.hkx",
+            ),
+            Example::new(
+                "Test the reproducibility of hkx files",
+                r#"hkxc verify ./input --log-level info --log-file "./verify_inputs.log""#,
+            ),
+            Example::new(
+                "Test hkx -> XML -> hkx round trip & write a report to compare with the previous run",
+                "hkxc verify ./input --mode xml --report ./test_results/xml.tsv",
+            ),
+        ],
+    )
+}
 
 #[derive(Debug, clap::Args)]
-#[clap(arg_required_else_help = true, after_long_help = EXAMPLES)]
+#[clap(arg_required_else_help = true, after_long_help = examples())]
 pub(crate) struct Args {
     /// hkx file path or dir for which you want to verify reproducibility. It is recommended to use log in INFO mode.
     pub path: PathBuf,
-    /// Option to make the diff display colorful in case of error when file is specified.
+    /// Verification mode.
+    #[clap(long, value_enum, default_value_t = VerifyMode::Bytes)]
+    pub mode: VerifyMode,
+    /// (dir only) Write `OK|NG<TAB>relative path[<TAB>error kind]` lines sorted by path.
     #[clap(long)]
-    pub color: bool,
+    pub report: Option<PathBuf>,
 }
 
-pub fn verify<P>(path: P, color: bool) -> Result<()>
+pub fn verify<P>(path: P, color: bool, mode: VerifyMode, report: Option<&Path>) -> Result<()>
 where
     P: AsRef<Path>,
 {
     let path = path.as_ref();
 
+    // NOTE: Without this, a missing path is treated as an empty dir and exits with success.
+    if !path.exists() {
+        return Err(
+            std::io::Error::new(std::io::ErrorKind::NotFound, "No such file or directory").into(),
+        );
+    }
+
     if path.is_file() {
         println!("Verifying...");
-        verify_file(path, color).map(|_| {
-            color_print::cprintln!(
-                "<green>Complete hkx reproduction: {}</green>",
+        let res = match mode {
+            VerifyMode::Bytes => verify_file(path, color),
+            VerifyMode::Xml => verify_xml_file(path, color),
+        };
+        res.map(|_| {
+            use super::color::SUCCESS;
+            anstream::println!(
+                "{SUCCESS}Complete hkx reproduction: {}{SUCCESS:#}",
                 path.display()
             );
         })
     } else {
-        verify_dir(path, CliProgressHandler::new())
+        verify_dir_with(path, mode, CliProgressHandler::new(), report)
     }
 }
 
@@ -58,6 +84,6 @@ mod tests {
     #[test]
     fn test_verify_dir() {
         let input = "../../tests/input";
-        verify(input, false).unwrap_or_else(|err| panic!("{err}"));
+        verify(input, false, VerifyMode::Bytes, None).unwrap_or_else(|err| panic!("{err}"));
     }
 }

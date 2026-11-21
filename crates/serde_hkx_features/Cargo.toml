@@ -24,26 +24,34 @@ tokio    = { workspace = true, features = ["fs", "rt"] }
 tracing  = { workspace = true, optional = true }
 
 # serde ext
-toml     = { version = "1.2.1+spec-1.1.0", optional = true }
 schemars = { workspace = true, features = ["indexmap2"], optional = true }
 serde    = { workspace = true, optional = true }
-sonic-rs = { version = "0.5.11", optional = true }
+sonic-rs = { workspace = true, optional = true }
 
 # workspace members
 auto_charset  = { workspace = true }
 diff          = { workspace = true } # Create diff
 havok_serde   = { workspace = true }
-havok_classes = { workspace = true, features = ["ignore_duplicates"] }
+# NOTE: One of them is selected by `hk2010` or `hk2014` feature. Both are used as `havok_classes` in the code.
+havok_classes        = { workspace = true, features = ["ignore_duplicates"], optional = true }
+havok_classes_hk2014 = { workspace = true, features = ["ignore_duplicates"], optional = true }
 serde_hkx     = { workspace = true }
 havok_types   = { workspace = true }
 
 [dev-dependencies]
 quick_tracing = { workspace = true }
 serde_hkx     = { workspace = true, features = ["tracing"] }
+tokio         = { workspace = true, features = ["macros", "rt-multi-thread"] } # For `#[tokio::main]` in README doctest
 tracing       = { workspace = true }
 
 [features]
-default = ["serde_default", "extra_fmt"] # For debug
+default = ["hk2010", "serde_default", "extra_fmt"] # For debug
+
+# Havok classes version.(Exclusive: Only one of them can be enabled.)
+# - SkyrimLE/SE
+hk2010 = ["dep:havok_classes"]
+# - Fallout4
+hk2014 = ["dep:havok_classes_hk2014"]
 # default = ["json_schema"] # For debug
 
 # `derive(clap::ValueEnum)` For `OutFormat`
@@ -53,23 +61,28 @@ tracing = ["dedup_tracing", "serde_hkx/tracing"]
 # Enable tracing logging
 dedup_tracing = ["dep:tracing"]
 # `.json` input/output (`ClassMap` <-> JSON via sonic-rs)
-json = ["dep:serde", "dep:sonic-rs", "havok_classes/serde", "indexmap/serde"]
-# `.toml` input/output
-toml = ["dep:toml", "dep:serde", "havok_classes/serde", "indexmap/serde"]
-# Every extra format (json, toml). Each one adds (de)serialization code for all havok classes,
-# so enable only the ones needed to keep binaries small (e.g., d_merge only uses `json`).
-extra_fmt = ["json", "toml"]
+json = [
+  "dep:serde",
+  "dep:sonic-rs",
+  "havok_classes?/serde",
+  "havok_classes_hk2014?/serde",
+  "indexmap/serde",
+]
+# Every extra format (json). Each one adds (de)serialization code for all havok classes,
+# so enable only the ones needed to keep binaries small.
+extra_fmt = ["json"]
 # Json schema generation
 json_schema = [
   "dep:schemars",
   "dep:serde",
   "dep:sonic-rs",
-  "havok_classes/json_schema",
+  "havok_classes?/json_schema",
+  "havok_classes_hk2014?/json_schema",
   "indexmap/serde",
 ]
 
 # Enable serde values to fall-back to default ones even if class fields don't have the `SERIALIZED_IGNORED` flag.
-serde_default = ["havok_classes/serde_default"]
+serde_default = ["havok_classes?/serde_default", "havok_classes_hk2014?/serde_default"]
 
 [lints]
 workspace = true

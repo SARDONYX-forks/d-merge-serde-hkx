@@ -53,6 +53,21 @@ pub enum Error {
         location: snafu::Location,
     },
 
+    /// Invalid `contents_version_string` in hkx header. (must be null terminated UTF-8) But got `{version}`
+    InvalidContentsVersion { version: String },
+
+    /// {location}: `hkRelArray<T>`(`{field}`) {what}({value}) exceeds `u16::MAX`.
+    RelArrayOverflow {
+        /// field name
+        field: &'static str,
+        /// `size` or `offset`
+        what: &'static str,
+        value: u64,
+        /// error location
+        #[snafu(implicit)]
+        location: snafu::Location,
+    },
+
     /// {location}: Could not find a place to write the ptr destination. This may be an incorrect value inside hkx.
     NotFoundPointedPosition {
         /// error location

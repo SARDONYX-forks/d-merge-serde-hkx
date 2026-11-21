@@ -31,6 +31,20 @@ pub fn get_inherited_class<'a>(class_name: &str, classes_map: &'a ClassMap) -> V
     inherited_class
 }
 
+/// Is this class an empty base class? (no members & no vtable, including all ancestors)
+///
+/// # Why need this?
+/// C++ EBO(Empty Base Optimization): When such a class is inherited, it occupies 0 bytes,
+/// so the first member of the child class starts at offset 0 even though `sizeof(Empty) == 1`.
+///
+/// - e.g. `hkcdDynamicTreeAnisotropicMetric`(size 1) in hk2014(Fallout4)
+pub fn is_empty_base_class(class_name: &str, classes_map: &ClassMap) -> bool {
+    get_inherited_class(class_name, classes_map)
+        .iter()
+        .all(|class| !class.vtable && class.members.is_empty())
+        && classes_map.contains_key(class_name)
+}
+
 /// Enumerate C++ class information by recursively tracing from the current class.
 /// - current class name -> Myself and all parent classes.
 /// - parent class name -> All parent classes.

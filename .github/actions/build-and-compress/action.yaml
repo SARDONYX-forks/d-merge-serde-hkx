@@ -15,20 +15,35 @@ inputs:
     required: true
   features:
     description: "build features"
+  cargo_args:
+    description: "Extra cargo build args(e.g. `--no-default-features`)"
+    default: ""
 
 runs:
   using: "composite"
   steps:
+    # NOTE: Cache key cannot contain `,`.(e.g. `features: color,hk2014`) So replace `,` and spaces with `_`.
+    - name: Make cache key
+      id: cache-key
+      shell: bash
+      env:
+        FEATURES: ${{ inputs.features }}
+        CARGO_ARGS: ${{ inputs.cargo_args }}
+      run: |
+        key="cargo-${{ inputs.profile }}-${{ inputs.target }}-${FEATURES}${CARGO_ARGS}"
+        key="${key//[, ]/_}"
+        echo "key=${key}" >> "$GITHUB_OUTPUT"
+
     - name: Rust cache
       uses: Swatinem/rust-cache@v2.9.1
       with:
-        prefix-key: cargo-${{ inputs.profile }}-${{ inputs.target }}-${{ inputs.features }}
+        prefix-key: ${{ steps.cache-key.outputs.key }}
 
     - run: |
         if [[ -z "${{ inputs.features }}" ]]; then
-          cargo build --profile ${{ inputs.profile }} --target ${{ inputs.target }}
+          cargo build --profile ${{ inputs.profile }} --target ${{ inputs.target }} ${{ inputs.cargo_args }}
         else
-          cargo build --profile ${{ inputs.profile }} --target ${{ inputs.target }} --features ${{ inputs.features }}
+          cargo build --profile ${{ inputs.profile }} --target ${{ inputs.target }} --features ${{ inputs.features }} ${{ inputs.cargo_args }}
         fi
       shell: bash
 

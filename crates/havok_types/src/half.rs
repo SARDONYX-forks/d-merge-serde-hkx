@@ -20,11 +20,20 @@ pub struct f16(#[cfg_attr(feature = "json_schema", schemars(with = "f32"))] u16)
 impl f16 {
     // NOTE: The bits in f64 and f32 are different, so if we get bits from f64, it will be an invalid value.
     //
-    /// Creates a new [`f16`] from [`f32`].
+    /// Creates a new [`f16`] from [`f32`].(Round to nearest even)
+    ///
+    /// # Why not truncate?
+    /// XML has 6 decimal places(e.g. `0.298828`), and its `f32` is slightly smaller than the exact value(`0.298828125`).
+    /// Truncating the lower 16bits makes it the previous value(`0.296875`), so XML round trip is broken.
     #[inline]
     pub const fn from_f32(f: f32) -> Self {
         let bits = f.to_bits();
-        Self((bits >> 16) as u16) // Only the most significant 16bits are taken out.
+        if f.is_nan() {
+            // Keep NaN(quiet) even if the upper 16bits of mantissa are zero.
+            return Self(((bits >> 16) as u16) | 0x0040);
+        }
+        let round = 0x7FFF + ((bits >> 16) & 1); // round half to even
+        Self((bits.wrapping_add(round) >> 16) as u16)
     }
 
     /// Converts the [`f16`] to a 32-bit float.
@@ -127,4 +136,27 @@ fn test_half() {
         assert_eq!(half.to_f32().to_bits(), (0.049804688_f32).to_bits()); // Check f32 at the bit level because of errors.
         assert_eq!(half.to_string(), "0.049805");
     }
+
+    // XML round trip(Found in Fallout4 `hknpMaterial.dynamicFriction`)
+    {
+        let half = f16::from_le_bytes([0x99, 0x3e]); // 0.298828125
+        assert_eq!(half.to_string(), "0.298828");
+        assert_eq!(f16::from_f32("0.298828".parse().unwrap()), half);
+    }
+
+    // All values: display(`{:.06}`) -> parse must be the same bits.
+    for bits in 0..=u16::MAX {
+        let half = f16(bits);
+        let f = half.to_f32();
+        // `{:.06}`(error <= 5e-7) can't distinguish very small values.
+        // Half ulp of f16(8bit mantissa) = 2^(exp - 8) must be larger than 5e-7 -> exp >= -12(`1 / 4096`)
+        if !f.is_finite() || f.abs() < 1.0 / 4096.0 {
+            continue;
+        }
+        let parsed = f16::from_f32(half.to_string().parse().unwrap());
+        assert_eq!(parsed, half, "bits: {bits:#06x}, display: {half}");
+    }
+
+    assert!(f16::from_f32(f32::NAN).to_f32().is_nan());
+    assert_eq!(f16::from_f32(f32::INFINITY).to_f32(), f32::INFINITY);
 }

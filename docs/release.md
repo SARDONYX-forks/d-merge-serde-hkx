@@ -10,7 +10,7 @@ It can output hkx, xml, json, toml, yaml.
 
 ### Compatibility
 
-json, toml, and yaml are still under development.
+json still under development.
 This indicates that the form of json may change in the next version.
 
 - 0.3.0..0.3.1

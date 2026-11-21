@@ -51,7 +51,11 @@ pub struct Member<'a> {
     pub flags: FlagValues,
 
     /// default member value
-    pub default: i32,
+    ///
+    /// # Note
+    /// - May be `-1`
+    /// - hk2014(Fallout4): May be raw bits of `f32`(e.g. `3184315597`(`0xBDCCCCCD`) = `-0.1`) that exceeds `i32::MAX`.
+    pub default: i64,
 }
 
 impl Member<'_> {
@@ -65,8 +69,8 @@ impl Member<'_> {
     /// # Errors
     /// - If entered
     ///   `TypeKind::Void | TypeKind::Zero | TypeKind::FnPtr |
-    ///  TypeKind::InplaceArray | TypeKind::HomogeneousArray |
-    ///  TypeKind::RelArray | TypeKind::Max` => These are not used inside the 2010 Havok Class.
+    ///  TypeKind::InplaceArray | TypeKind::HomogeneousArray | TypeKind::Max`
+    ///   => These are not used inside the 2010/2014 Havok Class.
     ///
     /// - `TypeKind::Struct` => This cannot be calculated here. It is calculated externally using `HashMap` or similar.
     pub fn size_of_type(&self, ptr_size: u32) -> Result<u32, MemberError> {
@@ -82,7 +86,6 @@ impl Member<'_> {
             | TypeKind::FnPtr
             | TypeKind::InplaceArray
             | TypeKind::HomogeneousArray
-            | TypeKind::RelArray
             | TypeKind::Max => {
                 return UnsupportedVTypeSnafu {
                     vtype: self.vtype.clone(),
@@ -130,7 +133,7 @@ impl Member<'_> {
     /// - `Variant` -> ptr size
     ///
     /// # Errors
-    /// If entered `TypeKind::Void | TypeKind::Zero | TypeKind::FnPtr | TypeKind::InplaceArray | TypeKind::HomogeneousArray | TypeKind::RelArray | TypeKind::Max`.
+    /// If entered `TypeKind::Void | TypeKind::Zero | TypeKind::FnPtr | TypeKind::InplaceArray | TypeKind::HomogeneousArray | TypeKind::Max`.
     ///
     /// These are not used inside the 2010 Havok Class.
     ///
@@ -157,6 +160,8 @@ impl Member<'_> {
                 true => ptr_size, // T* m_data size
                 false => 4,       // flag is int
             },
+            // `hkRelArray<T>` = { hkUint16 m_size; hkUint16 m_offset; }
+            TypeKind::RelArray => 2,
             TypeKind::Struct => return UnsupportedTypeKindStructSnafu.fail(),
             TypeKind::Enum | TypeKind::Flags => self.size_of_type(ptr_size)?,
             TypeKind::Half => 2,
@@ -172,7 +177,6 @@ impl Member<'_> {
             | TypeKind::FnPtr
             | TypeKind::InplaceArray
             | TypeKind::HomogeneousArray
-            | TypeKind::RelArray
             | TypeKind::Max => {
                 return UnsupportedVSubTypeSnafu {
                     vtype: self.vtype.clone(),
@@ -228,7 +232,9 @@ fn size_of_type_common(type_kind: &TypeKind, ptr_size: u32) -> Result<u32, Membe
         },
 
         TypeKind::Half => 2,
-        TypeKind::RelArray => 4, // Not used in havok class of ver. hk2010
+        // `hkRelArray<T>` = { hkUint16 m_size; hkUint16 m_offset; }
+        // Not used in hk2010(Skyrim), but used in hk2014(Fallout4) `hknp*` shapes.
+        TypeKind::RelArray => 4,
         TypeKind::Pointer| TypeKind::FnPtr | TypeKind::Ulong | TypeKind::CString | TypeKind::StringPtr => ptr_size,
         TypeKind::Variant => ptr_size * 2,
 

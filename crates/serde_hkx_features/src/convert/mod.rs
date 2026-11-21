@@ -27,9 +27,6 @@ pub enum Format {
     #[cfg(feature = "json")]
     /// json
     Json,
-    #[cfg(feature = "toml")]
-    /// toml
-    Toml,
 }
 
 impl core::fmt::Display for Format {
@@ -40,8 +37,6 @@ impl core::fmt::Display for Format {
             Self::Xml => write!(f, "xml"),
             #[cfg(feature = "json")]
             Self::Json => write!(f, "json"),
-            #[cfg(feature = "toml")]
-            Self::Toml => write!(f, "toml"),
         }
     }
 }
@@ -68,8 +63,6 @@ impl core::str::FromStr for Format {
             _ if value.eq_ignore_ascii_case("xml") => Ok(Self::Xml),
             #[cfg(feature = "json")]
             _ if value.eq_ignore_ascii_case("json") => Ok(Self::Json),
-            #[cfg(feature = "toml")]
-            _ if value.eq_ignore_ascii_case("toml") => Ok(Self::Toml),
             _ => Err(ParseFormatError),
         }
     }
@@ -95,8 +88,6 @@ impl Format {
 
             #[cfg(feature = "json")]
             Self::Json => "json",
-            #[cfg(feature = "toml")]
-            Self::Toml => "toml",
         }
     }
 
@@ -174,8 +165,6 @@ impl Format {
     ///
     /// When enable `extra_fmt` feature.
     /// - `json` -> `Self::Json`
-    /// - `toml` -> `Self::Toml`
-    /// - `yaml` -> `Self::Yaml`
     ///
     /// # Errors
     /// Unknown extension.
@@ -191,8 +180,6 @@ impl Format {
 
             #[cfg(feature = "json")]
             ext if ext.eq_ignore_ascii_case("json") => Self::Json,
-            #[cfg(feature = "toml")]
-            ext if ext.eq_ignore_ascii_case("toml") => Self::Toml,
             _ => {
                 return Err(Error::UnsupportedExtension {
                     ext: ext.to_string_lossy().to_string(),
@@ -252,7 +239,7 @@ fn get_supported_files(input_dir: &Path) -> Vec<PathBuf> {
         .collect()
 }
 
-/// Deserializes HKX/XML/JSON/TOML bytes into a [`ClassMap`], then applies one
+/// Deserializes HKX/XML/JSON bytes into a [`ClassMap`], then applies one
 /// of two caller-supplied closures depending on the input format, and returns
 /// the result as `T`.
 ///
@@ -266,7 +253,7 @@ fn get_supported_files(input_dir: &Path) -> Vec<PathBuf> {
 /// * `bytes`     - Raw input file bytes. Consumed by the function.
 /// * `input`     - Source path used **only** for error context and extension-based format detection; no I/O is performed.
 /// * `on_xml`    - Called when the input format is XML. The [`ClassMap`] borrows from a function-local [`String`].
-/// * `on_other`  - Called for all other formats (HKX, JSON, TOML). The [`ClassMap`] borrows from `bytes`.
+/// * `on_other`  - Called for all other formats (HKX, JSON). The [`ClassMap`] borrows from `bytes`.
 ///
 /// # Returns
 /// The `T` produced by whichever closure was invoked.
@@ -305,13 +292,6 @@ where
                 .context(crate::error::JsonDeSnafu)?
                 .into_class_map()
         }
-        #[cfg(feature = "toml")]
-        Format::Toml => {
-            use crate::types_wrapper::ClassPtrMap;
-            toml::from_slice::<ClassPtrMap>(bytes)
-                .context(crate::error::TomlDeSnafu)?
-                .into_class_map()
-        }
     };
 
     on_other(classes)
@@ -331,8 +311,8 @@ where
             Format::Amd64 | Format::Win32 | Format::Xml => {
                 crate::serde::ser::to_bytes(&mut classes, output_format)
             }
-            // Json and/or Toml, depending on the features.
-            #[cfg(any(feature = "json", feature = "toml"))]
+            // Json, depending on the features.
+            #[cfg(feature = "json")]
             #[allow(clippy::match_wildcard_for_single_variants)]
             _ => {
                 let mut classes = crate::types_wrapper::ClassPtrMap::from_class_map(classes);

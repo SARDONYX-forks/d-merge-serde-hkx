@@ -3,6 +3,7 @@ use crate::GenericClassMap;
 pub(crate) mod mocks;
 mod re_convert;
 mod verify;
+mod xml_string;
 
 /// - key: class index(e.g. `#0001`)
 /// - value: class

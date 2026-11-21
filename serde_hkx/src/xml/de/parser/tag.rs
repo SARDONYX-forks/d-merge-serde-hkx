@@ -5,8 +5,8 @@ use super::{
     delimited_comment_multispace0, delimited_multispace0_comment, delimited_with_multispace0,
 };
 use havok_types::{Pointer, Signature};
-use winnow::ascii::{digit1, hex_digit1, oct_digit1};
-use winnow::combinator::{delimited, dispatch, fail, seq};
+use winnow::ascii::{digit1, hex_digit1, multispace0, oct_digit1};
+use winnow::combinator::{delimited, dispatch, fail, preceded, seq};
 use winnow::error::{
     ContextError, ErrMode, StrContext,
     StrContextValue::{self, *},
@@ -22,6 +22,22 @@ pub fn start_tag<'a>(tag: &'static str) -> impl Parser<&'a str, (), ErrMode<Cont
         _: delimited_multispace0_comment(">")
     )
     .context(StrContext::Label("start tag"))
+    .context(StrContext::Label(tag))
+}
+
+/// Parses the start tag of a value `<tag>`.(e.g. `<hkcstring>`)
+///
+/// Unlike [`start_tag`], this does not skip the whitespace after `>` because it's a part of the string value.
+///
+/// # Errors
+/// When parse failed.
+pub fn value_start_tag<'a>(tag: &'static str) -> impl Parser<&'a str, (), ErrMode<ContextError>> {
+    seq!(
+        _: delimited_comment_multispace0("<"),
+        _: delimited_with_multispace0(tag),
+        _: preceded(multispace0, ">")
+    )
+    .context(StrContext::Label("value start tag"))
     .context(StrContext::Label(tag))
 }
 
@@ -114,13 +130,14 @@ pub fn field_start_close_tag(input: &mut &str) -> ModalResult<(Option<u64>, bool
         .map(|((n,),)| (Some(n), true)),
         //
         // Handle regular closing tag with numelements: numelements="0">
+        // NOTE: Don't skip the whitespace after `>`. It's a part of the string value.
         seq!(
             seq!(
                 _: delimited_with_multispace0("numelements"),
                 _: delimited_with_multispace0("="),
                 number_in_string::<u64>, // e.g. "8"
             ),
-            _: delimited_multispace0_comment(">")
+            _: preceded(multispace0, ">")
         )
         .map(|((n,),)| (Some(n), false)),
         //
@@ -132,8 +149,9 @@ pub fn field_start_close_tag(input: &mut &str) -> ModalResult<(Option<u64>, bool
         .map(|()| (None, true)),
         //
         // Handle regular closing tag without numelements: >
+        // NOTE: Don't skip the whitespace after `>`. It's a part of the string value.
         seq!(
-            _: delimited_multispace0_comment(">")
+            _: preceded(multispace0, ">")
         )
         .map(|()| (None, false)),
     ))

@@ -44,6 +44,10 @@ jobs:
         run: cargo fmt --all -- --check
       - name: Lint Check
         run: cargo clippy --workspace -- -D warnings
+      # `hk2010` and `hk2014` are exclusive, so check hk2014(Fallout4) separately.
+      - name: Lint Check(hk2014)
+        if: runner.os == 'Linux'
+        run: cargo clippy -p hkxc --no-default-features --features color,hk2014,extra_fmt -- -D warnings
 
       # The action only supports Linux.
       - name: Check license, dependencies

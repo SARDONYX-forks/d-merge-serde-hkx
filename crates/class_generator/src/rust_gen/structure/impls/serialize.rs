@@ -1,4 +1,4 @@
-use crate::get_class_map::get_inherited_class;
+use crate::get_class_map::{get_inherited_class, is_empty_base_class};
 use crate::rust_gen::structure::{
     impls::{n_time_parent_ident, str2lit},
     to_rust_token::to_rust_field_ident,
@@ -66,6 +66,12 @@ fn impl_serialize_fields(class: &Class, class_map: &ClassMap) -> Vec<TokenStream
 
     for class in all_class {
         parent_depth -= 1;
+
+        // EBO: empty base occupies 0 bytes as a parent. (Don't write its tail padding.)
+        if parent_depth != 0 && is_empty_base_class(&class.name, class_map) {
+            continue;
+        }
+
         let meta_fields = impl_serialize_self_fields(
             &class.members,
             class.size_x86,
@@ -132,8 +138,12 @@ fn impl_serialize_self_fields(
         let parent_ident = n_time_parent_ident(parent_depth);
 
         if arrsize == &0 {
-            if vtype == &Array {
-                let ser_method = if flags.has_skip_serializing() {
+            // NOTE: `hkRelArray<T>`(hk2014~): XML is the same as `hkArray<T>`, but binary layout differs.
+            //       (`{ u16 size; u16 offset; }` + inline elements after the object)
+            if matches!(vtype, Array | RelArray) {
+                let ser_method = if vtype == &RelArray {
+                    quote! { serialize_rel_array_field }
+                } else if flags.has_skip_serializing() {
                     quote! { skip_array_field }
                 } else {
                     quote! { serialize_array_field }
@@ -142,8 +152,13 @@ fn impl_serialize_self_fields(
                 match vsubtype {
                     Struct => {
                         let (x86_size, x64_size) = {
-                            let class_name = class_ref.as_ref().unwrap().as_ref();
-                            let class = class_map.get(class_name).unwrap();
+                            let class_name = class_ref.as_ref().unwrap_or_else(|| {
+                                panic!("{name}: struct array member must have `class_ref`")
+                            });
+                            let class_name: &str = class_name.as_ref();
+                            let class = class_map.get(class_name).unwrap_or_else(|| {
+                                panic!("{name}: Not found class_ref `{class_name}` in class map")
+                            });
                             (class.size_x86 as u64, class.size_x86_64 as u64)
                         };
                         serialize_calls.push(quote! {
@@ -273,7 +288,8 @@ fn deps_class_indexes_token(class_name: &str, classes_map: &ClassMap) -> Vec<Tok
 
                 // struct array(get ptr of fields)
                 _ if (member.vtype == TypeKind::Struct && member.arrsize > 0)
-                    || member.vtype == TypeKind::Array && member.vsubtype == TypeKind::Struct =>
+                    || matches!(member.vtype, TypeKind::Array | TypeKind::RelArray)
+                        && member.vsubtype == TypeKind::Struct =>
                 {
                     let parent_ident = n_time_parent_ident(parent_depth);
                     let member_name = to_rust_field_ident(&member.name);

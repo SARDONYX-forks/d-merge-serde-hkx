@@ -483,7 +483,6 @@ class hkArray {
 - XML
 
   There seem to be 5 XML patterns for arrays among those we have identified.
-
   - `hkArray<hkReal>`
 
   ```xml
@@ -595,7 +594,6 @@ class hkEnum {
 Inline defined pointer and size type.
 
 - Types used in the five classes
-
   - `hkbCharacter`(`poseLocal`)
   - `hkClass`(`declaredEnums: class hkClassEnum*`,
     `declaredMembers: class hkClassMember*`)
@@ -692,7 +690,6 @@ The method of expression is exactly the same as that of `Array`.
 - `hkClass` is a class that holds meta-information (Flags, vtable, etc.) for
   each C++ Havok class and is stored in its own static field.
 - Only used for `value` of `hkCustomAttributesAttribute`.
-
 - C++
 
 ```cpp
@@ -768,13 +765,13 @@ class hkFlags {
 
 <details><summary>Proof of Concept</summary><div>
 
-1.hkx -> xml
+1. hkx -> xml
 
 ```shell
 ./HavokBehaviorPostProcess.exe -x ./1hm_behavior.hkx ./1hm_behavior.xml
 ```
 
-2.Change flags
+2. Change flags
 
 ```xml
 <hkobject name="#0027" class="hkbBehaviorGraphData" signature="0x95aca5d">
@@ -796,7 +793,7 @@ class hkFlags {
 </hkobject>
 ```
 
-2.Alternate change flags
+2. Alternate change flags
 
 ```xml
 <hkobject name="#0027" class="hkbBehaviorGraphData" signature="0x95aca5d">
@@ -825,7 +822,7 @@ class hkFlags {
 ./HavokBehaviorPostProcess.exe -x ./1hm_behavior_x86.hkx ./1hm_behavior_re.xml
 ```
 
-4.If you look at the same part of the XML, only FLAG_NONE is replaced by 0.
+4. If you look at the same part of the XML, only FLAG_NONE is replaced by 0.
 
 </div></details>
 
@@ -857,7 +854,6 @@ class hkHalf {
   `Owned` is also possible.
 - It is unclear which segment (stack, heap, or other) is being pointed to
   because of the raw pointer.
-
 - C++
 
 ```cpp

@@ -102,29 +102,38 @@ where
 
     // 1/5: root header
     serializer.output.write_all(&header.to_bytes())?;
+    // predicate array(hk2014 animation/skeleton). Fill zero if the length is inconsistent.
+    let mut predicate_array = header.predicate_array.clone();
+    predicate_array.resize(header.padding_size() as usize, 0);
+    serializer.output.write_all(&predicate_array)?;
     serializer.contents_class_name_section_index = header.contents_class_name_section_index;
     serializer.contents_section_index = header.contents_section_index;
 
     // 2/5: Get Section headers positions.(because the values of the fixups are not yet known.)
-    let classnames_header_start = 64 + header.padding_size() as u64; // 64: Root header size
-    let types_header_start = classnames_header_start + 48; // next `SectionHeader`(size 48bytes) position.
-    let data_header_start = types_header_start + 48;
-    serializer.output.set_position(data_header_start + 48);
+    let section_header_size = header.section_header_size(); // hk2010: 48, hk2014: 64
+    let classnames_header_start = header.root_header_size() as u64; // Root header + predicate array
+    let types_header_start = classnames_header_start + section_header_size as u64;
+    let data_header_start = types_header_start + section_header_size as u64;
+    let classnames_abs = data_header_start + section_header_size as u64;
+    serializer.output.set_position(classnames_abs);
 
     // 3/5: section contents
     // - `__classnames__` section
     if serializer.is_little_endian {
-        serializer.class_starts =
-            value.write_classnames_section::<LittleEndian>(&mut serializer.output)?;
+        serializer.class_starts = value.write_classnames_section::<LittleEndian>(
+            &mut serializer.output,
+            header.file_version,
+        )?;
     } else {
-        serializer.class_starts =
-            value.write_classnames_section::<BigEndian>(&mut serializer.output)?;
+        serializer.class_starts = value
+            .write_classnames_section::<BigEndian>(&mut serializer.output, header.file_version)?;
     };
     #[cfg(feature = "tracing")]
     tracing::trace!("class_starts: {:#?}", serializer.class_starts);
 
     // - `__data__` section
-    serializer.abs_data_offset = header.padding_size() + serializer.output.position() as u32;
+    // NOTE: `position` already includes the predicate array size. (Don't add `padding_size` again.)
+    serializer.abs_data_offset = serializer.output.position() as u32;
     value.serialize(&mut serializer)?;
 
     // 4/5: Write fixups_offsets of `__data__` section header.
@@ -149,25 +158,37 @@ where
     tracing::trace!("data_section_header = {data_section_header}");
 
     serializer.output.set_position(classnames_header_start);
-    let section_offset = header.section_offset;
+    let section_headers_pos = SectionHeadersPos {
+        classnames_abs: classnames_abs as u32,
+        types_header_start,
+        data_header_start,
+        header_size: section_header_size,
+    };
 
     if serializer.is_little_endian {
-        tri!(serializer.write_section_headers::<LittleEndian>(
-            section_offset,
-            types_header_start,
-            data_header_start,
-            &data_section_header,
-        ));
+        tri!(
+            serializer
+                .write_section_headers::<LittleEndian>(&section_headers_pos, &data_section_header,)
+        );
     } else {
-        tri!(serializer.write_section_headers::<BigEndian>(
-            section_offset,
-            types_header_start,
-            data_header_start,
-            &data_section_header,
-        ));
+        tri!(
+            serializer
+                .write_section_headers::<BigEndian>(&section_headers_pos, &data_section_header,)
+        );
     };
 
     Ok(serializer.output.into_inner())
+}
+
+/// Positions/size of section headers.
+#[derive(Debug, Clone, Copy)]
+struct SectionHeadersPos {
+    /// Absolute start position of `__classnames__` section.
+    classnames_abs: u32,
+    types_header_start: u64,
+    data_header_start: u64,
+    /// Section header size. (hk2010: 48, hk2014: 64)
+    header_size: u32,
 }
 
 /// Binary data serializer
@@ -218,6 +239,19 @@ pub struct ByteSerializer<'ser> {
     /// - `hkArray<CString>` / `hkArray<StringPtr>` -> align2 is done after string serialization.
     /// - For a single field -> align16 is done after string serialization.
     is_in_str_array: bool,
+
+    /// Depth of the non-root struct being serialized.(root object: 0, its array element/embedded struct: 1, ...)
+    ///
+    /// # Why need this?
+    /// When entering a struct at depth >= 2, the position to write the pointed data(e.g. strings) is aligned 16,
+    /// even if the struct has no pointed data.
+    /// (The reason is unknown, but it is the real hkx layout. Same in hk2010 and hk2014.)
+    /// - depth 1: `hkRootLevelContainer.namedVariants[i].name` -> not aligned.
+    /// - depth 2: `hkaAnimation.annotationTracks[i].annotations[j].text`(x86) -> aligned.
+    /// - depth 2: `hclSimClothSetupObject.perInstanceCollidables[i]`(x64)
+    ///   `{ collidingParticles: hclVertexSelectionInput(embedded: depth 2), drivingBoneName: StringPtr(depth 1) }`
+    ///   -> Even if `collidingParticles.channelName` is null, `drivingBoneName` is aligned.
+    struct_depth: usize,
 
     // ---- local fixup information
     /// The position to which the pointer returns after writing the end of the pointer.
@@ -387,26 +421,32 @@ impl<'ser> ByteSerializer<'ser> {
     #[inline]
     fn write_section_headers<B>(
         &mut self,
-        section_offset: i16,
-        types_header_start: u64,
-        data_header_start: u64,
+        pos: &SectionHeadersPos,
         data_section_header: &SectionHeader,
     ) -> Result<()>
     where
         B: ByteOrder,
     {
+        let SectionHeadersPos {
+            classnames_abs,
+            types_header_start,
+            data_header_start,
+            header_size,
+        } = *pos;
+
         // `__classnames__` header`
         SectionHeader::write_classnames::<B>(
             &mut self.output,
-            section_offset,
+            classnames_abs,
             self.abs_data_offset,
+            header_size,
         )?;
         // `__types__` header`
         self.output.set_position(types_header_start);
-        SectionHeader::write_types::<B>(&mut self.output, self.abs_data_offset)?;
+        SectionHeader::write_types::<B>(&mut self.output, self.abs_data_offset, header_size)?;
         // `__data__` header`
         self.output.set_position(data_header_start);
-        data_section_header.write_bytes::<B>(&mut self.output)?;
+        data_section_header.write_bytes::<B>(&mut self.output, header_size)?;
         Ok(())
     }
 
@@ -727,6 +767,13 @@ impl<'a, 'ser> Serializer for &'a mut ByteSerializer<'ser> {
         } else {
             #[cfg(feature = "tracing")]
             tracing::debug!("serialize struct {name}(A class within a field.)");
+            self.struct_depth += 1; // decremented by `StructSerializer::end`
+            if self.struct_depth >= 2 {
+                // See `Self::struct_depth`
+                if let Some(last) = self.pointed_pos.last_mut() {
+                    *last = align!(*last, 16_u64);
+                }
+            }
             false
         };
 
@@ -949,6 +996,67 @@ mod tests {
             "../../../../docs/handson_hex_dump/defaultmale/defaultmale.hkx"
         ));
         pretty_assertions::assert_eq!(actual, expected);
+        Ok(())
+    }
+
+    /// hk2014(Fallout4) layout: 64bytes section headers(+ `0xff` x 16) & predicate array.
+    ///
+    /// NOTE: The classes are SkyrimSE ones. This test only checks the file/section header layout.
+    #[test]
+    #[expect(clippy::unwrap_in_result)]
+    fn should_roundtrip_with_hk2014_header_layout() -> Result<()> {
+        use crate::bytes::serde::section_header::SectionHeader;
+        use winnow::Parser as _;
+
+        let mut fo4_anim_header = HkxHeader::new_fallout4();
+        fo4_anim_header.section_offset = 16;
+        fo4_anim_header.predicate_array = vec![0x14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+        for (header, classnames_abs) in [
+            (HkxHeader::new_fallout4(), 0x100_u32),
+            (fo4_anim_header, 0x110),
+        ] {
+            let mut classes = new_defaultmale();
+            classes.sort_for_bytes();
+            let bytes = to_bytes(&classes, &header)?;
+
+            // root header + predicate array
+            let parsed = HkxHeader::from_bytes(&bytes).unwrap();
+            assert_eq!(parsed, header);
+
+            // section headers
+            let root = header.root_header_size() as usize;
+            let endian = header.endian();
+            let names = ["__classnames__", "__types__", "__data__"];
+            let mut sections = vec![];
+            for (i, name) in names.iter().enumerate() {
+                let start = root + i * 64;
+                let section = SectionHeader::from_bytes(endian)
+                    .parse(&bytes[start..start + 48])
+                    .unwrap();
+                assert!(section.section_tag.starts_with(name.as_bytes()));
+                assert_eq!(bytes[start + 48..start + 64], [0xff; 16]); // hk2014 tail padding
+                sections.push(section);
+            }
+            assert_eq!(sections[0].absolute_data_start, classnames_abs);
+            assert_eq!(
+                sections[0].absolute_data_start + sections[0].local_fixups_offset,
+                sections[2].absolute_data_start,
+                "classnames section must end at data section start"
+            );
+            assert_eq!(
+                sections[1].absolute_data_start,
+                sections[2].absolute_data_start
+            );
+
+            // Same classes as the hk2010 layout by read back. (Pointer names are renumbered on read.)
+            let skyrim_bytes = to_bytes(&classes, &HkxHeader::new_skyrim_se())?;
+            let expected: crate::tests::ClassMap =
+                crate::from_bytes(&skyrim_bytes).unwrap_or_else(|e| panic!("{e}"));
+            let actual: crate::tests::ClassMap =
+                crate::from_bytes(&bytes).unwrap_or_else(|e| panic!("{e}"));
+            pretty_assertions::assert_eq!(actual, expected);
+        }
         Ok(())
     }
 }
