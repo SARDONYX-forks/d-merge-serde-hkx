@@ -9,7 +9,7 @@ rust-version.workspace = true
 edition.workspace      = true
 
 [dependencies]
-arrayvec = "0.7.8" # To lazy init fixed array
+arrayvec = { workspace = true } # To lazy init fixed array
 indexmap = { workspace = true, optional = true }
 
 # workspace members
