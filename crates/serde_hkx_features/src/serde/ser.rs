@@ -31,12 +31,6 @@ pub fn to_bytes(classes: &mut ClassMap<'_>, output_format: Format) -> Result<Vec
             let json = sonic_rs::to_string_pretty(&classes).context(crate::error::JsonSerSnafu)?;
             Ok(json.into_bytes())
         }
-        #[cfg(feature = "toml")]
-        Format::Toml => {
-            classes.sort_for_bytes();
-            let toml = toml::to_string(&classes).context(crate::error::TomlSerSnafu)?;
-            Ok(toml.into_bytes())
-        }
     }
 }
 

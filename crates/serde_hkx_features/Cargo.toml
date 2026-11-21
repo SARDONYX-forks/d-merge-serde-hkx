@@ -24,7 +24,6 @@ tokio    = { workspace = true, features = ["fs", "rt"] }
 tracing  = { workspace = true, optional = true }
 
 # serde ext
-toml     = { workspace = true, optional = true }
 schemars = { workspace = true, features = ["indexmap2"], optional = true }
 serde    = { workspace = true, optional = true }
 sonic-rs = { workspace = true, optional = true }
@@ -54,11 +53,9 @@ tracing = ["dedup_tracing", "serde_hkx/tracing"]
 dedup_tracing = ["dep:tracing"]
 # `.json` input/output (`ClassMap` <-> JSON via sonic-rs)
 json = ["dep:serde", "dep:sonic-rs", "havok_classes/serde", "indexmap/serde"]
-# `.toml` input/output
-toml = ["dep:toml", "dep:serde", "havok_classes/serde", "indexmap/serde"]
-# Every extra format (json, toml). Each one adds (de)serialization code for all havok classes,
-# so enable only the ones needed to keep binaries small (e.g., d_merge only uses `json`).
-extra_fmt = ["json", "toml"]
+# Every extra format (json). Each one adds (de)serialization code for all havok classes,
+# so enable only the ones needed to keep binaries small.
+extra_fmt = ["json"]
 # Json schema generation
 json_schema = [
   "dep:schemars",

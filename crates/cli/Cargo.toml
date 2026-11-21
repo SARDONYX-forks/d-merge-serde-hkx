@@ -40,7 +40,7 @@ default = ["color"]
 # ANSI color
 color = []
 
-# Extra output format(json, toml, yaml)
+# Extra output format(json)
 extra_fmt = ["serde_hkx_features/extra_fmt"]
 
 [lints]

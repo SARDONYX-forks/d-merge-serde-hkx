@@ -9,14 +9,10 @@
 use snafu::Location;
 use std::path::{Path, PathBuf};
 
-#[cfg(not(any(feature = "json", feature = "toml")))]
+#[cfg(not(feature = "json"))]
 const SUPPORTED_EXTENSIONS: &str = "`.hkx`, `.xml`";
-#[cfg(all(feature = "json", not(feature = "toml")))]
+#[cfg(feature = "json")]
 const SUPPORTED_EXTENSIONS: &str = "`.hkx`, `.xml`, `.json`";
-#[cfg(all(not(feature = "json"), feature = "toml"))]
-const SUPPORTED_EXTENSIONS: &str = "`.hkx`, `.xml`, `.toml`";
-#[cfg(all(feature = "json", feature = "toml"))]
-const SUPPORTED_EXTENSIONS: &str = "`.hkx`, `.xml`, `.json`, `.toml`";
 
 /// `serde_hkx_features` error
 #[allow(clippy::enum_variant_names, clippy::use_self)]
@@ -115,22 +111,6 @@ pub enum Error {
         location: Location,
     },
 
-    /// Toml deserialize error
-    #[cfg(feature = "toml")]
-    #[snafu(display("{location}: Toml Deserialize Error: {source}"))]
-    TomlDe {
-        source: toml::de::Error,
-        #[snafu(implicit)]
-        location: Location,
-    },
-    /// Toml serialize error
-    #[cfg(feature = "toml")]
-    #[snafu(display("{location}: Toml Serialize Error: {source}"))]
-    TomlSer {
-        source: toml::ser::Error,
-        #[snafu(implicit)]
-        location: Location,
-    },
 
     // ---------------------------------------------------------------------------------------------
     // Reproduce

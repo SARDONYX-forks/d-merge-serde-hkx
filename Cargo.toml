@@ -71,7 +71,6 @@ html-escape = "0.3.0" # Use XML escaping
 
 # serde_hkx_features
 sonic-rs = "0.5.11"
-toml     = "1.2.1"
 
 # winnow_ext
 annotate-snippets = "0.12.18" # Error reporting display

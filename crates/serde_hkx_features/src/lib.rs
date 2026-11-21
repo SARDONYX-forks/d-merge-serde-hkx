@@ -8,10 +8,10 @@ pub mod id_maker;
 pub mod json_schema_gen;
 pub mod progress;
 pub mod serde;
-#[cfg(any(feature = "json", feature = "toml"))]
+#[cfg(feature = "json")]
 pub mod serde_extra;
 pub mod tree;
-#[cfg(any(feature = "json", feature = "toml", feature = "json_schema"))]
+#[cfg(any(feature = "json", feature = "json_schema"))]
 pub mod types_wrapper;
 pub mod verify;
 
