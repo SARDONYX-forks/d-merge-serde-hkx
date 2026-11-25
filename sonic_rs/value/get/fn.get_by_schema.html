@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="get_by_schema returns new Value from the given schema and json data"><title>get_by_schema in sonic_rs::value::get - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-203241e4.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="sonic_rs" data-themes="" data-resource-suffix="" data-rustdoc-version="1.100.0 (0ef1bc386 2026-11-09)" data-channel="1.100.0" data-search-js="search-b167f383.js" data-stringdex-js="stringdex-b5109af9.js" data-settings-js="settings-170eb4bf.js" ><script src="../../../static.files/storage-41dd4d93.js"></script><script defer src="sidebar-items.js"></script><script defer src="../../../static.files/main-1814ead3.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-9f56287d.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc fn"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">get_by_schema</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../sonic_rs/index.html">sonic_<wbr>rs</a><span class="version">0.5.11</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">get_<wbr>by_<wbr>schema</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#examples" title="Examples">Examples</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="index.html">In sonic_<wbr>rs::<wbr>value::<wbr>get</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">sonic_rs</a>::<wbr><a href="../index.html">value</a>::<wbr><a href="index.html">get</a></div><h1>Function <span class="fn">get_<wbr>by_<wbr>schema</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/sonic_rs/value/get.rs.html#51-63">Source</a> </span></div><pre class="rust item-decl"><code>pub fn get_by_schema&lt;'de, Input: <a class="trait" href="../../trait.JsonInput.html" title="trait sonic_rs::JsonInput">JsonInput</a>&lt;'de&gt;&gt;(
+    json: Input,
+    schema: <a class="struct" href="../../struct.Value.html" title="struct sonic_rs::Value">Value</a>,
+) -&gt; <a class="type" href="../../type.Result.html" title="type sonic_rs::Result">Result</a>&lt;<a class="struct" href="../../struct.Value.html" title="struct sonic_rs::Value">Value</a>&gt;</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>get_by_schema returns new Value from the given schema and json data</p>
+<p>This function can be used to query json data on demand.</p>
+<p>If a key path, for example [“b”, “b1”] exists in the schema, but does not exist in the data,
+then the data will be filled with the corresponding default value in the schema.</p>
+<p>If a key path does’not exists in the schema, but exists in the data, then the
+value in the schema will be replaced with the corresponding value in the data.</p>
+<h2 id="examples"><a class="doc-anchor" href="#examples">§</a>Examples</h2>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>sonic_rs::json;
+<span class="kw">let </span>schema = <span class="macro">json!</span>({
+    <span class="string">"a"</span>: null, <span class="comment">// default value is `null`
+    </span><span class="string">"b"</span>: {
+        <span class="string">"b1"</span>: {},
+        <span class="string">"b2"</span>: <span class="string">"default string" </span><span class="comment">// default value is string
+    </span>},
+    <span class="string">"c"</span>: [], <span class="comment">// default value is []
+</span>});
+
+<span class="kw">let </span>data = <span class="string">r#"
+{
+    "a": {},
+    "b": {
+        "b1": 123
+    },
+    "c": [1, 2, 3],
+    "d": "balabala..."
+}"#</span>;
+
+<span class="comment">// parse json data by schem, we can parse into the schema value inplace
+</span><span class="kw">let </span>got = sonic_rs::get_by_schema(data, schema).unwrap();
+<span class="macro">assert_eq!</span>(
+    got,
+    <span class="macro">json!</span>({
+        <span class="string">"a"</span>: {},
+        <span class="string">"b"</span>: {
+            <span class="string">"b1"</span>: <span class="number">123</span>,
+            <span class="string">"b2"</span>: <span class="string">"default string"
+        </span>},
+        <span class="string">"c"</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]
+    })
+);</code></pre></div></div></details></section></div></main></body></html>

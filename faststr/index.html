@@ -1,0 +1,139 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="faststr"><title>faststr - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-203241e4.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="faststr" data-themes="" data-resource-suffix="" data-rustdoc-version="1.100.0 (0ef1bc386 2026-11-09)" data-channel="1.100.0" data-search-js="search-b167f383.js" data-stringdex-js="stringdex-b5109af9.js" data-settings-js="settings-170eb4bf.js" ><script src="../static.files/storage-41dd4d93.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-1814ead3.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-9f56287d.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc mod crate"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Crate faststr</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../faststr/index.html">faststr</a><span class="version">0.2.34</span></h2></div><div class="sidebar-elems"><ul class="block"><li><a id="all-types" href="all.html">All Items</a></li></ul><section id="rustdoc-toc"><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#faststr" title="faststr">faststr</a><ul><li><a href="#why-we-need-it" title="Why we need it?">Why we need it?</a></li><li><a href="#when-should-i-use-it" title="When should I use it?">When should I use it?</a></li><li><a href="#how-to-migrate-to-faststr" title="How to migrate to `FastStr`?">How to migrate to <code>FastStr</code>?</a></li><li><a href="#features" title="Features">Features</a></li><li><a href="#benchmark" title="Benchmark">Benchmark</a></li><li><a href="#related-projects" title="Related Projects">Related Projects</a></li><li><a href="#contributing" title="Contributing">Contributing</a></li><li><a href="#license" title="License">License</a></li><li><a href="#credits" title="Credits">Credits</a></li><li><a href="#community" title="Community">Community</a></li></ul></li></ul><h3><a href="#structs">Crate Items</a></h3><ul class="block"><li><a href="#structs" title="Structs">Structs</a></li></ul></section><div id="rustdoc-modnav"></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><h1>Crate <span>faststr</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/faststr/lib.rs.html#1-872">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="faststr"><a class="doc-anchor" href="#faststr">§</a>faststr</h2>
+<p><a href="https://crates.io/crates/faststr"><img src="https://img.shields.io/crates/v/faststr" alt="Crates.io" /></a>
+<a href="https://docs.rs/faststr"><img src="https://docs.rs/faststr/badge.svg" alt="Documentation" /></a>
+<a href="https://deepwiki.com/volo-rs/faststr"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki" /></a>
+<a href="https://www.cloudwego.io/"><img src="https://img.shields.io/website?up_message=cloudwego&amp;url=https%3A%2F%2Fwww.cloudwego.io%2F" alt="Website" /></a>
+<a href="#license"><img src="https://img.shields.io/crates/l/faststr" alt="License" /></a>
+<a href="https://github.com/volo-rs/faststr/actions"><img src="https://github.com/volo-rs/faststr/actions/workflows/ci.yaml/badge.svg" alt="Build Status" /></a></p>
+<p><code>faststr</code> is a string library that try to avoid the cost of clone.</p>
+<h3 id="why-we-need-it"><a class="doc-anchor" href="#why-we-need-it">§</a>Why we need it?</h3>
+<p>In Rust, the String type is commonly used, but it has the following problems:</p>
+<ol>
+<li>In many scenarios in asynchronous Rust, we cannot determine when a String is dropped. For example, when we send a String through RPC/HTTP, we cannot explicitly mark the lifetime, thus we must clone it;</li>
+<li>Rust’s asynchronous ecosystem is mainly based on Tokio, with network programming largely relying on bytes::Bytes. We can take advantage of Bytes to avoid cloning Strings, while better integrating with the Bytes ecosystem;</li>
+<li>Even in purely synchronous code, when the code is complex enough, marking the lifetime can greatly affect code readability and maintainability. In business development experience, there will often be multiple Strings from different sources combined into a single Struct for processing. In such situations, it’s almost impossible to avoid cloning using lifetimes;</li>
+<li>Cloning a String is quite costly;</li>
+</ol>
+<p>Therefore, we have created the <code>FastStr</code> type. By sacrificing immutability, we can avoid the overhead of cloning Strings and better integrate with Rust’s asynchronous, microservice, and network programming ecosystems.</p>
+<h3 id="when-should-i-use-it"><a class="doc-anchor" href="#when-should-i-use-it">§</a>When should I use it?</h3>
+<ol>
+<li>When you need to send a String through RPC/HTTP;</li>
+<li>When you read a String from a file or database or config;</li>
+<li>Everywhere when you don’t need to mutate the String anymore;</li>
+</ol>
+<h3 id="how-to-migrate-to-faststr"><a class="doc-anchor" href="#how-to-migrate-to-faststr">§</a>How to migrate to <code>FastStr</code>?</h3>
+<p><code>FastStr</code> implements <code>From</code> trait for various types, so you can easily migrate to <code>FastStr</code> by replacing <code>String</code> with <code>FastStr</code> and adding <code>.into()</code>.</p>
+<p><sub> <strong>Note:</strong> The memory size of <code>FastStr</code> is not <code>24</code>, so switching from <code>String</code> or <a href="https://docs.rs/smol_str/latest/smol_str/struct.SmolStr.html"><code>SmolStr</code></a> to <code>FastStr</code> may not be harmless.</sub></p>
+<p>For example, if your API is something like this:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">fn </span>need_a_string(s: String)</code></pre></div>
+<p>You may change it to:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">fn </span>need_a_string&lt;S: Into&lt;FastStr&gt;&gt;(s: S)</code></pre></div>
+<p>This will not be a break change for users.</p>
+<h3 id="features"><a class="doc-anchor" href="#features">§</a>Features</h3>
+<ul>
+<li><code>serde</code>: Enable serde support.</li>
+<li><code>serde-unsafe</code>: Enable serde support with utf8 validation disabled.</li>
+<li><code>redis</code>: Enable redis support.</li>
+<li><code>redis-unsafe</code>: Enable redis support with utf8 validation disabled.</li>
+</ul>
+<h3 id="benchmark"><a class="doc-anchor" href="#benchmark">§</a>Benchmark</h3><div class="example-wrap"><pre class="language-bash"><code>$ cargo bench</code></pre></div><h4 id="aarch64"><a class="doc-anchor" href="#aarch64">§</a>AARCH64</h4><h5 id="m3max"><a class="doc-anchor" href="#m3max">§</a>M3Max</h5>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>empty faststr           time:   [<span class="number">2.0188 </span>ns <span class="number">2.0271 </span>ns <span class="number">2.0356 </span>ns]
+
+empty string            time:   [<span class="number">2.1306 </span>ns <span class="number">2.1333 </span>ns <span class="number">2.1365 </span>ns]
+
+<span class="kw">static </span>faststr          time:   [<span class="number">2.0458 </span>ns <span class="number">2.0589 </span>ns <span class="number">2.0709 </span>ns]
+
+inline faststr          time:   [<span class="number">2.2270 </span>ns <span class="number">2.2332 </span>ns <span class="number">2.2399 </span>ns]
+
+string hello world      time:   [<span class="number">12.553 </span>ns <span class="number">12.575 </span>ns <span class="number">12.597 </span>ns]
+
+<span class="number">512B </span>faststr            time:   [<span class="number">3.8373 </span>ns <span class="number">3.8454 </span>ns <span class="number">3.8540 </span>ns]
+
+<span class="number">512B </span>string             time:   [<span class="number">36.895 </span>ns <span class="number">37.007 </span>ns <span class="number">37.121 </span>ns]
+
+<span class="number">4096B </span>faststr           time:   [<span class="number">3.8205 </span>ns <span class="number">3.8260 </span>ns <span class="number">3.8317 </span>ns]
+
+<span class="number">4096B </span>string            time:   [<span class="number">55.275 </span>ns <span class="number">55.355 </span>ns <span class="number">55.446 </span>ns]
+
+<span class="number">16384B </span>faststr          time:   [<span class="number">3.8191 </span>ns <span class="number">3.8246 </span>ns <span class="number">3.8306 </span>ns]
+
+<span class="number">16384B </span>string           time:   [<span class="number">338.18 </span>ns <span class="number">352.36 </span>ns <span class="number">365.02 </span>ns]
+
+<span class="number">65536B </span>faststr          time:   [<span class="number">3.8169 </span>ns <span class="number">3.8221 </span>ns <span class="number">3.8277 </span>ns]
+
+<span class="number">65536B </span>string           time:   [<span class="number">662.52 </span>ns <span class="number">663.75 </span>ns <span class="number">664.96 </span>ns]
+
+<span class="number">524288B </span>faststr         time:   [<span class="number">3.8140 </span>ns <span class="number">3.8178 </span>ns <span class="number">3.8219 </span>ns]
+
+<span class="number">524288B </span>string          time:   [<span class="number">6.2681 </span>µs <span class="number">6.2755 </span>µs <span class="number">6.2827 </span>µs]
+
+<span class="number">1048576B </span>faststr        time:   [<span class="number">3.8235 </span>ns <span class="number">3.8290 </span>ns <span class="number">3.8348 </span>ns]
+
+<span class="number">1048576B </span>string         time:   [<span class="number">12.422 </span>µs <span class="number">12.438 </span>µs <span class="number">12.453 </span>µs]</code></pre></div><h4 id="amd64"><a class="doc-anchor" href="#amd64">§</a>amd64</h4><h5 id="amd-epyc-7y83"><a class="doc-anchor" href="#amd-epyc-7y83">§</a>AMD EPYC 7Y83</h5>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>empty faststr           time:   [<span class="number">4.3325 </span>ns <span class="number">4.3330 </span>ns <span class="number">4.3335 </span>ns]
+
+empty string            time:   [<span class="number">4.6413 </span>ns <span class="number">4.6422 </span>ns <span class="number">4.6434 </span>ns]
+
+<span class="kw">static </span>faststr          time:   [<span class="number">4.3328 </span>ns <span class="number">4.3333 </span>ns <span class="number">4.3339 </span>ns]
+
+inline faststr          time:   [<span class="number">4.6567 </span>ns <span class="number">4.6580 </span>ns <span class="number">4.6593 </span>ns]
+
+string hello world      time:   [<span class="number">12.897 </span>ns <span class="number">12.929 </span>ns <span class="number">12.954 </span>ns]
+
+<span class="number">512B </span>faststr            time:   [<span class="number">4.4218 </span>ns <span class="number">4.4253 </span>ns <span class="number">4.4291 </span>ns]
+
+<span class="number">512B </span>string             time:   [<span class="number">16.087 </span>ns <span class="number">16.094 </span>ns <span class="number">16.105 </span>ns]
+
+<span class="number">4096B </span>faststr           time:   [<span class="number">4.4066 </span>ns <span class="number">4.4099 </span>ns <span class="number">4.4141 </span>ns]
+
+<span class="number">4096B </span>string            time:   [<span class="number">96.905 </span>ns <span class="number">97.401 </span>ns <span class="number">97.879 </span>ns]
+
+<span class="number">16384B </span>faststr          time:   [<span class="number">4.4150 </span>ns <span class="number">4.4277 </span>ns <span class="number">4.4414 </span>ns]
+
+<span class="number">16384B </span>string           time:   [<span class="number">229.25 </span>ns <span class="number">229.30 </span>ns <span class="number">229.34 </span>ns]
+
+<span class="number">65536B </span>faststr          time:   [<span class="number">4.4562 </span>ns <span class="number">4.4623 </span>ns <span class="number">4.4690 </span>ns]
+
+<span class="number">65536B </span>string           time:   [<span class="number">1.3325 </span>µs <span class="number">1.3328 </span>µs <span class="number">1.3332 </span>µs]
+
+<span class="number">524288B </span>faststr         time:   [<span class="number">4.4167 </span>ns <span class="number">4.4240 </span>ns <span class="number">4.4326 </span>ns]
+
+<span class="number">524288B </span>string          time:   [<span class="number">18.268 </span>µs <span class="number">18.277 </span>µs <span class="number">18.287 </span>µs]
+
+<span class="number">1048576B </span>faststr        time:   [<span class="number">4.4275 </span>ns <span class="number">4.4385 </span>ns <span class="number">4.4494 </span>ns]
+
+<span class="number">1048576B </span>string         time:   [<span class="number">32.839 </span>µs <span class="number">33.777 </span>µs <span class="number">34.554 </span>µs]</code></pre></div><h3 id="related-projects"><a class="doc-anchor" href="#related-projects">§</a>Related Projects</h3>
+<ul>
+<li><a href="https://github.com/cloudwego/volo">Volo</a>: Rust RPC framework with high-performance and strong-extensibility for building micro-services.</li>
+<li><a href="https://github.com/cloudwego/motore">Motore</a>: Middleware abstraction layer powered by GAT.</li>
+<li><a href="https://github.com/cloudwego/pilota">Pilota</a>: A thrift and protobuf implementation in pure rust with high performance and extensibility.</li>
+<li><a href="https://github.com/cloudwego/metainfo">Metainfo</a>: Transmissing metainfo across components.</li>
+</ul>
+<h3 id="contributing"><a class="doc-anchor" href="#contributing">§</a>Contributing</h3>
+<p>See <a href="https://github.com/volo-rs/faststr/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> for more information.</p>
+<p>All contributions are welcomed!</p>
+<h3 id="license"><a class="doc-anchor" href="#license">§</a>License</h3>
+<p><code>faststr</code> is dual-licensed under the MIT license and the Apache License (Version 2.0).</p>
+<p>See <a href="https://github.com/volo-rs/faststr/blob/main/LICENSE-MIT">LICENSE-MIT</a> and <a href="https://github.com/volo-rs/faststr/blob/main/LICENSE-APACHE">LICENSE-APACHE</a> for details.</p>
+<h3 id="credits"><a class="doc-anchor" href="#credits">§</a>Credits</h3>
+<p><code>faststr</code> copied and used some code from <a href="https://github.com/rust-analyzer/smol_str"><code>smol_str</code></a>, which is also licensed under the MIT license and the Apache License (Version 2.0).</p>
+<p>We really appreciate the work of <code>smol_str</code> team.</p>
+<h3 id="community"><a class="doc-anchor" href="#community">§</a>Community</h3>
+<ul>
+<li>
+<p>Email: <a href="mailto:volo@cloudwego.io">volo@cloudwego.io</a></p>
+</li>
+<li>
+<p>How to become a member: <a href="https://github.com/cloudwego/community/blob/main/COMMUNITY_MEMBERSHIP.md">COMMUNITY MEMBERSHIP</a></p>
+</li>
+<li>
+<p>Issues: <a href="https://github.com/volo-rs/faststr/issues">Issues</a></p>
+</li>
+<li>
+<p>Feishu: Scan the QR code below with <a href="https://www.feishu.cn/">Feishu</a> or <a href="https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=b34v5470-8e4d-4c7d-bf50-8b2917af026b">click this link</a> to join our CloudWeGo Volo user group.</p>
+<img src="https://github.com/volo-rs/faststr/raw/main/.github/assets/volo-feishu-user-group.png" alt="Volo user group" width="50%" height="50%" />
+</li>
+</ul>
+</div></details><h2 id="structs" class="section-header">Structs<a href="#structs" class="anchor">§</a></h2><dl class="item-table"><dt><a class="struct" href="struct.BytesRef.html" title="struct faststr::BytesRef">Bytes<wbr>Ref</a></dt><dt><a class="struct" href="struct.FastStr.html" title="struct faststr::FastStr">FastStr</a></dt><dd><code>FastStr</code> is a string type that try to avoid the cost of clone.</dd></dl></section></div></main></body></html>

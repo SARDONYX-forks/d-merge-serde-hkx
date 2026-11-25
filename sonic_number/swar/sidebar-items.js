@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["is_eight_digits","parse_digits_tolerant","parse_eight_digits","swar_str2int"]};

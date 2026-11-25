@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["COMMAND","ERROR","HEADING","NOTE","SUCCESS","TITLE"],"fn":["examples","get_styles","highlight_command","is_color_enabled"],"struct":["Example"]};

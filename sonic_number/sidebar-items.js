@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Error","ParserNumber"],"fn":["parse_float32","parse_number","parse_number_unchecked","simd_str2int"],"mod":["swar"]};

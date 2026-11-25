@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["bits"],"trait":["BitMask","Mask","Simd"],"type":["i8x16","i8x32","i8x64","m8x32","u8x16","u8x32","u8x64"]};

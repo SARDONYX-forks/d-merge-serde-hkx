@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="get_many returns multiple fields from the `PointerTree`."><title>get_many in sonic_rs - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-203241e4.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="sonic_rs" data-themes="" data-resource-suffix="" data-rustdoc-version="1.100.0 (0ef1bc386 2026-11-09)" data-channel="1.100.0" data-search-js="search-b167f383.js" data-stringdex-js="stringdex-b5109af9.js" data-settings-js="settings-170eb4bf.js" ><script src="../static.files/storage-41dd4d93.js"></script><script defer src="sidebar-items.js"></script><script defer src="../static.files/main-1814ead3.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-9f56287d.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-044be391.svg"></head><body class="rustdoc fn"><a class="skip-main-content" href="#main-content">Skip to main content</a><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">get_many</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../sonic_rs/index.html">sonic_<wbr>rs</a><span class="version">0.5.11</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">get_<wbr>many</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#examples" title="Examples">Examples</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="index.html">In crate sonic_<wbr>rs</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content" tabindex="-1"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="index.html">sonic_rs</a></div><h1>Function <span class="fn">get_<wbr>many</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/sonic_rs/lazyvalue/get.rs.html#453-468">Source</a> </span></div><pre class="rust item-decl"><code>pub fn get_many&lt;'de, Input&gt;(
+    json: Input,
+    tree: &amp;<a class="struct" href="struct.PointerTree.html" title="struct sonic_rs::PointerTree">PointerTree</a>,
+) -&gt; <a class="type" href="type.Result.html" title="type sonic_rs::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.100.0/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="enum" href="https://doc.rust-lang.org/1.100.0/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="struct.LazyValue.html" title="struct sonic_rs::LazyValue">LazyValue</a>&lt;'de&gt;&gt;&gt;&gt;<div class="where">where
+    Input: <a class="trait" href="trait.JsonInput.html" title="trait sonic_rs::JsonInput">JsonInput</a>&lt;'de&gt;,</div></code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>get_many returns multiple fields from the <a href="struct.PointerTree.html" title="struct sonic_rs::PointerTree"><code>PointerTree</code></a>.</p>
+<p>The result is a <code>Result&lt;Vec&lt;Option&lt;LazyValue&gt;&gt;&gt;</code>. The order of the <code>Vec</code> is same as the order of
+the tree.</p>
+<p>If a key is unknown, the value at the corresponding position in <code>Vec</code> will be None.<br />
+If json is invalid, or the field not be found, it will return a err.</p>
+<h2 id="examples"><a class="doc-anchor" href="#examples">§</a>Examples</h2>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>
+<span class="kw">let </span>json = <span class="string">r#"
+{"u": 123, "a": {"b" : {"c": [null, "found"]}}}"#</span>;
+
+<span class="comment">// build a pointer tree, representing multiple json path
+</span><span class="kw">let </span><span class="kw-2">mut </span>tree = PointerTree::new();
+
+tree.add_path(<span class="kw-2">&amp;</span>[<span class="string">"u"</span>]);
+tree.add_path(<span class="kw-2">&amp;</span>[<span class="string">"unknown_key"</span>]);
+tree.add_path(<span class="kw-2">&amp;</span><span class="macro">pointer!</span>[<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="number">1</span>]);
+
+<span class="kw">let </span>nodes = <span class="kw">unsafe </span>{ sonic_rs::get_many(json, <span class="kw-2">&amp;</span>tree) };
+
+<span class="kw">match </span>nodes {
+    <span class="prelude-val">Ok</span>(vals) =&gt; {
+        <span class="macro">assert_eq!</span>(vals[<span class="number">0</span>].as_ref().unwrap().as_raw_str(), <span class="string">"123"</span>);
+        <span class="macro">assert!</span>(vals[<span class="number">1</span>].is_none());
+        <span class="macro">assert_eq!</span>(vals[<span class="number">2</span>].as_ref().unwrap().as_raw_str(), <span class="string">"\"found\""</span>);
+    }
+    <span class="prelude-val">Err</span>(e) =&gt; {
+        <span class="macro">panic!</span>(<span class="string">"err: {:?}"</span>, e)
+    }
+}</code></pre></div></div></details></section></div></main></body></html>

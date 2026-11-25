@@ -1,0 +1,9 @@
+(function() {
+    const implementors = Object.fromEntries([["serde",[]],["serde_core",[]],["sonic_rs",[["impl&lt;'de, 'a, R: Reader&lt;'de&gt; + 'a&gt; <a class=\"trait\" href=\"serde_core/de/trait.MapAccess.html\" title=\"trait serde_core::de::MapAccess\">MapAccess</a>&lt;'de&gt; for <a class=\"struct\" href=\"sonic_rs/struct.MapAccess.html\" title=\"struct sonic_rs::MapAccess\">MapAccess</a>&lt;'a, R&gt;",0]]]]);
+    if (window.register_implementors) {
+        window.register_implementors(implementors);
+    } else {
+        window.pending_implementors = implementors;
+    }
+})()
+//{"start":59,"fragment_lengths":[12,18,326]}

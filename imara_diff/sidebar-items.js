@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Algorithm"],"mod":["sources"],"struct":["BasicLineDiffPrinter","Diff","Hunk","HunkIter","IndentHeuristic","IndentLevel","InternedInput","Interner","NoSliderHeuristic","Token","UnifiedDiff","UnifiedDiffConfig"],"trait":["SliderHeuristic","TokenSource","UnifiedDiffPrinter"]};
